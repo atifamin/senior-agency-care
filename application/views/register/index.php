@@ -57,15 +57,8 @@
 
 <!-- Wizard with validation -->
 <div class="card">
-	<div class="card-header bg-white header-elements-inline" style="text-align: center;">
+	<div class="card-header" style="text-align: center;">
 		<h6>Create Your Agency Account</h6>
-		<div class="header-elements">
-			<div class="list-icons">
-        		<a class="list-icons-item" data-action="collapse"></a>
-        		<a class="list-icons-item" data-action="reload"></a>
-        		<a class="list-icons-item" data-action="remove"></a>
-        	</div>
-    	</div>
 	</div>
 
 	<form class="wizard-form steps-validation" action="#" data-fouc>
