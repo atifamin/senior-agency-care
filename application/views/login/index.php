@@ -49,7 +49,7 @@
 						<div class="row" style="margin: 20px 0px 25px 0px;">
 							<div class="col-md-4 offset-md-4" style="text-align: center;">
 								<div class="login_icon" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #F37333;">
-									<a style="position: relative; top: 20px;" href="#"><i style="color: #F37333; font-size: 24px;" class="icon-person"></i></a>
+									<a style="position: relative; top: 20px;" href="#"><i style="color: #F37333; font-size: 24px;" class="icon-people"></i></a>
 								</div>
 							</div>
 						</div>

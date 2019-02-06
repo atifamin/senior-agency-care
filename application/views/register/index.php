@@ -32,9 +32,8 @@
 	<script src="<?php echo base_url(); ?>/assets/js/plugins/extensions/cookie.js"></script>
 
 	<script src="<?php echo base_url(); ?>/assets/js/app.js"></script>
-	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/form_wizard.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/register_form_wizard.js"></script>
 	<!-- /theme JS files -->
-	<script src="<?php echo base_url(); ?>/assets/js/plugins/ui/ripple.min.js"></script>
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
@@ -48,7 +47,7 @@
 <div class="row" style="margin: 10px 0px; width: 100%;">
 	<div class="col-md-12" style="text-align: center;">
 		<div class="register_icon" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #F37333; margin: 0 auto;">
-			<a style="position: relative; top: 20px;" href="#"><i style="color: #F37333; font-size: 24px;" class="icon-person"></i></a>
+			<a style="position: relative; top: 20px;" href="#"><i style="color: #F37333; font-size: 24px;" class="icon-people"></i></a>
 		</div>
 	</div>
 </div>
