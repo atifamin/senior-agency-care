@@ -39,11 +39,16 @@
 	<!-- Theme JS files -->
 	<script src="<?php echo base_url(); ?>/assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/form_select2.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/extra_sweetalert.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/plugins/notifications/sweet_alert.min.js"></script>
 
 </head>
-
+<style type="text/css">
+	#swal2-content{
+		padding: 30px 0px !important;
+	}
+</style>
 <body>
-
 <div class="row" style="margin: 10px 0px; width: 100%;">
 	<div class="col-md-12" style="text-align: center;">
 		<div class="register_icon" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #F37333; margin: 0 auto;">
