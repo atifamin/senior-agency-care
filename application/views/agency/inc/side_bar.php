@@ -80,7 +80,7 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="<?php echo site_url("dashboard"); ?>" class="nav-link <?php if($url_segment=="notice board"){echo 'active';} ?>">
+							<a href="<?php echo site_url("agency/dashboard"); ?>" class="nav-link <?php if($url_segment=="notice board"){echo 'active';} ?>">
 								<i class="icon-home4"></i>
 								<span>
 									Notice Board
@@ -100,17 +100,17 @@
 							<a href="#" class="nav-link <?php if($url_segment=="caregivers"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Caregivers</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item <?php if($url_segment=="caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("caregiver"); ?>" class="nav-link ">View Caregivers</a></li>
-								<li class="nav-item <?php if($url_segment=="add_caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("caregiver/add_caregiver"); ?>" class="nav-link">Add Caregivers</a></li>
-								<li class="nav-item"><a href="<?php echo site_url("caregiver/send_invite_to_caregiver"); ?>" class="nav-link">Invite Caregivers</a></li>
+								<li class="nav-item <?php if($url_segment=="caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("agency/caregiver"); ?>" class="nav-link ">View Caregivers</a></li>
+								<li class="nav-item <?php if($url_segment=="add_caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="nav-link">Add Caregivers</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="nav-link">Invite Caregivers</a></li>
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link <?php if($url_segment=="clients"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Clients</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("clients"); ?>" class="nav-link active">View Clients</a></li>
-								<li class="nav-item"><a href="<?php echo site_url("clients/add_client"); ?>" class="nav-link">Add Clients</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/clients"); ?>" class="nav-link active">View Clients</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/clients/add_client"); ?>" class="nav-link">Add Clients</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
 						</li>
@@ -218,7 +218,7 @@
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
-							<a href="<?php echo site_url("dashboard"); ?>" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+							<a href="<?php echo site_url("agency/dashboard"); ?>" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
 							<span class="breadcrumb-item active"><?php echo $breadcrumb; ?></span>
 						</div>
 

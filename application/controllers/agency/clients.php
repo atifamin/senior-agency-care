@@ -8,13 +8,13 @@ class Clients extends CI_Controller {
 		$data["breadcrumb"] = "Clients";
 		$data["heading"] = "Our Clients";
 		$data["url_segment"] = "clients";
-		$this->load->view("clients/index",$data);
+		$this->load->view("agency/clients/index",$data);
 	}
 
 	public function add_client(){
 		$data["breadcrumb"] = "Add Client";
 		$data["heading"] = "Our Clients";
 		$data["url_segment"] = "add_caregivers";
-		$this->load->view("clients/add_client",$data);
+		$this->load->view("agency/clients/add_client",$data);
 	}
 }

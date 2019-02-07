@@ -26,11 +26,11 @@
 <body>
 
 	<!-- Top Nav -->
-	<?php include(APPPATH."views/inc/top_nav.php"); ?>
+	<?php include(APPPATH."views/agency/inc/top_nav.php"); ?>
 
 	<!-- Page content -->
 	<div class="page-content">
 
 	<!-- Side Bar Menu -->
-	<?php include(APPPATH."views/inc/side_bar.php"); ?>
+	<?php include(APPPATH."views/agency/inc/side_bar.php"); ?>
 		

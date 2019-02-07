@@ -1,4 +1,4 @@
-<?php include(APPPATH."views/inc/header.php");?>
+<?php include(APPPATH."views/agency/inc/header.php");?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -7,11 +7,11 @@
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-5">
-							<a href="<?php echo site_url("caregiver/add_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a caregiver</a>
+							<a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a caregiver</a>
 						</div>
 						<span style="margin-top: 17px; margin-right: 14px; font-size: 10px;">OR</span>
 						<div class="col-md-5">
-							<a href="#" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a>
+							<a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a>
 						</div>
 					</div>
 				</div>
@@ -172,4 +172,4 @@
 </div>
 
 <script src="<?php echo base_url();?>assets/js/demo_pages/components_progress.js"></script>
-<?php include(APPPATH."views/inc/footer.php");?>
+<?php include(APPPATH."views/agency/inc/footer.php");?>

@@ -110,7 +110,7 @@
 									</div>
 
 									<div class="form-group">
-										<a style="width: 100%; color: #828181; background-color: #F6F5F5; border: 1px solid lightgray;" href="<?php echo base_url("register"); ?>" class="btn btn-primary">Sign up</a>
+										<a style="width: 100%; color: #828181; background-color: #F6F5F5; border: 1px solid lightgray;" href="<?php echo base_url("agency/register"); ?>" class="btn btn-primary">Sign up</a>
 									</div>
 
 									<div class="form-group" style="text-align: center;">

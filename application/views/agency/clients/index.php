@@ -1,4 +1,4 @@
-<?php include(APPPATH."views/inc/header.php");?>
+<?php include(APPPATH."views/agency/inc/header.php");?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -7,7 +7,7 @@
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-5">
-							<a href="<?php echo site_url("clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a client</a>
+							<a href="<?php echo site_url("agency/clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a client</a>
 						</div>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 		                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 		                    		<div class="dropdown-menu dropdown-menu-right">
-				                    	<a href="<?php echo site_url("clients/client_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
+				                    	<a href="<?php echo site_url("agency/caregiver/caregiver_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
 		                    		</div>
 		                    	</div>
@@ -98,7 +98,7 @@
 		                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 		                    		<div class="dropdown-menu dropdown-menu-right">
-				                    	<a href="<?php echo site_url("caregiver/caregiver_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
+				                    	<a href="<?php echo site_url("agency/caregiver/caregiver_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
 		                    		</div>
 		                    	</div>
@@ -126,7 +126,7 @@
 		                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 		                    		<div class="dropdown-menu dropdown-menu-right">
-				                    	<a href="<?php echo site_url("caregiver/caregiver_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
+				                    	<a href="<?php echo site_url("agency/caregiver/caregiver_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
 		                    		</div>
 		                    	</div>
@@ -154,7 +154,7 @@
 		                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 		                    		<div class="dropdown-menu dropdown-menu-right">
-				                    	<a href="<?php echo site_url("caregiver/caregiver_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
+				                    	<a href="<?php echo site_url("agency/caregiver/caregiver_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
 		                    		</div>
 		                    	</div>
@@ -169,4 +169,4 @@
 </div>
 
 
-<?php include(APPPATH."views/inc/footer.php");?>
+<?php include(APPPATH."views/agency/inc/footer.php");?>

@@ -8,6 +8,6 @@ class Dashboard extends CI_Controller {
 		$data["breadcrumb"] = "Notice Board";
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";
-		$this->load->view("dashboard/dashboard",$data);
+		$this->load->view("agency/dashboard/dashboard",$data);
 	}
 }

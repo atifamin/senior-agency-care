@@ -1,4 +1,4 @@
-<?php include(APPPATH."views/inc/header.php");?>
+<?php include(APPPATH."views/agency/inc/header.php");?>
 <style type="text/css">
 	.token-input{
 		min-width: 100% !important;
@@ -11,7 +11,7 @@
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-5">
-							<a href="<?php echo site_url("clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a client</a>
+							<a href="<?php echo site_url("agency/clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a client</a>
 						</div>
 					</div>
 				</div>
@@ -394,7 +394,7 @@
 		<!-- /wizard with validation -->
 	</div>
 </div>
-<?php include(APPPATH."views/inc/footer.php");?>
+<?php include(APPPATH."views/agency/inc/footer.php");?>
 <!-- Theme JS files -->
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tagsinput.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tokenfield.min.js"></script>
