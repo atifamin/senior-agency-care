@@ -67,14 +67,14 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Company name: <span class="text-danger">*</span></label>
-						<input type="text" name="company_name" class="form-control" placeholder="Add your company name">
+						<input type="text" name="company_name" class="form-control required" placeholder="Add your company name">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Your position at the company: <span class="text-danger">*</span></label>
-						<select name="location" data-placeholder="Select position" class="form-control form-control-select2" data-fouc>
+						<select name="location" data-placeholder="Select position" class="form-control form-control-select2 required" data-fouc>
 							<option value="">Select position</option>
 							<option value="owner">Owner</option>
 							<option value="ceo">CEO</option>
@@ -89,32 +89,32 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Your full name: <span class="text-danger">*</span></label>
-						<input type="text" name="full_name" class="form-control" placeholder="Enter your full name">
+						<input type="text" name="full_name" class="form-control required" placeholder="Enter your full name">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Company email address: <span class="text-danger">*</span></label>
-						<input type="email" name="email" class="form-control" placeholder="company@email.com">
+						<input type="email" name="email" class="form-control required" placeholder="company@email.com">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Phone #:</label>
-						<input type="text" name="tel" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+						<label>Phone #: <span class="text-danger">*</span></label>
+						<input type="text" name="tel" class="form-control required" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-8">
-							<label>When company was formed:</label>
+							<label>When company was formed: <span class="text-danger">*</span></label>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-	                                    <select name="education-from-month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+	                                    <select name="education-from-month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc>
 	                                    	<option></option>
 	                                        <option value="January">January</option> 
 	                                        <option value="Februray">Februray</option>
@@ -134,7 +134,7 @@
 
 								<div class="col-md-6">
 									<div class="form-group">
-	                                    <select name="education-from-year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+	                                    <select name="education-from-year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc>
 	                                        <option></option> 
 	                                        <option value="1990">1990</option>
 	                                        <option value="1991">1991</option>
@@ -177,16 +177,16 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Our story:</label>
-	                    <textarea name="experience-description" rows="4" cols="4" placeholder="Add brief story about your company" class="form-control"></textarea>
+						<label>Our story: <span class="text-danger">*</span></label>
+	                    <textarea name="experience-description" rows="4" cols="4" placeholder="Add brief story about your company" class="form-control required"></textarea>
 	                </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Country:</label>
-                        <select name="university-country" data-placeholder="Choose a Country..." class="form-control form-control-select2" data-fouc>
+						<label>Country: <span class="text-danger">*</span></label>
+                        <select name="university-country" data-placeholder="Choose a Country..." class="form-control form-control-select2 required" data-fouc>
                             <option></option> 
                             <option value="1">United States</option> 
                             <option value="2">France</option> 
@@ -197,8 +197,8 @@
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>State:</label>
-                        <select name="university-country" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc>
+						<label>State: <span class="text-danger">*</span></label>
+                        <select name="" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc>
                             <option></option> 
                             <option value="1">United States</option> 
                             <option value="2">France</option> 
@@ -211,8 +211,8 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>City:</label>
-                        <select name="university-country" data-placeholder="Choose a City..." class="form-control form-control-select2" data-fouc>
+						<label>City: <span class="text-danger">*</span></label>
+                        <select name="city" data-placeholder="Choose a City..." class="form-control form-control-select2 required" data-fouc>
                             <option></option> 
                             <option value="1">United States</option> 
                             <option value="2">France</option> 
@@ -223,8 +223,8 @@
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Zip:</label>
-						<input type="text" name="company_name" class="form-control" placeholder="Add your zip">
+						<label>Zip: <span class="text-danger">*</span></label>
+						<input type="text" name="zip" class="form-control required" placeholder="Add your zip">
 					</div>
 				</div>
 			</div>
@@ -235,8 +235,8 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Select your personal care services:</label>
-						<select data-placeholder="Select your services" multiple="multiple" class="form-control select" data-fouc>
+						<label>Select your personal care services: <span class="text-danger">*</span></label>
+						<select data-placeholder="Select your services" multiple="multiple" class="form-control select required" name="personal_care_service" data-fouc>
 							<option></option>
 							<option value="option1">Option 1</option>
 							<option value="option1">Option 2</option>
@@ -249,37 +249,8 @@
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Select housekeeping services:</label>
-						<select data-placeholder="Select your services" multiple="multiple" class="form-control select" data-fouc>
-							<option></option>
-							<option value="option1">Option 1</option>
-							<option value="option1">Option 2</option>
-							<option value="option1">Option 3</option>
-							<option value="option1">Option 4</option>
-							<option value="option1">Option 5</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Select sunrise/sunset services:</label>
-						<select data-placeholder="Select your services" multiple="multiple" class="form-control select" data-fouc>
-							<option>Select </option>
-							<option value="option1">Option 1</option>
-							<option value="option1">Option 2</option>
-							<option value="option1">Option 3</option>
-							<option value="option1">Option 4</option>
-							<option value="option1">Option 5</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Select dementia/alzheimer's Assistance:</label>
-						<select data-placeholder="Select your services" multiple="multiple" class="form-control select" data-fouc>
+						<label>Select housekeeping services: <span class="text-danger">*</span></label>
+						<select data-placeholder="Select your services" multiple="multiple" class="form-control select required" name="housekeeping_service" data-fouc>
 							<option></option>
 							<option value="option1">Option 1</option>
 							<option value="option1">Option 2</option>
@@ -293,8 +264,8 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Select personal assitant services:</label>
-						<select data-placeholder="Select your services" multiple="multiple" class="form-control select" data-fouc>
+						<label>Select sunrise/sunset services: <span class="text-danger">*</span></label>
+						<select data-placeholder="Select your services" multiple="multiple" class="form-control select required" name="sunrise_sunset_service" data-fouc>
 							<option>Select </option>
 							<option value="option1">Option 1</option>
 							<option value="option1">Option 2</option>
@@ -307,8 +278,8 @@
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Select post-surgury/maternity Assistance:</label>
-						<select data-placeholder="Select your services" multiple="multiple" class="form-control select" data-fouc>
+						<label>Select dementia/alzheimer's Assistance: <span class="text-danger">*</span></label>
+						<select data-placeholder="Select your services" multiple="multiple" class="form-control select required" name="dementia_assistance" data-fouc>
 							<option></option>
 							<option value="option1">Option 1</option>
 							<option value="option1">Option 2</option>
@@ -322,8 +293,8 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Respite services:</label>
-						<select data-placeholder="Select your services" multiple="multiple" class="form-control select" data-fouc>
+						<label>Select personal assitant services: <span class="text-danger">*</span></label>
+						<select data-placeholder="Select your services" multiple="multiple" class="form-control select required" name="personal_assistant_services" data-fouc>
 							<option>Select </option>
 							<option value="option1">Option 1</option>
 							<option value="option1">Option 2</option>
@@ -336,8 +307,37 @@
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Other services:</label>
-						<select data-placeholder="Select your services" multiple="multiple" class="form-control select" data-fouc>
+						<label>Select post-surgury/maternity Assistance: <span class="text-danger">*</span></label>
+						<select data-placeholder="Select your services" multiple="multiple" class="form-control select required" name="post_surgery_service" data-fouc>
+							<option></option>
+							<option value="option1">Option 1</option>
+							<option value="option1">Option 2</option>
+							<option value="option1">Option 3</option>
+							<option value="option1">Option 4</option>
+							<option value="option1">Option 5</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Respite services: <span class="text-danger">*</span></label>
+						<select data-placeholder="Select your services" multiple="multiple" class="form-control select required" name="respite_service" data-fouc>
+							<option>Select </option>
+							<option value="option1">Option 1</option>
+							<option value="option1">Option 2</option>
+							<option value="option1">Option 3</option>
+							<option value="option1">Option 4</option>
+							<option value="option1">Option 5</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Other services: <span class="text-danger">*</span></label>
+						<select data-placeholder="Select your services" multiple="multiple" class="form-control select required" name="other_service" data-fouc>
 							<option></option>
 							<option value="option1">Option 1</option>
 							<option value="option1">Option 2</option>
@@ -383,13 +383,13 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>State license #: <span class="text-danger">*</span></label>
-						<input type="text" name="full_name" class="form-control" placeholder="Add state license #">
+						<input type="text" name="full_name" class="form-control required" placeholder="Add state license #">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>State where your license recieved:</label>
-                        <select name="university-country" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc>
+						<label>State where your license recieved: <span class="text-danger">*</span></label>
+                        <select name="university-country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc>
                             <option></option> 
                             <option value="1">United States</option> 
                             <option value="2">France</option> 
@@ -401,11 +401,11 @@
 			</div>
 			<div class="row">
 				<div class="col-md-3">
-					<label>Valid From:</label>
+					<label>Valid From: <span class="text-danger">*</span></label>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-                                <select name="education-from-month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                                <select name="education-from-month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc>
                                 	<option></option>
                                     <option value="January">January</option> 
                                     <option value="...">...</option> 
@@ -416,7 +416,7 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-                                <select name="education-from-year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                                <select name="education-from-year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc>
                                     <option></option> 
                                     <option value="1995">1995</option> 
                                     <option value="...">...</option> 
@@ -428,11 +428,11 @@
 				</div>
 
 				<div class="col-md-3">
-					<label>Valid To:</label>
+					<label>Valid To: <span class="text-danger">*</span></label>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-                                <select name="education-to-month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                                <select name="education-to-month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc>
                                 	<option></option>
                                     <option value="January">January</option> 
                                     <option value="...">...</option> 
@@ -443,7 +443,7 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-                                <select name="education-to-year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                                <select name="education-to-year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc>
                                     <option></option> 
                                     <option value="1995">1995</option> 
                                     <option value="...">...</option> 
