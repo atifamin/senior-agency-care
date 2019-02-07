@@ -53,17 +53,17 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group mb-3 mb-md-2">
-									<label class="d-block font-weight-semibold">Gender:</label>
-									<div class="custom-control custom-control-right custom-radio custom-control-inline">
-										<input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_checked" checked="">
-										<label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Male</label>
-									</div>
-
-									<div class="custom-control custom-control-right custom-radio custom-control-inline">
-										<input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_unchecked">
-										<label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Female</label>
-									</div>
+								<label class="d-block font-weight-semibold">Gender:</label>
+								<div class="custom-control custom-control-right custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_checked" checked="">
+									<label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Male</label>
 								</div>
+
+								<div class="custom-control custom-control-right custom-radio custom-control-inline">
+									<input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_unchecked">
+									<label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Female</label>
+								</div>
+							</div>
 						</div>
 					</div>
 
