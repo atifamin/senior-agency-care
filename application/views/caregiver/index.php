@@ -11,7 +11,7 @@
 						</div>
 						<span style="margin-top: 17px; margin-right: 14px; font-size: 10px;">OR</span>
 						<div class="col-md-5">
-							<a href="#" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a>
+							<a href="<?php echo site_url("caregiver/send_invite_to_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a>
 						</div>
 					</div>
 				</div>
