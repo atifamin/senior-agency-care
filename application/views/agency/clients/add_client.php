@@ -394,7 +394,7 @@
 		<!-- /wizard with validation -->
 	</div>
 </div>
-<?php include(APPPATH."views/agency/inc/footer.php");?>
+
 <!-- Theme JS files -->
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tagsinput.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tokenfield.min.js"></script>
@@ -402,6 +402,7 @@
 	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_tags_input.js"></script>
 	<!-- /theme JS files -->
+<?php include(APPPATH."views/agency/inc/footer.php");?>
 <script type="text/javascript">
 	function addNewLicense(){
 		$(".add_new_license").css("display","block");
