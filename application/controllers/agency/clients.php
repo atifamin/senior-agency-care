@@ -17,4 +17,11 @@ class Clients extends CI_Controller {
 		$data["url_segment"] = "add_caregivers";
 		$this->load->view("agency/clients/add_client",$data);
 	}
+
+	public function client_profile(){
+		$data["breadcrumb"] = "Client";
+		$data["heading"] = "Our Clients";
+		$data["url_segment"] = "clients";
+		$this->load->view("agency/clients/client_profile",$data);
+	}
 }

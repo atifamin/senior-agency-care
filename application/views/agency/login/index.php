@@ -64,7 +64,7 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-12">
-								<form action="#">
+								<form action="<?php echo site_url("agency/dashboard"); ?>">
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-prepend">
