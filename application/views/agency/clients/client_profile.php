@@ -84,101 +84,19 @@
 						</div>
 					</li>
 				</ul>
-				<!-- Profile Section -->
-				<!-- <div class="col-md-10">
-					<div class="row" style="margin-top: 80px;">
-						<div class="col-md-3" style="text-align: center;">
-							<h6 style="font-size: 12px;">Profile</h6>
-						</div>
-						<div class="col-md-3" style="text-align: center;">
-							<h6 style="font-size: 12px;">Contact Information<span style="font-size: 9px; color: #ff7043; margin-left: 4px;"><i style="margin-right: 2px; color: #555;" class="icon-exclamation"></i>Incomplete</span></h6>
-						</div>
-						<div class="col-md-3" style="text-align: center;">
-							<h6 style="font-size: 12px;">Certifications</h6>
-						</div>
-						<div class="col-md-3" style="text-align: center;">
-							<h6 style="font-size: 12px;">Valid State License</h6>
-						</div>
-						<div class="progress-bar bg-indigo-400" style="width: 25%; height: 2px; background-color: #d81b60;">
-							<span class="sr-only">90% Complete</span>
-						</div>
-					</div>
-					<div class="row" style="margin-top: 20px;">
-						<div class="col-md-12">
-							<div class="d-flex align-items-center">
-								<div class="mr-3">
-									<h4>Cathy Peter</h4>
-								</div>
-								<div>
-									<a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 20px;" class="icon-file-empty"></i>Edit</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row" style="margin-top: 20px;">
-						<div class="col-md-3">
-							<table>
-								<tr>
-									<td><strong>First Name:</strong></td>
-									<td>Lucy</td>
-								</tr>
-								<tr>
-									<td><strong>Last Name:</strong></td>
-									<td>Fernato</td>
-								</tr>
-								<tr>
-									<td><strong>Gender:</strong></td>
-									<td>Female</td>
-								</tr>
-								<tr>
-									<td><strong>Position:</strong></td>
-									<td>Caregiver</td>
-								</tr>
-								<tr>
-									<td><strong>Profile Image:</strong></td>
-									<td><img src="<?php echo base_url();?>assets/images/placeholders/avatar.png" class="rounded-circle" width="36" height="36" alt=""></td>
-								</tr>
-							</table>
-						</div>
-						<div class="col-md-3" style="text-align: center;">
-							<table>
-								<tr>
-									<td></td>
-									<td></td>
-								</tr>
-							</table>
-						</div>
-						<div class="col-md-3" style="text-align: center;">
-							<table>
-								<tr>
-									<td></td>
-									<td></td>
-								</tr>
-							</table>
-						</div>
-						<div class="col-md-3" style="text-align: center;">
-							<table>
-								<tr>
-									<td></td>
-									<td></td>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div> -->
 				<div class="row">
 					<div class="col-md-12">
 
 						<div class="card-body">
 							<ul class="nav nav-tabs nav-tabs-bottom">
-								<li class="nav-item" style="padding-right: 30px;"><a href="#caregive_profile" class="nav-link active" data-toggle="tab">Profile</a></li>
-								<li class="nav-item" style="padding-right: 30px;"><a href="#contact_information" class="nav-link" data-toggle="tab">Contact Information<span style="font-size: 9px; color: #ff7043; margin-left: 4px;"><i style="margin-right: 2px; color: #555;" class="icon-exclamation"></i>Incomplete</span></a></li>
-								<li class="nav-item" style="padding-right: 30px;"><a href="#caregiver_certification" class="nav-link" data-toggle="tab">Certifications</a></li>
-								<li class="nav-item"><a href="#valid_state_license" class="nav-link" data-toggle="tab">Valid State License</a></li>
+								<li class="nav-item" style="padding-right: 30px;"><a href="#client_information" class="nav-link active" data-toggle="tab">Client Information</a></li>
+								<li class="nav-item" style="padding-right: 30px;"><a href="#special_needs" class="nav-link" data-toggle="tab">Special Needs</a></li>
+								<li class="nav-item" style="padding-right: 30px;"><a href="#family_center" class="nav-link" data-toggle="tab">Family Center</a></li>
+								<li class="nav-item"><a href="#life_directive" class="nav-link" data-toggle="tab">End of Life Directive</a></li>
 							</ul>
 
 							<div class="tab-content">
-								<div class="tab-pane fade show active" id="caregive_profile">
+								<div class="tab-pane fade show active" id="client_information">
 									<div class="row" style="margin-top: 20px;">
 										<div class="col-md-12">
 											<div class="d-flex align-items-center">
@@ -195,38 +113,38 @@
 										<div class="col-md-12">
 											<table>
 												<tr>
-													<td style="width: 150px;"><strong>First Name:</strong></td>
-													<td>Lucy</td>
-												</tr>
-												<tr>
-													<td style="width: 150px;"><strong>Last Name:</strong></td>
-													<td><span>Fernato</span></td>
-												</tr>
-												<tr>
 													<td style="width: 150px;"><strong>Gender:</strong></td>
-													<td><span>Female</span></td>
+													<td>Female</td>
 												</tr>
 												<tr>
-													<td style="width: 150px;"><strong>Position:</strong></td>
-													<td>Caregiver</td>
+													<td style="width: 150px;"><strong>Phone:</strong></td>
+													<td><span style="color: #3f51b5;">+83479284735928</span></td>
 												</tr>
 												<tr>
-													<td style="width: 150px;"><strong>Profile Image:</strong></td>
-													<td><img src="<?php echo base_url();?>assets/images/placeholders/avatar.png" class="rounded-circle" width="36" height="36" alt=""></td>
+													<td style="width: 150px;"><strong>Email:</strong></td>
+													<td><span style="color: #3f51b5;">email@gmail.com</span></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>Client From:</strong></td>
+													<td>June,5 2018 - present</td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>Birthday:</strong></td>
+													<td>June, 5 2018</td>
 												</tr>
 											</table>
 										</div>
 									</div>
 								</div>
 
-								<div class="tab-pane fade" id="contact_information">
-									Contact Information
+								<div class="tab-pane fade" id="special_needs">
+									Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
 								</div>
-								<div class="tab-pane fade" id="caregiver_certification">
-									Certifications.
+								<div class="tab-pane fade" id="family_center">
+									Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
 								</div>
-								<div class="tab-pane fade" id="valid_state_license">
-									Valid state license.
+								<div class="tab-pane fade" id="life_directive">
+									Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
 								</div>
 							</div>
 						</div>
@@ -238,5 +156,4 @@
 		<!-- /dropdown list -->
 </div>
 
-<script src="<?php echo base_url();?>assets/js/demo_pages/components_progress.js"></script>
 <?php include(APPPATH."views/agency/inc/footer.php");?>

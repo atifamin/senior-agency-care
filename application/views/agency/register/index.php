@@ -49,6 +49,7 @@
 	}
 </style>
 <body>
+<div class="container">
 <div class="row" style="margin: 10px 0px; width: 100%;">
 	<div class="col-md-12" style="text-align: center;">
 		<div class="register_icon" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #F37333; margin: 0 auto;">
@@ -496,6 +497,7 @@
 			</div>
 		</fieldset>
 	</form>
+</div>
 </div>
 <!-- /wizard with validation -->
 
