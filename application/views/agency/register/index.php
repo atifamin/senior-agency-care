@@ -492,6 +492,13 @@ $("#add_new_license_form").on("submit", function(e){
                 }, 200);
             }
         });*/
+
+function delete_license(id){
+	$("#license_row_"+id+"").remove();
+}
+function edit_license(id){
+	
+}
 </script>
 </body>
 </html>
