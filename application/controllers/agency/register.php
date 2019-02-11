@@ -32,6 +32,11 @@ class Register extends CI_Controller {
 	public function add_new_license_form(){
 		$data['post'] = $this->input->post();
 		$data['file'] = $_FILES["media_license_document"];
+		$fromDate = date("Y-m-d");
+		//$fromDate = date("30/".$data['post']["valid_to_month"]."/".$data['post']["valid_to_year"]."");
+		$toDate = date("".$data['post']["valid_to_year"]."-".$data['post']["valid_to_month"]."-d");
+		$expiry = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+		$data['expiryDays'] = $expiry["days"];
 		$this->load->view("agency/register/add_new_license_form", $data);
 	}
 }
