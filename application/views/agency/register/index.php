@@ -66,7 +66,7 @@
     <div class="card-header" style="text-align: center;">
       <h6>Create Your Agency Account</h6>
     </div>
-    <form class="wizard-form steps-validation" action="#" data-fouc>
+    <form class="wizard-form steps-validation" action="<?php echo site_url("agency/register/insert"); ?>" data-fouc method="POST" enctype="multipart/form-data" id="agency_form">
       <h6>Company Information</h6>
       <fieldset>
         <div class="row">
@@ -302,7 +302,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="d-block">Upload your company Logo:</label>
-              <input name="recommendations" type="file" class="form-input-styled" data-fouc>
+              <input name="media_company_logo" type="file" class="form-input-styled" data-fouc>
             </div>
           </div>
         </div>
@@ -310,7 +310,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="d-block">Upload your profile picture:</label>
-              <input name="recommendations" type="file" class="form-input-styled" data-fouc>
+              <input name="media_profile_picture" type="file" class="form-input-styled" data-fouc>
             </div>
           </div>
         </div>
@@ -498,6 +498,43 @@ function delete_license(id){
 }
 function edit_license(id){
 	
+}
+
+function add_new_agency(){
+	//var form = $("#agency_form");
+	//var formData = form.serialize();
+	var formData = new FormData($("#agency_form")[0]);
+	$.ajax({
+		url: '<?php echo site_url("agency/register/register_agency"); ?>',
+		type: 'POST',
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function (e) {
+			console.log(e);
+		},
+		/*xhr: function () {
+			var xhr = new window.XMLHttpRequest();
+			xhr.upload.addEventListener("progress", function (evt) {
+				if (evt.lengthComputable) {
+					var percentComplete = evt.loaded / evt.total;
+					percentComplete = parseInt(percentComplete * 100);
+					$('.myprogress').text(percentComplete + '%');
+					$('.myprogress').css('width', percentComplete + '%');
+				}
+			}, false);
+			return xhr;
+		},*/
+		
+	});
+	/*swal({
+		title: 'Good job! Your company profile is now ready. Now lets get ready for business with these few steps.',
+		text: 'Now lets get ready for business with these few steps.',
+		html: '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp&nbsp&nbsp<a style="color:#555;" href="#"><strong>Add Cargivers</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp<a style="color:#555;" href="#"><strong>Add Clients</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp<a style="color:#555;" href="#"><strong>Create Schedules</strong></a>',
+		confirmButtonText: 'Lets Get Started',
+		type: 'success'
+	});*/
 }
 </script>
 </body>
