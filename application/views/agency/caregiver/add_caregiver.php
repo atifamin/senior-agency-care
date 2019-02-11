@@ -4,11 +4,11 @@
 		<div class="card">
 			<div class="row" style="padding: 12px;">
 				<div class="col-md-6">
-					<div class="row">
+					<div class="row" style="text-align: center;">
 						<div class="col-md-5">
 							<a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a caregiver</a>
 						</div>
-						<span style="margin-top: 17px; margin-right: 14px; font-size: 10px;">OR</span>
+						<span style="margin: 10px auto; font-size: 10px;">OR</span>
 						<div class="col-md-5">
 							<a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a>
 						</div>
@@ -36,7 +36,7 @@
 			</div>
 
 			<form class="wizard-form steps-validation" action="#" data-fouc>
-				<h6>Profile</h6>
+				<h6><strong>Profile</strong></h6>
 				<fieldset>
 					<div class="row">
 						<div class="col-md-4">
@@ -144,7 +144,7 @@
 					</div>
 				</fieldset>
 
-				<h6>Contact Information</h6>
+				<h6><strong>Contact Information</strong></h6>
 				<fieldset>
 					<div class="row">
 						<div class="col-md-6">
@@ -220,7 +220,7 @@
 					</div>
 				</fieldset>
 
-				<h6>Caregiver Certification</h6>
+				<h6><strong>Caregiver Certification</strong></h6>
 				<fieldset>
 					<div class="row">
 						<div class="col-md-6">
@@ -245,7 +245,7 @@
 					</div>
 				</fieldset>
 
-				<h6>Valid State License</h6>
+				<h6><strong>Valid State License</strong></h6>
 				<fieldset>
 					<div class="license_view" style="display: none;">
 						<div class="row" style="width: 100%;">
@@ -346,7 +346,7 @@
 			                    </div>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row" style="margin-bottom: 30px;">
 							<div class="col-md-6">
 								<a style="width: 100%;" href="javascript:;" onclick="viewLicense()" class="btn btn-primary">Submit</a>
 							</div>

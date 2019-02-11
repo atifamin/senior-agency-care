@@ -67,7 +67,7 @@
       <h6>Create Your Agency Account</h6>
     </div>
     <form class="wizard-form steps-validation" action="<?php echo site_url("agency/register/insert"); ?>" data-fouc method="POST" enctype="multipart/form-data" id="agency_form">
-      <h6>Company Information</h6>
+    <h6><strong>Company Information</strong></h6>
       <fieldset>
         <div class="row">
           <div class="col-md-6">
@@ -185,7 +185,7 @@
           </div>
         </div>
       </fieldset>
-      <h6>Our Services</h6>
+      <h6><strong>Our Services</strong></h6>
       <fieldset>
         <div class="row">
           <div class="col-md-6">
@@ -284,7 +284,7 @@
           </div>
         </div>
       </fieldset>
-      <h6>Licenses</h6>
+      <h6><strong>Licenses</strong></h6>
       <fieldset>
         <div class="license_view">
           <div class="row">
@@ -296,7 +296,7 @@
           <div id="license_area"></div>
         </div>
       </fieldset>
-      <h6>Company Logo & Profile Image</h6>
+      <h6><strong>Company Logo & Profile Image</strong></h6>
       <fieldset>
         <div class="row">
           <div class="col-md-6">
@@ -456,6 +456,12 @@ $("#add_new_license_form").on("submit", function(e){
 			$("#counter").val(counter);
 			$("#license_area").append(e);
 			console.log(e);
+      swal({
+        title: 'Good job!',
+        text: 'You have successfully added your State License!',
+        confirmButtonText: 'Ok',
+        type: 'success'
+      });
 		},
 		/*xhr: function () {
 			var xhr = new window.XMLHttpRequest();

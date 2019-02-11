@@ -38,92 +38,81 @@
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}
+	.border-slate-300{
+		border-color: #F37333 !important;
+	}
 </style>
 <body>
-	
-	<div class="row" style="width: 100%;">
-		<div class="col-md-4 offset-md-4" style="margin-top: 90px;">
-			<div class="col-md-12" style="width: 80%; margin: 0 auto;">
-				<div class="card" style="border-radius: 8px;">
-					<div class="card-header">
-						<div class="row" style="margin: 20px 0px 25px 0px;">
-							<div class="col-md-4 offset-md-4" style="text-align: center;">
-								<div class="login_icon" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #F37333;">
-									<a style="position: relative; top: 20px;" href="#"><i style="color: #F37333; font-size: 24px;" class="icon-people"></i></a>
+
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Content area -->
+			<div class="content d-flex justify-content-center align-items-center">
+
+				<!-- Login form -->
+				<form class="login-form" action="<?php echo site_url("agency/dashboard"); ?>">
+					<div class="card mb-0">
+						<div class="card-body">
+							<div class="text-center mb-3">
+								<i style="color: #F37333;" class="icon-people icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
+								<h5 class="mb-0">Login to your account</h5>
+								<span class="d-block text-muted">Your credentials</span>
+							</div>
+
+							<div class="form-group form-group-feedback form-group-feedback-left">
+								<input type="text" class="form-control" placeholder="Username">
+								<div class="form-control-feedback">
+									<i class="icon-user text-muted"></i>
 								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12" style="text-align: center;">
-								<h5 class="card-title">Login to your Account</h5>
-								<span style="color: #B3B3B3;">Your Credentials</span>
+
+							<div class="form-group form-group-feedback form-group-feedback-left">
+								<input type="password" class="form-control" placeholder="Password">
+								<div class="form-control-feedback">
+									<i class="icon-lock2 text-muted"></i>
+								</div>
 							</div>
+
+							<div class="form-group d-flex align-items-center">
+								<div class="form-check mb-0">
+									<label class="form-check-label">
+										<input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
+										Remember
+									</label>
+								</div>
+
+								<a href="login_password_recover.html" class="ml-auto">Forgot password?</a>
+							</div>
+
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
+							</div>
+							<div class="form-group text-center text-muted content-divider">
+								<span class="px-2">Don't have an account?</span>
+							</div>
+
+							<div class="form-group">
+								<a href="<?php echo base_url("agency/register"); ?>" class="btn btn-light btn-block">Sign up</a>
+							</div>
+
+							<span class="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
 						</div>
 					</div>
+				</form>
+				<!-- /login form -->
 
-					<div class="card-body">
-						<div class="row">
-							<div class="col-md-12">
-								<form action="<?php echo site_url("agency/dashboard"); ?>">
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-prepend">
-												<span class="input-group-text"><i style="color: gray;" class="icon-user"></i></span>
-											</span>
-											<input type="text" name="username" class="form-control" placeholder="Username">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-prepend">
-												<span class="input-group-text"><i style="color: gray;" class="icon-lock"></i></span>
-											</span>
-											<input type="password" name="password" class="form-control" placeholder="Password">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-check">
-													<label class="form-check-label" style="font-size: 11px; color: #828181;">
-														<input type="checkbox" class="form-check-input-styled" data-fouc>
-														Remember
-													</label>
-												</div>
-											</div>
-											<div class="col-md-6" style="text-align: right;">
-												<a style="font-size: 11px;" href="#">Forgot Password?</a>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary" style="width: 100%;">Sign In <i style="margin-left: 6px; font-size: 13px;" class="icon-circle-right2"></i></button>
-									</div>
-
-									<div class="form-group">
-										<div class="row">
-											<div class="col-md-3" style="padding-right: 0;"><hr></div>
-											<div class="col-md-6" style="text-align: center;"><span style="font-size: 11px; position: relative; top: 9px; color: #B3B3B3;">Don't have an account?</span></div>
-											<div class="col-md-3" style="padding-left: 0;"><hr></div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<a style="width: 100%; color: #828181; background-color: #F6F5F5; border: 1px solid lightgray;" href="<?php echo base_url("agency/register"); ?>" class="btn btn-primary">Sign up</a>
-									</div>
-
-									<div class="form-group" style="text-align: center;">
-										<p style="color: #B3B3B3; font-size: 12px;">By continuing, you're confirming that you've read our <span><a href="#">Terms & Conditions</a></span> and <span><a href="#">Cookie Policy</a></span></p>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
+			<!-- /content area -->
+
 		</div>
+		<!-- /main content -->
+
 	</div>
+	<!-- /page content -->
 
 </body>
 </html>
