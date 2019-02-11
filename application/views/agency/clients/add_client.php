@@ -9,10 +9,14 @@
 		<div class="card">
 			<div class="row" style="padding: 12px;">
 				<div class="col-md-6">
-					<div class="row">
+					<div class="row" style="text-align: center;">
 						<div class="col-md-5">
 							<a href="<?php echo site_url("agency/clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a client</a>
 						</div>
+						<!-- <span style="margin: 10px auto; font-size: 10px;">OR</span>
+						<div class="col-md-5">
+							<a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a>
+						</div> -->
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -37,7 +41,7 @@
 			</div>
 
 			<form class="wizard-form steps-validation" action="#" data-fouc>
-				<h6>Client Information</h6>
+				<h6><strong>Client Information</strong></h6>
 				<fieldset>
 					<div class="row">
 						<div class="col-md-6">
@@ -217,7 +221,7 @@
 					</div>
 				</fieldset>
 
-				<h6>Client Special Needs</h6>
+				<h6><strong>Client Special Needs</strong></h6>
 				<fieldset>
 					<div class="row">
 						<div class="col-md-6">
@@ -276,7 +280,7 @@
 					</div>
 				</fieldset>
 
-				<h6>Family Center</h6>
+				<h6><strong>Family Center</strong></h6>
 				<fieldset>
 					<div class="row">
 						<div class="col-md-2 offset-md-1">
@@ -341,11 +345,12 @@
 					</div>
 				</fieldset>
 
-				<h6>End of Life Directive</h6>
+				<h6><strong>End of Life Directive</strong></h6>
 				<fieldset>
 					<div class="row">
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
+								<label>Upload End of Life Directive document:</label>
 		                        <input name="recommendations" type="file" class="form-input-styled" data-fouc>
 		                        <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span>
 		                    </div>
