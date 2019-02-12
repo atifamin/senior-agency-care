@@ -253,10 +253,6 @@ var FullCalendarBasic = function() {
 
         // List view
         $('.fullcalendar-list').fullCalendar({
-            dayClick: function(date, jsEvent, view) {
-               alert(view.name);
-            
-            },
             header: {
                 left: 'prev,next today',
                 center: 'title',
@@ -266,10 +262,6 @@ var FullCalendarBasic = function() {
                 listDay: { buttonText: 'Day' },
                 listWeek: { buttonText: 'Week' },
                 listMonth: { buttonText: 'Month' }
-            },
-            
-            eventClick: function(event, jsEvent, view) {
-                alert();
             },
             defaultView: 'listMonth',
             defaultDate: '2014-11-12',
