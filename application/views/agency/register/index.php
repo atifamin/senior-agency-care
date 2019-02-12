@@ -390,7 +390,7 @@
                   <div class="form-group">
                     <select name="valid_to_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc>
                       <option></option>
-                      <?php for($i=2019; $i>=1960; $i--){ ?>
+                      <?php for($i=2019; $i<=2029; $i++){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                       <?php } ?>
                     </select>
@@ -416,6 +416,16 @@
     </div>
   </div>
 </div>
+
+<div id="modal_edit_form_license" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" id="modal_edit_form_license_div">
+      
+    </div>
+  </div>
+</div>
+
+
 <script type="text/javascript">
 /*function addNewLicense(){
 	$(".add_new_license").css("display","block");
@@ -484,6 +494,52 @@ $("#add_new_license_form").on("submit", function(e){
 	});*/
 });
 
+
+$("#update_new_license_form").on("submit", function(e){
+	//$("#modal_form_license").modal("hide");
+	e.preventDefault();
+	var formData = new FormData($(this)[0]);
+	//document.getElementById("add_new_license_form").reset();
+	//formData = $(this).serialize();
+	//var formData = new FormData($(this).parents('form')[0]);
+	$.ajax({
+		url: '<?php echo site_url("agency/register/update_new_license_form"); ?>',
+		type: 'POST',
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function (e) {
+			console.log(e);
+			//$("#license_area").append(e);
+      /*swal({
+        title: 'Good job!',
+        text: 'You have successfully added your State License!',
+        confirmButtonText: 'Ok',
+        type: 'success'
+      });*/
+		},
+		/*xhr: function () {
+			var xhr = new window.XMLHttpRequest();
+			xhr.upload.addEventListener("progress", function (evt) {
+				if (evt.lengthComputable) {
+					var percentComplete = evt.loaded / evt.total;
+					percentComplete = parseInt(percentComplete * 100);
+					$('.myprogress').text(percentComplete + '%');
+					$('.myprogress').css('width', percentComplete + '%');
+				}
+			}, false);
+			return xhr;
+		},*/
+		
+	});
+	/*swal({
+		title: 'Good job!',
+		text: 'You clicked the button!',
+		type: 'success'
+	});*/
+});
+
 /*Ladda.bind('.btn-ladda-progress', {
             callback: function(instance) {
                 var progress = 0;
@@ -500,10 +556,29 @@ $("#add_new_license_form").on("submit", function(e){
         });*/
 
 function delete_license(id){
+	var image_data = $("#media_license_document_"+id+"").html();
+	if(image_data!=0){
+		imageD = JSON.parse(image_data);
+		$.post("<?php echo site_url("agency/register/delete_license_doc"); ?>", {id:id, imageD:imageD}).done(function(e){});
+	}
 	$("#license_row_"+id+"").remove();
 }
 function edit_license(id){
+	var formData = {
+		row_id:id,
+		state_license:$("#state_license_"+id+"").val(),
+		license_recieved_country:$("#license_recieved_country_"+id+"").val(),
+		valid_from_month:$("#valid_from_month_"+id+"").val(),
+		valid_from_year:$("#valid_from_year_"+id+"").val(),
+		valid_to_month:$("#valid_to_month_"+id+"").val(),
+		valid_to_year:$("#valid_to_year_"+id+"").val(),
+		media_license_document:$("#media_license_document_"+id+"").html()
+	};
+	$.post("<?php echo site_url("agency/register/edit_license"); ?>", {formData:formData}).done(function(e){
+		console.log(e);
+	});
 	
+	console.log(formData);
 }
 
 function add_new_agency(){

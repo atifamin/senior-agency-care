@@ -13,11 +13,11 @@
       </div>
     </div>
   </div>
-  <input type="hidden" name="state_license[]" value="<?php echo $post['state_license']; ?>"/>
-  <input type="hidden" name="license_recieved_country[]" value="<?php echo $post['license_recieved_country']; ?>"/>
-  <input type="hidden" name="valid_from_month[]" value="<?php echo $post['valid_from_month']; ?>"/>
-  <input type="hidden" name="valid_from_year[]" value="<?php echo $post['valid_from_year']; ?>"/>
-  <input type="hidden" name="valid_to_month[]" value="<?php echo $post['valid_to_month']; ?>"/>
-  <input type="hidden" name="valid_to_year[]" value="<?php echo $post['valid_to_year']; ?>"/>
-  <input type="file" style="display:none" name="media_license_document[]" value="<?php echo $file['tmp_name']; ?>"/>
+  <input type="hidden" name="state_license[]" id="state_license_<?php echo $post['counter']; ?>" value="<?php echo $post['state_license']; ?>"/>
+  <input type="hidden" name="license_recieved_country[]" id="license_recieved_country_<?php echo $post['counter']; ?>" value="<?php echo $post['license_recieved_country']; ?>"/>
+  <input type="hidden" name="valid_from_month[]" id="valid_from_month_<?php echo $post['counter']; ?>" value="<?php echo $post['valid_from_month']; ?>"/>
+  <input type="hidden" name="valid_from_year[]" id="valid_from_year_<?php echo $post['counter']; ?>" value="<?php echo $post['valid_from_year']; ?>"/>
+  <input type="hidden" name="valid_to_month[]" id="valid_to_month_<?php echo $post['counter']; ?>" value="<?php echo $post['valid_to_month']; ?>"/>
+  <input type="hidden" name="valid_to_year[]" id="valid_to_year_<?php echo $post['counter']; ?>" value="<?php echo $post['valid_to_year']; ?>"/>
+  <textarea style="display:none" name="media_license_document[]" id="media_license_document_<?php echo $post['counter']; ?>"><?php echo json_encode($file); ?></textarea>
 </div>
