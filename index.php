@@ -228,6 +228,8 @@ switch (ENVIRONMENT)
 
 	// Path to the system directory
 	define('BASEPATH', $system_path);
+	
+	define('DOC_PATH', $_SERVER['DOCUMENT_ROOT']."/senior-agency-care");
 
 	// Path to the front controller (this file) directory
 	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
