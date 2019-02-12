@@ -3,8 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Caregiver extends CI_Controller {
 
-	public function index()
-	{
+	public function __construct(){
+		parent::__construct();
+		if(!$this->session->userdata("isAgencyLoggedIn")){
+			redirect("login");
+		}
+
+    	//LoggedIn User ID
+		$userSession = $this->session->userdata("isAgencyLoggedIn");
+		$this->user_id = $userSession['user_id'];
+	}
+	
+	public function index(){
 		$data["breadcrumb"] = "Caregivers";
 		$data["heading"] = "Caregivers";
 		$data["url_segment"] = "caregivers";

@@ -172,7 +172,7 @@
 				</li>
 
 				<li class="nav-item">
-					<a href="#" class="navbar-nav-link">
+					<a href="<?php echo site_url("agency/auth/logout"); ?>" class="navbar-nav-link">
 						<i class="icon-switch2"></i>
 						<span class="d-md-none ml-2">Logout</span>
 					</a>

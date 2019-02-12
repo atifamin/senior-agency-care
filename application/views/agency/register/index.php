@@ -8,41 +8,41 @@
 
 <!-- Global stylesheets -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url(); ?>/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url(); ?>/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url(); ?>/assets/css/layout.min.css" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url(); ?>/assets/css/components.min.css" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url(); ?>/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url(); ?>assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url(); ?>assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url(); ?>assets/css/layout.min.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url(); ?>assets/css/components.min.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url(); ?>assets/css/colors.min.css" rel="stylesheet" type="text/css">
 <!-- /global stylesheets -->
 
 <!-- Core JS files -->
-<script src="<?php echo base_url(); ?>/assets/js/main/jquery.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/main/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/loaders/blockui.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/ui/ripple.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/main/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/main/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/loaders/blockui.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/ui/ripple.min.js"></script>
 <!-- /core JS files -->
 
 <!-- Theme JS files -->
-<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/wizards/steps.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/selects/select2.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/styling/uniform.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/inputs/inputmask.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/validation/validate.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/extensions/cookie.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/app.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/demo_pages/register_form_wizard.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/wizards/steps.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/inputmask.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/validation/validate.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/extensions/cookie.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/app.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/register_form_wizard.js"></script>
 <!-- /theme JS files -->
 <!-- /core JS files -->
 
 <!-- Theme JS files -->
-<script src="<?php echo base_url(); ?>/assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/demo_pages/form_select2.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/demo_pages/extra_sweetalert.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/extra_sweetalert.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/notifications/sweet_alert.min.js"></script>
 <!-- Theme JS files -->
-<script src="<?php echo base_url(); ?>/assets/js/plugins/buttons/spin.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/plugins/buttons/ladda.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/buttons/spin.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/buttons/ladda.min.js"></script>
 </head>
 <style type="text/css">
 #swal2-content {
@@ -67,7 +67,7 @@
       <h6>Create Your Agency Account</h6>
     </div>
     <form class="wizard-form steps-validation" action="<?php echo site_url("agency/register/insert"); ?>" data-fouc method="POST" enctype="multipart/form-data" id="agency_form">
-    <h6><strong>Company Information</strong></h6>
+      <h6><strong>Company Information</strong></h6>
       <fieldset>
         <div class="row">
           <div class="col-md-6">
@@ -289,7 +289,7 @@
         <div class="license_view">
           <div class="row">
             <div class="col-md-12" align="center">
-            <input type="hidden" id="counter" value="1">
+              <input type="hidden" id="counter" value="1">
               <button type="button" class="btn btn-outline bg-indigo-400 text-indigo-400 border-indigo-400" data-toggle="modal" data-target="#modal_form_license"><i class="icon-plus3"></i> ADD A NEW STATE LICENSE</button>
             </div>
           </div>
@@ -305,6 +305,12 @@
               <input name="media_company_logo" type="file" class="form-input-styled" data-fouc>
             </div>
           </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Enter Your Password: <span class="text-danger">*</span></label>
+              <input type="password" name="password" class="form-control" placeholder="Enter your password">
+            </div>
+          </div>
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -313,6 +319,19 @@
               <input name="media_profile_picture" type="file" class="form-input-styled" data-fouc>
             </div>
           </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Re-enter Your Password: <span class="text-danger">*</span></label>
+              <input type="password" name="re_password" class="form-control" placeholder="Re-enter your password">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+        <div class="progress rounded-round" id="agency_progress" style="display:none">
+                <div class="progress-bar bg-warning" style="width:0%"> <span></span> </div>
+              </div>
+        </div>
         </div>
       </fieldset>
     </form>
@@ -332,13 +351,13 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>State license #: <span class="text-danger">*</span></label>
-                <input type="text" name="state_license" class="form-control required" placeholder="Add state license #">
+                <input type="text" name="state_license" class="form-control required" placeholder="Add state license #" data-validation="required" required>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label>State where your license recieved: <span class="text-danger">*</span></label>
-                <select name="license_recieved_country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc>
+                <select name="license_recieved_country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc required>
                   <option></option>
                   <?php foreach($countries as $count1): ?>
                   <option value="<?php echo $count1->id; ?>"><?php echo $count1->name; ?></option>
@@ -353,7 +372,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc>
+                    <select name="valid_from_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc required>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key2=>$val2): ?>
                       <option value="<?php echo $key2; ?>"><?php echo $val2; ?></option>
@@ -363,7 +382,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc>
+                    <select name="valid_from_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc required>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -378,7 +397,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc>
+                    <select name="valid_to_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc required>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key3=>$val3): ?>
                       <option value="<?php echo $key3; ?>"><?php echo $val3; ?></option>
@@ -388,7 +407,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc>
+                    <select name="valid_to_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc required>
                       <option></option>
                       <?php for($i=2019; $i<=2029; $i++){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -407,25 +426,23 @@
                 <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="progress rounded-round" id="license_progress" style="display:none">
+                <div class="progress-bar bg-warning" style="width:0%"> <span></span> </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Add New License</span> </button> 
+          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Add New License</span> </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
-<div id="modal_edit_form_license" class="modal fade" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content" id="modal_edit_form_license_div">
-      
-    </div>
-  </div>
-</div>
-
-
+<div id="modal_edit_form_license_div"></div>
 <script type="text/javascript">
 /*function addNewLicense(){
 	$(".add_new_license").css("display","block");
@@ -446,14 +463,11 @@ function load_cities(id){
 	});
 }
 $("#add_new_license_form").on("submit", function(e){
+	$("#license_progress").show();
 	var counter = $("#counter").val();
-	//$("#modal_form_license").modal("hide");
 	e.preventDefault();
 	var formData = new FormData($(this)[0]);
 	formData.append("counter", counter);
-	//document.getElementById("add_new_license_form").reset();
-	//formData = $(this).serialize();
-	//var formData = new FormData($(this).parents('form')[0]);
 	$.ajax({
 		url: '<?php echo site_url("agency/register/add_new_license_form"); ?>',
 		type: 'POST',
@@ -465,33 +479,30 @@ $("#add_new_license_form").on("submit", function(e){
 			counter++;
 			$("#counter").val(counter);
 			$("#license_area").append(e);
-			console.log(e);
-      swal({
-        title: 'Good job!',
-        text: 'You have successfully added your State License!',
-        confirmButtonText: 'Ok',
-        type: 'success'
-      });
 		},
-		/*xhr: function () {
+		xhr: function () {
 			var xhr = new window.XMLHttpRequest();
 			xhr.upload.addEventListener("progress", function (evt) {
 				if (evt.lengthComputable) {
 					var percentComplete = evt.loaded / evt.total;
 					percentComplete = parseInt(percentComplete * 100);
-					$('.myprogress').text(percentComplete + '%');
-					$('.myprogress').css('width', percentComplete + '%');
+					$("#license_progress > .progress-bar").css('width', percentComplete + '%');
+					$("#license_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
+					if(percentComplete==100){
+						$("#modal_form_license").modal("hide");
+						swal({
+						  title: 'Good job!',
+						  text: 'You have successfully added your State License!',
+						  confirmButtonText: 'Ok',
+						  type: 'success'
+						});
+					}
 				}
 			}, false);
 			return xhr;
-		},*/
+		},
 		
 	});
-	/*swal({
-		title: 'Good job!',
-		text: 'You clicked the button!',
-		type: 'success'
-	});*/
 });
 
 
@@ -499,9 +510,6 @@ $("#update_new_license_form").on("submit", function(e){
 	//$("#modal_form_license").modal("hide");
 	e.preventDefault();
 	var formData = new FormData($(this)[0]);
-	//document.getElementById("add_new_license_form").reset();
-	//formData = $(this).serialize();
-	//var formData = new FormData($(this).parents('form')[0]);
 	$.ajax({
 		url: '<?php echo site_url("agency/register/update_new_license_form"); ?>',
 		type: 'POST',
@@ -575,15 +583,23 @@ function edit_license(id){
 		media_license_document:$("#media_license_document_"+id+"").html()
 	};
 	$.post("<?php echo site_url("agency/register/edit_license"); ?>", {formData:formData}).done(function(e){
-		console.log(e);
+		$("#modal_edit_form_license_div").html(e);
+		$("#modal_edit_form_license").modal("show");
 	});
-	
-	console.log(formData);
 }
 
 function add_new_agency(){
-	//var form = $("#agency_form");
-	//var formData = form.serialize();
+	var password = $("input[name=password]").val();
+	var re_password = $("input[name=re_password]").val();
+	if(password!=re_password){
+		swal({
+			title: 'Error!',
+			text: 'You password does not match!',
+			type: 'error'
+		});
+		return false;
+	}
+	
 	var formData = new FormData($("#agency_form")[0]);
 	$.ajax({
 		url: '<?php echo site_url("agency/register/register_agency"); ?>',
@@ -592,22 +608,23 @@ function add_new_agency(){
 		cache: false,
 		contentType: false,
 		processData: false,
-		success: function (e) {
-			console.log(e);
+		success: function(e){
 		},
-		/*xhr: function () {
+		xhr: function () {
 			var xhr = new window.XMLHttpRequest();
 			xhr.upload.addEventListener("progress", function (evt) {
 				if (evt.lengthComputable) {
 					var percentComplete = evt.loaded / evt.total;
 					percentComplete = parseInt(percentComplete * 100);
-					$('.myprogress').text(percentComplete + '%');
-					$('.myprogress').css('width', percentComplete + '%');
+					$("#agency_progress > .progress-bar").css('width', percentComplete + '%');
+					$("#agency_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
+					if(percentComplete==100){
+						window.location = '<?php echo site_url("agency/dashboard"); ?>';
+					}
 				}
 			}, false);
 			return xhr;
-		},*/
-		
+		},
 	});
 	/*swal({
 		title: 'Good job! Your company profile is now ready. Now lets get ready for business with these few steps.',
@@ -617,6 +634,10 @@ function add_new_agency(){
 		type: 'success'
 	});*/
 }
+
+$("#modal_form_license").validate({
+  modules : 'logic'
+});
 </script>
 </body>
 </html>

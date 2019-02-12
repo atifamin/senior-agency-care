@@ -79,7 +79,7 @@ class Register extends CI_Controller {
 		$agency['full_name'] = $post['full_name'];
 		$agency['email_address'] = $post['email_address'];
 		$agency['phone_number'] = $post['phone_number'];
-		$agency['password'] = "";
+		$agency['password'] = md5($post['password']);
 		$agency['created_at'] = date('Y-m-d H:i:s');
 		$agency['updated_at'] = date('Y-m-d H:i:s');
 		$agency_id = $this->common_model->insertGetIDQuery("agency", $agency);
@@ -153,6 +153,9 @@ class Register extends CI_Controller {
 				$this->adding_agency_license_document($post['media_license_document'][$key], $agency_license_id);
 			}
 		}
+		$this->load->model("Auth_model");
+		$this->Auth_model->authentication($post['email_address'], $post['password']);
+		//Build Session Here
 	}
 	
 	public function adding_agency_license_document($data, $agency_license_id){
