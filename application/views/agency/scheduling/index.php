@@ -198,6 +198,8 @@
 										<div class="col-md-12" style="text-align: center;">
 											<a href="javascript:;" onclick="addMedication()" data-toggle="modal" data-target="#modal_add_medication"><button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>Add a new medication</a>
 										</div>
+									</div>
+									<div class="row">
 										<div class="col-md-12">
 											<table class="table datatable-basic">
 												<thead>
@@ -343,7 +345,7 @@
 											</div>
 										</div>
 
-										<div style = "position:relative; left: 900px; top:2px;"><button type="button" class="btn btn-primary legitRipple">Save<i style="margin-left: 8px;" class="icon-arrow-right14"></i></button>
+										<div style = "text-align: right;"><button type="button" class="btn btn-primary legitRipple">Save<i style="margin-left: 8px;" class="icon-arrow-right14"></i></button>
 										</div>
 
 									</form>
@@ -521,7 +523,78 @@
       </div>
       <form id="add_client_medication_form">
         <div class="modal-body">
-          
+          <form action="#">
+          	<div class="row">
+          		<div class="col-md-8 offset-md-2">
+          			<div class="form-group">
+		              <label>Medication name:</label>
+		              <input type="text" name="medication_name" class="form-control" placeholder="What medication is the client taking">
+		            </div>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-md-8 offset-md-2">
+          			<div class="form-group">
+						<label>Medication dosage in Mg: </label><br><span class="text-muted">Add the required medication dosage</span>
+						<input type="text" value="" class="form-control touchspin-empty" placeholder="Mg">
+					</div>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-md-8 offset-md-2">
+          			<div class="form-group">
+						<label>How many times a day is medication taken: </label><br><span class="text-muted">Add the frequency per day of dosage</span>
+						<input type="text" value="" class="form-control touchspin-empty">
+					</div>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-md-8 offset-md-2">
+          			<div class="form-group">
+						<label>When is the medication taken</label><br><span class="text-muted">Select morning, evening or night</span>
+						<select class="form-control select-icons" data-fouc>
+							<option></option>
+							<option value="morning">Morning</option>
+							<option value="evening">Evening</option>
+							<option value="night">Night</option>
+						</select>
+					</div>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-md-8 offset-md-2">
+          			<label>What time is medication taken</label><br><span class="text-muted">Select what time is medication taken</span>
+          			<div class="input-group">
+						<span class="input-group-prepend">
+							<span class="input-group-text"><i class="icon-alarm"></i></span>
+						</span>
+						<input type="text" class="form-control pickatime" placeholder="select time">
+					</div>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-md-8 offset-md-2">
+          			<div class="form-group pt-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="checkbox" class="form-check-input-styled" data-fouc>
+								Set reminder for caregiver
+							</label>
+						</div>
+					</div>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-md-8 offset-md-2">
+          			<span class="text-muted">Create a reminder for caregiver to give medication</span>
+          			<div class="input-group">
+						<span class="input-group-prepend">
+							<span class="input-group-text"><i class="icon-alarm"></i></span>
+						</span>
+						<input type="text" class="form-control pickatime" placeholder="select time">
+					</div>
+          		</div>
+          	</div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
@@ -557,6 +630,7 @@
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tagsinput.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tokenfield.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_tags_input.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
 	<!-- /theme JS files -->
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 
