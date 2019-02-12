@@ -43,6 +43,7 @@
 	<script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 	<script src="<?php echo base_url();?>assets/js/demo_pages/form_multiselect.js"></script>
 	<script src="<?php echo base_url();?>assets/js/demo_pages/extra_sweetalert.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/plugins/notifications/sweet_alert.min.js"></script>
 
 </head>
 <style type="text/css">
