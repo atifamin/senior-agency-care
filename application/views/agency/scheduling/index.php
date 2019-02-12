@@ -25,10 +25,6 @@
 		min-width: 100% !important;
 	}
 </style>
-<div class="form-group">
-									<label>Value attribute is not set: <span class="text-muted">applying settings.initval</span></label>
-									<input type="text" value="" class="form-control touchspin-set-value">
-								</div>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card" style="padding: 10px 10px;">
