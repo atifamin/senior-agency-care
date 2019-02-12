@@ -3,8 +3,29 @@
 	.navbar-nav-link.active{
 		background-color: #fff !important;
 	}
+	.sorting_disabled{
+		width: auto !important;
+	}
+	.dataTable thead .sorting:before{
+		content: "";
+	}
+	.dataTable thead .sorting:after{
+		content: "";
+	}
+	.dataTable thead .sorting_asc:after{
+		content: "";
+	}
+	.dataTable thead{
+		font-size: 12px;
+	}
+	.swal2-popup .swal2-content{
+		text-align: left;
+	}
 </style>
-
+<div class="form-group">
+									<label>Value attribute is not set: <span class="text-muted">applying settings.initval</span></label>
+									<input type="text" value="" class="form-control touchspin-set-value">
+								</div>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card" style="padding: 10px 10px;">
@@ -130,6 +151,7 @@
 							</div>
 
 							<div class="card card-body border-top-0 rounded-0 rounded-bottom tab-content">
+								<!-- ============Schedule CLient============== -->
 								<div class="tab-pane fade active show" id="client_schedule_1">
 									<form action="#">
 										<div class="row" style="margin-top: 35px;">
@@ -163,9 +185,109 @@
 										</div>
 									</div>
 								</div>
+
+								<!-- ============//Schedule CLient============== -->
+
+
+								<!-- ============Medication CLient============== -->
 								<div class="tab-pane fade active" id="schedule_medication_list_1">
-									medication_list
+									<div class="row">
+										<div class="col-md-12" style="text-align: center;">
+											<a href="javascript:;" onclick="addMedication()" data-toggle="modal" data-target="#modal_add_medication"><button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>Add a new medication</a>
+										</div>
+										<div class="col-md-12">
+											<table class="table datatable-basic">
+												<thead>
+													<tr>
+														<th>Medication</th>
+														<th><i style="margin-right: 8px;" class="icon-aid-kit"></i>Qty of Medication</th>
+														<th><i style="margin-right: 8px;" class="icon-menu7"></i>Times taken a day</th>
+														<th><i style="margin-right: 8px;" class="icon-alarm"></i>When to take medication</th>
+														<th><i style="margin-right: 8px;" class="icon-calendar3"></i>Time of day</th>
+														<th><i style="margin-right: 8px;" class="icon-alarm"></i>Reminder</th>
+														<th class="text-center">Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><span class="text-muted">Add Med</span></td>
+														<td><span class="text-muted">Add Qty</span></td>
+														<td><span class="text-muted">Add Time</span></td>
+														<td><span class="text-muted">Add when to take medicine</span></td>
+														<td><span class="text-muted">Add time of day</span></td>
+														<td><span class="text-muted">Set reminder</span></td>
+														<td class="text-center">
+															<div class="list-icons">
+																<div class="dropdown">
+																	<a href="#" class="list-icons-item" data-toggle="dropdown">
+																		<i class="icon-menu9"></i>
+																	</a>
+
+																	<div class="dropdown-menu dropdown-menu-right">
+																		<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a>
+																	</div>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td><span class="text-muted">Add Med</span></td>
+														<td><span class="text-muted">Add Qty</span></td>
+														<td><span class="text-muted">Add Time</span></td>
+														<td><span class="text-muted">Add when to take medicine</span></td>
+														<td><span class="text-muted">Add time of day</span></td>
+														<td><span class="text-muted">Set reminder</span></td>
+														<td class="text-center">
+															<div class="list-icons">
+																<div class="dropdown">
+																	<a href="#" class="list-icons-item" data-toggle="dropdown">
+																		<i class="icon-menu9"></i>
+																	</a>
+
+																	<div class="dropdown-menu dropdown-menu-right">
+																		<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a>
+																	</div>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td><span class="text-muted">Add Med</span></td>
+														<td><span class="text-muted">Add Qty</span></td>
+														<td><span class="text-muted">Add Time</span></td>
+														<td><span class="text-muted">Add when to take medicine</span></td>
+														<td><span class="text-muted">Add time of day</span></td>
+														<td><span class="text-muted">Set reminder</span></td>
+														<td class="text-center">
+															<div class="list-icons">
+																<div class="dropdown">
+																	<a href="#" class="list-icons-item" data-toggle="dropdown">
+																		<i class="icon-menu9"></i>
+																	</a>
+
+																	<div class="dropdown-menu dropdown-menu-right">
+																		<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a>
+																		<a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a>
+																	</div>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
 								</div>
+
+								<!-- ============//Medication CLient============== -->
 								<div class="tab-pane fade active" id="schedule_dietry_needs_1">
 									dietry_needs
 								</div>
@@ -332,6 +454,28 @@
 
 
 
+
+<div id="modal_add_medication" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="margin: 0 auto;">Add client medication</h5>
+      </div>
+      <form id="add_client_medication_form">
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Done</span> </button> 
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
 	<script src="<?php echo base_url(); ?>/assets/js/plugins/extensions/jquery_ui/touch.min.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/plugins/ui/moment/moment.min.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/plugins/pickers/daterangepicker.js"></script>
@@ -344,9 +488,14 @@
 	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/picker_date.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/components_collapsible.js"></script>
 	<!-- /theme JS files -->
-	<script src="<?php echo base_url(); ?>/assets/js/plugins/ui/moment/moment.min.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script>
 	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/fullcalendar_basic.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/datatables_basic.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/datatables_responsive.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/styling/switchery.min.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/js/demo_pages/form_input_groups.js"></script>
 	<!-- /theme JS files -->
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 
@@ -394,5 +543,9 @@
                 });
             }
         });
+	}
+
+	function addMedication(){
+		
 	}
 </script>
