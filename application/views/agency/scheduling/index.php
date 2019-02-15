@@ -24,6 +24,9 @@
 	.dataTable thead .sorting_desc:after{
 		content: "";
 	}
+	.navbar-nav-link.active{
+		background-color: #E6E6E6 !important;
+	}
 </style>
 <div class="row">
 	<div class="col-md-12">
@@ -192,7 +195,7 @@
 								<div class="tab-pane fade" id="schedule_medication_list_1">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;" onclick="addMedication()" data-toggle="modal" data-target="#modal_add_medication"><button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>Add a new medication</a>
+											<a href="javascript:;" onclick="addMedication()" data-toggle="modal" data-target="#modal_add_medication">Add a new medication<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -358,7 +361,7 @@
 								<div class="tab-pane fade" id="schedule_appiontment_callender_1">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;" data-toggle="modal" data-target="#modal_new_appointment"><button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>Create new appointment</a>
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_new_appointment">Create new appointment<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -407,7 +410,7 @@
 								<div class="tab-pane fade" id="schedule_vital_reports_1">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;" data-toggle="modal" data-target="#modal_clients_vital"><button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>Add new client vitals</a>
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_clients_vital">Add new client vitals<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -766,10 +769,99 @@
 
 								<!-- ============//Notice Boart CLient============== -->
 								<div class="tab-pane fade" id="schedule_shopping_list_1">
-									shopping_list
+									<div class="row">
+										<div class="col-md-12" style="text-align: center;">
+											<a href="javascript:;">Create new shopping list<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<table class="table datatable-basic" id="shopping_list_datatable">
+												<thead>
+													<tr>
+														<th>Date Created</th>
+														<th>Status</th>
+														<th>Shopping Reminder</th>
+														<th class="text-center">Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><span class="text-muted">May 03, 2019</span></td>
+														<td><span class="text-muted">Complete</span></td>
+														<td><span class="text-muted">10 Minutes before</span></td>
+														<td class="text-center">
+															<div class="list-icons">
+																<div class="dropdown">
+																	<a href="#" class="list-icons-item" data-toggle="dropdown">
+																		<i class="icon-menu9"></i>
+																	</a>
+
+																	<div class="dropdown-menu dropdown-menu-right">
+																		<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit shopping list</a>
+																		<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete shopping list</a>
+																		<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End shopping list</a>
+																	</div>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
 								</div>
 								<div class="tab-pane fade" id="schedule_client_bio_1">
-									client_bio
+									<div class="row">
+										<div class="col-md-12" style="margin: 20px 0px 10px 0px;">
+											<p>Client brief bio</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Name:  <span>Mr Thomas Crowe</span></strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Profession:  <span>Doctor</span></strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Client's typical daily routine:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Likes:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Dislikes:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Hobbies:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Favourite Music:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="text-align: right; margin-top: 20px;">
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
+											<a href="javascript:;" onclick="deleteClientBio()"><i style="color: #555;" class="icon-bin"></i></a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -889,7 +981,7 @@
 								<div class="tab-pane fade" id="schedule_medication_list">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;" onclick="addMedication()" data-toggle="modal" data-target="#modal_add_medication"><button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>Add a new medication</a>
+											<a href="javascript:;" onclick="addMedication()" data-toggle="modal" data-target="#modal_add_medication">Add a new medication<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -1051,7 +1143,7 @@
 								<div class="tab-pane fade" id="schedule_appiontment_callender">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;" data-toggle="modal" data-target="#modal_new_appointment"><button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>Create new appointment</a>
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_new_appointment">Create new appointment<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -1101,7 +1193,7 @@
 								<div class="tab-pane fade" id="schedule_vital_reports">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;" data-toggle="modal" data-target="#modal_clients_vital"><button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>Add new client vitals</a>
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_clients_vital">Add new client vitals<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -1457,10 +1549,99 @@
 								</div>
 								<!-- ================//Notice Board================ -->
 								<div class="tab-pane fade" id="schedule_shopping_list">
-									shopping_list
+									<div class="row">
+										<div class="col-md-12" style="text-align: center;">
+											<a href="javascript:;">Create new shopping list<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<table class="table datatable-basic" id="shopping_list_datatable_1">
+												<thead>
+													<tr>
+														<th>Date Created</th>
+														<th>Status</th>
+														<th>Shopping Reminder</th>
+														<th class="text-center">Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><span class="text-muted">May 03, 2019</span></td>
+														<td><span class="text-muted">Complete</span></td>
+														<td><span class="text-muted">10 Minutes before</span></td>
+														<td class="text-center">
+															<div class="list-icons">
+																<div class="dropdown">
+																	<a href="#" class="list-icons-item" data-toggle="dropdown">
+																		<i class="icon-menu9"></i>
+																	</a>
+
+																	<div class="dropdown-menu dropdown-menu-right">
+																		<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit shopping list</a>
+																		<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete shopping list</a>
+																		<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End shopping list</a>
+																	</div>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
 								</div>
 								<div class="tab-pane fade" id="schedule_client_bio">
-									client_bio
+									<div class="row">
+										<div class="col-md-12" style="margin: 20px 0px 10px 0px;">
+											<p>Client brief bio</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Name:  <span>Mr Thomas Crowe</span></strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Profession:  <span>Doctor</span></strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Client's typical daily routine:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Likes:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Dislikes:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Hobbies:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p><strong>Favourite Music:</strong></p>
+										</div>
+										<div class="col-md-12" style="margin-top: 5px;">
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										</div>
+										<div class="col-md-12" style="text-align: right; margin-top: 20px;">
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
+											<a href="javascript:;" onclick="deleteClientBio()"><i style="color: #555;" class="icon-bin"></i></a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -1552,14 +1733,14 @@
           			<div class="form-group pt-2">
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="checkbox" class="form-check-input-styled" data-fouc>
+								<input type="checkbox" id="medication_reminder_checkbox" class="form-check-input-styled" data-fouc>
 								Set reminder for caregiver
 							</label>
 						</div>
 					</div>
           		</div>
           	</div>
-          	<div class="row">
+          	<div class="row" id="medication_set_reminder" style="display: none;">
           		<div class="col-md-8 offset-md-2">
           			<span class="text-muted">Create a reminder for caregiver to give medication</span>
           			<div class="input-group">
@@ -1649,14 +1830,14 @@
           			<div class="form-group pt-2">
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="checkbox" class="form-check-input-styled" data-fouc>
+								<input type="checkbox" id="appointment_reminder_checkbox" class="form-check-input-styled" data-fouc>
 								Set reminder for caregiver
 							</label>
 						</div>
 					</div>
           		</div>
           	</div>
-          	<div class="row">
+          	<div class="row" id="appointment_set_reminder" style="display: none;">
           		<div class="col-md-8 offset-md-2">
           			<div class="input-group">
 						<span class="input-group-prepend">
@@ -1799,6 +1980,98 @@
 </div>
 <!-- ==========//Add Vitals Modal============= -->
 
+<!-- ==========Client Bio Modal============= -->
+<div id="modal_clients_bio" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="margin: 0 auto;">Edit Client Bio</h5>
+        <div>
+        	<li class="media">
+				<div class="mr-3" style="margin-right: .55rem!important;">
+					<a href="#">
+						<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+					</a>
+				</div>
+
+				<div class="media-body">
+					<div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
+					<span class="text-muted" style="font-size: 12px;">Total Care</span>
+				</div>
+			</li>
+        </div>
+      </div>
+      <form id="client_bio_form">
+        <div class="modal-body">
+          <form action="#">
+          	<div class="row">
+          		<div class="col-md-6">
+		            <div class="form-group">
+		              <label>Client name:</label>
+		              <input type="text" name="client_name" class="form-control" placeholder="Client Name" value="Mr thomas crowe">
+		            </div>
+		        </div>
+		        <div class="col-md-6">
+		            <div class="form-group">
+		              <label>Client Profession:</label>
+		              <input type="text" name="client_profession" class="form-control" placeholder="Client Profession" value="Doctor">
+		            </div>
+		        </div>
+          	</div>
+          	<div class="row">
+		        <div class="col-md-12">
+		            <div class="form-group">
+		              <label>Profession Details:</label>
+		              <textarea name="profession_details" rows="3" cols="4" placeholder="Add brief detail about client Profession" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.</textarea>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="row">
+		        <div class="col-md-6">
+		            <div class="form-group">
+		              <label>Client's daily routine:</label>
+		              <textarea name="client_routine" rows="3" cols="4" placeholder="Add brief detail about client routine" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
+		            </div>
+		        </div>
+		        <div class="col-md-6">
+		            <div class="form-group">
+		              <label>Client's likes:</label>
+		              <textarea name="client_likes" rows="3" cols="4" placeholder="Add brief detail about client likes" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has .</textarea>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="row">
+		        <div class="col-md-6">
+		            <div class="form-group">
+		              <label>Client's dislikes:</label>
+		              <textarea name="client_dislikes" rows="3" cols="4" placeholder="Add brief detail about client dislikes" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
+		            </div>
+		        </div>
+		        <div class="col-md-6">
+		            <div class="form-group">
+		              <label>Client's hobbies:</label>
+		              <textarea name="client_hobbies" rows="3" cols="4" placeholder="Add brief detail about client hobbies" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="row">
+		        <div class="col-md-12">
+		            <div class="form-group">
+		              <label>Client's Favourite Music:</label>
+		              <textarea name="client_favourite_music" rows="3" cols="4" placeholder="Add brief detail about client favourite music" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.</textarea>
+		            </div>
+		        </div>
+		    </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Done</span> </button> 
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- ==========//Client Bio Modal============= -->
+
 
 
 	<script src="<?php echo base_url(); ?>assets/js/plugins/extensions/jquery_ui/touch.min.js"></script>
@@ -1826,6 +2099,7 @@
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tokenfield.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_tags_input.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
 	<!-- /theme JS files -->
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 
@@ -1880,10 +2154,10 @@
 	}
 
 
-$('#appointment_datatable, #appointment_datatable_1').DataTable({
+$('#appointment_datatable, #appointment_datatable_1, #shopping_list_datatable, #shopping_list_datatable_1').DataTable({
     columnDefs: [{ 
         orderable: true,
-        targets: [ 4 ]
+        targets: [ 3 ]
     }],
     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
     language: {
@@ -1906,6 +2180,34 @@ $('#notice_board_datatable, #notice_board_datatable_1').DataTable({
         searchPlaceholder: 'Type to filter...',
         lengthMenu: '<span>Show:</span> _MENU_',
         paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+    }
+});
+
+function deleteClientBio(){
+	swal({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover clients bio data!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    });
+}
+
+$('#medication_reminder_checkbox').click(function(){
+    if($(this).prop("checked") == true){
+    	$("#medication_set_reminder").css("display","block");
+    }
+    else if($(this).prop("checked") == false){
+        $("#medication_set_reminder").css("display","none");
+    }
+});
+
+$('#appointment_reminder_checkbox').click(function(){
+    if($(this).prop("checked") == true){
+    	$("#appointment_set_reminder").css("display","block");
+    }
+    else if($(this).prop("checked") == false){
+        $("#appointment_set_reminder").css("display","none");
     }
 });
 </script>
