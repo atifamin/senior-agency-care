@@ -91,7 +91,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="current shifts"){echo 'active';} ?>"><i class="icon-copy"></i> <span>Current Shifts</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="#" class="nav-link active">Option # 1</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/current_shifts") ?>" class="nav-link active">Current Shift</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
@@ -253,3 +253,4 @@
 			<!-- /page header -->
 
 			<div class="content">
+				
