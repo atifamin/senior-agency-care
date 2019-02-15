@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function index(){
+		
 		$data["breadcrumb"] = "Notice Board";
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";

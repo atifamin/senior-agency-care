@@ -87,5 +87,6 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 //App Constants
 define("CON_COMPANY_POSITIONS", array('owner'=>'Owner','ceo'=>"CEO",'co_founder'=>'Co-Founder','manager'=>'Manager'));
-
 define("CON_MONTHS", array("01"=>"January", "02"=>"February", "03"=>"March", "04"=>"April", "05"=>"May", "06"=>"June", "07"=>"July", "08"=>"August", "09"=>"September", "10"=>"October", "11"=>"November", "12"=>"December"));
+define("CON_CAREGIVER_POSITIONS", array('caregiver'=>'Caregiver','manager'=>'Manager'));
+define("CON_CAREGIVER_CERTIFICATIONS", array('CNA_certified_nurse_assistant'=>'C.N.A Certified Nurse Assistant','home_health_aid'=>'Home Health Aid', 'registered_nurse'=>'Registered Nurse'));
