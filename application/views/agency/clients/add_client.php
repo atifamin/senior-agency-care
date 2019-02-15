@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
-<script src="<?php echo base_url(); ?>/assets/js/demo_pages/client_wizard.js"></script>
+<script src="<?php echo base_url(); ?>/assets/js/demo_pages/client_form_wizard.js"></script>
 <style type="text/css">
 	.token-input{
 		min-width: 100% !important;
