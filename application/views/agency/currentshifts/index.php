@@ -10,7 +10,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 <div class="col-md-12">
 	<!-- Dropdown list -->
 	<div class="card">
-		<div class="card-header header-elements-inline">
+		<div class="card-header header-elements-inline" style="padding-bottom: 0px;">
 			<div style="margin: 0 auto;">
 				<h1 class="card-title" style="font-size: 44px; font-weight: 400; color: #555;">
 		        <i style="font-size: 29px;" class="icon-alarm mr-3 icon-2x"></i> 09:54:29

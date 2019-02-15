@@ -70,7 +70,7 @@
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander<span style="margin-left: 10px;" class="badge badge-mark border-success"></span></div>
+							<div class="media-title font-weight-semibold">James Alexander</div>
 							<span class="text-muted">Development</span>
 						</div>
 
@@ -98,7 +98,7 @@
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander<span style="margin-left: 10px;" class="badge badge-mark border-success"></span></div>
+							<div class="media-title font-weight-semibold">James Alexander</div>
 							<span class="text-muted">Development</span>
 						</div>
 
@@ -126,7 +126,7 @@
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander<span style="margin-left: 10px;" class="badge badge-mark border-success"></span></div>
+							<div class="media-title font-weight-semibold">James Alexander</div>
 							<span class="text-muted">Development</span>
 						</div>
 
@@ -154,7 +154,7 @@
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander<span style="margin-left: 10px;" class="badge badge-mark border-success"></span></div>
+							<div class="media-title font-weight-semibold">James Alexander</div>
 							<span class="text-muted">Development</span>
 						</div>
 
@@ -182,7 +182,7 @@
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander<span style="margin-left: 10px;" class="badge badge-mark border-danger"></span></div>
+							<div class="media-title font-weight-semibold">James Alexander</div>
 							<span class="text-muted">Development</span>
 						</div>
 
@@ -210,7 +210,7 @@
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander<span style="margin-left: 10px;" class="badge badge-mark border-success"></span></div>
+							<div class="media-title font-weight-semibold">James Alexander</div>
 							<span class="text-muted">Development</span>
 						</div>
 
@@ -238,7 +238,7 @@
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander<span style="margin-left: 10px;" class="badge badge-mark border-success"></span></div>
+							<div class="media-title font-weight-semibold">James Alexander</div>
 							<span class="text-muted">Development</span>
 						</div>
 
