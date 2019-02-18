@@ -136,7 +136,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="invoices"){echo 'active';} ?>"><i class="icon-width"></i> <span>Invoices</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="#" class="nav-link active">Option # 1</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/invoices"); ?>" class="nav-link active">Invoices</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
