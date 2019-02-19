@@ -40,7 +40,8 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-body" style="text-align: center;">
-				<strong>Set Invoicing periods to:</strong><button style="margin-left: 10px;" type="button" class="btn btn-light legitRipple" data-toggle="modal" data-target="#invoicing_period_modal">Weekly <i style="margin-left: 5px;" class="icon-arrow-down22"></i></button>
+				<button style="margin-left: 10px;" type="button" class="btn btn-light legitRipple" data-toggle="modal" data-target="#payroll_rules_modal">Set Payroll Rules</button>
+				<span style="margin-left: 8px; color: #C07007;">Not set! Set up payroll periods and deductibles such as caregiver milage</span>
 			</div>
 		</div>
 	</div>
@@ -154,7 +155,7 @@
 							<div>
 								<h6 class="font-weight-semibold">Leonardo Fellini</h6>
 								<ul class="list list-unstyled mb-0">
-									<li>Invoice #: <a href="#">0028</a></li>
+									<li>Payroll #: <a href="#">0028</a></li>
 									<li>Issued on: <span class="font-weight-semibold">2018/01/25</span></li>
 								</ul>
 							</div>
@@ -189,7 +190,7 @@
 
 						<ul class="list-inline list-inline-condensed mb-0 mt-2 mt-sm-0">
 							<li class="list-inline-item">
-								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice"><i class="icon-eye8"></i></a>
+								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice_modal"><i class="icon-eye8"></i></a>
 							</li>
 							<li class="list-inline-item dropdown">
 								<a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
@@ -214,7 +215,7 @@
 							<div>
 								<h6 class="font-weight-semibold">Rebecca Manes</h6>
 								<ul class="list list-unstyled mb-0">
-									<li>Invoice #: <a href="#">0027</a></li>
+									<li>Payroll #: <a href="#">0027</a></li>
 									<li>Issued on: <span class="font-weight-semibold">2018/02/24</span></li>
 								</ul>
 							</div>
@@ -249,7 +250,7 @@
 
 						<ul class="list-inline list-inline-condensed mb-0 mt-2 mt-sm-0">
 							<li class="list-inline-item">
-								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice"><i class="icon-eye8"></i></a>
+								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice_modal"><i class="icon-eye8"></i></a>
 							</li>
 							<li class="list-inline-item dropdown">
 								<a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
@@ -276,7 +277,7 @@
 							<div>
 								<h6 class="font-weight-semibold">James Alexander</h6>
 								<ul class="list list-unstyled mb-0">
-									<li>Invoice #: <a href="#">0026</a></li>
+									<li>Payroll #: <a href="#">0026</a></li>
 									<li>Issued on: <span class="font-weight-semibold">2018/02/23</span></li>
 								</ul>
 							</div>
@@ -311,7 +312,7 @@
 
 						<ul class="list-inline list-inline-condensed mb-0 mt-2 mt-sm-0">
 							<li class="list-inline-item">
-								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice"><i class="icon-eye8"></i></a>
+								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice_modal"><i class="icon-eye8"></i></a>
 							</li>
 							<li class="list-inline-item dropdown">
 								<a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
@@ -336,7 +337,7 @@
 							<div>
 								<h6 class="font-weight-semibold">Jeremy Victorino</h6>
 								<ul class="list list-unstyled mb-0">
-									<li>Invoice #: <a href="#">0025</a></li>
+									<li>Payroll #: <a href="#">0025</a></li>
 									<li>Issued on: <span class="font-weight-semibold">2018/02/22</span></li>
 								</ul>
 							</div>
@@ -371,7 +372,7 @@
 
 						<ul class="list-inline list-inline-condensed mb-0 mt-2 mt-sm-0">
 							<li class="list-inline-item">
-								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice"><i class="icon-eye8"></i></a>
+								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice_modal"><i class="icon-eye8"></i></a>
 							</li>
 							<li class="list-inline-item dropdown">
 								<a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
@@ -398,7 +399,7 @@
 							<div>
 								<h6 class="font-weight-semibold">Margo Baker</h6>
 								<ul class="list list-unstyled mb-0">
-									<li>Invoice #: <a href="#">0024</a></li>
+									<li>Payroll #: <a href="#">0024</a></li>
 									<li>Issued on: <span class="font-weight-semibold">2018/02/21</span></li>
 								</ul>
 							</div>
@@ -433,7 +434,7 @@
 
 						<ul class="list-inline list-inline-condensed mb-0 mt-2 mt-sm-0">
 							<li class="list-inline-item">
-								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice"><i class="icon-eye8"></i></a>
+								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice_modal"><i class="icon-eye8"></i></a>
 							</li>
 							<li class="list-inline-item dropdown">
 								<a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
@@ -458,7 +459,7 @@
 							<div>
 								<h6 class="font-weight-semibold">Beatrix Diaz</h6>
 								<ul class="list list-unstyled mb-0">
-									<li>Invoice #: <a href="#">0023</a></li>
+									<li>Payroll #: <a href="#">0023</a></li>
 									<li>Issued on: <span class="font-weight-semibold">2018/02/20</span></li>
 								</ul>
 							</div>
@@ -493,7 +494,7 @@
 
 						<ul class="list-inline list-inline-condensed mb-0 mt-2 mt-sm-0">
 							<li class="list-inline-item">
-								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice"><i class="icon-eye8"></i></a>
+								<a href="#" class="text-default" data-toggle="modal" data-target="#invoice_modal"><i class="icon-eye8"></i></a>
 							</li>
 							<li class="list-inline-item dropdown">
 								<a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
@@ -556,7 +557,7 @@
 								<i class="icon-archive icon-2x"></i>
 								<span>Archive</span>
 							</button> -->
-							<a href="<?php echo site_url("agency/invoices/archive");?>" class="btn bg-purple-300 btn-block btn-float"><i class="icon-archive icon-2x"></i>
+							<a href="<?php echo site_url("agency/payroll/archive");?>" class="btn bg-purple-300 btn-block btn-float"><i class="icon-archive icon-2x"></i>
 								<span>Archive</span></a>
 						</div>
 						
@@ -595,7 +596,7 @@
 							</div>
 
 							<div class="media-body">
-								<a href="#">Richard Vango</a> paid invoice #0020
+								<a href="#">Richard Vango</a> paid Payroll #0020
 								<div class="text-muted font-size-sm">4 minutes ago</div>
 							</div>
 						</li>
@@ -621,7 +622,7 @@
 							</div>
 
 							<div class="media-body">
-								<a href="#">Chris Arney</a> paid invoice #0031 with Paypal
+								<a href="#">Chris Arney</a> paid Payroll #0031 with Paypal
 								<div class="text-muted font-size-sm">2 hours ago</div>
 							</div>
 						</li>
@@ -647,7 +648,7 @@
 							</div>
 							
 							<div class="media-body">
-								New invoice #0029 has been sent to <a href="#">Beatrix Diaz</a>
+								New Payroll #0029 has been sent to <a href="#">Beatrix Diaz</a>
 								<div class="text-muted font-size-sm">Dec 12, 05:46</div>
 							</div>
 						</li>
@@ -670,12 +671,15 @@
 
 
 <!-- Modal with invoice -->
-<div id="invoice" class="modal fade">
+<div id="invoice_modal" class="modal fade">
 	<div class="modal-dialog modal-full">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title"></h5>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h5 class="modal-title">Static Invoice</h5>
+				<div>
+					<button type="button" class="btn btn-light legitRipple">View Timesheet</button>
+					<button type="button" class="btn btn-light legitRipple"><i style="margin-right: 8px;" class="icon-printer"></i>Print</button>
+					</div>
 			</div>
 
 			<div class="card-body">
@@ -694,7 +698,7 @@
 					<div class="col-sm-6">
 						<div class="mb-4">
 							<div class="text-sm-right">
-								<h4 class="text-primary mb-2 mt-md-2">Invoice #49029</h4>
+								<h4 class="text-primary mb-2 mt-md-2">Payroll Paystub #49029</h4>
 								<ul class="list list-unstyled mb-0">
 									<li>Date: <span class="font-weight-semibold">January 12, 2015</span></li>
 								</ul>
@@ -724,7 +728,6 @@
 								<li style="margin-top: 10px;"><h5 class="my-2">Total Due:</h5></li>
 								<li style="margin-top: 10px;">Bank name:</li>
 								<li style="margin-top: 10px;">Country:</li>
-								<li style="margin-top: 10px;"><strong>Paid on: January 20, 2019</strong></li>
 							</ul>
 
 							<ul class="list list-unstyled text-right mb-0 ml-auto">
@@ -745,10 +748,11 @@
 			    <table class="table table-lg">
 			        <thead>
 			            <tr>
-			                <th>Caregiver</th>
-			                <th>Hours Worked</th>
+			                <th>Client</th>
+			                <th>Regular hours</th>
+			                <th>Regular rate</th>
 			                <th>Holiday/Overtime</th>
-			                <th>Hourly Rate</th>
+			                <th>Overtime/Holiday rate</th>
 			                <th>Total</th>
 			            </tr>
 			        </thead>
@@ -757,6 +761,7 @@
 			                <td>Carl Swan</td>
 			                <td>80</td>
 			                <td>0</td>
+			                <td>0</td>
 			                <td>30</td>
 			                <td>$3,990</td>
 			            </tr>
@@ -764,11 +769,13 @@
 			                <td>Carl Swan</td>
 			                <td>80</td>
 			                <td>0</td>
+			                <td>0</td>
 			                <td>30</td>
 			                <td>$3,990</td>
 			            </tr>
 			            <tr>
 			                <td>Carl Swan</td>
+			                <td>0</td>
 			                <td>80</td>
 			                <td>45*6</td>
 			                <td>30</td>
@@ -816,7 +823,7 @@
 						</div>
 
 						<div class="text-right mt-3">
-							<button type="button" class="btn btn-primary btn-labeled btn-labeled-left"><b><i class="icon-paperplane"></i></b> Send invoice</button>
+							<button type="button" onclick="paymentSuccess()" class="btn btn-primary btn-labeled btn-labeled-left"><b><i class="icon-paperplane"></i></b> Pay Rebecca Menance</button>
 						</div>
 					</div>
 				</div>
@@ -827,8 +834,6 @@
 			</div>
 
 			<div class="modal-footer bg-transparent">
-				<button type="button" class="btn btn-light legitRipple">View Timesheet</button>
-				<button type="button" class="btn btn-light legitRipple"><i style="margin-right: 8px;" class="icon-printer"></i>Print</button>
 				<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
 			</div>
 		</div>
@@ -836,38 +841,85 @@
 </div>
 <!-- /modal with invoice -->
 
-<!-- ==========Add Invoicing Period Modal============= -->
-<div id="invoicing_period_modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog" style="margin-top: 280px;">
-    <div class="modal-content" style="padding: 30px 0px;">
+<!-- ==========Add Payroll Rules Modal============= -->
+<div id="payroll_rules_modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" style="padding: 30px 20px;">
       <div class="modal-header">
-        <h5 class="modal-title" style="margin: 0 auto;">Set Invoicing Periods Intervals</h5>
+        <h5 class="modal-title" style="margin: 0 auto;">Set Payroll Periods To:</h5>
       </div>
       <form id="">
         <div class="row" style="padding: 0px 20px; margin-top: 20px;">
-        	<div class="col-md-8 offset-md-2">
+        	<div class="col-md-10 offset-md-1">
         		<div class="form-group">
-					<select data-placeholder="Select Invoicing Period" class="form-control select" data-fouc>
+					<select data-placeholder="Select Payroll Period" class="form-control select" data-fouc>
 						<option></option>
 						<option value="week">Week</option>
-						<option value="month">Monthly</option>
 						<option value="bi-weekly">bi-weekly</option>
+						<option value="month">Monthly</option>
 					</select>
+					<span>(All periods are set to begin from Monday to Sunday)</span>
 				</div>
         	</div>
         </div>
-        <div class="row">
-        	<div class="col-md-12" style="text-align: center;  margin-top: 30px;">
-        		<h5 class="modal-title">Select start date for invoicing period</h5>
+        <div class="row" style="margin-top: 50px;">
+        	<div class="col-md-10 offset-md-1">
+        		<div class="row">
+        			<div class="col-md-6">
+        				<div class="form-group pt-2">
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" data-fouc>
+									Pass your caregiver insurance cost to each payroll
+								</label>
+							</div>
+						</div>
+        			</div>
+        			<div class="col-md-6">
+        				<div class="form-group">
+							<input type="text" value="1" class="form-control touchspin-prefix">
+						</div>
+        			</div>
+        			<div class="col-md-12">
+        				<div class="form-group">
+							<select data-placeholder="Select how often to add insurance cost to caregiver payroll" class="form-control select" data-fouc>
+								<option></option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+						</div>
+        			</div>
+        		</div>
         	</div>
         </div>
-        <div class="row" style="padding: 0px 20px; margin-top: 20px;">
-        	<div class="col-md-8 offset-md-2">
-        		<div class="input-group">
-					<span class="input-group-prepend">
-						<span class="input-group-text"><i class="icon-calendar22"></i></span>
-					</span>
-					<input type="text" class="form-control daterange-single" value="">
+        <div class="row" style="margin-top: 40px;">
+        	<div class="col-md-10 offset-md-1">
+        		<div class="form-group pt-2">
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="checkbox" class="form-check-input-styled" data-fouc>
+							Pass your caregiver insurance cost to each payroll
+						</label>
+					</div>
+				</div>
+        	</div>
+        	<div class="col-md-5 offset-md-1">
+        		<div class="form-group">
+					<input type="text" value="1" class="form-control touchspin-prefix">
+				</div>
+        	</div>
+        	<div class="col-md-2" style="margin-top: 10px;">
+        		<span>per mile</span>
+        	</div>
+        	<div class="col-md-10 offset-md-1">
+        		<div class="form-group">
+					<select data-placeholder="Select how often to add travel milage cost to payroll" class="form-control select" data-fouc>
+						<option></option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
 				</div>
         	</div>
         </div>
@@ -879,7 +931,7 @@
     </div>
   </div>
 </div>
-<!-- ==========//Add Invoicing Period Modal============= -->
+<!-- ==========//Add Payroll Rules Modal============= -->
 
 <!-- ==========Add Bank Account Modal============= -->
 <div id="bank_account_modal" class="modal fade" tabindex="-1">
@@ -957,4 +1009,20 @@
 <script src="<?php echo base_url();?>assets/js/plugins/pickers/pickadate/legacy.js"></script>
 <script src="<?php echo base_url();?>assets/js/plugins/notifications/jgrowl.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/demo_pages/picker_date.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
+
+
+
 <?php include(APPPATH."views/agency/inc/footer.php");?>
+<script type="text/javascript">
+	function paymentSuccess(){
+		swal({
+	        title: 'Good job!',
+	        text: 'You have processed the payroll for Rebecca Mena. Once the transfer of funds is complete, the payroll will be marked as paid!',
+	        confirmButtonText: 'Ok',
+	        type: 'success'
+	      });
+	}
+</script>

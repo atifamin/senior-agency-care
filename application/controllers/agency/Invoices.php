@@ -9,4 +9,11 @@ class Invoices extends CI_Controller {
 		$data["url_segment"] = "invoices";
 		$this->load->view("agency/invoices/index",$data);
 	}
+
+	public function archive(){
+		$data["breadcrumb"] = "Invoices  /  Archive";
+		$data["heading"] = "Archive";
+		$data["url_segment"] = "archive";
+		$this->load->view("agency/invoices/archive",$data);
+	}
 }
