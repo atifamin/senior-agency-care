@@ -383,7 +383,9 @@
 														<td><span class="text-muted">Appointment date</span></td>
 														<td><span class="text-muted">Location</span></td>
 														<td><span class="text-muted">Set reminder</span></td>
-														<td></td>
+														<td>
+															<input type="checkbox" data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small">
+														</td>
 														<td class="text-center">
 															<div class="list-icons">
 																<div class="dropdown">
@@ -1155,19 +1157,23 @@
 											<table class="table datatable-basic" id="appointment_datatable_1">
 												<thead>
 													<tr>
-														<th>Appointment Type</th>
+														<th>Therapy Type</th>
 														<th>Appointment Date</th>
 														<th>Location</th>
 														<th>Set Reminder</th>
+														<th>Set to Monthly</th>
 														<th class="text-center">Actions</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td><span class="text-muted">Appointment type</span></td>
+														<td>Doctor's appointment<br><span class="text-muted">Dr. Marvin Cobler</span></td>
 														<td><span class="text-muted">Appointment date</span></td>
 														<td><span class="text-muted">Location</span></td>
 														<td><span class="text-muted">Set reminder</span></td>
+														<td>
+															<input type="checkbox" data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small">
+														</td>
 														<td class="text-center">
 															<div class="list-icons">
 																<div class="dropdown">
@@ -1555,7 +1561,7 @@
 								<div class="tab-pane fade" id="schedule_shopping_list">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;">Create new shopping list<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_shopping_list">Create new shopping list<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -2202,7 +2208,6 @@
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_basic.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/tables/datatables/datatables.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_responsive.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>

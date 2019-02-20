@@ -938,7 +938,7 @@
   <div class="modal-dialog">
     <div class="modal-content" style="padding: 20px;">
       <div class="modal-header">
-        <h5 class="modal-title" style="color: #E3C00D; margin: 0 auto;">Link your bank account for invoicing & payrol</h5>
+        <h5 class="modal-title" style="color: #ff8c00; margin: 0 auto;">Link your bank account for invoicing & payrol</h5>
       </div>
       <div class="row" style="margin-top: 30px;">
       	<div class="col-md-12">
@@ -992,8 +992,14 @@
       	</div>
       </div>
         <div class="modal-footer" style="margin-top: 20px;">
-          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20" style="background-color: #ff8c00 !important;"> Link your bank account</button>
-         <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">I'll do this later</button>
+        	<div class="row" style="width: 100%;">
+        		<div class="col-md-8" style="margin-top: 10px;">
+          			<button type="submit" class="btn bg-primary" style="background-color: #ff8c00 !important; width: 100%; padding: 12px;"> Link your bank account</button>
+          		</div>
+        		<div class="col-md-4" style="margin-top: 10px;">
+         			<button type="button" class="btn btn-light legitRipple" data-dismiss="modal" style="padding: 12px;">I'll do this later</button>
+         		</div>
+        	</div>
         </div>
     </div>
   </div>

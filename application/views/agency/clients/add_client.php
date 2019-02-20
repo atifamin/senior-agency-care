@@ -220,6 +220,64 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Add client's level of care</label>
+					                    <select name="company_formed_month" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
+					                        <option></option>
+					                        <option value="1">1</option>
+					                        <option value="2">2</option>
+					                        <option value="3">3</option>
+					                    </select>
+				                    </div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-check form-check-switch form-check-switch-left">
+										<label>Does client have any pets</label>
+										<input type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" id="client_pets" onchange="listPets()" value="0">
+									</div>
+								</div>
+								<div class="col-md-12" id="pet_list" style="display: none;">
+									<div class="form-group">
+										<label>List kinds of pets</label>
+										<input type="text" class="form-control tokenfield" value="" placeholder="Add multiple kinds(with comma seperated)" data-fouc>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Add client regular rate per hr: </label>
+										<input type="text" value="" class="form-control touchspin-empty" placeholder="Enter Rate $">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Add client's available hr per week: </label>
+										<input type="text" value="" class="form-control touchspin-empty" placeholder="Enter Hours">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Add billing cycle<span style="margin-left: 10px;">(How often you send invite to your client)</span></label>
+			                    <select name="" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
+			                        <option></option>
+			                        <option value="weekly">Weekly</option>
+			                        <option value="bi-weekly">Bi-Weekly</option>
+			                        <option value="monthly">Monthly</option>
+			                    </select>
+		                    </div>
+						</div>
+					</div>
 				</fieldset>
 
 				<h6><strong>Client Special Needs</strong></h6>
@@ -276,6 +334,32 @@
 							<div class="form-group">
 								<label>Client allergies list</label>
 								<input type="text" class="form-control tokenfield" value="" placeholder="Add multiple allergies(with comma seperated)" data-fouc>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-check form-check-switch form-check-switch-left">
+								<label class="form-check-label d-flex align-items-center">
+									<span style="margin-right: 15px">Does the client recieve oxygen</span>
+									<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientOxygen()" id="oxygen_client" value="0">
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 10px; display: none;" id="client_oxygen">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label><span class="text-muted">If so, how much oxygen does the client recieve?</span> </label>
+								<input type="text" value="" class="form-control touchspin-empty" placeholder="Mg">
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 20px;">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>When is oxygen administered to the client:</label>
+								<input type="text" name="" class="form-control" placeholder="Add details how and when oxygen is administered">
 							</div>
 						</div>
 					</div>
@@ -407,6 +491,12 @@
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_tags_input.js"></script>
+
+	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/uniform.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
 	<!-- /theme JS files -->
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 <script type="text/javascript">
@@ -417,5 +507,27 @@
 	function viewLicense(){
 		$(".add_new_license").css("display","none");
 		$(".license_view").css("display","block");
+	}
+
+	function listPets(){
+		var val = $("#client_pets").val();
+		if(val == 0){
+			$("#client_pets").val(1);
+			$("#pet_list").css("display","block");
+		}else{
+			$("#client_pets").val(0);
+			$("#pet_list").css("display","none");
+		}
+	}
+
+	function clientOxygen(){
+		var val = $("#oxygen_client").val();
+		if(val == 0){
+			$("#oxygen_client").val(1);
+			$("#client_oxygen").css("display","block");
+		}else{
+			$("#oxygen_client").val(0);
+			$("#client_oxygen").css("display","none");
+		}
 	}
 </script>
