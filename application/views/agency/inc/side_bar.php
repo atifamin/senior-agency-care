@@ -127,7 +127,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="time sheets"){echo 'active';} ?>"><i class="icon-list-unordered"></i> <span>Time Sheets</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="#" class="nav-link active">Option # 1</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/time_sheets"); ?>" class="nav-link active">View Time Sheets</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
