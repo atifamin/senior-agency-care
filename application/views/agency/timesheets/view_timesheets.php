@@ -4,6 +4,10 @@ include(APPPATH."views/agency/inc/header.php");?>
 	.datatable-footer{
 		display: none;
 	}
+
+	.sorting_disabled{
+		width: 150px !important;
+	}
 </style>
 <div class="row">
 	<div class="col-md-12">
@@ -66,49 +70,49 @@ include(APPPATH."views/agency/inc/header.php");?>
 			</li>
 			<div class="row">
 				<div class="col-md-12">
-					<table class="table table-responsive">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Worked Hours</th>
-						<th>Hourly Wage</th>
-						<th>Overtime Hrs</th>
-						<th>Holiday Pay Hrs</th>
-						<th>Total Weekly Pay</th>
-						<th style="width: 8%; text-align: right;">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><span><strong style="font-weight: 400;">Roland R</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">40</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">25</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">0</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">0</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">500</strong></span>
-						</td>
-						<td class="text-center">
-							<div class="list-icons">
-								<div class="dropdown">
-									<a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
-										<i class="icon-menu9" style="padding-left: 180px"></i>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-167px, 18px, 0px);">
-										<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Time Sheets</a>
-										<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Time Sheets</a>
-										<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Time Sheets</a>
+					<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Worked Hours</th>
+								<th>Hourly Wage</th>
+								<th>Overtime Hrs</th>
+								<th>Holiday Pay Hrs</th>
+								<th>Total Weekly Pay</th>
+								<th style="text-align: right;">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span><strong style="font-weight: 400;">Roland R</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">40</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">25</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">0</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">0</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">500</strong></span>
+								</td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
+												<i class="icon-menu9" style="padding-left: 180px"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-167px, 18px, 0px);">
+												<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Time Sheets</a>
+												<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Time Sheets</a>
+												<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Time Sheets</a>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div class="collapse" id="james1" style="">
@@ -181,7 +185,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 							</tr>
 						</tbody>
 					</table>
-					<div style="float: right; margin-top: 10px;"><button type="button" class="btn btn-primary legitRipple" style="background-color: #8ceaff; border-color: #31c6ff;">Save Timesheet</button>
+					<div style="float: right; margin-top: 10px;"><button type="button" class="btn btn-primary legitRipple" style="background-color: #8ceaff; border-color: #31c6ff; color: #0829a2;">Save Timesheet</button>
 					</div>
 				</div>
 			</div>
@@ -202,49 +206,49 @@ include(APPPATH."views/agency/inc/header.php");?>
 			</li>
 			<div class="row">
 				<div class="col-md-12">
-					<table class="table table-responsive">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Worked Hours</th>
-						<th>Hourly Wage</th>
-						<th>Overtime Hrs</th>
-						<th>Holiday Pay Hrs</th>
-						<th>Total Weekly Pay</th>
-						<th style="width: 8%; text-align: right;">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><span><strong style="font-weight: 400;">Roland R</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">40</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">25</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">0</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">0</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">500</strong></span>
-						</td>
-						<td class="text-center">
-							<div class="list-icons">
-								<div class="dropdown">
-									<a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
-										<i class="icon-menu9" style="padding-left: 180px"></i>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-167px, 18px, 0px);">
-										<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Time Sheets</a>
-										<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Time Sheets</a>
-										<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Time Sheets</a>
+					<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Worked Hours</th>
+								<th>Hourly Wage</th>
+								<th>Overtime Hrs</th>
+								<th>Holiday Pay Hrs</th>
+								<th>Total Weekly Pay</th>
+								<th style="width: 8%; text-align: right;">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span><strong style="font-weight: 400;">Roland R</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">40</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">25</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">0</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">0</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">500</strong></span>
+								</td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
+												<i class="icon-menu9" style="padding-left: 180px"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-167px, 18px, 0px);">
+												<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Time Sheets</a>
+												<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Time Sheets</a>
+												<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Time Sheets</a>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div class="collapse" id="james2" style="">
@@ -317,7 +321,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 							</tr>
 						</tbody>
 					</table>
-					<div style="float: right; margin-top: 10px;"><button type="button" class="btn btn-primary legitRipple" style="background-color: #8ceaff; border-color: #31c6ff;">Save Timesheet</button>
+					<div style="float: right; margin-top: 10px;"><button type="button" class="btn btn-primary legitRipple" style="background-color: #8ceaff; border-color: #31c6ff; color: #0829a2;">Save Timesheet</button>
 					</div>
 				</div>
 			</div>
@@ -338,49 +342,49 @@ include(APPPATH."views/agency/inc/header.php");?>
 			</li>
 			<div class="row">
 				<div class="col-md-12">
-					<table class="table table-responsive">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Worked Hours</th>
-						<th>Hourly Wage</th>
-						<th>Overtime Hrs</th>
-						<th>Holiday Pay Hrs</th>
-						<th>Total Weekly Pay</th>
-						<th style="width: 8%; text-align: right;">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><span><strong style="font-weight: 400;">Roland R</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">40</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">25</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">0</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">0</strong></span>
-						</td>
-						<td><span><strong style="font-weight: 400;">500</strong></span>
-						</td>
-						<td class="text-center">
-							<div class="list-icons">
-								<div class="dropdown">
-									<a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
-										<i class="icon-menu9" style="padding-left: 180px"></i>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-167px, 18px, 0px);">
-										<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Time Sheets</a>
-										<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Time Sheets</a>
-										<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Time Sheets</a>
+					<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Worked Hours</th>
+								<th>Hourly Wage</th>
+								<th>Overtime Hrs</th>
+								<th>Holiday Pay Hrs</th>
+								<th>Total Weekly Pay</th>
+								<th style="width: 8%; text-align: right;">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span><strong style="font-weight: 400;">Roland R</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">40</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">25</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">0</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">0</strong></span>
+								</td>
+								<td><span><strong style="font-weight: 400;">500</strong></span>
+								</td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
+												<i class="icon-menu9" style="padding-left: 180px"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-167px, 18px, 0px);">
+												<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Time Sheets</a>
+												<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Time Sheets</a>
+												<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Time Sheets</a>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div class="collapse" id="james3" style="">
@@ -453,7 +457,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 							</tr>
 						</tbody>
 					</table>
-					<div style="float: right; margin-top: 10px;"><button type="button" class="btn btn-primary legitRipple" style="background-color: #8ceaff; border-color: #31c6ff;">Save Timesheet</button>
+					<div style="float: right; margin-top: 10px;"><button type="button" class="btn btn-primary legitRipple" style="background-color: #8ceaff; border-color: #31c6ff; color: #0829a2;">Save Timesheet</button>
 					</div>
 				</div>
 			</div>
