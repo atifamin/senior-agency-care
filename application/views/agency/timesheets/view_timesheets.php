@@ -12,6 +12,28 @@ include(APPPATH."views/agency/inc/header.php");?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card"> 
+			<div class="row" style="padding: 2%;">
+				<div class="col-md-3 offset-md-4">
+					<div class="input-group">
+						<span class="input-group-prepend">
+						<span class="input-group-text"><i class="icon-calendar22"></i></span>
+						</span>
+						<input type="text" class="form-control daterange-basic" value="01/01/2015 - 01/31/2015">
+					</div>
+				</div>
+				<div class="col-md-3" style="margin-top: 20px">
+					<h6 style="font-size: 14px; color: #4caf50; float: left;">Approved<span style="margin-left: 6px;" class="badge badge-success badge-pill">65</span></h6>
+						<h6 style="font-size: 14px; color: #ff7043; float: right;">Pending<span style="margin-left:6px;" class="badge badge-warning badge-pill">65</span></h6>
+				</div>
+			</div>
+			<!-- <div class="row" style="padding-left: 59%; padding-right: 12%;">
+				<div class="col-md-4 offset-md-4" style="margin-top: 9px;">
+					<h6 style="font-size: 12px; color: #4caf50;">Added<span style="margin-left: 6px;" class="badge badge-success badge-pill">65</span></h6>
+				</div>
+				<div class="col-md-4" style="margin-top: 9px;">
+					<h6 style="font-size: 12px; color: #ff7043;">Pending<span style="margin-left: 6px;" class="badge badge-warning badge-pill">65</span></h6>
+				</div>
+			</div> -->
 			<table class="table datatable-basic">
 				<thead>
 					<tr>
@@ -131,45 +153,137 @@ include(APPPATH."views/agency/inc/header.php");?>
 							</tr>
 						</thead>
 						<tbody>
+
 							<tr>
 								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Tuesday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Wednesday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
+							
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Thursday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
+
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Friday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Saturday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Sunday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
 							<tr>
 								<td colspan="6">
@@ -267,45 +381,137 @@ include(APPPATH."views/agency/inc/header.php");?>
 							</tr>
 						</thead>
 						<tbody>
+
 							<tr>
 								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Tuesday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Wednesday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
+							
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Thursday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
+
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Friday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Saturday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Sunday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
 							<tr>
 								<td colspan="6">
@@ -403,45 +609,137 @@ include(APPPATH."views/agency/inc/header.php");?>
 							</tr>
 						</thead>
 						<tbody>
+
 							<tr>
 								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Tuesday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Wednesday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
+							
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Thursday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
+
 							<tr>
-								<td style="background-color: #eee;">Monday</td>
-								<td>11/2/2018</td>
-								<td>9:00 AM</td>
-								<td>6:00 PM</td>
-								<td>6</td>
-								<td>26</td>
-								<td>0</td>
-								<td>234</td>
+								<td style="background-color: #eee;">Friday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Saturday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
+							</tr>
+
+							<tr>
+								<td style="background-color: #eee;">Sunday</td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group"><input type="text" class="form-control daterange-single" style="border: none;">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i></div></td>
+
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="padding: 4px; width: 110px;"><div class="input-group">
+									<input type="text" class="form-control pickatime" style=" border: none; " value="<?php echo date('h:i a'); ?>">
+									<i style="position: relative; top: 13px; font-size: 14px;" class="icon-arrow-down5"></i>
+								</div></td>
+								<td style="text-align: center;">6</td>
+								<td style="text-align: center;">26</td>
+								<td style="text-align: center;">0</td>
+								<td style="text-align: center;">234</td>
 							</tr>
 							<tr>
 								<td colspan="6">
@@ -484,7 +782,8 @@ include(APPPATH."views/agency/inc/header.php");?>
 					</div>
 				</div>
 			</div>	
-			<div style="float: right; margin-top: 10px;"><button type="button" class="btn btn-primary btn-labeled btn-labeled-left legitRipple" style="float: right; margin-bottom: 10px; margin-right: 17px;"><b><i class="icon-paperplane"></i></b> Create Invoice</button>
+			<div style="float: right; margin-top: 10px;">
+				<a href="<?php echo site_url("agency/time_sheets/invoice"); ?>" class="btn btn-primary btn-labeled btn-labeled-left legitRipple" style="float: right;margin-bottom: 10px; margin-right: 17px;"><b><i class="icon-paperplane"></i></b>Create Invoice</a>
 			</div>
 		</div>
 	</div>
@@ -496,5 +795,16 @@ include(APPPATH."views/agency/inc/header.php");?>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_responsive.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/legacy.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/notifications/jgrowl.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/demo_pages/picker_date.js"></script>
+
+
 <?php
 include(APPPATH."views/agency/inc/footer.php");?>

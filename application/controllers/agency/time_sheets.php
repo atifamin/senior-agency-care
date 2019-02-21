@@ -27,6 +27,13 @@ class Time_sheets extends CI_controller {
 		$data["url_segment"] = "time sheets";
 		$this->load->view('agency/timesheets/view_timesheets',$data);
 	}
+
+	public function invoice(){
+		$data["breadcrumb"] = "Time Sheets / Invoice";
+		$data["heading"] = "Time Sheets";
+		$data["url_segment"] = "time sheets";
+		$this->load->view('agency/timesheets/invoice',$data);
+	}
 }
 
 ?>
