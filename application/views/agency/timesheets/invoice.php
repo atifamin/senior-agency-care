@@ -15,8 +15,8 @@
 					</div>
 					<div class="col-md-8" style="text-align: right;letter-spacing: 5px;">
 						<button type="button" class="btn btn-light legitRipple" style="font-size:
-						 10px;">View Timesheets</button>
-						 <button type="button" class="btn btn-light legitRipple" style="font-size: 10px;"><i class="icon-file-empty mr-1"></i> Save</button>
+						 9px;">View Timesheets</button>
+						 <button type="button" class="btn btn-light legitRipple" style="font-size: 9px;"><i class="icon-file-empty mr-1"></i> Save</button>
 						<button type="button" class="btn btn-light legitRipple" style="font-size: 10px;"><i class="icon-printer mr-1"></i> Print</button>
 					</div>
 				</div>
