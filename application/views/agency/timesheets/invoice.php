@@ -121,19 +121,6 @@
 
 			<div class="card-body">
 				<div class="d-md-flex flex-md-wrap">
-					<!-- <div class="pt-2 mb-3">
-						<h6 class="mb-3">Authorized person</h6>
-						<div class="mb-3">
-							<img src="<?php echo base_url();?>assets/images/signature.png" width="150" alt="">
-						</div>
-
-						<ul class="list-unstyled text-muted">
-							<li>Eugene Kopyov</li>
-							<li>2269 Elba Lane</li>
-							<li>Paris, France</li>
-							<li>888-555-2311</li>
-						</ul>
-					</div> -->
 
 					<div class="pt-2 mb-3 wmin-md-400 ml-auto">
 						<div class="table-responsive">
