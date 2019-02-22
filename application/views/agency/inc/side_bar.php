@@ -37,7 +37,7 @@
 					<div class="collapse" id="user-nav">
 						<ul class="nav nav-sidebar">
 							<li class="nav-item">
-								<a href="#" class="nav-link">
+								<a href="<?php echo site_url("agency/profile"); ?>" class="nav-link">
 									<i class="icon-user-plus"></i>
 									<span>My profile</span>
 								</a>
