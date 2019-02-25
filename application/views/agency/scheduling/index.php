@@ -75,8 +75,8 @@
 				</div>
 			</div>
 
-			<ul class="media-list media-list-linked">
-				<!-- <li class="media font-weight-semibold border-0 py-1">Team leaders</li> -->
+			 <ul class="media-list media-list-linked">
+				 <li class="media font-weight-semibold border-0 py-1">Team leaders</li> 
 
 				<li>
 					<div class="media">
@@ -93,9 +93,6 @@
 					</div>
 
 					<div class="collapse" id="james3">
-							<!-- <div class="card-header bg-white header-elements-sm-inline" style="text-align: center; background-color: #fafafa !important;">
-								<h4 style="margin: 0 auto;">Client's Profile</h4>
-							</div> -->
 						<div class="pb-1">
 							<div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
 								<div class="navbar-collapse" id="navbar-demo-light">
@@ -369,19 +366,23 @@
 											<table class="table datatable-basic" id="appointment_datatable">
 												<thead>
 													<tr>
-														<th>Appointment Type</th>
+														<th>Therapy Type</th>
 														<th>Appointment Date</th>
 														<th>Location</th>
 														<th>Set Reminder</th>
+														<th>Set to Monthly</th>
 														<th class="text-center">Actions</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td><span class="text-muted">Appointment type</span></td>
+														<td>Doctor's appointment<br><span class="text-muted">Dr. Marvin Cobler</span></td>
 														<td><span class="text-muted">Appointment date</span></td>
 														<td><span class="text-muted">Location</span></td>
 														<td><span class="text-muted">Set reminder</span></td>
+														<td>
+															<input type="checkbox" data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small">
+														</td>
 														<td class="text-center">
 															<div class="list-icons">
 																<div class="dropdown">
@@ -415,12 +416,12 @@
 									</div>
 									<div class="row">
 										<div class="col-md-12">
-											<table class="table datatable-basic">
+											<table class="table datatable-basic" id="client_vital_datatable">
 												<thead>
 													<tr>
 														<th><i style="margin-right: 8px;" class="icon-man"></i>Blood Pressure</th>
 														<th><i style="margin-right: 8px; color: red;" class="icon-heart6"></i>Heart Rate</th>
-														<th><i style="margin-right: 8px; color: red;" class="icon-pulse2"></i>Pulse</th>
+														<!-- <th><i style="margin-right: 8px; color: red;" class="icon-pulse2"></i>Pulse</th> -->
 														<th><i style="margin-right: 8px; color: green;" class="icon-stats-growth2"></i>Temperature</th>
 														<th><i style="margin-right: 8px;" class="icon-calendar22"></i>Date Taken</th>
 														<th class="text-center">Actions</th>
@@ -430,7 +431,7 @@
 													<tr>
 														<td><span class="text-muted">Blood Pressure</span></td>
 														<td><span class="text-muted">Heart Rate</span></td>
-														<td><span class="text-muted">Pulse</span></td>
+														<!-- <td><span class="text-muted">Pulse</span></td> -->
 														<td><span class="text-muted">Temperature</span></td>
 														<td><span class="text-muted">Date taken</span></td>
 														<td class="text-center">
@@ -771,7 +772,7 @@
 								<div class="tab-pane fade" id="schedule_shopping_list_1">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;">Create new shopping list<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_shopping_list">Create new shopping list<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -782,6 +783,7 @@
 														<th>Date Created</th>
 														<th>Status</th>
 														<th>Shopping Reminder</th>
+														<th>Reciepts</th>
 														<th class="text-center">Actions</th>
 													</tr>
 												</thead>
@@ -790,6 +792,7 @@
 														<td><span class="text-muted">May 03, 2019</span></td>
 														<td><span class="text-muted">Complete</span></td>
 														<td><span class="text-muted">10 Minutes before</span></td>
+														<td><a href="#"><i style="font-size: 20px;" class="icon-file-word"></i></a></td>
 														<td class="text-center">
 															<div class="list-icons">
 																<div class="dropdown">
@@ -868,7 +871,7 @@
 					</div>
 				</li>
 			</ul>
-		</div>
+		</div> 
 		<!-- /custom handle -->
 		
 	</div>
@@ -1151,19 +1154,23 @@
 											<table class="table datatable-basic" id="appointment_datatable_1">
 												<thead>
 													<tr>
-														<th>Appointment Type</th>
+														<th>Therapy Type</th>
 														<th>Appointment Date</th>
 														<th>Location</th>
 														<th>Set Reminder</th>
+														<th>Set to Monthly</th>
 														<th class="text-center">Actions</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td><span class="text-muted">Appointment type</span></td>
+														<td>Doctor's appointment<br><span class="text-muted">Dr. Marvin Cobler</span></td>
 														<td><span class="text-muted">Appointment date</span></td>
 														<td><span class="text-muted">Location</span></td>
 														<td><span class="text-muted">Set reminder</span></td>
+														<td>
+															<input type="checkbox" data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small">
+														</td>
 														<td class="text-center">
 															<div class="list-icons">
 																<div class="dropdown">
@@ -1198,12 +1205,12 @@
 									</div>
 									<div class="row">
 										<div class="col-md-12">
-											<table class="table datatable-basic">
+											<table class="table datatable-basic" id="client_vital_datatable_1">
 												<thead>
 													<tr>
 														<th><i style="margin-right: 8px;" class="icon-man"></i>Blood Pressure</th>
 														<th><i style="margin-right: 8px; color: red;" class="icon-heart6"></i>Heart Rate</th>
-														<th><i style="margin-right: 8px; color: red;" class="icon-pulse2"></i>Pulse</th>
+														<!-- <th><i style="margin-right: 8px; color: red;" class="icon-pulse2"></i>Pulse</th> -->
 														<th><i style="margin-right: 8px; color: green;" class="icon-stats-growth2"></i>Temperature</th>
 														<th><i style="margin-right: 8px;" class="icon-calendar22"></i>Date Taken</th>
 														<th class="text-center">Actions</th>
@@ -1213,7 +1220,7 @@
 													<tr>
 														<td><span class="text-muted">Blood Pressure</span></td>
 														<td><span class="text-muted">Heart Rate</span></td>
-														<td><span class="text-muted">Pulse</span></td>
+														<!-- <td><span class="text-muted">Pulse</span></td> -->
 														<td><span class="text-muted">Temperature</span></td>
 														<td><span class="text-muted">Date taken</span></td>
 														<td class="text-center">
@@ -1547,11 +1554,11 @@
 										</div>
 									</div>
 								</div>
-								<!-- ================//Notice Board================ -->
+								<!-- ================//Shopping List================ -->
 								<div class="tab-pane fade" id="schedule_shopping_list">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
-											<a href="javascript:;">Create new shopping list<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
+											<a href="javascript:;" data-toggle="modal" data-target="#modal_shopping_list">Create new shopping list<button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button></a>
 										</div>
 									</div>
 									<div class="row">
@@ -1562,6 +1569,7 @@
 														<th>Date Created</th>
 														<th>Status</th>
 														<th>Shopping Reminder</th>
+														<th>Reciepts</th>
 														<th class="text-center">Actions</th>
 													</tr>
 												</thead>
@@ -1570,6 +1578,7 @@
 														<td><span class="text-muted">May 03, 2019</span></td>
 														<td><span class="text-muted">Complete</span></td>
 														<td><span class="text-muted">10 Minutes before</span></td>
+														<td><a href="#"><i style="font-size: 24px;" class="icon-file-word"></i></a></td>
 														<td class="text-center">
 															<div class="list-icons">
 																<div class="dropdown">
@@ -1791,11 +1800,18 @@
           		<div class="col-md-8 offset-md-2">
           			<div class="form-group">
 						<label>Add appointment type</label>
-						<select class="form-control select-icons" data-placeholder="Select the type of appointment" data-fouc>
+						<select class="form-control select-icons" id="therapy_type" onchange="setTherapyType()" data-placeholder="Select the type of appointment" data-fouc>
 							<option></option>
 							<option value="doctor_appointment">Doctor's Appointment</option>
 							<option value="therapy_appointment">Therapy Appointment</option>
 						</select>
+					</div>
+          		</div>
+          	</div>
+          	<div class="row" id="therapy_doc_name" style="display: none;">
+          		<div class="col-md-8 offset-md-2">
+          			<div class="form-group">
+						<input type="text" class="form-control" placeholder="Enter doctor's name">
 					</div>
           		</div>
           	</div>
@@ -1980,6 +1996,104 @@
 </div>
 <!-- ==========//Add Vitals Modal============= -->
 
+<!-- ==========Add Shopping List Modal============= -->
+<div id="modal_shopping_list" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="margin: 0 auto;">Add Shopping List</h5>
+        <div>
+        	<li class="media">
+				<div class="mr-3" style="margin-right: .55rem!important;">
+					<a href="#">
+						<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+					</a>
+				</div>
+
+				<div class="media-body">
+					<div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
+					<span class="text-muted" style="font-size: 12px;">Total Care</span>
+				</div>
+			</li>
+        </div>
+      </div>
+      <form id="add_client_medication_form">
+        <div class="modal-body">
+          <form action="#">
+          	<div class="row">
+          		<div class="col-md-11 offset-md-1">
+          			<div class="form-group row">
+						<label class="col-md-12"><i class="icon-attachment2" style="margin-right: 10px;"></i>Attach Reciept</label>
+						<div class="col-lg-10">
+							<input type="file" class="file-input" data-fouc>
+						</div>
+					</div>
+          		</div>
+          		<div class="col-md-11 offset-md-1">
+					<div class="d-flex align-items-center">
+						<div class="mr-3">
+							<div class="form-group pt-2">
+								<a href="#"><i style="font-size: 30px;" class="icon-file-word"></i></a>
+							</div>
+						</div>
+						<div class="mr-3" style="margin-left: 140px; margin-bottom: 7px;">
+							<a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-file-empty"></i>Edit</a>
+						</div>
+						<div class="mr-3" style="margin-bottom: 7px;">
+							<a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-cross3"></i>Remove</a>
+						</div>
+					</div>
+				</div>
+          	</div>
+
+
+
+          	<div class="row">
+          		<div class="col-md-11 offset-md-1">
+          			<div class="form-group row">
+						<label class="col-md-12">Shopping List</label>
+						<div class="col-lg-10">
+							<div class="input-group">
+								<input type="text" class="form-control border-right-0" placeholder="Add to my shopping list">
+								<span class="input-group-append">
+									<button class="btn bg-blue" type="button">Add<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
+								</span>
+							</div>
+						</div>
+					</div>
+          		</div>
+          		<div class="col-md-11 offset-md-1">
+					<div class="d-flex align-items-center">
+						<div class="mr-3">
+							<div class="form-group pt-2">
+								<div class="form-check">
+									<label class="form-check-label">
+										<input type="checkbox" class="form-check-input-styled" data-fouc>
+										Toilet Paper
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="mr-3" style="margin-left: 140px; margin-bottom: 7px;">
+							<a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-file-empty"></i>Edit</a>
+						</div>
+						<div class="mr-3" style="margin-bottom: 7px;">
+							<a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-cross3"></i>Remove</a>
+						</div>
+					</div>
+				</div>
+          	</div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Done</span> </button>
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- ==========//Add Shopping List Modal============= -->
+
 <!-- ==========Client Bio Modal============= -->
 <div id="modal_clients_bio" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
@@ -2091,7 +2205,6 @@
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_basic.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/tables/datatables/datatables.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_responsive.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
@@ -2100,6 +2213,10 @@
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_tags_input.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/demo_pages/uploader_bootstrap.js"></script>
 	<!-- /theme JS files -->
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 
@@ -2154,7 +2271,7 @@
 	}
 
 
-$('#appointment_datatable, #appointment_datatable_1, #shopping_list_datatable, #shopping_list_datatable_1').DataTable({
+$('#appointment_datatable, #appointment_datatable_1, #shopping_list_datatable, #shopping_list_datatable_1, #client_vital_datatable, #client_vital_datatable_1').DataTable({
     columnDefs: [{ 
         orderable: true,
         targets: [ 3 ]
@@ -2210,4 +2327,14 @@ $('#appointment_reminder_checkbox').click(function(){
         $("#appointment_set_reminder").css("display","none");
     }
 });
+
+
+function setTherapyType(){
+	var type = $("#therapy_type").val();
+	if(type == "doctor_appointment"){
+		$("#therapy_doc_name").css("display","block");
+	}else{
+		$("#therapy_doc_name").css("display","none");
+	}
+}
 </script>

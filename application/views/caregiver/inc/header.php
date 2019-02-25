@@ -54,22 +54,11 @@
 <body>
 
 	<!-- Top Nav -->
-	<?php include(APPPATH."views/agency/inc/top_nav.php"); ?>
+	<?php include(APPPATH."views/caregiver/inc/top_nav.php"); ?>
 
 	<!-- Page content -->
 	<div class="page-content">
 
 	<!-- Side Bar Menu -->
-	<?php include(APPPATH."views/agency/inc/side_bar.php"); ?>
-		<?php if($this->session->flashdata("success")): ?>
-        <div class="alert alert-success border-0 alert-dismissible" align="center">
-        	<button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-        <?php echo $this->session->flashdata("success"); ?>
-        </div>
-  		<?php endif; ?>
-        <?php if($this->session->flashdata("error")): ?>
-        <div class="alert alert-danger border-0 alert-dismissible">
-  			<button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
- 		<?php echo $this->session->flashdata("error"); ?>
- 		</div>
-  		<?php endif; ?>
+	<?php include(APPPATH."views/caregiver/inc/side_bar.php"); ?>
+		

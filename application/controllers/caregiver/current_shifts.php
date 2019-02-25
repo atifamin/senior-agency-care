@@ -1,16 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Current_shifts extends CI_Controller {
 
 	public function index(){
 		$data["breadcrumb"] = "Notice Board";
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";
-		$this->load->view('caregiver/dashboard/index',$data);
-	}
-	
-	public function testing(){
-		echo "testing";
+		$this->load->view('caregiver/currentshifts/index',$data);
 	}
 }

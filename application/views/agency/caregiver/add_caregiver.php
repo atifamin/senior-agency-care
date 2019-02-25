@@ -231,8 +231,8 @@
         </fieldset>
         <h6><strong>Valid State License</strong></h6>
         <fieldset>
-          <div class="license_view">
-            <div class="row">
+          <div class="license_view" style="margin-bottom: 30px;">
+            <div class="row" style="margin-bottom: 30px;">
               <div class="col-md-12" align="center">
                 <input type="hidden" id="counter" value="1">
                 <button type="button" class="btn btn-outline bg-indigo-400 text-indigo-400 border-indigo-400" data-toggle="modal" data-target="#modal_form_license"><i class="icon-plus3"></i> ADD A NEW STATE LICENSE</button>
