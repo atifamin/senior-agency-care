@@ -167,7 +167,7 @@ var FormWizard = function() {
                 return form.valid();
             },
             onFinished: function (event, currentIndex) {
-				add_new_agency();
+				add_new_caregiver();
                 
             }
         });

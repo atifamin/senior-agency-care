@@ -12,12 +12,14 @@ class Caregiver extends CI_Controller {
     	//LoggedIn User ID
 		$userSession = $this->session->userdata("isAgencyLoggedIn");
 		$this->user_id = $userSession['user_id'];
+		$this->load->model("Caregiver_model");
 	}
 	
 	public function index(){
 		$data["breadcrumb"] = "Caregivers";
 		$data["heading"] = "Caregivers";
 		$data["url_segment"] = "caregivers";
+		$data['result'] = $this->Caregiver_model->getAll();
 		$this->load->view("agency/caregiver/index",$data);
 	}
 
@@ -45,7 +47,7 @@ class Caregiver extends CI_Controller {
 		$data['post'] = $this->input->post();
 		$data['file'] = 0;
 		if(isset($_FILES["media_license_document"])){
-			$data['file'] = $this->upload_license_file($_FILES["media_license_document"]);
+			$data['file'] = upload_file($_FILES["media_license_document"], "caregiver_license", 0);
 		}
 		$fromDate = date("Y-m-d");
 		$toDate = date("".$data['post']["valid_to_year"]."-".$data['post']["valid_to_month"]."-d");
@@ -54,32 +56,78 @@ class Caregiver extends CI_Controller {
 		$this->load->view("agency/caregiver/add_new_license_form", $data);
 	}
 	
-	public function upload_license_file($FILE){
-		$name = $FILE["name"];
-		$media_id = 0;
-		$fname=time().'_'.basename($FILE["name"]);
-		$fname = str_replace(" ","_",$fname);
-		$fname = str_replace("%","_",$fname);
-		$name_ext = explode(".", basename($FILE["name"]));
-		$name_ext = end($name_ext);
-		$uploaddir = "./uploads/caregiver/";
-		if (!file_exists($uploaddir)) {
-			mkdir($uploaddir, 0777, true);
+	public function register_caregiver(){
+		$post = $this->input->post();
+		$result = 'success';
+		//checking if user email is already exists
+		$checkUserExists = $this->common_model->listingRow("email", $post['email'], "caregiver");
+		if(count($checkUserExists)>0){
+			$result = 'email_exists';
+			echo $result;
+			return false;
 		}
-		$uploadfile = $uploaddir.$fname;
-		if (move_uploaded_file($FILE['tmp_name'], $uploadfile)){
-			$type = $FILE["type"];
-			$size = $FILE["size"];
-			$data["name"] = $name;
-			$data["file_name"] = $fname;
-			$data["file_type"] = $type;
-			$data["file_path"] = str_replace(".", "", $uploaddir);
-			$data["full_path"] = str_replace(".", "", $uploaddir).$fname;
-			$data["file_extension"] = pathinfo($uploadfile, PATHINFO_EXTENSION);
-			$data["file_size"] = $size;
-			$data["created_at"] = date('Y-m-d H:i:s');
+		
+		//Adding agency basic data into agency table
+		$caregiver['first_name'] = $post['first_name'];
+		$caregiver['last_name'] = $post['last_name'];
+		$caregiver['gender'] = $post['gender'];
+		$caregiver['position'] = $post['position'];
+		$caregiver['from_month'] = $post['from_month'];
+		$caregiver['from_year'] = $post['from_year'];
+		$caregiver['to_month'] = $post['to_month'];
+		$caregiver['to_year'] = $post['to_year'];
+		$caregiver['phone_number'] = $post['phone_number'];
+		$caregiver['email'] = $post['email'];
+		$caregiver['address'] = $post['address'];
+		$caregiver['country_id'] = $post['country_id'];
+		$caregiver['state_id'] = 0;
+		if(isset($post['state_id']))
+			$caregiver['state_id'] = $post['state_id'];
+		$caregiver['city_id'] = 0;
+		if(isset($post['city_id']))
+			$caregiver['city_id'] = $post['city_id'];
+		$caregiver['zipcode'] = $post['zipcode'];
+		$caregiver['emergency_contact_name'] = $post['emergency_contact_name'];
+		$caregiver['emergency_contact_number'] = $post['emergency_contact_number'];
+		$caregiver['caregiver_certifications'] = "";
+		if(isset($post['caregiver_certifications']))
+			$caregiver['caregiver_certifications'] = json_encode($post['caregiver_certifications']);
+		$caregiver['password'] = "";
+		$caregiver['status'] = "added";
+		$caregiver['created_at'] = date("Y-m-d H:i:s");
+		$caregiver['updated_at'] = date("Y-m-d H:i:s");
+		$caregiver_id = $this->common_model->insertGetIDQuery("caregiver", $caregiver);
+		
+		//uploading and updating profile picture of caregiver
+		if(isset($_FILES["profile_pic"]) && $_FILES["profile_pic"]['name']!=''){
+			$profilePicData = upload_file($_FILES["profile_pic"], "caregiver", $caregiver_id);
+			$profile['profile_pic'] = $this->common_model->insertGetIDQuery("media", $profilePicData);
+			$this->common_model->updateQuery("caregiver", "id", $caregiver_id, $profile);
+		}		
+		
+		//Adding caregiver license
+		if(isset($post['state_license'])){
+			foreach($post['state_license'] as $key=>$val){
+				$caregiver_license['caregiver_id'] = $caregiver_id;
+				$caregiver_license['state_license'] = $post['state_license'][$key];
+				$caregiver_license['valid_from_month'] = $post['valid_from_month'][$key];
+				$caregiver_license['valid_from_year'] = $post['valid_from_year'][$key];
+				$caregiver_license['valid_to_month'] = $post['valid_to_month'][$key];
+				$caregiver_license['valid_to_year'] = $post['valid_to_year'][$key];
+				$caregiver_license['created_at'] = date('Y-m-d H:i:s');
+				$caregiver_license['updated_at'] = date('Y-m-d H:i:s');
+				$caregiver_license_id = $this->common_model->insertGetIDQuery("caregiver_license", $caregiver_license);
+				//Adding caregiver license media
+				if(!empty($post['media_license_document'])){
+					$licence_media = (array)json_decode($post['media_license_document'][$key]);
+					$licence_media['module_id'] = $caregiver_license_id;
+					$licence_media['created_at'] = date("Y-m-d H:i:s");
+					$this->common_model->insertGetIDQuery("media", $licence_media);
+				}
+			}
 		}
-		return $data;
+		$this->session->set_flashdata("success", "You have added a new caregiver successfully.");
+		echo $result;
 	}
 	
 	public function delete_license_doc(){
@@ -102,6 +150,23 @@ class Caregiver extends CI_Controller {
 		$data["breadcrumb"] = "Caregivers";
 		$data["heading"] = "Caregivers";
 		$data["url_segment"] = "caregivers";
+		$data['result'] = $this->Caregiver_model->getAll();
 		$this->load->view("agency/caregiver/send_invite_to_caregiver",$data);
+	}
+	
+	public function send_invite($caregiver_id){
+		$this->load->model("Settings_model");
+		$template = $this->Settings_model->getEmailTemplateByName("Caregiver - Invitation");    
+		$subject = $template->setting_name;
+		$message = $template->setting_value;
+		/*$subject = str_replace("[@UploadedPersonFirstName]",$UploadedPerson->first_name,$subject);
+		$subject = str_replace("[@UploadedPersonLastName]",$UploadedPerson->last_name,$subject);
+		$message = str_replace("[@RecipientFirstName]",$RecipientPerson->first_name,$message);
+		$message = str_replace("[@RecipientLastName]",$RecipientPerson->last_name,$message);
+		$message = str_replace("[@UploadedPersonFirstName]",$UploadedPerson->first_name,$message);
+		$message = str_replace("[@UploadedPersonLastName]",$UploadedPerson->last_name,$message);
+		$message = str_replace("[@ProjectName]","TESTING - DO NOT DELETE",$message);
+		$message = str_replace("[@FilesName]",$FilesName,$message);
+		sendEmail($RecipientPerson->email_address,$subject,$message);*/
 	}
 }
