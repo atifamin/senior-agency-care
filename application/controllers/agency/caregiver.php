@@ -171,5 +171,8 @@ class Caregiver extends CI_Controller {
 		$message = str_replace("[@AgencyName]",$agencyDetail->full_name,$message);
 		$message = str_replace("[@JoinUrl]",$agencyDetail->full_name,$message);
 		sendEmail($caregiverDetail->email,$subject,$message);
+		
+		$this->common_model->updateQuery("caregiver", "id", $caregiver_id, array("status"=>"pending"));
+		
 	}
 }
