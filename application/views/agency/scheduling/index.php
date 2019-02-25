@@ -75,8 +75,8 @@
 				</div>
 			</div>
 
-			<ul class="media-list media-list-linked">
-				<!-- <li class="media font-weight-semibold border-0 py-1">Team leaders</li> -->
+			 <ul class="media-list media-list-linked">
+				 <li class="media font-weight-semibold border-0 py-1">Team leaders</li> 
 
 				<li>
 					<div class="media">
@@ -93,9 +93,6 @@
 					</div>
 
 					<div class="collapse" id="james3">
-							<!-- <div class="card-header bg-white header-elements-sm-inline" style="text-align: center; background-color: #fafafa !important;">
-								<h4 style="margin: 0 auto;">Client's Profile</h4>
-							</div> -->
 						<div class="pb-1">
 							<div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
 								<div class="navbar-collapse" id="navbar-demo-light">
@@ -874,7 +871,7 @@
 					</div>
 				</li>
 			</ul>
-		</div>
+		</div> 
 		<!-- /custom handle -->
 		
 	</div>
@@ -1557,7 +1554,7 @@
 										</div>
 									</div>
 								</div>
-								<!-- ================//Notice Board================ -->
+								<!-- ================//Shopping List================ -->
 								<div class="tab-pane fade" id="schedule_shopping_list">
 									<div class="row">
 										<div class="col-md-12" style="text-align: center;">
