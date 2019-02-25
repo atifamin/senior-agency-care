@@ -157,14 +157,19 @@ class Caregiver extends CI_Controller {
 	public function send_invite($caregiver_id){
 		$this->load->model("Settings_model");
 		$this->load->model("Agency_model");
-		//Agency Data
+		$this->load->model("Caregiver_model");
+
 		$agencyDetail = $this->Agency_model->getAgencyById($this->user_id);
+		$caregiverDetail = $this->Caregiver_model->getCaregiverById($caregiver_id);
 		
 		$template = $this->Settings_model->getEmailTemplateByName("Caregiver - Invitation");    
 		$subject = $template->setting_name;
 		$message = $template->setting_value;
-		$subject = str_replace("[@AgencyName]","Adeel Ahmad",$subject);
-		$message = str_replace("[@ManagerFirstName]","Atif Amin",$message);
+		$subject = str_replace("[@AgencyName]",$agencyDetail->full_name,$subject);
+		$message = str_replace("[@CaregiverFirstName]",$caregiverDetail->first_name,$message);
+		$message = str_replace("[@CaregiverLastName]",$caregiverDetail->last_name,$message);
+		$message = str_replace("[@AgencyName]",$agencyDetail->full_name,$message);
+		$message = str_replace("[@JoinUrl]",$agencyDetail->full_name,$message);
 		sendEmail("addi.ahmad9@gmail.com",$subject,$message);
 	}
 }

@@ -31,6 +31,17 @@ class Caregiver_model extends CI_Model{
 		return $result;
 	}
 	
+	public function getCaregiverById($caregiver_id){
+		$caregiverDetail = $this->common_model->listingRow("id",$caregiver_id,"caregiver");
+		if(count($caregiverDetail)>0){
+			$caregiverLicense = $this->common_model->listingResultWhere("caregiver_id",$caregiver_id,"caregiver_license");
+			if(count($caregiverLicense)>0){
+				$caregiverDetail->license = $caregiverLicense;
+			}
+		}
+		return $caregiverDetail;
+	}
+	
 }
 
 ?>
