@@ -9,10 +9,6 @@
 						<div class="col-md-5">
 							<a href="<?php echo site_url("agency/clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a client</a>
 						</div>
-						<!-- <span style="margin: 10px auto; font-size: 10px;">OR</span>
-						<div class="col-md-5">
-							<a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a>
-						</div> -->
 					</div>
 				</div>
 				<div class="col-md-6">

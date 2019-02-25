@@ -854,8 +854,8 @@
         		<div class="form-group">
 					<select data-placeholder="Select Payroll Period" class="form-control select" data-fouc>
 						<option></option>
-						<option value="week">Week</option>
-						<option value="bi-weekly">bi-weekly</option>
+						<option value="week">Weekly</option>
+						<option value="bi-weekly">Bi-weekly</option>
 						<option value="month">Monthly</option>
 					</select>
 					<span>(All periods are set to begin from Monday to Sunday)</span>
@@ -884,9 +884,9 @@
         				<div class="form-group">
 							<select data-placeholder="Select how often to add insurance cost to caregiver payroll" class="form-control select" data-fouc>
 								<option></option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
+								<option value="Weekly">Weekly</option>
+								<option value="Bi-weekly">Bi-weekly</option>
+								<option value="Monthly">Monthly</option>
 							</select>
 						</div>
         			</div>
@@ -916,9 +916,9 @@
         		<div class="form-group">
 					<select data-placeholder="Select how often to add travel milage cost to payroll" class="form-control select" data-fouc>
 						<option></option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
+						<option value="Weekly">Weekly</option>
+						<option value="Bi-weekly">Bi-weekly</option>
+						<option value="Monthly">Monthly</option>
 					</select>
 				</div>
         	</div>
