@@ -31,7 +31,7 @@
       <div class="card-header" style="text-align: center;">
         <h6>Add a new caregiver</h6>
       </div>
-      <form class="wizard-form steps-validation" action="#" data-fouc>
+      <form class="wizard-form steps-validation" action="#" data-fouc id="caregiver_form">
         <h6><strong>Profile</strong></h6>
         <fieldset>
           <div class="row">
@@ -65,7 +65,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Position at company:</label>
-                <select name="position" data-placeholder="Choose a Country..." class="form-control form-control-select2" data-fouc>
+                <select name="position" data-placeholder="Choose a Position..." class="form-control form-control-select2" data-fouc>
                   <option></option>
                   <?php foreach(CON_CAREGIVER_POSITIONS as $positionKey=>$positionVal): ?>
                   <option value="<?php echo $positionKey; ?>"><?php echo $positionVal; ?></option>
@@ -259,7 +259,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>State license #: <span class="text-danger">*</span></label>
-                <input type="text" name="state_license" class="form-control required" placeholder="Add state license #" data-validation="required" required>
+                <input type="text" name="state_license" id="state_license" class="form-control required" placeholder="Add state license #" data-validation="required" required>
               </div>
             </div>
           </div>
@@ -269,8 +269,8 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
-                      <option></option>
+                    <select name="valid_from_month" id="valid_from_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                      <option value=""></option>
                       <?php foreach(CON_MONTHS as $key2=>$val2): ?>
                       <option value="<?php echo $key2; ?>"><?php echo $val2; ?></option>
                       <?php endforeach; ?>
@@ -279,8 +279,8 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
-                      <option></option>
+                    <select name="valid_from_year" id="valid_from_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                      <option value=""></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                       <?php } ?>
@@ -294,8 +294,8 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
-                      <option></option>
+                    <select name="valid_to_month" id="valid_to_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                      <option value=""></option>
                       <?php foreach(CON_MONTHS as $key3=>$val3): ?>
                       <option value="<?php echo $key3; ?>"><?php echo $val3; ?></option>
                       <?php endforeach; ?>
@@ -304,8 +304,8 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
-                      <option></option>
+                    <select name="valid_to_year" id="valid_to_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                      <option value=""></option>
                       <?php for($i=2019; $i<=2029; $i++){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                       <?php } ?>
@@ -319,7 +319,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="d-block">Upload License Document(optional):</label>
-                <input name="media_license_document" type="file" class="form-input-styled" data-fouc>
+                <input name="media_license_document" type="file" id="media_license_document" class="form-input-styled" data-fouc>
                 <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
             </div>
           </div>
@@ -386,6 +386,9 @@ $("#add_new_license_form").on("submit", function(e){
 					$("#license_progress > .progress-bar").css('width', percentComplete + '%');
 					$("#license_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
 					if(percentComplete==100){
+						$("#license_progress > .progress-bar").css('width', '0%');
+						$("#license_progress > .progress-bar").html('<span>0% Complete</span>');
+						$("#license_progress").hide();
 						$("#modal_form_license").modal("hide");
 						swal({
 						  title: 'Good job!',
@@ -409,5 +412,64 @@ function delete_license(id){
 		$.post("<?php echo site_url("agency/caregiver/delete_license_doc"); ?>", {id:id, imageD:imageD}).done(function(e){});
 	}
 	$("#license_row_"+id+"").remove();
+}
+
+function add_new_caregiver(){
+	var password = $("input[name=password]").val();
+	var re_password = $("input[name=re_password]").val();
+	if(password!=re_password){
+		swal({
+			title: 'Error!',
+			text: 'You password does not match!',
+			type: 'error'
+		});
+		return false;
+	}
+	
+	var formData = new FormData($("#caregiver_form")[0]);
+	$.ajax({
+		url: '<?php echo site_url("agency/caregiver/register_caregiver"); ?>',
+		type: 'POST',
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(e){
+			if(e=="email_exists"){
+				swal({
+					title: 'Error!',
+					text: 'This email is already exists!',
+					type: 'error'
+				});
+			}
+			
+			if(e=="success"){
+				window.location = '<?php echo site_url("agency/caregiver/add_caregiver"); ?>';
+			}
+		},
+		xhr: function () {
+			var xhr = new window.XMLHttpRequest();
+			xhr.upload.addEventListener("progress", function (evt) {
+				if (evt.lengthComputable) {
+					var percentComplete = evt.loaded / evt.total;
+					percentComplete = parseInt(percentComplete * 100);
+					$("#agency_progress > .progress-bar").css('width', percentComplete + '%');
+					$("#agency_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
+					/*if(percentComplete==100){
+						window.location = '<?php echo site_url("agency/dashboard"); ?>';
+					}*/
+				}
+			}, false);
+			return xhr;
+		},
+	});
+	return false;
+	/*swal({
+		title: 'Good job! Your company profile is now ready. Now lets get ready for business with these few steps.',
+		text: 'Now lets get ready for business with these few steps.',
+		html: '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp&nbsp&nbsp<a style="color:#555;" href="#"><strong>Add Cargivers</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp<a style="color:#555;" href="#"><strong>Add Clients</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp<a style="color:#555;" href="#"><strong>Create Schedules</strong></a>',
+		confirmButtonText: 'Lets Get Started',
+		type: 'success'
+	});*/
 }
 </script>
