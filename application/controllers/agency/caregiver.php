@@ -170,6 +170,6 @@ class Caregiver extends CI_Controller {
 		$message = str_replace("[@CaregiverLastName]",$caregiverDetail->last_name,$message);
 		$message = str_replace("[@AgencyName]",$agencyDetail->full_name,$message);
 		$message = str_replace("[@JoinUrl]",$agencyDetail->full_name,$message);
-		sendEmail("addi.ahmad9@gmail.com",$subject,$message);
+		sendEmail($caregiverDetail->email,$subject,$message);
 	}
 }
