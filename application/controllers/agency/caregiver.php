@@ -156,17 +156,15 @@ class Caregiver extends CI_Controller {
 	
 	public function send_invite($caregiver_id){
 		$this->load->model("Settings_model");
+		$this->load->model("Agency_model");
+		//Agency Data
+		$agencyDetail = $this->Agency_model->getAgencyById($this->user_id);
+		
 		$template = $this->Settings_model->getEmailTemplateByName("Caregiver - Invitation");    
 		$subject = $template->setting_name;
 		$message = $template->setting_value;
-		/*$subject = str_replace("[@UploadedPersonFirstName]",$UploadedPerson->first_name,$subject);
-		$subject = str_replace("[@UploadedPersonLastName]",$UploadedPerson->last_name,$subject);
-		$message = str_replace("[@RecipientFirstName]",$RecipientPerson->first_name,$message);
-		$message = str_replace("[@RecipientLastName]",$RecipientPerson->last_name,$message);
-		$message = str_replace("[@UploadedPersonFirstName]",$UploadedPerson->first_name,$message);
-		$message = str_replace("[@UploadedPersonLastName]",$UploadedPerson->last_name,$message);
-		$message = str_replace("[@ProjectName]","TESTING - DO NOT DELETE",$message);
-		$message = str_replace("[@FilesName]",$FilesName,$message);
-		sendEmail($RecipientPerson->email_address,$subject,$message);*/
+		$subject = str_replace("[@AgencyName]","Adeel Ahmad",$subject);
+		$message = str_replace("[@ManagerFirstName]","Atif Amin",$message);
+		sendEmail("addi.ahmad9@gmail.com",$subject,$message);
 	}
 }

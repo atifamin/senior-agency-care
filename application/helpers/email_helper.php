@@ -12,7 +12,7 @@ function sendEmail($to,$subject,$message,$cc=null,$bcc=null,$attachment=null,$re
 	$smtp_security    		= $ci->settings_model->getBySettingName('Enterprise Settings','Email Settings','smtp_security');
 	$email_signature  	  	= $ci->settings_model->getBySettingName('Enterprise Settings','Email Settings','email_signature');
 	$disclaimer  	  		= $ci->settings_model->getBySettingName('Enterprise Settings','Email Settings','disclaimer');
-	$unsubscribe  	  		= $ci->settings_model->getBySettingName('Enterprise Settings','Email Settings','unsubscribe');
+	//$unsubscribe  	  		= $ci->settings_model->getBySettingName('Enterprise Settings','Email Settings','unsubscribe');
 	
 	//error_reporting(0);
 	$email_obj=& get_instance();
@@ -32,20 +32,20 @@ function sendEmail($to,$subject,$message,$cc=null,$bcc=null,$attachment=null,$re
 		$config['smtp_crypto']  = $smtp_security;
 	$email_obj->email->initialize($config);
 	if($from != null){
-	$email_obj->email->from($from, 'Intupro');
+	$email_obj->email->from($from, 'Senior Care Agency');
 	}else{
-	$email_obj->email->from("info@intupro.com", 'Intupro');
+	$email_obj->email->from("info@seniorcare.com", 'Senior Care Agency');
 	}
 	$email_obj->email->to($to); //send email to active user
 	$email_obj->email->subject($subject);
 	if($reply_to!=null){
-		$email_obj->email->reply_to($reply_to, 'Intupro');
+		$email_obj->email->reply_to($reply_to, 'Senior Care Agency');
 	}
 	$message = $message;
-	$message .= $email_signature.'<br><br>';
+	/*$message .= $email_signature.'<br><br>';
 	$message .= $disclaimer;
 	$unsubscribe = str_replace("[@unsubscribe_link]", site_url("unsubscribe"), $unsubscribe);
-	$message .= $unsubscribe;
+	$message .= $unsubscribe;*/
 	
 	$email_obj->email->message($message);
 
