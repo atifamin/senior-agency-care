@@ -155,6 +155,7 @@ class Caregiver extends CI_Controller {
 	}
 	
 	public function send_invite($caregiver_id){
+		$random = randomString(75);
 		$this->load->model("Settings_model");
 		$this->load->model("Agency_model");
 		$this->load->model("Caregiver_model");
@@ -169,10 +170,10 @@ class Caregiver extends CI_Controller {
 		$message = str_replace("[@CaregiverFirstName]",$caregiverDetail->first_name,$message);
 		$message = str_replace("[@CaregiverLastName]",$caregiverDetail->last_name,$message);
 		$message = str_replace("[@AgencyName]",$agencyDetail->full_name,$message);
-		$message = str_replace("[@JoinUrl]",$agencyDetail->full_name,$message);
+		$message = str_replace("[@JoinUrl]",site_url()."caregiver/register?id=".$random."",$message);
 		sendEmail($caregiverDetail->email,$subject,$message);
 		
-		$this->common_model->updateQuery("caregiver", "id", $caregiver_id, array("status"=>"pending"));
+		$this->common_model->updateQuery("caregiver", "id", $caregiver_id, array("status"=>"pending", "register_code"=>$random));
 		
 	}
 }
