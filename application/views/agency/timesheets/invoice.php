@@ -87,32 +87,37 @@
 			        <thead>
 			            <tr>
 			                <th>Caregiver</th>
-			                <th>Hours Worked</th>
-			                <th>Holiday/Overtime</th>
-			                <th>Hourly Rate</th>
+			                <th>Regular Hours</th>
+			                <th>Regular Rate</th>
+			                <th>Holiday/Overtime Hrs</th>
+			                <th>Holiday/Overtime Rate</th>
 			                <th>Total</th>
+
 			            </tr>
 			        </thead>
 			        <tbody>
 			            <tr>
 			                <td>Carl Swan</td>
-			                <td>80</td>
-			                <td>0</td>
+			                <td>40</td>
+			                <td>25</td>
 			                <td>30</td>
+			                <td>40</td>
 			                <td>$3,990</td>
 			            </tr>
 			            <tr>
 			                <td>Carl Swan</td>
-			                <td>80</td>
-			                <td>0</td>
+			                <td>40</td>
+			                <td>25</td>
 			                <td>30</td>
+			                <td>40</td>
 			                <td>$3,990</td>
 			            </tr>
 			            <tr>
 			                <td>Carl Swan</td>
-			                <td>80</td>
-			                <td>45*6</td>
+			                <td>40</td>
+			                <td>25</td>
 			                <td>30</td>
+			                <td>40</td>
 			                <td>$3,990</td>
 			            </tr>
 			        </tbody>
@@ -120,8 +125,12 @@
 			</div>
 
 			<div class="card-body">
+				<div class="row" style="text-align: right;">
+					<div class="col-md-8">
+						<h6>Total Due:</h6>
+					</div>
+				</div>
 				<div class="d-md-flex flex-md-wrap">
-
 					<div class="pt-2 mb-3 wmin-md-400 ml-auto">
 						<div class="table-responsive">
 							<table class="table">
@@ -129,6 +138,10 @@
 									<tr>
 										<th>Subtotal:</th>
 										<td class="text-right">$7,000</td>
+									</tr>
+									<tr>
+										<th>Tax: (25%)</th>
+										<td class="text-right">$1,750</td>
 									</tr>
 									<tr>
 										<th>Total:</th>
