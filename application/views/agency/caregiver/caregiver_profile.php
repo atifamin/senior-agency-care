@@ -67,7 +67,7 @@
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>
 						</div>
 
@@ -222,7 +222,7 @@
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Profile Image:</strong></td>
-													<td><img src="<?php echo base_url();?>assets/images/placeholders/avatar.png" class="rounded-circle" width="36" height="36" alt=""></td>
+													<td><img src="<?php echo base_url();?>assets/images/userimg/face24.jpg" class="rounded-circle" width="36" height="36" alt=""></td>
 												</tr>
 											</table>
 										</div>

@@ -62,7 +62,7 @@
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>
 						</div>
 

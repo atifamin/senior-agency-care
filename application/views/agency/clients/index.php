@@ -65,7 +65,7 @@
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face20.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>
 						</div>
 
@@ -93,7 +93,7 @@
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>
 						</div>
 
@@ -121,7 +121,7 @@
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face24.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>
 						</div>
 
@@ -149,7 +149,7 @@
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face7.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>
 						</div>
 

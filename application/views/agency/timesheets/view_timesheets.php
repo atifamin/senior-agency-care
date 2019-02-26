@@ -55,7 +55,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 						</td>
 						<td><span><strong style="font-weight: 400;">
 							<a href="#">
-							<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+							<img src="<?php echo base_url(); ?>assets/images/userimg/face1.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a></strong></span>
 						</td>
 						<td class="text-center">
@@ -84,7 +84,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 					<div class="media-body" style="padding-left: 34px; padding-bottom: 10px; padding-top: 10px;">
 						<div class="media-title font-weight-semibold">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face2.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>James James
 						</div>
 					</div>
@@ -313,7 +313,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 					<div class="media-body" style="padding-left: 34px; padding-bottom: 10px; padding-top: 10px;">
 						<div class="media-title font-weight-semibold">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face3.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>Jordan Sparks
 						</div>
 					</div>
@@ -556,7 +556,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 					<div class="media-body" style="padding-left: 34px; padding-bottom: 10px; padding-top: 10px;">
 						<div class="media-title font-weight-semibold">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face4.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>Collin Powell
 						</div>
 					</div>
