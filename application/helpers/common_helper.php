@@ -90,6 +90,12 @@ function caregiver_image($user_id){
 	return $image_url;
 }
 
+function caregiver_Detail($caregiver_id){
+	$ci =& get_instance();
+	$ci->load->model("Caregiver_model");
+	return $ci->Caregiver_model->getCaregiverById($caregiver_id);
+}
+
 function randomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);

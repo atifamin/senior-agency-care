@@ -5,13 +5,13 @@ class Messaging extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		if(!$this->session->userdata("isAgencyLoggedIn")){
+		if(!$this->session->userdata("isCaregiverLoggedIn")){
 			redirect("login");
 		}
 
-    	//LoggedIn User ID
-		$userSession = $this->session->userdata("isAgencyLoggedIn");
-		$this->user_id = $userSession['user_id'];
+		//LoggedIn Caregiver ID
+		$sessionData = $this->session->userdata("isCaregiverLoggedIn");
+		$this->caregiver_id = $sessionData['user_id'];
 	}
 	
 	public function index(){

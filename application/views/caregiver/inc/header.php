@@ -1,3 +1,8 @@
+<?php
+	$profile_image = caregiver_image($this->caregiver_id);
+	$profile_detail = caregiver_Detail($this->caregiver_id);
+	//print_array($profile_detail);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
