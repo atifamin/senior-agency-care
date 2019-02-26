@@ -90,7 +90,6 @@
 										</li>
 									</ul>
 								</div>
-
 								<div class="tab-pane fade" id="client_shifts_1">
 									<ul class="media-list">
 										<li class="media" style="border: none !important;">
@@ -105,7 +104,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-pink-400 border-pink-400 text-pink-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-infinite"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -115,7 +114,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-cash3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -125,7 +124,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-cash3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -135,7 +134,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-success-400 border-success-400 text-success-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-checkmark3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -159,7 +158,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-pink-400 border-pink-400 text-pink-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-infinite"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -169,7 +168,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-cash3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -179,7 +178,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-cash3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -189,7 +188,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-success-400 border-success-400 text-success-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-checkmark3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -213,7 +212,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-pink-400 border-pink-400 text-pink-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-infinite"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -223,7 +222,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-cash3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -233,7 +232,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-cash3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -243,7 +242,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-success-400 border-success-400 text-success-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-checkmark3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -267,7 +266,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-pink-400 border-pink-400 text-pink-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-infinite"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -277,7 +276,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-cash3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -287,7 +286,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-cash3"></i></a>
 											</div>
 
 											<div class="media-body">
@@ -297,7 +296,7 @@
 										</li>
 										<li class="media" style="border: none !important;">
 											<div class="mr-3">
-												<a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+												<a href="#" class="btn btn-outline bg-success-400 border-success-400 text-success-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-checkmark3"></i></a>
 											</div>
 
 											<div class="media-body">
