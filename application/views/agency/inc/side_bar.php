@@ -23,7 +23,7 @@
 					<div class="sidebar-user-material-body">
 						<div class="card-body text-center">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face6.jpg" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
 							</a>
 							<h6 class="mb-0 text-white text-shadow-dark">Victoria Baker</h6>
 							<span class="font-size-sm text-white text-shadow-dark">Santa Ana, CA</span>

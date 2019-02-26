@@ -65,7 +65,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 								<li class="media">
 									<div class="mr-3">
 										<a href="#">
-											<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">
+											<img src="http://localhost/senior-agency-care/assets/images/userimg/face1.jpg" class="rounded-circle" width="40" height="40" alt="">
 										</a>
 									</div>
 
@@ -78,54 +78,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 								<li class="media">
 									<div class="mr-3">
 										<a href="#">
-											<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">
-										</a>
-									</div>
-
-									<div class="media-body" style="margin-top: 10px;">
-										<div class="media-title font-weight-semibold">James Alexander</div>
-									</div>
-								</li>
-							</td>
-							<td class="text-center">
-								<div class="list-icons">
-									<div class="dropdown">
-										<a href="#" class="list-icons-item" data-toggle="dropdown">
-											<i class="icon-menu9"></i>
-										</a>
-
-										<div class="dropdown-menu dropdown-menu-right">
-											<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Current Shift</a>
-											<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Current Shift</a>
-											<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Current Shift</a>
-										</div>
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td><span class="text-muted">10:30am - 12:30pm</span>
-								<i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i>
-							</td>
-
-							<td>
-								<li class="media">
-									<div class="mr-3">
-										<a href="#">
-											<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">
-										</a>
-									</div>
-
-									<div class="media-body" style="margin-top: 10px;">
-										<div class="media-title font-weight-semibold">James Alexander</div>
-									</div>
-								</li>
-							</td>
-							<td>
-								<li class="media">
-									<div class="mr-3">
-										<a href="#">
-											<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">
+											<img src="http://localhost/senior-agency-care/assets/images/userimg/face2.jpg" class="rounded-circle" width="40" height="40" alt="">
 										</a>
 									</div>
 
@@ -154,11 +107,12 @@ include(APPPATH."views/agency/inc/header.php");?>
 							<td><span class="text-muted">10:30am - 12:30pm</span>
 								<i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i>
 							</td>
+
 							<td>
 								<li class="media">
 									<div class="mr-3">
 										<a href="#">
-											<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">
+											<img src="http://localhost/senior-agency-care/assets/images/userimg/face3.jpg" class="rounded-circle" width="40" height="40" alt="">
 										</a>
 									</div>
 
@@ -171,7 +125,53 @@ include(APPPATH."views/agency/inc/header.php");?>
 								<li class="media">
 									<div class="mr-3">
 										<a href="#">
-											<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">
+											<img src="http://localhost/senior-agency-care/assets/images/userimg/face4.jpg" class="rounded-circle" width="40" height="40" alt="">
+										</a>
+									</div>
+
+									<div class="media-body" style="margin-top: 10px;">
+										<div class="media-title font-weight-semibold">James Alexander</div>
+									</div>
+								</li>
+							</td>
+							<td class="text-center">
+								<div class="list-icons">
+									<div class="dropdown">
+										<a href="#" class="list-icons-item" data-toggle="dropdown">
+											<i class="icon-menu9"></i>
+										</a>
+
+										<div class="dropdown-menu dropdown-menu-right">
+											<a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Current Shift</a>
+											<a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Current Shift</a>
+											<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Current Shift</a>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="text-muted">10:30am - 12:30pm</span>
+								<i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i>
+							</td>
+							<td>
+								<li class="media">
+									<div class="mr-3">
+										<a href="#">
+											<img src="http://localhost/senior-agency-care/assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
+										</a>
+									</div>
+
+									<div class="media-body" style="margin-top: 10px;">
+										<div class="media-title font-weight-semibold">James Alexander</div>
+									</div>
+								</li>
+							</td>
+							<td>
+								<li class="media">
+									<div class="mr-3">
+										<a href="#">
+											<img src="http://localhost/senior-agency-care/assets/images/userimg/face6.jpg" class="rounded-circle" width="40" height="40" alt="">
 										</a>
 									</div>
 

@@ -23,7 +23,7 @@
 					<div class="sidebar-user-material-body">
 						<div class="card-body text-center">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholders/avatar.png" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face10.jpg" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
 							</a>
 							<h6 class="mb-0 text-white text-shadow-dark">Victoria Baker</h6>
 							<span class="font-size-sm text-white text-shadow-dark">Santa Ana, CA</span>
@@ -80,7 +80,7 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="<?php echo site_url("agency/dashboard"); ?>" class="nav-link <?php if($url_segment=="notice board"){echo 'active';} ?>">
+							<a href="<?php echo site_url("caregiver/dashboard"); ?>" class="nav-link <?php if($url_segment=="notice board"){echo 'active';} ?>">
 								<i class="icon-home4"></i>
 								<span>
 									Notice Board
@@ -97,20 +97,20 @@
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="caregivers"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>My Schedule</span></a>
+							<a href="#" class="nav-link <?php if($url_segment=="My Schedule"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>My Schedule</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item <?php if($url_segment=="caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("agency/caregiver"); ?>" class="nav-link ">View Caregivers</a></li>
-								<li class="nav-item <?php if($url_segment=="add_caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="nav-link">Add Caregivers</a></li>
-								<li class="nav-item"><a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="nav-link">Invite Caregivers</a></li>
+								<li class="nav-item <?php if($url_segment=="caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("caregiver/schedule"); ?>" class="nav-link ">View Caregivers</a></li>
+								<li class="nav-item <?php if($url_segment=="add_caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("caregiver/caregiver/add_caregiver"); ?>" class="nav-link">Add Caregivers</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/caregiver/send_invite_to_caregiver"); ?>" class="nav-link">Invite Caregivers</a></li>
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link <?php if($url_segment=="clients"){echo 'active';} ?>"><i class="icon-stack"></i> <span>My Clients</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/clients"); ?>" class="nav-link active">View Clients</a></li>
-								<li class="nav-item"><a href="<?php echo site_url("agency/clients/add_client"); ?>" class="nav-link">Add Clients</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/clients"); ?>" class="nav-link active">View Clients</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/clients/add_client"); ?>" class="nav-link">Add Clients</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
 						</li>
@@ -118,7 +118,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="scheduling"){echo 'active';} ?>"><i class="icon-calendar3"></i> <span>Time Sheets</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/scheduling"); ?>" class="nav-link active">View Scheduling</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/scheduling"); ?>" class="nav-link active">View Scheduling</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
@@ -127,7 +127,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="payroll"){echo 'active';} ?>"><i class="icon-people"></i> <span>Payroll</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/payroll"); ?>" class="nav-link active">Payroll</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/payroll"); ?>" class="nav-link active">Payroll</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
@@ -136,7 +136,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="masseging center"){echo 'active';} ?>"><i class="icon-cash2"></i> <span>Client Charts</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/messaging"); ?>" class="nav-link active">Messages</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/messaging"); ?>" class="nav-link active">Messages</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
@@ -200,7 +200,7 @@
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
-							<a href="<?php echo site_url("agency/dashboard"); ?>" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+							<a href="<?php echo site_url("caregiver/dashboard"); ?>" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
 							<span class="breadcrumb-item active"><?php echo $breadcrumb; ?></span>
 						</div>
 

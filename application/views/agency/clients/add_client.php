@@ -400,7 +400,7 @@
 						<div class="col-md-3 offset-md-1">
 							<div class="d-flex align-items-center">
 								<div class="mr-3">
-									<img src="<?php echo base_url(); ?>assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">
+									<img src="<?php echo base_url(); ?>assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
 								</div>
 								<div>
 									<a href="#" class="text-default font-weight-semibold letter-icon-title">Margo Baker</a>
@@ -416,7 +416,7 @@
 						<div class="col-md-3 offset-md-1">
 							<div class="d-flex align-items-center">
 								<div class="mr-3">
-									<img src="<?php echo base_url(); ?>assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">
+									<img src="<?php echo base_url(); ?>assets/images/userimg/face17.jpg" class="rounded-circle" width="40" height="40" alt="">
 								</div>
 								<div>
 									<a href="#" class="text-default font-weight-semibold letter-icon-title">Margo Baker</a>

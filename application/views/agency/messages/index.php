@@ -11,8 +11,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="nav nav-tabs nav-tabs-bottom">
-				<li class="nav-item" style="padding-right: 30px;"><a href="#all_messages" class="nav-link active" data-toggle="tab"><img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="" style="margin-right: 10px;">All Messages</a></li>
-				<li class="nav-item" style="padding-right: 30px;"><a href="#client_group_chat" class="nav-link" data-toggle="tab"><img src="http://localhost/senior-agency-care/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="" style="margin-right: 10px;">Group Messages</a></li>
+				<li class="nav-item" style="padding-right: 30px;"><a href="#all_messages" class="nav-link active" data-toggle="tab"><img src="<?php echo base_url(); ?>/assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt="" style="margin-right: 10px;">All Messages</a></li>
+				<li class="nav-item" style="padding-right: 30px;"><a href="#client_group_chat" class="nav-link" data-toggle="tab"><img src="http://localhost/senior-agency-care/assets/images/userimg/face4.jpg" class="rounded-circle" width="40" height="40" alt="" style="margin-right: 10px;">Group Messages</a></li>
 			</ul>
 
 			<div class="tab-content">
@@ -36,7 +36,7 @@
 								<div class="card-header">
 									<h6 class="card-title">
 										<a data-toggle="collapse" class="collapsed text-default" href="#accordion-item-group1">
-											<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle mr-2" width="22" height="22" alt="">
+											<img src="<?php echo base_url(); ?>/assets/images/userimg/face5.jpg" class="rounded-circle mr-2" width="22" height="22" alt="">
 											James Dewalt
 											<span class="badge badge-success badge-pill float-right" style="margin-left: 15px; margin-top: 2px; font-size: 10px;">65</span>
 										</a>
@@ -49,7 +49,7 @@
 											<li class="media">
 												<div class="mr-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 
@@ -67,7 +67,7 @@
 
 												<div class="ml-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 											</li>
@@ -75,7 +75,7 @@
 											<li class="media">
 												<div class="mr-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 
@@ -97,7 +97,7 @@
 
 												<div class="ml-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 											</li>
@@ -105,7 +105,7 @@
 											<li class="media">
 												<div class="mr-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 
@@ -122,7 +122,7 @@
 
 												<div class="ml-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 											</li>
@@ -153,7 +153,7 @@
 								<div class="card-header">
 									<h6 class="card-title">
 										<a data-toggle="collapse" class="collapsed text-default" href="#accordion-item-group2">
-											<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle mr-2" width="22" height="22" alt="">
+											<img src="<?php echo base_url(); ?>/assets/images/userimg/face3.jpg" class="rounded-circle mr-2" width="22" height="22" alt="">
 											Monica Winshow
 											<span class="badge badge-success badge-pill float-right" style="margin-left: 15px; margin-top: 2px; font-size: 10px;">65</span>
 										</a>
@@ -166,7 +166,7 @@
 											<li class="media">
 												<div class="mr-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face3.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 
@@ -184,7 +184,7 @@
 
 												<div class="ml-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 											</li>
@@ -192,7 +192,7 @@
 											<li class="media">
 												<div class="mr-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face3.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 
@@ -214,7 +214,7 @@
 
 												<div class="ml-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 											</li>
@@ -222,7 +222,7 @@
 											<li class="media">
 												<div class="mr-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face3.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 
@@ -239,7 +239,7 @@
 
 												<div class="ml-3">
 													<a href="#">
-														<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+														<img src="<?php echo base_url(); ?>/assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 													</a>
 												</div>
 											</li>
@@ -314,7 +314,7 @@
 										<li class="media">
 											<div class="mr-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 
@@ -332,7 +332,7 @@
 
 											<div class="ml-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face11.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 										</li>
@@ -340,7 +340,7 @@
 										<li class="media">
 											<div class="mr-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face10.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 
@@ -358,7 +358,7 @@
 
 											<div class="ml-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 										</li>
@@ -366,7 +366,7 @@
 										<li class="media">
 											<div class="mr-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face7.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 
@@ -383,7 +383,7 @@
 
 											<div class="ml-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face6.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 										</li>
@@ -437,7 +437,7 @@
 										<li class="media">
 											<div class="mr-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 
@@ -455,7 +455,7 @@
 
 											<div class="ml-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face4.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 										</li>
@@ -463,7 +463,7 @@
 										<li class="media">
 											<div class="mr-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face3.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 
@@ -481,7 +481,7 @@
 
 											<div class="ml-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face2.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 										</li>
@@ -489,7 +489,7 @@
 										<li class="media">
 											<div class="mr-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face1.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 
@@ -506,7 +506,7 @@
 
 											<div class="ml-3">
 												<a href="#">
-													<img src="<?php echo base_url(); ?>/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40" alt="">
+													<img src="<?php echo base_url(); ?>/assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 												</a>
 											</div>
 										</li>
