@@ -43,6 +43,12 @@
 								</a>
 							</li>
 							<li class="nav-item">
+								<a href="<?php echo site_url("caregiver/notifications"); ?>" class="nav-link">
+									<i class="icon-bubble-notification"></i>
+									<span>My notifications</span>
+								</a>
+							</li>
+							<li class="nav-item">
 								<a href="#" class="nav-link">
 									<i class="icon-coins"></i>
 									<span>My balance</span>
@@ -127,7 +133,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="payroll"){echo 'active';} ?>"><i class="icon-people"></i> <span>Payroll</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/payroll"); ?>" class="nav-link active">Payroll</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/payroll"); ?>" class="nav-link active">Payroll</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
