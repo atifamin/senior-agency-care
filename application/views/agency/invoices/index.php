@@ -561,7 +561,7 @@
 						</div>
 						
 						<div class="col">
-							<a href="#" class="btn bg-warning-400 btn-block btn-float"><i class="icon-stats-bars icon-2x"></i>
+							<a href="<?php echo site_url("agency/reports"); ?>" class="btn bg-warning-400 btn-block btn-float"><i class="icon-stats-bars icon-2x"></i>
 								<span>Statistics</span></a>
 							<!-- <button type="button" class="btn bg-warning-400 btn-block btn-float">
 								<i class="icon-stats-bars icon-2x"></i>
