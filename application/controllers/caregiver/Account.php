@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Notifications extends CI_controller {
+class Account extends CI_controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -14,11 +14,11 @@ class Notifications extends CI_controller {
 		$this->user_id = $userSession['user_id'];
 	}
 
-	public function index() {
+	public function notifications() {
 		$data["breadcrumb"] = "My Notifications";
 		$data["heading"] = "My Notifications";
 		$data["url_segment"] = "mynotifications";
-		$this->load->view('caregiver/notifications/index',$data);
+		$this->load->view('caregiver/account/notifications',$data);
 	}
 
 }

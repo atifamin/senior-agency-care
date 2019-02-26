@@ -271,7 +271,7 @@
 					<ul class="media-list">
 						<li class="media" style="padding: 1%;">
 							<div class="mr-3">
-								<a href="javascript:;" data-toggle="modal" data-target="#modal_small" class="btn btn-light legitRipple">Create New Group</a>
+								<!-- <a href="javascript:;" data-toggle="modal" data-target="#modal_small" class="btn btn-light legitRipple">Create New Group</a> -->
 							</div>
 
 							<div class="media-body">
@@ -539,7 +539,7 @@
 
 
 
-<div id="modal_small" class="modal fade" tabindex="-1">
+<!-- <div id="modal_small" class="modal fade" tabindex="-1">
 	<div class="modal-dialog modal-sm" style="margin-top: 250px;">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -578,6 +578,6 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> -->
 <script src="<?php echo base_url();?>assets/js/demo_pages/chat_layouts.js"></script>
 <?php include(APPPATH."views/caregiver/inc/footer.php"); ?>

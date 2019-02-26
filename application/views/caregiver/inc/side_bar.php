@@ -43,7 +43,7 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="<?php echo site_url("caregiver/notifications"); ?>" class="nav-link">
+								<a href="<?php echo site_url("caregiver/account/notifications"); ?>" class="nav-link">
 									<i class="icon-bubble-notification"></i>
 									<span>My notifications</span>
 								</a>

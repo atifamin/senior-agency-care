@@ -1,5 +1,10 @@
 <?php include(APPPATH."views/caregiver/inc/header.php");?>
 
+<style type="text/css">
+	.datatable-scroll-wrap{
+		margin-bottom: 40px;
+	}
+</style>
 
 <div class="card">
 	<div class="card-header header-elements-inline border-bottom" style="padding-bottom: 0px;">
