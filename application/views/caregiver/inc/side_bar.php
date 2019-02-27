@@ -142,7 +142,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="masseging center"){echo 'active';} ?>"><i class="icon-cash2"></i> <span>Client Charts</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url(""); ?>" class="nav-link active">Option # 1</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/charts"); ?>" class="nav-link active">Charts</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
