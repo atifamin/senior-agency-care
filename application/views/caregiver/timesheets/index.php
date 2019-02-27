@@ -2137,7 +2137,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
                         <div class="mr-3" style="margin-right: .55rem!important;">
                             <a href="#">
                                 <img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg"
-                                     class="rounded-circle" width="40" height="40" alt="">
+                                    class="rounded-circle" width="40" height="40" alt="">
                             </a>
                         </div>
 
