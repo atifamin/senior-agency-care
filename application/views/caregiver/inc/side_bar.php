@@ -23,10 +23,10 @@
 					<div class="sidebar-user-material-body">
 						<div class="card-body text-center">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/userimg/face10.jpg" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+								<img src="<?php echo $profile_image; ?>" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
 							</a>
-							<h6 class="mb-0 text-white text-shadow-dark">Victoria Baker</h6>
-							<span class="font-size-sm text-white text-shadow-dark">Santa Ana, CA</span>
+							<h6 class="mb-0 text-white text-shadow-dark"><?php echo $profile_detail->first_name." ".$profile_detail->last_name; ?></h6>
+							<span class="font-size-sm text-white text-shadow-dark"><?php echo ucfirst($profile_detail->position); ?></span>
 						</div>
 													
 						<div class="sidebar-user-material-footer">
@@ -37,9 +37,15 @@
 					<div class="collapse" id="user-nav">
 						<ul class="nav nav-sidebar">
 							<li class="nav-item">
-								<a href="#" class="nav-link">
+								<a href="<?php echo site_url("caregiver/profile"); ?>" class="nav-link">
 									<i class="icon-user-plus"></i>
 									<span>My profile</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="<?php echo site_url("caregiver/account/notifications"); ?>" class="nav-link">
+									<i class="icon-bubble-notification"></i>
+									<span>My notifications</span>
 								</a>
 							</li>
 							<li class="nav-item">
@@ -134,6 +140,15 @@
 						</li>
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link <?php if($url_segment=="masseging center"){echo 'active';} ?>"><i class="icon-cash2"></i> <span>Client Charts</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a href="<?php echo site_url(""); ?>" class="nav-link active">Option # 1</a></li>
+								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
+								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link <?php if($url_segment=="masseging center"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Messaging Center</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="<?php echo site_url("caregiver/messaging"); ?>" class="nav-link active">Messages</a></li>

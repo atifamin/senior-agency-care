@@ -1,36 +1,11 @@
-<?php include(APPPATH."views/agency/inc/header.php");?>
+<?php include(APPPATH."views/caregiver/inc/header.php"); ?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_wizard.js"></script>
 
 <div class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="row" style="padding: 12px;">
-        <div class="col-md-6">
-          <div class="row" style="text-align: center;">
-            <div class="col-md-5"> <a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a caregiver</a> </div>
-            <span style="margin: 10px auto; font-size: 10px;">OR</span>
-            <div class="col-md-5"> <a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a> </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-md-4 offset-md-4" style="margin-top: 9px;">
-              <h6 style="font-size: 12px; color: #4caf50;">Added<span style="margin-left: 6px;" class="badge badge-success badge-pill">65</span></h6>
-            </div>
-            <div class="col-md-4" style="margin-top: 9px;">
-              <h6 style="font-size: 12px; color: #ff7043;">Pending<span style="margin-left: 6px;" class="badge badge-warning badge-pill">65</span></h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <div class="col-md-12"> 
     <!-- Wizard with validation -->
     <div class="card">
-      <div class="card-header" style="text-align: center;">
-        <h6>Add a new caregiver</h6>
-      </div>
       <form class="wizard-form steps-validation" action="#" data-fouc id="caregiver_form">
         <h6><strong>Profile</strong></h6>
         <fieldset>
@@ -454,6 +429,7 @@ function add_new_caregiver(){
 					percentComplete = parseInt(percentComplete * 100);
 					$("#agency_progress > .progress-bar").css('width', percentComplete + '%');
 					$("#agency_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
+
 					/*if(percentComplete==100){
 						window.location = '<?php echo site_url("agency/dashboard"); ?>';
 					}*/
@@ -472,4 +448,4 @@ function add_new_caregiver(){
 	});*/
 }
 </script>
-<?php include(APPPATH."views/agency/inc/footer.php");?>
+<?php include(APPPATH."views/caregiver/inc/footer.php"); ?>

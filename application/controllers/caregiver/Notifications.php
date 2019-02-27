@@ -1,8 +1,8 @@
-<?php
+<?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
-	
+class Notifications extends CI_controller {
+
 	public function __construct(){
 		parent::__construct();
 		if(!$this->session->userdata("isCaregiverLoggedIn")){
@@ -13,15 +13,13 @@ class Dashboard extends CI_Controller {
 		$sessionData = $this->session->userdata("isCaregiverLoggedIn");
 		$this->caregiver_id = $sessionData['user_id'];
 	}
-	
-	public function index(){
-		$data["breadcrumb"] = "Notice Board";
-		$data["heading"] = "Notice Board";
-		$data["url_segment"] = "notice board";
-		$this->load->view('caregiver/dashboard/index',$data);
+
+	public function index() {
+		$data["breadcrumb"] = "My Notifications";
+		$data["heading"] = "My Notifications";
+		$data["url_segment"] = "mynotifications";
+		$this->load->view('caregiver/notifications/index',$data);
 	}
-	
-	public function testing(){
-		echo "testing";
-	}
+
 }
+?>
