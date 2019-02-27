@@ -11,7 +11,7 @@ class Caregiver extends CI_Controller {
 
     	//LoggedIn User ID
 		$userSession = $this->session->userdata("isAgencyLoggedIn");
-		$this->user_id = $userSession['user_id'];
+		$this->agency_id = $userSession['user_id'];
 		$this->load->model("Caregiver_model");
 	}
 	
@@ -68,6 +68,7 @@ class Caregiver extends CI_Controller {
 		}
 		
 		//Adding agency basic data into agency table
+		$caregiver['agency_id'] = $this->agency_id;
 		$caregiver['first_name'] = $post['first_name'];
 		$caregiver['last_name'] = $post['last_name'];
 		$caregiver['gender'] = $post['gender'];
@@ -155,25 +156,29 @@ class Caregiver extends CI_Controller {
 	}
 	
 	public function send_invite($caregiver_id){
-		$random = randomString(75);
-		$this->load->model("Settings_model");
-		$this->load->model("Agency_model");
-		$this->load->model("Caregiver_model");
-
-		$agencyDetail = $this->Agency_model->getAgencyById($this->user_id);
-		$caregiverDetail = $this->Caregiver_model->getCaregiverById($caregiver_id);
-		
-		$template = $this->Settings_model->getEmailTemplateByName("Caregiver - Invitation");    
-		$subject = $template->setting_name;
-		$message = $template->setting_value;
-		$subject = str_replace("[@AgencyName]",$agencyDetail->full_name,$subject);
-		$message = str_replace("[@CaregiverFirstName]",$caregiverDetail->first_name,$message);
-		$message = str_replace("[@CaregiverLastName]",$caregiverDetail->last_name,$message);
-		$message = str_replace("[@AgencyName]",$agencyDetail->full_name,$message);
-		$message = str_replace("[@JoinUrl]",site_url()."caregiver/register?id=".$random."",$message);
-		sendEmail($caregiverDetail->email,$subject,$message);
-		
-		$this->common_model->updateQuery("caregiver", "id", $caregiver_id, array("status"=>"pending", "register_code"=>$random));
-		
+		$this->load->model("Email_model");
+		$this->Email_model->send_invite_to_caregiver($this->agency_id, $caregiver_id);
+	}
+	
+	public function add_send_invite(){
+		$post = $this->input->post();
+		//checking if user email is already exists
+		$checkUserExists = $this->common_model->listingRow("email", $post['email'], "caregiver");
+		if(count($checkUserExists)>0){
+			$this->session->set_flashdata("error", "This email is already taken, please try another one.");
+			return redirect("agency/caregiver/send_invite_to_caregiver");
+		}
+		$post = $this->input->post();
+		$caregiver['agency_id'] = $this->agency_id;
+		$caregiver['first_name'] = $post['first_name'];
+		$caregiver['last_name'] = $post['last_name'];
+		$caregiver['email'] = $post['email'];
+		$caregiver['status'] = "added";
+		$caregiver['created_at'] = date("Y-m-d H:i:s");
+		$caregiver['updated_at'] = date("Y-m-d H:i:s");
+		$caregiver_id = $this->common_model->insertGetIDQuery("caregiver", $caregiver);
+		$this->send_invite($caregiver_id);
+		$this->session->set_flashdata("success", "Your invitation is sent to caregiver successfully.");
+		return redirect("agency/caregiver/send_invite_to_caregiver");
 	}
 }

@@ -4,6 +4,65 @@ function load_table($table){
 	$ci=& get_instance();
 	return $ci->common_model->listingResult($table);
 }
+function profile_completion_percentage($caregiver_id){
+	$ci=& get_instance();
+	$ci->load->model("Caregiver_model");
+	$caregiverDetail = $ci->Caregiver_model->getCaregiverById($caregiver_id);
+	$total = 0;
+	if(!empty($caregiverDetail->first_name))
+		$total += 4;
+	if(!empty($caregiverDetail->last_name))
+		$total += 4;
+	
+	if(!empty($caregiverDetail->gender))
+		$total += 4;
+	if(!empty($caregiverDetail->position))
+		$total += 4;
+	if(!empty($caregiverDetail->from_month))
+		$total += 4;
+	if(!empty($caregiverDetail->from_year))
+		$total += 4;
+	if(!empty($caregiverDetail->to_month))
+		$total += 4;
+	if(!empty($caregiverDetail->to_year))
+		$total += 4;
+	if(!empty($caregiverDetail->phone_number) && $caregiverDetail->phone_number!="+__-__-____-____")
+		$total += 4;
+	if(!empty($caregiverDetail->email))
+		$total += 4;
+	if(!empty($caregiverDetail->address))
+		$total += 4;
+	if(!empty($caregiverDetail->gender))
+		$total += 4;
+	if(!empty($caregiverDetail->country_id) && $caregiverDetail->country_id!=0)
+		$total += 4;
+	if(!empty($caregiverDetail->state_id) && $caregiverDetail->state_id!=0)
+		$total += 4;
+	if(!empty($caregiverDetail->city_id) && $caregiverDetail->city_id!=0)
+		$total += 4;
+	if(!empty($caregiverDetail->zipcode))
+		$total += 4;
+	if(!empty($caregiverDetail->emergency_contact_name))
+		$total += 4;
+	if(!empty($caregiverDetail->emergency_contact_number))
+		$total += 4;
+	if(!empty($caregiverDetail->caregiver_certifications))
+		$total += 4;
+	if(!empty($caregiverDetail->profile_pic))
+		$total += 8;
+	if(isset($caregiverDetail->license) && count($caregiverDetail->license)>0)
+		$total += 20;
+	
+	return $total;
+}
+
+function checkIfProfileNotCompleted($caregiver_id){
+	$ci=& get_instance();
+	$percent = profile_completion_percentage($caregiver_id);
+	if($percent<73)
+		redirect("caregiver/profile/wizard/".$caregiver_id."");
+}
+
 function upload_file($FILE, $MODULE, $MODULE_ID){
 	$name = $FILE["name"];
 	$media_id = 0;

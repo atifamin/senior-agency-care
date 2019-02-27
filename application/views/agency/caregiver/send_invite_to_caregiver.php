@@ -36,24 +36,24 @@
         </div>
       </div>
       <div class="col-md-9 offset-md-1">
-        <form>
+        <form action="<?php echo site_url("agency/caregiver/add_send_invite"); ?>" method="POST">
           <div class="row" style="padding: 60px 0px;">
             <div class="col-md-3">
               <div class="form-group">
                 <label>First Name:</label>
-                <input type="text" name="name" class="form-control" placeholder="John Doe">
+                <input type="text" class="form-control" name="first_name" placeholder="John Doe">
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                 <label>Last Name:</label>
-                <input type="text" name="name" class="form-control" placeholder="John Doe">
+                <input type="text" class="form-control" name="last_name" placeholder="John Doe">
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                 <label>Email:</label>
-                <input type="email" name="name" class="form-control" placeholder="example@gmail.com">
+                <input type="email" class="form-control" name="email" placeholder="example@gmail.com">
               </div>
             </div>
             <div class="col-md-3">

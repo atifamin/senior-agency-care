@@ -75,7 +75,7 @@ class Caregiver_model extends CI_Model{
 			}
 			
 			//getting caregiver license document detail
-			if(count($caregiverDetail->license)>0){
+			if(isset($caregiverDetail->license) && count($caregiverDetail->license)>0){
 				foreach($caregiverDetail->license as $key=>$val){
 					$WhereArray = array(
 						'module'	=>	'caregiver_license',

@@ -2,7 +2,19 @@
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_wizard.js"></script>
 
 <div class="row">
-  
+  <div class="col-md-12">
+    <div class="card card-body border-top-1 border-top-primary">
+      <div class="text-center">
+        <h6 class="mb-0 font-weight-semibold">Please Complete Your Profile</h6>
+        <p class="mb-3 text-muted">You need to complete your profile minimum of 70% to access this application.</p>
+      </div>
+      <div class="progress rounded-round">
+        <div class="progress-bar progress-bar-striped bg-<?php if(profile_completion_percentage($this->caregiver_id)<73){echo "danger";}else{echo "success";} ?>" style="width: <?php echo profile_completion_percentage($this->caregiver_id); ?>%"> <span><?php echo profile_completion_percentage($this->caregiver_id); ?>% Complete</span> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-12"> 
     <!-- Wizard with validation -->
     <div class="card">
@@ -13,24 +25,24 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>First Name: <span class="text-danger">*</span></label>
-                <input type="text" name="first_name" class="form-control" placeholder="Add first name">
+                <input type="text" name="first_name" class="form-control" placeholder="Add first name" value="<?php echo $profile_detail->first_name; ?>">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Last Name: <span class="text-danger">*</span></label>
-                <input type="text" name="last_name" class="form-control" placeholder="Add last name">
+                <input type="text" name="last_name" class="form-control" placeholder="Add last name" value="<?php echo $profile_detail->last_name; ?>">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group mb-3 mb-md-2">
                 <label class="d-block font-weight-semibold">Gender:</label>
                 <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" name="gender" id="custom_radio_inline_right_checked" checked="" value="male">
+                  <input type="radio" class="custom-control-input" name="gender" id="custom_radio_inline_right_checked" <?php if($profile_detail->gender=="male"){echo 'checked=""';} ?> value="male">
                   <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Male</label>
                 </div>
                 <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" name="gender" id="custom_radio_inline_right_unchecked" value="female">
+                  <input type="radio" class="custom-control-input" name="gender" id="custom_radio_inline_right_unchecked" <?php if($profile_detail->gender=="female"){echo 'checked=""';} ?> value="female">
                   <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Female</label>
                 </div>
               </div>
@@ -43,7 +55,7 @@
                 <select name="position" data-placeholder="Choose a Position..." class="form-control form-control-select2" data-fouc>
                   <option></option>
                   <?php foreach(CON_CAREGIVER_POSITIONS as $positionKey=>$positionVal): ?>
-                  <option value="<?php echo $positionKey; ?>"><?php echo $positionVal; ?></option>
+                  <option value="<?php echo $positionKey; ?>" <?php if($profile_detail->position==$positionKey){echo 'selected="selected"';} ?>><?php echo $positionVal; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>

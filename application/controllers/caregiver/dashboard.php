@@ -8,10 +8,10 @@ class Dashboard extends CI_Controller {
 		if(!$this->session->userdata("isCaregiverLoggedIn")){
 			redirect("login");
 		}
-
 		//LoggedIn Caregiver ID
 		$sessionData = $this->session->userdata("isCaregiverLoggedIn");
 		$this->caregiver_id = $sessionData['user_id'];
+		checkIfProfileNotCompleted($this->caregiver_id);
 	}
 	
 	public function index(){

@@ -16,6 +16,7 @@ class Profile extends CI_Controller {
 	}
 	
 	public function index(){
+		checkIfProfileNotCompleted($this->caregiver_id);
 		$data["breadcrumb"] = "Profile";
 		$data["heading"] = "Profile";
 		$data["url_segment"] = "profile";
