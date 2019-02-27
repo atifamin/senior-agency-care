@@ -2216,7 +2216,6 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
     <script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_responsive.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_tags_input.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script>
@@ -2227,12 +2226,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
     <script src="<?php echo base_url(); ?>assets/js/plugins/notifications/jgrowl.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/demo_pages/picker_date.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
      
     <script src="<?php echo base_url(); ?>assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/demo_pages/uploader_bootstrap.js"></script> -->
+    <script src="<?php echo base_url(); ?>assets/js/demo_pages/uploader_bootstrap.js"></script> 
 
 
     <?php include(APPPATH . "views/caregiver/inc/footer.php"); ?>

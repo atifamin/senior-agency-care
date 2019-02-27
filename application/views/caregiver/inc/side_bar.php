@@ -121,10 +121,10 @@
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="scheduling"){echo 'active';} ?>"><i class="icon-calendar3"></i> <span>Time Sheets</span></a>
+							<a href="#" class="nav-link <?php if($url_segment=="Time Sheets"){echo 'active';} ?>"><i class="icon-calendar3"></i> <span>Time Sheets</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("caregiver/scheduling"); ?>" class="nav-link active">View Scheduling</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("caregiver/time_sheets"); ?>" class="nav-link active">View Time Sheets</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
