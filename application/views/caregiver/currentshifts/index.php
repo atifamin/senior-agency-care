@@ -78,8 +78,8 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                 </div>
                 <div class="row" style="margin-top: 35px;">
                     <div class="col-md-4 offset-md-4" >
-                        <a href="javascript:;" data-toggle="modal" data-target="#clock_modal"><span><button class="btn btn-default btn-lg pull-left">CLOCK IN</button></span></a>
-                        <button class="btn btn-default btn-lg pull-right" id="clock_out_btn">CLOCK OUT</button>
+                        <a href="javascript:;" class="btn btn-light legitRipple" data-toggle="modal" data-target="#clock_modal">clock in</a>
+                        <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple">CLOCK OUT</a>
                     </div>
                     <div class="col-md-2 offset-md-4" id="clock_out_time">
                         <span style="color: #FF7043;">You have not clocked in yet.Please clock in now</span>
