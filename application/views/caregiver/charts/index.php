@@ -88,571 +88,641 @@
                         	<div class="row">
                         		<div class="col-md-12">
                         			<div class="timeline timeline-left" style="z-index: 1; margin-top: 30px;">
-								<div class="timeline-container">
+										<div class="timeline-container">
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
 
-									<!-- =======BED MOBILITY====== -->
-									<div class="timeline-row">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>BED MOBILITY</h5>
+																<p>How residents move to and from lying positions, turn side to side and positons body while in bed or alternate sleep furniture.</p>
+															</div>
+														</div>
+													</div>
 
-										<div class="row">
-											<div class="col-md-12">
-												<h5>BED MOBILITY</h5>
-												<p>How residents move to and from lying positions, turn side to side and positons body while in bed or alternate sleep furniture.</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
+											<!-- /sales stats -->
+
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>TRANSFER</h5>
+																<p>How residents move between surfaces including 2 and from; bed, choar, wheelchair, standing position (excludes to/from bath toilet)</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
+											<!-- /sales stats -->
+
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>WALK IN ROOM</h5>
+																<p>How residents walks between locations in his/her room.</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
+											<!-- /sales stats -->
+
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>WALK IN CORRIDOR</h5>
+																<p>How residents walks in unit or corridor.</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>LOCOMOTION ON UNIT</h5>
+																<p>How residents move between locations in his/her rooms and adjuscent corridor in the same floor. If on wheelchair, self sufficiency in one chair.</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>LOCOMOTION OFF UNIT</h5>
+																<p>How residents move between surfaces including 2 and from; bed, choar, wheelchair, standing position (excludes to/from bath toilet)</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>DRESSING</h5>
+																<p>How residents put on, fastens and take off all items of clothing including donning/removing prothesis or TED hose. Dressing includes putting on and changing pajamas and house dresses.</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>PERSONAL HYGIENE</h5>
+																<p>How residents handle personal hygiene, including combing hair, brushing teeth, shaving, applying makeup, washing/dry face and hands.(Excludes Baths and Shower)</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>EATING</h5>
+																<p>How residents eat and drink regardless of skill. Do not include drinking and eating during medication pass. Includes intake of nourishment by other means e.g(tube feeding, total parenteral nutrition, IV fluids administered for hydration or hydration)</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>TOILET USE</h5>
+																<p>How the resident uses the toilet room, comode, bedpan or urinal; transfer on/of toilet, cleanes self after eliminatio, changes pad, manages ostomy or catheter and adjust clothes. DO NOT INCLUDE EMPTY of bedpan, urinal, beside comode, chatether bag or ostomy bad.</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
 										</div>
 									</div>
-									<!-- =======BED MOBILITY====== -->
-
-
-
-									<!-- =======TRANSFER====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>TRANSFER</h5>
-												<p>How residents move between surfaces including 2 and from; bed, choar, wheelchair, standing position (excludes to/from bath toilet)</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======TRANSFER====== -->
-
-
-
-									<!-- =======WALK IN ROOM====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>WALK IN ROOM</h5>
-												<p>How residents walks between locations in his/her room.</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======WALK IN ROOM====== -->
-
-
-									<!-- =======WALK IN CORRIDOR====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>WALK IN CORRIDOR</h5>
-												<p>How residents walks in unit or corridor.</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======WALK IN CORRIDOR====== -->
-
-
-
-									<!-- =======LOCOMOTION ON UNIT====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>LOCOMOTION ON UNIT</h5>
-												<p>How residents move between locations in his/her rooms and adjuscent corridor in the same floor. If on wheelchair, self sufficiency in one chair.</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======LOCOMOTION ON UNIT====== -->
-
-									<!-- =======LOCOMOTION OFF UNIT====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>LOCOMOTION OFF UNIT</h5>
-												<p>How residents move between surfaces including 2 and from; bed, choar, wheelchair, standing position (excludes to/from bath toilet)</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======LOCOMOTION OFF UNIT====== -->
-
-
-									<!-- =======DRESSING====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>DRESSING</h5>
-												<p>How residents put on, fastens and take off all items of clothing including donning/removing prothesis or TED hose. Dressing includes putting on and changing pajamas and house dresses.</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======DRESSING====== -->
-
-
-									<!-- =======PERSONAL HYGIENE====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>PERSONAL HYGIENE</h5>
-												<p>How residents handle personal hygiene, including combing hair, brushing teeth, shaving, applying makeup, washing/dry face and hands.(Excludes Baths and Shower)</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======PERSONAL HYGIENE====== -->
-
-
-									<!-- =======EATING====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>EATING</h5>
-												<p>How residents eat and drink regardless of skill. Do not include drinking and eating during medication pass. Includes intake of nourishment by other means e.g(tube feeding, total parenteral nutrition, IV fluids administered for hydration or hydration)</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======EATING====== -->
-
-									<!-- =======TOILET USE====== -->
-									<div class="timeline-row" style="margin-top: 30px;">
-										<div class="timeline-icon">
-											<a href="#"><img src="<?php echo base_url(); ?>assets/images/placeholders/placeholder.jpg" alt=""></a>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<h5>TOILET USE</h5>
-												<p>How the resident uses the toilet room, comode, bedpan or urinal; transfer on/of toilet, cleanes self after eliminatio, changes pad, manages ostomy or catheter and adjust clothes. DO NOT INCLUDE EMPTY of bedpan, urinal, beside comode, chatether bag or ostomy bad.</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
-														<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
-														<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
-														<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
-														<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
-														<option></option>
-														<option value="help_only">SETUP help only</option>
-														<option value="physical_assist">ONE PERSON physical assist</option>
-														<option value="two_physical_assist">TWO PERSON physical assist</option>
-														<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group pt-2">
-				                                    <div class="form-check">
-				                                        <label class="form-check-label">
-				                                            <input type="checkbox" id="medication_reminder_checkbox"
-				                                                   class="form-check-input-styled" data-fouc>
-				                                            ADL ACTIVITY DID NOT OCCUR
-				                                        </label>
-				                                    </div>
-				                                </div>
-											</div>
-										</div>
-									</div>
-									<!-- =======EATING====== -->
-
-
-								</div>
-						    </div>
                         		</div>
                         	</div>
                         </div>
@@ -713,6 +783,7 @@
 	</div>
 </div>
 <!-- /support tickets -->
+
 
 
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script>
