@@ -363,6 +363,44 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-check form-check-switch form-check-switch-left">
+								<label class="form-check-label d-flex align-items-center">
+									<span style="margin-right: 15px">Does client have mobilty needs?</span>
+									<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientNeed()" id="need_client" value="0">
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 20px; display: none;" id="client_needs">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Add client's mobility needs</label>
+			                    <select name="company_formed_month" data-placeholder="Add client's mobility needs" class="form-control form-control-select2" data-fouc>
+			                        <option></option>
+			                        <option value="1">Walking cane</option>
+			                        <option value="2">Weelchair</option>
+			                    </select>
+		                    </div>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 20px;">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Add the client transportation requirements</label>
+								<input type="text" name="" class="form-control" placeholder="Add a detailed description of the clients transportation requirements">
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 20px;">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Add client's transfer needs</label>
+								<input type="text" name="" class="form-control" placeholder="Add a detailed description of the clients trasfer needs">
+							</div>
+						</div>
+					</div>
 				</fieldset>
 
 				<h6><strong>Family Center</strong></h6>
@@ -528,6 +566,17 @@
 		}else{
 			$("#oxygen_client").val(0);
 			$("#client_oxygen").css("display","none");
+		}
+	}
+
+	function clientNeed(){
+		var val = $("#need_client").val();
+		if(val == 0){
+			$("#need_client").val(1);
+			$("#client_needs").css("display","block");
+		}else{
+			$("#need_client").val(0);
+			$("#client_needs").css("display","none");
 		}
 	}
 </script>
