@@ -717,12 +717,212 @@
 									                            </div>
 															</div>
 														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+														            <label>RECORD IF PATIENT WAS</label>
+														            <input type="text" name="" class="form-control">
+														        </div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>RECORD NUMBER OF MOVEMENTS/EPISODES </label>
+																	<input type="text" value="" class="form-control touchspin-empty" >
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>BATHING</h5>
+																<p>How residents take full-body showers, baths, sponge baths, and transfers in and out of tub showers. EXCLUDE washing of back and hairs</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="independent">INDEPENDENT - No help of staff oversight at any time</option>
+																		<option value="supervision">SUPERVISION - Oversight, encouragement or cueing</option>
+																		<option value="limited_assistance">LIMITED ASSISTANCE - Resident involved activity. Staff provided weight bearing support</option>
+																		<option value="total_dependence">TOTAL DEPENDENCE - Full staff performance</option>
+																		<option value="activity_didnot_occur">ACTIVITY DID NOT OCCUR - Activity did not occur or family and or non - facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<select data-placeholder="SELECT ADL SUPPORT PROVIDE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																		<option value="help_only">SETUP help only</option>
+																		<option value="physical_assist">ONE PERSON physical assist</option>
+																		<option value="two_physical_assist">TWO PERSON physical assist</option>
+																		<option value="adl_activity_itself">ADL activity itself did not occur or family and or non-facility staff provided care 100% of the time</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group pt-2">
+									                                <div class="form-check">
+									                                    <label class="form-check-label">
+									                                        <input type="checkbox" id="medication_reminder_checkbox"
+									                                               class="form-check-input-styled" data-fouc>
+									                                        ADL ACTIVITY DID NOT OCCUR
+									                                    </label>
+									                                </div>
+									                            </div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>RECORD TYPE OF BATH</label><br>
+																	<select data-placeholder="SELECT ADL SELF PERFORMANCE CODE" class="form-control select" data-fouc>
+																		<option></option>
+																	</select>
+																</div>
+															</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+													<div class="card-header header-elements-inline">
+														<div class="row">
+															<div class="col-md-12">
+																<h5>FINAL NOTES</h5>
+																<p>These are simple yes or no answers questions about specific events that happened during your shift. Please try be a detailed as possible if you answer of these questions</p>
+															</div>
+														</div>
+													</div>
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-check form-check-switch form-check-switch-left">
+																	<label class="form-check-label d-flex align-items-center">
+																		<span style="margin-right: 15px">1) Were there any brusies on resident?</span>
+																		<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small">
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="row" style="margin-top: 30px;">
+															<div class="col-md-6">
+																<div class="form-check form-check-switch form-check-switch-left">
+																	<label class="form-check-label d-flex align-items-center">
+																		<span style="margin-right: 15px">2) Were there any cuts on the resident?</span>
+																		<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small">
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="row" style="margin-top: 30px;">
+															<div class="col-md-6">
+																<div class="form-check form-check-switch form-check-switch-left">
+																	<label class="form-check-label d-flex align-items-center">
+																		<span style="margin-right: 15px">3) Did resident have any falls on shift?</span>
+																		<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small">
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="row" style="margin-top: 30px;">
+															<div class="col-md-6">
+																<div class="form-check form-check-switch form-check-switch-left">
+																	<label class="form-check-label d-flex align-items-center">
+																		<span style="margin-right: 15px">4) Did the resident have any skin tears?</span>
+																		<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small">
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="row" style="margin-top: 30px;">
+															<div class="col-md-6">
+																<div class="form-check form-check-switch form-check-switch-left">
+																	<label class="form-check-label d-flex align-items-center">
+																		<span style="margin-right: 15px">5) Was there any damage to client's property? e.g broken vase</span>
+																		<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small">
+																	</label>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- /sales stats -->
+
+
+
+											<!-- Sales stats -->
+											<div class="timeline-row">
+												<div class="timeline-icon">
+													<a href="#"><img src="<?php echo base_url();?>assets/images/userimg/face4.jpg" alt=""></a>
+												</div>
+
+												<div class="card">
+
+													<div class="card-body">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-check form-check-switch form-check-switch-left">
+																	<label class="form-check-label d-flex align-items-center">
+																		<span style="margin-right: 15px"><strong>DID YOUR DRIVE YOUR CLIENT?</strong></span>
+																		<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small">
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>If so, please add the amount of miles you drove in order to compensate </label>
+																	<input type="text" value="" class="form-control touchspin-empty">
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
 											<!-- /sales stats -->
 										</div>
 									</div>
+                        		</div>
+                        		<div class="col-md-12">
+                        			
                         		</div>
                         	</div>
                         </div>
@@ -800,4 +1000,7 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
 <?php include(APPPATH."views/caregiver/inc/footer.php"); ?>
