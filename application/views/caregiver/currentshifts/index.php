@@ -78,7 +78,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                 </div>
                 <div class="row" style="margin-top: 35px;">
                     <div class="col-md-4 offset-md-4" >
-                        <a href="javascript:;" class="btn btn-light legitRipple" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a>
+                        <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a>
                         <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple pull-right">CLOCK OUT</a>
                     </div>
                     <div class="col-md-2 offset-md-4" id="clock_out_time" style="width: 50%;">
@@ -235,8 +235,8 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                     </div>
                                                 </div>
 
-                                                <div class="border-top-0 rounded-0 rounded-bottom tab-content" style="padding: 1%;">
-                                                    <!-- ============ CLient Bio ============== -->
+                                        <div class="border-top-0 rounded-0 rounded-bottom tab-content" style="padding: 1%; margin-top: 10px;">
+                                            <!-- ============ CLient Bio ============== -->
                                             <div class="tab-pane fade active show" id="schedule_client_bio">
                                                 <div class="row">
                                                     <div class="col-md-12" style="margin: 20px 0px 10px 0px;">
@@ -442,9 +442,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
 
                                                                         <div class="dropdown-menu dropdown-menu-right">
                                                                             <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-square-right"></i>
-                                                                                Edit Medication</a>
+                                                                               class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
                                                                             <a href="#"
                                                                                class="dropdown-item"><i
                                                                                         class="icon-bin2"></i>
@@ -508,9 +506,9 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                     </table>
                                                 </div>
                                             </div>
-                                                    </div>
+                                        </div>
 
-                                                    <!-- ============//Dietry Needs CLient============== -->
+                                        <!-- ============//Dietry Needs CLient============== -->
 
                                         <div class="tab-pane fade" id="schedule_diet_and_allergies_1">
                                             <form>
@@ -607,11 +605,10 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 </div>
 
                                             </form>
-
                                         </div>
 
                             <!-- ============//Appoitment Callender CLient============== -->
-	                                    <div class="tab-pane fade" id="schedule_appiontment_callender">
+	                                   <div class="tab-pane fade" id="schedule_appiontment_callender">
 	                                        <div class="row">
 	                                            <div class="col-md-12" style="text-align: center;">
 	                                                <a href="javascript:;" data-toggle="modal"
@@ -2318,6 +2315,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                 $('#clock_out_time').css("display","none");
                 $("#clock_out_btn").css({ 'background-color' : '#4CAF50', 'color' : '#fff'});
                 $('#clock_in_time').css("display","block");
+                $('#clock_in_modal').removeAttr('data-target');
             }
         });
 
