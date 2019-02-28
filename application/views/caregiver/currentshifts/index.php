@@ -1320,19 +1320,13 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <div class="card-img-actions">
                                                     <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img1.png" alt="">
                                                     <div class="card-img-actions-overlay card-img-top">
-                                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
-                                                            <i class="icon-plus3"></i>
+                                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"><i class="icon-plus3"></i>
                                                         </a>
-                                                        <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2">
-                                                            <i class="icon-link"></i>
-                                                        </a>
+                                                        <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"><i class="icon-link"></i></a>
                                                     </div>
                                                 </div>
-
                                                 <div class="card-body text-center">
-                                                    <p class="d-block">Lorem Ipsum is simply dummy text of the printing and
-                                                                    typesetting industry. Lorem Ipsum has been the
-                                                                    industry's standard dummy text ever since the 1500s, </p>
+                                                    <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, </p>
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="row">
@@ -1354,12 +1348,9 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <div class="card-img-actions">
                                                     <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img3.png" alt="">
                                                     <div class="card-img-actions-overlay card-img-top">
-                                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
-                                                            <i class="icon-plus3"></i>
+                                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"><i class="icon-plus3"></i>
                                                         </a>
-                                                        <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2">
-                                                            <i class="icon-link"></i>
-                                                        </a>
+                                                        <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"><i class="icon-link"></i></a>
                                                     </div>
                                                 </div>
 
@@ -1369,7 +1360,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <div class="card-footer">
                                                     <div class="row">
                                                     <div class="col-sm-8">
-                                                        <p>updated: may 25th</p>
+                                                        <span>updated: may 25th</span>
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <a href="" class="pull-right">Edit</a>
@@ -1391,7 +1382,6 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                             </div>   
                                     </div>
                                         </div>
-
 										</div>
                                     </td>
                                 </tr>
@@ -1834,13 +1824,13 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                         <div class="mr-3" style="margin-right: .55rem!important;">
                             <a href="#">
                                 <img src="<?php echo base_url(); ?>assets/images/userimg/face15.jpg"
-                                     class="rounded-circle" width="40" height="40" alt="">
+                                    class="rounded-circle" width="40" height="40" alt="">
                             </a>
                         </div>
 
                         <div class="media-body">
                             <div class="media-title font-weight-semibold"
-                                 style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller
+                                style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller
                             </div>
                             <span class="text-muted" style="font-size: 12px;">Total Care</span>
                         </div>
