@@ -336,7 +336,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
 
                                                     <!-- ============Medication CLient============== -->
 
-                                        <div class="tab-pane fade" id="schedule_medication_list_1">
+                                            <div class="tab-pane fade" id="schedule_medication_list_1">
                                             <div class="row">
                                                 <div class="col-md-12" style="text-align: center;">
                                                     <a href="javascript:;" onclick="addMedication()"
@@ -393,28 +393,12 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                             <td class="text-center">
                                                                 <div class="list-icons">
                                                                     <div class="dropdown">
-                                                                        <a href="#" class="list-icons-item"
-                                                                           data-toggle="dropdown">
-                                                                            <i class="icon-menu9"></i>
-                                                                        </a>
-
+                                                                        <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i></a>
                                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-square-right"></i>
-                                                                                Edit Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-bin2"></i>
-                                                                                Delete Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-square-down"></i>
-                                                                                End Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-file-pdf"></i>
-                                                                                Export to .pdf</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i>Export to .pdf</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -435,26 +419,17 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                             <td class="text-center">
                                                                 <div class="list-icons">
                                                                     <div class="dropdown">
-                                                                        <a href="#" class="list-icons-item"
-                                                                           data-toggle="dropdown">
-                                                                            <i class="icon-menu9"></i>
+                                                                        <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
                                                                         </a>
-
                                                                         <div class="dropdown-menu dropdown-menu-right">
                                                                             <a href="#"
                                                                                class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
                                                                             <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-bin2"></i>
-                                                                                Delete Medication</a>
+                                                                               class="dropdown-item"><i class="icon-bin2"></i>Delete Medication</a>
                                                                             <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-square-down"></i>
-                                                                                End Medication</a>
+                                                                               class="dropdown-item"><i class="icon-square-down"></i>End Medication</a>
                                                                             <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-file-pdf"></i>
-                                                                                Export to .pdf</a>
+                                                                               class="dropdown-item"><i class="icon-file-pdf"></i>Export to .pdf</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -481,22 +456,10 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                                         </a>
 
                                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-square-right"></i>
-                                                                                Edit Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-bin2"></i>
-                                                                                Delete Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-square-down"></i>
-                                                                                End Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i
-                                                                                        class="icon-file-pdf"></i>
-                                                                                Export to .pdf</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i>Export to .pdf</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -506,9 +469,9 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                     </table>
                                                 </div>
                                             </div>
-                                        </div>
+                                                    </div>
 
-                                        <!-- ============//Dietry Needs CLient============== -->
+                                                    <!-- ============//Dietry Needs CLient============== -->
 
                                         <div class="tab-pane fade" id="schedule_diet_and_allergies_1">
                                             <form>
@@ -605,10 +568,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 </div>
 
                                             </form>
+
                                         </div>
 
                             <!-- ============//Appoitment Callender CLient============== -->
-	                                   <div class="tab-pane fade" id="schedule_appiontment_callender">
+	                                    <div class="tab-pane fade" id="schedule_appiontment_callender">
 	                                        <div class="row">
 	                                            <div class="col-md-12" style="text-align: center;">
 	                                                <a href="javascript:;" data-toggle="modal"
@@ -1400,14 +1364,12 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 </div>
 
                                                 <div class="card-body text-center">
-                                                    <p class="d-block">Lorem Ipsum is simply dummy text of the printing and
-                                                                    typesetting industry. Lorem Ipsum has been the
-                                                                    industry's standard dummy text ever since the 1500s, </p>
+                                                    <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="row">
                                                     <div class="col-sm-8">
-                                                         <p>updated: may 25th</p>
+                                                        <p>updated: may 25th</p>
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <a href="" class="pull-right">Edit</a>
@@ -1421,11 +1383,10 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                         </div>
                                          </div>
                                             </div>
-
-                                                    <div class="tab-pane fade" id="mymusic">
-                                                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
-                                                    </div>
-                                                    </div>
+                                                <div class="tab-pane fade" id="mymusic">
+                                                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
+                                                </div>
+                                            </div>
                                                 </div>
                                             </div>   
                                     </div>
@@ -1942,8 +1903,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                 <div class="form-group pt-2">
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input type="checkbox" id="appointment_reminder_checkbox"
-                                                   class="form-check-input-styled" data-fouc>
+                                            <input type="checkbox" id="appointment_reminder_checkbox" class="form-check-input-styled" data-fouc>
                                             Set reminder for caregiver
                                         </label>
                                     </div>
@@ -1951,13 +1911,50 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                             </div>
                         </div>
                         <div class="row" id="appointment_set_reminder" style="display: none;">
+                            <div class="col-md-12">
+                                <div class="row" id="appointment_set_reminder_doctor" style="display: none;">
+                                    <div class="col-md-8 offset-md-2">
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-alarm"></i></span>
+                                            </span>
+                                            <select class="form-control multiselect" data-fouc>
+                                                <option value="dr_2.0">2.0 Hrs before appointment</option>
+                                                <option value="dr_2.5">2.5 Hrs before appointment</option>
+                                                <option value="dr_3.0">3.0 Hrs before appointment</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" id="appointment_set_reminder_therapy" style="display: none;">
+                                    <div class="col-md-8 offset-md-2">
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-alarm"></i></span>
+                                            </span>
+                                            <select class="form-control multiselect" data-fouc>
+                                                <option value="dr_2.0">30 Minutes before appointment</option>
+                                                <option value="dr_2.0">1.0 Hrs before appointment</option>
+                                                <option value="dr_2.0">1.5 Hrs before appointment</option>
+                                                <option value="dr_2.5">2.0 Hrs before appointment</option>
+                                                <option value="dr_3.0">3.0 Hrs before appointment</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="appointment_set_reminder" style="display: none;">
                             <div class="col-md-8 offset-md-2">
                                 <div class="input-group">
-						<span class="input-group-prepend">
-							<span class="input-group-text"><i class="icon-alarm"></i></span>
-						</span>
-                                    <input type="text" class="form-control pickatime"
-                                           placeholder="Create reminder for caregiver">
+                                    <span class="input-group-prepend">
+                                        <span class="input-group-text"><i class="icon-alarm"></i></span>
+                                    </span>
+                                    <select class="form-control multiselect" data-fouc>
+                                        <option value="dr_2.0">2.0 Hrs before appointment</option>
+                                        <option value="dr_2.5">2.5 Hrs before appointment</option>
+                                        <option value="dr_3.0">3.0 Hrs before appointment</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -2287,8 +2284,13 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
             var type = $("#therapy_type").val();
             if(type == "doctor_appointment"){
                 $("#therapy_doc_name").css("display","block");
-            }else{
+                $('#appointment_set_reminder_doctor').css('display','block');
+                $('#appointment_set_reminder_therapy').css('display','none');
+            }else if (type == "therapy_appointment"){
                 $("#therapy_doc_name").css("display","none");
+                $('#appointment_set_reminder_doctor').css('display','none');
+                $('#appointment_set_reminder_therapy').css('display','block');
+
             }
         }
 
