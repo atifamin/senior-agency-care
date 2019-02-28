@@ -78,22 +78,23 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                 </div>
                 <div class="row" style="margin-top: 35px;">
                     <div class="col-md-4 offset-md-4" >
-                        <a href="javascript:;" class="btn btn-light legitRipple" data-toggle="modal" data-target="#clock_modal">clock in</a>
-                        <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple">CLOCK OUT</a>
+                        <a href="javascript:;" class="btn btn-light legitRipple" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a>
+                        <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple pull-right">CLOCK OUT</a>
                     </div>
-                    <div class="col-md-2 offset-md-4" id="clock_out_time">
+                    <div class="col-md-2 offset-md-4" id="clock_out_time" style="width: 50%;">
                         <span style="color: #FF7043;">You have not clocked in yet.Please clock in now</span>
                     </div>
                 </div>
 
                 <div id="clock_in_time" style="display: none;">
                     <div class="row">
-                        <div class="col-md-2 offset-md-4">
-                            <span>@ 10:50am</span>
+                        <div class="col-md-4 offset-md-4">
+                            <span style="margin-left: 10px;">@ 10:50am</span>
+                            <span class="pull-right" style="margin-right: 20px;">@ 12:30pm</span>
                         </div>
-                        <div class="col-md-2" style="text-align: center;">
+                        <!-- <div class="col-md-2" style="text-align: center;">
                             <span>@ 12:30pm</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="row" style="margin-top: 40px;">
