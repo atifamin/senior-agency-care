@@ -255,7 +255,7 @@ var FullCalendarBasic = function() {
         $('.fullcalendar-list').fullCalendar({
             header: {
                 left: 'prev,next today',
-                center: 'title',
+                center: 'month,listWeek',
                 right: 'listDay,listWeek,listMonth'
             },
             views: {
@@ -271,6 +271,8 @@ var FullCalendarBasic = function() {
             events: events,
             isRTL: $('html').attr('dir') == 'rtl' ? true : false
         });
+        $(".fc-month-button").html("Calendar View<i class='fas fa-calendar-alt'></i>");
+        $(".fc-listWeek-button").html("List View<i class='fas fa-list-ul'></i>");
 
         // Event colors
         $('.fullcalendar-event-colors').fullCalendar({
