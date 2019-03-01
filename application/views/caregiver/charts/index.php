@@ -51,7 +51,7 @@
 				</li>
 			</div>
 		</div>
-		<div class="row" style="background-color: #ccc8c83d; padding: 12px;">
+		<div class="row" style="background-color: #dcdada3d; padding: 12px;">
 			<div class="col-md-12">Pending Charts
 				<span class="badge bg-blue badge-pill" style="float: right;">24</span>
 			</div>
@@ -78,9 +78,15 @@
 						<div class="card-body bg-light border-top border-bottom">
 							<div class="row" style="background-color: #fff;">
 								<div class="col-md-12">
-									<div><p style="color: red;">Important Charting Instructions</div> 1) At the end of each shift, record ADL SELF PERFORMANCE and ADL SUPPORT PROVIDED by selecting the round buttons below. For ADL's with pictures, use the code provided. <br> 2) For those non ADL items, either inital that care was provided or use corresponding codes. <br> 2) Initials can be added via the checkbox marked "Initial non ADL".
-									</p>
-
+									<p style="color: #ea7510;">Important Charting Instructions</p>
+									 <p>1) At the end of each shift, record ADL SELF PERFORMANCE and ADL SUPPORT PROVIDED by selecting the round buttons below. For ADL's with pictures, use the code provided.</p> 
+									 <p>2) For those non ADL items, either inital that care was provided or use corresponding codes.</p>
+									 <p>3) Initials can be added via the checkbox marked "Initial non ADL".</p>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 20px;">
+								<div class="col-md-12" style="text-align: center;">
+									<span style="color: #ea7510;">Select respective code from each chart</span>
 								</div>
 							</div>
 							<div class="timeline timeline-left" style="z-index: 1; margin-top: 30px;">
@@ -923,7 +929,7 @@
 					</div>
 				</li>	
 			</div>
-			<div class="row" style="background-color: #ccc8c83d; padding: 12px;">
+			<div class="row" style="background-color: #dcdada3d; padding: 12px;">
 				<div class="col-md-12">Pending Charts
 					<span class="badge bg-blue badge-pill" style="float: right; background-color: #008000a6;">24</span>
 				</div>
