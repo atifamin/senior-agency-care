@@ -107,8 +107,6 @@
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item <?php if($url_segment=="caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("caregiver/schedule"); ?>" class="nav-link ">View Caregivers</a></li>
-								<li class="nav-item <?php if($url_segment=="add_caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("caregiver/caregiver/add_caregiver"); ?>" class="nav-link">Add Caregivers</a></li>
-								<li class="nav-item"><a href="<?php echo site_url("caregiver/caregiver/send_invite_to_caregiver"); ?>" class="nav-link">Invite Caregivers</a></li>
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
@@ -116,8 +114,6 @@
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="<?php echo site_url("caregiver/clients"); ?>" class="nav-link active">View Clients</a></li>
-								<li class="nav-item"><a href="<?php echo site_url("caregiver/clients/add_client"); ?>" class="nav-link">Add Clients</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
