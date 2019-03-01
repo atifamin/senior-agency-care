@@ -23,10 +23,10 @@
 					<div class="sidebar-user-material-body">
 						<div class="card-body text-center">
 							<a href="#">
-								<img src="http://localhost/senior-agency-care/assets/images/userimg/face8.jpg " class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/userimg/face6.jpg" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
 							</a>
-							<h6 class="mb-0 text-white text-shadow-dark"><?php //echo $profile_detail->first_name." ".$profile_detail->last_name; ?></h6>
-							<span class="font-size-sm text-white text-shadow-dark"><?php //echo ucfirst($profile_detail->position); ?></span>
+							<h6 class="mb-0 text-white text-shadow-dark">Victoria Baker</h6>
+							<span class="font-size-sm text-white text-shadow-dark">Santa Ana, CA</span>
 						</div>
 													
 						<div class="sidebar-user-material-footer">
@@ -106,7 +106,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="current shifts"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Current Shifts</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item <?php if($url_segment==""){echo 'active';} ?>"><a href="<?php echo site_url("family/"); ?>" class="nav-link ">option</a></li>
+								<li class="nav-item <?php if($url_segment==""){echo 'active';} ?>"><a href="<?php echo site_url("family/current_shifts"); ?>" class="nav-link ">Current Shift</a></li>
 								<li class="nav-item <?php if($url_segment==""){echo 'active';} ?>"><a href="<?php echo site_url("family/"); ?>" class="nav-link">option</a></li>
 								<li class="nav-item"><a href="<?php echo site_url("family/"); ?>" class="nav-link">option</a></li>
 							</ul>

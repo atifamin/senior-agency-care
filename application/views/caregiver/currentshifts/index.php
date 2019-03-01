@@ -43,15 +43,14 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
 </style>
 <div class="row">
     <div class="col-md-12">
-        <!-- Dropdown list -->
+                        <!-- Dropdown list -->
         <div class="card">
             <div class="card-header header-elements-inline" style="padding-bottom: 0px;">
                 <div style="margin: 0 auto;">
                     <h1 class="card-title" style="font-size: 44px; font-weight: 400; color: #555;">
                         <i style="font-size: 29px;" class="icon-alarm mr-3 icon-2x"></i> 09:54:29
                     </h1>
-                    <p style="margin-left: 65px; font-size: 13px;"><span style="padding-right: 15px;">hours</span><span
-                                style="padding-right: 15px;">minutes</span><span>seconds</span></p>
+                    <p style="margin-left: 65px; font-size: 13px;"><span style="padding-right: 15px;">hours</span><span style="padding-right: 15px;">minutes</span><span>seconds</span></p>
                 </div>
                 <div class="header-elements">
                     <div class="list-icons">
@@ -61,13 +60,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                 </div>
             </div>
 
-
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
                         <h4>
-                            <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Wednesday</span>
-                            November 12, 2014
+                            <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Wednesday</span>November 12, 2014
                         </h4>
                     </div>
                 </div>
@@ -92,9 +89,6 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                             <span style="margin-left: 10px;">@ 10:50am</span>
                             <span class="pull-right" style="margin-right: 20px;">@ 12:30pm</span>
                         </div>
-                        <!-- <div class="col-md-2" style="text-align: center;">
-                            <span>@ 12:30pm</span>
-                        </div> -->
                     </div>
                 </div>
                 <div class="row" style="margin-top: 40px;">
@@ -107,31 +101,29 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th>Shift Time</th>
-                                    <th>Client</th>
-                                    <th>Location</th>
-                                    <th>Charting Status</th>
-                                    <th>Actions</th>
-                                </tr>
+                                    <tr>
+                                        <th>Shift Time</th>
+                                        <th>Client</th>
+                                        <th>Location</th>
+                                        <th>Charting Status</th>
+                                        <th>Actions</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>
                                         <span class="text-muted">10:30am - 12:30pm</span>
-                                        <i class="icon-primitive-dot mr-3 icon-2x"
-                                           style="color: #00BCD4; font-size: 18px; float: right;"></i>
+                                        <i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i>
                                     </td>
                                     <td>
                                         <li class="media">
                                             <div class="mr-3">
-                                                <a href="#">
-                                                    <img src="http://localhost/senior-agency-care/assets/images/userimg/face8.jpg"
-                                                         class="rounded-circle" width="40" height="40" alt="">
+                                                <a href="#"><img src="http://localhost/senior-agency-care/assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt="">
                                                 </a>
                                             </div>
                                             <div class="media-body" style="margin-top: 10px;">
-                                                <div class="media-title font-weight-semibold">James Alexander</div>
+                                                <div class="media-title font-weight-semibold">  James Alexander
+                                                </div>
                                             </div>
                                         </li>
                                     </td>
@@ -151,8 +143,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                     </td>
                                     <td>
                                         <div class="align-self-center ml-3">
-                                            <a href="#" class="text-default" data-toggle="collapse"
-                                               data-target="#james4">
+                                            <a href="#" class="text-default" data-toggle="collapse" data-target="#james4">
                                                 <i class="icon-menu7"></i>
                                             </a>
                                         </div>
@@ -164,71 +155,42 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                             <div class="pb-1">
                                                 <div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
                                                     <div class="navbar-collapse" id="navbar-demo-light">
-                                                        <ul class="nav navbar-nav"
-                                                            style="width: 100%; background-color: #fafafa!important;">
+                                                        <ul class="nav navbar-nav" style="width: 100%; background-color: #fafafa!important;">
                                                             <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;"
-                                                                   href="#schedule_client_bio"
-                                                                   class="navbar-nav-link active" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;"
-                                                                       class="icon-users4"></i>Client Bio
+                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_bio" class="navbar-nav-link active" data-toggle="tab">
+                                                                    <i style="padding-right: 10px;" class="icon-users4"></i>Client Bio
                                                                 </a>
                                                             </li>
                                                             <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;"
-                                                                   href="#schedule_medication_list_1"
-                                                                   class="navbar-nav-link" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;"
-                                                                       class="icon-gear"></i>Medication List
+                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_medication_list_1"class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-gear"></i>Medication List
                                                                 </a>
                                                             </li>
                                                             <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;"
-                                                                   href="#schedule_diet_and_allergies_1"
-                                                                   class="navbar-nav-link " data-toggle="tab"><i
-                                                                            style="padding-right: 10px;"
-                                                                            class="icon-calendar3"></i>Diet and
-                                                                    Allergies
+                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_diet_and_allergies_1" class="navbar-nav-link " data-toggle="tab"><i style="padding-right: 10px;" class="icon-calendar3"></i>Diet and Allergies
                                                                 </a>
                                                             </li>
                                                             <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;"
-                                                                   href="#schedule_appiontment_callender"
-                                                                   class="navbar-nav-link" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;"
-                                                                       class="icon-users4"></i>Appointment Calendar</a>
+                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_appiontment_callender" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;"class="icon-users4"></i>Appointment Calendar</a>
                                                             </li>
                                                             <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;"
-                                                                   href="#schedule_client_vitals"
-                                                                   class="navbar-nav-link" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;"
-                                                                       class="icon-collaboration"></i>Client Vitals
+                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_vitals" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-collaboration"></i>Client Vitals
                                                                 </a>
                                                             </li>
                                                             <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;"
-                                                                   href="#schedule_notice_board" class="navbar-nav-link"
-                                                                   data-toggle="tab">
-                                                                    <i style="padding-right: 10px;"
-                                                                       class="icon-collaboration"></i>
-                                                                    Notice Board
+                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_notice_board" class="navbar-nav-link" data-toggle="tab">
+                                                                    <i style="padding-right: 10px;" class="icon-collaboration"></i>Notice Board
                                                                 </a>
                                                             </li>
                                                             <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;"
-                                                                   href="#schedule_shopping_list"
-                                                                   class="navbar-nav-link" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;"
-                                                                       class="icon-vcard"></i>Shopping List
+                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_shopping_list" class="navbar-nav-link" data-toggle="tab"> 
+                                                                    <i style="padding-right: 10px;" class="icon-vcard"></i>Shopping List
                                                                 </a>
                                                             </li>
                                                             <li class="nav-item dropdown" style="font-size: 11px;">
                                                                 <a style="padding: 14px 14px 14px 14px;"
                                                                    href="#schedule_photos_music"
                                                                    class="navbar-nav-link" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;"
-                                                                       class="icon-vcard"></i>Photos & Favorite music
+                                                                    <i style="padding-right: 10px;" class="icon-vcard"></i>Photos & Favorite music
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -321,15 +283,9 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                             when an unknown printer took a galley of type and
                                                             scrambled it to make a type specimen book.</p>
                                                     </div>
-                                                    <div class="col-md-12"
-                                                         style="text-align: right; margin-top: 20px;">
-                                                        <a href="javascript:;" data-toggle="modal"
-                                                           data-target="#modal_clients_bio"
-                                                           style="margin-right: 10px;"><i style="color: #555;"
-                                                                                          class="icon-pencil5"></i></a>
-                                                        <a href="javascript:;" onclick="deleteClientBio()"><i
-                                                                    style="color: #555;"
-                                                                    class="icon-bin"></i></a>
+                                                    <div class="col-md-12" style="text-align: right; margin-top: 20px;">
+                                                        <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
+                                                        <a href="javascript:;" onclick="deleteClientBio()"><i style="color: #555;" class="icon-bin"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -341,12 +297,8 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <div class="col-md-12" style="text-align: center;">
                                                     <a href="javascript:;" onclick="addMedication()"
                                                        data-toggle="modal"
-                                                       data-target="#modal_add_medication">Add a new
-                                                        medication
-                                                        <button style="background-color: #f5f5f5; margin-left: 15px;"
-                                                                type="button"
-                                                                class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
-                                                            <i style="color: #555;" class="icon-plus3"></i>
+                                                       data-target="#modal_add_medication">Add a new medication
+                                                        <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"> <i style="color: #555;" class="icon-plus3"></i>
                                                         </button>
                                                     </a>
                                                 </div>
@@ -357,22 +309,15 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                         <thead>
                                                         <tr>
                                                             <th>Medication</th>
-                                                            <th><i style="margin-right: 8px;"
-                                                                   class="icon-aid-kit"></i>Qty of
-                                                                Medication
+                                                            <th><i style="margin-right: 8px;" class="icon-aid-kit"></i>Qty of Medication
                                                             </th>
-                                                            <th><i style="margin-right: 8px;"
-                                                                   class="icon-menu7"></i>Times taken a day
+                                                            <th><i style="margin-right: 8px;" class="icon-menu7"></i>Times taken a day
                                                             </th>
-                                                            <th><i style="margin-right: 8px;"
-                                                                   class="icon-alarm"></i>When to take
-                                                                medication
+                                                            <th><i style="margin-right: 8px;" class="icon-alarm"></i>When to take medication
                                                             </th>
-                                                            <th><i style="margin-right: 8px;"
-                                                                   class="icon-calendar3"></i>Time of day
+                                                            <th><i style="margin-right: 8px;" class="icon-calendar3"></i>Time of day
                                                             </th>
-                                                            <th><i style="margin-right: 8px;"
-                                                                   class="icon-alarm"></i>Reminder
+                                                            <th><i style="margin-right: 8px;" class="icon-alarm"></i>Reminder
                                                             </th>
                                                             <th class="text-center">Actions</th>
                                                         </tr>
@@ -422,14 +367,10 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                                         <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
                                                                         </a>
                                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i class="icon-bin2"></i>Delete Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i class="icon-square-down"></i>End Medication</a>
-                                                                            <a href="#"
-                                                                               class="dropdown-item"><i class="icon-file-pdf"></i>Export to .pdf</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Medication</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i>Export to .pdf</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -450,9 +391,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                             <td class="text-center">
                                                                 <div class="list-icons">
                                                                     <div class="dropdown">
-                                                                        <a href="#" class="list-icons-item"
-                                                                           data-toggle="dropdown">
-                                                                            <i class="icon-menu9"></i>
+                                                                        <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
                                                                         </a>
 
                                                                         <div class="dropdown-menu dropdown-menu-right">
@@ -491,22 +430,13 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                             </div>
 
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio"
-                                                                       class="custom-control-input"
-                                                                       name="client_dietry_requirements"
-                                                                       id="mechanical_diet">
-                                                                <label class="custom-control-label"
-                                                                       for="mechanical_diet">Mechanical
-                                                                    diet</label>
+                                                                <input type="radio" class="custom-control-input" name="client_dietry_requirements" id="mechanical_diet">
+                                                                <label class="custom-control-label" for="mechanical_diet">Mechanical diet</label>
                                                             </div>
 
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio"
-                                                                       class="custom-control-input"
-                                                                       name="client_dietry_requirements"
-                                                                       id="pure_diet">
-                                                                <label class="custom-control-label"
-                                                                       for="pure_diet">Puree diet</label>
+                                                                <input type="radio" class="custom-control-input" name="client_dietry_requirements" id="pure_diet">
+                                                                <label class="custom-control-label" for="pure_diet">Puree diet</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -515,33 +445,18 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                             <label class="d-block font-weight-semibold">Select
                                                                 client's dietry requirements</label>
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio"
-                                                                       class="custom-control-input"
-                                                                       name="client_fluids_requirements"
-                                                                       id="thin_liquids" checked="">
-                                                                <label class="custom-control-label"
-                                                                       for="thin_liquids">Thin
-                                                                    liquids</label>
+                                                                <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="thin_liquids" checked="">
+                                                                <label class="custom-control-label" for="thin_liquids">Thin liquids</label>
                                                             </div>
 
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio"
-                                                                       class="custom-control-input"
-                                                                       name="client_fluids_requirements"
-                                                                       id="honey_thick_liquids">
-                                                                <label class="custom-control-label"
-                                                                       for="honey_thick_liquids">Honey thick
-                                                                    liquids</label>
+                                                                <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="honey_thick_liquids">
+                                                                <label class="custom-control-label" for="honey_thick_liquids">Honey thick liquids</label>
                                                             </div>
 
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio"
-                                                                       class="custom-control-input"
-                                                                       name="client_fluids_requirements"
-                                                                       id="nector_thick_liquids">
-                                                                <label class="custom-control-label"
-                                                                       for="nector_thick_liquids">Nector
-                                                                    thick liquids</label>
+                                                                <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="nector_thick_liquids">
+                                                                <label class="custom-control-label" for="nector_thick_liquids">Nector thick liquids</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -550,12 +465,8 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="d-block font-weight-semibold">List
-                                                                client's known allergies</label>
-                                                            <input style="width: 100%;" type="text"
-                                                                   class="form-control tokenfield" value=""
-                                                                   placeholder="Add multiple client's allergies(with comma seperated)"
-                                                                   data-foucus>
+                                                            <label class="d-block font-weight-semibold">List client's known allergies</label>
+                                                            <input style="width: 100%;" type="text" class="form-control tokenfield" value="" placeholder="Add multiple client's allergies(with comma seperated)" data-foucus>
                                                         </div>
                                                     </div>
                                                 </div>
