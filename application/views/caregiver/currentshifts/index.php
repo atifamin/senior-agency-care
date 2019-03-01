@@ -472,14 +472,9 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 </div>
 
                                                 <div style="text-align: right;">
-                                                    <button type="button"
-                                                            class="btn btn-primary legitRipple">Save<i
-                                                                style="margin-left: 8px;"
-                                                                class="icon-arrow-right14"></i></button>
+                                                    <button type="button" class="btn btn-primary legitRipple">Save<i style="margin-left: 8px;" class="icon-arrow-right14"></i></button>
                                                 </div>
-
                                             </form>
-
                                         </div>
 
                             <!-- ============//Appoitment Callender CLient============== -->
@@ -487,12 +482,9 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
 	                                        <div class="row">
 	                                            <div class="col-md-12" style="text-align: center;">
 	                                                <a href="javascript:;" data-toggle="modal"
-	                                                   data-target="#modal_new_appointment">Create new
-	                                                    appointment
-	                                                    <button style="background-color: #f5f5f5; margin-left: 15px;"
-	                                                            type="button"
-	                                                            class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
-	                                                        <i style="color: #555;" class="icon-plus3"></i>
+	                                                   data-target="#modal_new_appointment">Create new appointment
+	                                                    <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
+                                                            <i style="color: #555;" class="icon-plus3"></i>
 	                                                    </button>
 	                                                </a>
 	                                            </div>
@@ -527,17 +519,12 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
 	                                                        <td class="text-center">
 	                                                            <div class="list-icons">
 	                                                                <div class="dropdown">
-	                                                                    <a href="#" class="list-icons-item"
-	                                                                       data-toggle="dropdown">
-	                                                                        <i class="icon-menu9"></i>
+	                                                                    <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
 	                                                                    </a>
 	                                                                    <div class="dropdown-menu dropdown-menu-right">
-	                                                                        <a href="#"
-	                                                                           class="dropdown-item"><i class="icon-square-right"></i>Edit Appointment</a>
-	                                                                        <a href="#"
-	                                                                           class="dropdown-item"><i class="icon-bin2"></i>Delete Appointment</a>
-	                                                                        <a href="#"
-	                                                                           class="dropdown-item"><iclass="icon-square-down"></i>End Appointment</a>
+	                                                                        <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Appointment</a>
+	                                                                        <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Appointment</a>
+	                                                                        <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Appointment</a>
 	                                                                    </div>
 	                                                                </div>
 	                                                            </div>
@@ -594,10 +581,8 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
 	                                                                    </a>
 	                                                                    <div class="dropdown-menu dropdown-menu-right">
 	                                                                        <a href="#"class="dropdown-item"><iclass="icon-square-right"></i>Edit Vitals</a>
-	                                                                        <a href="#"
-	                                                                           class="dropdown-item"><iclass="icon-bin2"></i>Delete Vitals</a>
-	                                                                        <a href="#"
-	                                                                           class="dropdown-item"><iclass="icon-square-down"></i>End Vitals</a>
+	                                                                        <a href="#" class="dropdown-item"><iclass="icon-bin2"></i>Delete Vitals</a>
+	                                                                        <a href="#" class="dropdown-item"><iclass="icon-square-down"></i>End Vitals</a>
 	                                                                    </div>
 	                                                                </div>
 	                                                            </div>
@@ -734,8 +719,35 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
+                                                        refund for a double card charge.
+                                                        <div class="font-size-sm text-muted mt-1"> 4 minutes ago
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="media"
+                                                    style="border: none !important;">
+                                                    <div class="mr-3">
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                    </div>
+
+                                                    <div class="media-body">
+                                                        <a href="#">David Liner</a> requested
+                                                        refund for a double card charge.
+                                                        <div class="font-size-sm text-muted mt-1">
+                                                            4 minutes ago
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="media"
+                                                    style="border: none !important;">
+                                                    <div class="mr-3">
+                                                        <a href="#"
+                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                    </div>
+
+                                                    <div class="media-body">
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -747,49 +759,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                     style="border: none !important;">
                                                     <div class="mr-3">
                                                         <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -805,14 +779,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <li class="media"
                                                     style="border: none !important;">
                                                     <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -823,14 +794,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <li class="media"
                                                     style="border: none !important;">
                                                     <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -841,14 +809,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <li class="media"
                                                     style="border: none !important;">
                                                     <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -859,14 +824,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <li class="media"
                                                     style="border: none !important;">
                                                     <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -877,14 +839,11 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <li class="media"
                                                     style="border: none !important;">
                                                     <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -900,14 +859,26 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <li class="media"
                                                     style="border: none !important;">
                                                     <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
+                                                        refund for a double card
+                                                        charge.
+                                                        <div class="font-size-sm text-muted mt-1">
+                                                            4 minutes ago
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="media"
+                                                    style="border: none !important;">
+                                                    <div class="mr-3">
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                    </div>
+
+                                                    <div class="media-body">
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -919,26 +890,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                     style="border: none !important;">
                                                     <div class="mr-3">
                                                         <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
@@ -996,8 +948,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                     style="border: none !important;">
                                                     <div class="mr-3">
                                                         <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
@@ -1055,8 +1006,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                     </div>
 
                                                     <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
+                                                        <a href="#">David Liner</a> requested
                                                         refund for a double card
                                                         charge.
                                                         <div class="font-size-sm text-muted mt-1">
@@ -1067,9 +1017,7 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
                                                 <li class="media"
                                                     style="border: none !important;">
                                                     <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
+                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
                                                     </div>
 
                                                     <div class="media-body">
@@ -1100,10 +1048,8 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
 	                                                <a href="javascript:;" data-toggle="modal"
 	                                                   data-target="#modal_shopping_list">Create new
 	                                                    shopping list
-	                                                    <button style="background-color: #f5f5f5; margin-left: 15px;"
-	                                                            type="button"
-	                                                            class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
-	                                                        <i style="color: #555;" class="icon-plus3"></i>
+	                                                    <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
+                                                            <i style="color: #555;" class="icon-plus3"></i>
 	                                                    </button>
 	                                                </a>
 	                                            </div>
@@ -1132,24 +1078,14 @@ include(APPPATH . "views/caregiver/inc/header.php"); ?>
 	                                                        <td class="text-center">
 	                                                            <div class="list-icons">
 	                                                                <div class="dropdown">
-	                                                                    <a href="#" class="list-icons-item"
-	                                                                       data-toggle="dropdown">
-	                                                                        <i class="icon-menu9"></i>
+	                                                                    <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
 	                                                                    </a>
 
 	                                                                    <div class="dropdown-menu dropdown-menu-right">
 	                                                                        <a href="#"
-	                                                                           class="dropdown-item"><i
-	                                                                                    class="icon-square-right"></i>
-	                                                                            Edit shopping list</a>
-	                                                                        <a href="#"
-	                                                                           class="dropdown-item"><i
-	                                                                                    class="icon-bin2"></i>
-	                                                                            Delete shopping list</a>
-	                                                                        <a href="#"
-	                                                                           class="dropdown-item"><i
-	                                                                                    class="icon-square-down"></i>
-	                                                                            End shopping list</a>
+	                                                                           class="dropdown-item"><i class="icon-square-right"></i> Edit shopping list</a>
+	                                                                        <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete shopping list</a>
+	                                                                        <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End shopping list</a>
 	                                                                    </div>
 	                                                                </div>
 	                                                            </div>
