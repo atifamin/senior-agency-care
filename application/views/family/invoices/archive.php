@@ -470,9 +470,10 @@
 			        <thead>
 			            <tr>
 			                <th>Caregiver</th>
-			                <th>Hours Worked</th>
-			                <th>Holiday/Overtime</th>
-			                <th>Hourly Rate</th>
+			                <th>Regular Hours</th>
+			                <th>Regular Rate</th>
+			                <th>Holiday/Overtime Hrs</th>
+			                <th>Holiday/Overtime Rate</th>
 			                <th>Total</th>
 			            </tr>
 			        </thead>
@@ -480,12 +481,6 @@
 			            <tr>
 			                <td>Carl Swan</td>
 			                <td>80</td>
-			                <td>0</td>
-			                <td>30</td>
-			                <td>$3,990</td>
-			            </tr>
-			            <tr>
-			                <td>Carl Swan</td>
 			                <td>80</td>
 			                <td>0</td>
 			                <td>30</td>
@@ -493,6 +488,15 @@
 			            </tr>
 			            <tr>
 			                <td>Carl Swan</td>
+			                <td>80</td>
+			                <td>80</td>
+			                <td>0</td>
+			                <td>30</td>
+			                <td>$3,990</td>
+			            </tr>
+			            <tr>
+			                <td>Carl Swan</td>
+			                <td>80</td>
 			                <td>80</td>
 			                <td>45*6</td>
 			                <td>30</td>
