@@ -93,7 +93,7 @@
 					</tr>
 					<tr>
 						<td colspan="7" style="padding: 0;">
-							<div class="collapse" id="james1">
+							<div class="collapse active show" id="james1">
 								<div class="row">
 									<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 										<h4> Time Sheets</h4>
@@ -247,14 +247,14 @@
 						<td class="text-center">
 							<div class="align-self-center ml-3">
                                 <a href="#" class="text-default" data-toggle="collapse"
-                                    data-target="#james1"><i class="icon-menu7"></i>
+                                    data-target="#james2"><i class="icon-menu7"></i>
                                 </a>
                             </div>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="7" style="padding: 0;">
-							<div class="collapse" id="james1">
+							<div class="collapse active show" id="james2">
 								<div class="row">
 									<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 										<h4> Time Sheets</h4>
@@ -408,14 +408,14 @@
 						<td class="text-center">
 							<div class="align-self-center ml-3">
                                 <a href="#" class="text-default" data-toggle="collapse"
-                                    data-target="#james1"><i class="icon-menu7"></i>
+                                    data-target="#james3"><i class="icon-menu7"></i>
                                 </a>
                             </div>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="7" style="padding: 0;">
-							<div class="collapse" id="james1">
+							<div class="collapse active show" id="james3">
 								<div class="row">
 									<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 										<h4> Time Sheets</h4>

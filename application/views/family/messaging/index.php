@@ -1,4 +1,4 @@
-<?php include(APPPATH."views/Family/inc/header.php"); ?>
+<?php include(APPPATH."views/family/inc/header.php"); ?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -580,4 +580,4 @@
 	</div>
 </div> -->
 <script src="<?php echo base_url();?>assets/js/demo_pages/chat_layouts.js"></script>
-<?php include(APPPATH."views/Family/inc/footer.php"); ?>
+<?php include(APPPATH."views/family/inc/footer.php"); ?>
