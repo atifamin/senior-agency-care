@@ -37,16 +37,6 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-12">
-		<div class="card">
-			<div class="card-body" style="text-align: center;">
-				<button style="margin-left: 10px;" type="button" class="btn btn-light legitRipple" data-toggle="modal" data-target="#payroll_rules_modal">Set Payroll Rules</button>
-				<span style="margin-left: 8px; color: #C07007;">Not set! Set up payroll periods and deductibles such as caregiver milage</span>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row">
 <div class="col-md-12">
 <!-- Inner container -->
 <div class="d-flex align-items-start flex-column flex-md-row">
@@ -823,7 +813,7 @@
 						</div>
 
 						<div class="text-right mt-3">
-							<button type="button" onclick="paymentSuccess()" class="btn btn-primary btn-labeled btn-labeled-left"><b><i class="icon-paperplane"></i></b> Pay Rebecca Menance</button>
+							<button type="button" onclick="paymentSuccess()" class="btn btn-primary btn-labeled btn-labeled-left" style="background-color: #008000b8"><b><i class="icon-paperplane"></i></b> Status: Paid</button>
 						</div>
 					</div>
 				</div>
