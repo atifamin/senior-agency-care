@@ -188,7 +188,7 @@
                     </div>
                 </div
                  <div class="row">
-                    <div class="col-md-12" style="margin-top: 10px;">
+                    <div class="col-md-12" style="margin-top: 10px; background-color: #f5f5f5;">
                         <span class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
                         </span>
                     </div>
@@ -196,7 +196,6 @@
             </div>
 
             <div class="modal-footer" style="margin-top: 10px;">
-               <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
                 
                 <li class="media" style="width: 93%;">
                     <div class="mr-3">
