@@ -94,109 +94,103 @@
                         <h5 style="font-weight: 500; margin-bottom: 0;">Current Shifts</h5>
                     </div>
                 </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="media-list media-list-linked">
-                <li style="list-style: none;">
-                    <div class="media">
-                       <!--  <div class="mr-3">
-                            <div class="media-title font-weight-semibold">Shift Time</div>
-                        </div> -->
-                        <div class="media-body">
-                            <div class="media-title font-weight-semibold">Shift Time</div>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-title font-weight-semibold">Client</div>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-title font-weight-semibold">Location</div>
-                        </div>
-                        <div class="media-body text-center">
-                            <div class="media-title font-weight-semibold">Charting Status</div>
-                        </div>
-                        <div class="ml-3">
-                           <div class="media-title font-weight-semibold">Action</div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="media">
-                        <div class="media-body">
-                            <span class="text-muted">10:30am - 12:30pm</span>
-                            <!-- <i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i> -->
-                        </div>
-                        <div class="media-body">
-                            <!-- <i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: left;"></i> -->
-                            <img src="<?php echo base_url();?>assets/images/userimg/face1.jpg" class="rounded-circle" width="40" height="40" alt="">
-                             <div class="media-title font-weight-semibold" style="">James Alexander</div>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-title font-weight-semibold">
-                                Johar Town Lahore,Pakistan <i class="icon-location3"></i>
-                            </div>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-title font-weight-semibold">
-                                <p><span class="badge badge-primary">Primary</span> &nbsp;&nbsp;&nbsp;<a href="">Start Charting</a></p>
-                            </div>
-                        </div>
-                        <div class=" ml-3">
-                            <a href="#" class="text-default" data-toggle="collapse" data-target="#james2">
-                            <i class="icon-menu7"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- <div class="collapse" id="james2">
-                        <div class="card-body bg-light border-top border-bottom">
-                        asdfasdfasd
-                        </div>
-                    </div> -->
-                    <div class="collapse" id="james2">
-                        <div class="pb-1">
-                            <div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
-                                <div class="navbar-collapse" id="navbar-demo-light">
-                                    <ul class="nav navbar-nav" style="width: 100%; background-color: #fafafa!important;">
-                                        <li class="nav-item dropdown" style="font-size: 11px;">
-                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_bio" class="navbar-nav-link active" data-toggle="tab">
-                                                <i style="padding-right: 10px;" class="icon-users4"></i>Client Bio
-                                            </a>
-                                        </li>
-                                        <li class="nav-item dropdown" style="font-size: 11px;">
-                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_medication_list_1"class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-gear"></i>Medication List
-                                            </a>
-                                        </li>
-                                        <li class="nav-item dropdown" style="font-size: 11px;">
-                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_diet_and_allergies_1" class="navbar-nav-link " data-toggle="tab"><i style="padding-right: 10px;" class="icon-calendar3"></i>Diet and Allergies
-                                            </a>
-                                        </li>
-                                        <li class="nav-item dropdown" style="font-size: 11px;">
-                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_appiontment_callender" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;"class="icon-users4"></i>Appointment Calendar</a>
-                                        </li>
-                                        <li class="nav-item dropdown" style="font-size: 11px;">
-                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_vitals" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-collaboration"></i>Client Vitals
-                                            </a>
-                                        </li>
-                                        <li class="nav-item dropdown" style="font-size: 11px;">
-                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_notice_board" class="navbar-nav-link" data-toggle="tab">
-                                                <i style="padding-right: 10px;" class="icon-collaboration"></i>Notice Board
-                                            </a>
-                                        </li>
-                                        <li class="nav-item dropdown" style="font-size: 11px;">
-                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_shopping_list" class="navbar-nav-link" data-toggle="tab"> 
-                                                <i style="padding-right: 10px;" class="icon-vcard"></i>Shopping List
-                                            </a>
-                                        </li>
-                                        <li class="nav-item dropdown" style="font-size: 11px;">
-                                            <a style="padding: 14px 14px 14px 14px;"
-                                               href="#schedule_photos_music"
-                                               class="navbar-nav-link" data-toggle="tab">
-                                                <i style="padding-right: 10px;" class="icon-vcard"></i>Photos & Favorite music
-                                            </a>
-                                        </li>
-                                    </ul>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="media-list media-list-linked">
+                            <li style="list-style: none;">
+                                <div class="media">
+                                   <!--  <div class="mr-3">
+                                        <div class="media-title font-weight-semibold">Shift Time</div>
+                                    </div> -->
+                                    <div class="media-body">
+                                        <div class="media-title font-weight-semibold">Shift Time</div>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-title font-weight-semibold">Client</div>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-title font-weight-semibold">Location</div>
+                                    </div>
+                                    <div class="media-body text-center">
+                                        <div class="media-title font-weight-semibold">Charting Status</div>
+                                    </div>
+                                    <div class="ml-3">
+                                       <div class="media-title font-weight-semibold">Action</div>
+                                    </div>
                                 </div>
-                            </div>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <span class="text-muted">10:30am - 12:30pm</span>
+                                        <!-- <i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i> -->
+                                    </div>
+                                    <div class="media-body">
+                                        <!-- <i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: left;"></i> -->
+                                        <img src="<?php echo base_url();?>assets/images/userimg/face1.jpg" class="rounded-circle" width="40" height="40" alt="">
+                                         <div class="media-title font-weight-semibold" style="">James Alexander</div>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-title font-weight-semibold">
+                                            Johar Town Lahore,Pakistan <i class="icon-location3"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-title font-weight-semibold">
+                                            <p><span class="badge badge-primary">Primary</span> &nbsp;&nbsp;&nbsp;<a href="">Start Charting</a></p>
+                                        </div>
+                                    </div>
+                                    <div class=" ml-3">
+                                        <a href="#" class="text-default" data-toggle="collapse" data-target="#james2">
+                                        <i class="icon-menu7"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="collapse" id="james2">
+                                    <div class="pb-1">
+                                        <div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
+                                            <div class="navbar-collapse" id="navbar-demo-light">
+                                                <ul class="nav navbar-nav" style="width: 100%; background-color: #fafafa!important;">
+                                                    <li class="nav-item dropdown" style="font-size: 11px;">
+                                                        <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_bio" class="navbar-nav-link active" data-toggle="tab">
+                                                            <i style="padding-right: 10px;" class="icon-users4"></i>Client Bio
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item dropdown" style="font-size: 11px;">
+                                                        <a style="padding: 14px 14px 14px 14px;" href="#schedule_medication_list_1"class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-gear"></i>Medication List
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item dropdown" style="font-size: 11px;">
+                                                        <a style="padding: 14px 14px 14px 14px;" href="#schedule_diet_and_allergies_1" class="navbar-nav-link " data-toggle="tab"><i style="padding-right: 10px;" class="icon-calendar3"></i>Diet and Allergies
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item dropdown" style="font-size: 11px;">
+                                                        <a style="padding: 14px 14px 14px 14px;" href="#schedule_appiontment_callender" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;"class="icon-users4"></i>Appointment Calendar</a>
+                                                    </li>
+                                                    <li class="nav-item dropdown" style="font-size: 11px;">
+                                                        <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_vitals" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-collaboration"></i>Client Vitals
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item dropdown" style="font-size: 11px;">
+                                                        <a style="padding: 14px 14px 14px 14px;" href="#schedule_notice_board" class="navbar-nav-link" data-toggle="tab">
+                                                            <i style="padding-right: 10px;" class="icon-collaboration"></i>Notice Board
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item dropdown" style="font-size: 11px;">
+                                                        <a style="padding: 14px 14px 14px 14px;" href="#schedule_shopping_list" class="navbar-nav-link" data-toggle="tab"> 
+                                                            <i style="padding-right: 10px;" class="icon-vcard"></i>Shopping List
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item dropdown" style="font-size: 11px;">
+                                                        <a style="padding: 14px 14px 14px 14px;"
+                                                           href="#schedule_photos_music" class="navbar-nav-link" data-toggle="tab">
+                                                            <i style="padding-right: 10px;" class="icon-vcard"></i>Photos & Favorite music
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
 
                                         <div class="border-top-0 rounded-0 rounded-bottom tab-content" style="padding: 1%; margin-top: 10px;">
                                             <!-- ============ CLient Bio ============== -->
@@ -413,72 +407,72 @@
 
                                                     <!-- ============//Dietry Needs CLient============== -->
 
-                                        <div class="tab-pane fade" id="schedule_diet_and_allergies_1">
-                                            <form>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group pt-2">
-                                                            <label class="d-block font-weight-semibold">Select
-                                                                client's dietry requirements</label>
-                                                            <div class="custom-control custom-radio">
-                                                                <input type="radio"
-                                                                       class="custom-control-input"
-                                                                       name="client_dietry_requirements"
-                                                                       id="regular_diet" checked="">
-                                                                <label class="custom-control-label"
-                                                                       for="regular_diet">Regular
-                                                                    diet</label>
+                                                    <div class="tab-pane fade" id="schedule_diet_and_allergies_1">
+                                                        <form>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group pt-2">
+                                                                        <label class="d-block font-weight-semibold">Select
+                                                                            client's dietry requirements</label>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio"
+                                                                                   class="custom-control-input"
+                                                                                   name="client_dietry_requirements"
+                                                                                   id="regular_diet" checked="">
+                                                                            <label class="custom-control-label"
+                                                                                   for="regular_diet">Regular
+                                                                                diet</label>
+                                                                        </div>
+
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" class="custom-control-input" name="client_dietry_requirements" id="mechanical_diet">
+                                                                            <label class="custom-control-label" for="mechanical_diet">Mechanical diet</label>
+                                                                        </div>
+
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" class="custom-control-input" name="client_dietry_requirements" id="pure_diet">
+                                                                            <label class="custom-control-label" for="pure_diet">Puree diet</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group pt-2">
+                                                                        <label class="d-block font-weight-semibold">Select
+                                                                            client's dietry requirements</label>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="thin_liquids" checked="">
+                                                                            <label class="custom-control-label" for="thin_liquids">Thin liquids</label>
+                                                                        </div>
+
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="honey_thick_liquids">
+                                                                            <label class="custom-control-label" for="honey_thick_liquids">Honey thick liquids</label>
+                                                                        </div>
+
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="nector_thick_liquids">
+                                                                            <label class="custom-control-label" for="nector_thick_liquids">Nector thick liquids</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
 
-                                                            <div class="custom-control custom-radio">
-                                                                <input type="radio" class="custom-control-input" name="client_dietry_requirements" id="mechanical_diet">
-                                                                <label class="custom-control-label" for="mechanical_diet">Mechanical diet</label>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="d-block font-weight-semibold">List client's known allergies</label>
+                                                                        <input style="width: 100%;" type="text" class="form-control tokenfield" value="" placeholder="Add multiple client's allergies(with comma seperated)" data-foucus>
+                                                                    </div>
+                                                                </div>
                                                             </div>
 
-                                                            <div class="custom-control custom-radio">
-                                                                <input type="radio" class="custom-control-input" name="client_dietry_requirements" id="pure_diet">
-                                                                <label class="custom-control-label" for="pure_diet">Puree diet</label>
+                                                            <div style="text-align: right;">
+                                                                <button type="button" class="btn btn-primary legitRipple">Save<i style="margin-left: 8px;" class="icon-arrow-right14"></i></button>
                                                             </div>
-                                                        </div>
+                                                        </form>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group pt-2">
-                                                            <label class="d-block font-weight-semibold">Select
-                                                                client's dietry requirements</label>
-                                                            <div class="custom-control custom-radio">
-                                                                <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="thin_liquids" checked="">
-                                                                <label class="custom-control-label" for="thin_liquids">Thin liquids</label>
-                                                            </div>
 
-                                                            <div class="custom-control custom-radio">
-                                                                <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="honey_thick_liquids">
-                                                                <label class="custom-control-label" for="honey_thick_liquids">Honey thick liquids</label>
-                                                            </div>
-
-                                                            <div class="custom-control custom-radio">
-                                                                <input type="radio" class="custom-control-input" name="client_fluids_requirements" id="nector_thick_liquids">
-                                                                <label class="custom-control-label" for="nector_thick_liquids">Nector thick liquids</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="d-block font-weight-semibold">List client's known allergies</label>
-                                                            <input style="width: 100%;" type="text" class="form-control tokenfield" value="" placeholder="Add multiple client's allergies(with comma seperated)" data-foucus>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div style="text-align: right;">
-                                                    <button type="button" class="btn btn-primary legitRipple">Save<i style="margin-left: 8px;" class="icon-arrow-right14"></i></button>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                            <!-- ============//Appoitment Callender CLient============== -->
+                                        <!-- ============//Appoitment Callender CLient============== -->
                                         <div class="tab-pane fade" id="schedule_appiontment_callender">
                                             <div class="row">
                                                 <div class="col-md-12" style="text-align: center;">
@@ -538,7 +532,7 @@
                                         </div>
 
 
-                            <!-- ============//Client Vitals============== -->
+                                        <!-- ============//Client Vitals============== -->
                                         <div class="tab-pane fade" id="schedule_client_vitals">
                                             <div class="row">
                                                 <div class="col-md-12" style="text-align: center;">
@@ -596,435 +590,435 @@
                                         </div>
 
 
-                            <!-- ================//Notice Board================ -->
-                
+                                        <!-- ================//Notice Board================ -->
+                            
 
 
-            <div class="tab-pane fade" id="schedule_notice_board">
-                <div class="row">
-                    <div class="col-md-12" style="text-align: center;">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-light daterange-predefined">
-                                <i class="icon-calendar22 mr-2"></i>
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table datatable-responsive"
-                               id="notice_board_datatable"
-                               style="border: none !important;">
-                            <thead style="border: none !important;">
-                            <tr style="border: none !important;">
-                                <th style="border: none !important;">
-                                    <ul class="nav nav-tabs nav-tabs-bottom">
-                                        <li class="nav-item" style="padding-right: 30px;"><a href="#client_latest_updates_1" class="nav-link active" data-toggle="tab">Latest Updates</a></li>
-                                        <li class="nav-item" style="padding-right: 30px;"><a href="#client_shifts_1"class="nav-link"data-toggle="tab">Shifts</a>
-                                        </li>
-                                        <li class="nav-item" style="padding-right: 30px;"><a href="#client_notices_1" class="nav-link" data-toggle="tab">Client Notices</a></li>
-                                        <li class="nav-item" style="padding-right: 30px;"><a href="#timesheet_payroll_1" class="nav-link" data-toggle="tab">Timesheet & Payroll</a></li>
-                                        <li class="nav-item"><a href="#client_other_1" class="nav-link" data-toggle="tab">Other</a>
-                                        </li>
-                                    </ul>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody style="border: none !important;">
-                            <tr style="border: none !important;">
-                                <td style="border: none !important; padding: 0;">
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade active show" id="client_latest_updates_1">
-                                            <ul class="media-list">
-                                                <li class="media" style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                        <div class="tab-pane fade" id="schedule_notice_board">
+                                            <div class="row">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <div class="form-group">
+                                                        <button type="button" class="btn btn-light daterange-predefined">
+                                                            <i class="icon-calendar22 mr-2"></i>
+                                                            <span></span>
+                                                        </button>
                                                     </div>
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media" style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested refund for a double cardcharge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media" style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media" style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table class="table datatable-responsive"
+                                                           id="notice_board_datatable"
+                                                           style="border: none !important;">
+                                                        <thead style="border: none !important;">
+                                                        <tr style="border: none !important;">
+                                                            <th style="border: none !important;">
+                                                                <ul class="nav nav-tabs nav-tabs-bottom">
+                                                                    <li class="nav-item" style="padding-right: 30px;"><a href="#client_latest_updates_1" class="nav-link active" data-toggle="tab">Latest Updates</a></li>
+                                                                    <li class="nav-item" style="padding-right: 30px;"><a href="#client_shifts_1"class="nav-link"data-toggle="tab">Shifts</a>
+                                                                    </li>
+                                                                    <li class="nav-item" style="padding-right: 30px;"><a href="#client_notices_1" class="nav-link" data-toggle="tab">Client Notices</a></li>
+                                                                    <li class="nav-item" style="padding-right: 30px;"><a href="#timesheet_payroll_1" class="nav-link" data-toggle="tab">Timesheet & Payroll</a></li>
+                                                                    <li class="nav-item"><a href="#client_other_1" class="nav-link" data-toggle="tab">Other</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody style="border: none !important;">
+                                                        <tr style="border: none !important;">
+                                                            <td style="border: none !important; padding: 0;">
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane fade active show" id="client_latest_updates_1">
+                                                                        <ul class="media-list">
+                                                                            <li class="media" style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media" style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested refund for a double cardcharge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media" style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media" style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="tab-pane fade"
+                                                                         id="client_shifts_1">
+                                                                        <ul class="media-list">
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#"
+                                                                                       class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
+                                                                                                class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1"> 4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#"
+                                                                                       class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#"
+                                                                                       class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="tab-pane fade"
+                                                                         id="client_notices_1">
+                                                                        <ul class="media-list">
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="tab-pane fade"
+                                                                         id="timesheet_payroll_1">
+                                                                        <ul class="media-list">
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#"
+                                                                                       class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David
+                                                                                        Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#"
+                                                                                       class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
+                                                                                                class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David
+                                                                                        Liner</a> requested
+                                                                                    refund for a double card
+                                                                                    charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#"
+                                                                                       class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="tab-pane fade"
+                                                                         id="client_other_1">
+                                                                        <ul class="media-list">
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="media"
+                                                                                style="border: none !important;">
+                                                                                <div class="mr-3">
+                                                                                    <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
+                                                                                </div>
+
+                                                                                <div class="media-body">
+                                                                                    <a href="#">David Liner</a> requested
+                                                                                    refund for a double card charge.
+                                                                                    <div class="font-size-sm text-muted mt-1">
+                                                                                        4 minutes ago
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="tab-pane fade"
-                                             id="client_shifts_1">
-                                            <ul class="media-list">
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1"> 4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane fade"
-                                             id="client_notices_1">
-                                            <ul class="media-list">
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane fade"
-                                             id="timesheet_payroll_1">
-                                            <ul class="media-list">
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i
-                                                                    class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David
-                                                            Liner</a> requested
-                                                        refund for a double card
-                                                        charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#"
-                                                           class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane fade"
-                                             id="client_other_1">
-                                            <ul class="media-list">
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="media"
-                                                    style="border: none !important;">
-                                                    <div class="mr-3">
-                                                        <a href="#" class="btn btn-outline bg-primary-400 border-primary-400 text-primary-800 btn-icon rounded-round border-2 ml-2 legitRipple"><i class="icon-rotate-cw3"></i></a>
-                                                    </div>
-
-                                                    <div class="media-body">
-                                                        <a href="#">David Liner</a> requested
-                                                        refund for a double card charge.
-                                                        <div class="font-size-sm text-muted mt-1">
-                                                            4 minutes ago
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
 
                                     <!-- ================//Shopping List ================ -->
                                         <div class="tab-pane fade" id="schedule_shopping_list">
@@ -1082,7 +1076,7 @@
                                         </div>
 
                                         <!-- ================//Photos and music ================ -->
-                                    <div class="tab-pane fade" id="schedule_photos_music">
+                                        <div class="tab-pane fade" id="schedule_photos_music">
                                             <div class="row">
                                                 <div class="col-md-4 offset-md-3" style="padding-top: 30px;">
                                                     <button type="button" class="btn btn-primary btn-icon"><i class="icon-download"></i></button>
@@ -1112,113 +1106,113 @@
                                                         <li class="nav-item"><a href="#mymusic" class="nav-link" data-toggle="tab">Favorite Music</a></li>
                                                     </ul>
                                                     <div class="tab-content">
-                                                    <div class="tab-pane fade show active" id="myphoto">
-                                            <div class="row">
-                                        <div class="col-xl-4 col-sm-6">
-                                            <div class="card">
-                                                <div class="card-img-actions">
-                                                    <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img4.png" alt="">
-                                                    <div class="card-img-actions-overlay card-img-top">
-                                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
-                                                            <i class="icon-plus3"></i>
-                                                        </a>
-                                                        <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2">
-                                                            <i class="icon-link"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                                        <div class="tab-pane fade show active" id="myphoto">
+                                                            <div class="row">
+                                                                <div class="col-xl-4 col-sm-6">
+                                                                    <div class="card">
+                                                                        <div class="card-img-actions">
+                                                                            <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img4.png" alt="">
+                                                                            <div class="card-img-actions-overlay card-img-top">
+                                                                                <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
+                                                                                    <i class="icon-plus3"></i>
+                                                                                </a>
+                                                                                <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2">
+                                                                                    <i class="icon-link"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
 
-                                                <div class="card-body text-center">
-                                                    <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <div class="row">
-                                                    <div class="col-sm-8">
-                                                         <p>updated: may 25th</p>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <a href="" class="pull-right">Edit</a>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <a href="" class="pull-right"> Delete</a>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-sm-6">
-                                            <div class="card">
-                                                <div class="card-img-actions">
-                                                    <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img1.png" alt="">
-                                                    <div class="card-img-actions-overlay card-img-top">
-                                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"><i class="icon-plus3"></i>
-                                                        </a>
-                                                        <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"><i class="icon-link"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body text-center">
-                                                    <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, </p>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <div class="row">
-                                                    <div class="col-sm-8">
-                                                         <p>updated: may 25th</p>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <a href="" class="pull-right">Edit</a>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <a href="" class="pull-right"> Delete</a>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-sm-6">
-                                            <div class="card">
-                                                <div class="card-img-actions">
-                                                    <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img3.png" alt="">
-                                                    <div class="card-img-actions-overlay card-img-top">
-                                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"><i class="icon-plus3"></i>
-                                                        </a>
-                                                        <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"><i class="icon-link"></i></a>
-                                                    </div>
-                                                </div>
+                                                                        <div class="card-body text-center">
+                                                                            <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+                                                                        </div>
+                                                                        <div class="card-footer">
+                                                                            <div class="row">
+                                                                            <div class="col-sm-8">
+                                                                                 <p>updated: may 25th</p>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <a href="" class="pull-right">Edit</a>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <a href="" class="pull-right"> Delete</a>
+                                                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-4 col-sm-6">
+                                                                    <div class="card">
+                                                                        <div class="card-img-actions">
+                                                                            <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img1.png" alt="">
+                                                                            <div class="card-img-actions-overlay card-img-top">
+                                                                                <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"><i class="icon-plus3"></i>
+                                                                                </a>
+                                                                                <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"><i class="icon-link"></i></a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-body text-center">
+                                                                            <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, </p>
+                                                                        </div>
+                                                                        <div class="card-footer">
+                                                                            <div class="row">
+                                                                            <div class="col-sm-8">
+                                                                                 <p>updated: may 25th</p>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <a href="" class="pull-right">Edit</a>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <a href="" class="pull-right"> Delete</a>
+                                                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-4 col-sm-6">
+                                                                    <div class="card">
+                                                                        <div class="card-img-actions">
+                                                                            <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img3.png" alt="">
+                                                                            <div class="card-img-actions-overlay card-img-top">
+                                                                                <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"><i class="icon-plus3"></i>
+                                                                                </a>
+                                                                                <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"><i class="icon-link"></i></a>
+                                                                            </div>
+                                                                        </div>
 
-                                                <div class="card-body text-center">
-                                                    <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <div class="row">
-                                                    <div class="col-sm-8">
-                                                        <span>updated: may 25th</span>
+                                                                        <div class="card-body text-center">
+                                                                            <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+                                                                        </div>
+                                                                        <div class="card-footer">
+                                                                            <div class="row">
+                                                                            <div class="col-sm-8">
+                                                                                <span>updated: may 25th</span>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <a href="" class="pull-right">Edit</a>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <a href="" class="pull-right"> Delete</a>
+                                                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="mymusic">
+                                                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
+                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-2">
-                                                        <a href="" class="pull-right">Edit</a>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <a href="" class="pull-right"> Delete</a>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                         </div>
-                                            </div>
-                                                <div class="tab-pane fade" id="mymusic">
-                                                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
-                                                </div>
-                                            </div>
                                                 </div>
                                             </div>   
+                                        </div>
                                     </div>
-                                        </div>
-                                        </div>
-                </li>
-            </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>

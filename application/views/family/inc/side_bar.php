@@ -97,7 +97,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="client profile"){echo 'active';} ?>"><i class="icon-copy"></i> <span>Client Profile</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("family/client_profile/index") ?>" class="nav-link active">Client Detail</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("family/client_profile") ?>" class="nav-link active">Client Detail</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
