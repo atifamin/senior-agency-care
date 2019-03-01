@@ -748,9 +748,9 @@
 			    <table class="table table-lg">
 			        <thead>
 			            <tr>
-			                <th>Client</th>
-			                <th>Regular hours</th>
-			                <th>Regular rate</th>
+			                <th>Caregiver</th>
+			                <th>Regular Hours</th>
+			                <th>Regular Rate</th>
 			                <th>Holiday/Overtime</th>
 			                <th>Overtime/Holiday rate</th>
 			                <th>Total</th>
