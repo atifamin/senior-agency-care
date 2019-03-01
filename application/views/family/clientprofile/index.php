@@ -1,45 +1,35 @@
-<?php include(APPPATH . "views/caregiver/inc/header.php"); ?>
-
-<style type="text/css">
-    .navbar-nav-link.active {
-        background-color: #fff !important;
-    }
-
-    .sorting_disabled {
-        width: auto !important;
-    }
-
-    .dataTable thead .sorting:before {
-        content: "";
-    }
-
-    .dataTable thead .sorting:after {
-        content: "";
-    }
-
-    .dataTable thead .sorting_asc:after {
-        content: "";
-    }
-
-    .dataTable thead {
-        font-size: 12px;
-    }
-
-    .token-input {
-        min-width: 100% !important;
-    }
-
-    .dataTable thead .sorting_desc:after {
-        content: "";
-    }
-
-    .navbar-nav-link.active {
-        background-color: #E6E6E6 !important;
-    }
-    .table .table{
-        background-color: #fff  !important;
-    }
-</style>
+<?php include(APPPATH. "views/family/inc/header.php"); ?>
+<div class="row">
+    <div class="col-md-12">
+    <div class="card">
+      <div class="row" style="padding: 12px;">
+        <div class="col-md-8" >
+          <div class="row" style="text-align: center;">
+            <div class="col-md-4" style="margin-top: 5px;"> 
+               <button type="button" class="btn btn-light btn-icon legitRipple"><i class="icon-arrow-left12"></i></button>
+               <button type="button" class="btn btn-light btn-icon legitRipple"><i class="icon-arrow-right13"></i></button>
+               <button class="btn btn-light legitRipple">TODAY</button>
+            </div>
+            <div class="col-md-5" style="margin-top: 5px;">  
+                <a href="#" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 5px;" class="icon-three-bars"></i>List View</a>
+                <a href="#" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 5px;" class="icon-calendar"></i>Calander View</a>
+            </div>
+            <span style="margin: 10px auto; font-size: 15px;">November 2014</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-9 offset-md-3" style="margin-top: 3px; text-align: center;">
+              <button class="btn btn-light legitRipple">MONTH</button>
+              <button class="btn btn-light legitRipple">WEEK</button>
+              <button class="btn btn-light legitRipple">DAY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row">
     <div class="col-md-12">
                         <!-- Dropdown list -->
@@ -72,34 +62,16 @@
                         <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 35px;">
-                    <div class="col-md-4 offset-md-4" >
-                        <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a>
-                        <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple pull-right">CLOCK OUT</a>
-                    </div>
-                    <div class="col-md-2 offset-md-4" id="clock_out_time" style="width: 50%;">
-                        <span style="color: #FF7043;">You have not clocked in yet.Please clock in now</span>
-                    </div>
-                </div>
-
-                <div id="clock_in_time" style="display: none;">
-                    <div class="row">
-                        <div class="col-md-4 offset-md-4">
-                            <span style="margin-left: 10px;">@ 10:50am</span>
-                            <span class="pull-right" style="margin-right: 20px;">@ 12:30pm</span>
-                        </div>
-                    </div>
-                </div>
                 <div class="row" style="margin-top: 40px;">
                     <div class="col-md-12" style="text-align: center;">
-                        <h5 style="font-weight: 500; margin-bottom: 0;">Current Shifts</h5>
+                        <h5 style="font-weight: 500; margin-bottom: 10px;">Client Detail</h5>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <table class="table">
-                                <thead>
+                                <!-- <thead>
                                     <tr>
                                         <th>Shift Time</th>
                                         <th>Client</th>
@@ -107,13 +79,9 @@
                                         <th>Charting Status</th>
                                         <th>Actions</th>
                                     </tr>
-                                </thead>
+                                </thead> -->
                                 <tbody>
                                 <tr>
-                                    <td>
-                                        <span class="text-muted">10:30am - 12:30pm</span>
-                                        <i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i>
-                                    </td>
                                     <td>
                                         <li class="media">
                                             <div class="mr-3">
@@ -129,27 +97,20 @@
                                     <td>
                                         <li class="media">
                                             <div class="media-title font-weight-semibold">
-                                                Johar Town Lahore,Pakistan <i class="icon-location3"></i>
+                                                <span>Assigned Caregivers</span> 
                                             </div>
                                         </li>
                                     </td>
                                     <td>
-                                        <li class="media">
-                                            <div class="media-title font-weight-semibold">
-                                                <p><span class="badge badge-primary">Primary</span> &nbsp;&nbsp;&nbsp;<a href="">Start Charting</a></p>
-                                            </div>
-                                        </li>
-                                    </td>
-                                    <td>
-                                        <div class="align-self-center ml-3">
-                                            <a href="#" class="text-default" data-toggle="collapse" data-target="#james4">
+                                        <div class="align-self-center ml-3" style="float: right;">
+                                            <a href="#" class="text-default" data-toggle="collapse" data-target="#james4">View Profile
                                                 <i class="icon-menu7"></i>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="5">
+                                    <td colspan="3">
                                         <div class="collapse" id="james4">
                                             <div class="pb-1">
                                                 <div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
@@ -1292,9 +1253,9 @@
                             <div class="col-md-8 offset-md-2">
                                 <label>What time is medication taken</label><br><span class="text-muted">Select what time is medication taken</span>
                                 <div class="input-group">
-						<span class="input-group-prepend">
-							<span class="input-group-text"><i class="icon-alarm"></i></span>
-						</span>
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-alarm"></i></span>
+                        </span>
                                     <input type="text" class="form-control pickatime" placeholder="select time">
                                 </div>
                             </div>
@@ -1316,9 +1277,9 @@
                             <div class="col-md-8 offset-md-2">
                                 <span class="text-muted">Create a reminder for caregiver to give medication</span>
                                 <div class="input-group">
-						<span class="input-group-prepend">
-							<span class="input-group-text"><i class="icon-alarm"></i></span>
-						</span>
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-alarm"></i></span>
+                        </span>
                                     <input type="text" class="form-control pickatime" placeholder="select time">
                                 </div>
                             </div>
@@ -1449,7 +1410,8 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <input class="form-control" type="number" name="number" style="position: relative; bottom: 16px;">
+                                <input class="form-control" type="number" name="number"
+                                       style="position: relative; bottom: 16px;">
                             </div>
                             <div class="col-md-2"><label style="position: relative; top: 9px;">Farenheight</label></div>
                         </div>
@@ -1577,58 +1539,6 @@
     </div>
 </div>
 
-<!-- ==========Clock Modal============= -->
-<div id="clock_modal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div style="margin: 0 auto;">
-                    <h1 class="card-title" style="font-size: 44px; font-weight: 400; color: #555;">
-                    <i style="font-size: 29px;" class="icon-alarm mr-3 icon-2x"></i> 09:54:29
-                    </h1>
-                    <p style="margin-left: 65px; font-size: 13px;"><span style="padding-right: 15px;">hours</span><span
-                    style="padding-right: 15px;">minutes</span><span>seconds</span></p>
-                </div>
-            </div>
-                <div class="modal-body">
-                   <div class="row">
-                    <div class="col-md-12" style="text-align: center;">
-                        <h4>
-                            <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Wednesday</span>
-                            November 12, 2014
-                        </h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12" style="text-align: center;">
-                        <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span>
-                    </div>
-                </div>
-                <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <li class="media" style="position: relative;top: 30px; width: 90%;margin: 35px auto;">
-                        <div class="mr-3" style="margin-top: 10px;">
-                            <span><b>Shift time</b></span>
-                            <span style="margin: auto 10px;">10:30am - 12:30pm</span>
-                        </div>
-
-                        <div class="media-body" style="text-align: center; margin-top: 10px;">
-                            <span><i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size:18px;"></i></span>
-                        </div>
-                        <div>
-                            <span><a href="#"><img src="http://localhost/senior-agency-care/assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt=""></a></span><span style="margin: auto 10px;">James Alexander</span>
-                        </div>
-                    </li>
-                </div>
-                </div>
-            </div>
-            <div class="modal-footer" style="margin-top: 20px; ">
-                <button type="submit" id="btn_clock_in" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress" data-dismiss="modal" data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">CLOCK IN</span></button>
-                <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- ==========Add Appointment Modal============= -->
 <div id="modal_new_appointment" class="modal fade" tabindex="-1">
@@ -1679,9 +1589,9 @@
                                 <div class="form-group">
                                     <label>Enter appointment date and time: </label>
                                     <div class="input-group">
-        							<span class="input-group-prepend">
-        								<span class="input-group-text"><i class="icon-alarm"></i></span>
-        							</span>
+                                    <span class="input-group-prepend">
+                                        <span class="input-group-text"><i class="icon-alarm"></i></span>
+                                    </span>
                                     <input type="text" class="form-control daterange-time" value="">
                                     </div>
                                 </div>
@@ -1830,8 +1740,8 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control border-right-0" placeholder="Add to my shopping list">
                                             <span class="input-group-append">
-									<button class="btn bg-blue" type="button">Add<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
-								</span>
+                                    <button class="btn bg-blue" type="button">Add<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
+                                </span>
                                         </div>
                                     </div>
                                 </div>
@@ -1958,7 +1868,7 @@
                     </form>
                 </div>
             </form>
-        </div>        
+        </div>    
     </div>
 </div>
 
