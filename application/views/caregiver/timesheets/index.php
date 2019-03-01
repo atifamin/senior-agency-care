@@ -246,7 +246,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 						<td class="text-center">
 							<div class="align-self-center ml-3">
                                 <a href="#" class="text-default" data-toggle="collapse"
-                                    data-target="#james2"><i class="icon-menu7"></i>
+                                    data-target="#james1"><i class="icon-menu7"></i>
                                 </a>
                             </div>
 						</td>
@@ -254,7 +254,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 					<tr>
 						<td colspan="7" style="padding: 0;">
 
-							<div class="collapse" id="james2">
+							<div class="collapse" id="james1">
 								<div class="row">
 									<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 										<h4> Time Sheets</h4>
@@ -408,7 +408,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 						<td class="text-center">
 							<div class="align-self-center ml-3">
                                 <a href="#" class="text-default" data-toggle="collapse"
-                                    data-target="#james3"><i class="icon-menu7"></i>
+                                    data-target="#james1"><i class="icon-menu7"></i>
                                 </a>
                             </div>
 						</td>
@@ -416,7 +416,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 					<tr>
 						<td colspan="7" style="padding: 0;">
 
-							<div class="collapse" id="james3">
+							<div class="collapse" id="james1">
 								<div class="row">
 									<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 										<h4> Time Sheets</h4>
@@ -570,7 +570,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 						<td class="text-center">
 							<div class="align-self-center ml-3">
                                 <a href="#" class="text-default" data-toggle="collapse"
-                                    data-target="#james4"><i class="icon-menu7"></i>
+                                    data-target="#james1"><i class="icon-menu7"></i>
                                 </a>
                             </div>
 						</td>
@@ -578,7 +578,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 					<tr>
 						<td colspan="7" style="padding: 0;">
 
-							<div class="collapse" id="james4">
+							<div class="collapse" id="james1">
 								<div class="row">
 									<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 										<h4> Time Sheets</h4>
@@ -787,7 +787,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 							<td class="text-center">
 								<div class="align-self-center ml-3">
                                     <a href="#" class="text-default" data-toggle="collapse"
-                                        data-target="#james10"><i class="icon-menu7"></i>
+                                        data-target="#james2"><i class="icon-menu7"></i>
                                     </a>
                                 </div>
 							</td>
@@ -795,7 +795,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 						<tr>
 							<td colspan="7" style="padding: 0;">
 
-								<div class="collapse" id="james10">
+								<div class="collapse" id="james2">
 									<div class="row">
 										<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 											<h4> Time Sheets</h4>
@@ -949,7 +949,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 							<td class="text-center">
 								<div class="align-self-center ml-3">
                                     <a href="#" class="text-default" data-toggle="collapse"
-                                        data-target="#james12"><i class="icon-menu7"></i>
+                                        data-target="#james2"><i class="icon-menu7"></i>
                                     </a>
                                 </div>
 							</td>
@@ -957,7 +957,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 						<tr>
 							<td colspan="7" style="padding: 0;">
 
-								<div class="collapse" id="james12">
+								<div class="collapse" id="james2">
 									<div class="row">
 										<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 											<h4> Time Sheets</h4>
@@ -1111,7 +1111,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 							<td class="text-center">
 								<div class="align-self-center ml-3">
                                     <a href="#" class="text-default" data-toggle="collapse"
-                                        data-target="#james13"><i class="icon-menu7"></i>
+                                        data-target="#james2"><i class="icon-menu7"></i>
                                     </a>
                                 </div>
 							</td>
@@ -1119,7 +1119,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 						<tr>
 							<td colspan="7" style="padding: 0;">
 
-								<div class="collapse" id="james13">
+								<div class="collapse" id="james2">
 									<div class="row">
 										<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 											<h4> Time Sheets</h4>
@@ -1273,7 +1273,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 							<td class="text-center">
 								<div class="align-self-center ml-3">
                                     <a href="#" class="text-default" data-toggle="collapse"
-                                        data-target="#james14"><i class="icon-menu7"></i>
+                                        data-target="#james2"><i class="icon-menu7"></i>
                                     </a>
                                 </div>
 							</td>
@@ -1281,7 +1281,7 @@ include(APPPATH."views/caregiver/inc/header.php");?>
 						<tr>
 							<td colspan="7" style="padding: 0;">
 
-								<div class="collapse" id="james14">
+								<div class="collapse" id="james2">
 									<div class="row">
 										<div class="col-md-12 text-center" style="background-color:#f9f6f6;">
 											<h4> Time Sheets</h4>
