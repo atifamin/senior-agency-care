@@ -1853,16 +1853,55 @@
 					</div>
           		</div>
           	</div>
+          	
           	<div class="row" id="appointment_set_reminder" style="display: none;">
-          		<div class="col-md-8 offset-md-2">
-          			<div class="input-group">
-						<span class="input-group-prepend">
-							<span class="input-group-text"><i class="icon-alarm"></i></span>
-						</span>
-						<input type="text" class="form-control pickatime" placeholder="Create reminder for caregiver">
-					</div>
-          		</div>
-          	</div>
+                <div class="col-md-12">
+                    <div class="row" id="appointment_set_reminder_doctor" style="display: none;">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-alarm"></i></span>
+                                </span>
+                                <select class="form-control multiselect" data-fouc>
+                                    <option value="dr_2.0">2.0 Hrs before appointment</option>
+                                    <option value="dr_2.5">2.5 Hrs before appointment</option>
+                                    <option value="dr_3.0">3.0 Hrs before appointment</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="appointment_set_reminder_therapy" style="display: none;">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-alarm"></i></span>
+                                </span>
+                                <select class="form-control multiselect" data-fouc>
+                                    <option value="th_30">30 Minutes before appointment</option>
+                                    <option value="th_1.0">1.0 Hrs before appointment</option>
+                                    <option value="th_1.5">1.5 Hrs before appointment</option>
+                                    <option value="th_2.0">2.0 Hrs before appointment</option>
+                                    <option value="th_3.0">3.0 Hrs before appointment</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row" id="appointment_set_reminder" style="display: none;">
+                <div class="col-md-8 offset-md-2">
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-alarm"></i></span>
+                        </span>
+                        <select class="form-control multiselect" data-fouc>
+                            <option value="dr_2.0">2.0 Hrs before appointment</option>
+                            <option value="dr_2.5">2.5 Hrs before appointment</option>
+                            <option value="dr_3.0">3.0 Hrs before appointment</option>
+                        </select>
+                    </div>
+                </div>
+            </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
@@ -2333,8 +2372,12 @@ function setTherapyType(){
 	var type = $("#therapy_type").val();
 	if(type == "doctor_appointment"){
 		$("#therapy_doc_name").css("display","block");
-	}else{
+		$("#appointment_set_reminder_doctor").css("display","block");
+		$("#appointment_set_reminder_therapy").css("display","none");
+	}else if (type == "therapy_appointment"){
 		$("#therapy_doc_name").css("display","none");
+		$("#appointment_set_reminder_therapy").css("display","block");
+		$("#appointment_set_reminder_doctor").css("display","none");
 	}
 }
 </script>
