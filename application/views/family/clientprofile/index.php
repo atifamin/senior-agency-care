@@ -30,9 +30,9 @@
     </div>
   </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
-                        <!-- Dropdown list -->
         <div class="card">
             <div class="card-header header-elements-inline" style="padding-bottom: 0px;">
                 <div style="margin: 0 auto;">
@@ -64,98 +64,82 @@
                 </div>
                 <div class="row" style="margin-top: 40px;">
                     <div class="col-md-12" style="text-align: center;">
-                        <h5 style="font-weight: 500; margin-bottom: 10px;">Client Detail</h5>
+                        <h5 style="font-weight: 500; margin-bottom: 0;">Client Detail</h5>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <!-- <thead>
-                                    <tr>
-                                        <th>Shift Time</th>
-                                        <th>Client</th>
-                                        <th>Location</th>
-                                        <th>Charting Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead> -->
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <li class="media">
-                                            <div class="mr-3">
-                                                <a href="#"><img src="http://localhost/senior-agency-care/assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="media-body" style="margin-top: 10px;">
-                                                <div class="media-title font-weight-semibold">  James Alexander
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </td>
-                                    <td>
-                                        <li class="media">
-                                            <div class="media-title font-weight-semibold">
-                                                <span>Assigned Caregivers</span> 
-                                            </div>
-                                        </li>
-                                    </td>
-                                    <td>
-                                        <div class="align-self-center ml-3" style="float: right;">
-                                            <a href="#" class="text-default" data-toggle="collapse" data-target="#james4">View Profile
-                                                <i class="icon-menu7"></i>
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-md-12">
+                    <ul class="media-list media-list-linked">
+                <li>
+                    <div class="media">
+                        <div class="mr-3">
+                            <img src="<?php echo base_url();?>assets/images/userimg/face1.jpg" class="rounded-circle" width="40" height="40" alt="">
+                        </div>
+                        <div class="media-body" style="margin-top: 5px;">
+                           <div class="media-title font-weight-semibold" style=""> James Alexander</div>
+                        </div>
+                        <div class="media-body" style="margin-top: 5px;">
+                            <div class="media-title font-weight-semibold">
+                                Assign Caregivers
+                            </div>
+                        </div>
+                        <div class="ml-3" style="margin-top: 5px;">
+                            <a href="#" class="media-title font-weight-semibold text-default" data-toggle="collapse" data-target="#james2">View Profile
+                            <i class="icon-menu7"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- <div class="collapse" id="james2">
+                        <div class="card-body bg-light border-top border-bottom">
+                        asdfasdfasd
+                        </div>
+                    </div> -->
+                    <div class="collapse" id="james2">
+                        <div class="pb-1">
+                            <div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
+                                <div class="navbar-collapse" id="navbar-demo-light">
+                                    <ul class="nav navbar-nav" style="width: 100%; background-color: #fafafa!important;">
+                                        <li class="nav-item dropdown" style="font-size: 11px;">
+                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_bio" class="navbar-nav-link active" data-toggle="tab">
+                                                <i style="padding-right: 10px;" class="icon-users4"></i>Client Bio
                                             </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <div class="collapse" id="james4">
-                                            <div class="pb-1">
-                                                <div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
-                                                    <div class="navbar-collapse" id="navbar-demo-light">
-                                                        <ul class="nav navbar-nav" style="width: 100%; background-color: #fafafa!important;">
-                                                            <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_bio" class="navbar-nav-link active" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;" class="icon-users4"></i>Client Bio
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_medication_list_1"class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-gear"></i>Medication List
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_diet_and_allergies_1" class="navbar-nav-link " data-toggle="tab"><i style="padding-right: 10px;" class="icon-calendar3"></i>Diet and Allergies
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_appiontment_callender" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;"class="icon-users4"></i>Appointment Calendar</a>
-                                                            </li>
-                                                            <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_vitals" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-collaboration"></i>Client Vitals
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_notice_board" class="navbar-nav-link" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;" class="icon-collaboration"></i>Notice Board
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;" href="#schedule_shopping_list" class="navbar-nav-link" data-toggle="tab"> 
-                                                                    <i style="padding-right: 10px;" class="icon-vcard"></i>Shopping List
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item dropdown" style="font-size: 11px;">
-                                                                <a style="padding: 14px 14px 14px 14px;"
-                                                                   href="#schedule_photos_music"
-                                                                   class="navbar-nav-link" data-toggle="tab">
-                                                                    <i style="padding-right: 10px;" class="icon-vcard"></i>Photos & Favorite music
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                        </li>
+                                        <li class="nav-item dropdown" style="font-size: 11px;">
+                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_medication_list_1"class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-gear"></i>Medication List
+                                            </a>
+                                        </li>
+                                        <li class="nav-item dropdown" style="font-size: 11px;">
+                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_diet_and_allergies_1" class="navbar-nav-link " data-toggle="tab"><i style="padding-right: 10px;" class="icon-calendar3"></i>Diet and Allergies
+                                            </a>
+                                        </li>
+                                        <li class="nav-item dropdown" style="font-size: 11px;">
+                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_appiontment_callender" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;"class="icon-users4"></i>Appointment Calendar</a>
+                                        </li>
+                                        <li class="nav-item dropdown" style="font-size: 11px;">
+                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_client_vitals" class="navbar-nav-link" data-toggle="tab"><i style="padding-right: 10px;" class="icon-collaboration"></i>Client Vitals
+                                            </a>
+                                        </li>
+                                        <li class="nav-item dropdown" style="font-size: 11px;">
+                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_notice_board" class="navbar-nav-link" data-toggle="tab">
+                                                <i style="padding-right: 10px;" class="icon-collaboration"></i>Notice Board
+                                            </a>
+                                        </li>
+                                        <li class="nav-item dropdown" style="font-size: 11px;">
+                                            <a style="padding: 14px 14px 14px 14px;" href="#schedule_shopping_list" class="navbar-nav-link" data-toggle="tab"> 
+                                                <i style="padding-right: 10px;" class="icon-vcard"></i>Shopping List
+                                            </a>
+                                        </li>
+                                        <li class="nav-item dropdown" style="font-size: 11px;">
+                                            <a style="padding: 14px 14px 14px 14px;"
+                                               href="#schedule_photos_music"
+                                               class="navbar-nav-link" data-toggle="tab">
+                                                <i style="padding-right: 10px;" class="icon-vcard"></i>Photos & Favorite music
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
                                         <div class="border-top-0 rounded-0 rounded-bottom tab-content" style="padding: 1%; margin-top: 10px;">
                                             <!-- ============ CLient Bio ============== -->
@@ -426,7 +410,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="d-block font-weight-semibold">List client's known allergies</label>
-                                                            <input style="width: 100%;" type="text" class="form-control tokenfield" value="" placeholder="Add multiple client's allergies(with comma seperated)" data-foucus>
+                                                            <input style="width: 100%;" type="text" class="form-control tokenfield" value="" placeholder="Add multiple client's allergies(with comma seperated)" data-fouc>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -438,124 +422,127 @@
                                         </div>
 
                             <!-- ============//Appoitment Callender CLient============== -->
-	                                    <div class="tab-pane fade" id="schedule_appiontment_callender">
-	                                        <div class="row">
-	                                            <div class="col-md-12" style="text-align: center;">
-	                                                <a href="javascript:;" data-toggle="modal"
-	                                                   data-target="#modal_new_appointment">Create new appointment
-	                                                    <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
+                                        <div class="tab-pane fade" id="schedule_appiontment_callender">
+                                            <div class="row">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <a href="javascript:;" data-toggle="modal"
+                                                       data-target="#modal_new_appointment">Create new appointment
+                                                        <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
                                                             <i style="color: #555;" class="icon-plus3"></i>
-	                                                    </button>
-	                                                </a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                            <div class="col-md-12">
-	                                                <table class="table datatable-basic"
-	                                                       id="appointment_datatable">
-	                                                    <thead>
-	                                                    <tr>
-	                                                        <th>Appointment Type</th>
-	                                                        <th>Appointment Date</th>
-	                                                        <th>Time</th>
-	                                                        <th>Location</th>
-	                                                        <th>Reminder</th>
-	                                                        <th class="text-center">Actions</th>
-	                                                    </tr>
-	                                                    </thead>
-	                                                    <tbody>
-	                                                    <tr>
-	                                                        <td>Doctor's appointment<br><span class="text-muted">Dr. Marvin Cobler</span>
-	                                                        </td>
-	                                                        <td>
-	                                                            <span class="text-muted">Appointment date</span>
-	                                                        </td>
-	                                                        <td><span class="text-muted">Time</span></td>
-	                                                        <td><span class="text-muted"><i class="icon-location3"></i> Johar Town Lahore,Pakistan </span>
-	                                                        </td>
-	                                                        <td>
-	                                                            <span class="text-muted">1 hr to Appointment</span>
-	                                                        </td>
-	                                                        <td class="text-center">
-	                                                            <div class="list-icons">
-	                                                                <div class="dropdown">
-	                                                                    <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
-	                                                                    </a>
-	                                                                    <div class="dropdown-menu dropdown-menu-right">
-	                                                                        <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Appointment</a>
-	                                                                        <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Appointment</a>
-	                                                                        <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Appointment</a>
-	                                                                    </div>
-	                                                                </div>
-	                                                            </div>
-	                                                        </td>
-	                                                    </tr>
-	                                                    </tbody>
-	                                                </table>
-	                                            </div>
-	                                        </div>
-	                                    </div>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table class="table datatable-basic"
+                                                           id="appointment_datatable">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Appointment Type</th>
+                                                            <th>Appointment Date</th>
+                                                            <th>Time</th>
+                                                            <th>Location</th>
+                                                            <th>Reminder</th>
+                                                            <th class="text-center">Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>Doctor's appointment<br><span class="text-muted">Dr. Marvin Cobler</span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-muted">Appointment date</span>
+                                                            </td>
+                                                            <td><span class="text-muted">Time</span></td>
+                                                            <td><span class="text-muted"><i class="icon-location3"></i> Johar Town Lahore,Pakistan </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-muted">1 hr to Appointment</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="list-icons">
+                                                                    <div class="dropdown">
+                                                                        <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
+                                                                        </a>
+                                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Appointment</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Appointment</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Appointment</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
 
 
                             <!-- ============//Client Vitals============== -->
-	                                    <div class="tab-pane fade" id="schedule_client_vitals">
-	                                        <div class="row">
-	                                            <div class="col-md-12" style="text-align: center;">
-	                                                <a href="javascript:;" data-toggle="modal"data-target="#modal_clients_vital">Add new client vitals
+                                        <div class="tab-pane fade" id="schedule_client_vitals">
+                                            <div class="row">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <a href="javascript:;" data-toggle="modal"data-target="#modal_clients_vital">Add new client vitals
                                                         <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i>
-	                                                    </button>
-	                                                </a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                            <div class="col-md-12">
-	                                                <table class="table datatable-basic" id="client_vital_datatable">
-	                                                    <thead>
-	                                                    <tr>
-	                                                        <th><i style="margin-right: 8px;" class="icon-man"></i>Blood Pressure
-	                                                        </th>
-	                                                        <th><i style="margin-right: 8px; color: red;"class="icon-heart6"></i>Heart Rate
-	                                                        </th>
-	                                                        <th><i style="margin-right: 8px; color: green;" class="icon-stats-growth2"></i>Temperature
-	                                                        </th>
-	                                                        <th><i style="margin-right: 8px;" class="icon-calendar22"></i>Date Taken
-	                                                        </th>
-	                                                        <th class="text-center">Actions</th>
-	                                                    </tr>
-	                                                    </thead>
-	                                                    <tbody>
-	                                                    <tr>
-	                                                        <td>
-	                                                            <span class="text-muted">Blood Pressure</span>
-	                                                        </td>
-	                                                        <td><span class="text-muted">Heart Rate</span>
-	                                                        </td>
-	                                                        <td><span class="text-muted">Temperature</span>
-	                                                        </td>
-	                                                        <td><span class="text-muted">Date taken</span>
-	                                                        </td>
-	                                                        <td class="text-center">
-	                                                            <div class="list-icons">
-	                                                                <div class="dropdown">
-	                                                                    <a href="#" class="list-icons-item"data-toggle="dropdown"><i class="icon-menu9"></i>
-	                                                                    </a>
-	                                                                    <div class="dropdown-menu dropdown-menu-right">
-	                                                                        <a href="#"class="dropdown-item"><iclass="icon-square-right"></i>Edit Vitals</a>
-	                                                                        <a href="#" class="dropdown-item"><iclass="icon-bin2"></i>Delete Vitals</a>
-	                                                                        <a href="#" class="dropdown-item"><iclass="icon-square-down"></i>End Vitals</a>
-	                                                                    </div>
-	                                                                </div>
-	                                                            </div>
-	                                                        </td>
-	                                                    </tr>
-	                                                    </tbody>
-	                                                </table>
-	                                            </div>
-	                                        </div>
-	                                    </div>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table class="table datatable-basic" id="client_vital_datatable">
+                                                        <thead>
+                                                        <tr>
+                                                            <th><i style="margin-right: 8px;" class="icon-man"></i>Blood Pressure
+                                                            </th>
+                                                            <th><i style="margin-right: 8px; color: red;"class="icon-heart6"></i>Heart Rate
+                                                            </th>
+                                                            <th><i style="margin-right: 8px; color: green;" class="icon-stats-growth2"></i>Temperature
+                                                            </th>
+                                                            <th><i style="margin-right: 8px;" class="icon-calendar22"></i>Date Taken
+                                                            </th>
+                                                            <th class="text-center">Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="text-muted">Blood Pressure</span>
+                                                            </td>
+                                                            <td><span class="text-muted">Heart Rate</span>
+                                                            </td>
+                                                            <td><span class="text-muted">Temperature</span>
+                                                            </td>
+                                                            <td><span class="text-muted">Date taken</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="list-icons">
+                                                                    <div class="dropdown">
+                                                                        <a href="#" class="list-icons-item"data-toggle="dropdown"><i class="icon-menu9"></i>
+                                                                        </a>
+                                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                                            <a href="#"class="dropdown-item"><iclass="icon-square-right"></i>Edit Vitals</a>
+                                                                            <a href="#" class="dropdown-item"><iclass="icon-bin2"></i>Delete Vitals</a>
+                                                                            <a href="#" class="dropdown-item"><iclass="icon-square-down"></i>End Vitals</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
 
 
                             <!-- ================//Notice Board================ -->
+                
+
+
             <div class="tab-pane fade" id="schedule_notice_board">
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
@@ -982,60 +969,60 @@
                 </div>
             </div>
 
-		                            <!-- ================//Shopping List ================ -->
-	                                    <div class="tab-pane fade" id="schedule_shopping_list">
-	                                        <div class="row">
-	                                            <div class="col-md-12" style="text-align: center;">
-	                                                <a href="javascript:;" data-toggle="modal"
-	                                                   data-target="#modal_shopping_list">Create new
-	                                                    shopping list
-	                                                    <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
+                                    <!-- ================//Shopping List ================ -->
+                                        <div class="tab-pane fade" id="schedule_shopping_list">
+                                            <div class="row">
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <a href="javascript:;" data-toggle="modal"
+                                                       data-target="#modal_shopping_list">Create new
+                                                        shopping list
+                                                        <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
                                                             <i style="color: #555;" class="icon-plus3"></i>
-	                                                    </button>
-	                                                </a>
-	                                            </div>
-	                                        </div>
-	                                        <div class="row">
-	                                            <div class="col-md-12">
-	                                                <table class="table datatable-basic"
-	                                                       id="shopping_list_datatable">
-	                                                    <thead>
-	                                                    <tr>
-	                                                        <th>Date Created</th>
-	                                                        <th>Status</th>
-	                                                        <th>Shopping Reminder</th>
-	                                                        <th class="text-center">Actions</th>
-	                                                    </tr>
-	                                                    </thead>
-	                                                    <tbody>
-	                                                    <tr>
-	                                                        <td><span class="text-muted">May 03, 2019</span>
-	                                                        </td>
-	                                                        <td><span class="text-muted">Complete</span>
-	                                                        </td>
-	                                                        <td>
-	                                                            <span class="text-muted">10 Minutes before</span>
-	                                                        </td>
-	                                                        <td class="text-center">
-	                                                            <div class="list-icons">
-	                                                                <div class="dropdown">
-	                                                                    <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
-	                                                                    </a>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table class="table datatable-basic"
+                                                           id="shopping_list_datatable">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Date Created</th>
+                                                            <th>Status</th>
+                                                            <th>Shopping Reminder</th>
+                                                            <th class="text-center">Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td><span class="text-muted">May 03, 2019</span>
+                                                            </td>
+                                                            <td><span class="text-muted">Complete</span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-muted">10 Minutes before</span>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="list-icons">
+                                                                    <div class="dropdown">
+                                                                        <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
+                                                                        </a>
 
-	                                                                    <div class="dropdown-menu dropdown-menu-right">
-	                                                                        <a href="#" class="dropdown-item class="icon-square-right"></i> Edit shopping list</a>
-	                                                                        <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete shopping list</a>
-	                                                                        <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End shopping list</a>
-	                                                                    </div>
-	                                                                </div>
-	                                                            </div>
-	                                                        </td>
-	                                                    </tr>
-	                                                    </tbody>
-	                                                </table>
-	                                            </div>
-	                                        </div>
-	                                    </div>
+                                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                                            <a href="#" class="dropdown-item class="icon-square-right"></i> Edit shopping list</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete shopping list</a>
+                                                                            <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End shopping list</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <!-- ================//Photos and music ================ -->
                                     <div class="tab-pane fade" id="schedule_photos_music">
@@ -1169,19 +1156,15 @@
                                             </div>   
                                     </div>
                                         </div>
-										</div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                        </div>
+                </li>
+            </ul>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
-
 
 <!-- ==========Add Medication Modal============= -->
 <div id="modal_add_medication" class="modal fade" tabindex="-1">
@@ -1193,8 +1176,7 @@
                     <li class="media">
                         <div class="mr-3" style="margin-right: .55rem!important;">
                             <a href="#">
-                                <img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg"
-                                     class="rounded-circle" width="40" height="40" alt="">
+                                <img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg" class="rounded-circle" width="40" height="40" alt="">
                             </a>
                         </div>
 
