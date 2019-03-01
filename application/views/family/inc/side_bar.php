@@ -55,7 +55,7 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="#" class="nav-link">
+								<a href="<?php echo site_url("family/messaging");?>" class="nav-link">
 									<i class="icon-comment-discussion"></i>
 									<span>Messages</span>
 									<span class="badge bg-teal-400 badge-pill align-self-center ml-auto">58</span>
