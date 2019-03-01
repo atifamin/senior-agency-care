@@ -118,7 +118,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -138,7 +138,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -158,7 +158,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -178,7 +178,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -198,7 +198,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -279,7 +279,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -299,7 +299,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -319,7 +319,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -339,7 +339,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -359,7 +359,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -440,7 +440,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -460,7 +460,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -480,7 +480,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -500,7 +500,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
@@ -520,7 +520,7 @@
 									<td style="background-color: #f9f6f6; text-align: center;">Monday</td>
 									<td style="padding: 4px; width: 110px;">
 										<div class="input-group">
-											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i></a>
+											<a href="javascript:;" class="form-control" data-toggle="modal" data-target="#time_sheet" style="border: none; text-align: center;">2/25/2019 <!-- <i style="margin-left: 10px; position:relative; font-size: 14px;" class="icon-arrow-down5"></i> --></a>
 										</div>
 									</td>
 									<td style="padding: 4px; width: 110px;"><div class="input-group">
