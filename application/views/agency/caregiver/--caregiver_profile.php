@@ -1,5 +1,10 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
+<?php $profile_detail = caregiver_Detail($this->agency_id);
+      $profile_image = caregiver_image($this->agency_id);
 
+	// print_array($profile_detail->first_name." ".$profile_detail->last_name);
+	// print_array($profile_detail);
+?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card">
@@ -26,13 +31,22 @@
 					</div>
 				</div>
 			</div>
+			<div class="row">
+            <div class="col-md-12">
+              <div class="progress rounded-round">
+		        <div class="progress-bar progress-bar-striped bg-<?php if(profile_completion_percentage($this->agency_id)<73){echo "danger";}else{echo "success";} ?>" style="width: <?php echo profile_completion_percentage($this->agency_id); ?>%"> <span><?php echo profile_completion_percentage($this->agency_id); ?>%Complete</span>
+		        </div>
+		      </div>
+
+            </div>
+          </div>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<!-- Dropdown list -->
 		<div class="card">
-			<div class="card">
-			<div class="card-header header-elements-inline">
+			<!-- <div class="card"> -->
+			<!-- <div class="card-header header-elements-inline">
 					<div style="width: 100%; text-align: center;">
 						<div class="btn-group">
 	                    	<button style="margin-right: 10px;" type="button" class="btn btn-light dropdown-toggle legitRipple filter" data-toggle="dropdown">Filter</button>
@@ -58,7 +72,7 @@
 						</div>
 					</div>
             	</div>
-			</div>
+			</div> -->
 
 			<div class="card-body">
 				<ul class="media-list">
@@ -67,13 +81,13 @@
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo ("$profile_image"); ?>" class="rounded-circle" width="40" height="40" alt="">
 							</a>
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander</div>
-							<span class="text-muted">Development</span>
+							<div class="media-title font-weight-semibold"><?php echo $profile_detail->first_name." ".$profile_detail->last_name;?></div>
+							<span class="text-muted"><?php echo ucfirst("$profile_detail->position");?></span>
 						</div>
 
 						<div class="align-self-center ml-3" style="margin-right: 1.25rem!important;">
@@ -88,6 +102,7 @@
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#call"><i class="icon-phone2"></i> Make a call</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#chat"><i class="icon-comment"></i> Start chat</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
+				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Edit</a>
 		                    		</div>
 		                    	</div>
 	                    	</div>
@@ -193,10 +208,7 @@
 										<div class="col-md-12">
 											<div class="d-flex align-items-center">
 												<div class="mr-3">
-													<h4>Cathy Peter</h4>
-												</div>
-												<div>
-													<a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-file-empty"></i>Edit</a>
+													<h4><?php echo $profile_detail->first_name." ".$profile_detail->last_name;?></h4>
 												</div>
 											</div>
 										</div>
@@ -206,23 +218,23 @@
 											<table>
 												<tr>
 													<td style="width: 150px;"><strong>First Name:</strong></td>
-													<td>Lucy</td>
+													<td><?php echo "$profile_detail->first_name"; ?></td>
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Last Name:</strong></td>
-													<td><span>Fernato</span></td>
+													<td><?php echo "$profile_detail->last_name";?></td>
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Gender:</strong></td>
-													<td><span>Female</span></td>
+													<td><?php echo ucfirst("$profile_detail->gender");?></td>
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Position:</strong></td>
-													<td>Caregiver</td>
+													<td><?php echo ucfirst("$profile_detail->position");?></td>
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Profile Image:</strong></td>
-													<td><img src="<?php echo base_url();?>assets/images/userimg/face24.jpg" class="rounded-circle" width="36" height="36" alt=""></td>
+													<td><img src="<?php echo $profile_image; ?>" class="rounded-circle" width="36" height="36" alt=""></td>
 												</tr>
 											</table>
 										</div>
@@ -230,7 +242,59 @@
 								</div>
 
 								<div class="tab-pane fade" id="contact_information">
-									Contact Information
+									<div class="tab-pane fade show active" id="caregive_profile">
+									<div class="row" style="margin-top: 20px;">
+										<div class="col-md-12">
+											<div class="d-flex align-items-center">
+												<div class="mr-3">
+													<h4><?php echo $profile_detail->first_name." ".$profile_detail->last_name;?></h4>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row" style="margin-top: 20px;">
+										<div class="col-md-12">
+											<table>
+												<tr>
+													<td style="width: 150px;"><strong>Email address:</strong></td>
+													<td><?php echo "$profile_detail->email"; ?></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>Phone:</strong></td>
+													<td><?php echo "$profile_detail->phone_number";?></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>Address:</strong></td>
+													<td><?php echo ("$profile_detail->address");?></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>City:</strong></td>
+													<td><?php echo ("$profile_detail->city_id");?></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>State:</strong></td>
+													<td><?php echo ("$profile_detail->state_id");?></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>Country:</strong></td>
+													<td><?php echo ("$profile_detail->country_id");?></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>Zipcode:</strong></td>
+													<td><?php echo ("$profile_detail->zipcode");?></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>Emergency Contact Name:</strong></td>
+													<td><?php echo ("$profile_detail->emergency_contact_name");?></td>
+												</tr>
+												<tr>
+													<td style="width: 150px;"><strong>Emergency COntact Number:</strong></td>
+													<td><?php echo ("$profile_detail->emergency_contact_number");?></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
 								</div>
 								<div class="tab-pane fade" id="caregiver_certification">
 									Certifications.

@@ -140,11 +140,15 @@ class Caregiver extends CI_Controller {
 		}
 	}
 
-	public function caregiver_profile(){
+	public function profile($caregiver_id){
 		$data["breadcrumb"] = "Caregivers";
 		$data["heading"] = "Caregivers";
 		$data["url_segment"] = "caregivers";
-		$this->load->view("agency/caregiver/caregiver_profile",$data);
+		$data['detail'] = $this->Caregiver_model->getCaregiverById($caregiver_id);
+		//$data['caregive_id'] = $caregiver_id;
+		//print_array($data['detail']);
+		//$data['img_detail'] = $this->Caregiver_model->
+		$this->load->view("agency/caregiver/profile/index",$data);
 	}
 
 	public function send_invite_to_caregiver(){
