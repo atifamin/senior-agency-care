@@ -11,7 +11,7 @@ class Time_sheets extends CI_controller {
 
 		//LoggedIn User ID
 		$userSession = $this->session->userdata('isAgencyLoggedIn');
-		$this->user_id = $userSession['user_id'];
+		$this->agency_id = $userSession['user_id'];
 	}
 
 	public function index() {

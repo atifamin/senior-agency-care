@@ -80,96 +80,81 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="<?php echo site_url("agency/dashboard"); ?>" class="nav-link <?php if($url_segment=="notice board"){echo 'active';} ?>">
+							<a href="<?php echo site_url("agency/dashboard"); ?>" class="nav-link <?php if($urlSeg2=="dashboard"){echo 'active';} ?>">
 								<i class="icon-home4"></i>
 								<span>
 									Notice Board
 								</span>
 							</a>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="current shifts"){echo 'active';} ?>"><i class="icon-copy"></i> <span>Current Shifts</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="current_shifts"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Current Shifts</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/current_shifts") ?>" class="nav-link active">Current Shift</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/current_shifts") ?>" class="nav-link <?php if($urlSeg2=="current_shifts"){echo 'active';} ?>">Current Shift</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="caregivers"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Caregivers</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="caregiver"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2=="caregiver"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Caregivers</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item <?php if($url_segment=="caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("agency/caregiver"); ?>" class="nav-link ">View Caregivers</a></li>
-								<li class="nav-item <?php if($url_segment=="add_caregivers"){echo 'active';} ?>"><a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="nav-link">Add Caregivers</a></li>
-								<li class="nav-item"><a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="nav-link">Invite Caregivers</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/caregiver"); ?>" class="nav-link <?php if($urlSeg3==""){echo 'active';} ?>">View Caregivers</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="nav-link <?php if($urlSeg3=="add_caregiver"){echo 'active';} ?>">Add Caregivers</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="nav-link <?php if($urlSeg3=="send_invite_to_caregiver"){echo 'active';} ?>">Invite Caregivers</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="clients"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Clients</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="clients"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2=="clients"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Clients</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/clients"); ?>" class="nav-link active">View Clients</a></li>
-								<li class="nav-item"><a href="<?php echo site_url("agency/clients/add_client"); ?>" class="nav-link">Add Clients</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/clients"); ?>" class="nav-link <?php if($urlSeg3==""){echo 'active';} ?>">View Clients</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/clients/add_client"); ?>" class="nav-link <?php if($urlSeg3=="add_client"){echo 'active';} ?>">Add Clients</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="scheduling"){echo 'active';} ?>"><i class="icon-stack"></i> <span>Scheduling</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="scheduling"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2=="scheduling"){echo 'active';} ?>"><i class="icon-stack"></i> <span>Scheduling</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/scheduling"); ?>" class="nav-link active">View Scheduling</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/scheduling"); ?>" class="nav-link <?php if($urlSeg3==""){echo 'active';} ?>">View Scheduling</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="time sheets"){echo 'active';} ?>"><i class="icon-list-unordered"></i> <span>Time Sheets</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="time_sheets"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2=="time_sheets"){echo 'active';} ?>"><i class="icon-list-unordered"></i> <span>Time Sheets</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/time_sheets"); ?>" class="nav-link active">View Time Sheets</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/time_sheets"); ?>" class="nav-link <?php if($urlSeg3==""){echo 'active';} ?>">View Time Sheets</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="invoices"){echo 'active';} ?>"><i class="icon-width"></i> <span>Invoices</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="invoices"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2=="invoices"){echo 'active';} ?>"><i class="icon-width"></i> <span>Invoices</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/invoices"); ?>" class="nav-link active">Invoices</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/invoices"); ?>" class="nav-link <?php if($urlSeg3==""){echo 'active';} ?>">Invoices</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="payroll"){echo 'active';} ?>"><i class="icon-copy"></i> <span>Payroll</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="payroll"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2=="payroll"){echo 'active';} ?>"><i class="icon-copy"></i> <span>Payroll</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/payroll"); ?>" class="nav-link active">Payroll</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/payroll"); ?>" class="nav-link <?php if($urlSeg3==""){echo 'active';} ?>">Payroll</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="masseging center"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Masseging Center</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="messaging"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2=="messaging"){echo 'active';} ?>"><i class="icon-color-sampler"></i> <span>Masseging Center</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/messaging"); ?>" class="nav-link active">Messages</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/messaging"); ?>" class="nav-link <?php if($urlSeg3==""){echo 'active';} ?>">Messages</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="incident reports"){echo 'active';} ?>"><i class="icon-stack"></i> <span>Incident Reports</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2=="reports"){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2=="reports"){echo 'active';} ?>"><i class="icon-stack"></i> <span>Incident Reports</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("agency/reports"); ?>" class="nav-link active">Reports</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 2</a></li>
-								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("agency/reports"); ?>" class="nav-link <?php if($urlSeg3==""){echo 'active';} ?>">Reports</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link <?php if($url_segment=="job recruitment"){echo 'active';} ?>"><i class="icon-list-unordered"></i> <span>Job Recruitment</span></a>
+						<li class="nav-item nav-item-submenu <?php if($urlSeg2==""){echo 'nav-item-expanded nav-item-open';} ?>">
+							<a href="#" class="nav-link <?php if($urlSeg2==""){echo 'active';} ?>"><i class="icon-list-unordered"></i> <span>Job Recruitment</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="#" class="nav-link active">Option # 1</a></li>
