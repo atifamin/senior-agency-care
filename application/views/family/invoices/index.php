@@ -820,7 +820,7 @@
 						</div>
 
 						<div class="text-right mt-3">
-							<button type="button" class="btn btn-primary btn-labeled btn-labeled-left"><b><i class="icon-paperplane"></i></b> Send invoice</button>
+							<button type="button" class="btn btn-primary btn-labeled btn-labeled-left"><b><i class="icon-paperplane"></i></b> Pay Invoice Now</button>
 						</div>
 					</div>
 				</div>

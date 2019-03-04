@@ -544,7 +544,7 @@
 						</div>
 
 						<div class="text-right mt-3">
-							<button type="button" class="btn btn-primary btn-labeled btn-labeled-left"><b><i class="icon-paperplane"></i></b> Send invoice</button>
+							<button type="button" onclick="paymentSuccess()" class="btn btn-primary btn-labeled btn-labeled-left" style="background-color: #008000b8"><b><i class="icon-paperplane"></i></b> Status: Paid</button>
 						</div>
 					</div>
 				</div>

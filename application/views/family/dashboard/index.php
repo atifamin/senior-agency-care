@@ -8,7 +8,7 @@
 
 <div class="card">
 	<div class="card-header header-elements-inline border-bottom" style="padding-bottom: 0px;">
-		<h5>My Notifications</h5>
+		<h5>Notice Board</h5>
 	    <div class="header-elements">
 			<div class="list-icons">
         		<a class="list-icons-item" data-action="reload"></a>

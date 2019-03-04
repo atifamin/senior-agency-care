@@ -61,10 +61,10 @@
 				<thead>
 					<tr>
 						<th>Caregiver</th>
-						<th>Regular Hours</th>
-						<th>Regular Rate</th>
-						<th>Holiday/Overtime Hrs</th>
-						<th>Holiday/Ovretime Rate</th>
+						<th>Worked Hours</th>
+						<th>Hourly Wage</th>
+						<th>Overtime Hrs</th>
+						<th>Holiday Pay Hrs</th>
 						<th>Total Weekly Pay</th>
 						<th>View Timesheet</th>
 					</tr>
