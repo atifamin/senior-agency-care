@@ -1,3 +1,9 @@
+<?php
+	$profile_image = agency_image($this->agency_id);
+	$profile_detail = agency_Detail($this->agency_id);
+	//print_array($profile_detail);
+	//print_array($profile_detail->profile->company_formed_year);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

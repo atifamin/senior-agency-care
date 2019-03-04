@@ -111,7 +111,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <?php if(isset($profile_detail->license) && count($profile_detail->license)>0){ ?>
-						<?php foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
+						            <?php foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
                         <div class="card" style="margin-bottom:5%">
                           <div class="card-header">
                             <h4 class="card-title"><strong><?php echo $licenseVal->state_license; ?></strong></h4>

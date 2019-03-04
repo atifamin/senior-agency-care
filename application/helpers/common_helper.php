@@ -151,9 +151,9 @@ function caregiver_image($user_id){
 
 function agency_image($agency_id){
 	$ci =& get_instance();
-	$agencyDetail = $ci->db->where("id", $agency_id)->get("agency")->row();
+	$agencyDetail = $ci->db->where("id", $agency_id)->get("agency_profile")->row();
 	$image_url = base_url("assets/images/placeholders/avatar.png");
-	if($agencyDetail->profile_pic!=0){
+	if($agencyDetail->media_profile_picture!=0){
 		$media = $ci->db->where("id", $agencyDetail->media_profile_picture)->get("media")->row();
 		if(file_exists(DOC_PATH.$media->full_path)){
 			$image_url = base_url().$media->full_path;
@@ -167,7 +167,11 @@ function caregiver_Detail($caregiver_id){
 	$ci->load->model("Caregiver_model");
 	return $ci->Caregiver_model->getCaregiverById($caregiver_id);
 }
-
+function agency_Detail($agency_id){
+	$ci =& get_instance();
+	$ci->load->model("Agency_model");
+	return $ci->Agency_model->getAgencyById($agency_id);
+}
 function randomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);

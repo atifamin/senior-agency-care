@@ -8,10 +8,10 @@ class Profile extends CI_controller {
 		if(!$this->session->userdata("isAgencyLoggedIn")){
 			redirect("login");
 		}
-
+		$this->load->model("Agency_model");
 		//LoggedIn User ID
 		$userSession = $this->session->userdata('isAgencyLoggedIn');
-		$this->user_id = $userSession['user_id'];
+		$this->agency_id = $userSession['user_id'];
 	}
 
 	public function index() {
@@ -20,6 +20,11 @@ class Profile extends CI_controller {
 		$data["url_segment"] = "profile";
 		$this->load->view('agency/myaccount/index',$data);
 	}
-
+	public function wizard($agency_id){
+		$data["breadcrumb"] = "Edit Profile";
+		$data["heading"] = "Edit Profile";
+		$data["url_segment"] = "wizard";
+		$this->load->view("agency/myaccount/wizard",$data);
+	}
 }
 ?>
