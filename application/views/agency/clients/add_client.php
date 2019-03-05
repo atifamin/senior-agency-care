@@ -41,20 +41,20 @@
 				<h6>Add a new client</h6>
 			</div>
 
-			<form class="wizard-form steps-validation" action="#" data-fouc>
+			<form id="client_information" role="form" enctype="multipart" method="post" class="wizard-form steps-validation" action="#" data-fouc>
 				<h6><strong>Client Information</strong></h6>
 				<fieldset>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>First Name:</label>
-								<input type="text" name="company_name" class="form-control" placeholder="Add client first name">
+								<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Add client first name" required="required">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Last Name:</label>
-								<input type="text" name="company_name" class="form-control" placeholder="Add client last name">
+								<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Add client last name" required="required">
 							</div>
 						</div>
 					</div>
@@ -63,14 +63,14 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client phone #:</label>
-								<input type="text" name="tel" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+								<input type="text" name="mobile_number" id="mobile_number" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
 							</div>
 						</div>
 
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client email address:</label>
-								<input type="email" name="email" class="form-control" placeholder="client@email.com">
+								<input type="email" name="email_address" id="email_address" class="form-control" placeholder="client@email.com" required="required">
 							</div>
 						</div>
 					</div>
@@ -80,11 +80,11 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-		                                <select name="education-from-year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+		                                <select name="client_from" id="client_from" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
 		                                    <option></option> 
-		                                    <option value="1995">1995</option> 
-		                                    <option value="...">...</option> 
-		                                    <option value="1980">1980</option> 
+											<?php for($i= 1995;$i > 1979;$i--){ ?>
+												<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+											<?php } ?>
 		                                </select>
 		                            </div>
 								</div>
@@ -96,11 +96,14 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-		                                <select name="education-to-year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+		                                <select name="client_to" id="client_to" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
 		                                    <option></option> 
-		                                    <option value="1995">1995</option> 
+		                                    <!-- <option value="1995">1995</option> 
 		                                    <option value="...">...</option> 
-		                                    <option value="1980">1980</option> 
+		                                    <option value="1980">1980</option>  -->
+											<?php for($i= 1995;$i > 1979;$i--){ ?>
+												<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+											<?php } ?>
 		                                </select>
 		                            </div>
 								</div>
@@ -110,13 +113,13 @@
 							<div class="form-group mb-3 mb-md-2">
 								<label class="d-block font-weight-semibold">Gender:</label>
 								<div class="custom-control custom-control-right custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_checked" checked="">
-									<label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Male</label>
+									<input type="radio" class="custom-control-input" name="gender" value="male" id="gender" >
+									<label class="custom-control-label position-static" for="gender">Male</label>
 								</div>
 
 								<div class="custom-control custom-control-right custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_unchecked">
-									<label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Female</label>
+									<input type="radio" class="custom-control-input" name="gender" value="female" id="female">
+									<label class="custom-control-label position-static" for="female">Female</label>
 								</div>
 							</div>
 						</div>
@@ -125,7 +128,7 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="education-to-year" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+		                                <select name="month" id="month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
 		                                    <option></option> 
 		                                    <option value="January">January</option> 
 	                                        <option value="Februray">Februray</option>
@@ -144,7 +147,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="education-to-year" data-placeholder="Day" class="form-control form-control-select2" data-fouc>
+		                                <select name="day" id="day" data-placeholder="Day" class="form-control form-control-select2" data-fouc>
 		                                    <option></option> 
 		                                    <option value="1">1</option> 
 		                                    <option value="2">2</option> 
@@ -182,7 +185,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="education-to-year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+		                                <select name="year" id="year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
 		                                    <option></option> 
 		                                    <option value="1990">1990</option>
 	                                        <option value="1991">1991</option>
@@ -226,7 +229,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Add client's level of care</label>
-					                    <select name="company_formed_month" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
+					                    <select name="level_care" id="level_care" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
 					                        <option></option>
 					                        <option value="1">1</option>
 					                        <option value="2">2</option>
@@ -237,13 +240,13 @@
 								<div class="col-md-6">
 									<div class="form-check form-check-switch form-check-switch-left">
 										<label>Does client have any pets</label>
-										<input type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" id="client_pets" onchange="listPets()" value="0">
+										<input type="checkbox" name="is_pets"  data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" id="client_pets" onchange="listPets()" value="0">
 									</div>
 								</div>
 								<div class="col-md-12" id="pet_list" style="display: none;">
 									<div class="form-group">
 										<label>List kinds of pets</label>
-										<input type="text" class="form-control tokenfield" value="" placeholder="Add multiple kinds(with comma seperated)" data-fouc>
+										<input type="text" name="pets_types" id="pets_types" class="form-control tokenfield" value="" placeholder="Add multiple kinds(with comma seperated)" data-fouc>
 									</div>
 								</div>
 							</div>
@@ -253,13 +256,13 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Add client regular rate per hr: </label>
-										<input type="text" value="" class="form-control touchspin-empty" placeholder="Enter Rate $">
+										<input type="text" name="rate_per_hour" id="rate_per_hour" value="" class="form-control touchspin-empty" placeholder="Enter Rate $">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Add client's available hr per week: </label>
-										<input type="text" value="" class="form-control touchspin-empty" placeholder="Enter Hours">
+										<input type="text" name="hours_per_week" id="hours_per_week" value="" class="form-control touchspin-empty" placeholder="Enter Hours">
 									</div>
 								</div>
 							</div>
@@ -269,7 +272,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Add billing cycle<span style="margin-left: 10px;">(How often you send invite to your client)</span></label>
-			                    <select name="" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
+			                    <select name="billing_cycle" id="billing_cycle" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
 			                        <option></option>
 			                        <option value="weekly">Weekly</option>
 			                        <option value="bi-weekly">Bi-Weekly</option>
@@ -287,17 +290,17 @@
 							<div class="form-group pt-2">
 								<label class="d-block font-weight-semibold">Select client's dietry requirements</label>
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="client_dietry_requirements" id="regular_diet" checked>
+									<input type="radio" class="custom-control-input" name="dietry_requirements" value="Regular diet" id="regular_diet">
 									<label class="custom-control-label" for="regular_diet">Regular diet</label>
 								</div>
 
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="client_dietry_requirements" id="mechanical_diet">
+									<input type="radio" class="custom-control-input" name="dietry_requirements" value="Mechanical diet" id="mechanical_diet">
 									<label class="custom-control-label" for="mechanical_diet">Mechanical diet</label>
 								</div>
 
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="client_dietry_requirements" id="pure_diet">
+									<input type="radio" class="custom-control-input" name="dietry_requirements" value="Puree diet" id="pure_diet">
 									<label class="custom-control-label" for="pure_diet">Puree diet</label>
 								</div>
 							</div>
@@ -307,17 +310,17 @@
 							<div class="form-group pt-2">
 								<label class="d-block font-weight-semibold">Fluid requirements</label>
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="fluid_requirements" id="thin_liquid" checked>
+									<input type="radio" class="custom-control-input" name="fluid_requirements" value="Thin liquids" id="thin_liquid">
 									<label class="custom-control-label" for="thin_liquid">Thin liquids</label>
 								</div>
 
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="fluid_requirements" id="nector_liquid">
+									<input type="radio" class="custom-control-input" name="fluid_requirements" value="Nector thick liquids" id="nector_liquid">
 									<label class="custom-control-label" for="nector_liquid">Nector thick liquids</label>
 								</div>
 
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="fluid_requirements" id="honey_liquid">
+									<input type="radio" class="custom-control-input" name="fluid_requirements" value="Honey thick liquids" id="honey_liquid">
 									<label class="custom-control-label" for="honey_liquid">Honey thick liquids</label>
 								</div>
 							</div>
@@ -327,13 +330,13 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client medication list</label>
-								<input type="text" class="form-control tokenfield" value="" placeholder="Add multiple medication(with comma seperated)" data-fouc>
+								<input type="text" name="medication_list" id="medication_list" class="form-control tokenfield" value="" placeholder="Add multiple medication(with comma seperated)" data-fouc>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client allergies list</label>
-								<input type="text" class="form-control tokenfield" value="" placeholder="Add multiple allergies(with comma seperated)" data-fouc>
+								<input type="text" name="allergies_list" id="allergies_list" class="form-control tokenfield" value="" placeholder="Add multiple allergies(with comma seperated)" data-fouc>
 							</div>
 						</div>
 					</div>
@@ -342,7 +345,7 @@
 							<div class="form-check form-check-switch form-check-switch-left">
 								<label class="form-check-label d-flex align-items-center">
 									<span style="margin-right: 15px">Does the client recieve oxygen</span>
-									<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientOxygen()" id="oxygen_client" value="0">
+									<input style="margin-left: 15px;" name="is_oxygen"  type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientOxygen()" id="oxygen_client" value="0">
 								</label>
 							</div>
 						</div>
@@ -351,7 +354,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label><span class="text-muted">If so, how much oxygen does the client recieve?</span> </label>
-								<input type="text" value="" class="form-control touchspin-empty" placeholder="Mg">
+								<input type="text" value="" name="oxygen_quantity" id="oxygen_quantity"  class="form-control touchspin-empty" placeholder="Mg">
 							</div>
 						</div>
 					</div>
@@ -359,7 +362,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>When is oxygen administered to the client:</label>
-								<input type="text" name="" class="form-control" placeholder="Add details how and when oxygen is administered">
+								<input type="text" name="oxygen_administered" id="oxygen_administered" class="form-control" placeholder="Add details how and when oxygen is administered">
 							</div>
 						</div>
 					</div>
@@ -368,7 +371,7 @@
 							<div class="form-check form-check-switch form-check-switch-left">
 								<label class="form-check-label d-flex align-items-center">
 									<span style="margin-right: 15px">Does client have mobilty needs?</span>
-									<input style="margin-left: 15px;" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientNeed()" id="need_client" value="0">
+									<input style="margin-left: 15px;" name="is_mobilty" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientNeed()" id="need_client" value="0">
 								</label>
 							</div>
 						</div>
@@ -377,7 +380,7 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label>Add client's mobility needs</label>
-			                    <select name="company_formed_month" data-placeholder="Add client's mobility needs" class="form-control form-control-select2" data-fouc>
+			                    <select name="mobility_needs" id="mobility_needs" data-placeholder="Add client's mobility needs" class="form-control form-control-select2" data-fouc>
 			                        <option></option>
 			                        <option value="1">Walking cane</option>
 			                        <option value="2">Weelchair</option>
@@ -389,7 +392,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Add the client transportation requirements</label>
-								<input type="text" name="" class="form-control" placeholder="Add a detailed description of the clients transportation requirements">
+								<input type="text" name="transportation_requirements" id="transportation_requirements" class="form-control" placeholder="Add a detailed description of the clients transportation requirements">
 							</div>
 						</div>
 					</div>
@@ -397,7 +400,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Add client's transfer needs</label>
-								<input type="text" name="" class="form-control" placeholder="Add a detailed description of the clients trasfer needs">
+								<input type="text" name="transfer_needs" id="transfer_needs" class="form-control" placeholder="Add a detailed description of the clients trasfer needs">
 							</div>
 						</div>
 					</div>
@@ -409,25 +412,25 @@
 						<div class="col-md-2 offset-md-1">
 							<div class="form-group">
 								<label>First Name:</label>
-								<input type="text" name="company_name" class="form-control" placeholder="Add first name">
+								<input type="text" name="" class="form-control" placeholder="Add first name">
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Last Name:</label>
-								<input type="text" name="company_name" class="form-control" placeholder="Add last name">
+								<input type="text" name="" class="form-control" placeholder="Add last name">
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Email:</label>
-								<input type="email" name="company_name" class="form-control" placeholder="@gmail.com">
+								<input type="email" name="" class="form-control" placeholder="@gmail.com">
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Phone #:</label>
-								<input type="text" name="tel" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+								<input type="text" name="" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
 							</div>
 						</div>
 						<div class="col-md-2">
@@ -474,7 +477,7 @@
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
 								<label>Upload End of Life Directive document:</label>
-		                        <input name="recommendations" type="file" class="form-input-styled" data-fouc>
+		                        <input name="file" id="file" type="file" class="form-input-styled" data-fouc>
 		                        <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span>
 		                    </div>
 						</div>
@@ -483,7 +486,7 @@
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
 								<label>Add the Primary Care Doctor:</label>
-								<input type="text" name="company_name" class="form-control" placeholder="Enter PCD's name">
+								<input type="text" name="pcd_name" id="pcd_name" class="form-control" placeholder="Enter PCD's name">
 							</div>
 						</div>
 					</div>
@@ -491,7 +494,7 @@
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
 								<label>Primary Doctor Contact Info:</label>
-								<input type="text" name="tel" class="form-control" placeholder="Primary Doctor Contact Info" data-mask="+99-99-9999-9999">
+								<input type="text" name="pcd_contact" id="pcd_contact" class="form-control" placeholder="Primary Doctor Contact Info" data-mask="+99-99-9999-9999">
 							</div>
 						</div>
 					</div>
@@ -500,7 +503,7 @@
 							<div class="form-group">
 								<label>Enter prefered hospital in case of emergency:</label>
 								<div class="form-group form-group-feedback form-group-feedback-left">
-									<input type="text" class="form-control form-control-sm" placeholder="Enter prefered hospital">
+									<input type="text" name="prefered_hospital" id="prefered_hospital" class="form-control form-control-sm" placeholder="Enter prefered hospital">
 									<div class="form-control-feedback form-control-feedback-sm">
 										<i class="icon-pin-alt"></i>
 									</div>
@@ -512,7 +515,7 @@
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
 								<label>Enter any special instructions:</label>
-								<textarea rows="5" cols="3" class="form-control" placeholder="Special Instructions"></textarea>
+								<textarea rows="5" cols="3" name="special_instructions" id="special_instructions" class="form-control" placeholder="Special Instructions"></textarea>
 							</div>
 						</div>
 					</div>
@@ -579,4 +582,102 @@
 			$("#client_needs").css("display","none");
 		}
 	}
+
+	//$("#client_information").submit(function(e){
+	
+	function add_new_agency(){
+    //e.preventDefault();
+    var file_data = $('#file').prop('files')[0];   
+   
+    
+	//var notify_email =  $("input[name=notify_email]").val();
+	var first_name =  $("#first_name").val();
+    var last_name = $("#last_name").val();
+	var mobile_number = $("#mobile_number").val();
+    var email_address = $("#email_address").val();
+	var client_from = $("#client_from").val();
+	var client_to = $("#client_to").val();
+	var gender = $("input[name=gender]:checked").val();
+	var dob = $("#dob").val();
+	var level_care = $("#level_care").val();
+	var is_pets = $("#client_pets").val();
+	var pets_types = $("#pets_types").val();
+	var rate_per_hour = $("#rate_per_hour").val();
+	var hours_per_week = $("#hours_per_week").val();
+	var billing_cycle = $("#billing_cycle").val();
+	var dietry_requirements = $("input[name=dietry_requirements]:checked").val();
+	var fluid_requirements = $("input[name=fluid_requirements]:checked").val();
+	var medication_list = $("#medication_list").val();
+	var allergies_list = $("#allergies_list").val();
+	var is_oxygen = $("#oxygen_client").val();
+	var oxygen_quantity = $("#oxygen_quantity").val();
+	var oxygen_administered = $("#oxygen_administered").val();
+	var is_mobilty = $("#need_client").val();
+	var mobility_needs = $("#mobility_needs").val();
+	var transportation_requirements = $("#transportation_requirements").val();
+	var transfer_needs = $("#transfer_needs").val();
+	if(file_data){
+	var is_directive_document = 1;
+	}
+	var pcd_name = $("#pcd_name").val();
+	var pcd_contact = $("#pcd_contact").val();
+	var prefered_hospital = $("#prefered_hospital").val();
+	var special_instructions = $("#special_instructions").val();
+	var month = $("#month").val();
+	var day = $("#day").val();
+	var year = $("#year").val();
+    var form_data = new FormData();    
+    if(file_data){              
+    form_data.append('file', file_data);
+    }
+    
+    form_data.append('first_name', first_name);
+    form_data.append('last_name', last_name);
+    form_data.append('email_address', email_address);
+	form_data.append('mobile_number', mobile_number);
+	form_data.append('client_from', client_from);
+	form_data.append('client_to', client_to);
+	form_data.append('gender', gender);
+	form_data.append('dob', dob);
+	form_data.append('level_care', level_care);
+	form_data.append('is_pets', is_pets);
+	form_data.append('pets_types', pets_types);
+	form_data.append('rate_per_hour', rate_per_hour);
+	form_data.append('hours_per_week', hours_per_week);
+	form_data.append('billing_cycle', billing_cycle);
+	form_data.append('dietry_requirements', dietry_requirements);
+	form_data.append('fluid_requirements', fluid_requirements);
+	form_data.append('medication_list', medication_list);
+	form_data.append('allergies_list', allergies_list);
+	form_data.append('is_oxygen', is_oxygen);
+	form_data.append('oxygen_quantity', oxygen_quantity);
+	form_data.append('oxygen_administered', oxygen_administered);
+	form_data.append('is_mobilty', is_mobilty);
+	form_data.append('mobility_needs', mobility_needs);
+	form_data.append('transportation_requirements', transportation_requirements);
+	form_data.append('transfer_needs', transfer_needs);
+	form_data.append('is_directive_document', is_directive_document);
+	form_data.append('pcd_name', pcd_name);
+	form_data.append('pcd_contact', pcd_contact);
+	form_data.append('prefered_hospital', prefered_hospital);
+	form_data.append('special_instructions', special_instructions);
+	form_data.append('month', month);
+	form_data.append('day', day);
+	form_data.append('year', year);
+    $.ajax({
+        url: '<?php echo site_url("agency/clients/save_client"); ?>',
+        dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,                         
+        type: 'post',
+        success: function(data){
+			if(data == 1){
+				swal("Client", "added successfully!");
+				location.reload();
+			}
+        }
+     });
+    }
 </script>

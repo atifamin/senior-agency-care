@@ -62,35 +62,39 @@
 			<div class="card-body">
 				<ul class="media-list">
 					<!-- <li class="media font-weight-semibold py-1">Team leaders</li> -->
+					<?php foreach($clients as $client){ ?>
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/userimg/face20.jpg" class="rounded-circle" width="40" height="40" alt="">
+								<img src="<?php echo base_url(); ?>assets/images/placeholder.jpg" class="rounded-circle" width="40" height="40" alt="">
 							</a>
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander</div>
-							<span class="text-muted">Development</span>
+							<div class="media-title font-weight-semibold"><?php echo $client->first_name." ".$client->last_name; ?></div>
+							<!-- <span class="text-muted">Development</span> -->
 						</div>
-
+						
 						<div class="align-self-center ml-3" style="margin-right: 1.25rem!important;">
 							<span class="badge badge-light badge-striped badge-striped-right border-right-success" style="color: #4caf50;">Profile Completed</span>
 						</div>
+					
 						<div class="align-self-center ml-3">
 							<div class="list-icons">
 		                    	<div class="list-icons-item dropdown">
 		                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 		                    		<div class="dropdown-menu dropdown-menu-right">
-				                    	<a href="<?php echo site_url("agency/clients/client_profile"); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
+				                    	<a href="<?php echo site_url("agency/clients/client_profile/".$client->id); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
+										<a href="<?php echo site_url("agency/clients/client_edit"); ?>" class="dropdown-item" ><i class="icon-pencil3"></i> Edit Client</a>
 		                    		</div>
 		                    	</div>
 	                    	</div>
 						</div>
 					</li>
-					<li class="media">
+					<?php } ?>
+					<!-- <li class="media">
 						<div class="mr-3">
 							<a href="#">
 								<img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg" class="rounded-circle" width="40" height="40" alt="">
@@ -117,8 +121,8 @@
 		                    	</div>
 	                    	</div>
 						</div>
-					</li>
-					<li class="media">
+					</li> -->
+					<!-- <li class="media">
 						<div class="mr-3">
 							<a href="#">
 								<img src="<?php echo base_url(); ?>assets/images/userimg/face24.jpg" class="rounded-circle" width="40" height="40" alt="">
@@ -145,8 +149,8 @@
 		                    	</div>
 	                    	</div>
 						</div>
-					</li>
-					<li class="media">
+					</li> -->
+					<!-- <li class="media">
 						<div class="mr-3">
 							<a href="#">
 								<img src="<?php echo base_url(); ?>assets/images/userimg/face7.jpg" class="rounded-circle" width="40" height="40" alt="">
@@ -173,7 +177,7 @@
 		                    	</div>
 	                    	</div>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>
