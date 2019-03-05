@@ -63,7 +63,7 @@ function checkIfProfileNotCompleted($caregiver_id){
 		redirect("caregiver/profile/wizard/".$caregiver_id."");
 }
 
-function upload_file($FILE, $MODULE, $MODULE_ID){
+function upload_file($FILE, $MODULE, $MODULE_ID, $FILE_DIRECTORY="./uploads/caregiver/"){
 	$name = $FILE["name"];
 	$media_id = 0;
 	$fname=time().'_'.basename($FILE["name"]);
@@ -71,7 +71,7 @@ function upload_file($FILE, $MODULE, $MODULE_ID){
 	$fname = str_replace("%","_",$fname);
 	$name_ext = explode(".", basename($FILE["name"]));
 	$name_ext = end($name_ext);
-	$uploaddir = "./uploads/caregiver/";
+	$uploaddir = $FILE_DIRECTORY;
 	if (!file_exists($uploaddir)) {
 		mkdir($uploaddir, 0777, true);
 	}
