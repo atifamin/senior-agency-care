@@ -29,6 +29,8 @@ class Agency_model extends CI_Model{
 		}
 		return $agencyDetail;
 	}
+
+
 	
 }
 

@@ -1,6 +1,6 @@
 <?php
 	$profile_image = agency_image($this->agency_id);
-	$profile_detail = agency_Detail($this->agency_id);
+	//$profile_detail = agency_Detail($this->agency_id);
 	$urlSeg2 = $this->uri->segment(2);
 	$urlSeg3 = $this->uri->segment(3);
 	//print_array($profile_detail);
@@ -46,7 +46,7 @@
 
 	<!-- Theme JS files -->
 	<script src="<?php echo base_url(); ?>assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
+	<!-- <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> -->
 	<script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 	<script src="<?php echo base_url();?>assets/js/demo_pages/form_multiselect.js"></script>
 	<script src="<?php echo base_url();?>assets/js/demo_pages/extra_sweetalert.js"></script>
