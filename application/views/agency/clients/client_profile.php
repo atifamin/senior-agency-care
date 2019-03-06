@@ -67,7 +67,7 @@
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold">James Alexander</div>
+							<div class="media-title font-weight-semibold"><?php if(isset($client->first_name)){ echo $client->first_name." ".$client->last_name;} ?></div>
 							<span class="text-muted">Development</span>
 						</div>
 
@@ -119,23 +119,23 @@
 											<table>
 												<tr>
 													<td style="width: 150px;"><strong>Gender:</strong></td>
-													<td>Female</td>
+													<td><?php if(isset($client->gender)){echo $client->gender;} ?></td>
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Phone:</strong></td>
-													<td><span style="color: #3f51b5;">+83479284735928</span></td>
+													<td><span style="color: #3f51b5;"><?php if(isset($client->mobile_number)){echo $client->mobile_number;} ?></span></td>
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Email:</strong></td>
-													<td><span style="color: #3f51b5;">email@gmail.com</span></td>
+													<td><span style="color: #3f51b5;"><?php if(isset($client->email_address)){echo $client->email_address;} ?></span></td>
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Client From:</strong></td>
-													<td>June,5 2018 - present</td>
+													<td><?php if(isset($client->client_from)){ echo $client->client_from;} ?></td>
 												</tr>
 												<tr>
 													<td style="width: 150px;"><strong>Birthday:</strong></td>
-													<td>June, 5 2018</td>
+													<td><?php if(isset($client->dob)){echo date("M,d-Y",strtotime($client->dob));} ?></td>
 												</tr>
 											</table>
 										</div>
