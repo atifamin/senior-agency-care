@@ -14,6 +14,7 @@
 <link href="<?php echo base_url(); ?>assets/css/layout.min.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url(); ?>assets/css/components.min.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url(); ?>assets/css/colors.min.css" rel="stylesheet" type="text/css">
+
 <!-- /global stylesheets -->
 
 <!-- Core JS files -->
@@ -43,6 +44,16 @@
 <!-- Theme JS files -->
 <script src="<?php echo base_url(); ?>assets/js/plugins/buttons/spin.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/plugins/buttons/ladda.min.js"></script>
+
+
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/inputTelPlusMasking/intlTelInput/css/intlTelInput.css">
+<script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/intlTelInput/js/intlTelInput.js"></script> 
+<script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/intlTelInput/js/utils.js"></script> 
+<script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/intlTelInput/js/isValidNumber.js"></script> 
+<script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/jquery.inputmask.bundle.js"></script> 
+<script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/inputmask/phone-codes/phone.js"></script> 
+<script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/inputmask/phone-codes/phone-be.js"></script> 
+<script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/inputmask/phone-codes/phone-ru.js"></script> 
 </head>
 <style type="text/css">
 #swal2-content {
@@ -443,6 +454,7 @@
   </div>
 </div>
 <div id="modal_edit_form_license_div"></div>
+
 <script type="text/javascript">
 /*function addNewLicense(){
 	$(".add_new_license").css("display","block");
@@ -638,6 +650,9 @@ function add_new_agency(){
 $("#modal_form_license").validate({
   modules : 'logic'
 });
+
+
+
 </script>
 </body>
 </html>
