@@ -30,6 +30,18 @@ class Caregiver extends CI_Controller {
 		$data['countries'] = load_table("countries");
 		$this->load->view("agency/caregiver/add_caregiver",$data);
 	}
+
+	public function edit($caregiver_id){
+		$data["breadcrumb"] = "Edit Caregiver";
+		$data["heading"] = "Caregivers";
+		$data["url_segment"] = "edit_caregiver";
+		$data['detail'] = $this->Caregiver_model->getCaregiverById($caregiver_id);
+		$data['countries'] = $this->common_model->listingResult("countries");
+		$data["states"] = $this->common_model->listingResultWhere("country_id",$data["detail"]->country_id,"states");
+		$data["cities"] = $this->common_model->listingResultWhere("state_id",$data["detail"]->state_id,"cities");
+		//print_array($data['detail']);
+		$this->load->view("agency/caregiver/profile/edit_caregiver",$data);
+	}
 	
 	public function load_states(){
 		$id = $this->input->post("id");
@@ -146,7 +158,7 @@ class Caregiver extends CI_Controller {
 		$data["url_segment"] = "caregivers";
 		$data['detail'] = $this->Caregiver_model->getCaregiverById($caregiver_id);
 		//$data['caregive_id'] = $caregiver_id;
-		//print_array($data['detail']);
+		//print_array($caregiver_id);
 		//$data['img_detail'] = $this->Caregiver_model->
 		$this->load->view("agency/caregiver/profile/index",$data);
 	}

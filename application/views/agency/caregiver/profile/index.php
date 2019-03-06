@@ -1,5 +1,6 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
 <?php $months = CON_MONTHS; ?>
+<?//php print_array($detail);?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card">
@@ -97,10 +98,10 @@
 		                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 		                    		<div class="dropdown-menu dropdown-menu-right">
+		                    			<a href="<?php echo site_url("agency/caregiver/edit/".$detail->id.""); ?>" class="dropdown-item"><i class="icon-google-drive"></i> Edit</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#call"><i class="icon-phone2"></i> Make a call</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#chat"><i class="icon-comment"></i> Start chat</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
-				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Edit</a>
 		                    		</div>
 		                    	</div>
 	                    	</div>

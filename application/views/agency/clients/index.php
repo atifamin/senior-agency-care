@@ -62,7 +62,9 @@
 			<div class="card-body">
 				<ul class="media-list">
 					<!-- <li class="media font-weight-semibold py-1">Team leaders</li> -->
-					<?php foreach($clients as $client){ ?>
+					<?php
+					if(isset($clients) && count($clients)>0){
+					foreach($clients as $client){ ?>
 					<li class="media">
 						<div class="mr-3">
 							<a href="#">
@@ -93,7 +95,9 @@
 	                    	</div>
 						</div>
 					</li>
-					<?php } ?>
+					<?php }}else{ ?>
+                    <li class="media"></li>
+                    <?php } ?>
 					<!-- <li class="media">
 						<div class="mr-3">
 							<a href="#">

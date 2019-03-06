@@ -2,23 +2,22 @@
 <?php $months = CON_MONTHS; ?>
 <?PHP //print_array($profile_detail); ?>
 <?PHP //print_array($cities); ?>
-
 <style type="text/css">
 #swal2-content {
-  padding: 30px 0px !important;
+	padding: 30px 0px !important;
 }
 .multi_select_box + span {
-  border: 1px solid #00bcd4;
-  border-radius: 25px;
+	border: 1px solid #00bcd4;
+	border-radius: 25px;
 }
 </style>
 
-<div class="container">
+<div class="container"> 
   <!-- <div class="row" style="margin: 10px 0px; width: 100%;">
     <div class="col-md-12" style="text-align: center;">
       <div class="register_icon" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #F37333; margin: 0 auto;"> <a style="position: relative; top: 20px;" href="#"><i style="color: #F37333; font-size: 24px;" class="icon-people"></i></a> </div>
     </div>
-  </div> -->
+  </div> --> 
   
   <!-- Wizard with validation -->
   <div class="card">
@@ -125,7 +124,7 @@
                 <option></option>
                 <?php foreach ($states as $state):?>
                 <option <?php if($profile_detail->profile->state_id == $state->id){echo 'selected="selected"';} ?> value="<?php echo $state->id; ?>"><?php echo $state->name; ?></option>
-              <?php endforeach; ?>
+                <?php endforeach; ?>
               </select>
             </div>
           </div>
@@ -138,7 +137,7 @@
                 <option></option>
                 <?php foreach ($cities as $city): ?>
                 <option <?php if($profile_detail->profile->city_id == $city->id){echo 'selected="selected"';} ?> value="<?php echo $city->id; ?>"><?php echo $city->name;?></option>
-              <?php endforeach; ?>
+                <?php endforeach; ?>
               </select>
             </div>
           </div>
@@ -268,35 +267,35 @@
               <button type="button" class="btn btn-outline bg-indigo-400 text-indigo-400 border-indigo-400" data-toggle="modal" data-target="#modal_form_license"><i class="icon-plus3"></i> ADD A NEW STATE LICENSE</button>
             </div>
           </div>
-          
           <div id="license_area">
-          <div class="row" style="width: 100%;" id="license_row">
-            <div class=" offset-md-1 col-md-7">
-              <div class="row" style="margin-top: 50px;">
-                <div class="col-md-7">
-                      <?php foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
-                  <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?><span style="position: relative; left: 55px; top: 9px;"><strong style="font-size: 24px; position: relative; top: 2px;">
-
-                  <?php
+            <div class="row" style="width: 100%;" id="license_row">
+              <div class=" offset-md-1 col-md-7">
+                <?php
+              if(isset($profile_detail->license) && count($profile_detail->license)>0){
+              foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
+                <div class="row" style="margin-top: 50px;">
+                  <div class="col-md-7">
+                    <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?><span style="position: relative; left: 55px; top: 9px;"><strong style="font-size: 24px; position: relative; top: 2px;">
+                      <?php
                   $fromDate = date("Y-m-d");
                   $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d");
                   $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
                     echo $difference['days'];
                   ?>
-
-                    </strong>&nbsp;Days to expire</span></p>
-                  <p style="position: relative; bottom: 7px; font-size: 12px; color: #B4B8BA;">Valid until <?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
-                <?php } ?>
-                </div>
-                <div class="col-md-5 text-center" style="margin-top: 15px;">
-                  <div class="btn-group ml-1">
-                    <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
-                    <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license()"><i class="icon-bin2"></i> Delete</a> </div>
+                      </strong>&nbsp;Days to expire</span></p>
+                    <p style="position: relative; bottom: 7px; font-size: 12px; color: #B4B8BA;">Valid until <?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
+                  </div>
+                  <div class="col-md-5 text-center" style="margin-top: 15px;">
+                    <div class="btn-group ml-1">
+                      <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
+                      <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license()"><i class="icon-bin2"></i> Delete</a> </div>
+                    </div>
                   </div>
                 </div>
+                <?php } ?>
               </div>
+              <?php } ?>
             </div>
-          </div>
           </div>
         </div>
       </fieldset>
@@ -309,12 +308,12 @@
               <input name="media_company_logo" type="file" value="<?php echo $profile_detail->profile->media_company_logo; ?>" class="form-input-styled" data-fouc>
             </div>
           </div>
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <div class="form-group">
               <label>Enter Your Password: <span class="text-danger">*</span></label>
-              <input type="password" name="password" class="form-control" value="<?php echo $profile_detail->password;?>">
+              <input type="password" name="password" class="form-control" value="">
             </div>
-          </div>
+          </div>-->
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -323,24 +322,26 @@
               <input name="media_profile_picture" type="file"  class="form-input-styled" data-fouc>
             </div>
           </div>
-          <div class="col-md-6">
+          <!--<div class="col-md-6">
             <div class="form-group">
               <label>Re-enter Your Password: <span class="text-danger">*</span></label>
-              <input type="password" name="re_password" class="form-control" value="<?php echo $profile_detail->password;?>">
+              <input type="password" name="re_password" class="form-control" value="">
             </div>
-          </div>
+
+          </div>-->
         </div>
         <div class="row">
-        <div class="col-md-12">
-        <div class="progress rounded-round" id="agency_progress" style="display:none">
-                <div class="progress-bar bg-warning" style="width:0%"> <span></span> </div>
-              </div>
-        </div>
+          <div class="col-md-12">
+            <div class="progress rounded-round" id="agency_progress" style="display:none">
+              <div class="progress-bar bg-warning" style="width:0%"> <span></span> </div>
+            </div>
+          </div>
         </div>
       </fieldset>
     </form>
   </div>
 </div>
+<!-- =====Add License Model=====-->
 <!-- /wizard with validation -->
 <div id="modal_form_license" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
@@ -446,19 +447,14 @@
     </div>
   </div>
 </div>
-<div id="modal_edit_form_license_div">
-</div>
+<div id="modal_edit_form_license_div"> </div>
 
+<!-- Theme JS files --> 
 
-
-
-<!-- Theme JS files -->
-
-<script src="<?php echo base_url(); ?>assets/js/demo_pages/register_form_wizard.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/plugins/buttons/spin.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/plugins/buttons/ladda.min.js"></script>
-
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/register_form_wizard.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/plugins/buttons/spin.min.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/plugins/buttons/ladda.min.js"></script> 
 <script type="text/javascript">
 /*function addNewLicense(){
   $(".add_new_license").css("display","block");
@@ -485,7 +481,7 @@ $("#add_new_license_form").on("submit", function(e){
   var formData = new FormData($(this)[0]);
   formData.append("counter", counter);
   $.ajax({
-    url: '<?php echo site_url("agency/register/add_new_license_form"); ?>',
+    url: '<?php echo site_url("agency/profile/add_new_license_form"); ?>',
     type: 'POST',
     data: formData,
     cache: false,
@@ -495,30 +491,31 @@ $("#add_new_license_form").on("submit", function(e){
       counter++;
       $("#counter").val(counter);
       $("#license_area").append(e);
-    },
-    xhr: function () {
-      var xhr = new window.XMLHttpRequest();
-      xhr.upload.addEventListener("progress", function (evt) {
-        if (evt.lengthComputable) {
-          var percentComplete = evt.loaded / evt.total;
-          percentComplete = parseInt(percentComplete * 100);
-          $("#license_progress > .progress-bar").css('width', percentComplete + '%');
-          $("#license_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
-          if(percentComplete==100){
-            $("#modal_form_license").modal("hide");
-            swal({
-              title: 'Good job!',
-              text: 'You have successfully added your State License!',
-              confirmButtonText: 'Ok',
-              type: 'success'
-            });
-          }
-        }
-      }, false);
-      return xhr;
-    },
+     }
+    // ,
+  //   xhr: function () {
+  //     var xhr = new window.XMLHttpRequest();
+  //     xhr.upload.addEventListener("progress", function (evt) {
+  //       if (evt.lengthComputable) {
+  //         var percentComplete = evt.loaded / evt.total;
+  //         percentComplete = parseInt(percentComplete * 100);
+  //         $("#license_progress > .progress-bar").css('width', percentComplete + '%');
+  //         $("#license_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
+  //         if(percentComplete==100){
+  //           $("#modal_form_license").modal("hide");
+  //           swal({
+  //             title: 'Good job!',
+  //             text: 'You have successfully added your State License!',
+  //             confirmButtonText: 'Ok',
+  //             type: 'success'
+  //           });
+  //         }
+  //       }
+  //     }, false);
+  //     return xhr;
+  //   },
     
-  });
+  // });
 });
 
 
@@ -598,7 +595,7 @@ function edit_license(id){
     valid_to_year:$("#valid_to_year_"+id+"").val(),
     media_license_document:$("#media_license_document_"+id+"").html()
   };
-  $.post("<?php echo site_url("agency/register/edit_license"); ?>", {formData:formData}).done(function(e){
+  $.post("<?php echo site_url("agency/Profile/edit_license"); ?>", {formData:formData}).done(function(e){
     $("#modal_edit_form_license_div").html(e);
     $("#modal_edit_form_license").modal("show");
   });

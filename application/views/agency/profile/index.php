@@ -76,15 +76,21 @@
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>How many caregivers do you employ:</strong></td>
-                            <td style="padding-top: 10px;"><?php //echo $profile_detail->profile->personal_care_services; ?></td>
+                            <td style="padding-top: 10px;"><?php echo $totalCaregivers; ?></td>
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>How many clients do you serve:</strong></td>
-                            <td style="padding-top: 10px;"><?php //echo $profile_detail->state; ?></td>
+                            <td style="padding-top: 10px;"><?php echo $totalClients; ?></td>
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>Country:</strong></td>
-                            <td style="padding-top: 10px;"></td>
+                            <td style="padding-top: 10px;">
+                              <?php foreach ($countries as $count){
+                                if ($profile_detail->profile->country_id == $count->id) {
+                                  echo $count->name;
+                                }
+                              }?>
+                            </td>
                           </tr>
                         </table>
                       </div>
@@ -119,8 +125,14 @@
                             <?php $personal_care_services = json_decode($profile_detail->profile->personal_care_services); ?>
                             <td style="padding-top: 10px;">
                               <?php foreach(load_table("personal_care_services") as $PCS): ?>
-                              <p><?php echo $PCS->name; ?></p>
-                                <?php endforeach; ?>
+                              <p>
+                              <?php
+							  if(count($personal_care_services)>0 && in_array($PCS->id, $personal_care_services)){
+								   echo $PCS->name;
+							  }
+							  ?>
+                              </p>
+                              <?php endforeach; ?>
                             </td>
                           </tr>
                           <tr>
@@ -128,7 +140,13 @@
                             <?php $housekeeping_services = json_decode($profile_detail->profile->housekeeping_services); ?>
                             <td style="padding-top: 10px;">
                               <?php foreach(load_table("housekeeping_services") as $HS): ?>
-                              <p><?php echo $HS->name; ?></p>
+                              <p>
+                              <?php
+							  if(count($housekeeping_services)>0 && in_array($HS->id, $housekeeping_services)){
+								   echo $HS->name;
+							  }
+							  ?>
+                              </p>
                                 <?php endforeach; ?>
                             </td>
                           </tr>
@@ -137,16 +155,28 @@
                             <?php $sunrise_sunset_services = json_decode($profile_detail->profile->sunrise_sunset_services); ?>
                             <td style="padding-top: 10px;">
                               <?php foreach(load_table("sunrise_sunset_services") as $SSS): ?>
-                              <p><?php echo $SSS->name; ?></p>
+                              <p>
+                              <?php
+            							  if(count($sunrise_sunset_services)>0 && in_array($SSS->id, $sunrise_sunset_services)){
+            								   echo $SSS->name;
+            							  }
+            							  ?>
+                              </p>
                                 <?php endforeach; ?>
                             </td>
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>Select dementia/alzheimer's Assistance:</strong></td>
-                            <?php $respite_services = json_decode($profile_detail->profile->respite_services); ?>
+                            <?php $dementia_alzheimer_assistance = json_decode($profile_detail->profile->dementia_alzheimer_assistance); ?>
                             <td style="padding-top: 10px;">
-                              <?php foreach(load_table("respite_services") as $RS): ?>
-                              <p><?php echo $RS->name; ?></p>
+                              <?php foreach(load_table("dementia_alzheimer_assistance") as $DZA): ?>
+                              <p>
+                              <?php
+							  if(count($dementia_alzheimer_assistance)>0 && in_array($DZA->id, $dementia_alzheimer_assistance)){
+								   echo $DZA->name;
+							  }
+							  ?>
+                              </p>
                                 <?php endforeach; ?>
                             </td>
                           </tr>
@@ -155,7 +185,13 @@
                             <?php $personal_assistance_services = json_decode($profile_detail->profile->personal_assistance_services); ?>
                             <td style="padding-top: 10px;">
                             <?php foreach(load_table("personal_assistance_services") as $PAS): ?>
-                              <p><?php echo $PAS->name; ?></p>
+                              <p>
+                              <?php
+							  if(count($personal_assistance_services)>0 && in_array($PAS->id, $personal_assistance_services)){
+								   echo $PAS->name;
+							  }
+							  ?>
+                              </p>
                               <?php endforeach; ?>
                             </td>
                           
@@ -165,7 +201,13 @@
                             <td style="padding-top: 10px;">
                               <?php $post_surgery_maternity_services = json_decode($profile_detail->profile->post_surgery_maternity_services); ?>
                               <?php foreach(load_table("post_surgery_maternity_services") as $PSMS): ?>
-                              <p><?php echo $PSMS->name; ?></p>
+                              <p>
+                              <?php
+							  if(count($post_surgery_maternity_services)>0 && in_array($PSMS->id, $post_surgery_maternity_services)){
+								   echo $PSMS->name;
+							  }
+							  ?>
+                              </p>
                                 <?php endforeach; ?>
                             </td>
                           </tr>
@@ -174,7 +216,13 @@
                             <?php $respite_services = json_decode($profile_detail->profile->respite_services); ?>
                             <td style="padding-top: 10px;">
                               <?php foreach(load_table("respite_services") as $RS): ?>
-                              <p><?php echo $RS->name; ?></p>
+                              <p>
+                              <?php
+							  if(count($respite_services)>0 && in_array($RS->id, $respite_services)){
+								   echo $RS->name;
+							  }
+							  ?>
+                              </p>
                                 <?php endforeach; ?>
                             </td> 
                           </tr>
@@ -183,7 +231,13 @@
                             <?php $other_services = json_decode($profile_detail->profile->other_services); ?>
                             <td style="padding-top: 10px;">
                               <?php foreach(load_table("other_services") as $OS): ?>
-                              <p><?php echo $OS->name; ?></p>
+                              <p>
+                              <?php
+							  if(count($other_services)>0 && in_array($OS->id, $other_services)){
+								   echo $OS->name;
+							  }
+							  ?>
+                              </p>
                                 <?php endforeach; ?>
                             </td> 
                           </tr>
@@ -198,6 +252,7 @@
                       <?php foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
                         <div class="card" style="margin-bottom:5%">
                           <div class="card-header">
+                            <?php //print_array($licenseVal->media_license_document_detail->full_path); ?>
                             <h4 class="card-title"><strong><?php echo $licenseVal->state_license; ?></strong></h4>
                           </div>
                           <div class="card-body">
@@ -205,7 +260,7 @@
                           <?php if(isset($licenseVal->license_document) && count($licenseVal->license_document)>0){ ?>
                           <p><strong>Documents</strong></p>
                           
-                          <a href="<?php //echo base_url($licenseVal->license_document->full_path); ?>" download><?php //echo $licenseVal->license_document->name; ?></a>
+                          <a href="<?php echo base_url.$licenseVal->media_license_document_detail->full_path; ?>" download><?php echo $licenseVal->media_license_document_detail->name; ?></a>
                           <?php } ?>
                           </div>
                         </div>
@@ -229,15 +284,21 @@
                         <table>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>Upload your company logo:</strong></td>
-                            <td style="padding-top: 10px;"><strong><img src="<?php echo $profile_detail->profile->media_company_logo; ?>" class="rounded-circle" width="36" height="36" alt=""></strong></td>
+                            <td style="padding-top: 10px;">
+                            <?php
+          							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
+          							if($profile_detail->profile->media_company_logo!=0){
+          								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
+          								if(file_exists(DOC_PATH.$imagUrl)){
+          									$comLogoImageUrl = base_url().$imagUrl;
+          								}
+          							}
+      							   ?>
+                            <strong><img src="<?php echo $comLogoImageUrl; ?>" class="rounded-circle" width="36" height="36" alt=""></strong></td>
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>Upload your profile picture:</strong></td>
                             <td style="padding-top: 10px;"><img src="<?php echo $profile_image; ?>" class="rounded-circle" width="36" height="36" alt=""></td>
-                          </tr>
-                          <tr>
-                            <td style="width: 310px; padding-top: 10px;"><strong>Enter your password:</strong></td>
-                            <td style="padding-top: 10px;"><?php echo $profile_detail->password; ?></td>
                           </tr>
                         </table>
                       </div>
