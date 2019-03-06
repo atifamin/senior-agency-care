@@ -1,4 +1,6 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
+<?php $months = CON_MONTHS; ?>
+
 <?php //print_array($detail);
 //print_array($result); ?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_wizard.js"></script>
@@ -79,8 +81,10 @@
               <div class="form-group">
                 <label class="d-block">Upload Caregiver profile image:</label>
                 <input name="profile_pic" type="file" class="form-input-styled " data-fouc>
-                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
-            </div>
+                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span>
+                <img src="<?php echo caregiver_image($detail->id) ;?>" class="rounded-circle" width="100" height="100"  >
+              </div>
+            </div>  
           </div>
           <div class="row">
             <div class="col-md-3">
@@ -247,7 +251,35 @@
                 <button type="button" class="btn btn-outline bg-indigo-400 text-indigo-400 border-indigo-400" data-toggle="modal" data-target="#modal_form_license"><i class="icon-plus3"></i> ADD A NEW STATE LICENSE</button>
               </div>
             </div>
-            <div id="license_area"></div>
+            <div id="license_area">
+              <div class="row" style="width: 100%;" id="license_row">
+                <div class=" offset-md-1 col-md-7">
+                  <?php foreach($detail->license as $licenseKey=>$licenseVal){ ?>
+                    <?php //print_array($licenseVal); ?>
+                  <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-7">
+                      <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?><span style="position: relative; left: 55px; top: 9px; margin-left: 60px;"><strong style="font-size: 24px; position: relative; top: 2px;">
+                      <?php
+                      $fromDate = date("Y-m-d");
+                      $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d");
+                      $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+                        echo $difference['days'];
+                      ?>
+
+                        </strong>&nbsp;Days to expire</span></p>
+                      <p style="position: relative; bottom: 7px; font-size: 12px; color: #B4B8BA;">Valid until <?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
+                    </div>
+                    <div class="col-md-5 text-center" style="margin-top: 15px;">
+                      <div class="btn-group ml-1">
+                        <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
+                        <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license()"><i class="icon-bin2"></i> Delete</a> </div>
+                      </div>
+                    </div>
+                  </div>
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
           </div>
         </fieldset>
       </form>
