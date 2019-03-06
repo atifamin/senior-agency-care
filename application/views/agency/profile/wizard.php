@@ -267,15 +267,37 @@
               <button type="button" class="btn btn-outline bg-indigo-400 text-indigo-400 border-indigo-400" data-toggle="modal" data-target="#modal_form_license"><i class="icon-plus3"></i> ADD A NEW STATE LICENSE</button>
             </div>
           </div>
-          <div id="license_area">
-            <div class="row" style="width: 100%;" id="license_row">
+          <div id="license_area" style="margin: 15px;">
+            <?php if(isset($profile_detail->license) && count($profile_detail->license)>0){
+              foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
+
+                <div class="row" id="license_row" style="margin-top: 10px; text-align: center;">
+                  <div class="offset-md-1 col-md-4"><?php echo $licenseVal->state_license; ?></div>
+                  <div class="col-md-4">
+                    
+                    <?php
+                  $fromDate = date("Y-m-d");
+                  $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d");
+                  $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+                    echo $difference['days'];
+                  ?>
+                  <?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?>
+                  </div>
+                  <div class="col-md-3">
+                    <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
+                      <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license()"><i class="icon-bin2"></i> Delete</a> 
+                  </div>
+                </div>
+              </div>
+              <?php }} ?>
+            <!-- <div class="row" style="width: 100%;" id="license_row">
               <div class=" offset-md-1 col-md-7">
                 <?php
               if(isset($profile_detail->license) && count($profile_detail->license)>0){
               foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
                 <div class="row" style="margin-top: 50px;">
                   <div class="col-md-7">
-                    <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?><span style="position: relative; left: 55px; top: 9px;"><strong style="font-size: 24px; position: relative; top: 2px;">
+                    <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?><span style="position: relative; left: 105px; top: 9px;"><strong style="font-size: 24px; position: relative; top: 2px;">
                       <?php
                   $fromDate = date("Y-m-d");
                   $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d");
@@ -293,10 +315,13 @@
                   </div>
                 </div>
                 <?php } ?>
-              </div>
-              <?php } ?>
+                <?php } ?>
+              
+
+              
             </div>
-          </div>
+
+          </div> -->
         </div>
       </fieldset>
       <h6><strong>Company Logo & Profile Image</strong></h6>
@@ -350,19 +375,20 @@
         <h5 class="modal-title"><strong>ADD NEW LICENSE</strong></h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <form id="add_new_license_form" enctype="multipart/form-data">
+      <form id="add_new_license_form" role="form" enctype="multipart">
+        <input type="hidden" id="agency_id" value="<?php echo $profile_detail->id; ?>">
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>State license #: <span class="text-danger">*</span></label>
-                <input type="text" name="state_license" class="form-control required" placeholder="Add state license #" data-validation="required" required>
+                <input type="text" id="state_license" name="state_license" class="form-control required" placeholder="Add state license #" data-validation="required" required>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label>State where your license recieved: <span class="text-danger">*</span></label>
-                <select name="license_recieved_country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc required>
+                <select name="license_recieved_country" id="license_recieved_country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc required>
                   <option></option>
                   <?php foreach($countries as $count1): ?>
                   <option value="<?php echo $count1->id; ?>"><?php echo $count1->name; ?></option>
@@ -377,7 +403,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc required>
+                    <select name="valid_from_month" id="valid_from_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc required>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key2=>$val2): ?>
                       <option value="<?php echo $key2; ?>"><?php echo $val2; ?></option>
@@ -387,7 +413,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc required>
+                    <select name="valid_from_year" id="valid_from_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc required>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -402,7 +428,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc required>
+                    <select name="valid_to_month" id="valid_to_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc required>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key3=>$val3): ?>
                       <option value="<?php echo $key3; ?>"><?php echo $val3; ?></option>
@@ -412,7 +438,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc required>
+                    <select name="valid_to_year" id="valid_to_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc required>
                       <option></option>
                       <?php for($i=2019; $i<=2029; $i++){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -427,21 +453,21 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="d-block">Upload License Document(optional):</label>
-                <input name="media_license_document" type="file" class="form-input-styled" data-fouc>
+                <input name="media_license_document" id="media_license_document" type="file" class="form-input-styled" data-fouc>
                 <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-12">
               <div class="progress rounded-round" id="license_progress" style="display:none">
                 <div class="progress-bar bg-warning" style="width:0%"> <span></span> </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Add New License</span> </button>
+          <button type="submit"  class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Add New License</span> </button>
         </div>
       </form>
     </div>
@@ -464,6 +490,58 @@ function viewLicense(){
   $(".add_new_license").css("display","none");
   $(".license_view").css("display","block");
 }*/
+$("#add_new_license_form").on("submit", function(e){
+  e.preventDefault();
+
+  //var form = $(this);
+var file_data = $('#media_license_document').prop('files')[0];
+
+  var form_data = new FormData();
+  var agency_id = $('#agency_id').val();
+  var state_license = $('#state_license').val();
+  var license_recieved_country = $('#license_recieved_country').val();
+  var valid_from_month = $('#valid_from_month').val();
+  var valid_from_year = $('#valid_from_year').val();
+  var valid_to_month = $('#valid_to_month').val();
+  var valid_to_year = $('#valid_to_year').val();
+  var media_license_document = $('#media_license_document').val();
+
+  form_data.append('agency_id',agency_id);
+  form_data.append('state_license',state_license);
+  form_data.append('license_recieved_country',license_recieved_country);
+  form_data.append('valid_from_month',valid_from_month);
+  form_data.append('valid_from_year',valid_from_year);
+  form_data.append('valid_to_month',valid_to_month);
+  form_data.append('valid_to_year',valid_to_year);
+  form_data.append('media_license_document',file_data);
+  $.ajax({
+    url: '<?php echo site_url("agency/profile/add_new_license_form"); ?>',
+    type: 'POST',
+    data: form_data,
+    dataType:"text",
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function (data) {
+      //alert(data);
+      // if(data == 1){
+
+      //   //swal
+      //   swal("License","added successfully");
+      //   //close modal
+      //   //$("#modal_form_license").modal('hide');
+      //   location.reload();
+      // }
+      $("#modal_form_license").modal('hide');
+      $("#license_area").append(data);
+     },
+    error: function(){
+      alert("error posting feed");
+    } 
+    
+  });
+});
+
 function load_states(id){
   $.post("<?php echo site_url("agency/register/load_states"); ?>", {id:id}).done(function(e){
     $("#states").html(e);
@@ -474,49 +552,6 @@ function load_cities(id){
     $("#cities").html(e);
   });
 }
-$("#add_new_license_form").on("submit", function(e){
-  $("#license_progress").show();
-  var counter = $("#counter").val();
-  e.preventDefault();
-  var formData = new FormData($(this)[0]);
-  formData.append("counter", counter);
-  $.ajax({
-    url: '<?php echo site_url("agency/profile/add_new_license_form"); ?>',
-    type: 'POST',
-    data: formData,
-    cache: false,
-    contentType: false,
-    processData: false,
-    success: function (e) {
-      counter++;
-      $("#counter").val(counter);
-      $("#license_area").append(e);
-     }
-    // ,
-  //   xhr: function () {
-  //     var xhr = new window.XMLHttpRequest();
-  //     xhr.upload.addEventListener("progress", function (evt) {
-  //       if (evt.lengthComputable) {
-  //         var percentComplete = evt.loaded / evt.total;
-  //         percentComplete = parseInt(percentComplete * 100);
-  //         $("#license_progress > .progress-bar").css('width', percentComplete + '%');
-  //         $("#license_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
-  //         if(percentComplete==100){
-  //           $("#modal_form_license").modal("hide");
-  //           swal({
-  //             title: 'Good job!',
-  //             text: 'You have successfully added your State License!',
-  //             confirmButtonText: 'Ok',
-  //             type: 'success'
-  //           });
-  //         }
-  //       }
-  //     }, false);
-  //     return xhr;
-  //   },
-    
-  // });
-});
 
 
 $("#update_new_license_form").on("submit", function(e){
@@ -561,21 +596,6 @@ $("#update_new_license_form").on("submit", function(e){
   });*/
 });
 
-/*Ladda.bind('.btn-ladda-progress', {
-            callback: function(instance) {
-                var progress = 0;
-                var interval = setInterval(function() {
-                    progress = Math.min(progress + Math.random() * 0.1, 1);
-                    instance.setProgress(progress);
-
-                    if( progress === 1 ) {
-                        instance.stop();
-                        clearInterval(interval);
-                    }
-                }, 200);
-            }
-        });*/
-
 function delete_license(id){
   var image_data = $("#media_license_document_"+id+"").html();
   if(image_data!=0){
@@ -601,54 +621,8 @@ function edit_license(id){
   });
 }
 
-function add_new_agency(){
-  var password = $("input[name=password]").val();
-  var re_password = $("input[name=re_password]").val();
-  if(password!=re_password){
-    swal({
-      title: 'Error!',
-      text: 'You password does not match!',
-      type: 'error'
-    });
-    return false;
-  }
-  
-  var formData = new FormData($("#agency_form")[0]);
-  $.ajax({
-    url: '<?php echo site_url("agency/"); ?>',
-    type: 'POST',
-    data: formData,
-    cache: false,
-    contentType: false,
-    processData: false,
-    success: function(e){
-    },
-    xhr: function () {
-      var xhr = new window.XMLHttpRequest();
-      xhr.upload.addEventListener("progress", function (evt) {
-        if (evt.lengthComputable) {
-          var percentComplete = evt.loaded / evt.total;
-          percentComplete = parseInt(percentComplete * 100);
-          $("#agency_progress > .progress-bar").css('width', percentComplete + '%');
-          $("#agency_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
-          if(percentComplete==100){
-            window.location = '<?php echo site_url("agency/dashboard"); ?>';
-          }
-        }
-      }, false);
-      return xhr;
-    },
-  });
-  /*swal({
-    title: 'Good job! Your company profile is now ready. Now lets get ready for business with these few steps.',
-    text: 'Now lets get ready for business with these few steps.',
-    html: '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp&nbsp&nbsp<a style="color:#555;" href="#"><strong>Add Cargivers</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp<a style="color:#555;" href="#"><strong>Add Clients</strong></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + '<img src="http://localhost/senior-agency-care/assets/images/backgrounds/male.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp&nbsp<a style="color:#555;" href="#"><strong>Create Schedules</strong></a>',
-    confirmButtonText: 'Lets Get Started',
-    type: 'success'
-  });*/
-}
 
-$("#modal_form_license").validate({
-  modules : 'logic'
-});
+// $("#modal_form_license").validate({
+//   modules : 'logic'
+// });
 </script>
