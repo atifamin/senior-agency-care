@@ -308,12 +308,20 @@
               <input name="media_company_logo" type="file" value="<?php echo $profile_detail->profile->media_company_logo; ?>" class="form-input-styled" data-fouc>
             </div>
           </div>
+<<<<<<< HEAD
+          <!-- <div class="col-md-6">
+=======
           <!--<div class="col-md-6">
+>>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
             <div class="form-group">
               <label>Enter Your Password: <span class="text-danger">*</span></label>
               <input type="password" name="password" class="form-control" value="">
             </div>
+<<<<<<< HEAD
+          </div> -->
+=======
           </div>-->
+>>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -322,12 +330,20 @@
               <input name="media_profile_picture" type="file"  class="form-input-styled" data-fouc>
             </div>
           </div>
+<<<<<<< HEAD
+          <!-- <div class="col-md-6">
+=======
           <!--<div class="col-md-6">
+>>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
             <div class="form-group">
               <label>Re-enter Your Password: <span class="text-danger">*</span></label>
               <input type="password" name="re_password" class="form-control" value="">
             </div>
+<<<<<<< HEAD
+          </div> -->
+=======
           </div>-->
+>>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -340,6 +356,7 @@
     </form>
   </div>
 </div>
+<!-- =====Add License Model=====-->
 <!-- /wizard with validation -->
 <div id="modal_form_license" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
@@ -479,7 +496,7 @@ $("#add_new_license_form").on("submit", function(e){
   var formData = new FormData($(this)[0]);
   formData.append("counter", counter);
   $.ajax({
-    url: '<?php echo site_url("agency/register/add_new_license_form"); ?>',
+    url: '<?php echo site_url("agency/profile/add_new_license_form"); ?>',
     type: 'POST',
     data: formData,
     cache: false,
@@ -489,30 +506,31 @@ $("#add_new_license_form").on("submit", function(e){
       counter++;
       $("#counter").val(counter);
       $("#license_area").append(e);
-    },
-    xhr: function () {
-      var xhr = new window.XMLHttpRequest();
-      xhr.upload.addEventListener("progress", function (evt) {
-        if (evt.lengthComputable) {
-          var percentComplete = evt.loaded / evt.total;
-          percentComplete = parseInt(percentComplete * 100);
-          $("#license_progress > .progress-bar").css('width', percentComplete + '%');
-          $("#license_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
-          if(percentComplete==100){
-            $("#modal_form_license").modal("hide");
-            swal({
-              title: 'Good job!',
-              text: 'You have successfully added your State License!',
-              confirmButtonText: 'Ok',
-              type: 'success'
-            });
-          }
-        }
-      }, false);
-      return xhr;
-    },
+     }
+    // ,
+  //   xhr: function () {
+  //     var xhr = new window.XMLHttpRequest();
+  //     xhr.upload.addEventListener("progress", function (evt) {
+  //       if (evt.lengthComputable) {
+  //         var percentComplete = evt.loaded / evt.total;
+  //         percentComplete = parseInt(percentComplete * 100);
+  //         $("#license_progress > .progress-bar").css('width', percentComplete + '%');
+  //         $("#license_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
+  //         if(percentComplete==100){
+  //           $("#modal_form_license").modal("hide");
+  //           swal({
+  //             title: 'Good job!',
+  //             text: 'You have successfully added your State License!',
+  //             confirmButtonText: 'Ok',
+  //             type: 'success'
+  //           });
+  //         }
+  //       }
+  //     }, false);
+  //     return xhr;
+  //   },
     
-  });
+  // });
 });
 
 
@@ -592,7 +610,7 @@ function edit_license(id){
     valid_to_year:$("#valid_to_year_"+id+"").val(),
     media_license_document:$("#media_license_document_"+id+"").html()
   };
-  $.post("<?php echo site_url("agency/register/edit_license"); ?>", {formData:formData}).done(function(e){
+  $.post("<?php echo site_url("agency/Profile/edit_license"); ?>", {formData:formData}).done(function(e){
     $("#modal_edit_form_license_div").html(e);
     $("#modal_edit_form_license").modal("show");
   });

@@ -33,7 +33,22 @@ class Profile extends CI_controller {
 		$data["cities"] = $this->common_model->listingResultWhere("state_id",$data["profile_detail"]->profile->state_id,"cities");
 		$this->load->view("agency/profile/wizard",$data);
 	}
-
+	public function edit_license(){
+		$data['countries'] = load_table("countries");
+		$data['result'] = $this->input->post("formData");
+		$this->load->view("agency/profile/edit_license_form", $data);
+	}
+	public function add_new_license_form(){
+		$data['post'] = $this->input->post();
+		if(isset($_FILES["media_license_document"])){
+			$data['file'] = $this->upload_license_file($_FILES["media_license_document"]);
+		}
+		$fromDate = date("Y-m-d");
+		$toDate = date("".$data['post']["valid_to_year"]."-".$data['post']["valid_to_month"]."-d");
+		$expire = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+		$data['expiryDays'] = $expire['days'];
+		$this->load->view('agency/profile/add_new_license_form',$data);
+	}
 	public function loadStatesByCountryId(){
 
 	}
