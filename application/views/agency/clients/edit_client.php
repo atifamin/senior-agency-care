@@ -326,7 +326,7 @@
 							<div class="form-check form-check-switch form-check-switch-left">
 								<label class="form-check-label d-flex align-items-center">
 									<span style="margin-right: 15px">Does the client recieve oxygen</span>
-									<input style="margin-left: 15px;" name="is_oxygen" <?php if(isset($client->is_oxygen)){if($client->is_oxygen == 1){echo "checked";}} ?>  type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientOxygen()" id="oxygen_client" value="0">
+									<input style="margin-left: 15px;" name="is_oxygen" <?php if(isset($client->is_oxygen)){if($client->is_oxygen == 1){echo "checked";}} ?>  type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientOxygen()" id="oxygen_client" value="<?php if($client->is_oxygen == 1){echo 1;}else{echo 0;} ?>">
 								</label>
 							</div>
 						</div>
@@ -352,7 +352,7 @@
 							<div class="form-check form-check-switch form-check-switch-left">
 								<label class="form-check-label d-flex align-items-center">
 									<span style="margin-right: 15px">Does client have mobilty needs?</span>
-									<input style="margin-left: 15px;" <?php if(isset($client->is_mobilty)){if($client->is_mobilty == 1){echo "checked";}} ?>  name="is_mobilty" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientNeed()" id="need_client" value="0">
+									<input style="margin-left: 15px;" <?php if(isset($client->is_mobilty)){if($client->is_mobilty == 1){echo "checked";}} ?>  name="is_mobilty" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientNeed()" id="need_client" value="<?php if($client->is_mobilty == 1){echo 1;}else{echo 0;} ?>">
 								</label>
 							</div>
 						</div>
@@ -530,12 +530,24 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".filename").html('<?php echo $Client_file->name; ?>');
-    var val = $("#client_pets").val();
-		if(val == 1){
-			$("#pet_list").css("display","block");
-		}else{
-			$("#pet_list").css("display","none");
-		}
+    var pets = $("#client_pets").val();
+    if(pets == 1){
+        $("#pet_list").css("display","block");
+    }else{
+        $("#pet_list").css("display","none");
+    }
+    var oxygen = $("#oxygen_client").val();
+    if(oxygen == 1){
+        $("#client_oxygen").css("display","block");
+    }else{
+        $("#client_oxygen").css("display","none");
+    }
+    var needs = $("#need_client").val();
+    if(needs == 1){
+        $("#client_needs").css("display","block");
+    }else{
+        $("#client_needs").css("display","none");
+    }
 });
 
 	function addNewLicense(){
