@@ -39,7 +39,7 @@ class Caregiver extends CI_Controller {
 		$data['countries'] = $this->common_model->listingResult("countries");
 		$data["states"] = $this->common_model->listingResultWhere("country_id",$data["detail"]->country_id,"states");
 		$data["cities"] = $this->common_model->listingResultWhere("state_id",$data["detail"]->state_id,"cities");
-		//print_array($data['cities']);
+		//print_array($data['detail']);
 		$this->load->view("agency/caregiver/profile/edit_caregiver",$data);
 	}
 	
