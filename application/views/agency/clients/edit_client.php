@@ -221,7 +221,7 @@
 								<div class="col-md-6">
 									<div class="form-check form-check-switch form-check-switch-left">
 										<label>Does client have any pets</label>
-										<input type="checkbox" <?php if(isset($client->is_pets)){if($client->is_pets == 1){echo "checked";}} ?> name="is_pets"  data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" id="client_pets" onchange="listPets()" value="0">
+										<input type="checkbox" <?php if(isset($client->is_pets)){if($client->is_pets == 1){echo "checked";}} ?> name="is_pets"  data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" id="client_pets" onchange="listPets()" value="<?php if($client->is_pets == 1){ echo 1;}else{echo 0;} ?>">
 									</div>
 								</div>
 								<div class="col-md-12" id="pet_list" style="display: none;">
@@ -530,6 +530,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".filename").html('<?php echo $Client_file->name; ?>');
+    var val = $("#client_pets").val();
+		if(val == 1){
+			$("#pet_list").css("display","block");
+		}else{
+			$("#pet_list").css("display","none");
+		}
 });
 
 	function addNewLicense(){
