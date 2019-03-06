@@ -45,6 +45,7 @@
           </div>
         </div>
       </div>
+      
       <div class="card-body">
         <ul class="media-list">
           <!-- <li class="media font-weight-semibold py-1">Team leaders</li> -->
@@ -65,7 +66,7 @@
             <div class="align-self-center ml-3">
               <div class="list-icons">
                 <div class="list-icons-item dropdown"> <a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
-                  <div class="dropdown-menu dropdown-menu-right"> <a href="<?php echo site_url("agency/caregiver/profile/".$this->agency_id.""); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a> <a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a> </div>
+                  <div class="dropdown-menu dropdown-menu-right"> <a href="<?php echo site_url("agency/caregiver/profile/".$row->id.""); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a> <a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a> </div>
                 </div>
               </div>
             </div>
@@ -79,6 +80,7 @@
             </div>
           </li>
           <?php } ?>
+          
         </ul>
       </div>
     </div>
