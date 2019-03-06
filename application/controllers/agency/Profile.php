@@ -19,6 +19,12 @@ class Profile extends CI_controller {
 		$data["heading"] = "My Profile";
 		$data["url_segment"] = "profile";
 		$data["profile_detail"] = $this->Agency_model->getAgencyById($this->agency_id);
+		$whereArray = array('agency_id' => $this->agency_id);
+		$data["totalCaregivers"] = $this->common_model->countRows("caregiver", $whereArray);
+		$data['totalClients'] = $this->common_model->countRows("client",$whereArray);
+		//print_array($data["totalCaregivers"]);
+		$data['countries'] = $this->common_model->listingResult("countries");
+		//print_array($data['countries']);
 		$this->load->view('agency/profile/index',$data);
 	}
 	public function wizard($agency_id){

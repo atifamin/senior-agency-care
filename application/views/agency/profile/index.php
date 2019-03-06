@@ -76,15 +76,21 @@
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>How many caregivers do you employ:</strong></td>
-                            <td style="padding-top: 10px;"><?php //echo $profile_detail->profile->personal_care_services; ?></td>
+                            <td style="padding-top: 10px;"><?php echo $totalCaregivers; ?></td>
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>How many clients do you serve:</strong></td>
-                            <td style="padding-top: 10px;"><?php //echo $profile_detail->state; ?></td>
+                            <td style="padding-top: 10px;"><?php echo $totalClients; ?></td>
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>Country:</strong></td>
-                            <td style="padding-top: 10px;"></td>
+                            <td style="padding-top: 10px;">
+                              <?php foreach ($countries as $count){
+                                if ($profile_detail->profile->country_id == $count->id) {
+                                  echo $count->name;
+                                }
+                              }?>
+                            </td>
                           </tr>
                         </table>
                       </div>
@@ -151,14 +157,10 @@
                               <?php foreach(load_table("sunrise_sunset_services") as $SSS): ?>
                               <p>
                               <?php
-      							  if(count($sunrise_sunset_services)>0 && in_array($SSS->id, $sunrise_sunset_services)){
-      								   echo $SSS->name;
-      							  }
-      							  ?>
-							  if(count($sunrise_sunset_services)>0 && in_array($SSS->id, $sunrise_sunset_services)){
-								   echo $SSS->name;
-							  }
-							  ?>
+            							  if(count($sunrise_sunset_services)>0 && in_array($SSS->id, $sunrise_sunset_services)){
+            								   echo $SSS->name;
+            							  }
+            							  ?>
                               </p>
                                 <?php endforeach; ?>
                             </td>
@@ -284,22 +286,14 @@
                             <td style="width: 310px; padding-top: 10px;"><strong>Upload your company logo:</strong></td>
                             <td style="padding-top: 10px;">
                             <?php
-      							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
-      							if($profile_detail->profile->media_company_logo!=0){
-      								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
-      								if(file_exists(DOC_PATH.$imagUrl)){
-      									$comLogoImageUrl = base_url().$imagUrl;
-      								}
-      							}
-      							?>
-							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
-							if($profile_detail->profile->media_company_logo!=0){
-								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
-								if(file_exists(DOC_PATH.$imagUrl)){
-									$comLogoImageUrl = base_url().$imagUrl;
-								}
-							}
-							?>
+          							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
+          							if($profile_detail->profile->media_company_logo!=0){
+          								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
+          								if(file_exists(DOC_PATH.$imagUrl)){
+          									$comLogoImageUrl = base_url().$imagUrl;
+          								}
+          							}
+      							   ?>
                             <strong><img src="<?php echo $comLogoImageUrl; ?>" class="rounded-circle" width="36" height="36" alt=""></strong></td>
                           </tr>
                           <tr>
