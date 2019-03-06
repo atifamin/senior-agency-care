@@ -272,9 +272,9 @@
           <div id="license_area">
           <div class="row" style="width: 100%;" id="license_row">
             <div class=" offset-md-1 col-md-7">
+              <?php foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
               <div class="row" style="margin-top: 50px;">
                 <div class="col-md-7">
-                      <?php foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
                   <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?><span style="position: relative; left: 55px; top: 9px;"><strong style="font-size: 24px; position: relative; top: 2px;">
 
                   <?php
@@ -286,7 +286,6 @@
 
                     </strong>&nbsp;Days to expire</span></p>
                   <p style="position: relative; bottom: 7px; font-size: 12px; color: #B4B8BA;">Valid until <?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
-                <?php } ?>
                 </div>
                 <div class="col-md-5 text-center" style="margin-top: 15px;">
                   <div class="btn-group ml-1">
@@ -295,6 +294,7 @@
                   </div>
                 </div>
               </div>
+              <?php } ?>
             </div>
           </div>
           </div>
