@@ -151,17 +151,14 @@
                               <?php foreach(load_table("sunrise_sunset_services") as $SSS): ?>
                               <p>
                               <?php
-<<<<<<< HEAD
       							  if(count($sunrise_sunset_services)>0 && in_array($SSS->id, $sunrise_sunset_services)){
       								   echo $SSS->name;
       							  }
       							  ?>
-=======
 							  if(count($sunrise_sunset_services)>0 && in_array($SSS->id, $sunrise_sunset_services)){
 								   echo $SSS->name;
 							  }
 							  ?>
->>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
                               </p>
                                 <?php endforeach; ?>
                             </td>
@@ -287,7 +284,6 @@
                             <td style="width: 310px; padding-top: 10px;"><strong>Upload your company logo:</strong></td>
                             <td style="padding-top: 10px;">
                             <?php
-<<<<<<< HEAD
       							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
       							if($profile_detail->profile->media_company_logo!=0){
       								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
@@ -296,7 +292,6 @@
       								}
       							}
       							?>
-=======
 							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
 							if($profile_detail->profile->media_company_logo!=0){
 								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
@@ -305,7 +300,6 @@
 								}
 							}
 							?>
->>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
                             <strong><img src="<?php echo $comLogoImageUrl; ?>" class="rounded-circle" width="36" height="36" alt=""></strong></td>
                           </tr>
                           <tr>

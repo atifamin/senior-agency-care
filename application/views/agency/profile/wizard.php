@@ -292,7 +292,7 @@
                     </div>
                   </div>
                 </div>
-                <?php }} ?>
+                <?php } ?>
               </div>
               <?php } ?>
             </div>
@@ -308,20 +308,12 @@
               <input name="media_company_logo" type="file" value="<?php echo $profile_detail->profile->media_company_logo; ?>" class="form-input-styled" data-fouc>
             </div>
           </div>
-<<<<<<< HEAD
           <!-- <div class="col-md-6">
-=======
-          <!--<div class="col-md-6">
->>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
             <div class="form-group">
               <label>Enter Your Password: <span class="text-danger">*</span></label>
               <input type="password" name="password" class="form-control" value="">
             </div>
-<<<<<<< HEAD
-          </div> -->
-=======
           </div>-->
->>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -330,20 +322,13 @@
               <input name="media_profile_picture" type="file"  class="form-input-styled" data-fouc>
             </div>
           </div>
-<<<<<<< HEAD
-          <!-- <div class="col-md-6">
-=======
           <!--<div class="col-md-6">
->>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
             <div class="form-group">
               <label>Re-enter Your Password: <span class="text-danger">*</span></label>
               <input type="password" name="re_password" class="form-control" value="">
             </div>
-<<<<<<< HEAD
-          </div> -->
-=======
+
           </div>-->
->>>>>>> df7a2601031b35baaafcfd9a67864bc5895c1cfd
         </div>
         <div class="row">
           <div class="col-md-12">
