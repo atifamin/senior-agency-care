@@ -19,7 +19,7 @@ class Profile extends CI_controller {
 		$data["heading"] = "My Profile";
 		$data["url_segment"] = "profile";
 		$data["profile_detail"] = $this->Agency_model->getAgencyById($this->agency_id);
-		$this->load->view('agency/myaccount/index',$data);
+		$this->load->view('agency/profile/index',$data);
 	}
 	public function wizard($agency_id){
 		//$data['post'] = $this->input->post();
@@ -31,7 +31,7 @@ class Profile extends CI_controller {
 		$data["states"] = $this->common_model->listingResultWhere("country_id",$data["profile_detail"]->profile->country_id,"states");
 		//$data["states"] = $this->Agency_model->loadStatesByCountryId($data["profile_detail"]->profile->country_id);
 		$data["cities"] = $this->common_model->listingResultWhere("state_id",$data["profile_detail"]->profile->state_id,"cities");
-		$this->load->view("agency/myaccount/wizard",$data);
+		$this->load->view("agency/profile/wizard",$data);
 	}
 
 	public function loadStatesByCountryId(){
