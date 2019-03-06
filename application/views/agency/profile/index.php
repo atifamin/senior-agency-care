@@ -151,6 +151,10 @@
                               <?php foreach(load_table("sunrise_sunset_services") as $SSS): ?>
                               <p>
                               <?php
+      							  if(count($sunrise_sunset_services)>0 && in_array($SSS->id, $sunrise_sunset_services)){
+      								   echo $SSS->name;
+      							  }
+      							  ?>
 							  if(count($sunrise_sunset_services)>0 && in_array($SSS->id, $sunrise_sunset_services)){
 								   echo $SSS->name;
 							  }
@@ -246,6 +250,7 @@
                       <?php foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
                         <div class="card" style="margin-bottom:5%">
                           <div class="card-header">
+                            <?php //print_array($licenseVal->media_license_document_detail->full_path); ?>
                             <h4 class="card-title"><strong><?php echo $licenseVal->state_license; ?></strong></h4>
                           </div>
                           <div class="card-body">
@@ -253,7 +258,7 @@
                           <?php if(isset($licenseVal->license_document) && count($licenseVal->license_document)>0){ ?>
                           <p><strong>Documents</strong></p>
                           
-                          <a href="<?php //echo base_url($licenseVal->license_document->full_path); ?>" download><?php //echo $licenseVal->license_document->name; ?></a>
+                          <a href="<?php echo base_url.$licenseVal->media_license_document_detail->full_path; ?>" download><?php echo $licenseVal->media_license_document_detail->name; ?></a>
                           <?php } ?>
                           </div>
                         </div>
@@ -279,6 +284,14 @@
                             <td style="width: 310px; padding-top: 10px;"><strong>Upload your company logo:</strong></td>
                             <td style="padding-top: 10px;">
                             <?php
+      							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
+      							if($profile_detail->profile->media_company_logo!=0){
+      								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
+      								if(file_exists(DOC_PATH.$imagUrl)){
+      									$comLogoImageUrl = base_url().$imagUrl;
+      								}
+      							}
+      							?>
 							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
 							if($profile_detail->profile->media_company_logo!=0){
 								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;

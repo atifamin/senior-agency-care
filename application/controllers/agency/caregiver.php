@@ -158,7 +158,7 @@ class Caregiver extends CI_Controller {
 		$data["url_segment"] = "caregivers";
 		$data['detail'] = $this->Caregiver_model->getCaregiverById($caregiver_id);
 		//$data['caregive_id'] = $caregiver_id;
-		//print_array($data['detail']);
+		//print_array($caregiver_id);
 		//$data['img_detail'] = $this->Caregiver_model->
 		$this->load->view("agency/caregiver/profile/index",$data);
 	}
