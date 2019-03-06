@@ -44,4 +44,19 @@ class Clients extends CI_Controller {
 		$data["client"] = $this->Client_model->getById($id);
 		$this->load->view("agency/clients/client_profile",$data);
 	}
+
+	public function edit_client($id){
+		$data["breadcrumb"] = "Client";
+		$data["heading"] = "Edit Client";
+		$data["url_segment"] = "clients";
+		$data["client"] = $this->Client_model->getById($id);
+		$this->load->view("agency/clients/edit_client",$data);
+	}
+
+	public function update_client(){
+		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
+		$this->Client_model->update_client($post);
+		echo 1;
+	}
 }

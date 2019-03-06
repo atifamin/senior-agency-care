@@ -12,7 +12,7 @@
 				<div class="col-md-6">
 					<div class="row" style="text-align: center;">
 						<div class="col-md-5">
-							<a href="<?php echo site_url("agency/clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add a client</a>
+							<a href="<?php echo site_url("agency/clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Edit a client</a>
 						</div>
 						<!-- <span style="margin: 10px auto; font-size: 10px;">OR</span>
 						<div class="col-md-5">
@@ -38,23 +38,24 @@
 		<!-- Wizard with validation -->
 		<div class="card">
 			<div class="card-header" style="text-align: center;">
-				<h6>Add a new client</h6>
+				<h6>Edit a client</h6>
 			</div>
 
 			<form id="client_information" role="form" enctype="multipart" method="post" class="wizard-form steps-validation" action="#" data-fouc>
 				<h6><strong>Client Information</strong></h6>
 				<fieldset>
+                <input type="hidden" id="client_id" value="<?php echo $client->id; ?>">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>First Name:</label>
-								<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Add client first name" required="required">
+								<input type="text" name="first_name" id="first_name" class="form-control" value="<?php if(isset($client->first_name)){echo $client->first_name;} ?>" placeholder="Add client first name" required="required">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Last Name:</label>
-								<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Add client last name" required="required">
+								<input type="text" name="last_name" id="last_name" class="form-control" value="<?php if(isset($client->last_name)){echo $client->last_name;} ?>" placeholder="Add client last name" required="required">
 							</div>
 						</div>
 					</div>
@@ -63,14 +64,14 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client phone #:</label>
-								<input type="text" name="mobile_number" id="mobile_number" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+								<input type="text" name="mobile_number" id="mobile_number" value="<?php if(isset($client->mobile_number)){echo $client->mobile_number;} ?>" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
 							</div>
 						</div>
 
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client email address:</label>
-								<input type="email" name="email_address" id="email_address" class="form-control" placeholder="client@email.com" required="required">
+								<input type="email" name="email_address" id="email_address" class="form-control" value="<?php if(isset($client->email_address)){echo $client->email_address;} ?>" placeholder="client@email.com" required="required">
 							</div>
 						</div>
 					</div>
@@ -82,10 +83,9 @@
 									<div class="form-group">
 		                                <select name="client_from" id="client_from" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
 		                                    <option></option> 
-											<?php 
-											$year = date("Y");
+											<?php $year = date("Y");
 											for($i= $year;$i > 1919;$i--){ ?>
-												<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+												<option <?php if($client->client_from == $i){echo "selected='selected'";} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
 											<?php } ?>
 		                                </select>
 		                            </div>
@@ -103,10 +103,9 @@
 		                                    <!-- <option value="1995">1995</option> 
 		                                    <option value="...">...</option> 
 		                                    <option value="1980">1980</option>  -->
-											<?php
-											$year = date("Y");
+											<?php $year = date("Y");
 											for($i= $year;$i > 1919;$i--){ ?>
-												<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+												<option <?php if($client->client_to == $i){echo "selected='selected'";} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
 											<?php } ?>
 		                                </select>
 		                            </div>
@@ -117,35 +116,39 @@
 							<div class="form-group mb-3 mb-md-2">
 								<label class="d-block font-weight-semibold">Gender:</label>
 								<div class="custom-control custom-control-right custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" name="gender" value="male" id="gender" >
+									<input type="radio" <?php if(isset($client->gender)){ if($client->gender == "male"){echo "checked";}} ?> class="custom-control-input" name="gender" value="male" id="gender" >
 									<label class="custom-control-label position-static" for="gender">Male</label>
 								</div>
 
 								<div class="custom-control custom-control-right custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" name="gender" value="female" id="female">
+									<input type="radio" <?php if(isset($client->gender)){ if($client->gender == "female"){echo "checked";}} ?> class="custom-control-input" name="gender" value="female" id="female">
 									<label class="custom-control-label position-static" for="female">Female</label>
 								</div>
 							</div>
 						</div>
+                        <?php $date = date("F-d-Y",strtotime($client->dob));
+                              $date_array = explode('-', $date);
+                              //print_r($date_array);
+                         ?>
 						<div class="col-md-6">
 							<label>Date of Birth:</label>
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
 		                                <select name="month" id="month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
-		                                    <option></option> 
-		                                    <option value="January">January</option> 
-	                                        <option value="Februray">Februray</option>
-	                                        <option value="March">March</option>
-	                                        <option value="April">April</option>
-	                                        <option value="May">May</option>
-	                                        <option value="June">June</option>
-	                                        <option value="July">July</option>
-	                                        <option value="August">August</option>
-	                                        <option value="September">September</option>
-	                                        <option value="October">October</option>
-	                                        <option value="November">November</option>
-	                                        <option value="December">December</option> 
+		                                    
+		                                    <option <?php if($date_array[0] == "January"){echo "selected='selected'";} ?> value="January">January</option> 
+	                                        <option <?php if($date_array[0] == "Februray"){echo "selected='selected'";} ?> value="Februray">Februray</option>
+	                                        <option <?php if($date_array[0] == "March"){echo "selected='selected'";} ?> value="March">March</option>
+	                                        <option <?php if($date_array[0] == "April"){echo "selected='selected'";} ?> value="April">April</option>
+	                                        <option <?php if($date_array[0] == "May"){echo "selected='selected'";} ?> value="May">May</option>
+	                                        <option <?php if($date_array[0] == "June"){echo "selected='selected'";} ?> value="June">June</option>
+	                                        <option <?php if($date_array[0] == "July"){echo "selected='selected'";} ?> value="July">July</option>
+	                                        <option <?php if($date_array[0] == "August"){echo "selected='selected'";} ?> value="August">August</option>
+	                                        <option <?php if($date_array[0] == "September"){echo "selected='selected'";} ?> value="September">September</option>
+	                                        <option <?php if($date_array[0] == "October"){echo "selected='selected'";} ?> value="October">October</option>
+	                                        <option <?php if($date_array[0] == "November"){echo "selected='selected'";} ?> value="November">November</option>
+	                                        <option <?php if($date_array[0] == "December"){echo "selected='selected'";} ?> value="December">December</option> 
 		                                </select>
 		                            </div>
 								</div>
@@ -153,74 +156,48 @@
 									<div class="form-group">
 		                                <select name="day" id="day" data-placeholder="Day" class="form-control form-control-select2" data-fouc>
 		                                    <option></option> 
-		                                    <option value="1">1</option> 
-		                                    <option value="2">2</option> 
-		                                    <option value="3">3</option>
-		                                    <option value="4">4</option>
-		                                    <option value="5">5</option>
-		                                    <option value="6">6</option>
-		                                    <option value="7">7</option>
-		                                    <option value="8">8</option>
-		                                    <option value="9">9</option>
-		                                    <option value="10">10</option>
-		                                    <option value="11">11</option>
-		                                    <option value="12">12</option>
-		                                    <option value="13">13</option>
-		                                    <option value="14">14</option>
-		                                    <option value="15">15</option>
-		                                    <option value="16">16</option>
-		                                    <option value="17">17</option>
-		                                    <option value="18">18</option>
-		                                    <option value="19">19</option>
-		                                    <option value="20">20</option>
-		                                    <option value="21">21</option>
-		                                    <option value="22">22</option>
-		                                    <option value="23">23</option>
-		                                    <option value="24">24</option>
-		                                    <option value="25">25</option>
-		                                    <option value="26">26</option>
-		                                    <option value="27">27</option>
-		                                    <option value="28">28</option>
-		                                    <option value="29">29</option>
-		                                    <option value="30">30</option>
-		                                    <option value="31">31</option>
+		                                    <option <?php if($date_array[1] == "01"){echo "selected='selected'";} ?> value="1">1</option> 
+		                                    <option <?php if($date_array[1] == "02"){echo "selected='selected'";} ?> value="2">2</option> 
+		                                    <option <?php if($date_array[1] == "03"){echo "selected='selected'";} ?>value="3">3</option>
+		                                    <option <?php if($date_array[1] == "04"){echo "selected='selected'";} ?> value="4">4</option>
+		                                    <option <?php if($date_array[1] == "05"){echo "selected='selected'";} ?> value="5">5</option>
+		                                    <option <?php if($date_array[1] == "06"){echo "selected='selected'";} ?> value="6">6</option>
+		                                    <option <?php if($date_array[1] == "07"){echo "selected='selected'";} ?> value="7">7</option>
+		                                    <option <?php if($date_array[1] == "08"){echo "selected='selected'";} ?> value="8">8</option>
+		                                    <option <?php if($date_array[1] == "09"){echo "selected='selected'";} ?> value="9">9</option>
+		                                    <option <?php if($date_array[1] == "10"){echo "selected='selected'";} ?> value="10">10</option>
+		                                    <option <?php if($date_array[1] == "11"){echo "selected='selected'";} ?> value="11">11</option>
+		                                    <option <?php if($date_array[1] == "12"){echo "selected='selected'";} ?> value="12">12</option>
+		                                    <option <?php if($date_array[1] == "13"){echo "selected='selected'";} ?> value="13">13</option>
+		                                    <option <?php if($date_array[1] == "14"){echo "selected='selected'";} ?> value="14">14</option>
+		                                    <option <?php if($date_array[1] == "15"){echo "selected='selected'";} ?> value="15">15</option>
+		                                    <option <?php if($date_array[1] == "16"){echo "selected='selected'";} ?> value="16">16</option>
+		                                    <option <?php if($date_array[1] == "17"){echo "selected='selected'";} ?> value="17">17</option>
+		                                    <option <?php if($date_array[1] == "18"){echo "selected='selected'";} ?> value="18">18</option>
+		                                    <option <?php if($date_array[1] == "19"){echo "selected='selected'";} ?> value="19">19</option>
+		                                    <option <?php if($date_array[1] == "20"){echo "selected='selected'";} ?> value="20">20</option>
+		                                    <option <?php if($date_array[1] == "21"){echo "selected='selected'";} ?> value="21">21</option>
+		                                    <option <?php if($date_array[1] == "22"){echo "selected='selected'";} ?> value="22">22</option>
+		                                    <option <?php if($date_array[1] == "23"){echo "selected='selected'";} ?> value="23">23</option>
+		                                    <option <?php if($date_array[1] == "24"){echo "selected='selected'";} ?> value="24">24</option>
+		                                    <option <?php if($date_array[1] == "25"){echo "selected='selected'";} ?> value="25">25</option>
+		                                    <option <?php if($date_array[1] == "26"){echo "selected='selected'";} ?> value="26">26</option>
+		                                    <option <?php if($date_array[1] == "27"){echo "selected='selected'";} ?> value="27">27</option>
+		                                    <option <?php if($date_array[1] == "28"){echo "selected='selected'";} ?> value="28">28</option>
+		                                    <option <?php if($date_array[1] == "29"){echo "selected='selected'";} ?> value="29">29</option>
+		                                    <option <?php if($date_array[1] == "30"){echo "selected='selected'";} ?> value="30">30</option>
+		                                    <option <?php if($date_array[1] == "31"){echo "selected='selected'";} ?> value="31">31</option>
 		                                </select>
 		                            </div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 		                                <select name="year" id="year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
-		                                    <option></option> 
-		                                    <option value="1990">1990</option>
-	                                        <option value="1991">1991</option>
-	                                        <option value="1992">1992</option>
-	                                        <option value="1993">1993</option>
-	                                        <option value="1994">1994</option>
-	                                        <option value="1995">1995</option>
-	                                        <option value="1996">1996</option>
-	                                        <option value="1997">1997</option>
-	                                        <option value="1998">1998</option>
-	                                        <option value="1999">1999</option>
-	                                        <option value="2000">2000</option>
-	                                        <option value="2001">2001</option>
-	                                        <option value="2002">2002</option>
-	                                        <option value="2003">2003</option>
-	                                        <option value="2004">2004</option>
-	                                        <option value="2005">2005</option>
-	                                        <option value="2006">2006</option>
-	                                        <option value="2007">2007</option>
-	                                        <option value="2008">2008</option>
-	                                        <option value="2009">2009</option>
-	                                        <option value="2010">2010</option>
-	                                        <option value="2011">2011</option>
-	                                        <option value="2012">2012</option>
-	                                        <option value="2013">2013</option>
-	                                        <option value="2014">2014</option>
-	                                        <option value="2015">2015</option>
-	                                        <option value="2016">2016</option> 
-	                                        <option value="2017">2017</option> 
-	                                        <option value="2018">2018</option> 
-	                                        <option value="2019">2019</option> 
+                                        <?php
+											$year = date("Y");
+											for($i= $year;$i > 1919;$i--){ ?>
+												<option <?php if($date_array[2] == $i){echo "selected='selected'";} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
+											<?php } ?>
 		                                </select>
 		                            </div>
 								</div>
@@ -235,22 +212,22 @@
 										<label>Add client's level of care</label>
 					                    <select name="level_care" id="level_care" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
 					                        <option></option>
-					                        <option value="1">1</option>
-					                        <option value="2">2</option>
-					                        <option value="3">3</option>
+					                        <option <?php if(isset($client->level_care)){if($client->level_care == 1){echo "selected='selected'";}} ?> value="1">1</option>
+					                        <option <?php if(isset($client->level_care)){if($client->level_care == 2){echo "selected='selected'";}} ?> value="2">2</option>
+					                        <option <?php if(isset($client->level_care)){if($client->level_care == 3){echo "selected='selected'";}} ?> value="3">3</option>
 					                    </select>
 				                    </div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-check form-check-switch form-check-switch-left">
 										<label>Does client have any pets</label>
-										<input type="checkbox" name="is_pets"  data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" id="client_pets" onchange="listPets()" value="0">
+										<input type="checkbox" <?php if(isset($client->is_pets)){if($client->is_pets == 1){echo "checked";}} ?> name="is_pets"  data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" id="client_pets" onchange="listPets()" value="<?php if($client->is_pets == 1){ echo 1;}else{echo 0;} ?>">
 									</div>
 								</div>
 								<div class="col-md-12" id="pet_list" style="display: none;">
 									<div class="form-group">
 										<label>List kinds of pets</label>
-										<input type="text" name="pets_types" id="pets_types" class="form-control tokenfield" value="" placeholder="Add multiple kinds(with comma seperated)" data-fouc>
+										<input type="text" name="pets_types" id="pets_types" value="<?php if(isset($client->pets_types)){echo $client->pets_types;} ?>" class="form-control tokenfield" value="" placeholder="Add multiple kinds(with comma seperated)" data-fouc>
 									</div>
 								</div>
 							</div>
@@ -260,13 +237,13 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Add client regular rate per hr: </label>
-										<input type="text" name="rate_per_hour" id="rate_per_hour" value="" class="form-control touchspin-empty" placeholder="Enter Rate $">
+										<input type="text" name="rate_per_hour" value="<?php if(isset($client->rate_per_hour)){echo $client->rate_per_hour;} ?>" id="rate_per_hour" value="" class="form-control touchspin-empty" placeholder="Enter Rate $">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Add client's available hr per week: </label>
-										<input type="text" name="hours_per_week" id="hours_per_week" value="" class="form-control touchspin-empty" placeholder="Enter Hours">
+										<input type="text" name="hours_per_week" id="hours_per_week"  value="<?php if(isset($client->hours_per_week)){echo $client->hours_per_week;} ?>" class="form-control touchspin-empty" placeholder="Enter Hours">
 									</div>
 								</div>
 							</div>
@@ -278,9 +255,9 @@
 								<label>Add billing cycle<span style="margin-left: 10px;">(How often you send invite to your client)</span></label>
 			                    <select name="billing_cycle" id="billing_cycle" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
 			                        <option></option>
-			                        <option value="weekly">Weekly</option>
-			                        <option value="bi-weekly">Bi-Weekly</option>
-			                        <option value="monthly">Monthly</option>
+			                        <option <?php if(isset($client->billing_cycle)){if($client->billing_cycle == "weekly"){echo "selected='selected'";}} ?> value="weekly">Weekly</option>
+			                        <option <?php if(isset($client->billing_cycle)){if($client->billing_cycle == "bi-weekly"){echo "selected='selected'";}} ?> value="bi-weekly">Bi-Weekly</option>
+			                        <option <?php if(isset($client->billing_cycle)){if($client->billing_cycle == "monthly"){echo "selected='selected'";}} ?> value="monthly">Monthly</option>
 			                    </select>
 		                    </div>
 						</div>
@@ -294,17 +271,17 @@
 							<div class="form-group pt-2">
 								<label class="d-block font-weight-semibold">Select client's dietry requirements</label>
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="dietry_requirements" value="Regular diet" id="regular_diet">
+									<input type="radio" <?php if(isset($client->dietry_requirements)){if($client->dietry_requirements == "Regular diet"){echo "checked";}} ?> class="custom-control-input" name="dietry_requirements" value="Regular diet" id="regular_diet">
 									<label class="custom-control-label" for="regular_diet">Regular diet</label>
 								</div>
 
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="dietry_requirements" value="Mechanical diet" id="mechanical_diet">
+									<input type="radio" class="custom-control-input" name="dietry_requirements" <?php if(isset($client->dietry_requirements)){if($client->dietry_requirements == "Mechanical diet"){echo "checked";}} ?> value="Mechanical diet" id="mechanical_diet">
 									<label class="custom-control-label" for="mechanical_diet">Mechanical diet</label>
 								</div>
 
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="dietry_requirements" value="Puree diet" id="pure_diet">
+									<input type="radio" class="custom-control-input" name="dietry_requirements" <?php if(isset($client->dietry_requirements)){if($client->dietry_requirements == "Puree diet"){echo "checked";}} ?> value="Puree diet" id="pure_diet">
 									<label class="custom-control-label" for="pure_diet">Puree diet</label>
 								</div>
 							</div>
@@ -314,17 +291,17 @@
 							<div class="form-group pt-2">
 								<label class="d-block font-weight-semibold">Fluid requirements</label>
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="fluid_requirements" value="Thin liquids" id="thin_liquid">
+									<input type="radio" class="custom-control-input" name="fluid_requirements" <?php if(isset($client->fluid_requirements)){if($client->fluid_requirements == "Thin liquids"){echo "checked";}} ?> value="Thin liquids" id="thin_liquid">
 									<label class="custom-control-label" for="thin_liquid">Thin liquids</label>
 								</div>
 
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="fluid_requirements" value="Nector thick liquids" id="nector_liquid">
+									<input type="radio" class="custom-control-input" name="fluid_requirements" <?php if(isset($client->fluid_requirements)){if($client->fluid_requirements == "Nector thick liquids"){echo "checked";}} ?> value="Nector thick liquids" id="nector_liquid">
 									<label class="custom-control-label" for="nector_liquid">Nector thick liquids</label>
 								</div>
 
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="fluid_requirements" value="Honey thick liquids" id="honey_liquid">
+									<input type="radio" class="custom-control-input" name="fluid_requirements" <?php if(isset($client->fluid_requirements)){if($client->fluid_requirements == "Honey thick liquids"){echo "checked";}} ?> value="Honey thick liquids" id="honey_liquid">
 									<label class="custom-control-label" for="honey_liquid">Honey thick liquids</label>
 								</div>
 							</div>
@@ -334,13 +311,13 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client medication list</label>
-								<input type="text" name="medication_list" id="medication_list" class="form-control tokenfield" value="" placeholder="Add multiple medication(with comma seperated)" data-fouc>
+								<input type="text" name="medication_list" id="medication_list" value="<?php if(isset($client->medication_list)){echo $client->medication_list;} ?>" class="form-control tokenfield" value="" placeholder="Add multiple medication(with comma seperated)" data-fouc>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client allergies list</label>
-								<input type="text" name="allergies_list" id="allergies_list" class="form-control tokenfield" value="" placeholder="Add multiple allergies(with comma seperated)" data-fouc>
+								<input type="text" name="allergies_list" id="allergies_list" class="form-control tokenfield" value="<?php if(isset($client->allergies_list)){echo $client->allergies_list;} ?>" placeholder="Add multiple allergies(with comma seperated)" data-fouc>
 							</div>
 						</div>
 					</div>
@@ -349,7 +326,7 @@
 							<div class="form-check form-check-switch form-check-switch-left">
 								<label class="form-check-label d-flex align-items-center">
 									<span style="margin-right: 15px">Does the client recieve oxygen</span>
-									<input style="margin-left: 15px;" name="is_oxygen"  type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientOxygen()" id="oxygen_client" value="0">
+									<input style="margin-left: 15px;" name="is_oxygen" <?php if(isset($client->is_oxygen)){if($client->is_oxygen == 1){echo "checked";}} ?>  type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientOxygen()" id="oxygen_client" value="<?php if($client->is_oxygen == 1){echo 1;}else{echo 0;} ?>">
 								</label>
 							</div>
 						</div>
@@ -358,7 +335,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label><span class="text-muted">If so, how much oxygen does the client recieve?</span> </label>
-								<input type="text" value="" name="oxygen_quantity" id="oxygen_quantity"  class="form-control touchspin-empty" placeholder="Mg">
+								<input type="text" value="<?php if(isset($client->oxygen_quantity)){echo $client->oxygen_quantity;} ?>" name="oxygen_quantity" id="oxygen_quantity"  class="form-control touchspin-empty" placeholder="Mg">
 							</div>
 						</div>
 					</div>
@@ -366,7 +343,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>When is oxygen administered to the client:</label>
-								<input type="text" name="oxygen_administered" id="oxygen_administered" class="form-control" placeholder="Add details how and when oxygen is administered">
+								<input type="text" name="oxygen_administered" value="<?php if(isset($client->oxygen_administered)){echo $client->oxygen_administered;} ?>" id="oxygen_administered" class="form-control" placeholder="Add details how and when oxygen is administered">
 							</div>
 						</div>
 					</div>
@@ -375,7 +352,7 @@
 							<div class="form-check form-check-switch form-check-switch-left">
 								<label class="form-check-label d-flex align-items-center">
 									<span style="margin-right: 15px">Does client have mobilty needs?</span>
-									<input style="margin-left: 15px;" name="is_mobilty" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientNeed()" id="need_client" value="0">
+									<input style="margin-left: 15px;" <?php if(isset($client->is_mobilty)){if($client->is_mobilty == 1){echo "checked";}} ?>  name="is_mobilty" type="checkbox" data-on-text="Yes" data-off-text="No" class="form-check-input-switch" data-size="small" onchange="clientNeed()" id="need_client" value="<?php if($client->is_mobilty == 1){echo 1;}else{echo 0;} ?>">
 								</label>
 							</div>
 						</div>
@@ -386,8 +363,8 @@
 								<label>Add client's mobility needs</label>
 			                    <select name="mobility_needs" id="mobility_needs" data-placeholder="Add client's mobility needs" class="form-control form-control-select2" data-fouc>
 			                        <option></option>
-			                        <option value="1">Walking cane</option>
-			                        <option value="2">Weelchair</option>
+			                        <option <?php if(isset($client->mobility_needs)){if($client->mobility_needs == 1){echo "selected='selected'";}} ?> value="1">Walking cane</option>
+			                        <option <?php if(isset($client->mobility_needs)){if($client->mobility_needs == 2){echo "selected='selected'";}} ?> value="2">Weelchair</option>
 			                    </select>
 		                    </div>
 						</div>
@@ -396,7 +373,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Add the client transportation requirements</label>
-								<input type="text" name="transportation_requirements" id="transportation_requirements" class="form-control" placeholder="Add a detailed description of the clients transportation requirements">
+								<input type="text" name="transportation_requirements" value="<?php if(isset($client->transportation_requirements)){echo $client->transportation_requirements;} ?>" id="transportation_requirements" class="form-control" placeholder="Add a detailed description of the clients transportation requirements">
 							</div>
 						</div>
 					</div>
@@ -404,7 +381,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Add client's transfer needs</label>
-								<input type="text" name="transfer_needs" id="transfer_needs" class="form-control" placeholder="Add a detailed description of the clients trasfer needs">
+								<input type="text" name="transfer_needs" value="<?php if(isset($client->transfer_needs)){echo $client->transfer_needs;} ?>" id="transfer_needs" class="form-control" placeholder="Add a detailed description of the clients trasfer needs">
 							</div>
 						</div>
 					</div>
@@ -474,7 +451,13 @@
 						</div>
 					</div>
 				</fieldset>
-
+                <?php
+                $WhereArray = array(
+                    "module_id" => $client->id,
+                    "module" => "client"
+                );
+                $Client_file = $this->common_model->listingMultipleWhereRow("media", $WhereArray); 
+                 ?>
 				<h6><strong>End of Life Directive</strong></h6>
 				<fieldset>
 					<div class="row">
@@ -490,7 +473,7 @@
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
 								<label>Add the Primary Care Doctor:</label>
-								<input type="text" name="pcd_name" id="pcd_name" class="form-control" placeholder="Enter PCD's name">
+								<input type="text" value="<?php if(isset($client->pcd_name)){echo $client->pcd_name;} ?>" name="pcd_name" id="pcd_name" class="form-control" placeholder="Enter PCD's name">
 							</div>
 						</div>
 					</div>
@@ -498,7 +481,7 @@
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
 								<label>Primary Doctor Contact Info:</label>
-								<input type="text" name="pcd_contact" id="pcd_contact" class="form-control" placeholder="Primary Doctor Contact Info" data-mask="+99-99-9999-9999">
+								<input type="text" value="<?php if(isset($client->pcd_contact)){echo $client->pcd_contact;} ?>" name="pcd_contact" id="pcd_contact" class="form-control" placeholder="Primary Doctor Contact Info" data-mask="+99-99-9999-9999">
 							</div>
 						</div>
 					</div>
@@ -507,7 +490,7 @@
 							<div class="form-group">
 								<label>Enter prefered hospital in case of emergency:</label>
 								<div class="form-group form-group-feedback form-group-feedback-left">
-									<input type="text" name="prefered_hospital" id="prefered_hospital" class="form-control form-control-sm" placeholder="Enter prefered hospital">
+									<input type="text" value="<?php if(isset($client->prefered_hospital)){echo $client->prefered_hospital;} ?>" name="prefered_hospital" id="prefered_hospital" class="form-control form-control-sm" placeholder="Enter prefered hospital">
 									<div class="form-control-feedback form-control-feedback-sm">
 										<i class="icon-pin-alt"></i>
 									</div>
@@ -519,7 +502,7 @@
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
 								<label>Enter any special instructions:</label>
-								<textarea rows="5" cols="3" name="special_instructions" id="special_instructions" class="form-control" placeholder="Special Instructions"></textarea>
+								<textarea rows="5" cols="3" name="special_instructions" id="special_instructions" class="form-control" placeholder="Special Instructions"><?php if(isset($client->special_instructions)){echo $client->special_instructions;} ?></textarea>
 							</div>
 						</div>
 					</div>
@@ -545,6 +528,28 @@
 	<!-- /theme JS files -->
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 <script type="text/javascript">
+$(document).ready(function(){
+    $(".filename").html('<?php echo $Client_file->name; ?>');
+    var pets = $("#client_pets").val();
+    if(pets == 1){
+        $("#pet_list").css("display","block");
+    }else{
+        $("#pet_list").css("display","none");
+    }
+    var oxygen = $("#oxygen_client").val();
+    if(oxygen == 1){
+        $("#client_oxygen").css("display","block");
+    }else{
+        $("#client_oxygen").css("display","none");
+    }
+    var needs = $("#need_client").val();
+    if(needs == 1){
+        $("#client_needs").css("display","block");
+    }else{
+        $("#client_needs").css("display","none");
+    }
+});
+
 	function addNewLicense(){
 		$(".add_new_license").css("display","block");
 		$(".license_view").css("display","none");
@@ -586,14 +591,14 @@
 			$("#client_needs").css("display","none");
 		}
 	}
-
+    
 	//$("#client_information").submit(function(e){
 	
 	function add_new_agency(){
     //e.preventDefault();
     var file_data = $('#file').prop('files')[0];   
    
-    
+    var client_id = $("#client_id").val();
 	//var notify_email =  $("input[name=notify_email]").val();
 	var first_name =  $("#first_name").val();
     var last_name = $("#last_name").val();
@@ -634,7 +639,7 @@
     if(file_data){              
     form_data.append('file', file_data);
     }
-    
+    form_data.append('client_id', client_id);
     form_data.append('first_name', first_name);
     form_data.append('last_name', last_name);
     form_data.append('email_address', email_address);
@@ -669,7 +674,7 @@
 	form_data.append('day', day);
 	form_data.append('year', year);
     $.ajax({
-        url: '<?php echo site_url("agency/clients/save_client"); ?>',
+        url: '<?php echo site_url("agency/clients/update_client/".$client->id); ?>',
         dataType: 'text',
         cache: false,
         contentType: false,
@@ -678,10 +683,12 @@
         type: 'post',
         success: function(data){
 			if(data == 1){
-				swal("Client", "added successfully!");
+				swal("Client", "Updated successfully!");
 				location.reload();
 			}
         }
      });
     }
+
+
 </script>

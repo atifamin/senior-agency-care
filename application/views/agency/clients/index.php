@@ -89,7 +89,7 @@
 		                    		<div class="dropdown-menu dropdown-menu-right">
 				                    	<a href="<?php echo site_url("agency/clients/client_profile/".$client->id); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
-										<a href="<?php echo site_url("agency/clients/client_edit"); ?>" class="dropdown-item" ><i class="icon-pencil3"></i> Edit Client</a>
+										<a href="<?php echo site_url("agency/clients/edit_client/".$client->id); ?>" class="dropdown-item" ><i class="icon-pencil3"></i> Edit Client</a>
 		                    		</div>
 		                    	</div>
 	                    	</div>
