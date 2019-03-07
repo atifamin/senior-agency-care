@@ -1,7 +1,7 @@
 <?php //print_array($post); ?>
 
-  <div class="row" style="width: 100%;" id="license_row">
-    <div class=" offset-md-1 col-md-7">
+<div class="row" style="width: 100%;" id="license_row">
+  <div class=" offset-md-1 col-md-7">
     <div class="row" style="margin-top: 50px;">
       <div class="col-md-8">
         <div class="row">
@@ -28,5 +28,5 @@
         </div>
       </div>
     </div> 
-</div>
+  </div>
 </div>
