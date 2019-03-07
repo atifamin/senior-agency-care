@@ -54,6 +54,7 @@
 <script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/inputmask/phone-codes/phone.js"></script> 
 <script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/inputmask/phone-codes/phone-be.js"></script> 
 <script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/inputmask/phone-codes/phone-ru.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/app-script.js"></script>
 </head>
 <style type="text/css">
 #swal2-content {
@@ -65,6 +66,10 @@
 }
 </style>
 <body>
+<script>
+$AppMaster = new AppMaster();
+</script>
+<?php include(APPPATH."views/plugins/ImageCropper/image_cropper_modal.php"); ?>
 <div class="container">
   <div class="row" style="margin: 10px 0px; width: 100%;">
     <div class="col-md-12" style="text-align: center;">
@@ -326,8 +331,16 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label class="d-block">Upload your profile picture:</label>
-              <input name="media_profile_picture" type="file" class="form-input-styled" data-fouc>
+              <div class="row"> 
+                <!--<label class="d-block">Upload your profile picture:</label>
+              <input name="media_profile_picture" type="file" class="form-input-styled" data-fouc>-->
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
+                </div>
+                <div class="col-md-6">
+                  <div id="croppedImageShow" ><img width="100"></div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-md-6">
@@ -480,6 +493,7 @@ $("#add_new_license_form").on("submit", function(e){
 	e.preventDefault();
 	var formData = new FormData($(this)[0]);
 	formData.append("counter", counter);
+	
 	$.ajax({
 		url: '<?php echo site_url("agency/register/add_new_license_form"); ?>',
 		type: 'POST',
@@ -613,6 +627,7 @@ function add_new_agency(){
 	}
 	
 	var formData = new FormData($("#agency_form")[0]);
+	formData.append("croppedImage", $AppMaster.profileCropper.blob);
 	$.ajax({
 		url: '<?php echo site_url("agency/register/register_agency"); ?>',
 		type: 'POST',
@@ -654,5 +669,6 @@ $("#modal_form_license").validate({
 
 
 </script>
+
 </body>
 </html>

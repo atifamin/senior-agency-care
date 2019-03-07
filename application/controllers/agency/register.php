@@ -21,6 +21,7 @@ class Register extends CI_Controller {
 	}
 	
 	public function add_new_license_form(){
+		
 		$data['post'] = $this->input->post();
 		$data['file'] = 0;
 		if(isset($_FILES["media_license_document"])){
@@ -62,6 +63,9 @@ class Register extends CI_Controller {
 	}
 	
 	public function register_agency(){
+		//$croppedImage = $_FILES['croppedImage'];
+		
+		
 		$post = $this->input->post();
 		//print_array($post);
 		//Adding agency basic data into agency table
@@ -124,8 +128,8 @@ class Register extends CI_Controller {
 			$this->updating_media_company_logo($_FILES["media_company_logo"], "agency_profile", $agency_profile_id);
 		
 		//uploading and updating media profile picture
-		if($_FILES["media_profile_picture"])
-			$this->updating_media_profile_picture($_FILES["media_profile_picture"], "agency_profile", $agency_profile_id);
+		if($_FILES["croppedImage"])
+			$this->updating_media_profile_picture($_FILES["croppedImage"], "agency_profile", $agency_profile_id);
 		
 		
 		//Adding agency license
@@ -166,9 +170,12 @@ class Register extends CI_Controller {
 		$this->common_model->updateQuery("agency_profile", "id", $module_id, $data);
 	}
 	
-	public function updating_media_profile_picture($FILE, $module, $module_id){
-		$data['media_profile_picture'] = $this->upload_files($FILE, $module, $module_id);
-		$this->common_model->updateQuery("agency_profile", "id", $module_id, $data);
+	public function updating_media_profile_picture($file, $module, $module_id){
+		if(!empty($FILE['tmp_name'])){
+			$image = upload_blob($file, $module, $module_id, "/uploads/profileImages/");
+			$data['media_profile_picture'] = $this->common_model->insertGetIDQuery("media", $image);
+			$this->common_model->updateQuery("agency_profile", "id", $module_id, $data);
+		}
 	}
 	
 	public function upload_license_file($FILE){
