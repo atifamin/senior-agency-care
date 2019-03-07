@@ -19,7 +19,7 @@ class Email_model extends CI_Model{
 		$message = str_replace("[@CaregiverLastName]",$caregiverDetail->last_name,$message);
 		$message = str_replace("[@AgencyName]",$agencyDetail->full_name,$message);
 		$message = str_replace("[@JoinUrl]",site_url()."caregiver/register?id=".$random."",$message);
-		//sendEmail($caregiverDetail->email,$subject,$message);
+		sendEmail($caregiverDetail->email,$subject,$message);
 		
 		$this->common_model->updateQuery("caregiver", "id", $caregiver_id, array("status"=>"pending", "register_code"=>$random));
 	}
