@@ -174,6 +174,8 @@ class Caregiver extends CI_Controller {
 	public function send_invite($caregiver_id){
 		$this->load->model("Email_model");
 		$this->Email_model->send_invite_to_caregiver($this->agency_id, $caregiver_id);
+		$this->session->set_flashdata("success", "Your invitation is sent to caregiver successfully.");
+		return redirect("agency/caregiver/send_invite_to_caregiver");
 	}
 	
 	public function add_send_invite(){
