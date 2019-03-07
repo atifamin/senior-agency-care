@@ -413,35 +413,36 @@
 				<h6><strong>Family Center</strong></h6>
 				<fieldset>
 					<div class="row">
+						<input type="hidden" id="counter" value="1">
 						<div class="col-md-2 offset-md-1">
 							<div class="form-group">
 								<label>First Name:</label>
-								<input type="text" name="" class="form-control" placeholder="Add first name">
+								<input type="text" name="" id="first_name_family" class="form-control" placeholder="Add first name">
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Last Name:</label>
-								<input type="text" name="" class="form-control" placeholder="Add last name">
+								<input type="text" name="" id="last_name_family" class="form-control" placeholder="Add last name">
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Email:</label>
-								<input type="email" name="" class="form-control" placeholder="@gmail.com">
+								<input type="email" name="" id="email_address_family" class="form-control" placeholder="@gmail.com">
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Phone #:</label>
-								<input type="text" name="" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+								<input type="text" name="" id="mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
 							</div>
 						</div>
 						<div class="col-md-2">
-							<a style="margin-top: 28px;" href="javascript:;" class="btn btn-primary legitRipple">Add<i style="margin-left: 8px;" class="icon-arrow-right14"></i></a>
+							<a style="margin-top: 28px;" href="javascript:;" onclick="addMoreFamilyMember()" class="btn btn-primary legitRipple">Add<i style="margin-left: 8px;" class="icon-arrow-right14"></i></a>
 						</div>
 					</div>
-					<div class="row" style="padding: 15px 0px;">
+					<!-- <div class="row" style="padding: 15px 0px;">
 						<div class="col-md-3 offset-md-1">
 							<div class="d-flex align-items-center">
 								<div class="mr-3">
@@ -456,8 +457,8 @@
 						<div class="col-md-3">
 							<button type="button" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Edit<i style="font-size: 10px; margin-left: 20px;" class="icon-arrow-down15"></i></button>
 						</div>
-					</div>
-					<div class="row" style="padding: 15px 0px;">
+					</div> -->
+					<!-- <div class="row" style="padding: 15px 0px;">
 						<div class="col-md-3 offset-md-1">
 							<div class="d-flex align-items-center">
 								<div class="mr-3">
@@ -472,9 +473,9 @@
 						<div class="col-md-3">
 							<button type="button" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Edit<i style="font-size: 10px; margin-left: 20px;" class="icon-arrow-down15"></i></button>
 						</div>
-					</div>
+					</div> -->
+					<div id="append_family_member"></div>
 				</fieldset>
-
 				<h6><strong>End of Life Directive</strong></h6>
 				<fieldset>
 					<div class="row">
@@ -529,7 +530,58 @@
 		<!-- /wizard with validation -->
 	</div>
 </div>
+<!--Edit Family Member Modal-->
+<div id="edit_familyMemberModal" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-primary">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h6 class="modal-title" style="position: absolute;">Edit Family Member</h6>
+			</div>
 
+			<div class="modal-body">
+			<fieldset id="append_family_member">
+					<div class="row">
+						<input type="hidden" id="edit_counter" value="">
+						<div class="col-md-2 offset-md-1">
+							<div class="form-group">
+								<label>First Name:</label>
+								<input type="text" name="" id="edit_first_name_family" class="form-control" placeholder="Add first name">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>Last Name:</label>
+								<input type="text" name="" id="edit_last_name_family" class="form-control" placeholder="Add last name">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>Email:</label>
+								<input type="email" name="" id="edit_email_address_family" class="form-control" placeholder="@gmail.com">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>Phone #:</label>
+								<input type="text" name="" id="edit_mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<a style="margin-top: 28px;" href="javascript:;" onclick="updateFamilyMember()" class="btn btn-primary legitRipple">Update<i style="margin-left: 8px;" class="icon-arrow-right14"></i></a>
+						</div>
+					</div>
+			</fieldset>		
+			</div>
+
+			<!-- <div class="modal-footer">
+				<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div> -->
+		</div>
+	</div>
+</div>
+<!--Modal End-->
 <!-- Theme JS files -->
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tagsinput.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tokenfield.min.js"></script>
@@ -630,6 +682,30 @@
 	var month = $("#month").val();
 	var day = $("#day").val();
 	var year = $("#year").val();
+	//var firstName = $('input[name="firstName"]').val();
+	var firstName = new Array();
+	var lastName = new Array();
+	var emailAddress = new Array();
+	var mobileNumber = new Array();
+	$('input[name^="firstName"]').each(function() {
+		firstName.push($(this).val());
+		//alert($(this).val());
+	});
+	$('input[name^="lastName"]').each(function() {
+		lastName.push($(this).val());
+		//alert($(this).val());
+	});
+	$('input[name^="emailAddress"]').each(function() {
+		emailAddress.push($(this).val());
+		//alert($(this).val());
+	});
+	$('input[name^="mobileNumber"]').each(function() {
+		mobileNumber.push($(this).val());
+		//alert($(this).val());
+	});
+	// var lastName = $('input[name="lastName"]').val();
+	// var emailAddress = $('input[name="emailAddress"]').val();
+	// var mobileNumber = $('input[name="mobileNumber"]').val();
     var form_data = new FormData();    
     if(file_data){              
     form_data.append('file', file_data);
@@ -668,6 +744,10 @@
 	form_data.append('month', month);
 	form_data.append('day', day);
 	form_data.append('year', year);
+	form_data.append('firstName', firstName);
+	form_data.append('lastName', lastName);
+	form_data.append('emailAddress', emailAddress);
+	form_data.append('mobileNumber', mobileNumber);
     $.ajax({
         url: '<?php echo site_url("agency/clients/save_client"); ?>',
         dataType: 'text',
@@ -684,4 +764,68 @@
         }
      });
     }
+
+	function addMoreFamilyMember(){
+		var first_name_family = $("#first_name_family").val();
+		if(!first_name_family){
+			alert("First Name is required");
+			return false;
+		}
+		var last_name_family = $("#last_name_family").val();
+		var email_address_family = $("#email_address_family").val();
+		var mobile_number_family = $("#mobile_number_family").val();
+		var counter = $("#counter").val();
+		$.ajax({
+		type: 'post',	
+        url: '<?php echo site_url("agency/clients/addMoreFamilyMember"); ?>',
+        dataType: 'html',
+        data: {first_name:first_name_family,last_name:last_name_family,email_address:email_address_family,
+		mobile_number:mobile_number_family,counter:counter},                         
+        
+        success: function(data){
+			$("#append_family_member").append(data);
+			var count= $("#counter").val();
+			count = parseInt(count) + 1;
+			$("#counter").val(count);
+			$("#first_name_family").val(" ");
+			$("#last_name_family").val(" ");
+			$("#email_address_family").val(" ");
+			$("#mobile_number_family").val(" ");
+        }
+     });
+
+	}
+
+	function editFamilyMember(counter){
+		var first_name_family = $("#first_name_family"+counter+"").val();
+		var last_name_family = $("#last_name_family"+counter+"").val();
+		var email_address_family = $("#email_address_family"+counter+"").val();
+		var mobile_number_family = $("#mobile_number_family"+counter+"").val();
+		$("#edit_first_name_family").val(first_name_family);
+		$("#edit_last_name_family").val(last_name_family);
+		$("#edit_email_address_family").val(email_address_family);
+		$("#edit_mobile_number_family").val(mobile_number_family);
+		$("#edit_familyMemberModal").modal('show');
+		$("#edit_counter").val(counter);
+	}
+
+	function updateFamilyMember(){
+		var first_name_family = $("#edit_first_name_family").val();
+		var last_name_family = $("#edit_last_name_family").val();
+		var email_address_family = $("#edit_email_address_family").val();
+		var mobile_number_family = $("#edit_mobile_number_family").val();
+		var counter = $("#edit_counter").val();
+		$.ajax({
+		type: 'post',	
+        url: '<?php echo site_url("agency/clients/editMoreFamilyMember"); ?>',
+        dataType: 'html',
+        data: {first_name:first_name_family,last_name:last_name_family,email_address:email_address_family,
+		mobile_number:mobile_number_family,counter:counter},                         
+        
+        success: function(data){
+			$("#row_family_member"+counter+"").html(data);
+			$("#edit_familyMemberModal").modal("hide");
+        }
+		});
+	}
 </script>
