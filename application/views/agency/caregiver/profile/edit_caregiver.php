@@ -254,29 +254,30 @@
             <div id="license_area">
               <div class="row" style="width: 100%;" id="license_row">
                 <div class=" offset-md-1 col-md-7">
-                  <?php foreach($detail->license as $licenseKey=>$licenseVal){ ?>
-                    <?php //print_array($licenseVal); ?>
-                  <div class="row" style="margin-top: 50px;">
-                    <div class="col-md-7">
-                      <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?><span style="position: relative; left: 55px; top: 9px; margin-left: 60px;"><strong style="font-size: 24px; position: relative; top: 2px;">
-                      <?php
-                      $fromDate = date("Y-m-d");
-                      $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d");
-                      $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
-                        echo $difference['days'];
-                      ?>
-
-                        </strong>&nbsp;Days to expire</span></p>
-                      <p style="position: relative; bottom: 7px; font-size: 12px; color: #B4B8BA;">Valid until <?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
-                    </div>
-                    <div class="col-md-5 text-center" style="margin-top: 15px;">
-                      <div class="btn-group ml-1">
-                        <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
-                        <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license()"><i class="icon-bin2"></i> Delete</a> </div>
+                  <?php if(isset($detail->license) && count($detail->license)>0){
+                    foreach($detail->license as $licenseKey=>$licenseVal){ ?>
+                     <div class="row" style="margin-top: 50px;">
+                      <div class="col-md-8">
+                        <div class="row">
+                          <div class="col-md-6 text-center">
+                            <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?>
+                            <p style="position: relative; font-size: 12px; color: #B4B8BA;">Valid until <?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
+                          </div>
+                          <div class="col-md-6 text-center">
+                            <span style="position: relative; color: #00bcd4"><strong style="font-size: 24px; position: relative; top: 2px;">
+                              <?php $fromDate = date("Y-m-d"); $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d"); $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate); echo $difference['days'];?>
+                            </strong>&nbsp;Days to expire</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 text-center">
+                        <div class="btn-group ml-1">
+                          <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
+                          <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" data-toggle="modal" data-target="modal_edit_license" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license('<?php echo $licenseVal->id; ?>')"><i class="icon-bin2"></i> Delete</a> </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <?php } ?>
+                  <?php }} ?>
                 </div>
               </div>
             </div>
@@ -294,7 +295,8 @@
         <h5 class="modal-title"><strong>ADD NEW LICENSE</strong></h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <form id="add_new_license_form" enctype="multipart/form-data">
+      <form id="add_new_license_form" role="form" enctype="multipart">
+        <input type="hidden" id="caregiver_id" value="<?php echo $detail->id;?>">
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
@@ -364,14 +366,14 @@
                 <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-12">
               <div class="progress rounded-round" id="license_progress" style="display:none">
                 <div class="progress-bar bg-warning" style="width:0%"> <span></span> </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
           <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Add New License</span> </button>
@@ -400,59 +402,60 @@ function load_cities(id){
 	});
 }
 $("#add_new_license_form").on("submit", function(e){
-	$("#license_progress").show();
-	var counter = $("#counter").val();
-	e.preventDefault();
-	var formData = new FormData($(this)[0]);
-	formData.append("counter", counter);
+  e.preventDefault();
+	var fileData = $("#media_license_document").prop("files")[0];
+	var formData = new FormData();
+  var caregiver_id = $("#caregiver_id").val();
+  var state_license = $("#state_license").val();
+  var valid_from_month = $("#valid_from_month").val();
+  var valid_from_year = $("#valid_from_year").val();
+  var valid_to_month = $("#valid_to_month").val();
+  var valid_to_year = $("#valid_to_year").val();
+  var media_license_document = $("#media_license_document").val();
+
+  formData.append("caregiver_id",caregiver_id);
+  formData.append("state_license",state_license);
+  formData.append("valid_from_month",valid_from_month);
+  formData.append("valid_from_year",valid_from_year);
+  formData.append("valid_to_month",valid_to_month);
+  formData.append("valid_to_year",valid_to_year);
+  formData.append("media_license_document",fileData);
+
 	$.ajax({
-		url: '<?php echo site_url("agency/caregiver/add_new_license_form"); ?>',
+		url: '<?php echo site_url("agency/caregiver/add_new_license"); ?>',
 		type: 'POST',
+    dataType: 'text',
 		data: formData,
 		cache: false,
 		contentType: false,
 		processData: false,
 		success: function (e) {
-			counter++;
-			$("#counter").val(counter);
-			$("#license_area").append(e);
-		},
-		xhr: function () {
-			var xhr = new window.XMLHttpRequest();
-			xhr.upload.addEventListener("progress", function (evt) {
-				if (evt.lengthComputable) {
-					var percentComplete = evt.loaded / evt.total;
-					percentComplete = parseInt(percentComplete * 100);
-					$("#license_progress > .progress-bar").css('width', percentComplete + '%');
-					$("#license_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
-					if(percentComplete==100){
-						$("#license_progress > .progress-bar").css('width', '0%');
-						$("#license_progress > .progress-bar").html('<span>0% Complete</span>');
-						$("#license_progress").hide();
-						$("#modal_form_license").modal("hide");
-						swal({
-						  title: 'Good job!',
-						  text: 'You have successfully added your State License!',
-						  confirmButtonText: 'Ok',
-						  type: 'success'
-						});
-					}
-				}
-			}, false);
-			return xhr;
-		},
-		
+       //alert(e);
+      if (e) {
+        swal("License","added successfully");
+        $("#modal_form_license").modal("hide");
+     $("#license_area").append(e);
+
+      }
+     //$("#modal_form_license").modal('hide');
+		}
 	});
 });
 
 function delete_license(id){
-	var image_data = $("#media_license_document_"+id+"").html();
-	if(image_data!=0){
-		imageD = JSON.parse(image_data);
-		$.post("<?php echo site_url("agency/caregiver/delete_license_doc"); ?>", {id:id, imageD:imageD}).done(function(e){});
-	}
-	$("#license_row_"+id+"").remove();
-}
+	//alert(id);
+  $.ajax({
+    type:'post',
+    url:'<?php echo site_url("agency/caregiver/delete_license"); ?>',
+    data:{id:id},
+    dataType:'html',
+    success:function(data){
+      //alert(data);
+    }
+
+  });
+
+  }
 
 function add_new_caregiver(){
 	var password = $("input[name=password]").val();
