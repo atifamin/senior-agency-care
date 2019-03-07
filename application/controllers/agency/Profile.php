@@ -39,19 +39,9 @@ class Profile extends CI_controller {
 		$data["cities"] = $this->common_model->listingResultWhere("state_id",$data["profile_detail"]->profile->state_id,"cities");
 		$this->load->view("agency/profile/wizard",$data);
 	}
-	public function edit_license(){
-		$data['countries'] = load_table("countries");
-		$data['result'] = $this->input->post("formData");
-		$this->load->view("agency/profile/edit_license_form", $data);
-	}
 	public function add_new_license_form(){
 		$post = $this->input->post();
 		//print_array($_FILES);
-
-		// $fromDate = date("Y-m-d");
-		// $toDate = date("".$post["valid_to_year"]."-".$post["valid_to_month"]."-d");
-		// $expire = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
-		//$data['expiryDays'] = $expire['days'];
 		$agency_lisence_id = $this->common_model->insertGetIDQuery("agency_license", $post);
 		if(isset($_FILES["media_license_document"])){
 			$data = upload_file($_FILES["media_license_document"], "agency_license", $agency_lisence_id, $FILE_DIRECTORY="./uploads/agency/");
@@ -59,6 +49,23 @@ class Profile extends CI_controller {
 		}
 		//echo 1;
 		$this->load->view('agency/profile/append_license',$post);
+	}
+	public function edit_license(){
+		$id = $this->input->post("id");
+		$data['result'] = $this->common_model->listingRow("id",$id,"agency_license");
+		// $data['countries'] = load_table("countries");
+		$this->load->view("agency/profile/edit_license", $data);
+	}
+	
+	public function update_license_form($id){
+		echo $id;
+	}
+	public function delete_license(){
+		$id = $this->input->post();
+		//print_array($id);
+		//$whereArray = array('id' => $post );
+		$data['delete_result'] = $this->common_model->delete("agency_license", $id);
+		redirect("agency/profile");
 	}
 
 	public function upload_license_file($FILE){

@@ -1,20 +1,32 @@
+<?php //print_array($post); ?>
 
-<?php //print_array($state_license); ?>
-<div class="row" id="license_row" style="margin-top: 10px; text-align: center;">
-  <div class="offset-md-1 col-md-4"><?php echo $state_license; ?></div>
-  <div class="col-md-4">
-    
-    <?php
-  $fromDate = date("Y-m-d");
-  $toDate = date("".$valid_to_year."-".$valid_to_month."-d");
-  $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
-    echo $difference['days'];
-  ?>
-  <?php echo $valid_to_month.", ".$valid_to_year; ?>
-  </div>
-  <div class="col-md-3">
-    <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
-      <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license()"><i class="icon-bin2"></i> Delete</a> 
-  </div>
+  <div class="row" style="width: 100%;" id="license_row">
+    <div class=" offset-md-1 col-md-7">
+    <div class="row" style="margin-top: 50px;">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $state_license; ?></p>
+            <p style="position: relative; font-size: 12px; color: #B4B8BA;">Valid until <?php echo $valid_to_month.", ".$valid_to_year; ?></p>
+          </div>
+          <div class="col-md-6 text-center">
+            <span style="position: relative; color: #00bcd4"><strong style="font-size: 24px; position: relative; top: 2px;">
+          <?php
+      $fromDate = date("Y-m-d");
+      $toDate = date("".$valid_to_year."-".$valid_to_month."-d");
+      $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+        echo $difference['days'];
+      ?>
+          </strong>&nbsp;Days to expire</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="btn-group ml-1">
+          <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
+          <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license()"><i class="icon-bin2"></i> Delete</a> </div>
+        </div>
+      </div>
+    </div> 
 </div>
 </div>
