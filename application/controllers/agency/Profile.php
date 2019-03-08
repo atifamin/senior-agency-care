@@ -53,7 +53,7 @@ class Profile extends CI_controller {
 	public function edit_license(){
 		$id = $this->input->post("id");
 		$data['result'] = $this->common_model->listingRow("id",$id,"agency_license");
-		// $data['countries'] = load_table("countries");
+		$data['countries'] = load_table("countries");
 		$this->load->view("agency/profile/edit_license", $data);
 	}
 	
@@ -65,7 +65,6 @@ class Profile extends CI_controller {
 		//print_array($id);
 		//$whereArray = array('id' => $post );
 		$data['delete_result'] = $this->common_model->delete("agency_license", $id);
-		redirect("agency/profile");
 	}
 
 	public function upload_license_file($FILE){

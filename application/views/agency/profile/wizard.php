@@ -268,7 +268,7 @@
             </div>
           </div>
           <div id="license_area">
-            <div class="row" style="width: 100%;" id="license_row">
+            <div class="row" style="width: 100%;">
               <div class=" offset-md-1 col-md-7">
                 <?php
               if(isset($profile_detail->license) && count($profile_detail->license)>0){
@@ -354,7 +354,7 @@
       <form id="add_new_license_form" role="form" enctype="multipart">
         <input type="hidden" id="agency_id" value="<?php echo $profile_detail->id; ?>">
         <div class="modal-body">
-          <div class="row">
+          <div class="row" id="license_row_<?php echo $profile_detail->id; ?>">
             <div class="col-md-6">
               <div class="form-group">
                 <label>State license #: <span class="text-danger">*</span></label>
@@ -444,7 +444,7 @@
   </div>
 </div>
 <div id="modal_edit_form_license_div">
-  <!-- <div id="modal_edit_license" class="modal fade" tabindex="-1">
+   <div id="modal_edit_license" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -459,7 +459,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div> 
 </div>
  
 <!-- Theme JS files --> 
@@ -536,8 +536,6 @@ function load_cities(id){
 }
 
 
-
-
 function delete_license(id){
   //alert(id);
   $.ajax({
@@ -546,7 +544,9 @@ function delete_license(id){
     data:{id:id},
     dataType:"html",
     success:function(e){
-     alert(e);
+     //alert(e);
+     swal("license","Deleted successfully");
+     //$("#license_row_"+id+"").remove();
     }
   });
 }
@@ -570,7 +570,6 @@ function edit_license(id){
 //   //   $("#modal_form_license").modal("show");
 //   // });
 // }
-
 
 </script>
 

@@ -1,13 +1,7 @@
 <?php //print_array($update_result); ?>
- <div id="modal_edit_license" class="modal fade" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><strong>EDIT LICENSE</strong></h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+ 
       <form id="update_new_license_form" method="post" role="form" enctype="multipart/form-data">
-        <div class="modal-body">
+        
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -21,9 +15,9 @@
                 <label>State where your license recieved: <span class="text-danger">*</span></label>
                 <select name="license_recieved_countrya" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc>
                   <option></option>
-                  <?php //foreach($countries as $count1): ?>
-                  <option value="<?php //echo $count1->id; ?>" <?php //if($count1->id==$result['license_recieved_country']){echo 'selected="selected"';} ?>><?php// echo $count1->name; ?></option>
-                  <?php //endforeach; ?>
+                  <?php foreach($countries as $count1): ?>
+                  <option value="<?php echo $count1->id; ?>" <?php if($count1->id==$result->license_recieved_country){echo 'selected="selected"';} ?>><?php echo $count1->name; ?></option>
+                  <?php endforeach; ?>
                 </select>
               </div>
             </div>
@@ -90,15 +84,16 @@
                 <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
             </div>
           </div>
-        </div>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
           <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Update License</span> </button>
         </div>
       </form>
-    </div>
-  </div>
-</div> 
+     
+<script>
+$(".form-control-select2").select2();
+</script>
 <script>
 $("#update_new_license_form").on("submit", function(e){
   e.preventDefault();
