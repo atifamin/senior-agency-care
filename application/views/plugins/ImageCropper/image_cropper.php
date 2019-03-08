@@ -78,6 +78,8 @@
 function clearCropper(){
 	$("#image_cropper_modal").modal("hide");
 	$("#image_cropper_modal_body").html("");
+	$AppMaster.profileCropper.blob = [];
+	$("#croppedImageShow").hide();
 }
 function cancelCropper(){
 	$("#image_cropper_modal").modal("hide");
