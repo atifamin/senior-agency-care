@@ -57,80 +57,80 @@
       <div class="modal-header">
         <h5 class="modal-title" style="margin: 0 auto;">Edit Client Bio</h5>
         <div>
-        	<li class="media">
-    				<div class="mr-3" style="margin-right: .55rem!important;">
-    					<a href="#">
-    						<img src="<?php echo base_url(); ?>assets/images/userimg/face25.jpg" class="rounded-circle" width="40" height="40" alt="">
-    					</a>
-    				</div>
+          <li class="media">
+            <div class="mr-3" style="margin-right: .55rem!important;">
+              <a href="#">
+                <img src="<?php echo base_url(); ?>assets/images/userimg/face25.jpg" class="rounded-circle" width="40" height="40" alt="">
+              </a>
+            </div>
 
-    				<div class="media-body">
-    					<div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
-    					<span class="text-muted" style="font-size: 12px;">Total Care</span>
-    				</div>
-			    </li>
+            <div class="media-body">
+              <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
+              <span class="text-muted" style="font-size: 12px;">Total Care</span>
+            </div>
+          </li>
         </div>
       </div>
       
         <div class="modal-body">
-          	<div class="row">
-          		<div class="col-md-6">
-		            <div class="form-group">
-		              <label>Client name:</label>
-		              <input type="text" name="client_name" class="form-control" placeholder="Client Name" value="Mr thomas crowe">
-		            </div>
-	            </div>
-    	        <div class="col-md-6">
-    	            <div class="form-group">
-    	              <label>Client Profession:</label>
-    	              <input type="text" name="client_profession" class="form-control" placeholder="Client Profession" value="Doctor">
-    	            </div>
-    	        </div>
-          	</div>
-          	<div class="row">
-  		        <div class="col-md-12">
-  		            <div class="form-group">
-  		              <label>Profession Details:</label>
-  		              <textarea name="profession_details" rows="3" cols="4" placeholder="Add brief detail about client Profession" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.</textarea>
-  		            </div>
-  		        </div>
-		        </div>
-    		    <div class="row">
-    		        <div class="col-md-6">
-    		            <div class="form-group">
-    		              <label>Client's daily routine:</label>
-    		              <textarea name="client_routine" rows="3" cols="4" placeholder="Add brief detail about client routine" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
-    		            </div>
-    		        </div>
-    		        <div class="col-md-6">
-    		            <div class="form-group">
-    		              <label>Client's likes:</label>
-    		              <textarea name="client_likes" rows="3" cols="4" placeholder="Add brief detail about client likes" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has .</textarea>
-    		            </div>
-    		        </div>
-    		    </div>
-    		    <div class="row">
-    		        <div class="col-md-6">
-    		            <div class="form-group">
-    		              <label>Client's dislikes:</label>
-    		              <textarea name="client_dislikes" rows="3" cols="4" placeholder="Add brief detail about client dislikes" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
-    		            </div>
-    		        </div>
-    		        <div class="col-md-6">
-    		            <div class="form-group">
-    		              <label>Client's hobbies:</label>
-    		              <textarea name="client_hobbies" rows="3" cols="4" placeholder="Add brief detail about client hobbies" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
-    		            </div>
-    		        </div>
-    		    </div>
-    		    <div class="row">
-    		        <div class="col-md-12">
-    		            <div class="form-group">
-    		              <label>Client's Favourite Music:</label>
-    		              <textarea name="client_favourite_music" rows="3" cols="4" placeholder="Add brief detail about client favourite music" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.</textarea>
-    		            </div>
-    		        </div>
-    		    </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Client name:</label>
+                  <input type="text" name="client_name" class="form-control" placeholder="Client Name" value="Mr thomas crowe">
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Client Profession:</label>
+                    <input type="text" name="client_profession" class="form-control" placeholder="Client Profession" value="Doctor">
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Profession Details:</label>
+                    <textarea name="profession_details" rows="3" cols="4" placeholder="Add brief detail about client Profession" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.</textarea>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Client's daily routine:</label>
+                      <textarea name="client_routine" rows="3" cols="4" placeholder="Add brief detail about client routine" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Client's likes:</label>
+                      <textarea name="client_likes" rows="3" cols="4" placeholder="Add brief detail about client likes" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has .</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Client's dislikes:</label>
+                      <textarea name="client_dislikes" rows="3" cols="4" placeholder="Add brief detail about client dislikes" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Client's hobbies:</label>
+                      <textarea name="client_hobbies" rows="3" cols="4" placeholder="Add brief detail about client hobbies" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Client's Favourite Music:</label>
+                      <textarea name="client_favourite_music" rows="3" cols="4" placeholder="Add brief detail about client favourite music" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.</textarea>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>

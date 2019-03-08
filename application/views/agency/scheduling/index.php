@@ -1,8 +1,8 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
 <style>
-.navbar-light .active>.navbar-nav-link, .navbar-light .navbar-nav-link.active, .navbar-light .navbar-nav-link.show, .navbar-light .show>.navbar-nav-link {
+  .navbar-light .active>.navbar-nav-link, .navbar-light .navbar-nav-link.active, .navbar-light .navbar-nav-link.show, .navbar-light .show>.navbar-nav-link {
 	background-color: #f1f0f0;
-}
+  }
 </style>
 <div class="card" style="padding: 10px 10px;">
   <div class="row">
