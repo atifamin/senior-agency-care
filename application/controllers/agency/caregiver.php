@@ -32,10 +32,12 @@ class Caregiver extends CI_Controller {
 	}
 
 	public function edit($caregiver_id){
+		//echo $caregiver_id;exit;
 		$data["breadcrumb"] = "Edit Caregiver";
 		$data["heading"] = "Caregivers";
 		$data["url_segment"] = "edit_caregiver";
 		$data['detail'] = $this->Caregiver_model->getCaregiverById($caregiver_id);
+		$data['caregiver_license'] = $this->common_model->listingRow("caregiver_id",$caregiver_id,"caregiver_license");
 		$data['countries'] = $this->common_model->listingResult("countries");
 		$data["states"] = $this->common_model->listingResultWhere("country_id",$data["detail"]->country_id,"states");
 		$data["cities"] = $this->common_model->listingResultWhere("state_id",$data["detail"]->state_id,"cities");
@@ -54,11 +56,26 @@ class Caregiver extends CI_Controller {
 		$data['result'] = $this->common_model->listingResultWhere("state_id",$id,"cities");
 		$this->load->view("agency/caregiver/load_states_cities", $data);
 	}
-	
+	public function add_new_license() {
+		$post = $this->input->post();
+		//print_array($_FILES);
+		// $fromDate = date("Y-m-d");
+		// $toDate = date("".$post["valid_to_year"]."-".$post["valid_to_month"]."-d");
+		// $expiry = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+		//$data['expiryDays'] = $expiry["days"];
+		$caregiver_license_id = $this->common_model->insertGetIDQuery("caregiver_license", $post);
+		if (isset($_FILES['media_license_document'])) {
+			$data = upload_file($_FILES['media_license_document'],"caregiver_license" , $caregiver_license_id, $FILE_DIRECTORY="./uploads/caregiver/");
+			$this->common_model->insertQuery("media", $data);
+		}
+		//echo 1;
+		$this->load->view("agency/caregiver/profile/append_license",$post);
+	}
 	public function add_new_license_form(){
 		$data['post'] = $this->input->post();
 		$data['file'] = 0;
 		if(isset($_FILES["media_license_document"])){
+
 			$data['file'] = upload_file($_FILES["media_license_document"], "caregiver_license", 0);
 		}
 		$fromDate = date("Y-m-d");
@@ -142,7 +159,20 @@ class Caregiver extends CI_Controller {
 		$this->session->set_flashdata("success", "You have added a new caregiver successfully.");
 		echo $result;
 	}
-	
+	public function delete_license()
+	{
+		$post = $this->input->post();
+		//print_array($post);
+		$this->common_model->delete("caregiver_license", $post);
+	}
+
+	public function edit_license() {
+		$post = $this->input->post();
+		//print_array($post);
+		$data['result'] = $this->common_model->listingRow("id",$post,"caregiver_license");
+		$this->load->view("agency/caregiver/profile/edit_license", $data);
+	}
+
 	public function delete_license_doc(){
 		$post = $this->input->post();
 		$imgData = $post["imageD"];
