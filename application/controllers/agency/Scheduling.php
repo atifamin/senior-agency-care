@@ -20,4 +20,5 @@ class Scheduling extends CI_Controller {
 		$data["url_segment"] = "Scheduling";
 		$this->load->view("agency/scheduling/index",$data);
 	}
+	
 }
