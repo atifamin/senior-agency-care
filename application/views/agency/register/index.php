@@ -469,6 +469,7 @@ $AppMaster = new AppMaster();
 <div id="modal_edit_form_license_div"></div>
 
 <script type="text/javascript">
+
 /*function addNewLicense(){
 	$(".add_new_license").css("display","block");
 	$(".license_view").css("display","none");
