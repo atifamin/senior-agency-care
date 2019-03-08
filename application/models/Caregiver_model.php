@@ -46,6 +46,50 @@ class Caregiver_model extends CI_Model{
 		return $result;
 	}
 	
+	public function getCaregiverByAgencyId($agency_id){
+		$result = $this->common_model->listingResultWhere("agency_id",$agency_id,"caregiver");
+		if(count($result)>0){
+			foreach($result as $key=>$val){
+				//getting caregiver profile picture
+				if($val->profile_pic!=0 && !empty($val->profile_pic)){
+					$result[$key]->profile_pic_image = $this->common_model->listingRow("id",$val->profile_pic,"media");
+				}
+				
+				$country = $this->common_model->listingRow("id",$val->country_id,"countries");
+				if(count($country)>0){
+					$result[$key]->country = $country->name;
+				}
+				
+				$state = $this->common_model->listingRow("id",$val->state_id,"states");
+				if(count($state)>0){
+					$result[$key]->state = $state->name;
+				}
+				
+				$city = $this->common_model->listingRow("id",$val->city_id,"cities");
+				if(count($city)>0){
+					$result[$key]->city = $city->name;
+				}
+				
+				//getting caregiver license detail
+				$WhereArray1 = array(
+					'caregiver_id'	=>	$val->id,
+				);
+				$result[$key]->license = $this->common_model->listingMultipleWhereResult("caregiver_license", $WhereArray1);
+				//getting caregiver license image detail
+				if(count($result[$key]->license)>0){
+					foreach($result[$key]->license as $key1=>$val1){
+						$WhereArray2 = array(
+							'module'	=>	'caregiver_license',
+							'module_id'	=>	$val1->id,
+						);
+						$result[$key]->license[$key1]->license_image = $this->common_model->listingMultipleWhereRow("media", $WhereArray2);
+					}
+				}
+			}
+		}
+		return $result;
+	}
+	
 	public function getCaregiverById($caregiver_id){
 		$caregiverDetail = $this->common_model->listingRow("id",$caregiver_id,"caregiver");
 		if(count($caregiverDetail)>0){

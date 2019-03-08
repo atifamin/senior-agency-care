@@ -328,10 +328,14 @@
                             <?php
           							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
           							if($profile_detail->profile->media_company_logo!=0){
-          								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
+										//print_array($profile_detail->profile);
+          								if(!empty($profile_detail->profile->media_company_logo_detail)){
+										$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
+										
           								if(file_exists(DOC_PATH.$imagUrl)){
           									$comLogoImageUrl = base_url().$imagUrl;
           								}
+										}
           							}
       							   ?>
                             <strong><img src="<?php echo $comLogoImageUrl; ?>" class="rounded-circle" width="36" height="36" alt=""></strong></td>
