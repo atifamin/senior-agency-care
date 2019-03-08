@@ -273,7 +273,7 @@
                       <div class="col-md-4 text-center">
                         <div class="btn-group ml-1">
                           <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
-                          <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" data-toggle="modal" data-target="modal_edit_license" onclick="edit_license()"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license('<?php echo $licenseVal->id; ?>')"><i class="icon-bin2"></i> Delete</a> </div>
+                          <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" data-toggle="modal" data-target="modal_edit_license" onclick="edit_license('<?php echo $licenseVal->id; ?>')"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license('<?php echo $licenseVal->id; ?>')"><i class="icon-bin2"></i> Delete</a> </div>
                         </div>
                       </div>
                     </div>
@@ -382,6 +382,7 @@
     </div>
   </div>
 </div>
+<div id="modal_edit_form_license"></div>
 <script type="text/javascript">
 function addNewLicense(){
 	$(".add_new_license").css("display","block");
@@ -451,6 +452,25 @@ function delete_license(id){
     dataType:'html',
     success:function(data){
       //alert(data);
+    }
+
+  });
+
+  }
+
+  function edit_license(id) {
+     //alert(id);
+    //$('#modal_edit_license').modal('show');
+
+    $.ajax({
+    type:'post',
+    url:'<?php echo site_url("agency/caregiver/edit_license"); ?>',
+    data:{id:id},
+    dataType:'html',
+    success:function(data){
+      alert(data);
+      $('#modal_edit_form_license').html(data);
+      $('#modal_edit_license').modal('show');
     }
 
   });
