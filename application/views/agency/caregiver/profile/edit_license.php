@@ -1,3 +1,4 @@
+<?php print_array($result); ?>
 <div id="modal_edit_license" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
