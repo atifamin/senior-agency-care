@@ -205,7 +205,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" style="margin: 0 auto;">Upload a Photo</h5>
                 <div>
-                    <li class="media">
+                    <ul><li class="media">
                         <div class="mr-3" style="margin-right: .55rem !important;">
                             <a href="#">
                                 <img src="<?php echo base_url(); ?>assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt="">
@@ -217,6 +217,7 @@
                             <span class="text-muted" style="font-size: 12px;">Total Care</span>
                         </div>
                     </li>
+                    </ul>
                 </div>
             </div>
             <div class="modal-body">

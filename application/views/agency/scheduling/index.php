@@ -42,7 +42,7 @@
           <div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
             <div class="navbar-brand d-xl-none"> <a href="index.html" class="d-inline-block"> <img src="<?php echo base_url(); ?>assets/images/logo_dark.png" alt=""> </a> </div>
             <div class="d-xl-none">
-              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-demo-light"> <i class="icon-menu"></i> </button>
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-demo-light"> <i class="icon-menu"></i> <br /><small class="text-muted">Open</small> </button>
             </div>
             <div class="navbar-collapse collapse" id="navbar-demo-light">
               <ul class="nav navbar-nav">
@@ -57,7 +57,7 @@
               </ul>
             </div>
           </div>
-          <div class="card card-body border-top-0 rounded-0 rounded-bottom tab-content" style="box-shadow:0px 0px 0px;">
+          <div class="card card-body border-top-0 rounded-0 rounded-bottom tab-content" >
             <div class="tab-pane fade active show" id="schedule">
               <?php include(APPPATH."views/agency/scheduling/inc/scheduling.php"); ?>
             </div>
