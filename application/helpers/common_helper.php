@@ -176,7 +176,7 @@ function agency_image($agency_id){
 	$image_url = base_url("assets/images/placeholders/avatar.png");
 	if($agencyDetail->media_profile_picture!=0){
 		$media = $ci->db->where("id", $agencyDetail->media_profile_picture)->get("media")->row();
-		if(file_exists(DOC_PATH.$media->full_path)){
+		if(count($media)>0 && file_exists(DOC_PATH.$media->full_path)){
 			$image_url = base_url().$media->full_path;
 		}
 	}
