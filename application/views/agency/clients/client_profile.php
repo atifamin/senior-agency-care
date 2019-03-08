@@ -146,7 +146,107 @@
 									Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
 								</div>
 								<div class="tab-pane fade" id="family_center">
-									Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
+								<!--CODE COPIED START-->
+
+
+								<div class="col-md-12"> 
+									<!-- Dropdown list -->
+									<div class="card">
+									<div class="card-header header-elements-inline" style="border-bottom: 1px solid lightgray; padding-bottom: 0px;">
+										<div class="col-md-7" style="text-align: right;">
+										<h5>Send an invite to your clients</h5>
+										</div>
+										<div class="header-elements">
+										<div class="list-icons" style="position: relative; bottom: 6px;"> <a class="list-icons-item" data-action="collapse"></a> <a class="list-icons-item" data-action="reload"></a> </div>
+										</div>
+									</div>
+									<div class="col-md-9 offset-md-1">
+										<form id="send_invite_form" action="<?php echo site_url("agency/clients/add_send_invite"); ?>" method="POST" role="form">
+										<input type="hidden" name="client_id" value="<?php echo $client->id; ?>">
+										<div class="row" style="padding: 60px 0px;">
+											<div class="col-md-2">
+											<div class="form-group">
+												<label>First Name:</label>
+												<input type="text" class="form-control" name="first_name" placeholder="John Doe">
+											</div>
+											</div>
+											<div class="col-md-2">
+											<div class="form-group">
+												<label>Last Name:</label>
+												<input type="text" class="form-control" name="last_name" placeholder="John Doe">
+											</div>
+											</div>
+											<div class="col-md-2">
+											<div class="form-group">
+												<label>Email:</label>
+												<input type="email" class="form-control" name="email_address" placeholder="example@gmail.com">
+											</div>
+											</div>
+											<div class="col-md-2">
+												<div class="form-group">
+													<label>Phone #:</label>
+													<input type="text" name="mobile_number"  class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+												</div>
+											</div>
+											<div class="col-md-2">
+											<button style="margin-top: 28px;" type="submit" class="btn btn-primary legitRipple"> Send Invite<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
+											</div>
+										</div>
+										</form>
+										<div id="append_send_invite">
+										<?php if(count($client_family)>0){ ?>
+										<?php foreach($client_family as $row){ ?>
+										<div class="row" style="padding: 15px 0px;">
+										<div class="col-md-4">
+											<div class="d-flex align-items-center">
+											<div class="mr-3"> <img src="<?php// echo caregiver_image($row->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </div>
+											<div> <a href="#" class="text-default font-weight-semibold letter-icon-title"><?php echo $row->first_name." ".$row->last_name; ?><i style="color: gray; margin-left: 18px; font-size: 13px;" class="icon-pencil5"></i></a>
+												<div class="text-muted font-size-sm"><?php echo $row->email_address; ?></div>
+											</div>
+											</div>
+										</div>
+										<?php if($row->status == "added"){ ?>
+										<div class="col-md-3"></div>
+										<div class="col-md-3">
+											<button style="width: 80%;" type="button" class="btn btn-primary legitRipple" onclick="window.location='<?php echo site_url("agency/clients/send_invite/".$row->id.""); ?>'"> Send Invite<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
+										</div>
+										<?php } 
+										
+										if($row->status == "pending"){ 
+											?>
+										<div class="col-md-3">
+											<button style="width: 80%;" type="button" class="btn btn-outline alpha-danger text-danger-800 border-danger-600 legitRipple">Pending</button>
+										</div>
+										<div class="col-md-3">
+											<button style="width: 80%;" type="submit" class="btn btn-primary legitRipple" onclick="resendInvite('<?php echo $row->id; ?>')"> Re-send<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
+										</div>
+										<?php } 
+										
+										if($row->status =="joined"){ ?>
+										<div class="col-md-3">
+											<button style="width: 80%;" type="button" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Joined</button>
+										</div>
+										<div class="col-md-3"></div>
+										<?php } ?>
+										</div>
+										<?php }} ?>
+									</div>
+									<!-- <div class="col-md-12" style="text-align: right; padding-top: 15px; padding-bottom: 15px;">
+										<button type="submit" class="btn btn-primary legitRipple"> Done<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
+									</div> -->
+									</div>
+									<!-- /dropdown list --> 
+								</div>
+								</div>
+
+
+
+
+
+
+
+								<!--CODE COPIED END-->
+									
 								</div>
 								<div class="tab-pane fade" id="life_directive">
 									Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
@@ -162,3 +262,35 @@
 </div>
 
 <?php include(APPPATH."views/agency/inc/footer.php");?>
+
+<script>
+
+$('#send_invite_form').submit(function(e) {
+	e.preventDefault();
+	var form = $(this);
+	$.ajax({
+		type: 'post',	
+        url: '<?php echo site_url("agency/clients/add_send_invite"); ?>',
+        dataType: 'html',
+        data: form.serialize(),                         
+        success: function(data){
+			$("#append_send_invite").append(data);
+			$("input[name=first_name]").val(" ");
+			$("input[name=last_name]").val(" ");
+			$("input[name=email_address]").val(" ");
+			$("input[name=mobile_number]").val(" ");
+        }
+     });
+});
+
+function resendInvite(id){
+	$.ajax({
+		type: 'post',	
+        url: '<?php echo site_url("agency/clients/send_invite/"); ?>'+id,
+        dataType: 'html',                       
+        success: function(data){
+			swal("Invitation, send");
+        }
+     });
+}
+</script>

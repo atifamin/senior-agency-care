@@ -81,6 +81,10 @@ class Client_model extends CI_Model{
     public function getById($id){
         return $this->common_model->listingRow("id",$id,"client");
     }
+
+    public function getClientFamilyById($id){
+        return $this->common_model->listingResultWhere("client_id",$id,"client_family");
+    }
 }
 
 ?>
