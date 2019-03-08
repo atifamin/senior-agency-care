@@ -4,7 +4,7 @@
 	$urlSeg2 = $this->uri->segment(2);
 	$urlSeg3 = $this->uri->segment(3);
 	//print_array($profile_detail);
-	//print_array($profile_detail->profile->company_formed_year);
+	//print_array($profile_detail);
 ?>
 <!DOCTYPE html>
 <html lang="en">

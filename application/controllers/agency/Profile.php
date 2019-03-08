@@ -45,10 +45,11 @@ class Profile extends CI_controller {
 		$agency_lisence_id = $this->common_model->insertGetIDQuery("agency_license", $post);
 		if(isset($_FILES["media_license_document"])){
 			$data = upload_file($_FILES["media_license_document"], "agency_license", $agency_lisence_id, $FILE_DIRECTORY="./uploads/agency/");
-			$this->common_model->insertQuery("media", $data);
+			$media['media_license_document'] = $this->common_model->insertGetIDQuery("media", $data);
+			$this->common_model->updateQuery("agency_license", "id", $agency_lisence_id, $media);
 		}
-		//echo 1;
-		$this->load->view('agency/profile/append_license',$post);
+		$data['result'] = $this->common_model->listingRow("id",$agency_lisence_id,"agency_license");
+		$this->load->view('agency/profile/license_view',$data);
 	}
 	public function edit_license(){
 		$id = $this->input->post("id");
@@ -61,21 +62,35 @@ class Profile extends CI_controller {
 		$post = $this->input->post();
 		$id = $post['agency_license_id'];
 		unset($post['agency_license_id']);
-		//print_array($id);
 		$this->common_model->update_query("agency_license", $post, "id", $id);
-		echo 1;
+		$data['result'] = $this->common_model->listingRow("id",$id,"agency_license");
+		if(isset($_FILES["media_license_document"])){
+			$previousMedia = $this->common_model->listingRow("id",$data['result']->media_license_document,"media");
+			$mediaData = upload_file($_FILES["media_license_document"], "agency_license", $agency_lisence_id, $FILE_DIRECTORY="./uploads/agency/");
+			if(count($previousMedia)>0){
+				if(file_exists(DOC_PATH.$previousMedia->full_path)){
+					unlink(DOC_PATH.$previousMedia->full_path);
+				}
+				$this->common_model->updateQuery("media", "id", $data['result']->media_license_document, $mediaData);
+			}else{
+				$newMedia["media_license_document"] = $this->common_model->insertGetIDQuery("media", $mediaData);
+				$this->common_model->updateQuery("agency_license", "id", $agency_lisence_id, $newMedia);
+			}
+		}
+		$this->load->view('agency/profile/license_view',$data);
 	}
 
-	public function edit_agency_license_row(){
-		$id = $this->input->post("id");
-		$data = $this->common_model->listingRow("id",$id,"agency_license");
-		$this->load->view("agency/profile/append_license",$data);
-	}
 	public function delete_license(){
-		$id = $this->input->post();
-		//print_array($id);
-		//$whereArray = array('id' => $post );
-		$data['delete_result'] = $this->common_model->delete("agency_license", $id);
+		$id = $this->input->post("id");
+		$licenseDetail = $this->common_model->listingRow("id",$id,"agency_license");
+		$mediaDetail = $this->common_model->listingRow("id",$licenseDetail->media_license_document,"media");
+		if(count($mediaDetail)>0){
+			if(file_exists(DOC_PATH.$mediaDetail->full_path)){
+				unlink(DOC_PATH.$mediaDetail->full_path);
+			}
+		}
+		$this->common_model->delete("media", array("id"=>$licenseDetail->media_license_document));
+		$this->common_model->delete("agency_license", array("id"=>$id));
 	}
 
 	public function upload_license_file($FILE){
@@ -107,6 +122,95 @@ class Profile extends CI_controller {
 	}
 	public function loadStatesByCountryId(){
 
+	}
+	
+	public function update_agency_profile(){
+		$post = $this->input->post();
+		$agency_id = $post['agency_id'];
+		$agencyDetail = $this->common_model->listingRow("id",$agency_id,"agency");
+		$agencyProfileDetail = $this->common_model->listingRow("agency_id",$agency_id,"agency_profile");
+		//Adding agency basic data into agency table
+		$agency['company_name'] = $post['company_name'];
+		$agency['position'] = $post['position'];
+		$agency['full_name'] = $post['full_name'];
+		$agency['email_address'] = $post['email_address'];
+		$agency['phone_number'] = $post['phone_number'];
+		$agency['created_at'] = date('Y-m-d H:i:s');
+		$agency['updated_at'] = date('Y-m-d H:i:s');
+		$agency_id = $this->common_model->updateQuery("agency", "id", $agency_id, $agency);
+		
+		//Adding advance data into agency profile table
+		$agency_profile['company_formed_month'] = $post['company_formed_month'];
+		$agency_profile['company_formed_year'] = $post['company_formed_year'];
+		$agency_profile['company_formed_month'] = $post['company_formed_month'];
+		$agency_profile['story'] = $post['story'];
+		$agency_profile['country_id'] = $post['country_id'];
+		$agency_profile['state_id'] = $post['state_id'];
+		$agency_profile['city_id'] = $post['city_id'];
+		$agency_profile['zipcode'] = $post['zipcode'];
+		$agency_profile['personal_care_services'] = "";
+		if(isset($post['personal_care_services']))
+			$agency_profile['personal_care_services'] = json_encode($post['personal_care_services']);
+		
+		$agency_profile['housekeeping_services'] = "";
+		if(isset($post['housekeeping_services']))
+			$agency_profile['housekeeping_services'] = json_encode($post['housekeeping_services']);
+		
+		$agency_profile['sunrise_sunset_services'] = "";
+		if(isset($post['sunrise_sunset_services']))
+			$agency_profile['sunrise_sunset_services'] = json_encode($post['sunrise_sunset_services']);
+		
+		$agency_profile['dementia_alzheimer_assistance'] = "";
+		if(isset($post['dementia_alzheimer_assistance']))
+			$agency_profile['dementia_alzheimer_assistance'] = json_encode($post['dementia_alzheimer_assistance']);
+		
+		$agency_profile['personal_assistance_services'] = "";
+		if(isset($post['personal_assistance_services']))
+			$agency_profile['personal_assistance_services'] = json_encode($post['personal_assistance_services']);
+		
+		$agency_profile['post_surgery_maternity_services'] = "";
+		if(isset($post['post_surgery_maternity_services']))
+			$agency_profile['post_surgery_maternity_services'] = json_encode($post['post_surgery_maternity_services']);
+		
+		$agency_profile['respite_services'] = "";
+		if(isset($post['respite_services']))
+			$agency_profile['respite_services'] = json_encode($post['respite_services']);
+		
+		$agency_profile['other_services'] = "";
+		if(isset($post['other_services']))
+			$agency_profile['other_services'] = json_encode($post['other_services']);
+		
+		$this->common_model->updateQuery("agency_profile", "agency_id", $agency_id, $agency_profile);
+		
+		//uploading and updating media company logo
+		if(!empty($_FILES["media_company_logo"]['name'])){
+			$logoDetail = $this->common_model->listingRow("id",$agencyProfileDetail->media_company_logo,"media");
+			$mediaData = upload_file($_FILES["media_company_logo"], "agency_profile", $agencyProfileDetail->id, $FILE_DIRECTORY="./uploads/agency/");
+			if(count($logoDetail)>0){
+				if(file_exists(DOC_PATH.$logoDetail->full_path)){
+					unlink(DOC_PATH.$logoDetail->full_path);
+				}
+				$this->common_model->updateQuery("media", "id", $agencyProfileDetail->media_company_logo, $mediaData);
+			}else{
+				$newLogoId["media_company_logo"] = $this->common_model->insertGetIDQuery("media", $mediaData);
+				$this->common_model->updateQuery("agency_profile", "id", $agencyProfileDetail->id, $newLogoId);
+			}
+		}
+		
+		if(isset($_FILES["croppedImage"])){
+			$profileImageDetail = $this->common_model->listingRow("id",$agencyProfileDetail->media_profile_picture,"media");
+			$profilemediaData = upload_blob($_FILES["croppedImage"], "agency_profile", $agencyProfileDetail->id, "/uploads/profileImages/");
+			if(count($profileImageDetail)>0){
+				if(file_exists(DOC_PATH.$profileImageDetail->full_path)){
+					unlink(DOC_PATH.$profileImageDetail->full_path);
+				}
+				$this->common_model->updateQuery("media", "id", $agencyProfileDetail->media_profile_picture, $profilemediaData);
+			}else{
+				$newLogoId["media_profile_picture"] = $this->common_model->insertGetIDQuery("media", $profilemediaData);
+				$this->common_model->updateQuery("agency_profile", "id", $agencyProfileDetail->id, $newLogoId);
+			}
+		}
+		$this->session->set_flashdata("success", "You have updated your profile successfully.");
 	}
 
 }

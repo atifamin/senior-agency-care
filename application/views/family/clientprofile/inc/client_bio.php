@@ -1,52 +1,91 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="row">
+<div class="tab-pane fade active show" id="schedule_client_bio">
+  <div class="row">
       <div class="col-md-12" style="margin: 20px 0px 10px 0px;">
-        <p>Client brief bio</p>
+          <p>Client brief bio</p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p><strong>Name: <span>Mr Thomas Crowe</span></strong></p>
+          <p><strong>Name: <span>Mr Thomas Crowe</span></strong>
+          </p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p><strong>Profession: <span>Doctor</span></strong></p>
+          <p><strong>Profession: <span>Doctor</span></strong></p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap
+              into electronic typesetting, remaining essentially
+              unchanged.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book.</p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p><strong>Client's typical daily routine:</strong></p>
+          <p><strong>Client's typical daily routine:</strong></p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap
+              into electronic typesetting, remaining essentially
+              unchanged.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the
+              1500s.</p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p><strong>Likes:</strong></p>
+          <p><strong>Likes:</strong></p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book.</p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p><strong>Dislikes:</strong></p>
+          <p><strong>Dislikes:</strong></p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book.</p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p><strong>Hobbies:</strong></p>
+          <p><strong>Hobbies:</strong></p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book.</p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p><strong>Favourite Music:</strong></p>
+          <p><strong>Favourite Music:</strong></p>
       </div>
       <div class="col-md-12" style="margin-top: 5px;">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book.</p>
       </div>
-      <div class="col-md-12" style="text-align: right; margin-top: 20px;"> <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a> <a href="javascript:;" onclick="deleteClientBio()"><i style="color: #555;" class="icon-bin"></i></a> </div>
-    </div>
+      <div class="col-md-12" style="text-align: right; margin-top: 20px;">
+          <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
+          <a href="javascript:;" onclick="deleteClientBio()"><i style="color: #555;" class="icon-bin"></i></a>
+      </div>
   </div>
 </div>
 

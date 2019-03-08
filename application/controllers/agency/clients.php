@@ -42,7 +42,24 @@ class Clients extends CI_Controller {
 		$data["heading"] = "Our Clients";
 		$data["url_segment"] = "clients";
 		$data["client"] = $this->Client_model->getById($id);
+		$data["client_family"] = $this->Client_model->getClientFamilyById($id);
 		$this->load->view("agency/clients/client_profile",$data);
+	}
+
+	public function add_send_invite(){
+		$post = $this->input->post();
+		$data['client_id'] = $this->common_model->insertGetIDQuery("client_family", $post);
+		
+		$this->send_invite($data['client_id']);
+		$this->load->view("agency/clients/append_send_invite.php",$data);
+	}
+	public function send_invite($client_id){
+		
+		$this->load->model("Email_model");
+		$this->Email_model->send_invite_to_client($this->agency_id, $client_id);
+		//$this->session->set_flashdata("success", "Your invitation is sent to Client successfully.");
+		//return redirect("agency/client/send_invite_to_caregiver");
+		//echo 1;
 	}
 
 	public function edit_client($id){
