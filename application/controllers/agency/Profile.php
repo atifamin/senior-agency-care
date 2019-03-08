@@ -57,8 +57,19 @@ class Profile extends CI_controller {
 		$this->load->view("agency/profile/edit_license", $data);
 	}
 	
-	public function update_license_form($id){
-		echo $id;
+	public function update_license_form(){
+		$post = $this->input->post();
+		$id = $post['agency_license_id'];
+		unset($post['agency_license_id']);
+		//print_array($id);
+		$this->common_model->update_query("agency_license", $post, "id", $id);
+		echo 1;
+	}
+
+	public function edit_agency_license_row(){
+		$id = $this->input->post("id");
+		$data = $this->common_model->listingRow("id",$id,"agency_license");
+		$this->load->view("agency/profile/append_license",$data);
 	}
 	public function delete_license(){
 		$id = $this->input->post();

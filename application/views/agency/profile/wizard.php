@@ -267,13 +267,13 @@
               <button type="button" class="btn btn-outline bg-indigo-400 text-indigo-400 border-indigo-400" data-toggle="modal" data-target="#modal_form_license"><i class="icon-plus3"></i> ADD A NEW STATE LICENSE</button>
             </div>
           </div>
-          <div id="license_area">
+          <div id="license_area"">
             <div class="row" style="width: 100%;">
               <div class=" offset-md-1 col-md-7">
                 <?php
               if(isset($profile_detail->license) && count($profile_detail->license)>0){
               foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
-                <div class="row" style="margin-top: 50px;">
+                <div class="row" style="margin-top: 50px;" id="license_row_<?php echo $licenseVal->id; ?>">
                   <div class="col-md-8">
                     <div class="row">
                       <div class="col-md-6 text-center">
@@ -354,7 +354,7 @@
       <form id="add_new_license_form" role="form" enctype="multipart">
         <input type="hidden" id="agency_id" value="<?php echo $profile_detail->id; ?>">
         <div class="modal-body">
-          <div class="row" id="license_row_<?php echo $profile_detail->id; ?>">
+          <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>State license #: <span class="text-danger">*</span></label>
@@ -444,22 +444,7 @@
   </div>
 </div>
 <div id="modal_edit_form_license_div">
-   <div id="modal_edit_license" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><strong>EDIT LICENSE</strong></h5>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body" id="media_license_modal_body">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Update License</span> </button>
-        </div>
-      </div>
-    </div>
-  </div> 
+   
 </div>
  
 <!-- Theme JS files --> 
@@ -546,7 +531,7 @@ function delete_license(id){
     success:function(e){
      //alert(e);
      swal("license","Deleted successfully");
-     //$("#license_row_"+id+"").remove();
+     $("#license_row_"+id+"").remove();
     }
   });
 }
@@ -565,11 +550,6 @@ function edit_license(id){
     }
    });
 }
-//   // $.post("<?php //echo site_url("agency/profile/edit_license"); ?>", {formData:formData}).done(function(e){
-//   //   $("#modal_edit_form_license_div").html(e);
-//   //   $("#modal_form_license").modal("show");
-//   // });
-// }
 
 </script>
 
