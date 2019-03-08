@@ -17,7 +17,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>State where your license recieved: <span class="text-danger">*</span></label>
-                <select name="license_recieved_countrya" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc>
+                <select name="license_recieved_country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc id="select-123">
                   <option></option>
                   <?php foreach($countries as $count1): ?>
                   <option value="<?php echo $count1->id; ?>" <?php if($count1->id==$result['license_recieved_country']){echo 'selected="selected"';} ?>><?php echo $count1->name; ?></option>
@@ -97,3 +97,6 @@
     </div>
   </div>
 </div>
+<script>
+$(".form-control-select2").select2();
+</script>

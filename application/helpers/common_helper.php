@@ -93,6 +93,27 @@ function upload_file($FILE, $MODULE, $MODULE_ID, $FILE_DIRECTORY="./uploads/care
 	return $data;
 }
 
+function upload_blob($FILE, $MODULE, $MODULE_ID, $FILE_DIRECTORY){
+	$to_be_upload =  $FILE['tmp_name'];
+	$targetPath = getcwd(). $FILE_DIRECTORY;
+	$name = 'profile_image_'.strtotime(date("Y-m-d H:i:s")).'.png';
+	$targetFile = $targetPath . $name ;
+	$data = array();
+	if(move_uploaded_file($to_be_upload, $targetFile)){
+		$data["module"] = $MODULE;
+		$data["module_id"] = $MODULE_ID;
+		$data["name"] = $name;
+		$data["file_name"] = $name;
+		$data["file_type"] = $FILE['type'];
+		$data["file_path"] = $FILE_DIRECTORY;
+		$data["full_path"] = $FILE_DIRECTORY.$name;
+		$data["file_extension"] = $FILE['type'];
+		$data["file_size"] = $FILE['size'];
+		$data["created_at"] = date('Y-m-d H:i:s');
+	}
+	return $data;
+}
+
 /*function housekeeping_services(){
 	$ci=& get_instance();
 	return $ci->common_model->listingResult("housekeeping_services");

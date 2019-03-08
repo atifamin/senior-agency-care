@@ -43,6 +43,7 @@
 	<script src="<?php echo base_url();?>assets/js/demo_pages/form_multiselect.js"></script>
 	<script src="<?php echo base_url();?>assets/js/demo_pages/extra_sweetalert.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/notifications/sweet_alert.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/app-script.js"></script>
 
 </head>
 <style type="text/css">
@@ -52,7 +53,9 @@
 	}
 </style>
 <body>
-
+<script>
+$AppMaster = new AppMaster();
+</script>
 	<!-- Top Nav -->
 	<?php include(APPPATH."views/family/inc/top_nav.php"); ?>
 
