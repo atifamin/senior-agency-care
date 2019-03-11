@@ -55,6 +55,9 @@
 <script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/inputmask/phone-codes/phone-be.js"></script> 
 <script src="<?php echo base_url(); ?>assets/inputTelPlusMasking/inputmask/inputmask/phone-codes/phone-ru.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/app-script.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_multiselect.js"></script>
+
 </head>
 <style type="text/css">
 #swal2-content {
@@ -63,6 +66,10 @@
 .multi_select_box + span {
 	border: 1px solid #00bcd4;
 	border-radius: 25px;
+}
+.s1 + span{
+  border: 1px solid #00bcd4;
+  border-radius: 25px; 
 }
 </style>
 <body>
@@ -121,10 +128,59 @@ $AppMaster = new AppMaster();
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>Phone #: <span class="text-danger">*</span></label>
-              <input type="text" name="phone_number" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+              <label>Country: <span class="text-danger">*</span></label>
+              <select name="country_id"  data-placeholder="Choose a Country..." class="form-control form-control-select2" data-fouc onChange="load_states($(this).val())">
+                <option></option>
+                <?php $phone_format = array(); ?>
+                <?php foreach($countries as $count): ?>
+                <?php
+                $phone_format[] = (object)array(
+                    "id"=>$count->id,
+                    "phoneformat"=>$count->phoneformat,
+                    "phonecode"=>$count->phonecode,
+                );
+                ?>
+                <option value="<?php echo $count->id; ?>"><?php echo $count->name; ?></option>
+                <?php endforeach; ?>
+              </select>
+              <textarea id="phone_format" style="display: none;"><?php echo json_encode($phone_format); ?></textarea>
             </div>
           </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>State: <span class="text-danger">*</span></label>
+              <select name="state_id" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc id="states" onChange="load_cities($(this).val())">
+                <option></option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Phone #: <span class="text-danger">*</span></label>
+              <input type="text" name="phone_number" id="format" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>City: <span class="text-danger">*</span></label>
+              <select name="city_id" data-placeholder="Choose a City..." class="form-control form-control-select2" data-fouc id="cities">
+                <option></option>
+              </select>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Our story: <span class="text-danger">*</span></label>
+              <textarea name="story" rows="4" cols="4" placeholder="Add brief story about your company" class="form-control"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-8">
@@ -154,45 +210,6 @@ $AppMaster = new AppMaster();
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Our story: <span class="text-danger">*</span></label>
-              <textarea name="story" rows="4" cols="4" placeholder="Add brief story about your company" class="form-control"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Country: <span class="text-danger">*</span></label>
-              <select name="country_id" data-placeholder="Choose a Country..." class="form-control form-control-select2" data-fouc onChange="load_states($(this).val())">
-                <option></option>
-                <?php foreach($countries as $count): ?>
-                <option value="<?php echo $count->id; ?>"><?php echo $count->name; ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>State: <span class="text-danger">*</span></label>
-              <select name="state_id" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc id="states" onChange="load_cities($(this).val())">
-                <option></option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>City: <span class="text-danger">*</span></label>
-              <select name="city_id" data-placeholder="Choose a City..." class="form-control form-control-select2" data-fouc id="cities">
-                <option></option>
-              </select>
-            </div>
-          </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Zip: <span class="text-danger">*</span></label>
@@ -207,8 +224,8 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Select your personal care services: <span class="text-danger">*</span></label>
-              <select data-placeholder="Select your services" multiple="multiple" class="multi_select_box form-control select" name="personal_care_services[]" data-fouc>
-                <option></option>
+              <select data-placeholder="Select your services" multiple="multiple" class="form-control multiselect-select-all" name="personal_care_services[]" data-fouc>
+                <!-- <option></option> -->
                 <?php foreach(load_table("personal_care_services") as $PCS): ?>
                 <option value="<?php echo $PCS->id; ?>"><?php echo $PCS->name; ?></option>
                 <?php endforeach; ?>
@@ -218,8 +235,8 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Select housekeeping services: <span class="text-danger">*</span></label>
-              <select data-placeholder="Select your services" multiple="multiple" class="multi_select_box form-control select" name="housekeeping_services[]" data-fouc>
-                <option></option>
+              <select data-placeholder="Select your services" multiple="multiple" class="form-control multiselect-select-all" name="housekeeping_services[]" data-fouc>
+                <!-- <option></option> -->
                 <?php foreach(load_table("housekeeping_services") as $HKS): ?>
                 <option value="<?php echo $HKS->id; ?>"><?php echo $HKS->name; ?></option>
                 <?php endforeach; ?>
@@ -231,8 +248,8 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Select sunrise/sunset services: <span class="text-danger">*</span></label>
-              <select data-placeholder="Select your services" multiple="multiple" class="multi_select_box form-control select" name="sunrise_sunset_services[]" data-fouc>
-                <option>Select </option>
+              <select data-placeholder="Select your services" multiple="multiple" class="form-control multiselect-select-all" name="sunrise_sunset_services[]" data-fouc>
+                <!-- <option>Select </option> -->
                 <?php foreach(load_table("sunrise_sunset_services") as $SSS): ?>
                 <option value="<?php echo $SSS->id; ?>"><?php echo $SSS->name; ?></option>
                 <?php endforeach; ?>
@@ -242,8 +259,8 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Select dementia/alzheimer's Assistance: <span class="text-danger">*</span></label>
-              <select data-placeholder="Select your services" multiple="multiple" class="multi_select_box form-control select" name="dementia_alzheimer_assistance[]" data-fouc>
-                <option></option>
+              <select data-placeholder="Select your services" multiple="multiple" class="form-control multiselect-select-all" name="dementia_alzheimer_assistance[]" data-fouc>
+                <!-- <option></option> -->
                 <?php foreach(load_table("dementia_alzheimer_assistance") as $DAA): ?>
                 <option value="<?php echo $DAA->id; ?>"><?php echo $DAA->name; ?></option>
                 <?php endforeach; ?>
@@ -255,8 +272,8 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Select personal assitant services: <span class="text-danger">*</span></label>
-              <select data-placeholder="Select your services" multiple="multiple" class="multi_select_box form-control select" name="personal_assistance_services[]" data-fouc>
-                <option>Select </option>
+              <select data-placeholder="Select your services" multiple="multiple" class="form-control multiselect-select-all" name="personal_assistance_services[]" data-fouc>
+                <!-- <option>Select </option> -->
                 <?php foreach(load_table("personal_assistance_services") as $PAS): ?>
                 <option value="<?php echo $PAS->id; ?>"><?php echo $PAS->name; ?></option>
                 <?php endforeach; ?>
@@ -266,8 +283,8 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Select post-surgury/maternity Assistance: <span class="text-danger">*</span></label>
-              <select data-placeholder="Select your services" multiple="multiple" class="multi_select_box form-control select" name="post_surgery_maternity_services[]" data-fouc>
-                <option></option>
+              <select data-placeholder="Select your services" multiple="multiple" class="form-control multiselect-select-all" name="post_surgery_maternity_services[]" data-fouc>
+               <!--  <option></option> -->
                 <?php foreach(load_table("post_surgery_maternity_services") as $PSMS): ?>
                 <option value="<?php echo $PSMS->id; ?>"><?php echo $PSMS->name; ?></option>
                 <?php endforeach; ?>
@@ -279,8 +296,8 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Respite services: <span class="text-danger">*</span></label>
-              <select data-placeholder="Select your services" multiple="multiple" class="multi_select_box form-control select" name="respite_services[]" data-fouc>
-                <option>Select </option>
+              <select data-placeholder="Select your services" multiple="multiple" class="form-control multiselect-select-all" name="respite_services[]" data-fouc>
+                <!-- <option>Select </option> -->
                 <?php foreach(load_table("respite_services") as $RS): ?>
                 <option value="<?php echo $RS->id; ?>"><?php echo $RS->name; ?></option>
                 <?php endforeach; ?>
@@ -290,8 +307,8 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Other services: <span class="text-danger">*</span></label>
-              <select data-placeholder="Select your services" multiple="multiple" class="multi_select_box form-control select" name="other_services[]" data-fouc>
-                <option></option>
+              <select data-placeholder="Select your services" multiple="multiple" class="form-control multiselect-select-all" name="other_services[]" data-fouc>
+                <!-- <option></option> -->
                 <?php foreach(load_table("other_services") as $OS): ?>
                 <option value="<?php echo $OS->id; ?>"><?php echo $OS->name; ?></option>
                 <?php endforeach; ?>
@@ -479,6 +496,20 @@ function viewLicense(){
 	$(".license_view").css("display","block");
 }*/
 function load_states(id){
+  //var id = element.val();
+  var phone_format = JSON.parse($("#phone_format").html());
+  var country_number_format = "";
+  var country_code = "";
+  $.each(phone_format, function(k, v){
+    if(v.id==id){
+     country_number_format = v.phoneformat;
+     country_code = v.phonecode;
+    }
+  });
+  //console.log(country_code, "-", country_number_format);
+  
+  //var format = element.attr("phone_format");
+  //console.log(format);
 	$.post("<?php echo site_url("agency/register/load_states"); ?>", {id:id}).done(function(e){
 		$("#states").html(e);
 	});
