@@ -132,6 +132,11 @@ class Caregiver_model extends CI_Model{
 		return $caregiverDetail;
 	}
 	
+	public function totalCaregiverProfileByStatus($agency_id, $status){
+		$QUERY = $this->common_model->listingMultipleWhereResult("caregiver", array("agency_id"=>$agency_id, "status"=>$status));
+		return count($QUERY);
+	}
+	
 }
 
 ?>

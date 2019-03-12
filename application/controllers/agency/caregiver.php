@@ -28,6 +28,8 @@ class Caregiver extends CI_Controller {
 		$data["heading"] = "Caregivers";
 		$data["url_segment"] = "add_caregivers";
 		$data['countries'] = load_table("countries");
+		$data['total_added_profiles'] = $this->Caregiver_model->totalCaregiverProfileByStatus($this->agency_id, "added");
+		$data['total_pending_profiles'] = $this->Caregiver_model->totalCaregiverProfileByStatus($this->agency_id, "pending");
 		$this->load->view("agency/caregiver/add_caregiver",$data);
 	}
 
