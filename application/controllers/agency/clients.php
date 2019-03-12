@@ -79,7 +79,7 @@ class Clients extends CI_Controller {
 
 	public function addMoreFamilyMember(){
 		$post = $this->input->post();
-		$this->load->view("agency/clients/add_more_FamilyMember",$post);
+		$this->load->view("agency/clients/add_more_familyMember",$post);
 	}
 
 	public function editMoreFamilyMember(){

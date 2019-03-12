@@ -11,6 +11,7 @@ class Login extends CI_Controller {
 	}
 
 	public function index(){
+		//print_array(md5("agency"));
 		$this->load->view("agency/login/index");
 	}
 }
