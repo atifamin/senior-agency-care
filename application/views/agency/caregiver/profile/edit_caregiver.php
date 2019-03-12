@@ -80,7 +80,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="d-block">Upload Caregiver profile image:</label>
-                <input name="profile_pic" type="file" class="form-input-styled " data-fouc>
+                <input name="profile_pic" type="file" class="form-input-styled" data-fouc>
                 <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span>
                 <img src="<?php echo caregiver_image($detail->id) ;?>" class="rounded-circle" width="100" height="100"  >
               </div>
@@ -374,6 +374,7 @@
             </div>
           </div>
         </div> -->
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
           <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Add New License</span> </button>
@@ -382,7 +383,19 @@
     </div>
   </div>
 </div>
-<div id="modal_edit_form_license"></div>
+
+
+<div id="edit_license_modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" id="edit_license_modal_dialog">
+      
+      
+    </div>
+  </div>
+</div>
+
+
+
 <script type="text/javascript">
 function addNewLicense(){
 	$(".add_new_license").css("display","block");
@@ -474,9 +487,8 @@ function delete_license(id){
     data:{id:id},
     dataType:'html',
     success:function(data){
-      alert(data);
-      $('#modal_edit_form_license').html(data);
-      $('#modal_edit_license').modal('show');
+      $('#edit_license_modal_dialog').html(data);
+      $('#edit_license_modal').modal('show');
     }
 
   });
