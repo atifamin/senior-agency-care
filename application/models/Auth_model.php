@@ -36,6 +36,24 @@ class Auth_model extends CI_Model{
 		}
 	}
 	
+	public function family_auth($email_address, $Password) {
+		//print_array($email_address);
+		$WhereArray = array(
+			"email_address" => $email_address,
+			"password" =>   md5($Password),
+		);
+		$result = $this->common_model->listingMultipleWhereRow("client_family", $WhereArray);
+		//print_array($result);
+		if(count($result)>0){
+			$data['user_id'] = $result->id;
+			$this->session->set_userdata('isFamilyLoggedIn', $data);
+			if($this->session->userdata("isFamilyLoggedIn")){
+				return redirect("family/dashboard");
+			}
+		}else{
+			return false;
+		}
+	}
 }
 
 ?>

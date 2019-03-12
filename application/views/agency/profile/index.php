@@ -1,6 +1,7 @@
 
 <?php include(APPPATH."views/agency/inc/header.php"); ?>
-<?php $months = CON_MONTHS; 
+<?php $months = CON_MONTHS;
+//print_array($profile_detail);
 
 //print_array($countries);
 ?>
@@ -8,12 +9,12 @@
 <div class="d-md-flex align-items-md-start"> 
   
   <!-- Left sidebar component -->
-  <div class="sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-0 sidebar-expand-md"> 
+ <!--  <div class="sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-0 sidebar-expand-md"> 
     
-    <!-- Sidebar content -->
+    
     <div class="sidebar-content"> 
       
-      <!-- Navigation -->
+      
       <div class="card">
         <div class="card-body bg-success-400 text-center card-img-top" style="background-image: url(); background-size: contain;">
           <div class="card-img-actions d-inline-block mb-3"> <img class="img-fluid rounded-circle" src="<?php echo $profile_image; ?>" width="170" height="170" alt="">
@@ -21,19 +22,19 @@
           </div>
           <h6 class="font-weight-semibold mb-0"><?php echo $profile_detail->full_name; ?></h6>
           <span class="d-block opacity-75"><?php echo ucfirst($profile_detail->position); ?></span>
-          <div class="list-icons list-icons-extended mt-3"> <a href="<?php echo site_url("agency/profile/wizard/".$this->agency_id.""); ?>" class="list-icons-item text-white" data-popup="tooltip" title="" data-container="body" data-original-title="Edit My Profile"><i class="icon-google-drive"></i>&nbsp;&nbsp;Edit Profile</a> </div>
+          <div class="list-icons list-icons-extended mt-3"> <a href="<?php //echo site_url("agency/profile/wizard/".$this->agency_id.""); ?>" class="list-icons-item text-white" data-popup="tooltip" title="" data-container="body" data-original-title="Edit My Profile"><i class="icon-google-drive"></i>&nbsp;&nbsp;Edit Profile</a> </div>
         </div>
       </div>
     </div>
-    <!-- /sidebar content --> 
     
-  </div>
+    
+  </div> -->
   <!-- /left sidebar component --> 
   
   <!-- Right content -->
   <div class="tab-content w-100 overflow-auto">
     <div class="tab-pane fade active show" id="profile">
-      <div class="container">
+      <div class="container-fluid">
         <div class="card">
           
           <div class="row">
@@ -44,6 +45,7 @@
                   <li class="nav-item" style="padding-right: 15px;"><a href="#service" class="nav-link" data-toggle="tab">Our Services</a></li>
                   <li class="nav-item" style="padding-right: 15px;"><a href="#companylicense" class="nav-link" data-toggle="tab">Licenses</a></li>
                   <li class="nav-item" style="padding-right: 15px;"><a href="#companylogo" class="nav-link" data-toggle="tab">Company logo and profile image</a></li>
+                  <li class="nav-item" style="right: 3% !important; position: absolute;"><a href="<?php echo site_url("agency/profile/wizard/".$this->agency_id."") ?>"><button class="btn btn-light" style="background-color: #fff;"><i class="icon-google-drive mr-2"></i> Edit Profile</button></a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="companyinfo">
@@ -56,7 +58,7 @@
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>Position in Campany:</strong></td>
-                            <td style="padding-top: 10px;"><span> <?php echo $profile_detail->position; ?> </span></td>
+                            <td style="padding-top: 10px;"><span> <?php echo ucfirst($profile_detail->position); ?> </span></td>
                           </tr>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>Your Full Name:</strong></td>
@@ -110,7 +112,7 @@
                         <table>
                           <tr>
                             <td style="width: 310px; padding-top: 10px;"><strong>Company address:</strong></td>
-                            <td style="padding-top: 10px;"><?php //echo $profile_detail->zipcode; ?></td>
+                            <td style="padding-top: 10px;"><?php  ?></td>
                           </tr> 
                         </table>
                       </div>
@@ -142,10 +144,10 @@
                               <?php foreach(load_table("housekeeping_services") as $HS): ?>
                               <p>
                               <?php
-							  if(count($housekeeping_services)>0 && in_array($HS->id, $housekeeping_services)){
-								   echo $HS->name;
-							  }
-							  ?>
+					                 if (count($housekeeping_services)>0 && in_array($HS->id, $housekeeping_services)) {
+                             echo $HS->name;
+                           }
+							               ?>
                               </p>
                                 <?php endforeach; ?>
                             </td>
@@ -328,11 +330,15 @@
                             <?php
           							$comLogoImageUrl = base_url("assets/images/placeholders/avatar.png");
           							if($profile_detail->profile->media_company_logo!=0){
-          								$imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
+										//print_array($profile_detail->profile);
+          								if(!empty($profile_detail->profile->media_company_logo_detail)){
+										        $imagUrl = $profile_detail->profile->media_company_logo_detail->full_path;
+										
           								if(file_exists(DOC_PATH.$imagUrl)){
           									$comLogoImageUrl = base_url().$imagUrl;
           								}
-          							}
+										    }
+          						}
       							   ?>
                             <strong><img src="<?php echo $comLogoImageUrl; ?>" class="rounded-circle" width="36" height="36" alt=""></strong></td>
                           </tr>

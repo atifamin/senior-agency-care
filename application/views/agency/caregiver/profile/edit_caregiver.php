@@ -433,9 +433,15 @@ $("#add_new_license_form").on("submit", function(e){
 		success: function (e) {
        //alert(e);
       if (e) {
-        swal("License","added successfully");
+        swal({
+		  title: 'License Added Sucessfully',
+		  text: 'You have successfully added a valid State License!',
+		  confirmButtonText: 'Ok',
+		  type: 'success'
+		});
+		//swal("License","added successfully");
         $("#modal_form_license").modal("hide");
-     $("#license_area").append(e);
+		 $("#license_area").append(e);
 
       }
      //$("#modal_form_license").modal('hide');

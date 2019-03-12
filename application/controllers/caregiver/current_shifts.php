@@ -20,4 +20,10 @@ class Current_shifts extends CI_Controller {
 		$data["url_segment"] = "notice board";
 		$this->load->view('caregiver/currentshifts/index',$data);
 	}
+	/*public function design(){
+		$data["breadcrumb"] = "Notice Board";
+		$data["heading"] = "Notice Board";
+		$data["url_segment"] = "notice board";
+		$this->load->view('caregiver/currentshifts/index',$data);
+	}*/
 }
