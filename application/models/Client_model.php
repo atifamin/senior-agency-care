@@ -53,7 +53,9 @@ class Client_model extends CI_Model{
                     "email_address" => $family_email_address[$i],
                     "mobile_number" => $family_mobile_number[$i]
                 );
-                $this->common_model->insertGetIDQuery("client_family", $addFamily);
+                $client_family_id = $this->common_model->insertGetIDQuery("client_family", $addFamily);
+                $this->load->model("Email_model");
+                $this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
             }
         }
     }

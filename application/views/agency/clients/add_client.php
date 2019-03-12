@@ -70,7 +70,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client email address:</label>
-								<input type="email" name="email_address" id="email_address" class="form-control" placeholder="client@email.com" required="required">
+								<input type="email" onchange="checkEmailAddress('client')" name="email_address" id="email_address" class="form-control" placeholder="client@email.com" required="required">
 							</div>
 						</div>
 					</div>
@@ -429,7 +429,7 @@
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Email:</label>
-								<input type="email" name="" id="email_address_family" class="form-control" placeholder="@gmail.com">
+								<input type="email" name="" id="email_address_family" onchange="checkEmailAddress('client_family')" class="form-control" placeholder="@gmail.com">
 							</div>
 						</div>
 						<div class="col-md-2">
@@ -829,6 +829,28 @@
         success: function(data){
 			$("#row_family_member"+counter+"").html(data);
 			$("#edit_familyMemberModal").modal("hide");
+        }
+		});
+	}
+
+	function checkEmailAddress(tableName){
+		
+		if(tableName == 'client'){
+		var email_address = $("#email_address").val();
+		}else{
+			var email_address = $("#email_address_family").val();
+		}
+		$.ajax({
+		type: 'post',	
+        url: '<?php echo site_url("agency/clients/checkEmailAddress"); ?>',
+        dataType: 'html',
+        data: {email_address:email_address,tableName:tableName},                         
+        
+        success: function(data){
+			if(data == 0){
+				swal("Email, Already Exists");
+				$("#email_address").val(" ");
+			}
         }
 		});
 	}
