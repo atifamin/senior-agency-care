@@ -30,7 +30,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Your position at the company:</label>
-            <select name="position" data-placeholder="Select position" class="form-control form-control-select2" data-fouc>
+            <select name="position" data-placeholder="Select position" class="form-control select-search-basic" data-fouc>
               <option></option>
               <?php foreach(CON_COMPANY_POSITIONS as $posKey=>$posVal): ?>
               <option value="<?php echo $posKey; ?>"<?php if($profile_detail->position==$posKey){echo 'selected="selected"';} ?> ><?php echo $posVal; ?></option>
@@ -67,7 +67,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="company_formed_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                    <select name="company_formed_month" data-placeholder="Month" class="form-control select-search-basic" data-fouc>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key1=>$val1): ?>
                       <option value="<?php echo $key1; ?>"<?php if ($profile_detail->profile->company_formed_month == $key1){echo 'selected="selected"';} ?>><?php echo $val1; ?></option>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="company_formed_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                    <select name="company_formed_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option <?php if($profile_detail->profile->company_formed_year == $i){echo 'selected="selected"';} ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -102,7 +102,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Country: <span class="text-danger">*</span></label>
-            <select name="country_id" data-placeholder="Choose a Country..." class="form-control form-control-select2" data-fouc onChange="load_states($(this).val())">
+            <select name="country_id" data-placeholder="Choose a Country..." class="form-control select-search" data-fouc onChange="load_states($(this).val())">
               <option></option>
               <?php foreach ($countries as $count): ?>
               <option <?php if ($profile_detail->profile->country_id == $count->id) {echo 'selected="selected"';} ?> value="<?php echo $count->id; ?>"><?php echo $count->name; ?></option>
@@ -113,7 +113,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>State: <span class="text-danger">*</span></label>
-            <select name="state_id" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc id="states" onChange="load_cities($(this).val())">
+            <select name="state_id" data-placeholder="Choose a State..." class="form-control select-search" data-fouc id="states" onChange="load_cities($(this).val())">
               <option></option>
               <?php foreach ($states as $state):?>
               <option <?php if($profile_detail->profile->state_id == $state->id){echo 'selected="selected"';} ?> value="<?php echo $state->id; ?>"><?php echo $state->name; ?></option>
@@ -126,7 +126,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>City: <span class="text-danger">*</span></label>
-            <select name="city_id" data-placeholder="Choose a City..." class="form-control form-control-select2" data-fouc id="cities">
+            <select name="city_id" data-placeholder="Choose a City..." class="form-control select-search" data-fouc id="cities">
               <option></option>
               <?php foreach ($cities as $city): ?>
               <option <?php if($profile_detail->profile->city_id == $city->id){echo 'selected="selected"';} ?> value="<?php echo $city->id; ?>"><?php echo $city->name;?></option>
@@ -371,11 +371,8 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>State where your license recieved: <span class="text-danger">*</span></label>
-                <select name="license_recieved_country" id="license_recieved_country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc required>
+                <select name="license_recieved_country" id="license_recieved_country" data-placeholder="Choose a State..." class="form-control select-search required" data-fouc required>
                   <option></option>
-                  <?php foreach($countries as $count1): ?>
-                  <option value="<?php echo $count1->id; ?>"><?php echo $count1->name; ?></option>
-                  <?php endforeach; ?>
                 </select>
               </div>
             </div>
@@ -386,7 +383,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_month" id="valid_from_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc required>
+                    <select name="valid_from_month" id="valid_from_month" data-placeholder="Month" class="form-control select-search-basic required" data-fouc required>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key2=>$val2): ?>
                       <option value="<?php echo $key2; ?>"><?php echo $val2; ?></option>
@@ -396,7 +393,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_year" id="valid_from_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc required>
+                    <select name="valid_from_year" id="valid_from_year" data-placeholder="Year" class="form-control select-search-basic required" data-fouc required>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -411,7 +408,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_month" id="valid_to_month" data-placeholder="Month" class="form-control form-control-select2 required" data-fouc required>
+                    <select name="valid_to_month" id="valid_to_month" data-placeholder="Month" class="form-control select-search-basic required" data-fouc required>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key3=>$val3): ?>
                       <option value="<?php echo $key3; ?>"><?php echo $val3; ?></option>
@@ -421,7 +418,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_year" id="valid_to_year" data-placeholder="Year" class="form-control form-control-select2 required" data-fouc required>
+                    <select name="valid_to_year" id="valid_to_year" data-placeholder="Year" class="form-control select-search-basic required" data-fouc required>
                       <option></option>
                       <?php for($i=2019; $i<=2029; $i++){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -456,9 +453,12 @@
 <!-- Theme JS files --> 
 
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/agency_profile_wizard.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/buttons/spin.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/buttons/ladda.min.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/plugins/buttons/ladda.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+
 <script type="text/javascript">
 
 
@@ -563,6 +563,7 @@ $("#add_new_license_form").on("submit", function(e){
 function load_states(id){
   $.post("<?php echo site_url("agency/register/load_states"); ?>", {id:id}).done(function(e){
     $("#states").html(e);
+    $('#license_recieved_country').html(e);
   });
 }
 function load_cities(id){

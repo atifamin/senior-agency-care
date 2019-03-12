@@ -58,6 +58,9 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_multiselect.js"></script>
 
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_validation.js"></script>
+
+
 </head>
 <style type="text/css">
 #swal2-content {
@@ -129,7 +132,7 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Country: <span class="text-danger">*</span></label>
-              <select name="country_id"  data-placeholder="Choose a Country..." class="form-control form-control-select2" data-fouc onChange="load_states($(this).val())">
+              <select name="country_id" data-placeholder="Choose a Country..." class="form-control select-search" data-fouc onChange="load_states($(this).val())">
                 <option></option>
                 <?php $phone_format = array(); ?>
                 <?php foreach($countries as $count): ?>
@@ -149,34 +152,25 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>State: <span class="text-danger">*</span></label>
-              <select name="state_id" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc id="states" onChange="load_cities($(this).val())">
+              <select name="state_id" data-placeholder="Choose a State..." class="form-control select-search" data-fouc id="states" onChange="load_cities($(this).val())">
                 <option></option>
               </select>
             </div>
           </div>
         </div>
         <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>City: <span class="text-danger">*</span></label>
+              <select name="city_id" data-placeholder="Choose a City..." class="form-control select-search" data-fouc id="cities">
+                <option></option>
+              </select>
+            </div>
+          </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Phone #: <span class="text-danger">*</span></label>
               <input type="text" name="phone_number" id="format" class="form-control">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>City: <span class="text-danger">*</span></label>
-              <select name="city_id" data-placeholder="Choose a City..." class="form-control form-control-select2" data-fouc id="cities">
-                <option></option>
-              </select>
-            </div>
-          </div>
-          
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Our story: <span class="text-danger">*</span></label>
-              <textarea name="story" rows="4" cols="4" placeholder="Add brief story about your company" class="form-control"></textarea>
             </div>
           </div>
         </div>
@@ -214,6 +208,14 @@ $AppMaster = new AppMaster();
             <div class="form-group">
               <label>Zip: <span class="text-danger">*</span></label>
               <input type="text" name="zipcode" class="form-control" placeholder="Add your zip">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Our story: <span class="text-danger">*</span></label>
+              <textarea name="story" rows="4" cols="4" placeholder="Add brief story about your company" class="form-control"></textarea>
             </div>
           </div>
         </div>
@@ -386,23 +388,20 @@ $AppMaster = new AppMaster();
         <h5 class="modal-title"><strong>ADD NEW LICENSE</strong></h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <form id="add_new_license_form" enctype="multipart/form-data">
+      <form id="add_new_license_form" class="form-validate-jquery" role="form" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>State license #: <span class="text-danger">*</span></label>
-                <input type="text" name="state_license" class="form-control required" placeholder="Add state license #" data-validation="required" required>
+                <input type="text" name="state_license" class="form-control required" placeholder="Add state license #" required>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label>State where your license recieved: <span class="text-danger">*</span></label>
-                <select name="license_recieved_country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc required>
+                <select name="license_recieved_country" data-placeholder="Choose a State..." class="form-control form-control-select2 required" data-fouc id="load_license_states">
                   <option></option>
-                  <?php foreach($countries as $count1): ?>
-                  <option value="<?php echo $count1->id; ?>"><?php echo $count1->name; ?></option>
-                  <?php endforeach; ?>
                 </select>
               </div>
             </div>
@@ -484,7 +483,6 @@ $AppMaster = new AppMaster();
   </div>
 </div>
 <div id="modal_edit_form_license_div"></div>
-
 <script type="text/javascript">
 
 /*function addNewLicense(){
@@ -536,6 +534,7 @@ function load_states(id){
   	change_phone_masking(id);
 	$.post("<?php echo site_url("agency/register/load_states"); ?>", {id:id}).done(function(e){
 		$("#states").html(e);
+    $("#load_license_states").html(e);
 	});
 }
 function load_cities(id){
@@ -544,6 +543,8 @@ function load_cities(id){
 	});
 }
 $("#add_new_license_form").on("submit", function(e){
+  //$("#add_new_license_form").validate();
+  return false;
 	$("#license_progress").show();
 	var counter = $("#counter").val();
 	e.preventDefault();
@@ -717,10 +718,6 @@ function add_new_agency(){
 		type: 'success'
 	});*/
 }
-
-$("#modal_form_license").validate({
-  modules : 'logic'
-});
 
 
 
