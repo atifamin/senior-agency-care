@@ -132,7 +132,7 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="month" id="month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+		                                <select name="month" id="month" data-placeholder="Month" class="form-control form-control-select2" data-fouc required="required">
 		                                    <option></option> 
 		                                    <option value="January">January</option> 
 	                                        <option value="Februray">Februray</option>
@@ -151,7 +151,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="day" id="day" data-placeholder="Day" class="form-control form-control-select2" data-fouc>
+		                                <select name="day" id="day" data-placeholder="Day" class="form-control form-control-select2" data-fouc required="required">
 		                                    <option></option> 
 		                                    <option value="1">1</option> 
 		                                    <option value="2">2</option> 
@@ -189,7 +189,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="year" id="year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+		                                <select name="year" id="year" data-placeholder="Year" class="form-control form-control-select2" data-fouc required="required">
 		                                    <option></option> 
 		                                    <option value="1990">1990</option>
 	                                        <option value="1991">1991</option>
@@ -435,7 +435,7 @@
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Phone #:</label>
-								<input type="text" name="" id="mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+								<input type="text" name="" id="mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999" required="required">
 							</div>
 						</div>
 						<div class="col-md-2">
@@ -564,7 +564,7 @@
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Phone #:</label>
-								<input type="text" name="" id="edit_mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+								<input type="text" name="" id="edit_mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999" required="required">
 							</div>
 						</div>
 						<div class="col-md-2">
@@ -774,6 +774,10 @@
 		var last_name_family = $("#last_name_family").val();
 		var email_address_family = $("#email_address_family").val();
 		var mobile_number_family = $("#mobile_number_family").val();
+		if(!mobile_number_family){
+			alert("Mobile Number is required");
+			return false;
+		}
 		var counter = $("#counter").val();
 		$.ajax({
 		type: 'post',	

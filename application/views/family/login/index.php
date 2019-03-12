@@ -66,7 +66,7 @@ body {
               <?php } ?>
             </div>
             <div class="form-group form-group-feedback form-group-feedback-left">
-              <input type="text" name="email" class="form-control" placeholder="Email">
+              <input type="text" name="email_address" class="form-control" placeholder="Email">
               <div class="form-control-feedback"> <i class="icon-user text-muted"></i> </div>
             </div>
             <div class="form-group form-group-feedback form-group-feedback-left">

@@ -40,7 +40,7 @@ class Email_model extends CI_Model{
 		$message = str_replace("[@ClientLastName]",$clientDetail->last_name,$message);
 		$message = str_replace("[@AgencyName]",$agencyDetail->full_name,$message);
 		$message = str_replace("[@JoinUrl]",site_url()."client/register?id=".$random."",$message);
-		sendEmail($clientDetail->email_address,$subject,$message);
+		//sendEmail($clientDetail->email_address,$subject,$message);
 		
 		$this->common_model->updateQuery("client_family", "id", $client_family_member_id, array("status"=>"pending", "register_code"=>$random));
 	}

@@ -32,6 +32,7 @@ class Clients extends CI_Controller {
 
 	public function save_client(){
 		$post = $this->input->post();
+		// print_array($post);
 		$post['agency_id'] = $this->agency_id;
 		$this->Client_model->save_client($post);
 		echo 1;

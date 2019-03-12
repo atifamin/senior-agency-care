@@ -29,6 +29,11 @@ class Client_model extends CI_Model{
         $family_mobile_number = explode(',', $family_mobile_number);
         unset($post['mobileNumber']);
         }
+        unset($post['firstName']);
+        unset($post['lastName']);
+        unset($post['emailAddress']);
+        unset($post['mobileNumber']);
+
         unset($post['month']);
         unset($post['day']);
         unset($post['year']);
