@@ -87,4 +87,15 @@ class Clients extends CI_Controller {
 		$post = $this->input->post();
 		$this->load->view("agency/clients/edit_more_family_member",$post);
 	}
+
+	public function checkEmailAddress(){
+		$post = $this->input->post();
+
+		$result = $this->common_model->listingRow("email_address",$post['email_address'],$post['tableName']);
+		if(count($result) > 0){
+			echo 0;
+		}else{
+		 echo	1;
+		}
+	}
 }

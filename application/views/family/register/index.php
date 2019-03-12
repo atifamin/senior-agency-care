@@ -46,7 +46,7 @@
     <div class="content d-flex justify-content-center align-items-center" style="background-image:url(<?php echo base_url("assets/images/backgrounds/background.jpg"); ?>)"> 
       
       <!-- Registration form -->
-      <form action="<?php echo site_url("family/auth/register"); ?>" class="flex-fill" method="POST">
+      <form id="registerForm" action="<?php echo site_url("family/auth/register"); ?>" class="flex-fill" method="POST">
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
             <div class="card mb-0">
@@ -72,14 +72,14 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group form-group-feedback form-group-feedback-right">
-                      <input type="password" name="password" class="form-control" placeholder="Create password">
-                      <div class="form-control-feedback"> <i class="icon-user-lock text-muted"></i> </div>
+                      <input type="password" id="password" name="password" class="form-control" placeholder="Create password">
+                      <div class="form-control-feedback"> <i class="icon-user-lock text-muted" required="required"></i> </div>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group form-group-feedback form-group-feedback-right">
-                      <input type="password" class="form-control" placeholder="Repeat password">
-                      <div class="form-control-feedback"> <i class="icon-user-lock text-muted"></i> </div>
+                      <input type="password" id="repeat-password" class="form-control" placeholder="Repeat password">
+                      <div class="form-control-feedback"> <i class="icon-user-lock text-muted" required="required" ></i> </div>
                     </div>
                   </div>
                 </div>
@@ -115,6 +115,40 @@
   
 </div>
 <!-- /page content -->
+
+
+
+<script src="<?php echo base_url();?>assets/js/demo_pages/extra_sweetalert.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/notifications/sweet_alert.min.js"></script>
+
+<script type="text/javascript">
+  
+$("#registerForm").submit(function(e){
+  var pass = $("#password").val();
+  var reppass = $("#repeat-password").val();
+
+  if(!pass){
+  e.preventDefault();
+    swal("Password is required");
+    return false;
+  }
+  if(!reppass){
+  e.preventDefault();
+    swal("Please re-enter your password");
+    return false;
+  }
+  if(pass != reppass){
+    e.preventDefault();
+    swal("Password must be same");
+    $("#repeat-password").val("");
+  }
+
+});
+
+
+
+</script>
+
 
 </body>
 </html>
