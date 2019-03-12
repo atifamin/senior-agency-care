@@ -1,6 +1,7 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_wizard.js"></script>
 
+
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -65,7 +66,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Position at company:</label>
-                <select name="position" data-placeholder="Choose a Position..." class="form-control form-control-select2" data-fouc>
+                <select name="position" data-placeholder="Choose a Position..." class="form-control select-search-basic" data-fouc>
                   <option></option>
                   <?php foreach(CON_CAREGIVER_POSITIONS as $positionKey=>$positionVal): ?>
                   <option value="<?php echo $positionKey; ?>"><?php echo $positionVal; ?></option>
@@ -86,7 +87,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="from_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                    <select name="from_month" data-placeholder="Month" class="form-control select-search-basic" data-fouc>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key1=>$val1): ?>
                       <option value="<?php echo $key1; ?>"><?php echo $val1; ?></option>
@@ -96,7 +97,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="from_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                    <select name="from_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -111,7 +112,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="to_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                    <select name="to_month" data-placeholder="Month" class="form-control select-search-basic" data-fouc>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key2=>$val2): ?>
                       <option value="<?php echo $key2; ?>"><?php echo $val2; ?></option>
@@ -121,7 +122,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="to_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                    <select name="to_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -138,32 +139,42 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label>Phone #:</label>
-                <input type="text" name="phone_number" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
                 <label>Caregiver email address: <span class="text-danger">*</span></label>
                 <input type="email" name="email" class="form-control" placeholder="company@email.com">
               </div>
             </div>
-          </div>
-          <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>Address: <span class="text-danger">*</span></label>
                 <input type="text" name="address" class="form-control" placeholder="Enter your address">
               </div>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>Country:</label>
-                <select name="country_id" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc onChange="load_states($(this).val())">
+                <select name="country_id" data-placeholder="Choose a Country..." class="form-control select-search" data-fouc onChange="load_states($(this).val())">
                   <option></option>
+                  <?php $phone_format = array(); ?>
                   <?php foreach($countries as $count): ?>
+                  <?php
+                  $phone_format[] = (object)array(
+                      "id"=>$count->id,
+                      "phoneformat"=>$count->phoneformat,
+                      "phonecode"=>$count->phonecode,
+                  );
+                  ?>
                   <option value="<?php echo $count->id; ?>"><?php echo $count->name; ?></option>
                   <?php endforeach; ?>
+                </select>
+                <textarea id="phone_format" style="display: none;"><?php echo json_encode($phone_format); ?></textarea>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>State:</label>
+                <select name="state_id" data-placeholder="Choose a State..." class="form-control select-search" data-fouc id="states" onChange="load_cities($(this).val())">
                 </select>
               </div>
             </div>
@@ -171,16 +182,15 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label>State:</label>
-                <select name="state_id" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc id="states" onChange="load_cities($(this).val())">
+                <label>City:</label>
+                <select name="city_id" data-placeholder="Choose a City..." class="form-control select-search" data-fouc id="cities">
                 </select>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label>City:</label>
-                <select name="city_id" data-placeholder="Choose a City..." class="form-control form-control-select2" data-fouc id="cities">
-                </select>
+                <label>Phone #:</label>
+                <input type="text" name="phone_number" id="format" class="form-control">
               </div>
             </div>
           </div>
@@ -202,7 +212,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Emergency contact phone #:</label>
-                <input type="text" name="emergency_contact_number" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+                <input type="text" name="emergency_contact_number" class="form-control" id="format1">
               </div>
             </div>
           </div>
@@ -269,7 +279,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_month" id="valid_from_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                    <select name="valid_from_month" id="valid_from_month" data-placeholder="Month" class="form-control select-search-basic" data-fouc>
                       <option value=""></option>
                       <?php foreach(CON_MONTHS as $key2=>$val2): ?>
                       <option value="<?php echo $key2; ?>"><?php echo $val2; ?></option>
@@ -279,7 +289,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_from_year" id="valid_from_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                    <select name="valid_from_year" id="valid_from_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option value=""></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -294,7 +304,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_month" id="valid_to_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
+                    <select name="valid_to_month" id="valid_to_month" data-placeholder="Month" class="form-control select-search-basic" data-fouc>
                       <option value=""></option>
                       <?php foreach(CON_MONTHS as $key3=>$val3): ?>
                       <option value="<?php echo $key3; ?>"><?php echo $val3; ?></option>
@@ -304,7 +314,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <select name="valid_to_year" id="valid_to_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
+                    <select name="valid_to_year" id="valid_to_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option value=""></option>
                       <?php for($i=2019; $i<=2029; $i++){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -339,6 +349,15 @@
     </div>
   </div>
 </div>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
+<script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+
+<script type="text/javascript">
+// Initialize
+//$('.select-search').select2();
+//$('input[name="from_month"]').select2();
+</script>
 <script type="text/javascript">
 function addNewLicense(){
 	$(".add_new_license").css("display","block");
@@ -348,7 +367,45 @@ function viewLicense(){
 	$(".add_new_license").css("display","none");
 	$(".license_view").css("display","block");
 }
+$(document).ready(function(e) {
+    inputMask($("#format,#format1"), "+99-99-9999-9999")
+});
+
+function inputMask(selector, format){
+  selector.val("");
+  var im = new Inputmask(""+format+"");
+  im.opts.placeholder = "_"
+  im.opts.clearMaskOnLostFocus = false;
+  im.opts.showMaskOnFocus = false;
+  im.mask(selector);
+}
+
+function change_phone_masking(id){
+  var selector = $("#format,#format1");
+  var phone_format = JSON.parse($("#phone_format").html());
+  var country_number_format = "";
+  var country_code = "";
+  $.each(phone_format, function(k, v){
+    if(v.id==id){
+     country_number_format = v.phoneformat;
+     country_code = v.phonecode;
+    }
+  });
+  final_country_code = "";
+  if(country_code.length==1)
+    final_country_code = "+9";
+  if(country_code.length==2)
+    final_country_code = "+99";
+  if(country_code.length==3)
+    final_country_code = "+999";
+  if(country_code.length==4)
+    final_country_code = "+9999";
+    
+  var final_format = final_country_code+"-"+country_number_format;
+  inputMask(selector, final_format);
+}
 function load_states(id){
+  change_phone_masking(id);
 	$.post("<?php echo site_url("agency/caregiver/load_states"); ?>", {id:id}).done(function(e){
 		$("#states").html(e);
 	});
@@ -471,5 +528,8 @@ function add_new_caregiver(){
 		type: 'success'
 	});*/
 }
+
 </script>
+
+
 <?php include(APPPATH."views/agency/inc/footer.php");?>

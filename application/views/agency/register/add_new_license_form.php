@@ -21,3 +21,7 @@
   <input type="hidden" name="valid_to_year[]" id="valid_to_year_<?php echo $post['counter']; ?>" value="<?php echo $post['valid_to_year']; ?>"/>
   <textarea style="display:none" name="media_license_document[]" id="media_license_document_<?php echo $post['counter']; ?>"><?php echo json_encode($file); ?></textarea>
 </div>
+
+
+
+

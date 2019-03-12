@@ -24,6 +24,7 @@ var FormWizard = function() {
             return;
         }
 
+
         // Basic wizard setup
         $('.steps-basic').steps({
             headerTag: 'h6',
@@ -230,20 +231,18 @@ var FormWizard = function() {
 
     // Select2 select
     var _componentSelect2 = function() {
-        if (!$().select2) {
+        if (!$('.form-control-select2').select2) {
             console.warn('Warning - select2.min.js is not loaded.');
             return;
         }
 
+        $('.select-search').select2();
+        $('.select-search-basic').select2();
+
         // Initialize
-        var $select = $('.form-control-select2').select2({
+        var $select = $('.select-search-basic').select2({
             minimumResultsForSearch: Infinity,
             width: '100%'
-        });
-
-        // Trigger value change when selection is made
-        $select.on('change', function() {
-            $(this).trigger('blur');
         });
     };
 
