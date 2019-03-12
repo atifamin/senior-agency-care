@@ -2,7 +2,7 @@
     <input type="hidden" name="firstName[<?php echo $counter; ?>]" id="first_name_family<?php echo $counter; ?>" value="<?php echo $first_name; ?>">
     <input type="hidden" name="lastName[<?php echo $counter; ?>]" id="last_name_family<?php echo $counter; ?>" value="<?php echo $last_name; ?>">
     <input type="hidden" name="emailAddress[<?php echo $counter; ?>]" id="email_address_family<?php echo $counter; ?>" value="<?php echo $email_address; ?>">
-    <input type="hidden" name="mobileNumber[<?php echo $counter; ?>]" id="mobile_number_family<?php echo $counter; ?>" value="<?php echo $mobile_number; ?>">
+    <input type="hidden" name="mobileNumber[<?php echo $counter; ?>]" id="mobile_number_family<?php echo $counter; ?>" value="<?php echo $mobile_number; ?>" required="required">
     <div class="col-md-2 offset-md-1">
                 <img src="<?php echo base_url(); ?>assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
             </div>
