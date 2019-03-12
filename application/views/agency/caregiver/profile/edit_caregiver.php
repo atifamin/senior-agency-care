@@ -445,6 +445,8 @@ function change_phone_masking(id){
     
   var final_format = final_country_code+"-"+country_number_format;
   inputMask(selector, final_format);
+  console.log(final_format);
+  return false;
 }
 function load_states(id){
   change_phone_masking(id);
@@ -520,8 +522,6 @@ function delete_license(id){
   }
 
 function edit_license(id) {
-     //alert(id);
-    //$('#modal_edit_license').modal('show');
   $.ajax({
     type:'post',
     url:'<?php echo site_url("agency/caregiver/edit_license"); ?>',
@@ -532,9 +532,7 @@ function edit_license(id) {
       $('#modal_edit_form_license').html(data);
       $('#modal_edit_license').modal('show');
     }
-
   });
-
 }
 
 function add_new_caregiver(){
