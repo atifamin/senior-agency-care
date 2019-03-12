@@ -159,7 +159,7 @@ $AppMaster = new AppMaster();
           <div class="col-md-6">
             <div class="form-group">
               <label>Phone #: <span class="text-danger">*</span></label>
-              <input type="text" name="phone_number" id="format" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+              <input type="text" name="phone_number" id="format" class="form-control">
             </div>
           </div>
           <div class="col-md-6">
@@ -495,47 +495,45 @@ function viewLicense(){
 	$(".add_new_license").css("display","none");
 	$(".license_view").css("display","block");
 }*/
+$(document).ready(function(e) {
+    inputMask($("#format"), "+99-99-9999-9999");
+});
+
+function inputMask(selector, format){
+	selector.val("");
+	var im = new Inputmask(""+format+"");
+	im.opts.placeholder = "_"
+	im.opts.clearMaskOnLostFocus = false;
+	im.opts.showMaskOnFocus = false;
+	im.mask(selector);
+}
+
 function change_phone_masking(id){
-  //var selector = document.getElementById("format");
-  
-
-  var phone_format = JSON.parse($("#phone_format").html());
-  //setTimeout(function(){$("#format").attr("data-mask", "+99-99-9999-9999");}, 100);
-  var country_number_format = "";
-  var country_code = "";
-  $.each(phone_format, function(k, v){
-    if(v.id==id){
-     country_number_format = v.phoneformat;
-     country_code = v.phonecode;
-    }
-  });
-  final_country_code = "";
-  if(country_code.length==1)
-      final_country_code = "+9";
-  if(country_code.length==2)
-      final_country_code = "+99";
-  if(country_code.length==3)
-      final_country_code = "+999";
-  if(country_code.length==4)
-      final_country_code = "+9999";
-
-  var final_format = final_country_code+"-"+country_number_format;
-  console.log(final_format);
-  $("#format").inputmask("remove");
-  //$("#format").val("");
-  $("#format").inputmask({"mask":final_format},{ "placeholder": "sdgfd" });
-  //setTimeout(function(){$("#format").inputmask({"mask": final_format});}, 100);
-  //var im = new Inputmask(""+final_format+"");
-  //im.mask(selector);
-  //$("#format").attr("data-mask", ""+final_format+"");
-
-  //$("#format").attr("placeholder", ""+placeholder+"");
-  //console.log(final_format);
-  //var format = element.attr("phone_format");
-  //console.log(format);
+	var selector = $("#format");
+	var phone_format = JSON.parse($("#phone_format").html());
+	var country_number_format = "";
+	var country_code = "";
+	$.each(phone_format, function(k, v){
+	  if(v.id==id){
+	   country_number_format = v.phoneformat;
+	   country_code = v.phonecode;
+	  }
+	});
+	final_country_code = "";
+	if(country_code.length==1)
+		final_country_code = "+9";
+	if(country_code.length==2)
+		final_country_code = "+99";
+	if(country_code.length==3)
+		final_country_code = "+999";
+	if(country_code.length==4)
+		final_country_code = "+9999";
+		
+	var final_format = final_country_code+"-"+country_number_format;
+	inputMask(selector, final_format);
 }
 function load_states(id){
-  change_phone_masking(id);
+  	change_phone_masking(id);
 	$.post("<?php echo site_url("agency/register/load_states"); ?>", {id:id}).done(function(e){
 		$("#states").html(e);
 	});
