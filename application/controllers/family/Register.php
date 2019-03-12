@@ -18,10 +18,11 @@ class Register extends CI_Controller {
 		$ifUserExists = $this->common_model->listingRow("register_code",$getUrl,"client_family");
 		if(count($ifUserExists)<=0)
 			redirect("family");
-
+		//print_array($ifUserExists);
 		$family_id = $ifUserExists->id;
 		$this->load->model("Family_model");
-		$data['family'] = $this->Family_model->getFamilyById($family_id);
+		$data['family'] = $this->Family_model->getFamily($family_id);
+		//print_array($data['family']);
 		$this->load->view("family/register/index",$data);
 	}
 

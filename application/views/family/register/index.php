@@ -32,7 +32,6 @@
 </head>
 
 <body>
-<?php print_array($family);?>
 <!-- Main navbar -->
 
 <!-- /main navbar --> 
@@ -47,7 +46,7 @@
     <div class="content d-flex justify-content-center align-items-center" style="background-image:url(<?php echo base_url("assets/images/backgrounds/background.jpg"); ?>)"> 
       
       <!-- Registration form -->
-      <form action="<?php echo site_url("caregiver/auth/register"); ?>" class="flex-fill" method="POST">
+      <form action="<?php echo site_url("family/auth/register"); ?>" class="flex-fill" method="POST">
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
             <div class="card mb-0">
@@ -65,7 +64,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group form-group-feedback form-group-feedback-right">
-                      <input type="text" class="form-control" placeholder="Second name" value="<?php echo $caregiver->last_name; ?>">
+                      <input type="text" class="form-control" placeholder="Last name" value="<?php echo $family->last_name; ?>">
                       <div class="form-control-feedback"> <i class="icon-user-check text-muted"></i> </div>
                     </div>
                   </div>
@@ -87,7 +86,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group form-group-feedback form-group-feedback-right">
-                      <input type="email" name="email" class="form-control" placeholder="Your email" value="<?php echo $caregiver->email; ?>">
+                      <input type="email" name="email_address" class="form-control" placeholder="Your email" value="<?php echo $family->email_address; ?>">
                       <div class="form-control-feedback"> <i class="icon-mention text-muted"></i> </div>
                     </div>
                   </div>
