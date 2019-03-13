@@ -35,7 +35,8 @@
       <div class="card-header" style="text-align: center;">
         <h6>Edit caregiver</h6>
       </div>
-      <form class="wizard-form steps-validation" action="#" data-fouc id="caregiver_form">
+      <form class="wizard-form steps-validation" action="<?php echo site_url("agency/caregiver/update"); ?>" method="post" enctype="multipart" data-fouc id="caregiver_form">
+        <input type="hidden" name="caregiver_id" value="<?php echo $detail->id; ?>">
         <h6><strong>Profile</strong></h6>
         <fieldset>
           <div class="row">
@@ -265,7 +266,7 @@
                 <div class=" offset-md-1 col-md-7">
                   <?php if(isset($detail->license) && count($detail->license)>0){
                     foreach($detail->license as $licenseKey=>$licenseVal){ ?>
-                     <div class="row" style="margin-top: 50px;">
+                     <div class="row" id="row_<?php echo $licenseVal->id; ?>" style="margin-top: 50px;">
                       <div class="col-md-8">
                         <div class="row">
                           <div class="col-md-6 text-center">
@@ -402,7 +403,7 @@
     </div>
   </div>
 </div>
-<script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_wizard.js"></script> 
+<script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_edit_wizard.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> 
 <script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
@@ -524,6 +525,7 @@ function delete_license(id){
     data:{id:id},
     dataType:'html',
     success:function(data){
+      $("#row_"+id+"").remove();
       //alert(data);
     }
 
@@ -558,13 +560,14 @@ function add_new_caregiver(){
 	
 	var formData = new FormData($("#caregiver_form")[0]);
 	$.ajax({
-		url: '<?php echo site_url("agency/caregiver/register_caregiver"); ?>',
+		url: '<?php echo site_url("agency/caregiver/update"); ?>',
 		type: 'POST',
 		data: formData,
 		cache: false,
 		contentType: false,
 		processData: false,
 		success: function(e){
+      alert(e);
 			if(e=="email_exists"){
 				swal({
 					title: 'Error!',
