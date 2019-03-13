@@ -115,7 +115,7 @@
 							<a href="#" class="nav-link <?php if($url_segment=="schedule"){echo 'active';} ?>"><i class="icon-stack"></i> <span>Schedule</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="<?php echo site_url("family/"); ?>" class="nav-link active">option</a></li>
+								<li class="nav-item"><a href="<?php echo site_url("family/schedule"); ?>" class="nav-link active">View Schedule</a></li>
 								<li class="nav-item"><a href="<?php echo site_url("family/"); ?>" class="nav-link">option</a></li>
 								<li class="nav-item"><a href="#" class="nav-link">Option # 3</a></li>
 							</ul>
