@@ -394,7 +394,7 @@ $AppMaster = new AppMaster();
             <div class="col-md-6">
               <div class="form-group">
                 <label>State license #: <span class="text-danger">*</span></label>
-                <input type="text" name="state_license" class="form-control required" placeholder="Add state license #" required>
+                <input type="text" name="state_license" class="form-control required" placeholder="Add state license #">
               </div>
             </div>
             <div class="col-md-6">

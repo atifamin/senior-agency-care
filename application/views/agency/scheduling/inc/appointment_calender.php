@@ -1,5 +1,6 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/picker_date.js"></script>
+
 <div class="row">
   <div class="col-md-12">
     <div class="row">
@@ -158,3 +159,29 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+$('#appointment_reminder_checkbox').click(function(){
+    if($(this).prop("checked") == true){
+      $("#appointment_set_reminder").css("display","block");
+    }
+    else if($(this).prop("checked") == false){
+        $("#appointment_set_reminder").css("display","none");
+    }
+});
+
+
+  function setTherapyType(){
+  var type = $("#therapy_type").val();
+  if(type == "doctor_appointment"){
+    $("#therapy_doc_name").css("display","block");
+    $("#appointment_set_reminder_doctor").css("display","block");
+    $("#appointment_set_reminder_therapy").css("display","none");
+  }else if (type == "therapy_appointment"){
+    $("#therapy_doc_name").css("display","none");
+    $("#appointment_set_reminder_therapy").css("display","block");
+    $("#appointment_set_reminder_doctor").css("display","none");
+  }
+}
+</script>

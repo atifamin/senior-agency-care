@@ -66,14 +66,18 @@
 					if(isset($clients) && count($clients)>0){
 					foreach($clients as $client){ ?>
 					<li class="media">
-						<div class="mr-3">
-							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/placeholder.jpg" class="rounded-circle" width="40" height="40" alt="">
-							</a>
+						<div class="mr-3"><img src="<?php echo base_url(); ?>assets/images/placeholder.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp;&nbsp;<span style="font-weight: 500"><?php echo $client->first_name." ".$client->last_name; ?></span>
 						</div>
 
 						<div class="media-body">
-							<div class="media-title font-weight-semibold"><?php echo $client->first_name." ".$client->last_name; ?></div>
+							<div class="media-title font-weight-semibold">
+								<?php if(isset($client->linked_profile_detail)){ ?>
+								<img src="<?php echo base_url(); ?>assets/images/placeholder.jpg" class="rounded-circle" width="40" height="40" alt=""><span>
+									<?php echo ", ".$client->linked_profile_detail->first_name." ".$client->linked_profile_detail->last_name; ?>
+									
+								</span>
+								<?php } ?>
+							</div>
 							<!-- <span class="text-muted">Development</span> -->
 						</div>
 						

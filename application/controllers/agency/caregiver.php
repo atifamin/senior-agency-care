@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Caregiver extends CI_Controller {
 
@@ -47,6 +46,15 @@ class Caregiver extends CI_Controller {
 		$this->load->view("agency/caregiver/profile/edit_caregiver",$data);
 	}
 	
+	public function update(){
+		$post = $this->input->post();
+		//print_array($post);
+		$id = $post["caregiver_id"];
+		unset($post["caregiver_id"]);
+		$this->common_model->updateQuery("caregiver", "id", $id, $post);
+		redirect("agency/caregiver/edit/".$id);
+		//print_array($post);
+	}
 	public function load_states(){
 		$id = $this->input->post("id");
 		$data['result'] = $this->common_model->listingResultWhere("country_id",$id,"states");
@@ -76,8 +84,8 @@ class Caregiver extends CI_Controller {
 	public function add_new_license_form(){
 		$data['post'] = $this->input->post();
 		$data['file'] = 0;
-		if(isset($_FILES["media_license_document"])){
-
+		//print_array($_FILES["media_license_document"]["name"]);
+		if(!empty($_FILES["media_license_document"]["name"])){
 			$data['file'] = upload_file($_FILES["media_license_document"], "caregiver_license", 0);
 		}
 		$fromDate = date("Y-m-d");
@@ -85,6 +93,19 @@ class Caregiver extends CI_Controller {
 		$expiry = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
 		$data['expiryDays'] = $expiry["days"];
 		$this->load->view("agency/caregiver/add_new_license_form", $data);
+	}
+	public function update_new_license_form(){
+		$data['post'] = $this->input->post();
+		$data['file'] = 0;
+		if(!empty($_FILES["media_license_document"]["name"])){
+
+			$data['file'] = upload_file($_FILES["media_license_document"], "caregiver_license", 0);
+		}
+		$fromDate = date("Y-m-d");
+		$toDate = date("".$data['post']["valid_to_year"]."-".$data['post']["valid_to_month"]."-d");
+		$expiry = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+		$data['expiryDays'] = $expiry["days"];
+		$this->load->view("agency/caregiver/update_caregiver_realtime", $data);
 	}
 	
 	public function register_caregiver(){
@@ -230,5 +251,24 @@ class Caregiver extends CI_Controller {
 		$this->send_invite($caregiver_id);
 		$this->session->set_flashdata("success", "Your invitation is sent to caregiver successfully.");
 		return redirect("agency/caregiver/send_invite_to_caregiver");
+	}
+
+	public function update_license(){
+		$post = $this->input->post();
+		$id = $post['caregiver_id'];
+		unset($post['caregiver_id']);
+		if(!empty($_FILES["media_license_document"]["name"])){
+
+			$data['file'] = upload_file($_FILES["media_license_document"], "caregiver_license", $id);
+		}
+		// $fromDate = date("Y-m-d");
+		// $toDate = date("".$data['post']["valid_to_year"]."-".$data['post']["valid_to_month"]."-d");
+		// $expiry = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+		// $data['expiryDays'] = $expiry["days"];
+		$this->common_model->updateQuery("caregiver_license", "id", $id, $post);
+		$data = $post;
+		$data["id"] = $id;
+		$this->load->view("agency/caregiver/profile/update_license",$data);
+
 	}
 }

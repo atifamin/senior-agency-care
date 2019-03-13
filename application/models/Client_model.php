@@ -37,12 +37,14 @@ class Client_model extends CI_Model{
         unset($post['month']);
         unset($post['day']);
         unset($post['year']);
+        unset($post['linked_profile']);
+        unset($post['linked_id']);
         $client_id = $this->common_model->insertGetIDQuery("client", $post);
         if(!empty($_FILES)){
         $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
         }
         if(!empty($data)){
-        $this->common_model->insertGetIDQuery("media", $data);
+            $this->common_model->insertGetIDQuery("media", $data);
         }
         if(!empty($family_first_name)){
             for($i = 0;$i < count($family_first_name);$i++){
@@ -58,6 +60,7 @@ class Client_model extends CI_Model{
                 $this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
             }
         }
+        return $client_id;
     }
 
     public function update_client($post){
@@ -83,10 +86,23 @@ class Client_model extends CI_Model{
         }
     }
     public function getAllClients(){
-        return $this->common_model->listingResult("client");
+        $data = $this->common_model->listingResultWhere("linked_profile",0,"client");
+        foreach($data as $key=>$val){
+            $getLinkedProfile = $this->common_model->listingRow("linked_profile",$val->id,"client");
+            if(count($getLinkedProfile)>0){
+                $data[$key]->linked_profile_detail = $getLinkedProfile;
+            }
+        }
+        //print_array($data);
+        return $data;
     }
     public function getById($id){
-        return $this->common_model->listingRow("id",$id,"client");
+        $data = $this->common_model->listingRow("id",$id,"client");
+        $getLinkedProfile = $this->common_model->listingRow("linked_profile",$data->id,"client");
+        if(count($getLinkedProfile)>0){
+            $data->linked_profile_detail = $getLinkedProfile;
+        }
+        return $data;
     }
 
     public function getClientFamilyById($id){

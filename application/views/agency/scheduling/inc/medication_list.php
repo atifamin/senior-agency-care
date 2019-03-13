@@ -116,7 +116,6 @@
                 <br>
                 <span class="text-muted">Select morning, evening or night</span>
                 <select class="form-control select-icons" data-fouc>
-                  <option></option>
                   <option value="morning">Morning</option>
                   <option value="evening">Evening</option>
                   <option value="night">Night</option>

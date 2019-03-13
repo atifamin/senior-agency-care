@@ -1,5 +1,7 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/client_form_wizard.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
 <style type="text/css">
 	.token-input{
 		min-width: 100% !important;
@@ -37,17 +39,28 @@
 	<div class="col-md-12">
 		<!-- Wizard with validation -->
 		<div class="card">
-			<div class="card-header" style="text-align: center;">
-				<h6>Add a new client</h6>
+			<div class="card-header" >
+				<div class="row">
+					<h4>Is this a single client case or couple</h4>
+					<div class="col-md-2">
+	                    <select id="linked" class="form-control form-control-select2" onchange="linkedClient($(this).val())" data-fouc>
+	                        <option value="0">SINGLE CLIENT</option>
+	                        <option value="1">COUPLE CLIENTS</option> 
+	                    </select>
+	                </div>
+	            </div>
 			</div>
 
 			<form id="client_information" role="form" enctype="multipart" method="post" class="wizard-form steps-validation" action="#" data-fouc>
+				
 				<h6><strong>Client Information</strong></h6>
 				<fieldset>
+					<input type="hidden" name="linked_profile" value="0">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>First Name:</label>
+								
 								<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Add client first name" required="required">
 							</div>
 						</div>
@@ -581,6 +594,7 @@
 		</div>
 	</div>
 </div>
+
 <!--Modal End-->
 <!-- Theme JS files -->
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tagsinput.min.js"></script>
@@ -597,6 +611,8 @@
 	<!-- /theme JS files -->
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 <script type="text/javascript">
+
+
 	function addNewLicense(){
 		$(".add_new_license").css("display","block");
 		$(".license_view").css("display","none");
@@ -639,7 +655,6 @@
 		}
 	}
 
-	//$("#client_information").submit(function(e){
 	
 	function add_new_agency(){
     //e.preventDefault();
@@ -647,6 +662,7 @@
    
     
 	//var notify_email =  $("input[name=notify_email]").val();
+	var linked_profile =  $("input[name=linked_profile]").val();
 	var first_name =  $("#first_name").val();
     var last_name = $("#last_name").val();
 	var mobile_number = $("#mobile_number").val();
@@ -711,6 +727,7 @@
     form_data.append('file', file_data);
     }
     
+    form_data.append('linked_profile', linked_profile);
     form_data.append('first_name', first_name);
     form_data.append('last_name', last_name);
     form_data.append('email_address', email_address);
@@ -748,6 +765,7 @@
 	form_data.append('lastName', lastName);
 	form_data.append('emailAddress', emailAddress);
 	form_data.append('mobileNumber', mobileNumber);
+	form_data.append('linked_id', <?php echo $linked_id; ?>);
     $.ajax({
         url: '<?php echo site_url("agency/clients/save_client"); ?>',
         dataType: 'text',
@@ -757,10 +775,32 @@
         data: form_data,                         
         type: 'post',
         success: function(data){
-			if(data == 1){
-				swal("Client", "added successfully!");
-				location.reload();
-			}
+        	data = JSON.parse(data);
+        	var button_text = "Ok";
+        	var alert_text = "You have added a client successfully!";
+        	if(data.is_linked_profile==1){
+				button_text = "Yes! Please Proceed";
+				alert_text = "Please Proceed to add next client data.";
+        	}
+        	swal({
+		        title: 'Good job!',
+		        text: alert_text,
+		        type: 'success',
+		        allowOutsideClick: false,
+				confirmButtonText:button_text,
+		        onClose: function () {
+		            if(data.is_linked_profile==1){
+						window.location = "<?php echo site_url("agency/clients/add_client?linked="); ?>"+data.linked_with_id+"";
+		            }else{
+		            	window.location = "<?php echo site_url("agency/clients"); ?>";
+		            }
+		        }
+		    });
+
+			// if(data == 1){
+			// 	swal("Client", "added successfully!");
+			// 	location.reload();
+			// }
         }
      });
     }
@@ -853,5 +893,10 @@
 			}
         }
 		});
+	}
+
+	function linkedClient(val){
+	 	$("input[name=linked_profile]").val(val);
+		
 	}
 </script>

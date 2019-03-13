@@ -39,7 +39,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>First Name: <span class="text-danger">*</span></label>
-                <input type="text" name="first_name" class="form-control" placeholder="Add first name">
+                <input type="text" required="required" name="first_name" class="form-control" placeholder="Add first name">
               </div>
             </div>
             <div class="col-md-4">
@@ -140,7 +140,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Caregiver email address: <span class="text-danger">*</span></label>
-                <input type="email" name="email" class="form-control" placeholder="company@email.com">
+                <input type="email" name="email" required="required" class="form-control" placeholder="company@email.com">
               </div>
             </div>
             <div class="col-md-6">
@@ -349,15 +349,106 @@
     </div>
   </div>
 </div>
+
+<div id="edit_license_modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" id="edit_license_modal_dialog">
+    <div class="modal-header">
+        <h5 class="modal-title"><strong>ADD NEW LICENSE</strong></h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <form id="edit_new_license_form" enctype="multipart/form-data">
+                        <input type="hidden" id="edit_counter">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>State license #: <span class="text-danger">*</span></label>
+                <input type="text" name="state_license" id="state_license_edit" class="form-control required" placeholder="Add state license #" data-validation="required" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Valid From:</label>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select name="valid_from_month" id="valid_from_month_edit" data-placeholder="Month" class="form-control select-search-basic" data-fouc>
+                      <option value=""></option>
+                      <?php foreach(CON_MONTHS as $key2=>$val2): ?>
+                      <option value="<?php echo $key2; ?>"><?php echo $val2; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select name="valid_from_year" id="valid_from_year_edit" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
+                      <option value=""></option>
+                      <?php for($i=2019; $i>=1960; $i--){ ?>
+                      <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>Valid To:</label>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select name="valid_to_month" id="valid_to_month_edit" data-placeholder="Month" class="form-control select-search-basic" data-fouc>
+                      <option value=""></option>
+                      <?php foreach(CON_MONTHS as $key3=>$val3): ?>
+                      <option value="<?php echo $key3; ?>"><?php echo $val3; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select name="valid_to_year" id="valid_to_year_edit" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
+                      <option value=""></option>
+                      <?php for($i=2019; $i<=2029; $i++){ ?>
+                      <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="d-block">Upload License Document(optional):</label>
+                <input name="media_license_document" type="file" id="media_license_document_edit" class="form-input-styled" data-fouc>
+                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="progress rounded-round" id="license_progress" style="display:none">
+                <div class="progress-bar bg-warning" style="width:0%"> <span></span> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+          <button type="button" onclick="update_license()" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Update License</span> </button>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
 <script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 
-<script type="text/javascript">
-// Initialize
-//$('.select-search').select2();
-//$('input[name="from_month"]').select2();
-</script>
 <script type="text/javascript">
 function addNewLicense(){
 	$(".add_new_license").css("display","block");
@@ -528,6 +619,61 @@ function add_new_caregiver(){
 		type: 'success'
 	});*/
 }
+
+
+function edit_license(id){
+  
+  var state_license = $("#state_license_"+id+"").val();
+  var valid_from_month = $("#valid_from_month_"+id+"").val();
+  var valid_from_year = $("#valid_from_year_"+id+"").val();
+  var valid_to_month = $("#valid_to_month_"+id+"").val();
+  var valid_to_year = $("#valid_to_year_"+id+"").val();
+  console.log(valid_from_year);
+  //var media_license_document = $("#media_license_document_"+id+"").val();
+  //alert(media_license_document);
+  //$('#file').prop('files')[0];
+  //var counter = id;
+  //alert(state_license);
+  $("#state_license_edit").val(state_license);
+  $("#valid_from_month_edit").select2("val",valid_from_month);
+  $("#valid_from_year_edit").val(valid_from_year).trigger('change');
+  $("#valid_to_month_edit").select2("val",valid_to_month);
+  $("#valid_to_year_edit").val(valid_to_year).trigger('change');
+  //$("#media_license_document_edit").val(media_license_document);
+  $("#edit_counter").val(id);
+  $("#edit_license_modal").modal('show');
+}
+
+function update_license(){
+  var state_license = $("#state_license_edit").val();
+  var valid_from_month = $("#valid_from_month_edit").val();
+  var valid_from_year = $("#valid_from_year_edit").val();
+  var valid_to_month = $("#valid_to_month_edit").val();
+  var valid_to_year = $("#valid_to_year_edit").val();
+  var media_license_document = $("#media_license_document_edit").prop('files')[0];
+  var counter = $("#edit_counter").val();
+  var form_data = new FormData(); 
+  form_data.append('state_license', state_license);
+  form_data.append('valid_from_month', valid_from_month);
+  form_data.append('valid_from_year', valid_from_year);
+	form_data.append('valid_to_month', valid_to_month);
+	form_data.append('valid_to_year', valid_to_year);
+  form_data.append('media_license_document', media_license_document);
+  form_data.append('counter', counter);
+  $.ajax({
+		url: '<?php echo site_url("agency/caregiver/update_new_license_form"); ?>',
+		type: 'POST',
+		data: form_data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function (e) {
+			$("#license_row_"+counter+"").html(e);
+      $("#edit_license_modal").modal('hide');
+		}
+  });
+}
+
 
 </script>
 
