@@ -354,11 +354,6 @@
 <script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 
 <script type="text/javascript">
-// Initialize
-//$('.select-search').select2();
-//$('input[name="from_month"]').select2();
-</script>
-<script type="text/javascript">
 function addNewLicense(){
 	$(".add_new_license").css("display","block");
 	$(".license_view").css("display","none");
