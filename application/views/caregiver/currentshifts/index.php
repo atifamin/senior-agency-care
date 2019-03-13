@@ -195,27 +195,27 @@
 $(".sub_car_pane").on("click", function(){
 	$("#navbar-demo-light").removeClass("show");
 });     
-        function setTherapyType(){
-            var type = $("#therapy_type").val();
-            if(type == "doctor_appointment"){
-                $("#therapy_doc_name").css("display","block");
-                $('#appointment_set_reminder_doctor').css('display','block');
-                $('#appointment_set_reminder_therapy').css('display','none');
-            }else if (type == "therapy_appointment"){
-                $("#therapy_doc_name").css("display","none");
-                $('#appointment_set_reminder_doctor').css('display','none');
-                $('#appointment_set_reminder_therapy').css('display','block');
-            }
-		}
+function setTherapyType(){
+    var type = $("#therapy_type").val();
+    if(type == "doctor_appointment"){
+        $("#therapy_doc_name").css("display","block");
+        $('#appointment_set_reminder_doctor').css('display','block');
+        $('#appointment_set_reminder_therapy').css('display','none');
+    }else if (type == "therapy_appointment"){
+        $("#therapy_doc_name").css("display","none");
+        $('#appointment_set_reminder_doctor').css('display','none');
+        $('#appointment_set_reminder_therapy').css('display','block');
+    }
+}
         
-        $('#btn_clock_in').click(function(){
-            if ($('#clock_in_time').css("display","none")) {
-                $('#clock_out_time').css("display","none");
-                $("#clock_out_btn").css({ 'background-color' : '#4CAF50', 'color' : '#fff'});
-                $('#clock_in_time').css("display","block");
-                $('#clock_in_modal').removeAttr('data-target');
-            }
-        });
+$('#btn_clock_in').click(function(){
+    if ($('#clock_in_time').css("display","none")) {
+        $('#clock_out_time').css("display","none");
+        $("#clock_out_btn").css({ 'background-color' : '#4CAF50', 'color' : '#fff'});
+        $('#clock_in_time').css("display","block");
+        $('#clock_in_modal').removeAttr('data-target');
+    }
+});
 
     </script>
 <?php include(APPPATH."views/caregiver/inc/footer.php"); ?>

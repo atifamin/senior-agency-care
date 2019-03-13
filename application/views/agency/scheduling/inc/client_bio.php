@@ -140,3 +140,16 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+function deleteClientBio(){
+swal({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover clients bio data!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!'
+  });
+}
+</script>
