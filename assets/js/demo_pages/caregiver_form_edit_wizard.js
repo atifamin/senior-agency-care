@@ -169,7 +169,7 @@ var FormWizard = function() {
             },
             onFinished: function (event, currentIndex) {
 				//edit_caregiver();
-                form.submit();
+                update_caregiver();
             }
         });
 

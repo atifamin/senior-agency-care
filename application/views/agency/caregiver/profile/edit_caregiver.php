@@ -80,10 +80,12 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label class="d-block">Upload Caregiver profile image:</label>
+                <!-- <label class="d-block">Upload Caregiver profile image:</label>
                 <input name="profile_pic" type="file" class="form-input-styled" data-fouc>
-                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span>
-                <img src="<?php echo caregiver_image($detail->id) ;?>" class="rounded-circle" width="100" height="100"  >
+                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> -->
+                <button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
+                <div id="croppedImageShow" ><img class="rounded-circle" src="<?php echo caregiver_image($detail->id) ;?>" width="100"></div>
+                <!-- <img src="<?php //echo caregiver_image($detail->id) ;?>" class="rounded-circle" width="100" height="100"  > -->
               </div>
             </div>  
           </div>
@@ -546,9 +548,10 @@ function edit_license(id) {
   });
 }
 
-function add_new_caregiver(){
+function update_caregiver(){
 	var password = $("input[name=password]").val();
-	var re_password = $("input[name=re_password]").val();
+  var re_password = $("input[name=re_password]").val();
+  var caregiver_id = $("input[name=caregiver_id]").val();
 	if(password!=re_password){
 		swal({
 			title: 'Error!',
@@ -558,7 +561,8 @@ function add_new_caregiver(){
 		return false;
 	}
 	
-	var formData = new FormData($("#caregiver_form")[0]);
+  var formData = new FormData($("#caregiver_form")[0]);
+  formData.append("croppedImage", $AppMaster.profileCropper.blob);
 	$.ajax({
 		url: '<?php echo site_url("agency/caregiver/update"); ?>',
 		type: 'POST',
@@ -567,17 +571,16 @@ function add_new_caregiver(){
 		contentType: false,
 		processData: false,
 		success: function(e){
-      alert(e);
-			if(e=="email_exists"){
-				swal({
-					title: 'Error!',
-					text: 'This email is already exists!',
-					type: 'error'
-				});
-			}
+			// if(e=="email_exists"){
+			// 	swal({
+			// 		title: 'Error!',
+			// 		text: 'This email is already exists!',
+			// 		type: 'error'
+			// 	});
+			// }
 			
 			if(e=="success"){
-				window.location = '<?php echo site_url("agency/caregiver/add_caregiver"); ?>';
+				window.location = '<?php echo site_url("agency/caregiver/edit/"); ?>'+caregiver_id;
 			}
 		},
 		xhr: function () {

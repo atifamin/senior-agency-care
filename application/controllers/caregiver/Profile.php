@@ -27,6 +27,7 @@ class Profile extends CI_Controller {
 		$data["breadcrumb"] = "Edit Profile";
 		$data["heading"] = "Edit Profile";
 		$data["url_segment"] = "wizard";
+		$data["caregiver"] = $this->common_model->listingRow("id",$caregiver_id,"caregiver");
 		$this->load->view("caregiver/profile/wizard",$data);
 	}
 }	
