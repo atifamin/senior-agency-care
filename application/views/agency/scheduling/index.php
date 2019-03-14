@@ -19,10 +19,10 @@ include(APPPATH."views/agency/inc/header.php");?>
           <table class="table datatable-basic dataTable no-footer" id="main-datatable">
             <thead>
               <tr>
-                <th>Clients</th>
-                <th>Billing Cycle</th>
-                <th>Totsl Worked Hours</th>
-                <th>Total Weekly Pay</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mobile Number</th>
+                <th>Email Address</th>
                 <th>Assigned Caregiver</th>
                 <th class="text-center">Actions</th>
               </tr>
@@ -30,10 +30,10 @@ include(APPPATH."views/agency/inc/header.php");?>
             <tbody>
               <?php for($i=0; $i<=10; $i++): ?>
               <tr>
-                <td><span><strong style="font-weight: 400;">Maxewell M</strong></span></td>
-                <td><span><strong style="font-weight: 400;">Monthly</strong></span></td>
-                <td><span><strong style="font-weight: 400;">40</strong></span></td>
-                <td><span><strong style="font-weight: 400;">500</strong></span></td>
+                <td><span><strong style="font-weight: 400;">Maxewell</strong></span></td>
+                <td><span><strong style="font-weight: 400;">Ross</strong></span></td>
+                <td><span><strong style="font-weight: 400;">0900-78601</strong></span></td>
+                <td><span><strong style="font-weight: 400;">maxwell@gmail.com</strong></span></td>
                 <td><li class="media" style="list-style: none;">
                     <div class="mr-3"> <a href="#"> <img src="<?php echo base_url(); ?>assets/images/userimg/face13.jpg" class="rounded-circle" width="40" height="40" alt=""> </a> <a href="#"> <img src="<?php echo base_url(); ?>assets/images/userimg/face3.jpg" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
                   </li></td>

@@ -90,3 +90,5 @@ define("CON_COMPANY_POSITIONS", array('owner'=>'Owner','ceo'=>"CEO",'co_founder'
 define("CON_MONTHS", array("1"=>"January", "2"=>"February", "3"=>"March", "4"=>"April", "5"=>"May", "6"=>"June", "7"=>"July", "8"=>"August", "9"=>"September", "10"=>"October", "11"=>"November", "12"=>"December"));
 define("CON_CAREGIVER_POSITIONS", array('caregiver'=>'Caregiver','manager'=>'Manager'));
 define("CON_CAREGIVER_CERTIFICATIONS", array('CNA_certified_nurse_assistant'=>'C.N.A Certified Nurse Assistant','home_health_aid'=>'Home Health Aid', 'registered_nurse'=>'Registered Nurse'));
+define("CON_CLIENT_MOBILITY_NEEDS", array('Walking cane','Weelchair'));
+define("CON_CLIENT_BILLIBG_CYCLE",array('Weekly','Bi-Weekly','Monthly'));

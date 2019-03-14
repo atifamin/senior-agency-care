@@ -291,9 +291,9 @@
 								<label>Add billing cycle<span style="margin-left: 10px;">(How often you send invite to your client)</span></label>
 			                    <select name="billing_cycle" id="billing_cycle" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
 			                        <option></option>
-			                        <option value="weekly">Weekly</option>
-			                        <option value="bi-weekly">Bi-Weekly</option>
-			                        <option value="monthly">Monthly</option>
+			                        <?php foreach (CON_CLIENT_BILLIBG_CYCLE as $billingkey => $billingvalue) { ?>
+			                        	<option value="<?php echo $billingkey; ?>"><?php echo $billingvalue; ?></option>
+			                        <?php } ?>
 			                    </select>
 		                    </div>
 						</div>
@@ -399,8 +399,11 @@
 								<label>Add client's mobility needs</label>
 			                    <select name="mobility_needs" id="mobility_needs" data-placeholder="Add client's mobility needs" class="form-control form-control-select2" data-fouc>
 			                        <option></option>
-			                        <option value="1">Walking cane</option>
-			                        <option value="2">Weelchair</option>
+			                        <?php foreach (CON_CLIENT_MOBILITY_NEEDS as $mobilitykey => $mobilityvalue) { ?>
+			                        	<option value="<?php echo $mobilitykey; ?>"><?php echo $mobilityvalue; ?></option>
+			                        <?php } ?> 
+			                        
+			                        
 			                    </select>
 		                    </div>
 						</div>
