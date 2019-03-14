@@ -51,8 +51,34 @@ class Caregiver extends CI_Controller {
 		//print_array($post);
 		$id = $post["caregiver_id"];
 		unset($post["caregiver_id"]);
+		$caregiver = $this->common_model->listingRow("id",$id,"caregiver");
+		if(isset($_FILES["croppedImage"])){
+			$profileImageDetail = $this->common_model->listingRow("id",$caregiver->profile_pic,"media");
+			$profilemediaData = upload_blob($_FILES["croppedImage"], "caregiver_profile", $caregiver->id, "/uploads/profileImages/");
+			
+			if(count($profileImageDetail)>0){
+				
+				if(file_exists(DOC_PATH.$profileImageDetail->full_path)){
+					unlink(DOC_PATH.$profileImageDetail->full_path);
+				}
+				$this->common_model->updateQuery("media", "id", $caregiver->profile_pic, $profilemediaData);
+			}else{
+				
+				//$profilemediaData = upload_blob($_FILES["croppedImage"], "caregiver_profile", $id, "/uploads/profileImages/");
+				
+				$newLogoId = $this->common_model->insertGetIDQuery("media", $profilemediaData);
+				//print_array($profilemediaData);
+				$profilePicId = array(
+					"profile_pic" => $newLogoId
+				);
+				
+				$this->common_model->updateQuery("caregiver", "id", $id, $profilePicId);
+			}
+		}
+		
 		$this->common_model->updateQuery("caregiver", "id", $id, $post);
-		redirect("agency/caregiver/edit/".$id);
+		echo "success";
+		//redirect("agency/caregiver/edit/".$id);
 		//print_array($post);
 	}
 	public function load_states(){
@@ -150,14 +176,16 @@ class Caregiver extends CI_Controller {
 		$caregiver['created_at'] = date("Y-m-d H:i:s");
 		$caregiver['updated_at'] = date("Y-m-d H:i:s");
 		$caregiver_id = $this->common_model->insertGetIDQuery("caregiver", $caregiver);
-		
-		//uploading and updating profile picture of caregiver
-		if(isset($_FILES["profile_pic"]) && $_FILES["profile_pic"]['name']!=''){
-			$profilePicData = upload_file($_FILES["profile_pic"], "caregiver", $caregiver_id);
-			$profile['profile_pic'] = $this->common_model->insertGetIDQuery("media", $profilePicData);
-			$this->common_model->updateQuery("caregiver", "id", $caregiver_id, $profile);
-		}		
-		
+			
+		if(isset($_FILES["croppedImage"])){
+			
+			$profilemediaData = upload_blob($_FILES["croppedImage"], "caregiver_profile", $caregiver_id, "/uploads/profileImages/");
+			$newLogoId = $this->common_model->insertGetIDQuery("media", $profilemediaData);
+			$profilePicId = array(
+				"profile_pic" => $newLogoId
+			);
+			$this->common_model->updateQuery("caregiver", "id", $caregiver_id, $profilePicId);
+		}
 		//Adding caregiver license
 		if(isset($post['state_license'])){
 			foreach($post['state_license'] as $key=>$val){
