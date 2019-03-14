@@ -19,10 +19,10 @@
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-4 offset-md-4" style="margin-top: 9px;">
-              <h6 style="font-size: 12px; color: #4caf50;">Added<span style="margin-left: 6px;" class="badge badge-success badge-pill">65</span></h6>
+              <h6 style="font-size: 12px; color: #4caf50;">Added<span style="margin-left: 6px;" class="badge badge-success badge-pill"><?php echo $total_added_profiles; ?></span></h6>
             </div>
             <div class="col-md-4" style="margin-top: 9px;">
-              <h6 style="font-size: 12px; color: #ff7043;">Pending<span style="margin-left: 6px;" class="badge badge-warning badge-pill">65</span></h6>
+              <h6 style="font-size: 12px; color: #ff7043;">Pending<span style="margin-left: 6px;" class="badge badge-warning badge-pill"><?php echo $total_pending_profiles; ?></span></h6>
             </div>
           </div>
         </div>
