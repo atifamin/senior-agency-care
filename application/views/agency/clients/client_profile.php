@@ -30,10 +30,14 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="row" style="margin: 10px 0;">
-					<div class="offset-md-3 col-md-6">
+					<div class="offset-md-1 col-md-10">
 						<ul class="nav nav-tabs nav-tabs-top nav-justified">
-							<li class="nav-item"><a href="#top-justified-tab1" class="nav-link active" data-toggle="tab">Active</a></li>
-							<li class="nav-item"><a href="#top-justified-tab2" class="nav-link" data-toggle="tab">Inactive</a></li>
+							
+							<li class="nav-item"><a href="#top-justified-tab1" class="nav-link active" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp;&nbsp;&nbsp;&nbsp;<?php if(isset($client_detail->first_name)){ echo $client_detail->first_name." ".$client_detail->last_name;} ?></a></li>
+							
+							<?php if (isset($client_detail->linked_profile_detail)) { ?>	
+							<li class="nav-item"><a href="#top-justified-tab2" class="nav-link" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp;&nbsp;&nbsp;&nbsp;<?php if(isset($client_detail->linked_profile_detail->first_name)){ echo $client_detail->linked_profile_detail->first_name." ".$client_detail->linked_profile_detail->last_name;} ?></a></li>
+							<?php } ?>
 						</ul>
 					</div>
 				</div>
@@ -61,6 +65,7 @@
 				                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 				                    		<div class="dropdown-menu dropdown-menu-right">
+				                    			<a href="<?php echo site_url("agency/clients/edit_client/".$client_detail->id); ?>" class="dropdown-item" ><i class="icon-pencil3"></i> Edit Client</a>
 						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#call"><i class="icon-phone2"></i> Make a call</a>
 						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#chat"><i class="icon-comment"></i> Start chat</a>
 						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
@@ -77,7 +82,7 @@
 										<li class="nav-item" style="padding-right: 30px;"><a href="#client_information1" class="nav-link active" data-toggle="tab">Client Information</a></li>
 										<li class="nav-item" style="padding-right: 30px;"><a href="#special_needs1" class="nav-link" data-toggle="tab">Special Needs</a></li>
 										<li class="nav-item" style="padding-right: 30px;"><a href="#family_center1" class="nav-link" data-toggle="tab">Family Center</a></li>
-										<li class="nav-item"><a href="#life_directive" class="nav-link" data-toggle="tab">End of Life Directive</a></li>
+										<li class="nav-item"><a href="#life_directive2" class="nav-link" data-toggle="tab">End of Life Directive</a></li>
 									</ul>
 
 									<div class="tab-content">
@@ -149,7 +154,7 @@
 													<table>
 														<tr>
 															<td style="width: 250px;"><strong>Client Dietry requirements:</strong></td>
-															<td><span><?php echo $client_detail->dietry_requirements; ?></span></td>
+															<td><span><?php if(isset($client_detail->dietry_requirements)){echo $client_detail->dietry_requirements;} ?></span></td>
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Client Fluid requirements:</strong></td>
@@ -272,7 +277,7 @@
 											
 											</div>
 										</div>
-										<div class="tab-pane fade" id="life_directive">
+										<div class="tab-pane fade" id="life_directive2">
 											<div class="row" style="margin-top: 30px;">
 												<div class="col-md-12">
 													<table>
@@ -309,8 +314,10 @@
 							</div>
 						</div>
 					</div>
+
+					<?php if (isset($client_detail->linked_profile_detail)) { ?>
+						
 					<div class="tab-pane fade" id="top-justified-tab2">
-						<p>second client herer</p>
 						<ul class="media-list">
 							<li class="media">
 								<div class="mr-3">
@@ -318,9 +325,8 @@
 										<img src="<?php echo base_url(); ?>assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
 									</a>
 								</div>
-
 								<div class="media-body">
-									<div class="media-title font-weight-semibold"><?php if(isset($client->first_name)){ echo $client->first_name." ".$client->last_name;} ?></div>
+									<div class="media-title font-weight-semibold"><?php if(isset($client_detail->linked_profile_detail->first_name)){ echo $client_detail->linked_profile_detail->first_name." ".$client_detail->linked_profile_detail->last_name;} ?></div>
 									<span class="text-muted">Development</span>
 								</div>
 
@@ -333,7 +339,8 @@
 				                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 				                    		<div class="dropdown-menu dropdown-menu-right">
-						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#call"><i class="icon-phone2"></i> Make a call</a>
+				                    			<a href="<?php echo site_url("agency/clients/edit_client/".$client_detail->linked_profile_detail->id); ?>" class="dropdown-item" ><i class="icon-pencil3"></i> Edit Client</a>
+						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#call1"><i class="icon-phone2"></i> Make a call</a>
 						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#chat"><i class="icon-comment"></i> Start chat</a>
 						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
 				                    		</div>
@@ -346,22 +353,19 @@
 							<div class="col-md-12">
 								<div class="card-body">
 									<ul class="nav nav-tabs nav-tabs-bottom">
-										<li class="nav-item" style="padding-right: 30px;"><a href="#client_information" class="nav-link active" data-toggle="tab">Client Information</a></li>
-										<li class="nav-item" style="padding-right: 30px;"><a href="#special_needs" class="nav-link" data-toggle="tab">Special Needs</a></li>
-										<li class="nav-item" style="padding-right: 30px;"><a href="#family_center" class="nav-link" data-toggle="tab">Family Center</a></li>
+										<li class="nav-item" style="padding-right: 30px;"><a href="#client_information2" class="nav-link active" data-toggle="tab">Client Information</a></li>
+										<li class="nav-item" style="padding-right: 30px;"><a href="#special_needs2" class="nav-link" data-toggle="tab">Special Needs</a></li>
+										<li class="nav-item" style="padding-right: 30px;"><a href="#family_center2" class="nav-link" data-toggle="tab">Family Center</a></li>
 										<li class="nav-item"><a href="#life_directive" class="nav-link" data-toggle="tab">End of Life Directive</a></li>
 									</ul>
 
 									<div class="tab-content">
-										<div class="tab-pane fade show active" id="client_information">
+										<div class="tab-pane fade show active" id="client_information2">
 											<div class="row" style="margin-top: 20px;">
 												<div class="col-md-12">
 													<div class="d-flex align-items-center">
 														<div class="mr-3">
-															<h4>Cathy Peter</h4>
-														</div>
-														<div>
-															<a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-file-empty"></i>Edit</a>
+															<h4><?php //echo $client_detail->linked_profile_detail->first_name." ".$client_detail->linked_profile_detail->last_name; ?></h4>
 														</div>
 													</div>
 												</div>
@@ -370,38 +374,107 @@
 												<div class="col-md-12">
 													<table>
 														<tr>
-															<td style="width: 150px;"><strong>Gender:</strong></td>
-															<td><?php if(isset($client->gender)){echo $client->gender;} ?></td>
-														</tr>
-														<tr>
-															<td style="width: 150px;"><strong>Phone:</strong></td>
-															<td><span style="color: #3f51b5;"><?php if(isset($client->mobile_number)){echo $client->mobile_number;} ?></span></td>
+															<td style="width: 200px;"><strong>Phone:</strong></td>
+															<td><span><?php echo $client_detail->linked_profile_detail->mobile_number; ?></span></td>
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Email:</strong></td>
-															<td><span style="color: #3f51b5;"><?php if(isset($client->email_address)){echo $client->email_address;} ?></span></td>
+															<td><span><?php if(isset($client_detail->linked_profile_detail->email_address)){echo $client_detail->linked_profile_detail->email_address;} ?></span></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Gender:</strong></td>
+															<td><?php echo $client_detail->linked_profile_detail->gender; ?></td>
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Client From:</strong></td>
-															<td><?php if(isset($client->client_from)){ echo $client->client_from;} ?></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->client_from)){ echo $client_detail->linked_profile_detail->client_from;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Client To:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->client_to)){echo $client_detail->linked_profile_detail->client_to;} ?></td>
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Birthday:</strong></td>
-															<td><?php if(isset($client->dob)){echo date("M,d-Y",strtotime($client->dob));} ?></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->dob)){echo date("M,d-Y",strtotime($client_detail->linked_profile_detail->dob));} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Level of Care:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->level_care)){echo $client_detail->linked_profile_detail->level_care;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Client Pets:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->pets_types)){echo $client_detail->linked_profile_detail->pets_types;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Rate per Hour:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->rate_per_hour)){echo $client_detail->linked_profile_detail->rate_per_hour;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Rate per Week:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->hours_per_week)){echo $client_detail->linked_profile_detail->hours_per_week;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Billing Cycle:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->billing_cycle)){echo $client_detail->linked_profile_detail->billing_cycle;} ?></td>
 														</tr>
 													</table>
 												</div>
 											</div>
 										</div>
-										<div class="tab-pane fade" id="special_needs">
-											Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
+
+										<div class="tab-pane fade" id="special_needs2">
+											<div class="row" style="margin-top: 30px;">
+												<div class="col-md-12">
+													<table>
+														<tr>
+															<td style="width: 250px;"><strong>Client Dietry requirements:</strong></td>
+															<td><span><?php if(isset($client_detail->linked_profile_detail->dietry_requirements)){echo $client_detail->linked_profile_detail->dietry_requirements;} ?></span></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Client Fluid requirements:</strong></td>
+															<td><span><?php if(isset($client_detail->linked_profile_detail->fluid_requirements)){echo $client_detail->linked_profile_detail->fluid_requirements;} ?></span></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Medication list:</strong></td>
+															<td><?php echo $client_detail->linked_profile_detail->medication_list; ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Allergies list:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->allergies_list)){ echo $client_detail->linked_profile_detail->allergies_list;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Oxygen Quantity:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->oxygen_quantity)){echo $client_detail->linked_profile_detail->oxygen_quantity;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Oxygen administered:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->oxygen_administered)){echo $client_detail->linked_profile_detail->oxygen_administered;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Mobility needs:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->mobility_needs)){
+																echo $client_detail->linked_profile_detail->mobility_needs;
+															} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Client transportation:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->transportation_requirements)){echo $client_detail->linked_profile_detail->transportation_requirements;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Client transfer needs:</strong></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->transfer_needs)){echo $client_detail->linked_profile_detail->transfer_needs;} ?></td>
+														</tr>
+													</table>
+												</div>
+											</div>
 										</div>
-										<div class="tab-pane fade" id="family_center">
+										<div class="tab-pane fade" id="family_center2">
 											<div class="col-md-12"> 
+												<!-- Dropdown list -->
 												<h5 style="text-align: center;">Send an invite to your clients</h5>
 												<div class="col-md-9">
 													<form id="send_invite_form" action="<?php echo site_url("agency/clients/add_send_invite"); ?>" method="POST" role="form">
-													<input type="hidden" name="client_id" value="<?php echo $client->id; ?>">
+													<input type="hidden" name="client_id" value="<?php echo $client_detail->id; ?>">
 													<div class="row" style="padding: 50px 0px;">
 														<div class="col-md-2">
 														<div class="form-group">
@@ -470,17 +543,52 @@
 													</div>
 													<?php }} ?>
 												</div>
+												<!-- <div class="col-md-12" style="text-align: right; padding-top: 15px; padding-bottom: 15px;">
+													<button type="submit" class="btn btn-primary legitRipple"> Done<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
+												</div> -->
 												</div>
+												<!-- /dropdown list --> 
+											
 											</div>
 										</div>
 										<div class="tab-pane fade" id="life_directive">
-											Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
+											<div class="row" style="margin-top: 30px;">
+												<div class="col-md-12">
+													<table>
+														<tr>
+															<td style="width: 250px;"><strong>Life Directive document:</strong></td>
+															<td><span><a href="<?php echo base_url().$client_detail->client_document_detail->full_path; ?>" download><?php if(isset($client_detail->client_document_detail->file_name)){echo $client_detail->client_document_detail->file_name;} ?></a></span></td>
+														</tr>
+														<tr>
+															<td style="width: 250px;"><strong>Client Dietry requirements:</strong></td>
+															<td><span><?php echo $client_detail->dietry_requirements; ?></span></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Primary Care Doctor:</strong></td>
+															<td><span><?php if(isset($client_detail->pcd_name)){echo $client_detail->pcd_name;} ?></span></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Primary Doctor Contact Info:</strong></td>
+															<td><?php if(isset($client_detail->pcd_name)){echo $client_detail->pcd_contact;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Preferd Hospital:</strong></td>
+															<td><?php if(isset($client_detail->prefered_hospital)){ echo $client_detail->prefered_hospital;} ?></td>
+														</tr>
+														<tr>
+															<td style="width: 150px;"><strong>Special Instruction:</strong></td>
+															<td><?php if(isset($client_detail->special_instructions)){echo $client_detail->special_instructions;} ?></td>
+														</tr>
+													</table>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
