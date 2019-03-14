@@ -283,7 +283,7 @@
 													<table>
 														<tr>
 															<td style="width: 250px;"><strong>Life Directive document:</strong></td>
-															<td><span><a href="<?php echo base_url().$client_detail->client_document_detail->full_path; ?>" download><?php if(isset($client_detail->client_document_detail->file_name)){echo $client_detail->client_document_detail->file_name;} ?></a></span></td>
+															<td><span><a href="<?php if(isset($client_detail->client_document_detail->full_path)) {echo base_url().$client_detail->client_document_detail->full_path;} ?>" download><?php if(isset($client_detail->client_document_detail->file_name)){echo $client_detail->client_document_detail->file_name;} ?></a></span></td>
 														</tr>
 														<tr>
 															<td style="width: 250px;"><strong>Client Dietry requirements:</strong></td>
