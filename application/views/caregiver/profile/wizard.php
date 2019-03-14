@@ -1,6 +1,6 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_wizard.js"></script>
-
+<script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_edit_wizard.js"></script>
+<?php// print_array($caregiver); ?>
 <div class="row">
   <div class="col-md-12">
     <div class="card card-body border-top-1 border-top-primary">
@@ -19,30 +19,31 @@
     <!-- Wizard with validation -->
     <div class="card">
       <form class="wizard-form steps-validation" action="#" data-fouc id="caregiver_form">
+       <input type="hidden" name="caregiver_id" value="<?php echo $caregiver->id; ?>">
         <h6><strong>Profile</strong></h6>
         <fieldset>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
                 <label>First Name: <span class="text-danger">*</span></label>
-                <input type="text" name="first_name" class="form-control" placeholder="Add first name" value="<?php echo $profile_detail->first_name; ?>">
+                <input type="text" name="first_name" class="form-control" placeholder="Add first name" value="<?php echo $caregiver->first_name; ?>">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Last Name: <span class="text-danger">*</span></label>
-                <input type="text" name="last_name" class="form-control" placeholder="Add last name" value="<?php echo $profile_detail->last_name; ?>">
+                <input type="text" name="last_name" class="form-control" placeholder="Add last name" value="<?php echo $caregiver->last_name; ?>">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group mb-3 mb-md-2">
                 <label class="d-block font-weight-semibold">Gender:</label>
                 <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" name="gender" id="custom_radio_inline_right_checked" <?php if($profile_detail->gender=="male"){echo 'checked=""';} ?> value="male">
+                  <input type="radio" class="custom-control-input" name="gender" id="custom_radio_inline_right_checked" <?php if($caregiver->gender=="male"){echo 'checked=""';} ?> value="male">
                   <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Male</label>
                 </div>
                 <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" name="gender" id="custom_radio_inline_right_unchecked" <?php if($profile_detail->gender=="female"){echo 'checked=""';} ?> value="female">
+                  <input type="radio" class="custom-control-input" name="gender" id="custom_radio_inline_right_unchecked" <?php if($caregiver->gender=="female"){echo 'checked=""';} ?> value="female">
                   <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Female</label>
                 </div>
               </div>
@@ -55,16 +56,23 @@
                 <select name="position" data-placeholder="Choose a Position..." class="form-control form-control-select2" data-fouc>
                   <option></option>
                   <?php foreach(CON_CAREGIVER_POSITIONS as $positionKey=>$positionVal): ?>
-                  <option value="<?php echo $positionKey; ?>" <?php if($profile_detail->position==$positionKey){echo 'selected="selected"';} ?>><?php echo $positionVal; ?></option>
+                  <option value="<?php echo $positionKey; ?>" <?php if($caregiver->position==$positionKey){echo 'selected="selected"';} ?>><?php echo $positionVal; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label class="d-block">Upload Caregiver profile image:</label>
+                <!-- <label class="d-block">Upload Caregiver profile image:</label>
                 <input name="profile_pic" type="file" class="form-input-styled " data-fouc>
-                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
+                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div> -->
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
+                </div>
+                <div class="col-md-6">
+                  <div id="croppedImageShow" ><img width="100" class="rounded-circle" src="<?php echo caregiver_image($caregiver->id) ;?>"></div>
+                </div>
+                </div>
             </div>
           </div>
           <div class="row">
@@ -320,12 +328,13 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Add New License</span> </button>
+          <button type="submit"  class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Add New License</span> </button>
         </div>
       </form>
     </div>
   </div>
 </div>
+<!-- <script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_edit_wizard.js"></script> -->
 <script type="text/javascript">
 function addNewLicense(){
 	$(".add_new_license").css("display","block");
@@ -400,9 +409,10 @@ function delete_license(id){
 	$("#license_row_"+id+"").remove();
 }
 
-function add_new_caregiver(){
+function update_caregiver(){
 	var password = $("input[name=password]").val();
-	var re_password = $("input[name=re_password]").val();
+  var re_password = $("input[name=re_password]").val();
+  var caregiver_id = $("input[name=caregiver_id]").val();
 	if(password!=re_password){
 		swal({
 			title: 'Error!',
@@ -412,25 +422,26 @@ function add_new_caregiver(){
 		return false;
 	}
 	
-	var formData = new FormData($("#caregiver_form")[0]);
+  var formData = new FormData($("#caregiver_form")[0]);
+  formData.append("croppedImage", $AppMaster.profileCropper.blob);
 	$.ajax({
-		url: '<?php echo site_url("agency/caregiver/register_caregiver"); ?>',
+		url: '<?php echo site_url("agency/caregiver/update"); ?>',
 		type: 'POST',
 		data: formData,
 		cache: false,
 		contentType: false,
 		processData: false,
 		success: function(e){
-			if(e=="email_exists"){
-				swal({
-					title: 'Error!',
-					text: 'This email is already exists!',
-					type: 'error'
-				});
-			}
+			// if(e=="email_exists"){
+			// 	swal({
+			// 		title: 'Error!',
+			// 		text: 'This email is already exists!',
+			// 		type: 'error'
+			// 	});
+			// }
 			
 			if(e=="success"){
-				window.location = '<?php echo site_url("agency/caregiver/add_caregiver"); ?>';
+				window.location = '<?php echo site_url("caregiver/profile/wizard/"); ?>'+caregiver_id;
 			}
 		},
 		xhr: function () {
@@ -441,7 +452,6 @@ function add_new_caregiver(){
 					percentComplete = parseInt(percentComplete * 100);
 					$("#agency_progress > .progress-bar").css('width', percentComplete + '%');
 					$("#agency_progress > .progress-bar").html('<span>'+percentComplete+'% Complete</span>');
-
 					/*if(percentComplete==100){
 						window.location = '<?php echo site_url("agency/dashboard"); ?>';
 					}*/

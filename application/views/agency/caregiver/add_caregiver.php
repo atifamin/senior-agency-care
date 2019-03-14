@@ -76,9 +76,13 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label class="d-block">Upload Caregiver profile image:</label>
+                <!-- <label class="d-block">Upload Caregiver profile image:</label>
                 <input name="profile_pic" type="file" class="form-input-styled " data-fouc>
-                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
+                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span>  -->
+                
+                <button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
+                <div id="croppedImageShow" ><img width="100"></div>
+                </div>
             </div>
           </div>
           <div class="row">
@@ -574,6 +578,7 @@ function add_new_caregiver(){
 	}
 	
 	var formData = new FormData($("#caregiver_form")[0]);
+  formData.append("croppedImage", $AppMaster.profileCropper.blob);
 	$.ajax({
 		url: '<?php echo site_url("agency/caregiver/register_caregiver"); ?>',
 		type: 'POST',
