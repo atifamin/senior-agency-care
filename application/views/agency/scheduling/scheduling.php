@@ -37,7 +37,7 @@
           <span class="text-muted">Caregiver</span> </div>
         <div class="align-self-center ml-3"> <a href="#" class="text-default" data-toggle="collapse" data-target="#james3"> <i class="icon-menu7"></i> </a> </div>
       </div>
-      <div class="collapse" id="james3">
+      <div class="collapse show" id="james3">
         <div class="pb-1">
           <div class="row">
             <div class="col-md-12">
@@ -50,8 +50,8 @@
                 <!-- <div class="col-md-3"></div> -->
                 <div class="offset-md-4 col-md-4">
                   <ul class="nav nav-tabs nav-tabs-solid nav-justified border-0">
-                    <li class="nav-item"><a href="#james1" class="nav-link active legitRipple" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/images/userimg/face14.jpg" class="rounded-circle mr-1" width="25" height="25" alt=""></i>Mr Ronald Ross</a></li>
-                    <li class="nav-item"><a href="#james2" class="nav-link legitRipple" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/images/userimg/face3.jpg" class="rounded-circle mr-1" width="25" height="25" alt=""></i> Mrs Regie Ross</a></li>
+                    <li class="nav-item"><a href="#james1" class="nav-link active legitRipple" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/images/userimg/face14.jpg" class="rounded-circle mr-1" width="25" height="25" alt="">Mr Ronald Ross</a></li>
+                    <li class="nav-item"><a href="#james2" class="nav-link legitRipple" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/images/userimg/face3.jpg" class="rounded-circle mr-1" width="25" height="25" alt=""> Mrs Regie Ross</a></li>
                   </ul>
                   <!-- <a href="#" class="btn bg-teal-400" data-toggle="collapse" id="james1_data" data-target="#james1"> <img src="<?php echo base_url(); ?>assets/images/userimg/face14.jpg" class="rounded-circle mr-2" width="25" height="25" alt=""> Mr Ronald Ross </a>
                   <a href="#" class="btn bg-teal-400" data-toggle="collapse" id="james2_data" data-target="#james2"> <img src="<?php echo base_url(); ?>assets/images/userimg/face3.jpg" class="rounded-circle mr-2" width="25" height="25" alt=""></i> Mrs Reggie Ross </a> -->
