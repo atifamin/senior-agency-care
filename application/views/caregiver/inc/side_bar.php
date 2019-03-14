@@ -30,7 +30,7 @@
 						</div>
 													
 						<div class="sidebar-user-material-footer">
-							<a href="#user-nav" class="d-flex justify-content-between align-items-center text-shadow-dark dropdown-toggle <?php if($urlSeg2=="profile" || $urlSeg2=="messaging"){echo 'collapsed';} ?>" data-toggle="collapse" <?php if($urlSeg2=="profile" || $urlSeg2=="messaging"){echo 'aria-expanded="true"';} ?>><span>My account</span></a>
+							<a href="#user-nav" class="d-flex justify-content-between align-items-center text-shadow-dark dropdown-toggle <?php if($urlSeg2=="profile" || $urlSeg2=="messaging"){echo 'collapsed';} ?>" data-toggle="collapse" <?php if($urlSeg2=="profile" || $urlSeg2=="messaging"){echo 'aria-expanded="true"';} ?>><span>My Account</span></a>
 						</div>
 					</div>
 
