@@ -12,19 +12,25 @@ class Scheduling extends CI_Controller {
     	//LoggedIn User ID
 		$userSession = $this->session->userdata("isAgencyLoggedIn");
 		$this->agency_id = $userSession['user_id'];
+		$this->load->model("Client_model");
 	}
 
 	public function index(){
 		$data["breadcrumb"] = "Scheduling";
 		$data["heading"] = "Client Scheduling";
 		$data["url_segment"] = "Scheduling";
+		$data["clients"] = $this->Client_model->getAllClients();
+		//print_array($data['clients']);
 		$this->load->view("agency/scheduling/index",$data);
 	}
 
-	public function view_scheduling(){
+	public function view($client_id){
 		$data["breadcrumb"] = "Scheduling";
 		$data["heading"] = "Scheduling";
 		$data["url_segment"] = "scheduling";
+		$data['client_id'] = $client_id;
+		$data['clientDetail'] = $this->Client_model->getById($client_id);
+		//print_array($data['clientDetail']);
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	

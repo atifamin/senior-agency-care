@@ -109,8 +109,8 @@ class Client_model extends CI_Model{
         //print_array($data);
         return $data;
     }
-    public function getById($id){
-        $data = $this->common_model->listingRow("id",$id,"client");
+    public function getById($client_id){
+        $data = $this->common_model->listingRow("id",$client_id,"client");
         if (count($data)>0){
             $clientDocument  = $this->common_model->listingRow("id",$data->life_directive_document,"media");
             if (count($clientDocument)>0) {
