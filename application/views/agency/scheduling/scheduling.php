@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
-<?php //print_array($clientDetail); ?>
+<?php //print_array($relationshipDetails); ?>
 <style>
 .navbar-light .active>.navbar-nav-link, .navbar-light .navbar-nav-link.active, .navbar-light .navbar-nav-link.show, .navbar-light .show>.navbar-nav-link {
 	background-color: #f1f0f0;
@@ -20,9 +20,9 @@
   <div class="row" style="margin-top: 10px; padding: 10px;">
     <div class="offset-md-4 col-md-4">
       <ul class="nav nav-tabs nav-tabs-solid nav-justified border-0">
-        <li class="nav-item" onclick="window.location = '<?php echo site_url("agency/scheduling/view/".$clientDetail->id.""); ?>'"><a href="javascript:;" class="nav-link active legitRipple" data-toggle="tab"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle mr-1" width="25" height="25" alt=""><?php echo $clientDetail->first_name." ".$clientDetail->last_name; ?></a></li>
-        <?php if(isset($clientDetail->linked_profile_detail)){ ?>
-        <li class="nav-item" onclick="window.location = '<?php echo site_url("agency/scheduling/view/".$clientDetail->linked_profile_detail->id.""); ?>'"><a href="javascript:;" class="nav-link legitRipple" data-toggle="tab"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle mr-1" width="25" height="25" alt=""> <?php echo $clientDetail->linked_profile_detail->first_name." ".$clientDetail->linked_profile_detail->last_name; ?></a></li>
+        <li class="nav-item" onclick="window.location = '<?php echo site_url("agency/scheduling/view/".$relationshipDetails->id.""); ?>'"><a href="javascript:;" class="nav-link legitRipple <?php if($client_id==$relationshipDetails->id){echo 'active';} ?>" data-toggle="tab"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle mr-1" width="25" height="25" alt=""><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></a></li>
+        <?php if(isset($relationshipDetails->linked_profile_detail)){ ?>
+        <li class="nav-item" onclick="window.location = '<?php echo site_url("agency/scheduling/view/".$relationshipDetails->linked_profile_detail->id.""); ?>'"><a href="javascript:;" class="nav-link legitRipple <?php if($client_id==$relationshipDetails->linked_profile_detail->id){echo 'active';} ?>" data-toggle="tab"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle mr-1" width="25" height="25" alt=""> <?php echo $relationshipDetails->linked_profile_detail->first_name." ".$relationshipDetails->linked_profile_detail->last_name; ?></a></li>
         <?php } ?>
       </ul>
     </div>

@@ -116,13 +116,37 @@ class Client_model extends CI_Model{
             if (count($clientDocument)>0) {
                 $data->client_document_detail = $clientDocument;
             }
-            $getLinkedProfile = $this->common_model->listingRow("linked_profile",$data->id,"client");
-            if(count($getLinkedProfile)>0){
-                $data->linked_profile_detail = $getLinkedProfile;
-            }
         }
         return $data;
     }
+	
+	public function clientRelationshipDetail($client_id){
+		$query = $this->db->where("client_id", $client_id)
+				->or_where("linked_id", $client_id)
+				->get("client_relationship")->row();
+		
+		$data = $this->common_model->listingRow("id",$client_id,"client");
+		if(count($query)>0){
+			$data = $this->common_model->listingRow("id",$query->client_id,"client");
+			$getLinkedProfile = $this->common_model->listingRow("id",$query->linked_id,"client");
+            if(count($getLinkedProfile)>0){
+                $data->linked_profile_detail = $getLinkedProfile;
+				$clientDocument1 = $this->common_model->listingRow("id",$getLinkedProfile->life_directive_document,"media");
+				if (count($clientDocument1)>0) {
+					$data->linked_profile_detail->client_document_detail = $clientDocument1;
+				}
+            }
+		}
+		
+		
+		if (count($data)>0){
+            $clientDocument2 = $this->common_model->listingRow("id",$data->life_directive_document,"media");
+            if (count($clientDocument2)>0) {
+                $data->client_document_detail = $clientDocument2;
+            }
+		}
+		return $data;
+	}
 
     public function getClientFamilyById($id){
         return $this->common_model->listingResultWhere("client_id",$id,"client_family");

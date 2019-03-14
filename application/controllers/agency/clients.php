@@ -53,7 +53,8 @@ class Clients extends CI_Controller {
 			$first_client_id = $post['linked_id'];
 			$second_client_id = $client_id;
 			//$this->common_model->updateQuery("client", "id", $first_client_id, array("linked_profile"=>$second_client_id));
-			$this->common_model->updateQuery("client", "id", $second_client_id, array("linked_profile"=>$first_client_id));
+			//$this->common_model->updateQuery("client", "id", $second_client_id, array("linked_profile"=>$first_client_id));
+			$this->common_model->insertQuery("client_relationship", array("client_id"=>$first_client_id, "linked_id"=>$second_client_id));
 		}
 		echo json_encode($data);
 	}

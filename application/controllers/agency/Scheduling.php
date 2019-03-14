@@ -29,7 +29,7 @@ class Scheduling extends CI_Controller {
 		$data["heading"] = "Scheduling";
 		$data["url_segment"] = "scheduling";
 		$data['client_id'] = $client_id;
-		$data['clientDetail'] = $this->Client_model->getById($client_id);
+		$data['relationshipDetails'] = $this->Client_model->clientRelationshipDetail($client_id);
 		//print_array($data['clientDetail']);
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
