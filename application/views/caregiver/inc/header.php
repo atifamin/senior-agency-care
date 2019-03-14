@@ -1,6 +1,8 @@
 <?php
 	$profile_image = caregiver_image($this->caregiver_id);
 	$profile_detail = caregiver_Detail($this->caregiver_id);
+	$urlSeg2 = $this->uri->segment(2);
+	$urlSeg3 = $this->uri->segment(3);
 
 	//print_array($profile_detail);
 ?>
