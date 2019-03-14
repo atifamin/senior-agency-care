@@ -18,6 +18,8 @@ class Caregiver extends CI_Controller {
 		$data["breadcrumb"] = "Caregivers";
 		$data["heading"] = "Caregivers";
 		$data["url_segment"] = "caregivers";
+		$data['total_added_profiles'] = $this->Caregiver_model->totalCaregiverProfileByStatus($this->agency_id, "added");
+		$data['total_pending_profiles'] = $this->Caregiver_model->totalCaregiverProfileByStatus($this->agency_id, "pending");
 		$data['result'] = $this->Caregiver_model->getCaregiverByAgencyId($this->agency_id);
 		$this->load->view("agency/caregiver/index",$data);
 	}
@@ -43,6 +45,8 @@ class Caregiver extends CI_Controller {
 		$data["states"] = $this->common_model->listingResultWhere("country_id",$data["detail"]->country_id,"states");
 		$data["cities"] = $this->common_model->listingResultWhere("state_id",$data["detail"]->state_id,"cities");
 		//print_array($data['detail']);
+		$data['total_added_profiles'] = $this->Caregiver_model->totalCaregiverProfileByStatus($this->agency_id, "added");
+		$data['total_pending_profiles'] = $this->Caregiver_model->totalCaregiverProfileByStatus($this->agency_id, "pending");
 		$this->load->view("agency/caregiver/profile/edit_caregiver",$data);
 	}
 	

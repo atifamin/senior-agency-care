@@ -41,7 +41,9 @@
 		<div class="card">
 			<div class="card-header" >
 				<div class="row">
+					<div class="offset-md-3 col-md-4">
 					<h4>Is this a single client case or couple</h4>
+					</div>
 					<div class="col-md-2">
 	                    <select id="linked" class="form-control form-control-select2" onchange="linkedClient($(this).val())" data-fouc>
 	                        <option value="0">SINGLE CLIENT</option>
