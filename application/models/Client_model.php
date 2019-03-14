@@ -5,10 +5,10 @@ class Client_model extends CI_Model{
 
     public function save_client($post){
         //print_array($post);
-        $dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
-        $dob = DateTime::createFromFormat('M-d-Y', $dob);
-        $dob = $dob->format('Y-m-d');
-        $post['dob'] = $dob;
+        //$dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
+        //$dob = DateTime::createFromFormat('M-d-Y', $dob);
+        //$dob = $dob->format('Y-m-d');
+        $post['dob'] = "".$post['year'].'-'.$post['month'].'-'.$post['day']."";
         if(!empty($post['firstName'])){
         $family_first_name = $post['firstName'];
         $family_first_name = explode(',', $family_first_name);
@@ -39,12 +39,13 @@ class Client_model extends CI_Model{
         unset($post['year']);
         unset($post['linked_profile']);
         unset($post['linked_id']);
+        unset($post['is_directive_document']);
         $client_id = $this->common_model->insertGetIDQuery("client", $post);
         if(!empty($_FILES)){
         $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
         }
         if(!empty($data)){
-            $this->common_model->insertGetIDQuery("media", $data);
+            $life_directive_document = $this->common_model->insertGetIDQuery("media", $data);
         }
         if(!empty($family_first_name)){
             for($i = 0;$i < count($family_first_name);$i++){
@@ -59,6 +60,12 @@ class Client_model extends CI_Model{
                 $this->load->model("Email_model");
                 $this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
             }
+        }
+        if(!empty($life_directive_document)){
+                $client_document = array(
+                "life_directive_document" => $life_directive_document
+                );
+            $this->common_model->updateQuery("client", "id", $client_id, $client_document);                                                                 
         }
         return $client_id;
     }
@@ -84,6 +91,12 @@ class Client_model extends CI_Model{
             );
         $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
         }
+        // if(!empty($media_id)){
+        //         $client_document = array(
+        //         "media_id" => $media_id
+        //         );
+        //     $this->common_model->updateQuery("client", "id", $client_id, $client_document);                                                                 
+        // }
     }
     public function getAllClients(){
         $data = $this->common_model->listingResultWhere("linked_profile",0,"client");
@@ -98,9 +111,15 @@ class Client_model extends CI_Model{
     }
     public function getById($id){
         $data = $this->common_model->listingRow("id",$id,"client");
-        $getLinkedProfile = $this->common_model->listingRow("linked_profile",$data->id,"client");
-        if(count($getLinkedProfile)>0){
-            $data->linked_profile_detail = $getLinkedProfile;
+        if (count($data)>0){
+            $clientDocument  = $this->common_model->listingRow("id",$data->life_directive_document,"media");
+            if (count($clientDocument)>0) {
+                $data->client_document_detail = $clientDocument;
+            }
+            $getLinkedProfile = $this->common_model->listingRow("linked_profile",$data->id,"client");
+            if(count($getLinkedProfile)>0){
+                $data->linked_profile_detail = $getLinkedProfile;
+            }
         }
         return $data;
     }
