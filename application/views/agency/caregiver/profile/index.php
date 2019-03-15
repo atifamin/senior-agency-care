@@ -296,8 +296,18 @@
 								</div>
 								</div>
 								<div class="tab-pane fade" id="caregiver_certification">
-									<strong>My Certifications:</strong>
-									<?php echo $detail->caregiver_certifications;?>
+									<div class="row" style="margin-bottom: 20px;">
+										<div class="col-md-6">
+											<strong>My Certifications</strong>
+										</div>
+									</div>
+									<?php 
+									$caregiver_certifications = json_decode($detail->caregiver_certifications); 
+									foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
+										<span class="bg-dark py-1 px-2 rounded" style=""><span><?php echo $value; ?></span></span>
+								<?php	} 
+								// <span class="bg-dark py-1 px-2 rounded"><span class="text-white">C.N.A Certified Nurse Assistant</span></span>
+									?>
 								</div>
 								<div class="tab-pane fade" id="valid_state_license">
 								    <strong>Valid State Liscence:</strong>

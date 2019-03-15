@@ -227,7 +227,22 @@
             <div class="col-md-6"> 
               <!-- Within a group with checkbox -->
               <div class="form-group">
-                <div class="input-group"> <span class="input-group-prepend">
+                <div class="row" style="margin-bottom: 20px; margin-top: 5px;">
+                  <div class="col-md-12">
+                    <strong>Select caregiver's certifications</strong>
+                  </div>
+                </div>
+                <select data-placeholder="Select Certifications" name="caregiver_certifications[]" multiple="multiple" class="form-control select" data-fouc>
+                    <optgroup label="">
+                      <?php foreach(CON_CAREGIVER_CERTIFICATIONS as $cgCertificationsKey => $cgCertificationsVal): ?>
+                        <option value="<?php echo $cgCertificationsKey; ?>" selected=""><?php echo $cgCertificationsVal; ?></option>
+                        <?php endforeach; ?>
+                      <!-- <option value="AZ" selected="">C.N.A Certified Nurse Assistant</option>
+                      <option value="ID" selected="">Home Health Aid</option>
+                      <option value="WY" selected="">Registered Nurse</option> -->
+                    </optgroup>
+                  </select>
+                <!-- <div class="input-group"> <span class="input-group-prepend">
                   <div class="input-group-text">
                     <input type="checkbox" class="form-control-styled" checked data-fouc>
                   </div>
@@ -237,7 +252,7 @@
                     <option value="<?php echo $cgCertificationsKey; ?>"><?php echo $cgCertificationsVal; ?></option>
                     <?php endforeach; ?>
                   </select>
-                </div>
+                </div> -->
               </div>
               <!-- /within a group with checkbox --> 
             </div>

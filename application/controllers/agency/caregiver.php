@@ -53,7 +53,7 @@ class Caregiver extends CI_Controller {
 	
 	public function update(){
 		$post = $this->input->post();
-		print_array($post);
+		//print_array($post);
 		$id = $post["caregiver_id"];
 		unset($post["caregiver_id"]);
 		unset($post["croppedImage"]);
@@ -143,6 +143,7 @@ class Caregiver extends CI_Controller {
 	
 	public function register_caregiver(){
 		$post = $this->input->post();
+		
 		$result = 'success';
 		//checking if user email is already exists
 		$checkUserExists = $this->common_model->listingRow("email", $post['email'], "caregiver");

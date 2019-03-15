@@ -238,19 +238,34 @@
             <div class="col-md-6"> 
               <!-- Within a group with checkbox -->
               <div class="form-group">
-                <div class="input-group"> <span class="input-group-prepend">
-                  <div class="input-group-text">
-                    <input type="checkbox" class="form-control-styled" checked data-fouc>
-                  </div>
-                  </span>
-                  <?php
-                  $caregiver_certifications_array = json_decode($detail->caregiver_certifications);
-				  ?>
-                  <select class="form-control multiselect" multiple="multiple" data-fouc name="caregiver_certifications[]" id="caregiver_certifications">
+                 <div class="input-group"> <span class="input-group-prepend">
+                  <select data-placeholder="Select Certifications" id="caregiver_certifications" name="caregiver_certifications[]" multiple="multiple" class="form-control select" data-fouc>
+                    <optgroup label="">
+                       <?php 
+                  $caregiver_certifications = json_decode($detail->caregiver_certifications); 
+                  foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
+                    <option value="<?php echo $key; ?>"  <?php if(in_array($key, $caregiver_certifications)){echo 'selected="selected"';} ?>><?php echo $value; ?></option>
+                    
+                <?php } 
+                // <span class="bg-dark py-1 px-2 rounded"><span class="text-white">C.N.A Certified Nurse Assistant</span></span>
+                  ?>
+
+                      </optgroup>
+                  </select>
+                  <?php 
+                  //$caregiver_certifications = json_decode($detail->caregiver_certifications); 
+                 // foreach ($caregiver_certifications as $key =>$value) { ?>
+                    <?php //echo CON_CAREGIVER_CERTIFICATIONS[$value]; ?>
+                <?php //} 
+                // <span class="bg-dark py-1 px-2 rounded"><span class="text-white">C.N.A Certified Nurse Assistant</span></span>
+                  ?>
+
+
+                  <!-- <select class="form-control multiselect" multiple="multiple" data-fouc name="caregiver_certifications[]" id="caregiver_certifications">
                     <?php foreach(CON_CAREGIVER_CERTIFICATIONS as $cgCertificationsKey=>$cgCertificationsVal): ?>
                     <option value="<?php echo $cgCertificationsKey; ?>" <?php if(count($caregiver_certifications_array)>0){if(in_array($caregiver_certifications_array, $cgCertificationsKey)){echo 'selected="selected"';}} ?>><?php echo $cgCertificationsVal; ?></option>
                     <?php endforeach; ?>
-                  </select>
+                  </select> -->
                 </div>
               </div>
               <!-- /within a group with checkbox --> 
