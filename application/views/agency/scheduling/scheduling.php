@@ -5,6 +5,7 @@
 	background-color: #f1f0f0;
 }
 </style>
+
 <div class="card">
   <div class="card-header bg-white header-elements-sm-inline" style="background-color: #fafafa!important; padding: 6px 6px 6px 6px;">
     <h6 style="font-size: 12px; color: #FEA024; margin: 0 auto; text-align: center;">Clients not scheduled<span style="margin-left: 6px;" class="badge badge-warning badge-pill">65</span></h6>
@@ -17,14 +18,12 @@
       </form>
     </div>
   </div>
-   <?php if(isset($relationshipDetails->linked_profile_detail)){ ?>
+  <?php if(isset($relationshipDetails->linked_profile_detail)){ ?>
   <div class="row" style="margin-top: 10px; padding: 10px;">
     <div class="offset-md-4 col-md-4">
       <ul class="nav nav-tabs nav-tabs-solid nav-justified border-0">
         <li class="nav-item" onclick="window.location = '<?php echo site_url("agency/scheduling/view/".$relationshipDetails->id.""); ?>'"><a href="javascript:;" class="nav-link legitRipple <?php if($client_id==$relationshipDetails->id){echo 'active';} ?>" data-toggle="tab"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle mr-1" width="25" height="25" alt=""><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></a></li>
-       
         <li class="nav-item" onclick="window.location = '<?php echo site_url("agency/scheduling/view/".$relationshipDetails->linked_profile_detail->id.""); ?>'"><a href="javascript:;" class="nav-link legitRipple <?php if($client_id==$relationshipDetails->linked_profile_detail->id){echo 'active';} ?>" data-toggle="tab"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle mr-1" width="25" height="25" alt=""> <?php echo $relationshipDetails->linked_profile_detail->first_name." ".$relationshipDetails->linked_profile_detail->last_name; ?></a></li>
-        
       </ul>
     </div>
   </div>

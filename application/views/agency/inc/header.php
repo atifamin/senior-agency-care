@@ -22,6 +22,8 @@
 	<link href="<?php echo base_url(); ?>assets/css/layout.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo base_url(); ?>assets/css/components.min.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo base_url(); ?>assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/css/extras/animate.min.css" rel="stylesheet" type="text/css">
+
 	<!-- /global stylesheets -->
 	
 <!-- Core JS files -->
@@ -54,6 +56,9 @@
 	<script src="<?php echo base_url();?>assets/js/demo_pages/extra_sweetalert.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/notifications/sweet_alert.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/app-script.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/plugins/loaders/progressbar.min.js"></script>
+
+    
     
 
 </head>
