@@ -255,9 +255,10 @@
 								<label>Add billing cycle<span style="margin-left: 10px;">(How often you send invite to your client)</span></label>
 			                    <select name="billing_cycle" id="billing_cycle" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
 			                        <option></option>
-			                        <option <?php if(isset($client->billing_cycle)){if($client->billing_cycle == "weekly"){echo "selected='selected'";}} ?> value="weekly">Weekly</option>
-			                        <option <?php if(isset($client->billing_cycle)){if($client->billing_cycle == "bi-weekly"){echo "selected='selected'";}} ?> value="bi-weekly">Bi-Weekly</option>
-			                        <option <?php if(isset($client->billing_cycle)){if($client->billing_cycle == "monthly"){echo "selected='selected'";}} ?> value="monthly">Monthly</option>
+			                        <?php foreach (CON_CLIENT_BILLIBG_CYCLE as $billingkey => $billingvalue) { ?>
+			                        	<option value="<?php echo $billingkey; ?>" <?php 
+			                        	if ($billingkey == $client->billing_cycle){echo "selected='selected'";} ?>><?php echo $billingvalue; ?></option>
+			                        <?php } ?>
 			                    </select>
 		                    </div>
 						</div>
@@ -519,6 +520,8 @@
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_tags_input.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
 
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
