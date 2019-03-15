@@ -364,11 +364,14 @@
 								<label>Add client's mobility needs</label>
 			                    <select name="mobility_needs" id="mobility_needs" data-placeholder="Add client's mobility needs" class="form-control form-control-select2" data-fouc>
 			                        <option></option>
-			                        <option <?php if(isset($client->mobility_needs)){if($client->mobility_needs == 1){echo "selected='selected'";}} ?> value="1">Walking cane</option>
-			                        <option <?php if(isset($client->mobility_needs)){if($client->mobility_needs == 2){echo "selected='selected'";}} ?> value="2">Weelchair</option>
+			                       <?php foreach (CON_CLIENT_MOBILITY_NEEDS as $mobilitykey => $mobilityvalue){ ?>
+			                       	<option value="<?php echo $mobilitykey; ?>" <?php 
+			                       	if ($mobilitykey == $client->mobility_needs){echo "selected='selected'";} ?>>
+			                       	<?php echo $mobilityvalue; ?></option>
+			                      <?php } ?>
 			                    </select>
 		                    </div>
-						</div>
+						</div>	
 					</div>
 					<div class="row" style="margin-top: 20px;">
 						<div class="col-md-6">
@@ -628,9 +631,9 @@ $(document).ready(function(){
 	var mobility_needs = $("#mobility_needs").val();
 	var transportation_requirements = $("#transportation_requirements").val();
 	var transfer_needs = $("#transfer_needs").val();
-	if(file_data){
-	var is_directive_document = 1;
-	}
+	// if(file_data){
+	// var is_directive_document = 1;
+	// }
 	var pcd_name = $("#pcd_name").val();
 	var pcd_contact = $("#pcd_contact").val();
 	var prefered_hospital = $("#prefered_hospital").val();
@@ -668,7 +671,7 @@ $(document).ready(function(){
 	form_data.append('mobility_needs', mobility_needs);
 	form_data.append('transportation_requirements', transportation_requirements);
 	form_data.append('transfer_needs', transfer_needs);
-	form_data.append('is_directive_document', is_directive_document);
+	//form_data.append('is_directive_document', is_directive_document);
 	form_data.append('pcd_name', pcd_name);
 	form_data.append('pcd_contact', pcd_contact);
 	form_data.append('prefered_hospital', prefered_hospital);
