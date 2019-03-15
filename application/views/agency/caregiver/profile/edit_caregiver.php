@@ -243,9 +243,12 @@
                     <input type="checkbox" class="form-control-styled" checked data-fouc>
                   </div>
                   </span>
-                  <select class="form-control multiselect" multiple="multiple" data-fouc>
+                  <?php
+                  $caregiver_certifications_array = json_decode($detail->caregiver_certifications);
+				  ?>
+                  <select class="form-control multiselect" multiple="multiple" data-fouc name="caregiver_certifications[]" id="caregiver_certifications">
                     <?php foreach(CON_CAREGIVER_CERTIFICATIONS as $cgCertificationsKey=>$cgCertificationsVal): ?>
-                    <option value="<?php echo $cgCertificationsKey; ?>"><?php echo $cgCertificationsVal; ?></option>
+                    <option value="<?php echo $cgCertificationsKey; ?>" <?php if(count($caregiver_certifications_array)>0){if(in_array($caregiver_certifications_array, $cgCertificationsKey)){echo 'selected="selected"';}} ?>><?php echo $cgCertificationsVal; ?></option>
                     <?php endforeach; ?>
                   </select>
                 </div>
@@ -563,6 +566,7 @@ function update_caregiver(){
 	
   var formData = new FormData($("#caregiver_form")[0]);
   formData.append("croppedImage", $AppMaster.profileCropper.blob);
+  formData.append("caregiver_certifications", $("#caregiver_certifications").val());
 	$.ajax({
 		url: '<?php echo site_url("agency/caregiver/update"); ?>',
 		type: 'POST',
