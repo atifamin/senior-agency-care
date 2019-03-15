@@ -12,14 +12,13 @@ class Scheduling extends CI_Controller {
     	//LoggedIn User ID
 		$userSession = $this->session->userdata("isAgencyLoggedIn");
 		$this->agency_id = $userSession['user_id'];
-		$this->load->model("Client_model");
+		$this->load->model(array("Client_model", "Caregiver_model"));
 	}
 
 	public function index(){
 		$data["breadcrumb"] = "Scheduling";
 		$data["heading"] = "Client Scheduling";
 		$data["url_segment"] = "Scheduling";
-		$data["clients"] = $this->Client_model->getAllClients();
 		//print_array($data['clients']);
 		$this->load->view("agency/scheduling/index",$data);
 	}
@@ -31,8 +30,26 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $client_id;
 		$data['relationshipDetails'] = $this->Client_model->clientRelationshipDetailById($client_id);
 		$data['client'] = $this->Client_model->getById($client_id);
-		//print_array($data['activeClientDetail']);
+		$data['caregivers'] = $this->Caregiver_model->getAll();
+		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$client_id,"client_caregiver_relationship");
 		$this->load->view("agency/scheduling/scheduling",$data);
+	}
+	
+	public function assign_caregiver(){
+		$post = $this->input->post();
+		$caregivers = explode(",", $post["caregivers_id"]);
+		$client_id = $post['client_id'];
+		foreach($caregivers as $caregiver_id){
+			$checkIfCaregiverAssigned = $this->common_model->listingMultipleWhereRow("client_caregiver_relationship", array("client_id"=>$client_id, "caregiver_id"=>$caregiver_id));
+			if(count($checkIfCaregiverAssigned)<=0){
+				$this->common_model->insertQuery("client_caregiver_relationship", array(
+					"client_id"	=>	$client_id,
+					"caregiver_id"	=>	$caregiver_id
+				));
+			}
+		}
+		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$client_id,"client_caregiver_relationship");
+		$this->load->view("agency/scheduling/inc/scheduling/view_assigned_caregivers", $data);
 	}
 	
 }
