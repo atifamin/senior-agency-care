@@ -1,5 +1,6 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/client_form_wizard.js"></script>
+
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
 <style type="text/css">
@@ -425,7 +426,169 @@
 						</div>
 					</div>
 				</fieldset>
-
+				<h6><strong>Medical History</strong></h6>
+				<fieldset>
+					<div class="row" style="margin-top: 15px;">
+						<div class="offset-md-1 col-md-11">
+							<h6>LIST THE CLIENTS KNOWN MEDICAL HISTORY </h6>
+						</div>
+					</div>
+					<div class="row" style="margin: 15px 0;">
+						<div class="offset-md-1 col-md-3">
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="diabetic" data-fouc>
+									Diabetic
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Alone most of the time
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Needs Assistance for most ADL
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									SOB on Exertion
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Paralysis
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Confusion/Forgetfull
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									History of falls
+								</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="unirary_catheter" data-fouc>
+									Unirary Catheter
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Bed Bpound
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Has wounds
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Prone to bone fractures
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Amputation
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Poor vision
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Partial weight bearing
+								</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="hearing_deficit" data-fouc>
+									Hearing Deficit
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									History of Seizures
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									At risk of bleeding
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Speach/Communication of Deficit
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Has dentures
+								</label>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+											partial
+										</label>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+											lower
+										</label>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+											upper
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-check" style="margin-top: 8px;">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
+									Other
+								</label>
+							</div>
+						</div>
+					</div>
+					<div id="append_family"></div>
+				</fieldset>
 				<h6><strong>Family Center</strong></h6>
 				<fieldset>
 					<div class="row">
@@ -459,7 +622,7 @@
 						</div>
 					</div>
 					<div id="append_family_member"></div>
-				</ffieldset>
+				</fieldset>
 				<h6><strong>End of Life Directive</strong></h6>
 				<fieldset>
 					<div class="row">
@@ -630,7 +793,6 @@
 	function add_new_agency(){
     //e.preventDefault();
     var file_data = $('#file').prop('files')[0];   
-   
     
 	//var notify_email =  $("input[name=notify_email]").val();
 	var linked_profile =  $("input[name=linked_profile]").val();
