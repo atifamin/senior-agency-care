@@ -63,7 +63,7 @@ class Clients extends CI_Controller {
 		$data["breadcrumb"] = "Client";
 		$data["heading"] = "Our Clients";
 		$data["url_segment"] = "clients";
-		$data["client_detail"] = $this->Client_model->getById($id);
+		$data["client_detail"] = $this->Client_model->clientRelationshipDetail($id);
 		$data["client_family"] = $this->Client_model->getClientFamilyById($id);
 		$this->load->view("agency/clients/client_profile",$data);
 	}

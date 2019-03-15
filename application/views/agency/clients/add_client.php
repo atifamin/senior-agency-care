@@ -115,9 +115,7 @@
 									<div class="form-group">
 		                                <select name="client_to" id="client_to" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
 		                                    <option></option> 
-		                                    <!-- <option value="1995">1995</option> 
-		                                    <option value="...">...</option> 
-		                                    <option value="1980">1980</option>  -->
+		                                    <option>Present</option> 
 											<?php
 											$year = date("Y");
 											for($i= $year;$i > 1919;$i--){ ?>
