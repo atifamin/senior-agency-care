@@ -44,37 +44,7 @@
 
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="top-justified-tab1">
-						<ul class="media-list">
-							<li class="media">
-								<div class="mr-3">
-									<a href="#">
-										<img src="<?php echo base_url(); ?>assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
-									</a>
-								</div>
-								<div class="media-body">
-									<div class="media-title font-weight-semibold"><?php if(isset($client_detail->first_name)){ echo $client_detail->first_name." ".$client_detail->last_name;} ?></div>
-									<span class="text-muted">Development</span>
-								</div>
-
-								<div class="align-self-center ml-3" style="margin-right: 1.25rem!important;">
-									<span class="badge badge-light badge-striped badge-striped-right border-right-success" style="color: #4caf50;">Profile Completed</span>
-								</div>
-								<div class="align-self-center ml-3">
-									<div class="list-icons">
-				                    	<div class="list-icons-item dropdown">
-				                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
-
-				                    		<div class="dropdown-menu dropdown-menu-right">
-				                    			<a href="<?php echo site_url("agency/clients/edit_client/".$client_detail->id); ?>" class="dropdown-item" ><i class="icon-pencil3"></i> Edit Client</a>
-						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#call"><i class="icon-phone2"></i> Make a call</a>
-						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#chat"><i class="icon-comment"></i> Start chat</a>
-						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
-				                    		</div>
-				                    	</div>
-			                    	</div>
-								</div>
-							</li>
-						</ul>
+						
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card-body">
@@ -83,7 +53,7 @@
 										<li class="nav-item" style="padding-right: 30px;"><a href="#special_needs1" class="nav-link" data-toggle="tab">Special Needs</a></li>
 										<li class="nav-item" style="padding-right: 30px;"><a href="#family_center1" class="nav-link" data-toggle="tab">Family Center</a></li>
 										<li class="nav-item"><a href="#life_directive2" class="nav-link" data-toggle="tab">End of Life Directive</a></li>
-										<li class="nav-item" style="right: 3% !important; position: absolute;"><a href="<?php echo site_url("agency/".$this->agency_id."") ?>"><button class="btn btn-light" style="background-color: #fff;"><i class="icon-google-drive mr-2"></i> Edit Profile</button></a></li>
+										<li class="nav-item" style="right: 3% !important; position: absolute;"><a href="<?php echo site_url("agency/clients/edit_client/".$client_detail->id); ?>"><button class="btn btn-light" style="background-color: #fff;"><i class="icon-google-drive mr-2"></i> Edit Profile</button></a></li>
 									</ul>
 
 									<div class="tab-content">
@@ -142,7 +112,7 @@
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Billing Cycle:</strong></td>
-															<td><?php if(isset($client_detail->billing_cycle)){echo CON_CLIENT_BILLIBG_CYCLE[$client_detail->billing_cycle];} ?></td>
+															<td><?php if(isset(CON_CLIENT_BILLIBG_CYCLE[$client_detail->billing_cycle])){echo CON_CLIENT_BILLIBG_CYCLE[$client_detail->billing_cycle];} ?></td>
 														</tr>
 													</table>
 												</div>
@@ -179,7 +149,7 @@
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Mobility needs:</strong></td>
-															<td><?php if(isset($client_detail->mobility_needs)){
+															<td><?php if(isset(CON_CLIENT_MOBILITY_NEEDS[$client_detail->mobility_needs])){
 																echo CON_CLIENT_MOBILITY_NEEDS[$client_detail->mobility_needs];
 															} ?></td>
 														</tr>
@@ -319,37 +289,7 @@
 					<?php if (isset($client_detail->linked_profile_detail)) { ?>
 						
 					<div class="tab-pane fade" id="top-justified-tab2">
-						<ul class="media-list">
-							<li class="media">
-								<div class="mr-3">
-									<a href="#">
-										<img src="<?php echo base_url(); ?>assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">
-									</a>
-								</div>
-								<div class="media-body">
-									<div class="media-title font-weight-semibold"><?php if(isset($client_detail->linked_profile_detail->first_name)){ echo $client_detail->linked_profile_detail->first_name." ".$client_detail->linked_profile_detail->last_name;} ?></div>
-									<span class="text-muted">Development</span>
-								</div>
-
-								<div class="align-self-center ml-3" style="margin-right: 1.25rem!important;">
-									<span class="badge badge-light badge-striped badge-striped-right border-right-success" style="color: #4caf50;">Profile Completed</span>
-								</div>
-								<div class="align-self-center ml-3">
-									<div class="list-icons">
-				                    	<div class="list-icons-item dropdown">
-				                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
-
-				                    		<div class="dropdown-menu dropdown-menu-right">
-				                    			<a href="<?php echo site_url("agency/clients/edit_client/".$client_detail->linked_profile_detail->id); ?>" class="dropdown-item" ><i class="icon-pencil3"></i> Edit Client</a>
-						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#call1"><i class="icon-phone2"></i> Make a call</a>
-						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#chat"><i class="icon-comment"></i> Start chat</a>
-						                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
-				                    		</div>
-				                    	</div>
-			                    	</div>
-								</div>
-							</li>
-						</ul>
+						
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card-body">
@@ -358,6 +298,7 @@
 										<li class="nav-item" style="padding-right: 30px;"><a href="#special_needs2" class="nav-link" data-toggle="tab">Special Needs</a></li>
 										<li class="nav-item" style="padding-right: 30px;"><a href="#family_center2" class="nav-link" data-toggle="tab">Family Center</a></li>
 										<li class="nav-item"><a href="#life_directive" class="nav-link" data-toggle="tab">End of Life Directive</a></li>
+										<li class="nav-item" style="right: 3% !important; position: absolute;"><a href="<?php echo site_url("agency/clients/edit_client/".$client_detail->linked_profile_detail->id); ?>"><button class="btn btn-light" style="background-color: #fff;"><i class="icon-google-drive mr-2"></i> Edit Profile</button></a></li>
 									</ul>
 
 									<div class="tab-content">
@@ -416,7 +357,7 @@
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Billing Cycle:</strong></td>
-															<td><?php if(isset($client_detail->linked_profile_detail->billing_cycle)){echo CON_CLIENT_BILLIBG_CYCLE[$client_detail->linked_profile_detail->billing_cycle];} ?></td>
+															<td><?php if(isset(CON_CLIENT_BILLIBG_CYCLE[$client_detail->linked_profile_detail->billing_cycle])){echo CON_CLIENT_BILLIBG_CYCLE[$client_detail->linked_profile_detail->billing_cycle];} ?></td>
 														</tr>
 													</table>
 												</div>
@@ -453,7 +394,7 @@
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Mobility needs:</strong></td>
-															<td><?php if(isset($client_detail->linked_profile_detail->mobility_needs)){
+															<td><?php if(isset(CON_CLIENT_MOBILITY_NEEDS[$client_detail->linked_profile_detail->mobility_needs])){
 																echo CON_CLIENT_MOBILITY_NEEDS[$client_detail->linked_profile_detail->mobility_needs];
 															} ?></td>
 														</tr>
