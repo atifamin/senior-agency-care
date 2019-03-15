@@ -91,7 +91,7 @@
 		                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
 
 		                    		<div class="dropdown-menu dropdown-menu-right">
-				                    	<a href="<?php echo site_url("agency/clients/client_profile/".$client->id); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
+				                    	<a href="<?php echo site_url("agency/clients/profile/".$client->id); ?>" class="dropdown-item"><i class="icon-file-eye"></i>View Profile</a>
 				                    	<a href="#" class="dropdown-item" data-toggle="modal" data-target="#video"><i class="icon-video-camera"></i> Video call</a>
 										
 		                    		</div>

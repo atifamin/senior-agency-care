@@ -59,13 +59,13 @@ class Clients extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	public function client_profile($id){
+	public function profile($id){
 		$data["breadcrumb"] = "Client";
 		$data["heading"] = "Our Clients";
 		$data["url_segment"] = "clients";
-		$data["client_detail"] = $this->Client_model->getById($id);
+		$data["client_detail"] = $this->Client_model->clientRelationshipDetailById($id);
 		$data["client_family"] = $this->Client_model->getClientFamilyById($id);
-		$this->load->view("agency/clients/client_profile",$data);
+		$this->load->view("agency/clients/profile",$data);
 	}
 
 	public function add_send_invite(){

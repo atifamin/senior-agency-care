@@ -17,23 +17,25 @@
       </form>
     </div>
   </div>
+   <?php if(isset($relationshipDetails->linked_profile_detail)){ ?>
   <div class="row" style="margin-top: 10px; padding: 10px;">
     <div class="offset-md-4 col-md-4">
       <ul class="nav nav-tabs nav-tabs-solid nav-justified border-0">
         <li class="nav-item" onclick="window.location = '<?php echo site_url("agency/scheduling/view/".$relationshipDetails->id.""); ?>'"><a href="javascript:;" class="nav-link legitRipple <?php if($client_id==$relationshipDetails->id){echo 'active';} ?>" data-toggle="tab"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle mr-1" width="25" height="25" alt=""><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></a></li>
-        <?php if(isset($relationshipDetails->linked_profile_detail)){ ?>
+       
         <li class="nav-item" onclick="window.location = '<?php echo site_url("agency/scheduling/view/".$relationshipDetails->linked_profile_detail->id.""); ?>'"><a href="javascript:;" class="nav-link legitRipple <?php if($client_id==$relationshipDetails->linked_profile_detail->id){echo 'active';} ?>" data-toggle="tab"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle mr-1" width="25" height="25" alt=""> <?php echo $relationshipDetails->linked_profile_detail->first_name." ".$relationshipDetails->linked_profile_detail->last_name; ?></a></li>
-        <?php } ?>
+        
       </ul>
     </div>
   </div>
+  <?php } ?>
   <ul class="media-list media-list-linked">
     <li>
       <div class="media">
-        <div class="mr-3"><img src="<?php echo base_url(); ?>assets/images/userimg/face14.jpg" class="rounded-circle" width="40" height="40" alt=""></div>
+        <div class="mr-3"><img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle" width="40" height="40" alt=""></div>
         <div class="media-body">
-          <div class="media-title font-weight-semibold">James Alexander</div>
-          <span class="text-muted">Caregiver</span> </div>
+          <div class="media-title font-weight-semibold"><?php echo $client->first_name." ".$client->last_name; ?></div>
+          <span class="text-muted">Client</span> </div>
         <div class="align-self-center ml-3"> <a href="#" class="text-default" data-toggle="collapse" data-target="#james3"> <i class="icon-menu7"></i> </a> </div>
       </div>
       <div class="collapse show" id="james3">

@@ -21,6 +21,7 @@ class Caregiver extends CI_Controller {
 		$data['total_added_profiles'] = $this->Caregiver_model->totalCaregiverProfileByStatus($this->agency_id, "added");
 		$data['total_pending_profiles'] = $this->Caregiver_model->totalCaregiverProfileByStatus($this->agency_id, "pending");
 		$data['result'] = $this->Caregiver_model->getCaregiverByAgencyId($this->agency_id);
+		//print_array($data);
 		$this->load->view("agency/caregiver/index",$data);
 	}
 
