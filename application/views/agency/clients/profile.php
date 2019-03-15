@@ -83,6 +83,7 @@
 										<li class="nav-item" style="padding-right: 30px;"><a href="#special_needs1" class="nav-link" data-toggle="tab">Special Needs</a></li>
 										<li class="nav-item" style="padding-right: 30px;"><a href="#family_center1" class="nav-link" data-toggle="tab">Family Center</a></li>
 										<li class="nav-item"><a href="#life_directive2" class="nav-link" data-toggle="tab">End of Life Directive</a></li>
+										<li class="nav-item" style="right: 3% !important; position: absolute;"><a href="<?php echo site_url("agency/".$this->agency_id."") ?>"><button class="btn btn-light" style="background-color: #fff;"><i class="icon-google-drive mr-2"></i> Edit Profile</button></a></li>
 									</ul>
 
 									<div class="tab-content">
@@ -141,7 +142,7 @@
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Billing Cycle:</strong></td>
-															<td><?php if(isset($client_detail->billing_cycle)){echo $client_detail->billing_cycle;} ?></td>
+															<td><?php if(isset($client_detail->billing_cycle)){echo CON_CLIENT_BILLIBG_CYCLE[$client_detail->billing_cycle];} ?></td>
 														</tr>
 													</table>
 												</div>
@@ -179,7 +180,7 @@
 														<tr>
 															<td style="width: 150px;"><strong>Mobility needs:</strong></td>
 															<td><?php if(isset($client_detail->mobility_needs)){
-																echo $client_detail->mobility_needs;
+																echo CON_CLIENT_MOBILITY_NEEDS[$client_detail->mobility_needs];
 															} ?></td>
 														</tr>
 														<tr>
@@ -415,7 +416,7 @@
 														</tr>
 														<tr>
 															<td style="width: 150px;"><strong>Billing Cycle:</strong></td>
-															<td><?php if(isset($client_detail->linked_profile_detail->billing_cycle)){echo $client_detail->linked_profile_detail->billing_cycle;} ?></td>
+															<td><?php if(isset($client_detail->linked_profile_detail->billing_cycle)){echo CON_CLIENT_BILLIBG_CYCLE[$client_detail->linked_profile_detail->billing_cycle];} ?></td>
 														</tr>
 													</table>
 												</div>
@@ -453,7 +454,7 @@
 														<tr>
 															<td style="width: 150px;"><strong>Mobility needs:</strong></td>
 															<td><?php if(isset($client_detail->linked_profile_detail->mobility_needs)){
-																echo $client_detail->linked_profile_detail->mobility_needs;
+																echo CON_CLIENT_MOBILITY_NEEDS[$client_detail->linked_profile_detail->mobility_needs];
 															} ?></td>
 														</tr>
 														<tr>
