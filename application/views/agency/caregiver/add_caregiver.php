@@ -235,7 +235,7 @@
                 <select data-placeholder="Select Certifications" name="caregiver_certifications[]" multiple="multiple" class="form-control select" data-fouc>
                     <optgroup label="">
                       <?php foreach(CON_CAREGIVER_CERTIFICATIONS as $cgCertificationsKey => $cgCertificationsVal): ?>
-                        <option value="<?php echo $cgCertificationsKey; ?>" selected=""><?php echo $cgCertificationsVal; ?></option>
+                        <option value="<?php echo $cgCertificationsKey; ?>" selected><?php echo $cgCertificationsVal; ?></option>
                         <?php endforeach; ?>
                       <!-- <option value="AZ" selected="">C.N.A Certified Nurse Assistant</option>
                       <option value="ID" selected="">Home Health Aid</option>

@@ -1,4 +1,9 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
+<style>
+.select2-container{
+  border-bottom: 1px solid #eeeded;
+}
+</style>
 <?php $months = CON_MONTHS; ?>
 
 <?php //print_array($detail);
@@ -235,9 +240,22 @@
         <h6><strong>Caregiver Certification</strong></h6>
         <fieldset>
           <div class="row">
-            <div class="col-md-6"> 
-              <!-- Within a group with checkbox -->
+            <div class="col-md-6">
               <div class="form-group">
+                  <label>Multiple select</label>
+                  <select multiple="multiple" class="form-control select" data-fouc name="caregiver_certifications[]">
+                    <?php
+                      $caregiver_certifications = "";
+                      if(count(json_decode($detail->caregiver_certifications))>0)
+                        $caregiver_certifications = json_decode($detail->caregiver_certifications); 
+                    ?>
+                    <?php foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
+                      <option value="<?php echo $key; ?>"  <?php if(!empty($caregiver_certifications) && in_array($key, $caregiver_certifications)){echo 'selected="selected"';} ?>><?php echo $value; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              <!-- Within a group with checkbox -->
+              <!-- <div class="form-group">
                  <div class="input-group"> <span class="input-group-prepend">
                   <select data-placeholder="Select Certifications" id="caregiver_certifications" name="caregiver_certifications[]" multiple="multiple" class="form-control select" data-fouc>
                     <optgroup label="">
@@ -252,22 +270,9 @@
 
                       </optgroup>
                   </select>
-                  <?php 
-                  //$caregiver_certifications = json_decode($detail->caregiver_certifications); 
-                 // foreach ($caregiver_certifications as $key =>$value) { ?>
-                    <?php //echo CON_CAREGIVER_CERTIFICATIONS[$value]; ?>
-                <?php //} 
-                // <span class="bg-dark py-1 px-2 rounded"><span class="text-white">C.N.A Certified Nurse Assistant</span></span>
-                  ?>
-
-
-                  <!-- <select class="form-control multiselect" multiple="multiple" data-fouc name="caregiver_certifications[]" id="caregiver_certifications">
-                    <?php foreach(CON_CAREGIVER_CERTIFICATIONS as $cgCertificationsKey=>$cgCertificationsVal): ?>
-                    <option value="<?php echo $cgCertificationsKey; ?>" <?php if(count($caregiver_certifications_array)>0){if(in_array($caregiver_certifications_array, $cgCertificationsKey)){echo 'selected="selected"';}} ?>><?php echo $cgCertificationsVal; ?></option>
-                    <?php endforeach; ?>
-                  </select> -->
+                  
                 </div>
-              </div>
+              </div> -->
               <!-- /within a group with checkbox --> 
             </div>
           </div>
@@ -581,7 +586,7 @@ function update_caregiver(){
 	
   var formData = new FormData($("#caregiver_form")[0]);
   formData.append("croppedImage", $AppMaster.profileCropper.blob);
-  formData.append("caregiver_certifications", $("#caregiver_certifications").val());
+  //formData.append("caregiver_certifications", $("#caregiver_certifications").val());
 	$.ajax({
 		url: '<?php echo site_url("agency/caregiver/update"); ?>',
 		type: 'POST',

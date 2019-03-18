@@ -53,11 +53,16 @@ class Caregiver extends CI_Controller {
 	
 	public function update(){
 		$post = $this->input->post();
-		//print_array($post);
+
 		$id = $post["caregiver_id"];
 		unset($post["caregiver_id"]);
 		unset($post["croppedImage"]);
-		$post['caregiver_certifications'] = json_encode($post['caregiver_certifications']);
+		$caregiver_certifications = "";
+		if(isset($post['caregiver_certifications']))
+			$caregiver_certifications = json_encode($post['caregiver_certifications']);
+
+		$post['caregiver_certifications'] = $caregiver_certifications;
+
 		$caregiver = $this->common_model->listingRow("id",$id,"caregiver");
 		if(isset($_FILES["croppedImage"])){
 			$profileImageDetail = $this->common_model->listingRow("id",$caregiver->profile_pic,"media");
