@@ -434,160 +434,17 @@
 						</div>
 					</div>
 					<div class="row" style="margin: 15px 0;">
-						<div class="offset-md-1 col-md-3">
+						<?php foreach (load_table("client_medical_history") as $CMH): ?>
+						<div class="col-md-4" style="margin-top: 5px;">
 							<div class="form-check">
 								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="diabetic" data-fouc>
-									Diabetic
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Alone most of the time
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Needs Assistance for most ADL
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									SOB on Exertion
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Paralysis
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Confusion/Forgetfull
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									History of falls
+									<input type="checkbox" class="form-check-input-styled" name="medical_history[]" data-fouc value="<?php echo $CMH->id; ?>">
+									<?php echo $CMH->name; ?>
 								</label>
 							</div>
 						</div>
-						<div class="col-md-3">
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="unirary_catheter" data-fouc>
-									Unirary Catheter
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Bed Bpound
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Has wounds
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Prone to bone fractures
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Amputation
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Poor vision
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Partial weight bearing
-								</label>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="hearing_deficit" data-fouc>
-									Hearing Deficit
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									History of Seizures
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									At risk of bleeding
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Speach/Communication of Deficit
-								</label>
-							</div>
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Has dentures
-								</label>
-							</div>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="form-check">
-										<label class="form-check-label">
-											<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-											partial
-										</label>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-check">
-										<label class="form-check-label">
-											<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-											lower
-										</label>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-check">
-										<label class="form-check-label">
-											<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-											upper
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-check" style="margin-top: 8px;">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="" data-fouc>
-									Other
-								</label>
-							</div>
-						</div>
+						<?php endforeach; ?>
 					</div>
-					<div id="append_family"></div>
 				</fieldset>
 				<h6><strong>Family Center</strong></h6>
 				<fieldset>
@@ -848,9 +705,15 @@
 		emailAddress.push($(this).val());
 		//alert($(this).val());
 	});
-	$('input[name^="mobileNumber"]').each(function() {
+	$('input[name^="mobile_number"]').each(function() {
 		mobileNumber.push($(this).val());
 		//alert($(this).val());
+	});
+	var medical_history_checkboxes = [];
+	$('input:checked').each(function(){
+		medical_history_checkboxes.push($(this).val());
+		//alert($(this).val());
+		//return false;
 	});
 	// var lastName = $('input[name="lastName"]').val();
 	// var emailAddress = $('input[name="emailAddress"]').val();
@@ -898,6 +761,7 @@
 	form_data.append('lastName', lastName);
 	form_data.append('emailAddress', emailAddress);
 	form_data.append('mobileNumber', mobileNumber);
+	form_data.append('medical_history',medical_history_checkboxes);
 	form_data.append('linked_id', <?php echo $linked_id; ?>);
     $.ajax({
         url: '<?php echo site_url("agency/clients/save_client"); ?>',
@@ -907,7 +771,7 @@
         processData: false,
         data: form_data,                         
         type: 'post',
-        success: function(data){
+        success: function(data){       	
         	data = JSON.parse(data);
         	var button_text = "Ok";
         	var alert_text = "You have added a client successfully!";

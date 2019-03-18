@@ -390,7 +390,27 @@
 						</div>
 					</div>
 				</fieldset>
-
+				<h6><strong>Medical History</strong></h6>
+				<fieldset>
+					<div class="row" style="margin-top: 15px;">
+						<div class="offset-md-1 col-md-11">
+							<h6>LIST THE CLIENTS KNOWN MEDICAL HISTORY </h6>
+						</div>
+					</div>
+					<?php $medical_history = explode(",", $client->medical_history) ?>
+					<div class="row" style="margin: 15px 0;">
+						<?php foreach (load_table("client_medical_history") as $CMH): ?>
+						<div class="col-md-4" style="margin-top: 5px;">
+							<div class="form-check">
+								<label class="form-check-label">
+									<input type="checkbox" class="form-check-input-styled" name="medical_history[]" data-fouc <?php if(in_array($CMH->id, $medical_history)){echo 'checked';} ?>>
+									<?php echo $CMH->name; ?>
+								</label>
+							</div>
+						</div>
+						<?php endforeach; ?>
+					</div>
+				</fieldset>
 				<h6><strong>Family Center</strong></h6>
 				<fieldset>
 					<div class="row">
@@ -535,7 +555,7 @@
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 <script type="text/javascript">
 $(document).ready(function(){
-    $(".filename").html('<?php echo $Client_file->name; ?>');
+    //$(".filename").html('<?php //echo $Client_file->name; ?>');
     var pets = $("#client_pets").val();
     if(pets == 1){
         $("#pet_list").css("display","block");
@@ -694,7 +714,7 @@ $(document).ready(function(){
 			}
         }
      });
-    }
+}
 
 
 </script>
