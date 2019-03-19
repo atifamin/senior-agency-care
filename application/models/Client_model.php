@@ -4,62 +4,24 @@ class Client_model extends CI_Model{
 
 
     public function save_client($post){
+        
+        $client = array();
+        $client["agency_id"] = $post["agency_id"];
         //print_array($post);
-        //$dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
-        //$dob = DateTime::createFromFormat('M-d-Y', $dob);
-        //$dob = $dob->format('Y-m-d');
-        $post['dob'] = "".$post['year'].'-'.$post['month'].'-'.$post['day']."";
-        if(!empty($post['firstName'])){
-        $family_first_name = $post['firstName'];
-        $family_first_name = explode(',', $family_first_name);
-        unset($post['firstName']);
-        }
-        if(!empty($post['lastName'])){
-        $family_last_name = $post['lastName'];
-        $family_last_name = explode(',', $family_last_name);
-        unset($post['lastName']);
-        }
-        if(!empty($post['emailAddress'])){
-        $family_email_address = $post['emailAddress'];
-        $family_email_address = explode(',', $family_email_address);
-        unset($post['emailAddress']);
-        }
-        if(!empty($post['mobileNumber'])){
-        $family_mobile_number = $post['mobileNumber'];
-        $family_mobile_number = explode(',', $family_mobile_number);
-        unset($post['mobileNumber']);
-        }
-        unset($post['firstName']);
-        unset($post['lastName']);
-        unset($post['emailAddress']);
-        unset($post['mobileNumber']);
+        $client_id = $this->common_model->insertGetIDQuery("client", $client);
 
-        unset($post['month']);
-        unset($post['day']);
-        unset($post['year']);
-        unset($post['linked_profile']);
-        unset($post['linked_id']);
-        unset($post['is_directive_document']);
-        $client_id = $this->common_model->insertGetIDQuery("client", $post);
-        if(!empty($_FILES)){
-        $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+        if(isset($_FILES["croppedImage"])){
+            $cropped_image = upload_blob($_FILES["croppedImage"], "client", $client_id, "/uploads/profileImages/");
+             $profile_image = $this->common_model->insertGetIDQuery("media",$cropped_image);
         }
-        if(!empty($data)){
+        if (!empty($profile_image)){
+            $client_image = array('profile_image' => $profile_image);
+            $this->common_model->update_query("client", "id", $client_id, $client_image);
+        }
+        
+        if(isset($_FILES['file'])){
+            $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
             $life_directive_document = $this->common_model->insertGetIDQuery("media", $data);
-        }
-        if(!empty($family_first_name)){
-            for($i = 0;$i < count($family_first_name);$i++){
-                $addFamily = array(
-                    "client_id" => $client_id,
-                    "first_name" => $family_first_name[$i],
-                    "last_name" => $family_last_name[$i],
-                    "email_address" => $family_email_address[$i],
-                    "mobile_number" => $family_mobile_number[$i]
-                );
-                $client_family_id = $this->common_model->insertGetIDQuery("client_family", $addFamily);
-                $this->load->model("Email_model");
-                $this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
-            }
         }
         if(!empty($life_directive_document)){
                 $client_document = array(
@@ -67,8 +29,28 @@ class Client_model extends CI_Model{
                 );
             $this->common_model->updateQuery("client", "id", $client_id, $client_document);                                                                 
         }
+        print_array($post);
+
+
+        if(isset($post["firstName"])){
+            foreach($post["firstName"] as $famKey=>$famVal){
+                $familyArray = array();
+                $familyArray["client_id"] = $client_id;
+                $familyArray["first_name"] = $post["firstName"][$famKey];
+                $familyArray["last_name"] = $post["lastName"][$famKey];
+                $familyArray["email_address"] = $post["emailAddress"][$famKey];
+                $familyArray["mobile_number"] = $post["mobileNumber"][$famKey];
+                $familyArray["created_by"] = $post["agency_id"];
+                $familyArray["created_at"] = date("Y-m-d H:i:s");
+                $client_family_id = $this->common_model->insertGetIDQuery("client_family", $familyArray);
+                $this->load->model("Email_model");
+                //$this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
+            }
+        }
+        
         return $client_id;
     }
+    
 
     public function update_client($post){
         $dob = $post['month'].'-'.$post['day'].'-'.$post['year'];

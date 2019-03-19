@@ -1,4 +1,5 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
+<?php //print_array($client); ?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/client_form_wizard.js"></script>
 <style type="text/css">
 	.token-input{
@@ -555,7 +556,7 @@
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 <script type="text/javascript">
 $(document).ready(function(){
-    //$(".filename").html('<?php //echo $Client_file->name; ?>');
+    $(".filename").html('<?php echo $client->file_name; ?>');
     var pets = $("#client_pets").val();
     if(pets == 1){
         $("#pet_list").css("display","block");

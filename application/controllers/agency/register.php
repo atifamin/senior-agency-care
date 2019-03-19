@@ -65,7 +65,6 @@ class Register extends CI_Controller {
 	public function register_agency(){
 		//$croppedImage = $_FILES['croppedImage'];
 		
-		
 		$post = $this->input->post();
 		//print_array($post);
 		//Adding agency basic data into agency table

@@ -64,13 +64,13 @@
 							<div class="form-group">
 								<label>First Name:</label>
 								
-								<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Add client first name" required="required">
+								<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Add client first name" >
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Last Name:</label>
-								<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Add client last name" required="required">
+								<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Add client last name" >
 							</div>
 						</div>
 					</div>
@@ -86,7 +86,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Client email address:</label>
-								<input type="email" onchange="checkEmailAddress('client')" name="email_address" id="email_address" class="form-control" placeholder="client@email.com" required="required">
+								<input type="email" onchange="checkEmailAddress('client')" name="email_address" id="email_address" class="form-control" placeholder="client@email.com" >
 							</div>
 						</div>
 					</div>
@@ -146,7 +146,7 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="month" id="month" data-placeholder="Month" class="form-control form-control-select2" data-fouc required="required">
+		                                <select name="month" id="month" data-placeholder="Month" class="form-control form-control-select2" data-fouc >
 		                                    <option></option> 
 		                                    <option value="January">January</option> 
 	                                        <option value="Februray">Februray</option>
@@ -165,7 +165,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="day" id="day" data-placeholder="Day" class="form-control form-control-select2" data-fouc required="required">
+		                                <select name="day" id="day" data-placeholder="Day" class="form-control form-control-select2" data-fouc >
 		                                    <option></option> 
 		                                    <option value="1">1</option> 
 		                                    <option value="2">2</option> 
@@ -203,7 +203,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-		                                <select name="year" id="year" data-placeholder="Year" class="form-control form-control-select2" data-fouc required="required">
+		                                <select name="year" id="year" data-placeholder="Year" class="form-control form-control-select2" data-fouc >
 		                                    <option></option> 
 		                                    <option value="1990">1990</option>
 	                                        <option value="1991">1991</option>
@@ -298,6 +298,16 @@
 			                    </select>
 		                    </div>
 						</div>
+						<div class="col-md-6">
+				            <div class="form-group">
+				                <div class="col-md-6">
+				                  	<button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
+				                </div>
+				                <div class="col-md-6">
+				                  	<div id="croppedImageShow" ><img width="100" class="rounded-circle"></div>
+				                </div>
+				            </div>
+				        </div>						
 					</div>
 				</fieldset>
 
@@ -648,158 +658,41 @@
 
 	
 	function add_new_agency(){
-    //e.preventDefault();
-    var file_data = $('#file').prop('files')[0];   
-    
-	//var notify_email =  $("input[name=notify_email]").val();
-	var linked_profile =  $("input[name=linked_profile]").val();
-	var first_name =  $("#first_name").val();
-    var last_name = $("#last_name").val();
-	var mobile_number = $("#mobile_number").val();
-    var email_address = $("#email_address").val();
-	var client_from = $("#client_from").val();
-	var client_to = $("#client_to").val();
-	var gender = $("input[name=gender]:checked").val();
-	var dob = $("#dob").val();
-	var level_care = $("#level_care").val();
-	var is_pets = $("#client_pets").val();
-	var pets_types = $("#pets_types").val();
-	var rate_per_hour = $("#rate_per_hour").val();
-	var hours_per_week = $("#hours_per_week").val();
-	var billing_cycle = $("#billing_cycle").val();
-	var dietry_requirements = $("input[name=dietry_requirements]:checked").val();
-	var fluid_requirements = $("input[name=fluid_requirements]:checked").val();
-	var medication_list = $("#medication_list").val();
-	var allergies_list = $("#allergies_list").val();
-	var is_oxygen = $("#oxygen_client").val();
-	var oxygen_quantity = $("#oxygen_quantity").val();
-	var oxygen_administered = $("#oxygen_administered").val();
-	var is_mobilty = $("#need_client").val();
-	var mobility_needs = $("#mobility_needs").val();
-	var transportation_requirements = $("#transportation_requirements").val();
-	var transfer_needs = $("#transfer_needs").val();
-	if(file_data){
-	var is_directive_document = 1;
-	}
-	var pcd_name = $("#pcd_name").val();
-	var pcd_contact = $("#pcd_contact").val();
-	var prefered_hospital = $("#prefered_hospital").val();
-	var special_instructions = $("#special_instructions").val();
-	var month = $("#month").val();
-	var day = $("#day").val();
-	var year = $("#year").val();
-	//var firstName = $('input[name="firstName"]').val();
-	var firstName = new Array();
-	var lastName = new Array();
-	var emailAddress = new Array();
-	var mobileNumber = new Array();
-	$('input[name^="firstName"]').each(function() {
-		firstName.push($(this).val());
-		//alert($(this).val());
-	});
-	$('input[name^="lastName"]').each(function() {
-		lastName.push($(this).val());
-		//alert($(this).val());
-	});
-	$('input[name^="emailAddress"]').each(function() {
-		emailAddress.push($(this).val());
-		//alert($(this).val());
-	});
-	$('input[name^="mobile_number"]').each(function() {
-		mobileNumber.push($(this).val());
-		//alert($(this).val());
-	});
-	var medical_history_checkboxes = [];
-	$('input:checked').each(function(){
-		medical_history_checkboxes.push($(this).val());
-		//alert($(this).val());
-		//return false;
-	});
-	// var lastName = $('input[name="lastName"]').val();
-	// var emailAddress = $('input[name="emailAddress"]').val();
-	// var mobileNumber = $('input[name="mobileNumber"]').val();
-    var form_data = new FormData();    
-    if(file_data){              
-    form_data.append('file', file_data);
-    }
-    
-    form_data.append('linked_profile', linked_profile);
-    form_data.append('first_name', first_name);
-    form_data.append('last_name', last_name);
-    form_data.append('email_address', email_address);
-	form_data.append('mobile_number', mobile_number);
-	form_data.append('client_from', client_from);
-	form_data.append('client_to', client_to);
-	form_data.append('gender', gender);
-	form_data.append('dob', dob);
-	form_data.append('level_care', level_care);
-	form_data.append('is_pets', is_pets);
-	form_data.append('pets_types', pets_types);
-	form_data.append('rate_per_hour', rate_per_hour);
-	form_data.append('hours_per_week', hours_per_week);
-	form_data.append('billing_cycle', billing_cycle);
-	form_data.append('dietry_requirements', dietry_requirements);
-	form_data.append('fluid_requirements', fluid_requirements);
-	form_data.append('medication_list', medication_list);
-	form_data.append('allergies_list', allergies_list);
-	form_data.append('is_oxygen', is_oxygen);
-	form_data.append('oxygen_quantity', oxygen_quantity);
-	form_data.append('oxygen_administered', oxygen_administered);
-	form_data.append('is_mobilty', is_mobilty);
-	form_data.append('mobility_needs', mobility_needs);
-	form_data.append('transportation_requirements', transportation_requirements);
-	form_data.append('transfer_needs', transfer_needs);
-	form_data.append('is_directive_document', is_directive_document);
-	form_data.append('pcd_name', pcd_name);
-	form_data.append('pcd_contact', pcd_contact);
-	form_data.append('prefered_hospital', prefered_hospital);
-	form_data.append('special_instructions', special_instructions);
-	form_data.append('month', month);
-	form_data.append('day', day);
-	form_data.append('year', year);
-	form_data.append('firstName', firstName);
-	form_data.append('lastName', lastName);
-	form_data.append('emailAddress', emailAddress);
-	form_data.append('mobileNumber', mobileNumber);
-	form_data.append('medical_history',medical_history_checkboxes);
-	form_data.append('linked_id', <?php echo $linked_id; ?>);
-    $.ajax({
-        url: '<?php echo site_url("agency/clients/save_client"); ?>',
-        dataType: 'text',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,                         
-        type: 'post',
-        success: function(data){       	
-        	data = JSON.parse(data);
-        	var button_text = "Ok";
-        	var alert_text = "You have added a client successfully!";
-        	if(data.is_linked_profile==1){
-				button_text = "Yes! Please Proceed";
-				alert_text = "Please Proceed to add next client data.";
-        	}
-        	swal({
-		        title: 'Good job!',
-		        text: alert_text,
-		        type: 'success',
-		        allowOutsideClick: false,
-				confirmButtonText:button_text,
-		        onClose: function () {
-		            if(data.is_linked_profile==1){
-						window.location = "<?php echo site_url("agency/clients/add_client?linked="); ?>"+data.linked_with_id+"";
-		            }else{
-		            	window.location = "<?php echo site_url("agency/clients"); ?>";
-		            }
-		        }
-		    });
-
-			// if(data == 1){
-			// 	swal("Client", "added successfully!");
-			// 	location.reload();
-			// }
-        }
-     });
+		formData = new FormData($("#client_information")[0]);
+		formData.append('croppedImage', $AppMaster.profileCropper.blob);
+	    $.ajax({
+	        url: '<?php echo site_url("agency/clients/save_client"); ?>',
+	        dataType: 'text',
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+	        data: formData,                         
+	        type: 'post',
+	        success: function(data){ 
+	        	console.log(data);
+	        	data = JSON.parse(data);
+	        	var button_text = "Ok";
+	        	var alert_text = "You have added a client successfully!";
+	        	if(data.is_linked_profile==1){
+					button_text = "Yes! Please Proceed";
+					alert_text = "Please Proceed to add next client data.";
+	        	}
+	        	swal({
+			        title: 'Good job!',
+			        text: alert_text,
+			        type: 'success',
+			        allowOutsideClick: false,
+					confirmButtonText:button_text,
+			        onClose: function () {
+			            if(data.is_linked_profile==1){
+							window.location = "<?php echo site_url("agency/clients/add_client?linked="); ?>"+data.linked_with_id+"";
+			            }else{
+			            	window.location = "<?php echo site_url("agency/clients"); ?>";
+			            }
+			        }
+			    });
+	        }
+	     });
     }
 
 	function addMoreFamilyMember(){

@@ -36,7 +36,6 @@ class Clients extends CI_Controller {
 
 	public function save_client(){
 		$post = $this->input->post();
-		//print_array($post);
 		$post['agency_id'] = $this->agency_id;
 		$client_id = $this->Client_model->save_client($post);
 		$data = array(
@@ -59,6 +58,7 @@ class Clients extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
+
 
 	public function profile($id){
 		$data["breadcrumb"] = "Client";
