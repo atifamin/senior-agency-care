@@ -106,30 +106,8 @@
 <script>
 $(".form-control-select2").select2();
 </script> 
+
 <script>
-/*$("#update_new_license_form").on("submit", function(e){
-  e.preventDefault();
-  var form = $(this);
-  var agency_license_id = $('#agency_license_id').val();
-  $.ajax({
-    url: '<?php echo site_url("agency/profile/update_license_form"); ?>',
-    type: 'POST',
-    data: form.serialize(),
-    dataType:'html',
-    success: function (data) {
-		$("#license_row_"+agency_license_id+"").replaceWith(data);
-		swal({
-		  title: 'Good job!',
-		  text: 'You clicked the button!',
-		  type: 'success'
-		});
-		$("#modal_edit_license").modal('hide');
-
-    }
-  });
-});*/
-
-
 
 $("#update_new_license_form").on("submit", function(e){
 	$("#license_progress").show();

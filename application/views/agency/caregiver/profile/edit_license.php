@@ -89,6 +89,10 @@
   </div>
 </form>
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
+<script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+
+
 
 <script>
 $("select").select2({

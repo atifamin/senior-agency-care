@@ -302,9 +302,12 @@
 										</div>
 									</div>
 									<?php 
-									$caregiver_certifications = json_decode($detail->caregiver_certifications); 
+									$caregiver_certifications = json_decode($detail->caregiver_certifications);
+									//print_array($caregiver_certifications);
 									foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
-										<span class="bg-dark py-1 px-2 rounded" style=""><span><?php echo $value; ?></span></span>
+										<?php if(count($caregiver_certifications)>0 && in_array($key, $caregiver_certifications)){ ?>
+										<span class="bg-dark py-1 px-2 rounded"><?php echo $value;  ?></span>
+									<?php } ?>
 								<?php	} 
 								// <span class="bg-dark py-1 px-2 rounded"><span class="text-white">C.N.A Certified Nurse Assistant</span></span>
 									?>
