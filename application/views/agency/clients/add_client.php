@@ -669,7 +669,7 @@
 	        data: formData,                         
 	        type: 'post',
 	        success: function(data){ 
-	        	console.log(data);
+	        	//console.log(data);
 	        	data = JSON.parse(data);
 	        	var button_text = "Ok";
 	        	var alert_text = "You have added a client successfully!";

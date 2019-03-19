@@ -36,6 +36,7 @@ class Clients extends CI_Controller {
 
 	public function save_client(){
 		$post = $this->input->post();
+		//print_array($post['linked_id']);
 		$post['agency_id'] = $this->agency_id;
 		$client_id = $this->Client_model->save_client($post);
 		$data = array(
@@ -49,13 +50,13 @@ class Clients extends CI_Controller {
 			$this->session->set_flashdata("success", $message);
 		}
 
-		if($post['linked_id']!=0){
-			$first_client_id = $post['linked_id'];
-			$second_client_id = $client_id;
-			//$this->common_model->updateQuery("client", "id", $first_client_id, array("linked_profile"=>$second_client_id));
-			//$this->common_model->updateQuery("client", "id", $second_client_id, array("linked_profile"=>$first_client_id));
-			$this->common_model->insertQuery("client_relationship", array("client_id"=>$first_client_id, "linked_id"=>$second_client_id));
-		}
+		// if($post['linked_id']!=0){
+		// 	$first_client_id = $post['linked_id'];
+		// 	$second_client_id = $client_id;
+		// 	//$this->common_model->updateQuery("client", "id", $first_client_id, array("linked_profile"=>$second_client_id));
+		// 	//$this->common_model->updateQuery("client", "id", $second_client_id, array("linked_profile"=>$first_client_id));
+		// 	$this->common_model->insertQuery("client_relationship", array("client_id"=>$first_client_id, "linked_id"=>$second_client_id));
+		// }
 		echo json_encode($data);
 	}
 

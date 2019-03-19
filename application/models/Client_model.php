@@ -7,6 +7,41 @@ class Client_model extends CI_Model{
         
         $client = array();
         $client["agency_id"] = $post["agency_id"];
+        $client["first_name"] = $post["first_name"];
+        $client["last_name"] = $post["last_name"];
+        $client["mobile_number"] = $post["mobile_number"];
+        $client["email_address"] = $post["email_address"];
+        $client["client_from"] = $post["client_from"];
+        $client["client_to"] = $post["client_to"];
+        $client["gender"] = $post["gender"];
+        //$client["dob"] = $post["dob"];
+        $client["level_care"] = $post["level_care"];
+        // $client["is_pets"] = $post["is_pets"];
+        // $client["pets_types"] = $post["pets_types"];
+        // $client["rate_per_hour"] = $post["rate_per_hour"];
+        // $client["hours_per_week"] = $post["hours_per_week"];
+        // $client["billing_cycle"] = $post["billing_cycle"];
+        // $client["dietry_requirements"] = $post["dietry_requirements"];
+        // $client["fluid_requirements"] = $post["fluid_requirements"];
+        // $client["medication_list"] = $post["medication_list"];
+        // $client["allergies_list"] = $post["allergies_list"];
+        // $client["is_oxygen"] = $post["is_oxygen"];
+        // $client["oxygen_quantity"] = $post["oxygen_quantity"];
+        // $client["oxygen_administered"] = $post["oxygen_administered"];
+        // $client["is_mobilty"] = $post["is_mobilty"];
+        // $client["mobility_needs"] = $post["mobility_needs"];
+        // $client["transportation_requirements"] = $post["transportation_requirements"];
+        // $client["transfer_needs"] = $post["transfer_needs"];
+
+        // $client["medical_history"] = "";
+        // if (isset($post["medical_history"])) {
+        //     $client['medical_history'] = explode(",",$post['medical_history']);
+        // }
+        // $client["pcd_name"] = $post["pcd_name"];
+        // $client["pcd_contact"] = $post["pcd_contact"];
+        // $client["prefered_hospital"] = $post["prefered_hospital"];
+        // $client["special_instructions"] = $post["special_instructions"];
+        // $client["linked_profile"] = $post["linked_profile"];
         //print_array($post);
         $client_id = $this->common_model->insertGetIDQuery("client", $client);
 
@@ -15,22 +50,20 @@ class Client_model extends CI_Model{
              $profile_image = $this->common_model->insertGetIDQuery("media",$cropped_image);
         }
         if (!empty($profile_image)){
-            $client_image = array('profile_image' => $profile_image);
-            $this->common_model->update_query("client", "id", $client_id, $client_image);
+            $client_image = array("profile_image" => $profile_image);
+            $this->common_model->updateQuery("client", "id", $client_id, $client_image);
         }
         
-        if(isset($_FILES['file'])){
-            $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
-            $life_directive_document = $this->common_model->insertGetIDQuery("media", $data);
+        if(!empty($_FILES['file']['name'])){
+            $client_file = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+            $life_directive_document = $this->common_model->insertGetIDQuery("media", $client_file);
         }
         if(!empty($life_directive_document)){
                 $client_document = array(
                 "life_directive_document" => $life_directive_document
                 );
-            $this->common_model->updateQuery("client", "id", $client_id, $client_document);                                                                 
+            $this->common_model->updateQuery("client", "id", $client_id, $client_document);
         }
-        print_array($post);
-
 
         if(isset($post["firstName"])){
             foreach($post["firstName"] as $famKey=>$famVal){
