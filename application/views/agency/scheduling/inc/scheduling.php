@@ -1,10 +1,10 @@
 <style>
-.select2-container {
+#select_caregiver > .select2-container {
 	border-bottom: 1px solid #d8d5d5 !important;
 	padding-bottom: 2% !important;
 }
 </style>
-
+<link href="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" />
 <div class="row">
   <div class="col-md-12">
     <form action="#">
@@ -32,14 +32,13 @@
       </div>
     </form>
     <div class="row" style="margin-top: 40px;">
-      <div class="col-md-4">
-      <a href="javascript:;" data-toggle="modal" data-target="#assign_caregiver_modal">
+      <div class="col-md-4"> <a href="javascript:;" data-toggle="modal" data-target="#assign_caregiver_modal">
         <button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>
         Assign Caregiver to client case</a>
         <div id="caregivers_images_div">
-        <?php include(APPPATH."views/agency/scheduling/inc/scheduling/view_assigned_caregivers.php"); ?>
+          <?php include(APPPATH."views/agency/scheduling/inc/scheduling/view_assigned_caregivers.php"); ?>
         </div>
-        </div>
+      </div>
       <div class="col-md-6"> <a href="javascript:;" data-toggle="modal" data-target="#newschedule">
         <button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>
         Create new schedule</a> </div>
@@ -85,43 +84,46 @@
     <div id="newschedule" class="modal fade" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form id="add_client_medication_form">
+          <form id="add_client_appointement_form">
             <div class="modal-header">
-              <h5 class="modal-title" style="margin: 0 auto;">Create a new appointment</h5>
+              <h3 class="modal-title" style="margin: 0 auto;padding:4% 0"><strong>Create A New Appointment</strong></h3>
               <div>
                 <li class="media">
-                  <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo base_url(); ?>assets/images/userimg/face10.jpg" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
+                  <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
                   <div class="media-body">
-                    <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
+                    <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></div>
                     <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
                 </li>
               </div>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding:0 10%;">
               <div class="row">
-                <div class="col-md-8 offset-md-2">
-                  <div class="form-group"> <strong>Assign caregiver to client schedule</strong>
-                    <select class="form-control select-icons" id="therapy_type" onchange="setTherapyType()" data-placeholder="Select the type of appointment" data-fouc>
-                      <option></option>
-                      <option value="doctor_appointment">Doctor's Appointment</option>
-                      <option value="therapy_appointment">Therapy Appointment</option>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label><strong>Assign caregiver to client schedule</strong></label>
+                    <select class="form-control select" data-fouc id="therapy_type" onchange="if($(this).val()==1){$('#therapy_doc_name').show()}else{$('#therapy_doc_name').hide()}" name="client_appointement_type">
+                      <option>Please Select</option>
+					  <?php if(count($appointement_type)>0){ ?>
+                      <?php foreach($appointement_type as $appType){ ?>
+                      <option value="<?php echo $appType->id ?>"><?php echo $appType->name; ?></option>
+                      <?php }} ?>
                     </select>
                   </div>
                 </div>
               </div>
               <div class="row" id="therapy_doc_name" style="display: none;">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-12">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Enter doctor's name">
+                    <input type="text" class="form-control" placeholder="Enter doctor's name" name="client_doctor_name">
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-12">
                   <div class="form-group"> <i class="icon-calendar22" style="margin-right: 5px;"></i> <strong>Enter appointment date and time: </strong>
                     <div class="input-group">
                       <div class="input-group">
-                        <input type="text" class="form-control daterange-single" value="03/18/2013">
+                        <input type="text" class="form-control" id="appointment_picker" value="03/18/2013" name="dates">
                       </div>
                     </div>
                   </div>
@@ -133,12 +135,12 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                    <input type="text" class="form-control pickatime" placeholder="Caregiver clock in">
+                    <input type="text" class="form-control pickatime" placeholder="Caregiver clock in" name="in_time">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                    <input type="text" class="form-control pickatime" placeholder="Caregiver clock out">
+                    <input type="text" class="form-control pickatime" placeholder="Caregiver clock out" name="out_time">
                   </div>
                 </div>
               </div>
@@ -146,12 +148,12 @@
                 <div class="col-md-8 offset-md-2">
                   <div class="form-group pt-2">
                     <div class="form-check">
-                      <input type="checkbox" name="is_pets"  data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small" id="client_pets" onchange="" value="0">
-                      <strong style="margin-left: 10px;">Set this schedule as running</strong> </div>
+                      <input type="checkbox" name="is_recurring"  data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small" id="client_pets" onchange="">
+                      <strong style="margin-left: 10px;">Set this schedule as recurring</strong> </div>
                   </div>
                 </div>
               </div>
-              <div class="row" id="appointment_set_reminder" style="display: none;">
+              <!--<div class="row" id="appointment_set_reminder" style="display: none;">
                 <div class="col-md-12">
                   <div class="row" id="appointment_set_reminder_doctor" style="display: none;">
                     <div class="col-md-8 offset-md-2">
@@ -178,7 +180,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>-->
               <!-- <div class="row" id="appointment_set_reminder" style="display: none;">
 	                <div class="col-md-8 offset-md-2">
 	                    <div class="input-group">
@@ -207,7 +209,7 @@
     <div class="row" style="margin-top: 60px;">
       <div class="col-md-12" style="padding: 0;"> 
         <!-- List view -->
-        <div class="fullcalendar-list"></div>
+        <div id="appointement_calendar"></div>
         <!-- /list view --> 
       </div>
     </div>
@@ -222,7 +224,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
+          <div class="form-group" id="select_caregiver">
             <select multiple="multiple" data-placeholder="Select Caregiver..." class="form-control select" data-fouc id="caregivers" name="assisgn_caregivers[]">
               <option></option>
               <?php if(count($caregivers)>0): ?>
@@ -247,9 +249,16 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script> 
 <script>
-$("#caregivers").select2();
+$('#appointment_picker').datepicker({
+	multidate: true,
+	clearBtn:true,
+});
+
+$("#caregivers, #therapy_type").select2();
 
 $("#assign_caregiver_form").on("submit", function(e){
 	loader = CardLoader($(this));
@@ -284,6 +293,161 @@ $("#assign_caregiver_form").on("submit", function(e){
 	});
 });
 
+
+$("#add_client_appointement_form").on("submit", function(e){
+	loader = CardLoader($(this));
+	e.preventDefault();
+	formData = new FormData($("#add_client_appointement_form")[0]);
+	formData.append("agency_id", <?php echo $agency_id; ?>);
+	formData.append("client_id", <?php echo $client_id; ?>);
+	$.ajax({
+		url: '<?php echo site_url("agency/scheduling/add_client_appointement"); ?>',
+		type: 'POST',
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(e){
+			loader.unblock();
+			$("#caregivers_images_div").html(e);
+			//document.getElementById("#add_client_appointement_form").reset();
+			$("#newschedule").modal("hide");
+			swal({
+				type: 'success',
+				html: 'You have added an appointement successfully',
+			});
+		},
+		xhr: function () {
+			var xhr = new window.XMLHttpRequest();
+			xhr.upload.addEventListener("progress", function (evt) {
+				if (evt.lengthComputable) {
+					var percentComplete = evt.loaded / evt.total;
+					percentComplete = parseInt(percentComplete * 100);
+					if(percentComplete==100){
+						loader.unblock();
+						//document.getElementById("#add_client_appointement_form").reset();
+						$("#newschedule").modal("hide");
+						swal({
+							type: 'success',
+							html: 'You have added an appointement successfully',
+						});
+					}
+				}
+			}, false);
+			return xhr;
+		},
+	});
+});
+
+
+var eventColors = [
+            {
+                title: 'All Day Event',
+				
+                start: '2014-11-01',
+                color: '#EF5350',
+				description: 'adsf',
+				abc: 'new',
+            },
+            {
+                title: 'Long Event',
+                start: '2014-11-07',
+                end: '2014-11-10',
+                color: '#26A69A'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2014-11-09T16:00:00',
+                color: '#26A69A'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2014-11-16T16:00:00',
+                color: '#5C6BC0'
+            },
+            {
+                title: 'Conference',
+                start: '2014-11-11',
+                end: '2014-11-13',
+                color: '#546E7A'
+            },
+            {
+                title: 'Meeting',
+                start: '2014-11-12T10:30:00',
+                end: '2014-11-12T12:30:00',
+                color: '#546E7A'
+            },
+            {
+                title: 'Lunch',
+                start: '2014-11-12T12:00:00',
+                color: '#546E7A'
+            },
+            {
+                title: 'Meeting',
+                start: '2014-11-12T14:30:00',
+                color: '#546E7A'
+            },
+            {
+                title: 'Happy Hour',
+                start: '2014-11-12T17:30:00',
+                color: '#546E7A'
+            },
+            {
+                title: 'Dinner',
+                start: '2014-11-12T20:00:00',
+                color: '#546E7A'
+            },
+            {
+                title: 'Birthday Party',
+                start: '2014-11-13T07:00:00',
+                color: '#546E7A'
+            },
+            {
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2014-11-28',
+                color: '#FF7043'
+            }
+        ];
+
+$('#appointement_calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'month,listWeek',
+                right: 'listDay,listWeek,listMonth'
+            },
+            views: {
+                listDay: { buttonText: 'Day' },
+                listWeek: { buttonText: 'Week' },
+                listMonth: { buttonText: 'Month' }
+            },
+            defaultView: 'listMonth',
+            defaultDate: '2014-11-12',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events: eventColors,
+            isRTL: $('html').attr('dir') == 'rtl' ? true : false,
+			eventRender: function(info, element) {
+			  element.append('<td class="fc-list-item-time fc-widget-content" style="border-bottom:1px solid #ddd;"><div class="form-group pt-2"><div class="form-check"><input type="checkbox" name="is_recurring"  data-on-text="On" data-off-text="Off" class="form-check-input-switch sm" data-size="small" id="client_pets" onchange=""></div></div></td>');
+			  element.prepend('<td class="fc-list-item-time fc-widget-content" style="border-bottom:1px solid #ddd;"><div class="form-group pt-2"><div class="form-check"><input type="checkbox" name="is_recurring"  data-on-text="On" data-off-text="Off" class="form-check-input-switch sm" data-size="small" id="client_pets" onchange=""></div></div></td>');
+			  
+			}
+        });
+/*$('#appointement_calendar').fullCalendar({
+	header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+            defaultDate: '2014-11-12',
+            editable: true,
+            events: eventColors,
+            eventLimit: true,
+            isRTL: $('html').attr('dir') == 'rtl' ? true : false
+});*/
 
 /*function assignCaregiver(){
 	swal({
