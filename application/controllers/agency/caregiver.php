@@ -117,6 +117,7 @@ class Caregiver extends CI_Controller {
 			$this->common_model->insertQuery("media", $data);
 		}
 		//echo 1;
+		$post['license_id'] = $caregiver_license_id;
 		$this->load->view("agency/caregiver/profile/append_license",$post);
 	}
 	public function add_new_license_form(){
@@ -310,6 +311,7 @@ class Caregiver extends CI_Controller {
 		$this->common_model->updateQuery("caregiver_license", "id", $id, $post);
 		$data = $post;
 		$data["id"] = $id;
+		//print_array($data);
 		$this->load->view("agency/caregiver/profile/update_license",$data);
 
 	}

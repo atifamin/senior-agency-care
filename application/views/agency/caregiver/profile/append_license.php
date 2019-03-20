@@ -1,4 +1,4 @@
-<?php print_array($caregiver_license_id); ?>
+
 
 
 <div class="row" style="width: 100%;" id="license_row">
@@ -25,7 +25,7 @@
       <div class="col-md-4 text-center">
         <div class="btn-group ml-1">
           <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
-          <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license('<?php ?>')"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license()"><i class="icon-bin2"></i> Delete</a> </div>
+          <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_license('<?php echo $license_id; ?>')"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license('<?php echo $license_id; ?>')"><i class="icon-bin2"></i> Delete</a> </div>
         </div>
       </div>
     </div> 
