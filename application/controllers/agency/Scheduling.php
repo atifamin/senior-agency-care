@@ -19,8 +19,8 @@ class Scheduling extends CI_Controller {
 		$data["breadcrumb"] = "Scheduling";
 		$data["heading"] = "Client Scheduling";
 		$data["url_segment"] = "Scheduling";
-		$data["clients"] = $this->Client_model->getAllClients();
-		//print_array($data['clients']);
+		$data["scheduledClients"] = $this->Client_model->scheduledClients($this->agency_id);
+		$data["notScheduledClients"] = $this->Client_model->notScheduledClients($this->agency_id);
 		$this->load->view("agency/scheduling/index",$data);
 	}
 
@@ -32,7 +32,7 @@ class Scheduling extends CI_Controller {
 		$data['agency_id'] = $this->agency_id;
 		$data['relationshipDetails'] = $this->Client_model->clientRelationshipDetailById($client_id);
 		$data['client'] = $this->Client_model->getById($client_id);
-		$data['caregivers'] = $this->Caregiver_model->getAll();
+		$data['caregivers'] = $this->Caregiver_model->getCaregiverByAgencyId($this->agency_id);
 		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$client_id,"client_caregiver_relationship");
 		//$data['events'] = $this->Client_model->load_client_appointement_events($client_id);
 		//print_array($data['events']);
@@ -57,7 +57,7 @@ class Scheduling extends CI_Controller {
 			}
 		}
 		$data["assignedCargivers"] = $assigCaregiver;
-		$data['caregivers'] = $this->Caregiver_model->getAll();
+		$data['caregivers'] = $this->Caregiver_model->getCaregiverByAgencyId($this->agency_id);
 		$this->load->view("agency/scheduling/inc/scheduling/load_assign_caregiver", $data);
 	}
 	
@@ -108,7 +108,7 @@ class Scheduling extends CI_Controller {
 		$data['result'] = $this->common_model->listingRow("id",$post['id'],"client_appointements");
 		$data['relationshipDetails'] = $this->Client_model->clientRelationshipDetailById($post['client_id']);
 		$data['client'] = $this->Client_model->getById($post['client_id']);
-		$data['caregivers'] = $this->Caregiver_model->getAll();
+		$data['caregivers'] = $this->Caregiver_model->getCaregiverByAgencyId($this->agency_id);
 		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_caregiver_relationship");
 		$data['appointement_id'] = $post['id'];
 		$this->load->view("agency/scheduling/inc/scheduling/edit_client_schedule", $data);

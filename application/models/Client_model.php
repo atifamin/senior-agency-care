@@ -236,7 +236,48 @@ class Client_model extends CI_Model{
 						->where("cr.linked_id IS NULL")
 						->order_by("c.id", "ASC")
 						->get()->result();
-        foreach($data as $key=>$val){
+        $data = $this->linkClientsTable($data);
+        return $data;
+    }
+	public function getAllClientsByAgencyId($agency_id){
+		$data = $this->db->select("c.*")
+						->from("client c")
+						->join("client_relationship AS cr", "cr.linked_id = c.id", "LEFT")
+						->where("cr.linked_id IS NULL")
+						->where("c.agency_id", $agency_id)
+						->order_by("c.id", "ASC")
+						->get()->result();
+        $data = $this->linkClientsTable($data);
+        return $data;
+    }
+	public function scheduledClients($agency_id){
+		$data = $this->db->select("c.*")
+						->from("client c")
+						->join("client_relationship AS cr", "cr.linked_id = c.id", "LEFT")
+						->join("client_appointements AS ca", "ca.client_id = c.id", "LEFT")
+						->where("cr.linked_id IS NULL")
+						->where("c.agency_id", $agency_id)
+						->where("ca.title <>", '')
+						->order_by("c.id", "ASC")
+						->get()->result();
+        $data = $this->linkClientsTable($data);
+        return $data;
+    }
+	public function notScheduledClients($agency_id){
+		$data = $this->db->select("c.*")
+						->from("client c")
+						->join("client_relationship AS cr", "cr.linked_id = c.id", "LEFT")
+						->join("client_appointements AS ca", "ca.client_id = c.id", "LEFT")
+						->where("cr.linked_id IS NULL")
+						->where("c.agency_id", $agency_id)
+						->where("ca.title IS NULL")
+						->order_by("c.id", "ASC")
+						->get()->result();
+        $data = $this->linkClientsTable($data);
+        return $data;
+    }
+	public function linkClientsTable($data){
+		foreach($data as $key=>$val){
 			//client life directive document
 			$clientMedia = $this->common_model->listingRow("id",$val->life_directive_document,"media");
 			if(count($clientMedia)>0){
@@ -253,8 +294,9 @@ class Client_model extends CI_Model{
 				}
 			}
         }
-        return $data;
-    }
+		return $data;
+	}
+	
     public function getById($client_id){
         $data = $this->common_model->listingRow("id",$client_id,"client");
         if (count($data)>0){

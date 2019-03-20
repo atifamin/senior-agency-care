@@ -185,6 +185,21 @@ function agency_image($agency_id){
 	return $image_url;
 }
 
+function client_image($user_id){
+	$ci =& get_instance();
+	$userDetail = $ci->db->where("id", $user_id)->get("client")->row();
+	$image_url = base_url("assets/images/placeholders/avatar.png");
+	if($userDetail->profile_image!=0){
+		$media = $ci->db->where("id", $userDetail->profile_image)->get("media")->row();
+		if(count($media)>0){
+			if(file_exists(DOC_PATH.$media->full_path)){
+				$image_url = base_url().$media->full_path;
+			}
+		}
+	}
+	return $image_url;
+}
+
 function caregiver_Detail($caregiver_id){
 	$ci =& get_instance();
 	$ci->load->model("Caregiver_model");
