@@ -287,8 +287,8 @@
               </div>
             </div>
             <div id="license_area">
-              <div class="row" style="width: 100%;" id="license_row">
-                <div class=" offset-md-1 col-md-7">
+              <div class="offset-2 col-md-8" id="license_row">
+                
                   <?php if(isset($detail->license) && count($detail->license)>0){
                     foreach($detail->license as $licenseKey=>$licenseVal){ ?>
                      <div class="row" id="row_<?php echo $licenseVal->id; ?>" style="margin-top: 50px;">
@@ -313,7 +313,7 @@
                       </div>
                     </div>
                   <?php }} ?>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -539,7 +539,7 @@ $("#add_new_license_form").on("submit", function(e){
 		});
 		//swal("License","added successfully");
         $("#modal_form_license").modal("hide");
-		 $("#license_area").append(e);
+		 $("#license_row").append(e);
 
       }
      //$("#modal_form_license").modal('hide');

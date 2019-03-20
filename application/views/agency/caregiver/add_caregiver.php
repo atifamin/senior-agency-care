@@ -676,8 +676,8 @@ function update_license(){
   form_data.append('state_license', state_license);
   form_data.append('valid_from_month', valid_from_month);
   form_data.append('valid_from_year', valid_from_year);
-	form_data.append('valid_to_month', valid_to_month);
-	form_data.append('valid_to_year', valid_to_year);
+  form_data.append('valid_to_month', valid_to_month);
+  form_data.append('valid_to_year', valid_to_year);
   form_data.append('media_license_document', media_license_document);
   form_data.append('counter', counter);
   $.ajax({
@@ -689,7 +689,7 @@ function update_license(){
 		processData: false,
 		success: function (e) {
 			$("#license_row_"+counter+"").html(e);
-      $("#edit_license_modal").modal('hide');
+      		$("#edit_license_modal").modal('hide');
 		}
   });
 }
