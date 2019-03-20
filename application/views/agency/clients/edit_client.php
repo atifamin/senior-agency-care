@@ -45,7 +45,7 @@
 			<form id="update_client_information" role="form" enctype="multipart" method="post" class="wizard-form steps-validation" action="#" data-fouc>
 				<h6><strong>Client Information</strong></h6>
 				<fieldset>
-                <input type="hidden" id="client_id" value="<?php echo $client->id; ?>">
+                <input type="hidden" id="client_id" name="client_id" value="<?php echo $client->id; ?>">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -269,7 +269,7 @@
 				                  	<button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
 				                </div>
 				                <div class="col-md-6">
-				                  	<div id="croppedImageShow" ><img width="100" class="rounded-circle" src="<?php echo $client->client_profile_image->file_name; ?>"></div>
+				                  	<div id="croppedImageShow" ><img width="100" class="rounded-circle" src="<?php echo client_image($client->id); ?>"></div>
 				                </div>
 				            </div>
 				        </div>
@@ -414,7 +414,7 @@
 						<div class="col-md-4" style="margin-top: 5px;">
 							<div class="form-check">
 								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled" name="medical_history[]" data-fouc <?php if(in_array($CMH->id, $medical_history)){echo 'checked';} ?>>
+									<input type="checkbox" id="medical_history" class="form-check-input-styled" name="medical_history[]" data-fouc <?php if(in_array($CMH->id, $medical_history)){echo 'checked';} ?> value="<?php echo $CMH->id; ?>">
 									<?php echo $CMH->name; ?>
 								</label>
 							</div>
@@ -632,96 +632,122 @@ $(document).ready(function(){
     
 	//$("#client_information").submit(function(e){
 	
-	function add_new_agency(){
-    //e.preventDefault();
-    //formData = new FormData($("#update_client_information")[0]);
+	// function add_new_agency(){
+	//     //e.preventDefault();
 
-    var file_data = $('#file').prop('files')[0];   
-   
-    var client_id = $("#client_id").val();
-	//var notify_email =  $("input[name=notify_email]").val();
-	var first_name =  $("#first_name").val();
-    var last_name = $("#last_name").val();
-	var mobile_number = $("#mobile_number").val();
-    var email_address = $("#email_address").val();
-	var client_from = $("#client_from").val();
-	var client_to = $("#client_to").val();
-	var gender = $("input[name=gender]:checked").val();
-	var dob = $("#dob").val();
-	var level_care = $("#level_care").val();
-	var is_pets = $("#client_pets").val();
-	var pets_types = $("#pets_types").val();
-	var rate_per_hour = $("#rate_per_hour").val();
-	var hours_per_week = $("#hours_per_week").val();
-	var billing_cycle = $("#billing_cycle").val();
-	var dietry_requirements = $("input[name=dietry_requirements]:checked").val();
-	var fluid_requirements = $("input[name=fluid_requirements]:checked").val();
-	var medication_list = $("#medication_list").val();
-	var allergies_list = $("#allergies_list").val();
-	var is_oxygen = $("#oxygen_client").val();
-	var oxygen_quantity = $("#oxygen_quantity").val();
-	var oxygen_administered = $("#oxygen_administered").val();
-	var is_mobilty = $("#need_client").val();
-	var mobility_needs = $("#mobility_needs").val();
-	var transportation_requirements = $("#transportation_requirements").val();
-	var transfer_needs = $("#transfer_needs").val();
-	// if(file_data){
-	// var is_directive_document = 1;
+	//     var file_data = $('#file').prop('files')[0];   
+	   
+	//     var client_id = $("#client_id").val();
+	// 	//var notify_email =  $("input[name=notify_email]").val();
+	// 	var first_name =  $("#first_name").val();
+	//     var last_name = $("#last_name").val();
+	// 	var mobile_number = $("#mobile_number").val();
+	//     var email_address = $("#email_address").val();
+	// 	var client_from = $("#client_from").val();
+	// 	var client_to = $("#client_to").val();
+	// 	var gender = $("input[name=gender]:checked").val();
+	// 	var dob = $("#dob").val();
+	// 	var level_care = $("#level_care").val();
+	// 	var is_pets = $("#client_pets").val();
+	// 	var pets_types = $("#pets_types").val();
+	// 	var rate_per_hour = $("#rate_per_hour").val();
+	// 	var hours_per_week = $("#hours_per_week").val();
+	// 	var billing_cycle = $("#billing_cycle").val();
+	// 	var dietry_requirements = $("input[name=dietry_requirements]:checked").val();
+	// 	var fluid_requirements = $("input[name=fluid_requirements]:checked").val();
+	// 	var medication_list = $("#medication_list").val();
+	// 	var allergies_list = $("#allergies_list").val();
+	// 	var is_oxygen = $("#oxygen_client").val();
+	// 	var oxygen_quantity = $("#oxygen_quantity").val();
+	// 	var oxygen_administered = $("#oxygen_administered").val();
+	// 	var is_mobilty = $("#need_client").val();
+	// 	var mobility_needs = $("#mobility_needs").val();
+	// 	var transportation_requirements = $("#transportation_requirements").val();
+	// 	var transfer_needs = $("#transfer_needs").val();
+	// 	var medical_history = $('medical_history').val();
+	// 	// if(file_data){
+	// 	// var is_directive_document = 1;
+	// 	// }
+	// 	var pcd_name = $("#pcd_name").val();
+	// 	var pcd_contact = $("#pcd_contact").val();
+	// 	var prefered_hospital = $("#prefered_hospital").val();
+	// 	var special_instructions = $("#special_instructions").val();
+	// 	var month = $("#month").val();
+	// 	var day = $("#day").val();
+	// 	var year = $("#year").val();
+	//     var form_data = new FormData();    
+	//     if(file_data){              
+	//     form_data.append('file', file_data);
+	//     }
+	//     form_data.append('client_id', client_id);
+	//     form_data.append('first_name', first_name);
+	//     form_data.append('last_name', last_name);
+	//     form_data.append('email_address', email_address);
+	// 	form_data.append('mobile_number', mobile_number);
+	// 	form_data.append('client_from', client_from);
+	// 	form_data.append('client_to', client_to);
+	// 	form_data.append('gender', gender);
+	// 	form_data.append('dob', dob);
+	// 	form_data.append('level_care', level_care);
+	// 	form_data.append('is_pets', is_pets);
+	// 	form_data.append('pets_types', pets_types);
+	// 	form_data.append('rate_per_hour', rate_per_hour);
+	// 	form_data.append('hours_per_week', hours_per_week);
+	// 	form_data.append('billing_cycle', billing_cycle);
+	// 	form_data.append('dietry_requirements', dietry_requirements);
+	// 	form_data.append('fluid_requirements', fluid_requirements);
+	// 	form_data.append('medication_list', medication_list);
+	// 	form_data.append('allergies_list', allergies_list);
+	// 	form_data.append('is_oxygen', is_oxygen);
+	// 	form_data.append('oxygen_quantity', oxygen_quantity);
+	// 	form_data.append('oxygen_administered', oxygen_administered);
+	// 	form_data.append('is_mobilty', is_mobilty);
+	// 	form_data.append('mobility_needs', mobility_needs);
+	// 	form_data.append('transportation_requirements', transportation_requirements);
+	// 	form_data.append('transfer_needs', transfer_needs);
+	// 	form_data.append('medical_history',medical_history);
+	// 	//form_data.append('is_directive_document', is_directive_document);
+	// 	form_data.append('pcd_name', pcd_name);
+	// 	form_data.append('pcd_contact', pcd_contact);
+	// 	form_data.append('prefered_hospital', prefered_hospital);
+	// 	form_data.append('special_instructions', special_instructions);
+	// 	form_data.append('month', month);
+	// 	form_data.append('day', day);
+	// 	form_data.append('year', year);
+	//     $.ajax({
+	//         url: '<?php echo site_url("agency/clients/update_client/".$client->id); ?>',
+	//         dataType: 'text',
+	//         cache: false,
+	//         contentType: false,
+	//         processData: false,
+	//         data: form_data,                         
+	//         type: 'post',
+	//         success: function(data){
+	//         	console.log(data);
+	//         	return false;
+	// 			if(data == 1){
+	// 				swal("Client", "Updated successfully!");
+	// 				location.reload();
+	// 			}
+	//         }
+	//     });
 	// }
-	var pcd_name = $("#pcd_name").val();
-	var pcd_contact = $("#pcd_contact").val();
-	var prefered_hospital = $("#prefered_hospital").val();
-	var special_instructions = $("#special_instructions").val();
-	var month = $("#month").val();
-	var day = $("#day").val();
-	var year = $("#year").val();
-    var form_data = new FormData();    
-    if(file_data){              
-    form_data.append('file', file_data);
-    }
-    form_data.append('client_id', client_id);
-    form_data.append('first_name', first_name);
-    form_data.append('last_name', last_name);
-    form_data.append('email_address', email_address);
-	form_data.append('mobile_number', mobile_number);
-	form_data.append('client_from', client_from);
-	form_data.append('client_to', client_to);
-	form_data.append('gender', gender);
-	form_data.append('dob', dob);
-	form_data.append('level_care', level_care);
-	form_data.append('is_pets', is_pets);
-	form_data.append('pets_types', pets_types);
-	form_data.append('rate_per_hour', rate_per_hour);
-	form_data.append('hours_per_week', hours_per_week);
-	form_data.append('billing_cycle', billing_cycle);
-	form_data.append('dietry_requirements', dietry_requirements);
-	form_data.append('fluid_requirements', fluid_requirements);
-	form_data.append('medication_list', medication_list);
-	form_data.append('allergies_list', allergies_list);
-	form_data.append('is_oxygen', is_oxygen);
-	form_data.append('oxygen_quantity', oxygen_quantity);
-	form_data.append('oxygen_administered', oxygen_administered);
-	form_data.append('is_mobilty', is_mobilty);
-	form_data.append('mobility_needs', mobility_needs);
-	form_data.append('transportation_requirements', transportation_requirements);
-	form_data.append('transfer_needs', transfer_needs);
-	//form_data.append('is_directive_document', is_directive_document);
-	form_data.append('pcd_name', pcd_name);
-	form_data.append('pcd_contact', pcd_contact);
-	form_data.append('prefered_hospital', prefered_hospital);
-	form_data.append('special_instructions', special_instructions);
-	form_data.append('month', month);
-	form_data.append('day', day);
-	form_data.append('year', year);
-    $.ajax({
-        url: '<?php echo site_url("agency/clients/update_client/".$client->id); ?>',
+	function add_new_agency(){
+		//var client_id = $("#client_id").val();
+		formData = new FormData($("#update_client_information")[0]);
+		formData.append('croppedImage', $AppMaster.profileCropper.blob);
+		//formData.append('client_id',client_id);
+		$.ajax({
+        url: '<?php echo site_url("agency/clients/update_client"); ?>',
         dataType: 'text',
         cache: false,
         contentType: false,
         processData: false,
-        data: form_data,                         
+        data: formData,                         
         type: 'post',
         success: function(data){
+        	console.log(data);
+        	return false;
 			if(data == 1){
 				swal("Client", "Updated successfully!");
 				location.reload();
@@ -729,29 +755,6 @@ $(document).ready(function(){
         }
     });
 }
-// 	function add_new_agency(){
-// 		var client_id = $("#client_id").val();
-// 		formData = new FormData($("#update_client_information")[0]);
-// 		formData.append('croppedImage', $AppMaster.profileCropper.blob);
-// 		formData.append('client_id',client_id);
-// 		$.ajax({
-//         url: '<?php //echo site_url("agency/clients/update_client/".$client->id); ?>',
-//         dataType: 'text',
-//         cache: false,
-//         contentType: false,
-//         processData: false,
-//         data: formData,                         
-//         type: 'post',
-//         success: function(data){
-//         	console.log(data);
-//         	return false;
-// 			if(data == 1){
-// 				swal("Client", "Updated successfully!");
-// 				location.reload();
-// 			}
-//         }
-//     });
-// }
 
 
 
