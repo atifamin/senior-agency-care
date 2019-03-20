@@ -19,8 +19,8 @@ class Scheduling extends CI_Controller {
 		$data["breadcrumb"] = "Scheduling";
 		$data["heading"] = "Client Scheduling";
 		$data["url_segment"] = "Scheduling";
-		$data["clients"] = $this->Client_model->getAllClientsByAgencyId($this->agency_id);
-		//print_array($data['clients']);
+		$data["scheduledClients"] = $this->Client_model->scheduledClients($this->agency_id);
+		$data["notScheduledClients"] = $this->Client_model->notScheduledClients($this->agency_id);
 		$this->load->view("agency/scheduling/index",$data);
 	}
 
