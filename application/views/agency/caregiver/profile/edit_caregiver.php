@@ -6,7 +6,7 @@
 </style>
 <?php $months = CON_MONTHS; ?>
 
-<?php //print_array($detail);
+<?php //print_array($detail->license[11]->id);
 //print_array($result); ?>
 
 
@@ -332,6 +332,7 @@
       </div>
       <form id="add_new_license_form" role="form" enctype="multipart">
         <input type="hidden" id="caregiver_id" value="<?php echo $detail->id;?>">
+        <!-- <input type="hidden" id="license_id" value="<?php echo $detail->license[0]->id; ?>"> -->
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
@@ -398,7 +399,7 @@
               <div class="form-group">
                 <label class="d-block">Upload License Document(optional):</label>
                 <input name="media_license_document" type="file" id="media_license_document" class="form-input-styled" data-fouc>
-                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
+                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span></div>
             </div>
           </div>
           <!-- <div class="row">
@@ -499,7 +500,10 @@ $("#add_new_license_form").on("submit", function(e){
   e.preventDefault();
 	var fileData = $("#media_license_document").prop("files")[0];
 	var formData = new FormData();
+  // var id = $("#id").val();
   var caregiver_id = $("#caregiver_id").val();
+  // var license_id = $('#license_id').val();
+  // alert(license_id);
   var state_license = $("#state_license").val();
   var valid_from_month = $("#valid_from_month").val();
   var valid_from_year = $("#valid_from_year").val();
@@ -507,6 +511,7 @@ $("#add_new_license_form").on("submit", function(e){
   var valid_to_year = $("#valid_to_year").val();
   var media_license_document = $("#media_license_document").val();
 
+  // formData.append("id",id);
   formData.append("caregiver_id",caregiver_id);
   formData.append("state_license",state_license);
   formData.append("valid_from_month",valid_from_month);
