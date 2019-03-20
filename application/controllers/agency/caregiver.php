@@ -263,7 +263,7 @@ class Caregiver extends CI_Controller {
 		$data["breadcrumb"] = "Caregivers";
 		$data["heading"] = "Caregivers";
 		$data["url_segment"] = "caregivers";
-		$data['result'] = $this->Caregiver_model->getAll();
+		$data['result'] = $this->Caregiver_model->getCaregiverByAgencyId($this->agency_id);
 		$this->load->view("agency/caregiver/send_invite_to_caregiver",$data);
 	}
 	

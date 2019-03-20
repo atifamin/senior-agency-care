@@ -168,6 +168,33 @@ class Client_model extends CI_Model{
         }
         return $data;
     }
+	public function getAllClientsByAgencyId($agency_id){
+		$data = $this->db->select("c.*")
+						->from("client c")
+						->join("client_relationship AS cr", "cr.linked_id = c.id", "LEFT")
+						->where("cr.linked_id IS NULL")
+						->where("agency_id", $agency_id)
+						->order_by("c.id", "ASC")
+						->get()->result();
+        foreach($data as $key=>$val){
+			//client life directive document
+			$clientMedia = $this->common_model->listingRow("id",$val->life_directive_document,"media");
+			if(count($clientMedia)>0){
+				$data[$key]->life_directive_document_detail = $clientMedia;
+			}
+			$checkIfRelationExist = $this->common_model->listingRow("client_id",$val->id,"client_relationship");
+			if(count($checkIfRelationExist)>0){
+				$getLinkedProfile = $this->common_model->listingRow("id",$checkIfRelationExist->linked_id,"client");
+				$data[$key]->linked_profile_detail = $getLinkedProfile;
+				//client life directive document
+				$linkedMedia = $this->common_model->listingRow("id",$getLinkedProfile->life_directive_document,"media");
+				if(count($linkedMedia)>0){
+					$data[$key]->linked_profile_detail->life_directive_document_detail = $linkedMedia;
+				}
+			}
+        }
+        return $data;
+    }
     public function getById($client_id){
         $data = $this->common_model->listingRow("id",$client_id,"client");
         if (count($data)>0){
