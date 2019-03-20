@@ -231,6 +231,7 @@ class Caregiver extends CI_Controller {
 	}
 
 	public function edit_license() {
+		//print_array();
 		$post = $this->input->post();
 		$data['result'] = $this->common_model->listingRow("id",$post['id'],"caregiver_license");
 		$data['license_doc'] = $this->common_model->listingRow("id",$data['result']->media_license_document,"media");

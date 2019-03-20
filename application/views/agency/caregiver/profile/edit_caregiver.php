@@ -398,7 +398,7 @@
               <div class="form-group">
                 <label class="d-block">Upload License Document(optional):</label>
                 <input name="media_license_document" type="file" id="media_license_document" class="form-input-styled" data-fouc>
-                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
+                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span></div>
             </div>
           </div>
           <!-- <div class="row">

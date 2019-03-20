@@ -69,9 +69,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <label class="d-block">Upload License Document(optional):</label>
-          <input name="media_license_document" type="file" id="media_license_document_edit_lic" class="form-input-styled" data-fouc>
-          <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span> </div>
+                <label class="d-block">Upload License Document(optional):</label>
+                <input name="media_license_document" type="file" id="media_license_document_edit_lic" class="form-input-styled" data-fouc>
+                <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span></div>
       </div>
     </div>
     <!-- <div class="row">
@@ -88,13 +88,18 @@
     <button type="submit"  class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Update License</span> </button>
   </div>
 </form>
+
+<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/styling/uniform.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> 
 <script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 
 
-
 <script>
+$('.form-input-styled').uniform({
+  fileButtonClass: 'action btn bg-blue'
+});
+
 $("select").select2({
 	minimumResultsForSearch: Infinity
 });
@@ -103,6 +108,7 @@ $("#update_new_license_form").submit(function(e){
    e.preventDefault();
    //alert();
     var caregiver_id = $("#caregiver_id_edit_lic").val();
+    //alert(caregiver_id);
     var form_data = new FormData();
     var state_license = $("#state_license_edit_lic").val();
     var valid_from_month = $("#valid_from_month_edit_lic").val();
@@ -125,6 +131,7 @@ $("#update_new_license_form").submit(function(e){
 		contentType: false,
 		processData: false,
 		success: function (e) {
+     
 			$("#row_"+caregiver_id+"").html(e);
       $("#edit_license_modal").modal('hide');
 		}
