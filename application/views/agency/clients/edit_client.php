@@ -269,7 +269,7 @@
 				                  	<button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
 				                </div>
 				                <div class="col-md-6">
-				                  	<div id="croppedImageShow" ><img width="100" class="rounded-circle" src="<?php echo $client->client_profile_image->file_name; ?>"></div>
+				                  	<div id="croppedImageShow" ><img width="100" class="rounded-circle" src="<?php echo client_image($client->id); ?>"></div>
 				                </div>
 				            </div>
 				        </div>
