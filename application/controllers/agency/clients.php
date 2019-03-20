@@ -97,6 +97,7 @@ class Clients extends CI_Controller {
 
 	public function update_client(){
 		$post = $this->input->post();
+		//print_array($post);
 		$post['agency_id'] = $this->agency_id;
 		$this->Client_model->update_client($post);
 		echo 1;

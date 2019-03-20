@@ -42,7 +42,7 @@
 				<h6>Edit a client</h6>
 			</div>
 
-			<form id="client_information" role="form" enctype="multipart" method="post" class="wizard-form steps-validation" action="#" data-fouc>
+			<form id="update_client_information" role="form" enctype="multipart" method="post" class="wizard-form steps-validation" action="#" data-fouc>
 				<h6><strong>Client Information</strong></h6>
 				<fieldset>
                 <input type="hidden" id="client_id" value="<?php echo $client->id; ?>">
@@ -263,6 +263,16 @@
 			                    </select>
 		                    </div>
 						</div>
+						<div class="col-md-6">
+				            <div class="form-group">
+				                <div class="col-md-6">
+				                  	<button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
+				                </div>
+				                <div class="col-md-6">
+				                  	<div id="croppedImageShow" ><img width="100" class="rounded-circle" src="<?php echo $client->client_profile_image->file_name; ?>"></div>
+				                </div>
+				            </div>
+				        </div>
 					</div>
 				</fieldset>
 
@@ -489,7 +499,8 @@
 						<div class="col-md-6 offset-md-1">
 							<div class="form-group">
 								<label>Upload End of Life Directive document:</label>
-		                        <input name="file" id="file" type="file" class="form-input-styled" data-fouc>
+		                        <input name="file" id="file" type="file" class="form-input-styled"
+		                        data-fouc>
 		                        <span class="form-text text-muted">Accepted formats: pdf, doc. Max file size 2Mb</span>
 		                    </div>
 						</div>
@@ -556,7 +567,7 @@
 <?php include(APPPATH."views/agency/inc/footer.php");?>
 <script type="text/javascript">
 $(document).ready(function(){
-    $(".filename").html('<?php echo $client->file_name; ?>');
+    //$(".filename").html('<?php //echo $client->file_name; ?>');
     var pets = $("#client_pets").val();
     if(pets == 1){
         $("#pet_list").css("display","block");
@@ -623,6 +634,8 @@ $(document).ready(function(){
 	
 	function add_new_agency(){
     //e.preventDefault();
+    //formData = new FormData($("#update_client_information")[0]);
+
     var file_data = $('#file').prop('files')[0];   
    
     var client_id = $("#client_id").val();
@@ -714,8 +727,32 @@ $(document).ready(function(){
 				location.reload();
 			}
         }
-     });
+    });
 }
+// 	function add_new_agency(){
+// 		var client_id = $("#client_id").val();
+// 		formData = new FormData($("#update_client_information")[0]);
+// 		formData.append('croppedImage', $AppMaster.profileCropper.blob);
+// 		formData.append('client_id',client_id);
+// 		$.ajax({
+//         url: '<?php //echo site_url("agency/clients/update_client/".$client->id); ?>',
+//         dataType: 'text',
+//         cache: false,
+//         contentType: false,
+//         processData: false,
+//         data: formData,                         
+//         type: 'post',
+//         success: function(data){
+//         	console.log(data);
+//         	return false;
+// 			if(data == 1){
+// 				swal("Client", "Updated successfully!");
+// 				location.reload();
+// 			}
+//         }
+//     });
+// }
+
 
 
 </script>

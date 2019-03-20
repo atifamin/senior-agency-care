@@ -13,35 +13,61 @@ class Client_model extends CI_Model{
         $client["email_address"] = $post["email_address"];
         $client["client_from"] = $post["client_from"];
         $client["client_to"] = $post["client_to"];
-        $client["gender"] = $post["gender"];
-        //$client["dob"] = $post["dob"];
-        $client["level_care"] = $post["level_care"];
-        // $client["is_pets"] = $post["is_pets"];
-        // $client["pets_types"] = $post["pets_types"];
-        // $client["rate_per_hour"] = $post["rate_per_hour"];
-        // $client["hours_per_week"] = $post["hours_per_week"];
-        // $client["billing_cycle"] = $post["billing_cycle"];
-        // $client["dietry_requirements"] = $post["dietry_requirements"];
-        // $client["fluid_requirements"] = $post["fluid_requirements"];
-        // $client["medication_list"] = $post["medication_list"];
-        // $client["allergies_list"] = $post["allergies_list"];
-        // $client["is_oxygen"] = $post["is_oxygen"];
-        // $client["oxygen_quantity"] = $post["oxygen_quantity"];
-        // $client["oxygen_administered"] = $post["oxygen_administered"];
-        // $client["is_mobilty"] = $post["is_mobilty"];
-        // $client["mobility_needs"] = $post["mobility_needs"];
-        // $client["transportation_requirements"] = $post["transportation_requirements"];
-        // $client["transfer_needs"] = $post["transfer_needs"];
+        
+        $client['gender'] = "";
+        if (isset($post["gender"])) 
+            $client["gender"] = $post["gender"];
 
-        // $client["medical_history"] = "";
-        // if (isset($post["medical_history"])) {
-        //     $client['medical_history'] = explode(",",$post['medical_history']);
-        // }
-        // $client["pcd_name"] = $post["pcd_name"];
-        // $client["pcd_contact"] = $post["pcd_contact"];
-        // $client["prefered_hospital"] = $post["prefered_hospital"];
-        // $client["special_instructions"] = $post["special_instructions"];
-        // $client["linked_profile"] = $post["linked_profile"];
+        $dob = date("Y-m-d", strtotime("".$post['year']."-".$post['month']."-".$post['day'].""));
+        $client["dob"] = $dob;
+
+        $client["level_care"] = $post["level_care"];
+
+        $client["is_pets"] = "";
+        if (isset($post['is_pets']))
+            $client["is_pets"] = $post["is_pets"];
+        
+        $client["pets_types"] = $post["pets_types"];
+        $client["rate_per_hour"] = $post["rate_per_hour"];
+        $client["hours_per_week"] = $post["hours_per_week"];
+        $client["billing_cycle"] = $post["billing_cycle"];
+
+        $client["dietry_requirements"] = "";
+        if (isset($post["dietry_requirements"]))
+            $client["dietry_requirements"] = $post["dietry_requirements"];
+        
+        $client["fluid_requirements"] = "";
+        if (isset($post["fluid_requirements"])) 
+            $client["fluid_requirements"] = $post["fluid_requirements"];
+
+        $client["medication_list"] = $post["medication_list"];
+        $client["allergies_list"] = $post["allergies_list"];
+
+        $client["is_oxygen"] = "";
+        if (isset($post["is_oxygen"]))
+            $client["is_oxygen"] = $post["is_oxygen"];
+
+        $client["oxygen_quantity"] = $post["oxygen_quantity"];
+        $client["oxygen_administered"] = $post["oxygen_administered"];
+
+        $client["is_mobilty"] = "";
+        if (isset($post["is_mobilty"])) 
+            $client["is_mobilty"] = $post["is_mobilty"];
+
+        $client["mobility_needs"] = $post["mobility_needs"];
+        $client["transportation_requirements"] = $post["transportation_requirements"];
+        $client["transfer_needs"] = $post["transfer_needs"];
+
+        $client["medical_history"] = "";
+        if (isset($post["medical_history"]))
+            $client['medical_history'] = implode(",", $post['medical_history']);
+            //$client['medical_history'] = json_encode($post['medical_history']);
+            
+        $client["pcd_name"] = $post["pcd_name"];
+        $client["pcd_contact"] = $post["pcd_contact"];
+        $client["prefered_hospital"] = $post["prefered_hospital"];
+        $client["special_instructions"] = $post["special_instructions"];
+        $client["linked_profile"] = $post["linked_profile"];
         //print_array($post);
         $client_id = $this->common_model->insertGetIDQuery("client", $client);
 
@@ -86,11 +112,14 @@ class Client_model extends CI_Model{
     
 
     public function update_client($post){
+        $client_update = array();
+        $client_update["agency_id"] = $post["agency_id"];
         $dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
         $dob = DateTime::createFromFormat('M-d-Y', $dob);
         $dob = $dob->format('Y-m-d');
         $post['dob'] = $dob;
         $client_id = $post['client_id'];
+        //print_array($client_id);
         unset($post['month']);
         unset($post['day']);
         unset($post['year']);
@@ -146,8 +175,12 @@ class Client_model extends CI_Model{
             if (count($clientDocument)>0) {
                 $data->client_document_detail = $clientDocument;
             }
+            $profile_image = $this->common_model->listingRow("id",$data->profile_image,"media");
+            if (count($profile_image)>0) {
+                $data->client_profile_image = $profile_image;
+            }
+            return $data;
         }
-        return $data;
     }
 	
 	public function clientRelationshipDetailById($client_id){
@@ -174,7 +207,11 @@ class Client_model extends CI_Model{
             if (count($clientDocument2)>0) {
                 $data->client_document_detail = $clientDocument2;
             }
-		}
+            $profile_image = $this->common_model->listingRow("id",$data->profile_image,"media");
+		      if(count($profile_image)>0){
+                $data->client_profile_image = $profile_image;
+              }      
+        }
 		return $data;
 	}
 
