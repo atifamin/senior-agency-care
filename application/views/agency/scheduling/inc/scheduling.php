@@ -5,6 +5,8 @@
 }
 </style>
 <link href="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" />
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switchery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
 <div class="row">
   <div class="col-md-12">
     <form action="#">
@@ -32,7 +34,7 @@
       </div>
     </form>
     <div class="row" style="margin-top: 40px;">
-      <div class="col-md-4"> <a href="javascript:;" data-toggle="modal" data-target="#assign_caregiver_modal">
+      <div class="col-md-4" id="assign_caregivers_div"> <a href="javascript:;" onclick="load_assign_caregiver(<?php echo $client_id; ?>)">
         <button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>
         Assign Caregiver to client case</a>
         <div id="caregivers_images_div">
@@ -43,222 +45,131 @@
         <button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>
         Create new schedule</a> </div>
     </div>
-    <!-- <div id="saasnewschedule" class="modal fade" tabindex="-1">
-    	<div class="modal-dialog">
-    		<div class="modal-content">
-    			<div class="row" style="text-align: center; padding-top: 10" >
-					<div class="col-md-12">
-						<strong>Make or edit Client's Schedule</strong>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-1" style="text-align: right;">
-						<img src="<?php echo base_url(); ?>assets/images/userimg/face14.jpg" style="margin-left: 10px;" class="rounded-circle mr-1" width="25" height="25" alt=""></i>					
-					</div>
-					<div class="col-md-5" style="text-align: left;">
-						<div class="media-title font-weight-semibold">James Alexander</div><br>
-						<span class="text-muted">Caregiver</span>
-					</div>
-				</div>
-				<div class="row" style="margin-top: 50px;">
-					<div class="offset-md-2 col-md-12">
-						<div class="form-group">
-						<label>Basic single date picker:</label>
-						<div class="input-group">
-							<span class="input-group-prepend">
-								<span class="input-group-text"><i class="icon-calendar22"></i></span>
-							</span>
-							<input type="text" class="form-control daterange-single" value="03/18/2013">
-						</div>
-					</div>
-					</div>
-				</div>
-	      		<div class="modal-body">
-	        	</div>
-	        	<div class="modal-footer">
-	        	</div>
-	    	</div>
-	  	</div>
-	</div> -->
-    
-    <div id="newschedule" class="modal fade" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <form id="add_client_appointement_form">
-            <div class="modal-header">
-              <h3 class="modal-title" style="margin: 0 auto;padding:4% 0"><strong>Create A New Appointment</strong></h3>
-              <div>
-                <li class="media">
-                  <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
-                  <div class="media-body">
-                    <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></div>
-                    <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
-                </li>
-              </div>
-            </div>
-            <div class="modal-body" style="padding:0 10%;">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label><strong>Assign caregiver to client schedule</strong></label>
-                    <select class="form-control select" data-fouc id="therapy_type" onchange="if($(this).val()==1){$('#therapy_doc_name').show()}else{$('#therapy_doc_name').hide()}" name="client_appointement_type">
-                      <option>Please Select</option>
-					  <?php if(count($appointement_type)>0){ ?>
-                      <?php foreach($appointement_type as $appType){ ?>
-                      <option value="<?php echo $appType->id ?>"><?php echo $appType->name; ?></option>
-                      <?php }} ?>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row" id="therapy_doc_name" style="display: none;">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Enter doctor's name" name="client_doctor_name">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group"> <i class="icon-calendar22" style="margin-right: 5px;"></i> <strong>Enter appointment date and time: </strong>
-                    <div class="input-group">
-                      <div class="input-group">
-                        <input type="text" class="form-control" id="appointment_picker" value="03/18/2013" name="dates">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="text-align: center; padding-bottom: 5px;">
-                <div class="col-md-12"> <strong>Assign time to schedule</strong> </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                    <input type="text" class="form-control pickatime" placeholder="Caregiver clock in" name="in_time">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                    <input type="text" class="form-control pickatime" placeholder="Caregiver clock out" name="out_time">
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-md-8 offset-md-2">
-                  <div class="form-group pt-2">
-                    <div class="form-check">
-                      <input type="checkbox" name="is_recurring"  data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small" id="client_pets" onchange="">
-                      <strong style="margin-left: 10px;">Set this schedule as recurring</strong> </div>
-                  </div>
-                </div>
-              </div>
-              <!--<div class="row" id="appointment_set_reminder" style="display: none;">
-                <div class="col-md-12">
-                  <div class="row" id="appointment_set_reminder_doctor" style="display: none;">
-                    <div class="col-md-8 offset-md-2">
-                      <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                        <select class="form-control multiselect" data-fouc>
-                          <option value="dr_2.0">2.0 Hrs before appointment</option>
-                          <option value="dr_2.5">2.5 Hrs before appointment</option>
-                          <option value="dr_3.0">3.0 Hrs before appointment</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row" id="appointment_set_reminder_therapy" style="display: none;">
-                    <div class="col-md-8 offset-md-2">
-                      <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                        <select class="form-control multiselect" data-fouc>
-                          <option value="th_30">30 Minutes before appointment</option>
-                          <option value="th_1.0">1.0 Hrs before appointment</option>
-                          <option value="th_1.5">1.5 Hrs before appointment</option>
-                          <option value="th_2.0">2.0 Hrs before appointment</option>
-                          <option value="th_3.0">3.0 Hrs before appointment</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>-->
-              <!-- <div class="row" id="appointment_set_reminder" style="display: none;">
-	                <div class="col-md-8 offset-md-2">
-	                    <div class="input-group">
-	                        <span class="input-group-prepend">
-	                            <span class="input-group-text"><i class="icon-alarm"></i></span>
-	                        </span>
-	                        <select class="form-control multiselect" data-fouc>
-	                            <option value="dr_2.0">2.0 Hrs before appointment</option>
-	                            <option value="dr_2.5">2.5 Hrs before appointment</option>
-	                            <option value="dr_3.0">3.0 Hrs before appointment</option>
-	                        </select>
-	                    </div>
-	                </div>
-	            </div> --> 
-            </div>
-            <div class="row" style="text-align: center; margin-bottom: 20px;">
-              <div class="col-md-12">
-                <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Save</span> </button>
-                <button type="button" class="btn btn-light legitRipple">Cancal</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
     <div class="row" style="margin-top: 60px;">
-      <div class="col-md-12" style="padding: 0;"> 
-        <!-- List view -->
-        <div id="appointement_calendar"></div>
-        <!-- /list view --> 
-      </div>
+      <div class="col-md-12" style="padding: 0;" id="full_calendar_view"></div>
+    </div>
+  </div>
+</div>
+<div id="newschedule" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="add_client_appointement_form">
+        <div class="modal-header">
+          <h3 class="modal-title" style="margin: 0 auto;padding:4% 0"><strong>Create A New Appointment</strong></h3>
+          <div>
+            <li class="media">
+              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
+              <div class="media-body">
+                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></div>
+                <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
+            </li>
+          </div>
+        </div>
+        <div class="modal-body" style="padding:0 10%;">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label><strong>Assign caregiver to client schedule</strong></label>
+                <select class="form-control select" data-fouc id="caregiver_id" name="caregiver_id">
+                  <option>Please Select</option>
+                  <?php if(count($assignedCargivers)>0){ ?>
+                  <?php 
+						foreach($assignedCargivers as $cg){
+							$assignedCG = $this->common_model->listingRow("id",$cg->caregiver_id,"caregiver");
+					  
+				  ?>
+                  <option value="<?php echo $assignedCG->id ?>"><?php echo $assignedCG->first_name." ".$assignedCG->last_name; ?></option>
+                  <?php }} ?>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group"> <i class="icon-calendar22" style="margin-right: 5px;"></i> <strong>Enter appointment date and time: </strong>
+                <div class="input-group">
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="appointment_picker" value="<?php echo date("m/d/Y"); ?>" name="dates" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="text-align: center; padding-bottom: 5px;">
+            <div class="col-md-12"> <strong>Assign time to schedule</strong> </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
+                <input type="text" class="form-control pickatime" placeholder="Caregiver clock in" name="in_time">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
+                <input type="text" class="form-control pickatime" placeholder="Caregiver clock out" name="out_time">
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-md-8 offset-md-2">
+              <div class="form-group pt-2">
+                <div class="form-check form-check-switchery">
+                  <label class="form-check-label">
+                    <input type="checkbox" name="is_recurring" class="form-check-input-switchery" data-fouc id="is_recurring" value="1">
+                    <strong>Set this schedule as recurring</strong> </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="text-align: center; margin-bottom: 20px;">
+          <div class="col-md-12">
+            <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Save</span> </button>
+            <button type="button" class="btn btn-light legitRipple">Cancal</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="editschedule" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" id="editschedulediv">
+      
     </div>
   </div>
 </div>
 <div id="assign_caregiver_modal" class="modal fade" tabindex="-1" data-backdrop="true">
   <div class="modal-dialog modal-sm">
     <form id="assign_caregiver_form">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h6 class="modal-title" align="center">Assign Caregiver</h6>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group" id="select_caregiver">
-            <select multiple="multiple" data-placeholder="Select Caregiver..." class="form-control select" data-fouc id="caregivers" name="assisgn_caregivers[]">
-              <option></option>
-              <?php if(count($caregivers)>0): ?>
-              <?php foreach($caregivers as $caregiverKey=>$caregiverVal): ?>
-              <option value="<?php echo $caregiverVal->id; ?>"><?php echo $caregiverVal->first_name." ".$caregiverVal->last_name; ?></option>
-              <?php endforeach; endif; ?>
-            </select>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn bg-primary spinner-light-card" style="width:100%">Save changes</button>
-        </div>
-      </div>
+      <div class="modal-content" id="assign_caregiver_data"> </div>
     </form>
   </div>
 </div>
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/demo_pages/fullcalendar_basic.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script> 
 <script>
 $('#appointment_picker').datepicker({
 	multidate: true,
 	clearBtn:true,
 });
+new Switchery(document.querySelector('#is_recurring'));
+$("#caregivers, #caregiver_id").select2();
 
-$("#caregivers, #therapy_type").select2();
+function load_assign_caregiver(client_id){
+	loader = CardLoader($("#assign_caregivers_div"));
+	$.post("<?php echo site_url("agency/scheduling/load_assign_caregiver"); ?>", {client_id:client_id}).done(function(data){
+		$("#assign_caregiver_data").html(data);
+		$("#assign_caregiver_modal").modal("show");
+		loader.unblock();
+	});
+}
 
 $("#assign_caregiver_form").on("submit", function(e){
 	loader = CardLoader($(this));
@@ -276,6 +187,7 @@ $("#assign_caregiver_form").on("submit", function(e){
 		success: function(e){
 			loader.unblock();
 			$("#caregivers_images_div").html(e);
+			$("#assign_caregiver_modal").modal("hide");
 		},
 		xhr: function () {
 			var xhr = new window.XMLHttpRequest();
@@ -285,6 +197,7 @@ $("#assign_caregiver_form").on("submit", function(e){
 					percentComplete = parseInt(percentComplete * 100);
 					if(percentComplete==100){
 						loader.unblock();
+						$("#assign_caregiver_modal").modal("hide");
 					}
 				}
 			}, false);
@@ -292,6 +205,14 @@ $("#assign_caregiver_form").on("submit", function(e){
 		},
 	});
 });
+
+function delete_assigned_caregiver(id){
+	loader = CardLoader($("#assign_caregivers_div"));
+	$.post("<?php echo site_url("agency/scheduling/delete_assigned_caregiver"); ?>", {id:id}).done(function(data){
+		$("#assigned_caregiver_row_id_"+id+"").remove();
+		loader.unblock();
+	});
+}
 
 
 $("#add_client_appointement_form").on("submit", function(e){
@@ -310,12 +231,12 @@ $("#add_client_appointement_form").on("submit", function(e){
 		success: function(e){
 			loader.unblock();
 			$("#caregivers_images_div").html(e);
-			//document.getElementById("#add_client_appointement_form").reset();
 			$("#newschedule").modal("hide");
 			swal({
 				type: 'success',
 				html: 'You have added an appointement successfully',
 			});
+			load_calendar(<?php echo $client_id; ?>);
 		},
 		xhr: function () {
 			var xhr = new window.XMLHttpRequest();
@@ -325,7 +246,6 @@ $("#add_client_appointement_form").on("submit", function(e){
 					percentComplete = parseInt(percentComplete * 100);
 					if(percentComplete==100){
 						loader.unblock();
-						//document.getElementById("#add_client_appointement_form").reset();
 						$("#newschedule").modal("hide");
 						swal({
 							type: 'success',
@@ -339,159 +259,70 @@ $("#add_client_appointement_form").on("submit", function(e){
 	});
 });
 
+$(document).ready(function(e) {
+    load_calendar(<?php echo $client_id; ?>);
+});
 
-var eventColors = [
-            {
-                title: 'All Day Event',
-				
-                start: '2014-11-01',
-                color: '#EF5350',
-				description: 'adsf',
-				abc: 'new',
-            },
-            {
-                title: 'Long Event',
-                start: '2014-11-07',
-                end: '2014-11-10',
-                color: '#26A69A'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: '2014-11-09T16:00:00',
-                color: '#26A69A'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: '2014-11-16T16:00:00',
-                color: '#5C6BC0'
-            },
-            {
-                title: 'Conference',
-                start: '2014-11-11',
-                end: '2014-11-13',
-                color: '#546E7A'
-            },
-            {
-                title: 'Meeting',
-                start: '2014-11-12T10:30:00',
-                end: '2014-11-12T12:30:00',
-                color: '#546E7A'
-            },
-            {
-                title: 'Lunch',
-                start: '2014-11-12T12:00:00',
-                color: '#546E7A'
-            },
-            {
-                title: 'Meeting',
-                start: '2014-11-12T14:30:00',
-                color: '#546E7A'
-            },
-            {
-                title: 'Happy Hour',
-                start: '2014-11-12T17:30:00',
-                color: '#546E7A'
-            },
-            {
-                title: 'Dinner',
-                start: '2014-11-12T20:00:00',
-                color: '#546E7A'
-            },
-            {
-                title: 'Birthday Party',
-                start: '2014-11-13T07:00:00',
-                color: '#546E7A'
-            },
-            {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2014-11-28',
-                color: '#FF7043'
-            }
-        ];
-
-$('#appointement_calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'month,listWeek',
-                right: 'listDay,listWeek,listMonth'
-            },
-            views: {
-                listDay: { buttonText: 'Day' },
-                listWeek: { buttonText: 'Week' },
-                listMonth: { buttonText: 'Month' }
-            },
-            defaultView: 'listMonth',
-            defaultDate: '2014-11-12',
-            navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: eventColors,
-            isRTL: $('html').attr('dir') == 'rtl' ? true : false,
-			eventRender: function(info, element) {
-			  element.append('<td class="fc-list-item-time fc-widget-content" style="border-bottom:1px solid #ddd;"><div class="form-group pt-2"><div class="form-check"><input type="checkbox" name="is_recurring"  data-on-text="On" data-off-text="Off" class="form-check-input-switch sm" data-size="small" id="client_pets" onchange=""></div></div></td>');
-			  element.prepend('<td class="fc-list-item-time fc-widget-content" style="border-bottom:1px solid #ddd;"><div class="form-group pt-2"><div class="form-check"><input type="checkbox" name="is_recurring"  data-on-text="On" data-off-text="Off" class="form-check-input-switch sm" data-size="small" id="client_pets" onchange=""></div></div></td>');
-			  
-			}
-        });
-/*$('#appointement_calendar').fullCalendar({
-	header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,basicWeek,basicDay'
-            },
-            defaultDate: '2014-11-12',
-            editable: true,
-            events: eventColors,
-            eventLimit: true,
-            isRTL: $('html').attr('dir') == 'rtl' ? true : false
-});*/
-
-/*function assignCaregiver(){
-	swal({
-		title: 'Assign Caregiver to Client case',
-		input: 'select',
-		inputOptions: {
-			'1': 'Caregiver 1',
-			'2': 'Caregiver 2',
-			'3': 'Caregiver 3',
-			'4': 'Caregiver 4'
-		},
-		inputClass: 'form-control select-multiselect',
-		showCancelButton: true,
-		inputValidator: function (value) {
-			return !$('.swal2-select.select-multiselect').val().length && 'You need to select atleast one caregiver!'
-		},
-		inputAttributes: {
-			'multiple': 'multiple'
-		},
-		onOpen: function() {
-
-			// Initialize Multiselect when dialog is opened
-			$('.swal2-select.select-multiselect').multiselect();
-
-			// Initialize Uniform for custom checkboxes
-			$('.swal2-popup input[type=checkbox]').uniform();
-		}
-	}).then(function (result) {
-
-		// Display selected values
-		swal({
-			type: 'success',
-			html: 'You selected: ' + JSON.stringify($('.swal2-select.select-multiselect').val())
-		});
-
-		// Show another modal if Cancel button is clicked
-		if (result.dismiss === 'cancel') {
-			swal({
-				title: 'Cancelled',
-				text: 'You have cancelled the request.',
-				type: 'error'
-			});
-		}
+function load_calendar(client_id){
+	loader = CardLoader($("#full_calendar_view"));
+	$.post("<?php echo site_url("agency/scheduling/load_calendar"); ?>",{client_id:client_id}).done(function(data){
+		$("#full_calendar_view").html(data);
+		loader.unblock();
 	});
+}
 
-}*/
+function edit_client_schedule(id){
+	loader = CardLoader($("#full_calendar_view"));
+	$.post("<?php echo site_url("agency/scheduling/edit_client_schedule"); ?>",{client_id:<?php echo $client_id; ?>, id:id}).done(function(data){
+		$("#editschedulediv").html(data);
+		$("#editschedule").modal("show");
+		loader.unblock();
+	});
+}
+
+function update_client_appointement_form(){
+	loader = CardLoader($("#update_client_appointement_form"));
+	formData = new FormData($("#update_client_appointement_form")[0]);
+	formData.append("agency_id", <?php echo $agency_id; ?>);
+	formData.append("client_id", <?php echo $client_id; ?>);
+	$.ajax({
+		url: '<?php echo site_url("agency/scheduling/update_client_appointement_form"); ?>',
+		type: 'POST',
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(e){
+			loader.unblock();
+			$("#caregivers_images_div").html(e);
+			$("#editschedule").modal("hide");
+			load_calendar(<?php echo $client_id; ?>);
+			swal({
+				type: 'success',
+				html: 'You have updated an appointement successfully',
+			});
+			load_calendar(<?php echo $client_id; ?>);
+		},
+		xhr: function () {
+			var xhr = new window.XMLHttpRequest();
+			xhr.upload.addEventListener("progress", function (evt) {
+				if (evt.lengthComputable) {
+					var percentComplete = evt.loaded / evt.total;
+					percentComplete = parseInt(percentComplete * 100);
+					if(percentComplete==100){
+						loader.unblock();
+						$("#editschedule").modal("hide");
+						load_calendar(<?php echo $client_id; ?>);
+						swal({
+							type: 'success',
+							html: 'You have updated an appointement successfully',
+						});
+					}
+				}
+			}, false);
+			return xhr;
+		},
+	});
+};
+
 </script> 

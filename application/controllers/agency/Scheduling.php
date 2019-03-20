@@ -34,8 +34,29 @@ class Scheduling extends CI_Controller {
 		$data['client'] = $this->Client_model->getById($client_id);
 		$data['caregivers'] = $this->Caregiver_model->getAll();
 		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$client_id,"client_caregiver_relationship");
-		$data['appointement_type'] = $this->common_model->listingResult("client_appointment_type");
+		
 		$this->load->view("agency/scheduling/scheduling",$data);
+	}
+	
+	public function load_calendar(){
+		$post = $this->input->post();
+		$data['events'] = $this->Client_model->load_client_appointement_events($post['client_id']);
+		$this->load->view("agency/scheduling/inc/scheduling/load_calendar",$data);
+	}
+	
+	public function load_assign_caregiver(){
+		$post = $this->input->post();
+		$client_id = $post["client_id"];
+		$assignedCargivers = $this->common_model->listingResultWhere("client_id",$client_id,"client_caregiver_relationship");
+		$assigCaregiver = array();
+		if(count($assignedCargivers)>0){
+			foreach($assignedCargivers as $row){
+				$assigCaregiver[] = $row->caregiver_id;
+			}
+		}
+		$data["assignedCargivers"] = $assigCaregiver;
+		$data['caregivers'] = $this->Caregiver_model->getAll();
+		$this->load->view("agency/scheduling/inc/scheduling/load_assign_caregiver", $data);
 	}
 	
 	public function assign_caregiver(){
@@ -55,13 +76,53 @@ class Scheduling extends CI_Controller {
 		$this->load->view("agency/scheduling/inc/scheduling/view_assigned_caregivers", $data);
 	}
 	
+	public function delete_assigned_caregiver(){
+		$post = $this->input->post();
+		$id = $post["id"];
+		$this->common_model->delete("client_caregiver_relationship", array("id"=>$id));
+	}
+	
 	public function add_client_appointement(){
 		$post = $this->input->post();
-		$post['created_by'] = $this->agency_id;
-		$post['created_at'] = date("Y-m-d H:i:s");
-		$post['updated_by'] = $this->agency_id;
-		$post['updated_at'] = date("Y-m-d H:i:s");
-		$this->common_model->insertQuery("client_appointements", $post);
+		$dates = explode(",", $post["dates"]);
+		foreach($dates as $date){
+			unset($post['dates']);
+			$client_detail = $this->common_model->listingRow("id",$post['client_id'],"client");
+			$post['title'] = $client_detail->first_name." ".$client_detail->last_name." Appointement";
+			$post['date'] = date("Y-m-d", strtotime($date));
+			$post['created_by'] = $this->agency_id;
+			$post['created_at'] = date("Y-m-d H:i:s");
+			$post['updated_by'] = $this->agency_id;
+			$post['updated_at'] = date("Y-m-d H:i:s");
+			$this->common_model->insertQuery("client_appointements", $post);
+		}
+	}
+	
+	public function edit_client_schedule(){
+		$post = $this->input->post();
+		$data['client_id'] = $post['client_id'];
+		$data['result'] = $this->common_model->listingRow("id",$post['id'],"client_appointements");
+		$data['relationshipDetails'] = $this->Client_model->clientRelationshipDetailById($post['client_id']);
+		$data['client'] = $this->Client_model->getById($post['client_id']);
+		$data['caregivers'] = $this->Caregiver_model->getAll();
+		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_caregiver_relationship");
+		$data['appointement_id'] = $post['id'];
+		$this->load->view("agency/scheduling/inc/scheduling/edit_client_schedule", $data);
+	}
+	
+	public function update_client_appointement_form(){
+		$post = $this->input->post();
+		$data['caregiver_id'] = $post['caregiver_id'];
+		$data['date'] = date("Y-m-d", strtotime($post['date']));
+		$data['in_time'] = $post['in_time'];
+		$data['out_time'] = $post['out_time'];
+		$data['is_recurring'] = 0;
+		if(isset($post['is_recurring'])){
+			$data['is_recurring'] = $post['is_recurring'];
+		}
+		$data['updated_by'] = $this->agency_id;
+		$data['updated_at'] = date("Y-m-d H:s:i");
+		$this->common_model->updateQuery("client_appointements", "id", $post['appointement_id'], $data);
 	}
 	
 }
