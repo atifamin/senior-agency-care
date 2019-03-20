@@ -4,7 +4,6 @@ class Client_model extends CI_Model{
 
 
     public function save_client($post){
-        
         $client = array();
         $client["agency_id"] = $post["agency_id"];
         $client["first_name"] = $post["first_name"];
@@ -111,8 +110,7 @@ class Client_model extends CI_Model{
     }
     
     public function update_client($post){
-        
-        
+        //print_array($_FILES["croppedImage"]);
         $client_id = $post['client_id'];
         $client = array();
         $client["agency_id"] = $post["agency_id"];
@@ -180,18 +178,27 @@ class Client_model extends CI_Model{
 
         $this->common_model->updateQuery("client", "id", $client_id, $client);
         
-        print_array($client);
-        if(!empty($_FILES)){
+        //print_array($client);
+        if(!empty($_FILES['file']['name'])){
         $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+            if(!empty($data)){
+                $WhereArray = array(
+                    "module" => "client",
+                    "module_id" => $client_id
+                );
+            $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
+            }
         }
-        if(!empty($data)){
-            $WhereArray = array(
-                "module" => "client",
-                "module_id" => $client_id
-            );
-        $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
-        }
-        
+        if (isset($_FILES["croppedImage"])){
+            $profile_image = upload_blob($_FILES["croppedImage"], "client", $client_id, "/uploads/profileImages/");
+            if(!empty($profile_image)){
+                $WhereArray = array(
+                    "module" => "client",
+                    "module_id" => $client_id
+                );
+            $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $profile_image);
+            }
+        } 
     }
 
     // public function update_client($post){

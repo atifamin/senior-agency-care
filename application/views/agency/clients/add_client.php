@@ -39,7 +39,7 @@
 
 	<div class="col-md-12">
 		<!-- Wizard with validation -->
-		<div class="card">
+		<div class="card" id="add_client_information">
 			<div class="card-header" >
 				<div class="row">
 					<div class="offset-md-3 col-md-4">
@@ -658,6 +658,7 @@
 
 	
 	function add_new_agency(){
+		loader = CardLoader($("#add_client_information"));
 		formData = new FormData($("#client_information")[0]);
 		formData.append('croppedImage', $AppMaster.profileCropper.blob);
 	    $.ajax({
@@ -670,6 +671,7 @@
 	        type: 'post',
 	        success: function(data){ 
 	        	//console.log(data);
+	        	loader.unblock();
 	        	data = JSON.parse(data);
 	        	var button_text = "Ok";
 	        	var alert_text = "You have added a client successfully!";

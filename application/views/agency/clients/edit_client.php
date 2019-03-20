@@ -8,7 +8,7 @@
 </style>
 <div class="row">
 	<div class="col-md-12">
-		<div class="card">
+		<div class="card" id="update_client_information_form">
 			<div class="row" style="padding: 12px;">
 				<div class="col-md-6">
 					<div class="row" style="text-align: center;">
@@ -269,7 +269,7 @@
 				                  	<button type="button" class="btn btn-danger legitRipple" onClick="profileImageCropper()"><i class="icon-file-upload2 mr-2"></i>Upload Profile Picture</button>
 				                </div>
 				                <div class="col-md-6">
-				                  	<div id="croppedImageShow" ><img width="100" class="rounded-circle" src="<?php echo client_image($client->id); ?>"></div>
+				                  	<div id="croppedImageShow" ><img width="100" class="rounded-circle" name="croppedImage" src="<?php echo client_image($client->id); ?>"></div>
 				                </div>
 				            </div>
 				        </div>
@@ -414,7 +414,7 @@
 						<div class="col-md-4" style="margin-top: 5px;">
 							<div class="form-check">
 								<label class="form-check-label">
-									<input type="checkbox" id="medical_history" class="form-check-input-styled" name="medical_history[]" data-fouc <?php if(in_array($CMH->id, $medical_history)){echo 'checked';} ?> value="<?php echo $CMH->id; ?>">
+									<input type="checkbox" id="medical_history" class="form-check-input-styled" name="medical_history[]" value="<?php echo $CMH->id; ?>" data-fouc <?php if(in_array($CMH->id, $medical_history)){echo 'checked';} ?> >
 									<?php echo $CMH->name; ?>
 								</label>
 							</div>
@@ -734,6 +734,7 @@ $(document).ready(function(){
 	// }
 	function add_new_agency(){
 		//var client_id = $("#client_id").val();
+		loader = CardLoader($("#update_client_information_form"));
 		formData = new FormData($("#update_client_information")[0]);
 		formData.append('croppedImage', $AppMaster.profileCropper.blob);
 		//formData.append('client_id',client_id);
@@ -746,8 +747,7 @@ $(document).ready(function(){
         data: formData,                         
         type: 'post',
         success: function(data){
-        	console.log(data);
-        	return false;
+        	loader.unblock();
 			if(data == 1){
 				swal("Client", "Updated successfully!");
 				location.reload();
