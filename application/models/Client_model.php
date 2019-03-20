@@ -233,35 +233,24 @@ class Client_model extends CI_Model{
 		$eventsArray = array();
 		if(count($client_appoitements)>0){
 			foreach($client_appoitements as $CPK=>$CPV){
+				$obj = new stdClass();
+				$obj->title = $CPV->title;
 				$is_recurring_html = "";
 				if($CPV->is_recurring==1){
 					$is_recurring_html = "checked";
+					$obj->start = ''.$CPV->in_time.'';
+					$obj->end = ''.$CPV->out_time.'';
+					$obj->dow = array(date("w", strtotime($CPV->date." ".$CPV->in_time)));
+				}else{
+					$obj->start = date("c", strtotime($CPV->date." ".$CPV->in_time));
+					$obj->end = date("c", strtotime($CPV->date." ".$CPV->out_time));
 				}
-				$obj = new stdClass();
-				$obj->title = $CPV->title;
-				$obj->start = date("c", strtotime($CPV->date." ".$CPV->in_time));
-				$obj->end = date("c", strtotime($CPV->date." ".$CPV->out_time));
 				$obj->color = "#546E7A";
 				$obj->client_data = '<div class="media" style="padding:0px;"><div class="mr-3"><img src="'.caregiver_image($CPV->caregiver_detail->id).'" class="rounded-circle" width="30" height="30" alt=""></div><div class="media-body"><div class="media-title" style="padding:1% 0;">'.$CPV->caregiver_detail->first_name." ".$CPV->caregiver_detail->last_name.' &nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="edit_client_schedule('.$CPV->id.')"><i class="icon-pencil7"></i></a></div></div></div>';
-				$obj->is_recurring = '<td style="border-bottom:1px solid #ddd;"><div class="form-check form-check-switchery"><label class="form-check-label"><input type="checkbox" class="form-check-input-switchery" '.$is_recurring_html.' data-fouc></label></div></td>';
+				$obj->is_recurring = '<td class="fc-list-item-tim" style="border-bottom:1px solid #ddd;" width="20"><div class="form-check form-check-switchery"><label class="form-check-label"><input type="checkbox" class="form-check-input-switchery is_recurring_checkbox" id="'.$CPV->id.'" '.$is_recurring_html.' data-fouc></label><a href="javascript:;" onclick="delete_appointement('.$CPV->id.')"> <i class="icon-bin2 mr-2" style="font-size:16px;color:#f44336;margin-top: -130%;"></i></a></div> </td>';
 				$obj->description = $CPV->title.": Start: ".date("Y-m-d h:i A", strtotime($CPV->date." ".$CPV->in_time)).", End: ".date("Y-m-d h:i A", strtotime($CPV->date." ".$CPV->out_time))."";
 				
 				$eventsArray[] = $obj;
-				/*if(!empty($CPV->dates)){
-					$CPD = explode(",", $CPV->dates);
-					foreach($CPD as $key=>$val){
-						$obj = new stdClass();
-						$obj->title = $CPV->title;
-						$obj->start = date("c", strtotime($CPD[$key]." ".$CPV->in_time));
-						$obj->end = date("c", strtotime($CPD[$key]." ".$CPV->out_time));
-						$obj->color = "#546E7A";
-						$obj->client_data = '<div class="media" style="padding:0px;"><div class="mr-3"><img src="'.caregiver_image($CPV->caregiver_detail->id).'" class="rounded-circle" width="30" height="30" alt=""></div><div class="media-body"><div class="media-title" style="padding:1% 0;">'.$CPV->caregiver_detail->first_name." ".$CPV->caregiver_detail->last_name.' &nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="edit_client_schedule('.$CPV->id.')"><i class="icon-pencil7"></i></a></div></div></div>';
-						$obj->is_recurring = '<td style="border-bottom:1px solid #ddd;"><div class="form-check form-check-switchery"><label class="form-check-label"><input type="checkbox" class="form-check-input-switchery" '.$is_recurring_html.' data-fouc></label></div></td>';
-						$obj->description = $CPV->title.": Start: ".date("Y-m-d h:i A", strtotime($CPD[$key]." ".$CPV->in_time)).", End: ".date("Y-m-d h:i A", strtotime($CPD[$key]." ".$CPV->out_time))."";
-						
-						$eventsArray[] = $obj;
-					}
-				}*/
 			}
 		}
 		return json_encode($eventsArray);
