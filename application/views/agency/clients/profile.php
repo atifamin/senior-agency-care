@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
-<?php //print_array($client_detail->medical_history); ?>
+<?php //print_array($client_detail); ?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -268,7 +268,7 @@
 													<table>
 														<tr>
 															<td style="width: 250px;"><strong>Life Directive document:</strong></td>
-															<td><span><a href="<?php echo base_url().$client_detail->client_document_detail->full_path; ?>" download><?php if(isset($client_detail->client_document_detail->file_name)){echo $client_detail->client_document_detail->file_name;} ?></a></span></td>
+															<td><span><a href="<?php if(isset($client_detail->client_document_detail->full_path)){echo base_url().$client_detail->client_document_detail->full_path;} ?>" download><?php if(isset($client_detail->client_document_detail->file_name)){echo $client_detail->client_document_detail->file_name;} ?></a></span></td>
 														</tr>
 														<tr>
 															<td style="width: 250px;"><strong>Client Dietry requirements:</strong></td>
@@ -308,9 +308,10 @@
 							<div class="col-md-12">
 								<div class="card-body">
 									<ul class="nav nav-tabs nav-tabs-bottom">
-										<li class="nav-item" style="padding-right: 30px;"><a href="#client_information2" class="nav-link active" data-toggle="tab">Client Information</a></li>
-										<li class="nav-item" style="padding-right: 30px;"><a href="#special_needs2" class="nav-link" data-toggle="tab">Special Needs</a></li>
-										<li class="nav-item" style="padding-right: 30px;"><a href="#family_center2" class="nav-link" data-toggle="tab">Family Center</a></li>
+										<li class="nav-item" style="padding-right: 25px;"><a href="#client_information2" class="nav-link active" data-toggle="tab">Client Information</a></li>
+										<li class="nav-item" style="padding-right: 25px;"><a href="#special_needs2" class="nav-link" data-toggle="tab">Special Needs</a></li>
+										<li class="nav-item" style="padding-right: 25px;"><a href="#medical_history2" class="nav-link" data-toggle="tab">Medical History</a></li>
+										<li class="nav-item" style="padding-right: 25px;"><a href="#family_center2" class="nav-link" data-toggle="tab">Family Center</a></li>
 										<li class="nav-item"><a href="#life_directive" class="nav-link" data-toggle="tab">End of Life Directive</a></li>
 										<li class="nav-item" style="right: 3% !important; position: absolute;"><a href="<?php echo site_url("agency/clients/edit_client/".$client_detail->linked_profile_detail->id); ?>"><button class="btn btn-light" style="background-color: #fff;"><i class="icon-google-drive mr-2"></i> Edit Profile</button></a></li>
 									</ul>
@@ -424,6 +425,19 @@
 												</div>
 											</div>
 										</div>
+										<div class="tab-pane fade" id="medical_history2">
+											<?php $medical_history = explode(",", $client_detail->linked_profile_detail->medical_history); ?>
+											<div class="row" style="margin: 40px 0;">
+												<?php foreach (load_table("client_medical_history") as $CMH): ?> 
+												<?php if (in_array($CMH->id, $medical_history)) : ?>
+												<div class="col-md-4" style="margin-top: 5px 0 ">
+													<i class="icon-checkmark3"></i>
+													<span style="margin-left: 10px;"><?php echo $CMH->name; ?></span>
+												</div>
+												<?php endif ?>
+											<?php endforeach; ?>
+											</div>
+										</div>
 										<div class="tab-pane fade" id="family_center2">
 											<div class="col-md-12"> 
 												<!-- Dropdown list -->
@@ -513,7 +527,7 @@
 													<table>
 														<tr>
 															<td style="width: 250px;"><strong>Life Directive document:</strong></td>
-															<td><span><a href="<?php echo base_url().$client_detail->client_document_detail->full_path; ?>" download><?php if(isset($client_detail->client_document_detail->file_name)){echo $client_detail->client_document_detail->file_name;} ?></a></span></td>
+															<td><span><a href="<?php if(isset($client_detail->client_document_detail->full_path)){echo base_url().$client_detail->client_document_detail->full_path;} ?>" download><?php if(isset($client_detail->client_document_detail->file_name)){echo $client_detail->client_document_detail->file_name;} ?></a></span></td>
 														</tr>
 														<tr>
 															<td style="width: 250px;"><strong>Client Dietry requirements:</strong></td>
