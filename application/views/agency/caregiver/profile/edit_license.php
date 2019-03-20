@@ -132,8 +132,8 @@ $("#update_new_license_form").submit(function(e){
 		processData: false,
 		success: function (e) {
      
-			$("#row_"+caregiver_id+"").html(e);
-      $("#edit_license_modal").modal('hide');
+			$("#row_"+caregiver_id+"").replaceWith(e);
+      		$("#edit_license_modal").modal('hide');
 		}
   });
 
