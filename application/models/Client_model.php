@@ -4,71 +4,86 @@ class Client_model extends CI_Model{
 
 
     public function save_client($post){
-        //print_array($post);
-        //$dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
-        //$dob = DateTime::createFromFormat('M-d-Y', $dob);
-        //$dob = $dob->format('Y-m-d');
-        $post['dob'] = "".$post['year'].'-'.$post['month'].'-'.$post['day']."";
-        if(!empty($post['firstName'])){
-        $family_first_name = $post['firstName'];
-        $family_first_name = explode(',', $family_first_name);
-        unset($post['firstName']);
-        }
-        if(!empty($post['lastName'])){
-        $family_last_name = $post['lastName'];
-        $family_last_name = explode(',', $family_last_name);
-        unset($post['lastName']);
-        }
-        if(!empty($post['emailAddress'])){
-        $family_email_address = $post['emailAddress'];
-        $family_email_address = explode(',', $family_email_address);
-        unset($post['emailAddress']);
-        }
-        if(!empty($post['mobileNumber'])){
-        $family_mobile_number = $post['mobileNumber'];
-        $family_mobile_number = explode(',', $family_mobile_number);
-        unset($post['mobileNumber']);
-        }
-        unset($post['firstName']);
-        unset($post['lastName']);
-        unset($post['emailAddress']);
-        unset($post['mobileNumber']);
+        
+        $client = array();
+        $client["agency_id"] = $post["agency_id"];
+        $client["first_name"] = $post["first_name"];
+        $client["last_name"] = $post["last_name"];
+        $client["mobile_number"] = $post["mobile_number"];
+        $client["email_address"] = $post["email_address"];
+        $client["client_from"] = $post["client_from"];
+        $client["client_to"] = $post["client_to"];
+        $client["gender"] = $post["gender"];
+        //$client["dob"] = $post["dob"];
+        $client["level_care"] = $post["level_care"];
+        // $client["is_pets"] = $post["is_pets"];
+        // $client["pets_types"] = $post["pets_types"];
+        // $client["rate_per_hour"] = $post["rate_per_hour"];
+        // $client["hours_per_week"] = $post["hours_per_week"];
+        // $client["billing_cycle"] = $post["billing_cycle"];
+        // $client["dietry_requirements"] = $post["dietry_requirements"];
+        // $client["fluid_requirements"] = $post["fluid_requirements"];
+        // $client["medication_list"] = $post["medication_list"];
+        // $client["allergies_list"] = $post["allergies_list"];
+        // $client["is_oxygen"] = $post["is_oxygen"];
+        // $client["oxygen_quantity"] = $post["oxygen_quantity"];
+        // $client["oxygen_administered"] = $post["oxygen_administered"];
+        // $client["is_mobilty"] = $post["is_mobilty"];
+        // $client["mobility_needs"] = $post["mobility_needs"];
+        // $client["transportation_requirements"] = $post["transportation_requirements"];
+        // $client["transfer_needs"] = $post["transfer_needs"];
 
-        unset($post['month']);
-        unset($post['day']);
-        unset($post['year']);
-        unset($post['linked_profile']);
-        unset($post['linked_id']);
-        unset($post['is_directive_document']);
-        $client_id = $this->common_model->insertGetIDQuery("client", $post);
-        if(!empty($_FILES)){
-        $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+        // $client["medical_history"] = "";
+        // if (isset($post["medical_history"])) {
+        //     $client['medical_history'] = explode(",",$post['medical_history']);
+        // }
+        // $client["pcd_name"] = $post["pcd_name"];
+        // $client["pcd_contact"] = $post["pcd_contact"];
+        // $client["prefered_hospital"] = $post["prefered_hospital"];
+        // $client["special_instructions"] = $post["special_instructions"];
+        // $client["linked_profile"] = $post["linked_profile"];
+        //print_array($post);
+        $client_id = $this->common_model->insertGetIDQuery("client", $client);
+
+        if(isset($_FILES["croppedImage"])){
+            $cropped_image = upload_blob($_FILES["croppedImage"], "client", $client_id, "/uploads/profileImages/");
+             $profile_image = $this->common_model->insertGetIDQuery("media",$cropped_image);
         }
-        if(!empty($data)){
-            $life_directive_document = $this->common_model->insertGetIDQuery("media", $data);
+        if (!empty($profile_image)){
+            $client_image = array("profile_image" => $profile_image);
+            $this->common_model->updateQuery("client", "id", $client_id, $client_image);
         }
-        if(!empty($family_first_name)){
-            for($i = 0;$i < count($family_first_name);$i++){
-                $addFamily = array(
-                    "client_id" => $client_id,
-                    "first_name" => $family_first_name[$i],
-                    "last_name" => $family_last_name[$i],
-                    "email_address" => $family_email_address[$i],
-                    "mobile_number" => $family_mobile_number[$i]
-                );
-                $client_family_id = $this->common_model->insertGetIDQuery("client_family", $addFamily);
-                $this->load->model("Email_model");
-                $this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
-            }
+        
+        if(!empty($_FILES['file']['name'])){
+            $client_file = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+            $life_directive_document = $this->common_model->insertGetIDQuery("media", $client_file);
         }
         if(!empty($life_directive_document)){
                 $client_document = array(
                 "life_directive_document" => $life_directive_document
                 );
-            $this->common_model->updateQuery("client", "id", $client_id, $client_document);                                                                 
+            $this->common_model->updateQuery("client", "id", $client_id, $client_document);
         }
+
+        if(isset($post["firstName"])){
+            foreach($post["firstName"] as $famKey=>$famVal){
+                $familyArray = array();
+                $familyArray["client_id"] = $client_id;
+                $familyArray["first_name"] = $post["firstName"][$famKey];
+                $familyArray["last_name"] = $post["lastName"][$famKey];
+                $familyArray["email_address"] = $post["emailAddress"][$famKey];
+                $familyArray["mobile_number"] = $post["mobileNumber"][$famKey];
+                $familyArray["created_by"] = $post["agency_id"];
+                $familyArray["created_at"] = date("Y-m-d H:i:s");
+                $client_family_id = $this->common_model->insertGetIDQuery("client_family", $familyArray);
+                $this->load->model("Email_model");
+                //$this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
+            }
+        }
+        
         return $client_id;
     }
+    
 
     public function update_client($post){
         $dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
@@ -166,6 +181,54 @@ class Client_model extends CI_Model{
     public function getClientFamilyById($id){
         return $this->common_model->listingResultWhere("client_id",$id,"client_family");
     }
+	
+	public function load_client_appointments($client_id){
+		$this->load->model("Caregiver_model");
+		$client_appoitements = $this->common_model->listingResultWhere("client_id",$client_id,"client_appointements");
+		foreach($client_appoitements as $key=>$val){
+			$client_appoitements[$key]->caregiver_detail = $this->Caregiver_model->getCaregiverById($val->caregiver_id);
+		}
+		return $client_appoitements;
+	}
+	
+	public function load_client_appointement_events($client_id){
+		$client_appoitements = $this->load_client_appointments($client_id);
+		$eventsArray = array();
+		if(count($client_appoitements)>0){
+			foreach($client_appoitements as $CPK=>$CPV){
+				$is_recurring_html = "";
+				if($CPV->is_recurring==1){
+					$is_recurring_html = "checked";
+				}
+				$obj = new stdClass();
+				$obj->title = $CPV->title;
+				$obj->start = date("c", strtotime($CPV->date." ".$CPV->in_time));
+				$obj->end = date("c", strtotime($CPV->date." ".$CPV->out_time));
+				$obj->color = "#546E7A";
+				$obj->client_data = '<div class="media" style="padding:0px;"><div class="mr-3"><img src="'.caregiver_image($CPV->caregiver_detail->id).'" class="rounded-circle" width="30" height="30" alt=""></div><div class="media-body"><div class="media-title" style="padding:1% 0;">'.$CPV->caregiver_detail->first_name." ".$CPV->caregiver_detail->last_name.' &nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="edit_client_schedule('.$CPV->id.')"><i class="icon-pencil7"></i></a></div></div></div>';
+				$obj->is_recurring = '<td style="border-bottom:1px solid #ddd;"><div class="form-check form-check-switchery"><label class="form-check-label"><input type="checkbox" class="form-check-input-switchery" '.$is_recurring_html.' data-fouc></label></div></td>';
+				$obj->description = $CPV->title.": Start: ".date("Y-m-d h:i A", strtotime($CPV->date." ".$CPV->in_time)).", End: ".date("Y-m-d h:i A", strtotime($CPV->date." ".$CPV->out_time))."";
+				
+				$eventsArray[] = $obj;
+				/*if(!empty($CPV->dates)){
+					$CPD = explode(",", $CPV->dates);
+					foreach($CPD as $key=>$val){
+						$obj = new stdClass();
+						$obj->title = $CPV->title;
+						$obj->start = date("c", strtotime($CPD[$key]." ".$CPV->in_time));
+						$obj->end = date("c", strtotime($CPD[$key]." ".$CPV->out_time));
+						$obj->color = "#546E7A";
+						$obj->client_data = '<div class="media" style="padding:0px;"><div class="mr-3"><img src="'.caregiver_image($CPV->caregiver_detail->id).'" class="rounded-circle" width="30" height="30" alt=""></div><div class="media-body"><div class="media-title" style="padding:1% 0;">'.$CPV->caregiver_detail->first_name." ".$CPV->caregiver_detail->last_name.' &nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="edit_client_schedule('.$CPV->id.')"><i class="icon-pencil7"></i></a></div></div></div>';
+						$obj->is_recurring = '<td style="border-bottom:1px solid #ddd;"><div class="form-check form-check-switchery"><label class="form-check-label"><input type="checkbox" class="form-check-input-switchery" '.$is_recurring_html.' data-fouc></label></div></td>';
+						$obj->description = $CPV->title.": Start: ".date("Y-m-d h:i A", strtotime($CPD[$key]." ".$CPV->in_time)).", End: ".date("Y-m-d h:i A", strtotime($CPD[$key]." ".$CPV->out_time))."";
+						
+						$eventsArray[] = $obj;
+					}
+				}*/
+			}
+		}
+		return json_encode($eventsArray);
+	}
 }
 
 ?>
