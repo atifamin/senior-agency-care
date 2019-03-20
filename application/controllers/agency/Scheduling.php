@@ -34,13 +34,15 @@ class Scheduling extends CI_Controller {
 		$data['client'] = $this->Client_model->getById($client_id);
 		$data['caregivers'] = $this->Caregiver_model->getAll();
 		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$client_id,"client_caregiver_relationship");
-		
+		//$data['events'] = $this->Client_model->load_client_appointement_events($client_id);
+		//print_array($data['events']);
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
 	public function load_calendar(){
 		$post = $this->input->post();
 		$data['events'] = $this->Client_model->load_client_appointement_events($post['client_id']);
+		$data['client_id'] = $post['client_id'];
 		$this->load->view("agency/scheduling/inc/scheduling/load_calendar",$data);
 	}
 	
@@ -90,6 +92,8 @@ class Scheduling extends CI_Controller {
 			$client_detail = $this->common_model->listingRow("id",$post['client_id'],"client");
 			$post['title'] = $client_detail->first_name." ".$client_detail->last_name." Appointement";
 			$post['date'] = date("Y-m-d", strtotime($date));
+			$post['in_time'] = date("H:i:s", strtotime($post['in_time']));
+			$post['out_time'] = date("H:i:s", strtotime($post['out_time']));
 			$post['created_by'] = $this->agency_id;
 			$post['created_at'] = date("Y-m-d H:i:s");
 			$post['updated_by'] = $this->agency_id;
@@ -114,8 +118,8 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$data['caregiver_id'] = $post['caregiver_id'];
 		$data['date'] = date("Y-m-d", strtotime($post['date']));
-		$data['in_time'] = $post['in_time'];
-		$data['out_time'] = $post['out_time'];
+		$data['in_time'] = date("H:i:s", strtotime($post['in_time']));
+		$data['out_time'] = date("H:i:s", strtotime($post['out_time']));
 		$data['is_recurring'] = 0;
 		if(isset($post['is_recurring'])){
 			$data['is_recurring'] = $post['is_recurring'];
@@ -123,6 +127,16 @@ class Scheduling extends CI_Controller {
 		$data['updated_by'] = $this->agency_id;
 		$data['updated_at'] = date("Y-m-d H:s:i");
 		$this->common_model->updateQuery("client_appointements", "id", $post['appointement_id'], $data);
+	}
+	
+	public function change_is_recurring_status(){
+		$post = $this->input->post();
+		$this->common_model->updateQuery("client_appointements", "id", $post['appointement_id'], array("is_recurring"=>$post['is_recurring']));
+	}
+	
+	public function delete_appointement(){
+		$post = $this->input->post();
+		$this->common_model->delete("client_appointements", array("id"=>$post["appointement_id"]));
 	}
 	
 }

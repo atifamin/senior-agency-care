@@ -125,7 +125,7 @@
         <div class="row" style="text-align: center; margin-bottom: 20px;">
           <div class="col-md-12">
             <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Save</span> </button>
-            <button type="button" class="btn btn-light legitRipple">Cancal</button>
+            <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>
           </div>
         </div>
       </form>
@@ -155,6 +155,13 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script> 
 <script>
+function setSwitchery(switchElement, checkedBool) {
+    if((checkedBool && !switchElement.isChecked()) || (!checkedBool && switchElement.isChecked())) {
+        switchElement.setPosition(true);
+        switchElement.handleOnchange(true);
+    }
+}
+
 $('#appointment_picker').datepicker({
 	multidate: true,
 	clearBtn:true,
@@ -324,5 +331,93 @@ function update_client_appointement_form(){
 		},
 	});
 };
+
+function change_is_recurring_status(appointement_id, is_recurring){
+	is_recurring_text = "Appointement is set as recurring successfully.";
+	if(is_recurring==0){
+		is_recurring_text = "Appointement is set as regular successfully.";
+	}
+	loader = CardLoader($("#full_calendar_view"));
+	$.post("<?php echo site_url("agency/scheduling/change_is_recurring_status"); ?>",{client_id:<?php echo $client_id; ?>, appointement_id:appointement_id, is_recurring:is_recurring}).done(function(data){
+		load_calendar(<?php echo $client_id; ?>);
+		loader.unblock();
+		swal(
+			'Appointement Success!',
+			is_recurring_text,
+			'success'
+		);
+	});
+	/*mySwitch = new Switchery($('#'+appointement_id+'')[0]);
+	is_recurring_text = "Do you want set this appointement as recurring?";
+	if(is_recurring==0){
+		is_recurring_text = "Do you want set this appointement as regular?";
+	}
+	swal({
+		title: 'Are you sure?',
+		text: is_recurring_text,
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Yes, do it!',
+		cancelButtonText: 'No, cancel!',
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false
+	}).then(function (Confirm) {
+		if(Confirm.value){
+			loader = CardLoader($("#full_calendar_view"));
+			$.post("<?php echo site_url("agency/scheduling/change_is_recurring_status"); ?>",{client_id:<?php echo $client_id; ?>, appointement_id:appointement_id, is_recurring:is_recurring}).done(function(data){
+				load_calendar(<?php echo $client_id; ?>);
+				loader.unblock();
+				swal(
+					'Deleted!',
+					'Appointement has successfully converted.',
+					'success'
+				);
+				
+			});
+			setSwitchery(mySwitch, true);
+		}else{
+			setSwitchery(mySwitch, false);
+			swal(
+				'Cancelled',
+				'Appointement is safe :)',
+				'error'
+			);
+		}
+	});*/
+}
+
+function delete_appointement(appointement_id){
+	swal({
+		title: 'Are you sure?',
+		text: "You won't be able to revert this!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Yes, delete it!',
+		cancelButtonText: 'No, cancel!',
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false
+	}).then(function (Confirm) {
+		if(Confirm.value){
+			loader = CardLoader($("#full_calendar_view"));
+			$.post("<?php echo site_url("agency/scheduling/delete_appointement"); ?>",{appointement_id:appointement_id}).done(function(data){
+				load_calendar(<?php echo $client_id; ?>);
+				loader.unblock();
+				swal(
+					'Deleted!',
+					'Appointement has been deleted.',
+					'success'
+				);
+			});
+		}else{
+			swal(
+				'Cancelled',
+				'Appointement is safe :)',
+				'error'
+			);
+		}
+	});
+}
 
 </script> 

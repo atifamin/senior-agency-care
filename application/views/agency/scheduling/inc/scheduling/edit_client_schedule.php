@@ -71,7 +71,7 @@
   <div class="row" style="text-align: center; margin-bottom: 20px;">
     <div class="col-md-12">
       <button type="button" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20" onclick="update_client_appointement_form()"> <span class="ladda-label">Save</span> </button>
-      <button type="button" class="btn btn-light legitRipple">Cancal</button>
+      <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>
     </div>
   </div>
 </form>

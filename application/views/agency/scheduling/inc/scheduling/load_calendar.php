@@ -3,6 +3,7 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
 <script>
+
 $('.fullcalendar-formats').fullCalendar({
 	header: {
 		left: 'prev,next today',
@@ -45,16 +46,30 @@ $('.fullcalendar-formats').fullCalendar({
 		}
 	},
 });
-var elems = Array.prototype.slice.call(document.querySelectorAll('.form-check-input-switchery'));
+var elems = Array.prototype.slice.call(document.querySelectorAll('.is_recurring_checkbox'));
 elems.forEach(function(html) {
 	new Switchery(html);
+	html.onchange = function(e) {
+		is_recurring = 0;
+		if($(this).is(':checked')){
+			is_recurring = 1;
+		}
+		change_is_recurring_status($(this).attr("id"), is_recurring);
+	}
 });
 var buttonsArray = ["fc-listWeek-button","fc-listMonth-button","fc-listDay-button","fc-today-button","fc-next-button","fc-prev-button"];
 $.each(buttonsArray, function(bk, bv){
 	$('.'+bv+'').click(function(){
-		var elems = Array.prototype.slice.call(document.querySelectorAll('.form-check-input-switchery'));
+		var elems = Array.prototype.slice.call(document.querySelectorAll('.is_recurring_checkbox'));
 		elems.forEach(function(html) {
 			new Switchery(html);
+			html.onchange = function(e) {
+				is_recurring = 0;
+				if($(this).is(':checked')){
+					is_recurring = 1;
+				}
+				change_is_recurring_status($(this).attr("id"), is_recurring);
+			}
 		});
 	});
 });
