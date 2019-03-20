@@ -110,21 +110,77 @@ class Client_model extends CI_Model{
         return $client_id;
     }
     
-
     public function update_client($post){
-        $client_update = array();
-        $client_update["agency_id"] = $post["agency_id"];
-        $dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
-        $dob = DateTime::createFromFormat('M-d-Y', $dob);
-        $dob = $dob->format('Y-m-d');
-        $post['dob'] = $dob;
+        
+        
         $client_id = $post['client_id'];
+        $client = array();
+        $client["agency_id"] = $post["agency_id"];
+        $client["first_name"] = $post["first_name"];
+        $client["last_name"] = $post["last_name"];
+        $client["mobile_number"] = $post["mobile_number"];
+        $client["email_address"] = $post["email_address"];
+        $client["client_from"] = $post["client_from"];
+        $client["client_to"] = $post["client_to"];
+        
+        $client['gender'] = "";
+        if (isset($post["gender"])) 
+            $client["gender"] = $post["gender"];
+
+        $dob = date("Y-m-d", strtotime("".$post['year']."-".$post['month']."-".$post['day'].""));
+        $client["dob"] = $dob;
+
+        $client["level_care"] = $post["level_care"];
+
+        $client["is_pets"] = "";
+        if (isset($post['is_pets']))
+            $client["is_pets"] = $post["is_pets"];
+        
+        $client["pets_types"] = $post["pets_types"];
+        $client["rate_per_hour"] = $post["rate_per_hour"];
+        $client["hours_per_week"] = $post["hours_per_week"];
+        $client["billing_cycle"] = $post["billing_cycle"];
+
+        $client["dietry_requirements"] = "";
+        if (isset($post["dietry_requirements"]))
+            $client["dietry_requirements"] = $post["dietry_requirements"];
+        
+        $client["fluid_requirements"] = "";
+        if (isset($post["fluid_requirements"])) 
+            $client["fluid_requirements"] = $post["fluid_requirements"];
+
+        $client["medication_list"] = $post["medication_list"];
+        $client["allergies_list"] = $post["allergies_list"];
+
+        $client["is_oxygen"] = "";
+        if (isset($post["is_oxygen"]))
+            $client["is_oxygen"] = $post["is_oxygen"];
+
+        $client["oxygen_quantity"] = $post["oxygen_quantity"];
+        $client["oxygen_administered"] = $post["oxygen_administered"];
+
+        $client["is_mobilty"] = "";
+        if (isset($post["is_mobilty"])) 
+            $client["is_mobilty"] = $post["is_mobilty"];
+
+        $client["mobility_needs"] = $post["mobility_needs"];
+        $client["transportation_requirements"] = $post["transportation_requirements"];
+        $client["transfer_needs"] = $post["transfer_needs"];
+
+        $client["medical_history"] = "";
+        if (isset($post["medical_history"]))
+            $client['medical_history'] = implode(",", $post['medical_history']);
+            //$client['medical_history'] = json_encode($post['medical_history']);
+            
+        $client["pcd_name"] = $post["pcd_name"];
+        $client["pcd_contact"] = $post["pcd_contact"];
+        $client["prefered_hospital"] = $post["prefered_hospital"];
+        $client["special_instructions"] = $post["special_instructions"];
         //print_array($client_id);
-        unset($post['month']);
-        unset($post['day']);
-        unset($post['year']);
-        unset($post['client_id']);
-        $this->common_model->updateQuery("client", "id", $client_id, $post);
+
+        $this->common_model->updateQuery("client", "id", $client_id, $client);
+        
+        print_array($client);
         if(!empty($_FILES)){
         $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
         }
@@ -135,13 +191,44 @@ class Client_model extends CI_Model{
             );
         $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
         }
-        // if(!empty($media_id)){
-        //         $client_document = array(
-        //         "media_id" => $media_id
-        //         );
-        //     $this->common_model->updateQuery("client", "id", $client_id, $client_document);                                                                 
-        // }
+        
     }
+
+    // public function update_client($post){
+
+    //     print_array($post['medical_history']);
+    //     $dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
+    //     $dob = DateTime::createFromFormat('M-d-Y', $dob);
+    //     $dob = $dob->format('Y-m-d');
+    //     $post['dob'] = $dob;
+    //     $client_id = $post['client_id'];
+
+    //     unset($post['month']);
+    //     unset($post['day']);
+    //     unset($post['year']);
+    //     unset($post['client_id']);
+    //     $this->common_model->updateQuery("client", "id", $client_id, $post);
+        
+    //     if(!empty($_FILES["croppedImage"]))
+    //         $data= upload_blob($_FILES["croppedImage"], "client", $client_id, "/uploads/profileImages/");
+             
+    //     if(!empty($_FILES['file']['name']))
+    //         $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+        
+    //     if(!empty($data)){
+    //         $WhereArray = array(
+    //             "module" => "client",
+    //             "module_id" => $client_id
+    //         );
+    //     $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
+    //     }
+    //     // if(!empty($media_id)){
+    //     //         $client_document = array(
+    //     //         "media_id" => $media_id
+    //     //         );
+    //     //     $this->common_model->updateQuery("client", "id", $client_id, $client_document);                                                                 
+    //     // }
+    // }
     public function getAllClients(){
 		$data = $this->db->select("c.*")
 						->from("client c")
