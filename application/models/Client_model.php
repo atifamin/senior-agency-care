@@ -108,7 +108,8 @@ class Client_model extends CI_Model{
         
         return $client_id;
     }
-    
+       
+
     public function update_client($post){
         //print_array($_FILES["croppedImage"]);
         $client_id = $post['client_id'];
@@ -178,64 +179,54 @@ class Client_model extends CI_Model{
 
         $this->common_model->updateQuery("client", "id", $client_id, $client);
         
+        $client_detail = $this->common_model->listingRow("id", $client_id, "client");
         //print_array($client);
         if(!empty($_FILES['file']['name'])){
-        $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
-            if(!empty($data)){
-                $WhereArray = array(
-                    "module" => "client",
-                    "module_id" => $client_id
-                );
-            $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
+            $lifeDirDocDetail = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+            if($client_detail->life_directive_document!=0){
+                if(!empty($lifeDirDocDetail)){
+                    $previousDocDetail = $this->common_model->listingRow("id", $client_detail->life_directive_document, "media");
+                    if(file_exists(DOC_PATH.$previousDocDetail->full_path)){
+                        unlink(DOC_PATH.$previousDocDetail->full_path);
+                    }
+                    $this->common_model->updateMultipleWhereQuery("media", array("id"=>$client_detail->life_directive_document), $lifeDirDocDetail);
+                }else{
+                    $lifeDirDoc = $this->common_model->insertGetIDQuery("media", $lifeDirDocDetail);
+                    $this->common_model->updateMultipleWhereQuery("client", array("id"=>$client_id), array("life_directive_document"=>$lifeDirDoc));
+                }
             }
         }
         if (isset($_FILES["croppedImage"])){
-            $profile_image = upload_blob($_FILES["croppedImage"], "client", $client_id, "/uploads/profileImages/");
-            if(!empty($profile_image)){
-                $WhereArray = array(
-                    "module" => "client",
-                    "module_id" => $client_id
-                );
-            $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $profile_image);
+            $picDetail = upload_blob($_FILES["croppedImage"], "client", $client_id, "/uploads/profileImages/");
+            if($client_detail->profile_image!=0){
+                if(!empty($picDetail)){
+                    $previousPicDetail = $this->common_model->listingRow("id", $client_detail->profile_image, "media");
+                    if(file_exists(DOC_PATH.$previousPicDetail->full_path)){
+                        unlink(DOC_PATH.$previousPicDetail->full_path);
+                    }
+                    $this->common_model->updateMultipleWhereQuery("media", array("id"=>$client_detail->profile_image), $picDetail);
+                }else{
+                    $picId = $this->common_model->insertGetIDQuery("media", $picDetail);
+                    $this->common_model->updateMultipleWhereQuery("client", array("id"=>$client_id), array("profile_image"=>$picId));
+                }
+            }
+        }
+        if(isset($post["firstName"])){
+            foreach($post["firstName"] as $famKey=>$famVal){
+                $familyArray = array();
+                $familyArray["client_id"] = $client_id;
+                $familyArray["first_name"] = $post["firstName"][$famKey];
+                $familyArray["last_name"] = $post["lastName"][$famKey];
+                $familyArray["email_address"] = $post["emailAddress"][$famKey];
+                $familyArray["mobile_number"] = $post["mobileNumber"][$famKey];
+                $familyArray["created_by"] = $post["agency_id"];
+                $familyArray["created_at"] = date("Y-m-d H:i:s");
+                $client_family_id = $this->common_model->insertGetIDQuery("client_family", $familyArray);
+                //$this->load->model("Email_model");
             }
         } 
     }
 
-    // public function update_client($post){
-
-    //     print_array($post['medical_history']);
-    //     $dob = $post['month'].'-'.$post['day'].'-'.$post['year'];
-    //     $dob = DateTime::createFromFormat('M-d-Y', $dob);
-    //     $dob = $dob->format('Y-m-d');
-    //     $post['dob'] = $dob;
-    //     $client_id = $post['client_id'];
-
-    //     unset($post['month']);
-    //     unset($post['day']);
-    //     unset($post['year']);
-    //     unset($post['client_id']);
-    //     $this->common_model->updateQuery("client", "id", $client_id, $post);
-        
-    //     if(!empty($_FILES["croppedImage"]))
-    //         $data= upload_blob($_FILES["croppedImage"], "client", $client_id, "/uploads/profileImages/");
-             
-    //     if(!empty($_FILES['file']['name']))
-    //         $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
-        
-    //     if(!empty($data)){
-    //         $WhereArray = array(
-    //             "module" => "client",
-    //             "module_id" => $client_id
-    //         );
-    //     $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
-    //     }
-    //     // if(!empty($media_id)){
-    //     //         $client_document = array(
-    //     //         "media_id" => $media_id
-    //     //         );
-    //     //     $this->common_model->updateQuery("client", "id", $client_id, $client_document);                                                                 
-    //     // }
-    // }
     public function getAllClients(){
 		$data = $this->db->select("c.*")
 						->from("client c")
