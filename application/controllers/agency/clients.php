@@ -50,13 +50,13 @@ class Clients extends CI_Controller {
 			$this->session->set_flashdata("success", $message);
 		}
 
-		if($post['linked_id']!=0){
-			$first_client_id = $post['linked_id'];
-			$second_client_id = $client_id;
-			//$this->common_model->updateQuery("client", "id", $first_client_id, array("linked_profile"=>$second_client_id));
-			//$this->common_model->updateQuery("client", "id", $second_client_id, array("linked_profile"=>$first_client_id));
-			$this->common_model->insertQuery("client_relationship", array("client_id"=>$first_client_id, "linked_id"=>$second_client_id));
-		}
+		// if($post['linked_id']!=0){
+		// 	$first_client_id = $post['linked_id'];
+		// 	$second_client_id = $client_id;
+		// 	//$this->common_model->updateQuery("client", "id", $first_client_id, array("linked_profile"=>$second_client_id));
+		// 	//$this->common_model->updateQuery("client", "id", $second_client_id, array("linked_profile"=>$first_client_id));
+		// 	$this->common_model->insertQuery("client_relationship", array("client_id"=>$first_client_id, "linked_id"=>$second_client_id));
+		// }
 		echo json_encode($data);
 	}
 
@@ -87,11 +87,12 @@ class Clients extends CI_Controller {
 		//echo 1;
 	}
 
-	public function edit_client($id){
+	public function edit_client($id){	
 		$data["breadcrumb"] = "Client";
 		$data["heading"] = "Edit Client";
 		$data["url_segment"] = "clients";
 		$data["client"] = $this->Client_model->getById($id);
+		$data["client_family"] = $this->Client_model->getClientFamilyById($id);
 		$this->load->view("agency/clients/edit_client",$data);
 	}
 
@@ -102,6 +103,32 @@ class Clients extends CI_Controller {
 		$this->Client_model->update_client($post);
 		echo 1;
 	}
+	public function add_client_family(){
+		$post = $this->input->post();
+		print_array($post);
+	}
+	
+	public function addFamilyMember(){
+		$post = $this->input->post();
+		//print_array($post);
+		$family_id = $this->common_model->insertGetIDQuery("client_family", $post);
+		//$this->common_model->updateQuery("client", "id", $family_id, $post);
+		$post['family_id'] = $family_id;
+		$this->load->view('agency/clients/append_new_family_member',$post);
+	}
+	public function edit_family_member(){
+		$id = $this->input->post("id");
+		$data['result'] = $this->common_model->listingRow("id",$id,"client_family");
+		//print_array($data['result']);
+		$this->load->view('agency/clients/edit_family_member',$data);
+	}
+	public function updateFamilyMember(){
+		$post = $this->input->post();
+		$id = $post['family_member_id'];
+		$this->common_model->update_query("client_family", $post, "id", $id);
+		$data['result'] = $this->common_model->listingRow("id",$id,"client_family");
+		$this->load->view('agency/profile/family_member_view',$data);
+	}	
 
 	public function addMoreFamilyMember(){
 		$post = $this->input->post();

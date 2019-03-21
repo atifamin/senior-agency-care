@@ -413,8 +413,6 @@
 			                        <?php foreach (CON_CLIENT_MOBILITY_NEEDS as $mobilitykey => $mobilityvalue) { ?>
 			                        	<option value="<?php echo $mobilitykey; ?>"><?php echo $mobilityvalue; ?></option>
 			                        <?php } ?> 
-			                        
-			                        
 			                    </select>
 		                    </div>
 						</div>

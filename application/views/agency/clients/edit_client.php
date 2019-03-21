@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
-<?php //print_array($client); ?>
+<?php //print_array($client_family); ?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/client_form_wizard.js"></script>
 <style type="text/css">
 	.token-input{
@@ -425,65 +425,57 @@
 				<h6><strong>Family Center</strong></h6>
 				<fieldset>
 					<div class="row">
-						<div class="col-md-2 offset-md-1">
-							<div class="form-group">
-								<label>First Name:</label>
-								<input type="text" name="" id="first_name_family" class="form-control" placeholder="Add first name">
+						<!-- <input type="hidden" id="counter" value="1"> -->
+							<div class="col-md-2 offset-md-1">
+								<div class="form-group">
+									<input type="hidden" name="" id="client_id" value="<?php echo $client->id; ?>">
+									<label>First Name:</label>
+									<input type="text" name="" id="first_name_family" class="form-control" placeholder="Add first name">
+								</div>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label>Last Name:</label>
-								<input type="text" name="" id="last_name_family" class="form-control" placeholder="Add last name">
+							<div class="col-md-2">
+								<div class="form-group">
+									<label>Last Name:</label>
+									<input type="text" name="" id="last_name_family" class="form-control" placeholder="Add last name">
+								</div>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label>Email:</label>
-								<input type="email" name="" id="email_address_family" class="form-control" placeholder="@gmail.com">
+							<div class="col-md-2">
+								<div class="form-group">
+									<label>Email:</label>
+									<input type="email" name="" id="email_address_family" onchange="checkEmailAddress('client_family')" class="form-control" placeholder="@gmail.com">
+								</div>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label>Phone #:</label>
-								<input type="text" name="" id="mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+							<div class="col-md-2">
+								<div class="form-group">
+									<label>Phone #:</label>
+									<input type="text" name="" id="mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+								</div>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<a style="margin-top: 28px;" href="javascript:;"  class="btn btn-primary legitRipple">Add<i style="margin-left: 8px;" class="icon-arrow-right14"></i></a>
-						</div>
+							<div class="col-md-2">
+								<a style="margin-top: 28px;" href="javascript:;"  class="btn btn-primary legitRipple" onclick="addFamilyMember()" >Add<i style="margin-left: 8px;" class="icon-arrow-right14"></i></a>
+							</div>
+						
 					</div>
-					<div class="row" style="padding: 15px 0px;">
-						<div class="col-md-3 offset-md-1">
-							<div class="d-flex align-items-center">
-								<div class="mr-3">
-									<img src="<?php echo base_url(); ?>assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
-								</div>
-								<div>
-									<a href="#" class="text-default font-weight-semibold letter-icon-title">Margo Baker</a>
-									<div class="text-muted font-size-sm">@gmail.com</div>
-								</div>
-							</div>
+
+					<div id="append_new_family_member">
+						<?php if(count($client_family)>0){ ?>
+						<?php foreach($client_family as $row){ ?>
+						<div class="row" style="padding: 15px 0px;">
+							<div class="col-md-1 offset-md-2">
+								 
+						        <img src="<?php echo base_url(); ?>assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
+						    </div>
+						    <div class="col-md-3">
+						        <a href="#" class="text-default font-weight-semibold letter-icon-title"><?php echo $row->first_name." ".$row->last_name; ?></a>
+						        <div class="text-muted font-size-sm"><?php echo $row->email_address; ?>
+						        	
+						        </div>
+						    </div>
+						    <div class="col-md-3">
+						        <button type="button" onclick="editFamilyMember('<?php echo $row->id; ?>')" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Edit<i style="font-size: 10px; margin-left: 20px;" class="icon-arrow-down15"></i></button>
+						    </div>
 						</div>
-						<div class="col-md-3">
-							<button type="button" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Edit<i style="font-size: 10px; margin-left: 20px;" class="icon-arrow-down15"></i></button>
-						</div>
-					</div>
-					<div class="row" style="padding: 15px 0px;">
-						<div class="col-md-3 offset-md-1">
-							<div class="d-flex align-items-center">
-								<div class="mr-3">
-									<img src="<?php echo base_url(); ?>assets/images/userimg/face17.jpg" class="rounded-circle" width="40" height="40" alt="">
-								</div>
-								<div>
-									<a href="#" class="text-default font-weight-semibold letter-icon-title">Margo Baker</a>
-									<div class="text-muted font-size-sm">@gmail.com</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<button type="button" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Edit<i style="font-size: 10px; margin-left: 20px;" class="icon-arrow-down15"></i></button>
-						</div>
+						<?php }} ?>
 					</div>
 				</fieldset>
                 <?php
@@ -548,6 +540,12 @@
 		<!-- /wizard with validation -->
 	</div>
 </div>
+
+
+<div id="edit_familyMemberModal" class="modal fade" tabindex="-1">
+	<div class="modal-dialog" id="edit_familyMemberModal_div">
+	</div>
+</div> 
 
 <!-- Theme JS files -->
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tagsinput.min.js"></script>
@@ -630,108 +628,7 @@ $(document).ready(function(){
 		}
 	}
     
-	//$("#client_information").submit(function(e){
 	
-	// function add_new_agency(){
-	//     //e.preventDefault();
-
-	//     var file_data = $('#file').prop('files')[0];   
-	   
-	//     var client_id = $("#client_id").val();
-	// 	//var notify_email =  $("input[name=notify_email]").val();
-	// 	var first_name =  $("#first_name").val();
-	//     var last_name = $("#last_name").val();
-	// 	var mobile_number = $("#mobile_number").val();
-	//     var email_address = $("#email_address").val();
-	// 	var client_from = $("#client_from").val();
-	// 	var client_to = $("#client_to").val();
-	// 	var gender = $("input[name=gender]:checked").val();
-	// 	var dob = $("#dob").val();
-	// 	var level_care = $("#level_care").val();
-	// 	var is_pets = $("#client_pets").val();
-	// 	var pets_types = $("#pets_types").val();
-	// 	var rate_per_hour = $("#rate_per_hour").val();
-	// 	var hours_per_week = $("#hours_per_week").val();
-	// 	var billing_cycle = $("#billing_cycle").val();
-	// 	var dietry_requirements = $("input[name=dietry_requirements]:checked").val();
-	// 	var fluid_requirements = $("input[name=fluid_requirements]:checked").val();
-	// 	var medication_list = $("#medication_list").val();
-	// 	var allergies_list = $("#allergies_list").val();
-	// 	var is_oxygen = $("#oxygen_client").val();
-	// 	var oxygen_quantity = $("#oxygen_quantity").val();
-	// 	var oxygen_administered = $("#oxygen_administered").val();
-	// 	var is_mobilty = $("#need_client").val();
-	// 	var mobility_needs = $("#mobility_needs").val();
-	// 	var transportation_requirements = $("#transportation_requirements").val();
-	// 	var transfer_needs = $("#transfer_needs").val();
-	// 	var medical_history = $('medical_history').val();
-	// 	// if(file_data){
-	// 	// var is_directive_document = 1;
-	// 	// }
-	// 	var pcd_name = $("#pcd_name").val();
-	// 	var pcd_contact = $("#pcd_contact").val();
-	// 	var prefered_hospital = $("#prefered_hospital").val();
-	// 	var special_instructions = $("#special_instructions").val();
-	// 	var month = $("#month").val();
-	// 	var day = $("#day").val();
-	// 	var year = $("#year").val();
-	//     var form_data = new FormData();    
-	//     if(file_data){              
-	//     form_data.append('file', file_data);
-	//     }
-	//     form_data.append('client_id', client_id);
-	//     form_data.append('first_name', first_name);
-	//     form_data.append('last_name', last_name);
-	//     form_data.append('email_address', email_address);
-	// 	form_data.append('mobile_number', mobile_number);
-	// 	form_data.append('client_from', client_from);
-	// 	form_data.append('client_to', client_to);
-	// 	form_data.append('gender', gender);
-	// 	form_data.append('dob', dob);
-	// 	form_data.append('level_care', level_care);
-	// 	form_data.append('is_pets', is_pets);
-	// 	form_data.append('pets_types', pets_types);
-	// 	form_data.append('rate_per_hour', rate_per_hour);
-	// 	form_data.append('hours_per_week', hours_per_week);
-	// 	form_data.append('billing_cycle', billing_cycle);
-	// 	form_data.append('dietry_requirements', dietry_requirements);
-	// 	form_data.append('fluid_requirements', fluid_requirements);
-	// 	form_data.append('medication_list', medication_list);
-	// 	form_data.append('allergies_list', allergies_list);
-	// 	form_data.append('is_oxygen', is_oxygen);
-	// 	form_data.append('oxygen_quantity', oxygen_quantity);
-	// 	form_data.append('oxygen_administered', oxygen_administered);
-	// 	form_data.append('is_mobilty', is_mobilty);
-	// 	form_data.append('mobility_needs', mobility_needs);
-	// 	form_data.append('transportation_requirements', transportation_requirements);
-	// 	form_data.append('transfer_needs', transfer_needs);
-	// 	form_data.append('medical_history',medical_history);
-	// 	//form_data.append('is_directive_document', is_directive_document);
-	// 	form_data.append('pcd_name', pcd_name);
-	// 	form_data.append('pcd_contact', pcd_contact);
-	// 	form_data.append('prefered_hospital', prefered_hospital);
-	// 	form_data.append('special_instructions', special_instructions);
-	// 	form_data.append('month', month);
-	// 	form_data.append('day', day);
-	// 	form_data.append('year', year);
-	//     $.ajax({
-	//         url: '<?php echo site_url("agency/clients/update_client/".$client->id); ?>',
-	//         dataType: 'text',
-	//         cache: false,
-	//         contentType: false,
-	//         processData: false,
-	//         data: form_data,                         
-	//         type: 'post',
-	//         success: function(data){
-	//         	console.log(data);
-	//         	return false;
-	// 			if(data == 1){
-	// 				swal("Client", "Updated successfully!");
-	// 				location.reload();
-	// 			}
-	//         }
-	//     });
-	// }
 	function add_new_agency(){
 		//var client_id = $("#client_id").val();
 		loader = CardLoader($("#update_client_information_form"));
@@ -739,22 +636,113 @@ $(document).ready(function(){
 		formData.append('croppedImage', $AppMaster.profileCropper.blob);
 		//formData.append('client_id',client_id);
 		$.ajax({
-        url: '<?php echo site_url("agency/clients/update_client"); ?>',
-        dataType: 'text',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: formData,                         
-        type: 'post',
-        success: function(data){
-        	loader.unblock();
-			if(data == 1){
-				swal("Client", "Updated successfully!");
-				location.reload();
-			}
-        }
-    });
-}
+	        url: '<?php echo site_url("agency/clients/update_client"); ?>',
+	        dataType: 'text',
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+	        data: formData,                         
+	        type: 'post',
+	        success: function(data){
+	        	loader.unblock();
+				if(data == 1){
+					swal("Client", "Updated successfully!");
+					location.reload();
+				}
+	        }
+	    });
+	}
+	
+	function addFamilyMember(){
+		var client_id = $('#client_id').val();
+		var first_name_family = $("#first_name_family").val();
+		if(!first_name_family){
+			alert("First Name is required");
+			return false;
+		}
+		var last_name_family = $("#last_name_family").val();
+		var email_address_family = $("#email_address_family").val();
+		var mobile_number_family = $("#mobile_number_family").val();
+		if(!mobile_number_family){
+			alert("Mobile Number is required");
+			return false;
+		}
+		//var counter = $("#counter").val();
+		$.ajax({
+			type: 'post',	
+	        url: '<?php echo site_url("agency/clients/addFamilyMember"); ?>',
+	        dataType: 'html',
+	        data: {client_id:client_id,first_name:first_name_family,last_name:last_name_family,email_address:email_address_family,
+			mobile_number:mobile_number_family},                         
+	        
+	        success: function(data){
+				 $("#append_new_family_member").append(data);
+				// // var count= $("#counter").val();
+				// // count = parseInt(count) + 1;
+				// // $("#counter").val(count);
+				// $("#first_name_family").val(" ");
+				// $("#last_name_family").val(" ");
+				// $("#email_address_family").val(" ");
+				// $("#mobile_number_family").val(" ");
+	        }
+	    });
+	}
+
+	function editFamilyMember(id){
+		$.ajax({
+			type:'POST',
+		    url:'<?php echo site_url("agency/clients/edit_family_member"); ?>',
+		    data:{id:id},
+		    dataType:"html",
+		    success: function(e){
+		      //alert(e);
+		       $("#edit_familyMemberModal_div").html(e);
+		       $("#edit_familyMemberModal").modal("show");
+		    }
+		});
+	}
+
+	function updateFamilyMember(){
+		var first_name_family = $("#edit_first_name_family").val();
+		var last_name_family = $("#edit_last_name_family").val();
+		var email_address_family = $("#edit_email_address_family").val();
+		var mobile_number_family = $("#edit_mobile_number_family").val();
+		var counter = $("#edit_counter").val();
+		$.ajax({
+			type: 'post',	
+	        url: '<?php echo site_url("agency/clients/editMoreFamilyMember"); ?>',
+	        dataType: 'html',
+	        data: {first_name:first_name_family,last_name:last_name_family,email_address:email_address_family,
+			mobile_number:mobile_number_family,counter:counter},                         
+	        
+	        success: function(data){
+				$("#row_family_member"+counter+"").html(data);
+				$("#edit_familyMemberModal").modal("hide");
+	        }
+		});
+	}
+
+	function checkEmailAddress(tableName){
+		
+		if(tableName == 'client'){
+		var email_address = $("#email_address").val();
+		}else{
+			var email_address = $("#email_address_family").val();
+		}
+		$.ajax({
+			type: 'post',	
+	        url: '<?php echo site_url("agency/clients/checkEmailAddress"); ?>',
+	        dataType: 'html',
+	        data: {email_address:email_address,tableName:tableName},                         
+	        
+	        success: function(data){
+				if(data == 0){
+					swal("Email, Already Exists");
+					$("#email_address").val(" ");
+				}
+	        }
+		});
+	}
 
 
 

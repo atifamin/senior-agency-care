@@ -216,13 +216,13 @@
 														</div>
 													</div>
 													</form>
-													<div id="append_send_invite">
+												<div id="append_send_invite">
 													<?php if(count($client_family)>0){ ?>
 													<?php foreach($client_family as $row){ ?>
-													<div class="row" style="padding: 15px 0px;">
+												<div class="row" style="padding: 15px 0px;">
 													<div class="col-md-4">
 														<div class="d-flex align-items-center">
-														<div class="mr-3"> <img src="<?php// echo caregiver_image($row->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </div>
+														<div class="mr-3"> <img src="<?php echo client_image($row->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </div>
 														<div> <a href="#" class="text-default font-weight-semibold letter-icon-title"><?php echo $row->first_name." ".$row->last_name; ?><i style="color: gray; margin-left: 18px; font-size: 13px;" class="icon-pencil5"></i></a>
 															<div class="text-muted font-size-sm"><?php echo $row->email_address; ?></div>
 														</div>
