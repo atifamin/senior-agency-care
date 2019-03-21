@@ -1,3 +1,6 @@
+<style>
+.fc-list-item-time{display:none;}
+</style>
 <div class="fullcalendar-formats"></div>
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script> 
@@ -7,9 +10,9 @@
 var events = [
 	{
 		title: "Test One",
-		start: "2019-03-21 23:30:00",
-		end: "2019-03-22 00:30:00",
-		dow: [4, 5]
+		start: "23:30:00",
+		end: "03:45:00",
+		dow: [4,5]
 	},
 ]
 
@@ -50,6 +53,7 @@ $('.fullcalendar-formats').fullCalendar({
 	eventRender: function(info, element, view) {
 		var viewArray = ["listMonth","listDay","listWeek"];
 		if(viewArray.indexOf(view.name)!=-1){
+			element.prepend(info.date_data);
 			element.find(".fc-list-item-title").html(info.client_data);
 			element.append(info.is_recurring);
 		}

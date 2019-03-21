@@ -339,13 +339,19 @@ function change_is_recurring_status(appointement_id, is_recurring){
 	}
 	loader = CardLoader($("#full_calendar_view"));
 	$.post("<?php echo site_url("agency/scheduling/change_is_recurring_status"); ?>",{client_id:<?php echo $client_id; ?>, appointement_id:appointement_id, is_recurring:is_recurring}).done(function(data){
-		load_calendar(<?php echo $client_id; ?>);
-		loader.unblock();
-		swal(
-			'Appointement Success!',
-			is_recurring_text,
-			'success'
-		);
+		//load_calendar(<?php echo $client_id; ?>);
+		//loader.unblock();
+		location.reload();
+		/*setTimeout(function(){
+			load_calendar(<?php echo $client_id; ?>);
+			loader.unblock();
+			swal(
+				'Appointement Success!',
+				is_recurring_text,
+				'success'
+			);
+		}, 2000);*/
+		
 	});
 	/*mySwitch = new Switchery($('#'+appointement_id+'')[0]);
 	is_recurring_text = "Do you want set this appointement as recurring?";
