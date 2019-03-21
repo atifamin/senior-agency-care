@@ -3,7 +3,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 
 <div class="row">
   <div class="col-md-12"> 
-    <!--<div class="card">
+    <div class="card">
       <div class="row" style="padding: 12px;">
         <div class="col-md-3" style="text-align: center; margin: 5px 0px;">
             <div class="btn-group">
@@ -26,8 +26,8 @@ include(APPPATH."views/agency/inc/header.php");?>
             </div>
         </div>
       </div>
-    </div>-->
-    <div class="card">
+    </div>
+    <!--<div class="card">
       <div class="row" style="padding: 12px; text-align: center;">
         <div class="col-md-12">
           <div class="row">
@@ -43,7 +43,7 @@ include(APPPATH."views/agency/inc/header.php");?>
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <div class="card">
       <div class="row" style="margin-top: 40px;">
         <div class="col-md-4 offset-md-4" style="text-align: center;">
@@ -56,22 +56,22 @@ include(APPPATH."views/agency/inc/header.php");?>
             <table class="table" id="main-datatable">
               <thead>
                 <tr>
-                  <th>First Name</th>
+                  <!--<th>First Name</th>
                   <th>Last Name</th>
                   <th>Mobile Number</th>
-                  <th>Email Address</th>
-                  <th>Assigned Caregiver</th>
-                  <th class="text-center">Actions</th>
+                  <th>Email Address</th>-->
+                  <th>&nbsp;</th>
+                  <th class="text-center" >&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
                 <?php if(count($notScheduledClients)>0): ?>
                 <?php foreach($notScheduledClients as $rowKey=>$rowVal): ?>
                 <tr>
-                  <td><span><strong style="font-weight: 400;"><?php echo $rowVal->first_name; ?></strong></span></td>
+                  <!--<td><span><strong style="font-weight: 400;"><?php echo $rowVal->first_name; ?></strong></span></td>
                   <td><span><strong style="font-weight: 400;"><?php echo $rowVal->last_name; ?></strong></span></td>
                   <td><span><strong style="font-weight: 400;"><?php echo $rowVal->mobile_number; ?></strong></span></td>
-                  <td><span><strong style="font-weight: 400;"><?php echo $rowVal->email_address; ?></strong></span></td>
+                  <td><span><strong style="font-weight: 400;"><?php echo $rowVal->email_address; ?></strong></span></td>-->
                   <td><li class="media" style="list-style: none;">
                       <div class="mr-3" align="center"> <a href="<?php echo site_url("agency/clients/client_profile/".$rowVal->id.""); ?>" target="_blank"> <img src="<?php echo client_image($rowVal->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a>
                         <?php if(isset($rowVal->linked_profile_detail)): ?>
@@ -79,7 +79,7 @@ include(APPPATH."views/agency/inc/header.php");?>
                         <?php endif; ?>
                       </div>
                     </li></td>
-                  <td class="text-center"><div class="align-self-center ml-3">
+                  <td class="text-center" style="float:right;"><div class="align-self-center ml-3">
                       <div class="list-icons">
                         <div class="list-icons-item dropdown"> <a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="true"><i class="icon-menu9"></i></a>
                           <div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-158px, -116px, 0px);"> <a href="<?php echo site_url("agency/scheduling/view/".$rowVal->id.""); ?>" class="dropdown-item"><i class="icon-menu7"></i>View Schedule</a> </div>
@@ -106,22 +106,22 @@ include(APPPATH."views/agency/inc/header.php");?>
             <table class="table" id="main-datatable1">
               <thead>
                 <tr>
-                  <th>First Name</th>
+                  <!--<th>First Name</th>
                   <th>Last Name</th>
                   <th>Mobile Number</th>
-                  <th>Email Address</th>
-                  <th>Assigned Caregiver</th>
-                  <th class="text-center">Actions</th>
+                  <th>Email Address</th>-->
+                  <th></th>
+                  <th class="text-center"></th>
                 </tr>
               </thead>
               <tbody>
                 <?php if(count($scheduledClients)>0): ?>
                 <?php foreach($scheduledClients as $rowKey1=>$rowVal1): ?>
                 <tr>
-                  <td><span><strong style="font-weight: 400;"><?php echo $rowVal1->first_name; ?></strong></span></td>
+                  <!--<td><span><strong style="font-weight: 400;"><?php echo $rowVal1->first_name; ?></strong></span></td>
                   <td><span><strong style="font-weight: 400;"><?php echo $rowVal1->last_name; ?></strong></span></td>
                   <td><span><strong style="font-weight: 400;"><?php echo $rowVal1->mobile_number; ?></strong></span></td>
-                  <td><span><strong style="font-weight: 400;"><?php echo $rowVal1->email_address; ?></strong></span></td>
+                  <td><span><strong style="font-weight: 400;"><?php echo $rowVal1->email_address; ?></strong></span></td>-->
                   <td><li class="media" style="list-style: none;">
                       <div class="mr-3" align="center"> <a href="<?php echo site_url("agency/clients/client_profile/".$rowVal1->id.""); ?>" target="_blank"> <img src="<?php echo client_image($rowVal1->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a>
                         <?php if(isset($rowVal1->linked_profile_detail)): ?>
@@ -129,7 +129,7 @@ include(APPPATH."views/agency/inc/header.php");?>
                         <?php endif; ?>
                       </div>
                     </li></td>
-                  <td class="text-center"><div class="align-self-center ml-3">
+                  <td class="text-center" style="float:right;"><div class="align-self-center ml-3">
                       <div class="list-icons">
                         <div class="list-icons-item dropdown"> <a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="true"><i class="icon-menu9"></i></a>
                           <div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-158px, -116px, 0px);"> <a href="<?php echo site_url("agency/scheduling/view/".$rowVal1->id.""); ?>" class="dropdown-item"><i class="icon-menu7"></i>View Schedule</a> </div>

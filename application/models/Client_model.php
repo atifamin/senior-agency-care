@@ -4,6 +4,7 @@ class Client_model extends CI_Model{
 
 
     public function save_client($post){
+        
         $client = array();
         $client["agency_id"] = $post["agency_id"];
         $client["first_name"] = $post["first_name"];
@@ -110,7 +111,8 @@ class Client_model extends CI_Model{
     }
     
     public function update_client($post){
-        //print_array($_FILES["croppedImage"]);
+        
+        
         $client_id = $post['client_id'];
         $client = array();
         $client["agency_id"] = $post["agency_id"];
@@ -178,27 +180,18 @@ class Client_model extends CI_Model{
 
         $this->common_model->updateQuery("client", "id", $client_id, $client);
         
-        //print_array($client);
-        if(!empty($_FILES['file']['name'])){
+        print_array($client);
+        if(!empty($_FILES)){
         $data = upload_file($_FILES['file'], "client", $client_id, $FILE_DIRECTORY="./uploads/agency/clients/");
-            if(!empty($data)){
-                $WhereArray = array(
-                    "module" => "client",
-                    "module_id" => $client_id
-                );
-            $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
-            }
         }
-        if (isset($_FILES["croppedImage"])){
-            $profile_image = upload_blob($_FILES["croppedImage"], "client", $client_id, "/uploads/profileImages/");
-            if(!empty($profile_image)){
-                $WhereArray = array(
-                    "module" => "client",
-                    "module_id" => $client_id
-                );
-            $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $profile_image);
-            }
-        } 
+        if(!empty($data)){
+            $WhereArray = array(
+                "module" => "client",
+                "module_id" => $client_id
+            );
+        $this->common_model->updateMultipleWhereQuery("media", $WhereArray, $data);
+        }
+        
     }
 
     // public function update_client($post){
@@ -253,6 +246,7 @@ class Client_model extends CI_Model{
 						->where("cr.linked_id IS NULL")
 						->where("c.agency_id", $agency_id)
 						->order_by("c.id", "ASC")
+						->group_by("c.id")
 						->get()->result();
         $data = $this->linkClientsTable($data);
         return $data;
@@ -266,6 +260,7 @@ class Client_model extends CI_Model{
 						->where("c.agency_id", $agency_id)
 						->where("ca.title <>", '')
 						->order_by("c.id", "ASC")
+						->group_by("c.id")
 						->get()->result();
         $data = $this->linkClientsTable($data);
         return $data;
@@ -279,6 +274,7 @@ class Client_model extends CI_Model{
 						->where("c.agency_id", $agency_id)
 						->where("ca.title IS NULL")
 						->order_by("c.id", "ASC")
+						->group_by("c.id")
 						->get()->result();
         $data = $this->linkClientsTable($data);
         return $data;
