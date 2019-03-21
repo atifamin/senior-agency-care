@@ -4,6 +4,15 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
 <script>
 
+var events = [
+	{
+		title: "Test One",
+		start: "2019-03-21 23:30:00",
+		end: "2019-03-22 00:30:00",
+		dow: [4, 5]
+	},
+]
+
 $('.fullcalendar-formats').fullCalendar({
 	header: {
 		left: 'prev,next today',
