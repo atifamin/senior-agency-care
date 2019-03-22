@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
-<?php echo $linked_id; ?>
+
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/client_form_wizard.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
