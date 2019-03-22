@@ -1,4 +1,4 @@
-<?php //print_array($result); ?>
+<?php //print_array($client); ?>
 
 <div class="row">
   <div class="col-md-12">
@@ -25,8 +25,8 @@
               <input type="hidden" name="client_id" id="client_id" value="<?php echo $client_id; ?>">
               <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
               <div class="media-body">
-                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
-                <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
+                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $client->first_name;?></div>
+                <span class="text-muted" style="font-size: 12px;">Client</span> </div>
             </li>
           </div>
         </div>
