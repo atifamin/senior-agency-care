@@ -10,6 +10,7 @@
 		<div class="modal-body">
 		<fieldset id="append_family_member">
 				<div class="row">
+					
 					<input type="hidden" name="family_member_id" id="family_member_id" value="<?php echo $result->id; ?>">
 					<div class="col-md-2 offset-md-1">
 						<div class="form-group">
@@ -50,13 +51,20 @@
 
 	<script type="text/javascript">
 		function updateFamilyMember(){
-			var formData = new FormData($(this)[0]);
+			var family_member_id = $('#family_member_id').val();
+			var edit_first_name_family = $('#edit_first_name_family').val();
+			var edit_last_name_family = $('#edit_last_name_family').val();
+			var edit_email_address_family = $('#edit_email_address_family').val();
+			var edit_mobile_number_family = $('#edit_mobile_number_family').val();
+			
 			$.ajax({
 				url:'<?php echo site_url('agency/clients/updateFamilyMember'); ?>',
 				type:'post',
-				data:formData,
-				success: function (e){
-					$("#license_row_"+family_member_id+"").replaceWith(data);
+				data:{id:family_member_id,first_name:edit_first_name_family,last_name:edit_last_name_family,email_address:edit_email_address_family,mobile_number:edit_mobile_number_family},
+				success: function (data){
+					//alert(e);
+					$("#family_member_row_"+family_member_id+"").replaceWith(data);
+					$("#edit_familyMemberModal").modal("hide");
 				}
 			});
 		}

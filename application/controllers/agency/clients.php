@@ -124,12 +124,17 @@ class Clients extends CI_Controller {
 	}
 	public function updateFamilyMember(){
 		$post = $this->input->post();
-		$id = $post['family_member_id'];
+		//print_array($post);
+		$id = $post['id'];
+		//print_array($id);
 		$this->common_model->update_query("client_family", $post, "id", $id);
 		$data['result'] = $this->common_model->listingRow("id",$id,"client_family");
-		$this->load->view('agency/profile/family_member_view',$data);
+		$this->load->view('agency/clients/family_member_view',$data);
 	}	
-
+	public function delete_family_member(){
+		$id = $this->input->post("id");
+		$this->common_model->delete("client_family", array("id"=>$id));
+	}
 	public function addMoreFamilyMember(){
 		$post = $this->input->post();
 		$this->load->view("agency/clients/add_more_familyMember",$post);

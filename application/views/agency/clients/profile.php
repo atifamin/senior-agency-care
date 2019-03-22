@@ -183,7 +183,7 @@
 											<div class="col-md-12"> 
 												<!-- Dropdown list -->
 												<h5 style="text-align: center;">Send an invite to your clients</h5>
-												<div class="col-md-9">
+												<div class="col-md-10">
 													<form id="send_invite_form" action="<?php echo site_url("agency/clients/add_send_invite"); ?>" method="POST" role="form">
 													<input type="hidden" name="client_id" value="<?php echo $client_detail->id; ?>">
 													<div class="row" style="padding: 50px 0px;">
@@ -222,8 +222,8 @@
 												<div class="row" style="padding: 15px 0px;">
 													<div class="col-md-4">
 														<div class="d-flex align-items-center">
-														<div class="mr-3"> <img src="<?php echo client_image($row->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </div>
-														<div> <a href="#" class="text-default font-weight-semibold letter-icon-title"><?php echo $row->first_name." ".$row->last_name; ?><i style="color: gray; margin-left: 18px; font-size: 13px;" class="icon-pencil5"></i></a>
+														<div class="mr-3"> <img src="<?php echo base_url(); ?>assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt=""> </div>
+														<div> <a href="#" class="text-default font-weight-semibold letter-icon-title"><?php echo $row->first_name." ".$row->last_name; ?></a>
 															<div class="text-muted font-size-sm"><?php echo $row->email_address; ?></div>
 														</div>
 														</div>

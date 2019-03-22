@@ -15,10 +15,6 @@
 						<div class="col-md-5">
 							<a href="<?php echo site_url("agency/clients/add_client"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Edit a client</a>
 						</div>
-						<!-- <span style="margin: 10px auto; font-size: 10px;">OR</span>
-						<div class="col-md-5">
-							<a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a>
-						</div> -->
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -39,7 +35,7 @@
 		<!-- Wizard with validation -->
 		<div class="card">
 			<div class="card-header" style="text-align: center;">
-				<h6>Edit a client</h6>
+				<h5><strong>Edit a client</strong></h5>
 			</div>
 
 			<form id="update_client_information" role="form" enctype="multipart" method="post" class="wizard-form steps-validation" action="#" data-fouc>
@@ -460,7 +456,7 @@
 					<div id="append_new_family_member">
 						<?php if(count($client_family)>0){ ?>
 						<?php foreach($client_family as $row){ ?>
-						<div class="row" style="padding: 15px 0px;">
+						<div class="row" style="padding: 15px 0px;" id="family_member_row_<?php echo $row->id; ?>">
 							<div class="col-md-1 offset-md-2">
 								 
 						        <img src="<?php echo base_url(); ?>assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt="">
@@ -472,7 +468,14 @@
 						        </div>
 						    </div>
 						    <div class="col-md-3">
-						        <button type="button" onclick="editFamilyMember('<?php echo $row->id; ?>')" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Edit<i style="font-size: 10px; margin-left: 20px;" class="icon-arrow-down15"></i></button>
+						    	<div class="btn-group">
+			                    	<button type="button" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple dropdown-toggle" data-toggle="dropdown">Change</button>
+			                    	<div class="dropdown-menu dropdown-menu-right">
+										<a href="#" onclick="editFamilyMember('<?php echo $row->id; ?>')" class="dropdown-item"><i class="icon-menu7"></i> Edit</a>
+										<a href="#" onclick="deleteFamilyMember('<?php echo $row->id; ?>')" class="dropdown-item"><i class="icon-database-remove"></i> Delete</a>
+									</div>
+								</div>
+						        <!-- <button type="button" onclick="editFamilyMember('<?php //echo $row->id; ?>')" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Edit<i style="font-size: 10px; margin-left: 20px;" class="icon-arrow-down15"></i></button> -->
 						    </div>
 						</div>
 						<?php }} ?>
@@ -677,18 +680,12 @@ $(document).ready(function(){
 	        
 	        success: function(data){
 				 $("#append_new_family_member").append(data);
-				// // var count= $("#counter").val();
-				// // count = parseInt(count) + 1;
-				// // $("#counter").val(count);
-				// $("#first_name_family").val(" ");
-				// $("#last_name_family").val(" ");
-				// $("#email_address_family").val(" ");
-				// $("#mobile_number_family").val(" ");
-	        }
+				}
 	    });
 	}
 
 	function editFamilyMember(id){
+		//alert();
 		$.ajax({
 			type:'POST',
 		    url:'<?php echo site_url("agency/clients/edit_family_member"); ?>',
@@ -699,6 +696,19 @@ $(document).ready(function(){
 		       $("#edit_familyMemberModal_div").html(e);
 		       $("#edit_familyMemberModal").modal("show");
 		    }
+		});
+	}
+
+	function deleteFamilyMember(id){
+		$.ajax({
+			type:'post',
+			url:'<?php echo site_url('agency/clients/delete_family_member'); ?>',
+			data:{id:id},
+			dataType:'html',
+			success: function(data){
+				swal("Family Member","Family Member deleted successfully!");
+				$("#family_member_row_"+id+"").remove();
+			}
 		});
 	}
 
