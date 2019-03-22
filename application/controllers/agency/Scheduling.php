@@ -36,6 +36,7 @@ class Scheduling extends CI_Controller {
 		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$client_id,"client_caregiver_relationship");
 		//$data['events'] = $this->Client_model->load_client_appointement_events($client_id);
 		//print_array($data['events']);
+		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_medication_list");
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
@@ -138,6 +139,13 @@ class Scheduling extends CI_Controller {
 	public function delete_appointement(){
 		$post = $this->input->post();
 		$this->common_model->delete("client_appointements", array("id"=>$post["appointement_id"]));
+	}
+
+	public function add_medication(){
+		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
+		$this->common_model->insertGetIDQuery("client_medication_list", $post);
+		redirect('agency/scheduling/view/'.$post['client_id'].'');
 	}
 	
 }
