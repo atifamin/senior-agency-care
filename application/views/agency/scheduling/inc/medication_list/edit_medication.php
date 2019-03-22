@@ -27,7 +27,7 @@
           <br>
           <span class="text-muted">Add the required medication dosage</span> 
           <!-- <input type="text" value="" name="medication_dosage" class="form-control touchspin-empty" placeholder="Mg"> -->
-          <input type="text" value="" name="medication_dosage" class="form-control touchspin-empty" placeholder="Mg">
+          <input type="text" name="medication_dosage" class="form-control" placeholder="Mg" value="<?php echo $result->medication_dosage; ?>">
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
           <label>How many times a day is medication taken: </label>
           <br>
           <span class="text-muted">Add the frequency per day of dosage</span>
-          <input type="text" value="" name="how_many_times_day" class="form-control touchspin-empty">
+          <input type="text" value="<?php echo $result->how_many_times_day; ?>" name="how_many_times_day" class="form-control touchspin-empty">
         </div>
       </div>
     </div>
@@ -46,13 +46,8 @@
         <div class="form-group">
           <label>When is the medication taken</label>
           <br>
-          <span class="text-muted">Select morning, evening or night</span> 
-          <!-- <select class="form-control select-icons" name="day_period_time" data-fouc>
-                  <option value="morning">Morning</option>
-                  <option value="evening">Evening</option>
-                  <option value="night">Night</option>
-                </select> -->
-          <select name="day_period_time" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
+          <span class="text-muted">Select morning, evening or night</span>
+          <select name="day_period_time" id="day_period_time" data-placeholder="Select" class="form-control form-control-select2" data-fouc value="<?php echo $result->day_period_time; ?>">
             <option></option>
             <option value="morning">Morning</option>
             <option value="evening">Evening</option>
@@ -67,7 +62,7 @@
         <br>
         <span class="text-muted">Select what time is medication taken</span>
         <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-          <input type="text" name="day_time" class="form-control pickatime" placeholder="select time">
+          <input type="text" name="day_time" class="form-control pickatime" placeholder="select time" value="<?php echo $result->day_time; ?>">
         </div>
       </div>
     </div>
@@ -95,6 +90,13 @@
     <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Done</span> </button>
   </div>
 </form>
+
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
+
+
+
 <script>
 $("#update_medication_list").on("submit", function(e){
 	loader = CardLoader($("#edit_medication_modal"));
@@ -117,4 +119,7 @@ $("#update_medication_list").on("submit", function(e){
 			
 	});
 });
+
+$('#day_period_time').select2();
+
 </script>

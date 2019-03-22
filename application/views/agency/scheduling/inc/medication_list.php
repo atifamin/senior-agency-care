@@ -35,7 +35,7 @@
             <div class="col-md-8 offset-md-2">
               <div class="form-group">
                 <label>Medication name:</label>
-                <input type="text" name="medication_name" class="form-control" placeholder="What medication is the client taking">
+                <input type="text" name="medication_name" class="form-control" placeholder="What medication is the client taking" required="required">
               </div>
             </div>
           </div>
@@ -66,13 +66,7 @@
                 <label>When is the medication taken</label>
                 <br>
                 <span class="text-muted">Select morning, evening or night</span> 
-                <!-- <select class="form-control select-icons" name="day_period_time" data-fouc>
-                  <option value="morning">Morning</option>
-                  <option value="evening">Evening</option>
-                  <option value="night">Night</option>
-                </select> -->
-                <select name="day_period_time" data-placeholder="Select" class="form-control form-control-select2" data-fouc>
-                  <option></option>
+                <select class="form-control select-icons" id="day_period_time" name="day_period_time" data-fouc>
                   <option value="morning">Morning</option>
                   <option value="evening">Evening</option>
                   <option value="night">Night</option>
@@ -124,18 +118,12 @@
     </div>
   </div>
 </div>
-<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/uniform.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tagsinput.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tokenfield.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_tags_input.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> 
+
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
+
+
 <script>
 
 $("#add_client_medication_form").on("submit", function(e){
@@ -167,7 +155,22 @@ function edit_medication(id){
 		$("#edit_medication_modal").modal("show");
 	});
 }
+function delete_medication(id){
+  $.post("<?php echo site_url("agency/scheduling/delete_medication"); ?>", {id:id}).done(function(data){
+    swal("Client Medication","Medication deleted successfully!");
+    $('#table_row_'+id+'').remove();
+  });
+}
 
+$('#day_period_time').select2();
 
+$('#medication_reminder_checkbox').click(function(){
+  if ($(this).prop('checked') == true) {
+    $('#medication_set_reminder').css('display','block');
+  }
+  else{
+    $('#medication_set_reminder').css('display','none');
+  }
+});
 
 </script>
