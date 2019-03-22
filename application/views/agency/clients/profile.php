@@ -33,10 +33,10 @@
 					<div class="offset-md-1 col-md-10">
 						<ul class="nav nav-tabs nav-tabs-top nav-justified">
 							
-							<li class="nav-item"><a href="#top-justified-tab1" class="nav-link active" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp;&nbsp;&nbsp;&nbsp;<?php if(isset($client_detail->first_name)){ echo $client_detail->first_name." ".$client_detail->last_name;} ?></a></li>
+							<li class="nav-item"><a href="#top-justified-tab1" class="nav-link active" data-toggle="tab"><img src="<?php echo client_image($client_detail->id); ?>" class="rounded-circle" width="40" height="40" alt="">&nbsp;&nbsp;&nbsp;&nbsp;<?php if(isset($client_detail->first_name)){ echo $client_detail->first_name." ".$client_detail->last_name;} ?></a></li>
 							
 							<?php if (isset($client_detail->linked_profile_detail)) { ?>	
-							<li class="nav-item"><a href="#top-justified-tab2" class="nav-link" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/images/userimg/face12.jpg" class="rounded-circle" width="40" height="40" alt="">&nbsp;&nbsp;&nbsp;&nbsp;<?php if(isset($client_detail->linked_profile_detail->first_name)){ echo $client_detail->linked_profile_detail->first_name." ".$client_detail->linked_profile_detail->last_name;} ?></a></li>
+							<li class="nav-item"><a href="#top-justified-tab2" class="nav-link" data-toggle="tab"><img src="<?php echo client_image($client_detail->linked_profile_detail->id); ?>" class="rounded-circle" width="40" height="40" alt="">&nbsp;&nbsp;&nbsp;&nbsp;<?php if(isset($client_detail->linked_profile_detail->first_name)){ echo $client_detail->linked_profile_detail->first_name." ".$client_detail->linked_profile_detail->last_name;} ?></a></li>
 							<?php } ?>
 						</ul>
 					</div>
@@ -482,7 +482,7 @@
 													<div class="col-md-4">
 														<div class="d-flex align-items-center">
 														<div class="mr-3"> <img src="<?php// echo caregiver_image($row->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </div>
-														<div> <a href="#" class="text-default font-weight-semibold letter-icon-title"><?php echo $row->first_name." ".$row->last_name; ?><i style="color: gray; margin-left: 18px; font-size: 13px;" class="icon-pencil5"></i></a>
+														<div> <a href="#" class="text-default font-weight-semibold letter-icon-title"><?php echo $row->first_name." ".$row->last_name; ?></a>
 															<div class="text-muted font-size-sm"><?php echo $row->email_address; ?></div>
 														</div>
 														</div>

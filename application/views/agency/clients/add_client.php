@@ -1,4 +1,5 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
+<?php echo $linked_id; ?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/client_form_wizard.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
@@ -59,6 +60,7 @@
 				<h6><strong>Client Information</strong></h6>
 				<fieldset>
 					<input type="hidden" name="linked_profile" value="0">
+					<!-- <input type="hidden" name="linked_id" value="<?php echo $linked_id; ?>"> -->
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -659,6 +661,7 @@
 		loader = CardLoader($("#add_client_information"));
 		formData = new FormData($("#client_information")[0]);
 		formData.append('croppedImage', $AppMaster.profileCropper.blob);
+		formData.append('linked_id',"<?php echo $linked_id; ?>");
 	    $.ajax({
 	        url: '<?php echo site_url("agency/clients/save_client"); ?>',
 	        dataType: 'text',
