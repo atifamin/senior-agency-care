@@ -1,5 +1,5 @@
 
-<?php //print_array($client_id); ?>
+<?php //print_array($result); ?>
 
 <div class="row">
   <div class="col-md-12">
@@ -35,7 +35,7 @@
                 <td><span class="text-muted"><?php echo $value->is_caregiver_reminder; ?></span></td>
                 <td class="text-center"><div class="list-icons">
                     <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
-                      <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="editMedication()" data-toggle="modal" data-target="#modal_edit_medication" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a> <a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a> <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a> </div>
+                      <div class="dropdown-menu dropdown-menu-right"> <a href="<?php echo site_url('agency/scheduling/edit_medication/'.$value->id.''); ?>" data-toggle="modal" data-target="#modal_edit_medication" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a> <a href="<?php echo base_url('agency/scheduling/delete_medication/'.$value->id.''); ?>" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a> <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a> </div>
                     </div>
                   </div></td>
               </tr>
@@ -154,7 +154,7 @@
 <div id="modal_edit_medication" class="modal fade" tabindex="-2">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="add_client_medication_form" action="<?php echo site_url('agency/scheduling/add_medication'); ?>" method="post">
+      <form id="edit_client_medication_form" action="" method="post">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto;">Edit client's medication</h5>
           <div>
