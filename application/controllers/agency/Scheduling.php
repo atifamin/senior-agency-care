@@ -37,7 +37,6 @@ class Scheduling extends CI_Controller {
 		//$data['events'] = $this->Client_model->load_client_appointement_events($client_id);
 		//print_array($data['events']);
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_medication_list");
-		$this->edit_medication();
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
@@ -142,18 +141,10 @@ class Scheduling extends CI_Controller {
 		$this->common_model->delete("client_appointements", array("id"=>$post["appointement_id"]));
 	}
 
-	public function add_medication(){
-		$post = $this->input->post();
-		$post['agency_id'] = $this->agency_id;
-		$this->common_model->insertGetIDQuery("client_medication_list", $post);
-		redirect('agency/scheduling/view/'.$post['client_id'].'');
-	}
-
 	public function edit_medication(){
-		$id = $this->input->post("id");
-		//print_array($id);
-		$data['result'] = $this->common_model->listingRow("id",$id,"client_medication_list");
-
+		$medicationId = $this->input->post("id");
+		$data['result'] = $this->common_model->listingRow("id",$medicationId,"client_medication_list");
+		$this->load->view("agency/scheduling/inc/medication_list/edit_medication", $data);
 	}
 
 	public function delete_medication(){
@@ -162,5 +153,27 @@ class Scheduling extends CI_Controller {
         //print_array($id);
 		$this->common_model->delete("client_medication_list",array('id'=>$post['medication_id']));
 		redirect('agency/scheduling/');
+	}
+	
+	public function add_new_medication(){
+		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
+		$this->common_model->insertGetIDQuery("client_medication_list", $post);
+		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_medication_list");
+		$data['client_id'] = $post['client_id'];
+		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
+	}
+	
+	public function update_medication_list(){
+		$post = $this->input->post();
+		$mediData = $post;
+		unset($mediData['medication_id']);
+		$mediData['updated_by'] = $this->agency_id;
+		$mediData['updated_at'] = date("Y-m-d H:i:s");
+		$this->common_model->updateQuery("client_medication_list", "id", $post['medication_id'], $mediData);
+		$medication_detail = $this->common_model->listingRow("id",$post['medication_id'],"client_medication_list");
+		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$medication_detail->client_id,"client_medication_list");
+		$data['client_id'] = $medication_detail->client_id;
+		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}
 }
