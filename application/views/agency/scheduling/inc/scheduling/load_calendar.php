@@ -17,10 +17,15 @@ var events = [
 ]
 
 $('.fullcalendar-formats').fullCalendar({
-	header: {
+	/*header: {
 		left: 'prev,next today',
 		center: 'title,month,listMonth',
 		right: 'basicDay,listDay,basicWeek,listWeek'
+	},*/
+	header: {
+		left: 'prev,next today',
+		center: 'title,month,listMonth',
+		right: 'month,basicWeek,basicDay'
 	},
 	views: {
 		month: {
@@ -36,13 +41,17 @@ $('.fullcalendar-formats').fullCalendar({
 			columnFormat: 'dddd'
 		}
 	},
-	buttonText: {
+	/*buttonText: {
 		listMonth: 'List View',
 		month: 'Calendar View',
 		basicDay: 'Day',
 		listDay: 'List Day',
 		basicWeek: 'Week',
 		listWeek: 'List Week',
+	},*/
+	buttonText: {
+		listMonth: 'List View',
+		month: 'Month',
 	},
 	defaultView: 'listMonth',
 	timeFormat: 'h:mm A',
