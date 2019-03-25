@@ -95,7 +95,6 @@ class Scheduling extends CI_Controller {
 			$post['date'] = date("Y-m-d", strtotime($date));
 			$post['in_time'] = date("H:i:s", strtotime($post['in_time']));
 			$post['out_time'] = date("H:i:s", strtotime($post['out_time']));
-			$post['color'] = randomString($length = 6);
 			$post['created_by'] = $this->agency_id;
 			$post['created_at'] = date("Y-m-d H:i:s");
 			$post['updated_by'] = $this->agency_id;
