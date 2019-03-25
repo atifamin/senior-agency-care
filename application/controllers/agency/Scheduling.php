@@ -148,10 +148,8 @@ class Scheduling extends CI_Controller {
 
 	public function delete_medication(){
 		//$id = $this->input->post('id');
-		$post = $this->input->post('id');
-        //print_array($id);
-		$this->common_model->delete("client_medication_list",array('id'=>$post['medication_id']));
-		redirect('agency/scheduling/');
+		$id = $this->input->post('id');
+		$data['result'] = $this->common_model->delete("client_medication_list",array('id'=>$id));
 	}
 	
 	public function add_new_medication(){
@@ -174,5 +172,29 @@ class Scheduling extends CI_Controller {
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$medication_detail->client_id,"client_medication_list");
 		$data['client_id'] = $medication_detail->client_id;
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
+	}
+	public function add_client_dietry_needs(){
+		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
+		$post['created_by'] = $this->agency_id;
+		$post['created_at'] = date('Y-m-d H:i:s');
+ 		$this->common_model->insertGetIDQuery("client_dietry_needs", $post);
+	}
+	public function add_new_shopping(){
+		$post = $this->input->post();
+
+		$post['agency_id'] = $this->agency_id;
+		$post['created_by'] = $this->agency_id;
+		$post['created_at'] = date('Y-m-d H:i:s');
+		
+		$shopping_list_id = $this->common_model->insertGetIDQuery("client_shopping_list", $post);
+		if (!empty($_FILES['file']['name'])) {
+			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+			$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
+		}
+		if (!empty($list_file)) {
+			$this->common_model->updateQuery("client_shopping_list", "id", $shopping_list_id,array('list_file'=>$list_file));
+		}
+
 	}
 }
