@@ -421,36 +421,34 @@
 				<h6><strong>Family Center</strong></h6>
 				<fieldset>
 					<div class="row">
-						<!-- <input type="hidden" id="counter" value="1"> -->
-							<div class="col-md-2 offset-md-1">
-								<div class="form-group">
-									<input type="hidden" name="" id="client_id" value="<?php echo $client->id; ?>">
-									<label>First Name:</label>
-									<input type="text" name="" id="first_name_family" class="form-control" placeholder="Add first name">
-								</div>
+						<div class="col-md-2 offset-md-1">
+							<div class="form-group">
+								<input type="hidden" name="" id="client_id" value="<?php echo $client->id; ?>">
+								<label>First Name:</label>
+								<input type="text" name="" id="first_name_family" class="form-control" placeholder="Add first name">
 							</div>
-							<div class="col-md-2">
-								<div class="form-group">
-									<label>Last Name:</label>
-									<input type="text" name="" id="last_name_family" class="form-control" placeholder="Add last name">
-								</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>Last Name:</label>
+								<input type="text" name="" id="last_name_family" class="form-control" placeholder="Add last name">
 							</div>
-							<div class="col-md-2">
-								<div class="form-group">
-									<label>Email:</label>
-									<input type="email" name="" id="email_address_family" onchange="checkEmailAddress('client_family')" class="form-control" placeholder="@gmail.com">
-								</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>Email:</label>
+								<input type="email" name="" id="email_address_family" onchange="checkEmailAddress('client_family')" class="form-control" placeholder="@gmail.com">
 							</div>
-							<div class="col-md-2">
-								<div class="form-group">
-									<label>Phone #:</label>
-									<input type="text" name="" id="mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
-								</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>Phone #:</label>
+								<input type="text" name="" id="mobile_number_family" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
 							</div>
-							<div class="col-md-2">
-								<a style="margin-top: 28px;" href="javascript:;"  class="btn btn-primary legitRipple" onclick="addFamilyMember()" >Add<i style="margin-left: 8px;" class="icon-arrow-right14"></i></a>
-							</div>
-						
+						</div>
+						<div class="col-md-2">
+							<a style="margin-top: 28px;" href="javascript:;"  class="btn btn-primary legitRipple" onclick="addFamilyMember()" >Add<i style="margin-left: 8px;" class="icon-arrow-right14"></i></a>
+						</div>
 					</div>
 
 					<div id="append_new_family_member">
@@ -475,7 +473,6 @@
 										<a href="#" onclick="deleteFamilyMember('<?php echo $row->id; ?>')" class="dropdown-item"><i class="icon-database-remove"></i> Delete</a>
 									</div>
 								</div>
-						        <!-- <button type="button" onclick="editFamilyMember('<?php //echo $row->id; ?>')" class="btn btn-outline alpha-success text-success-800 border-success-600 legitRipple">Edit<i style="font-size: 10px; margin-left: 20px;" class="icon-arrow-down15"></i></button> -->
 						    </div>
 						</div>
 						<?php }} ?>
