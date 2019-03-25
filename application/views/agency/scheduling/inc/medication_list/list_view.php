@@ -1,3 +1,4 @@
+<?php //print_array($client); ?>
 <div class="datatable-scroll">
   <table class="table" id="main-datatable">
     <thead>
