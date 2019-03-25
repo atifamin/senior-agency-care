@@ -183,7 +183,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_new_shopping(){
 		$post = $this->input->post();
-		
+
 		$post['agency_id'] = $this->agency_id;
 		$post['created_by'] = $this->agency_id;
 		$post['created_at'] = date('Y-m-d H:i:s');
@@ -197,8 +197,5 @@ class Scheduling extends CI_Controller {
 			$this->common_model->updateQuery("client_shopping_list", "id", $shopping_list_id,array('list_file'=>$list_file));
 		}
 
-		// $data['shopping_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_shopping_list");
-		// $data['client_id'] = $post['client_id'];
-		// $this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$data);
 	}
 }
