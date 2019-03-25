@@ -181,4 +181,24 @@ class Scheduling extends CI_Controller {
 		$post['created_at'] = date('Y-m-d H:i:s');
  		$this->common_model->insertGetIDQuery("client_dietry_needs", $post);
 	}
+	public function add_new_shopping(){
+		$post = $this->input->post();
+		
+		$post['agency_id'] = $this->agency_id;
+		$post['created_by'] = $this->agency_id;
+		$post['created_at'] = date('Y-m-d H:i:s');
+		
+		$shopping_list_id = $this->common_model->insertGetIDQuery("client_shopping_list", $post);
+		if (!empty($_FILES['file']['name'])) {
+			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+			$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
+		}
+		if (!empty($list_file)) {
+			$this->common_model->updateQuery("client_shopping_list", "id", $shopping_list_id,array('list_file'=>$list_file));
+		}
+
+		// $data['shopping_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_shopping_list");
+		// $data['client_id'] = $post['client_id'];
+		// $this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$data);
+	}
 }
