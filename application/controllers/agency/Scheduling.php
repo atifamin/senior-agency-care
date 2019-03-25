@@ -37,6 +37,7 @@ class Scheduling extends CI_Controller {
 		//$data['events'] = $this->Client_model->load_client_appointement_events($client_id);
 		//print_array($data['events']);
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_medication_list");
+		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_vital_reports");
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
@@ -173,5 +174,15 @@ class Scheduling extends CI_Controller {
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$medication_detail->client_id,"client_medication_list");
 		$data['client_id'] = $medication_detail->client_id;
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
+	}
+
+		public function add_vital_report(){
+		$post = $this->input->post();
+		//print_array($post);
+		$post['agency_id'] = $this->agency_id;
+		$this->common_model->insertGetIDQuery("client_vital_reports", $post);
+		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_vital_reports");
+		$data['client_id'] = $post['client_id'];
+		$this->load->view("agency/scheduling/inc/vital_reports",$data);
 	}
 }
