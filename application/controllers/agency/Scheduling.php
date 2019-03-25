@@ -174,4 +174,11 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $medication_detail->client_id;
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}
+	public function add_client_dietry_needs(){
+		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
+		$post['created_by'] = $this->agency_id;
+		$post['created_at'] = date('Y-m-d H:i:s');
+ 		$this->common_model->insertGetIDQuery("client_dietry_needs", $post);
+	}
 }
