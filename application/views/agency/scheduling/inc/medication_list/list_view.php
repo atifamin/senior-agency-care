@@ -35,6 +35,7 @@
 </div>
 <script src="<?php echo base_url(); ?>assets/js/plugins/tables/datatables/datatables.min.js"></script> 
 <script>
+  
 $("#main-datatable").DataTable({
 	autoWidth: false,
 	columnDefs: [{ 
