@@ -481,7 +481,7 @@
 													<div class="row" style="padding: 15px 0px;">
 													<div class="col-md-4">
 														<div class="d-flex align-items-center">
-														<div class="mr-3"> <img src="<?php// echo caregiver_image($row->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </div>
+														<div class="mr-3"> <img src="<?php echo base_url(); ?>assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt=""> </div>
 														<div> <a href="#" class="text-default font-weight-semibold letter-icon-title"><?php echo $row->first_name." ".$row->last_name; ?></a>
 															<div class="text-muted font-size-sm"><?php echo $row->email_address; ?></div>
 														</div>
@@ -513,9 +513,6 @@
 													</div>
 													<?php }} ?>
 												</div>
-												<!-- <div class="col-md-12" style="text-align: right; padding-top: 15px; padding-bottom: 15px;">
-													<button type="submit" class="btn btn-primary legitRipple"> Done<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
-												</div> -->
 												</div>
 												<!-- /dropdown list --> 
 											
