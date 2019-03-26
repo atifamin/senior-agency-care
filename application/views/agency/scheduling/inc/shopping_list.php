@@ -4,11 +4,34 @@
 
 
 <div class="row">
+  <input type="text" name="test_field" />
+<input type="text" name="counter" value="1" />
+<button type="button" onclick="test()">Click</button>
+
+<div id="test_div">
+
+</div>
+
+<script>
+
+function test(){
+  var counter = $("input[name=counter]").val();
+  var valu = $("input[name=test_field]").val();
+  $("#test_div").append('<div id="test_row_'+counter+'"><input type="text" name="sibbilings[]" value="'+valu+'"><a href="javascript:;" onclick="remove('+counter+')">Remove</a></div>');
+  counter = parseInt(counter)+1;
+  $("input[name=counter]").val(counter);
+}
+
+function remove(id){
+  $("#test_row_"+id+"").remove();
+}
+</script>
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-12" style="text-align: center;"> <a href="javascript:;" data-toggle="modal" data-target="#modal_shopping_list">Create new shopping list
         <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>
-        </a> </div>
+        </a> 
+      </div>
     </div>
     <div class="row">
       <div class="col-md-12">
@@ -126,7 +149,9 @@
         contentType: false,
         processData: false,
         success: function(e){
-          console.log(e);
+          swal('Shopping List',"added successfuly");
+          $('#modal_shopping_list').modal('hide');
+
         }
       });
     });
