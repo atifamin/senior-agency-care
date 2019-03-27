@@ -8,37 +8,8 @@
         </a> </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <table class="table" id="report-datatable">
-          <thead>
-            <tr>
-              <th><i style="margin-right: 8px;" class="icon-man"></i>Blood Pressure</th>
-              <th><i style="margin-right: 8px; color: red;" class="icon-heart6"></i>Heart Rate</th>
-              <th><i style="margin-right: 8px; color: red;" class="icon-pulse2"></i>Pulse</th>
-              <th><i style="margin-right: 8px; color: green;" class="icon-stats-growth2"></i>Temperature</th>
-              <th><i style="margin-right: 8px;" class="icon-calendar22"></i>Date Taken</th>
-              <th class="text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php if(count($vital_report_details)>0){
-                foreach ($vital_report_details as $value) { ?>
-            <tr>
-              <td><span class="text-muted"><?php echo $value->bloodpressure_from." - ".$value->bloodpressure_to; ?></span></td>
-              <td><span class="text-muted"><?php echo $value->breathing_from." - ".$value->breathing_to; ?></span></td>
-              <td><span class="text-muted"><?php echo $value->pulse_from." - ".$value->pulse_to; ?></span></td>
-              <td><span class="text-muted"><?php echo $value->temperature; ?></span></td>
-              <td><span class="text-muted"></span></td>
-              <td class="text-center"><div class="list-icons">
-                  <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
-                    <div class="dropdown-menu dropdown-menu-right"> <a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Vitals Report</a> <a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Vital Report</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Vital Report</a> </div>
-                  </div>
-                </div></td>
-            </tr>
-          </tbody>
-          <?php }
-          } ?>
-        </table>
+      <div class="col-md-12" id="vital_reports_list_view">
+        <?php include(APPPATH."views/agency/scheduling/inc/vital_reports/list_view.php"); ?>
       </div>
     </div>
   </div>
@@ -55,7 +26,7 @@
               </div>
               <div class="media-body">
                 <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $client->first_name." ".$client->last_name; ?></div>
-                <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
+                <span class="text-muted" style="font-size: 12px;">Client</span> </div>
             </li>
           </div>
         </div>
@@ -65,7 +36,7 @@
               <div class="form-group">
                 <label>Add date and time vitals were taken: </label>
                 <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                  <input type="text" name="" class="form-control daterange-time" value="" placeholder="Enter date and time vitals were taken">
+                  <input type="text" name="from_date" class="form-control daterange-time" value="" placeholder="Enter date and time vitals were taken">
                 </div>
               </div>
             </div>
@@ -157,26 +128,19 @@
   </div>
 </div>
 
+<div id="edit_vital_reports_modal" class="modal fade" tabindex="-2">
+  <div class="modal-dialog">
+    <div class="modal-content" id="edit_vital_reports_div">
+      
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 
-  $("#report-datatable").DataTable({
-  autoWidth: false,
-  columnDefs: [{ 
-    orderable: false,
-    width: 100,
-    targets: [ 5 ]
-  }],
-  dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
-  language: {
-    search: '<span>Filter:</span> _INPUT_',
-    searchPlaceholder: 'Type to filter...',
-    lengthMenu: '<span>Show:</span> _MENU_',
-    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
-  }
-});
-
   $("#add_vital_report_form").on("submit", function(e){
-    //e.preventDefault();
+    //loader = CardLoader($("#modal_add_medication"));
+    e.preventDefault();
     var formData = new FormData($(this)[0]);
     formData.append("client_id", <?php echo $client_id; ?>);
     $.ajax({
@@ -187,11 +151,34 @@
       contentType: false,
       processData: false,
       success: function(e){
-        console.log(e);
+        //loader.unblock();
+        //console.log(e);
+        $("#vital_reports_list_view").html(e);
+        var form = document.getElementById("add_vital_report_form");
+        form.reset();
+        $("#modal_clients_vital").modal("hide");
+        //setTimeout(function(){loader.unblock();}, 5000);
       }
         
     });
   });
 
+  function edit_vital_reports(id){
+    // alert(id);
+    // return false;
+    $.post("<?php echo site_url("agency/scheduling/edit_vital_reports"); ?>", {id:id}).done(function(data){
+      $("#edit_vital_reports_div").html(data);
+      $("#edit_vital_reports_modal").modal("show");
+    });
+  }
+
+  function delete_vital_reports(id){
+    // alert(id);
+    // return false;
+    $.post("<?php echo site_url("agency/scheduling/delete_vital_reports"); ?>", {id:id}).done(function(data){
+      swal("Client Vital Reports","Reports deleted successfully!");
+      $('#table_row_'+id+'').remove();
+    });
+  }
 
 </script>
