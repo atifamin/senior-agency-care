@@ -27,6 +27,12 @@
     <div class="modal-content">
       <form id="add_client_shopping_form" method="post" >
         <div class="modal-header">
+          <div class="col-md-3">
+            <select name="status" class="form-control form-control-select2" data-fouc>
+                <option value="Pending">Pending</option>
+                <option value="Complete">Complete</option> 
+            </select>
+          </div>
           <h5 class="modal-title" style="margin: 0 auto;">Add Shopping List</h5>
           <div>
           	<li class="media">
