@@ -183,19 +183,34 @@ class Scheduling extends CI_Controller {
 		$post['created_at'] = date('Y-m-d H:i:s');
  		$this->common_model->insertGetIDQuery("client_dietry_needs", $post);
 	}
-		public function add_vital_report(){
+	public function add_vital_report(){
 		$post = $this->input->post();
+		$input_date = $this->input->post('from_date');
 		//print_array($post);
+		
+		$date = explode(" - ", $input_date);
+
+		$post['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
+		$post['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
+		
+		//$data = array();
 		$post['agency_id'] = $this->agency_id;
-		$this->common_model->insertGetIDQuery("client_vital_reports", $post);
+		//$post['from_date'] = $i;
+		
+		$ddd = $this->common_model->insertGetIDQuery("client_vital_reports", $post);
+		//print_array($ddd);
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_vital_reports");
 		$data['client_id'] = $post['client_id'];
-		$this->load->view("agency/scheduling/inc/vital_reports",$data);
+		$this->load->view("agency/scheduling/inc/vital_reports/list_view",$data);
 	}
 
 	public function edit_vital_reports(){
 		$vitalReportId = $this->input->post("id");
-		$data['result'] = $this->common_model->listingRow("id",$vitalReportId,"client_vital_reports");
+		$result = $this->common_model->listingRow("id",$vitalReportId,"client_vital_reports");
+		$data['result'] = $result;
+		$client_id = $result->client_id;
+		$data['client'] = $this->common_model->listingRow('id',$client_id,'client');
+		// $data['client'] = $this->Client_model->getById($client_id);
 		//print_array($data);
 		$this->load->view("agency/scheduling/inc/vital_reports/edit_vital_reports", $data);
 	}
@@ -217,7 +232,6 @@ class Scheduling extends CI_Controller {
 	    $this->load->view("agency/scheduling/inc/vital_reports/list_view",$data);
 
 	}
-
 
 	public function delete_vital_reports(){
 		$id = $this->input->post('id');
