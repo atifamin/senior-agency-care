@@ -36,7 +36,7 @@
               <div class="form-group">
                 <label>Add date and time vitals were taken: </label>
                 <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                  <input type="text" name="from_date" class="form-control daterange-time" value="" placeholder="Enter date and time vitals were taken">
+                  <input type="text" name="from_date" class="form-control daterange-time" value="" placeholder="Enter date and time vitals were taken" required="">
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" name="is_bloodpressure" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" name="is_bloodpressure" value="1" class="form-check-input-styled" data-fouc>
                     Blood Pressure </label>
                 </div>
               </div>
@@ -66,7 +66,7 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" name="is_breathing" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" name="is_breathing" value="1" class="form-check-input-styled" data-fouc>
                     Breathing </label>
                 </div>
               </div>
@@ -86,7 +86,7 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" name="is_pulse" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" name="is_pulse" value="1" class="form-check-input-styled" data-fouc>
                     Pulse </label>
                 </div>
               </div>
@@ -106,7 +106,7 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" class="form-check-input-styled" value="1" data-fouc>
                     Temperature </label>
                 </div>
               </div>
@@ -152,7 +152,8 @@
       processData: false,
       success: function(e){
         //loader.unblock();
-        //console.log(e);
+        // console.log(e);
+        // return false;
         $("#vital_reports_list_view").html(e);
         var form = document.getElementById("add_vital_report_form");
         form.reset();

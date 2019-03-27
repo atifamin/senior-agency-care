@@ -1,4 +1,6 @@
-<?php //print_array($result);?>
+<?php //print_array($client);?>
+<script src="http://localhost/senior-agency-care/assets/js/plugins/forms/styling/uniform.min.js"></script>
+
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
 <form id="update_vital_report_form" method="post">
   <input type="hidden" name="report_id" value="<?php echo $result->id; ?>">
@@ -6,10 +8,10 @@
     <h5 class="modal-title" style="margin: 0 auto;">Add Client Vitals</h5>
     <div>
       <li class="media">
-        <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="http://localhost/senior-agency-care/assets/images/placeholders/avatar.png" class="rounded-circle" width="40" height="40"> </a> 
+        <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40"> </a> 
         </div>
         <div class="media-body">
-          <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo "Adeel Ahmad" ?></div>
+          <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $client->first_name." ".$client->last_name; ?></div>
           <span class="text-muted" style="font-size: 12px;">Client</span> </div>
       </li>
     </div>
@@ -20,7 +22,7 @@
         <div class="form-group">
           <label>Add date and time vitals were taken: </label>
           <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-            <input type="text" name="" class="form-control daterange-time" value="<?php echo $result->from_date; ?>" placeholder="Enter date and time vitals were taken">
+            <input type="text" name="" id="date_picker" class="form-control edit_date_time_input" value="<?php echo date("m/d/Y h:i a", strtotime($result->from_date))." - ".date("m/d/Y h:i a", strtotime($result->to_date)); ?>" placeholder="Enter date and time vitals were taken">
           </div>
         </div>
       </div>
@@ -30,7 +32,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_bloodpressure" value="" class="form-check-input-styled" data-fouc>
+              <input type="checkbox" name="is_bloodpressure" value="1" class="form-check-input-styled" data-fouc>
               Blood Pressure </label>
           </div>
         </div>
@@ -70,7 +72,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_pulse" class="form-check-input-styled" data-fouc>
+              <input type="checkbox" name="is_pulse" <?php //if(condition){echo 'checked="checked"';} ?> class="form-check-input-styled" data-fouc>
               Pulse </label>
           </div>
         </div>
@@ -90,7 +92,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input-styled" data-fouc>
+              <input type="checkbox" class="form-check-input-styled edit_form_checkbox" data-fouc>
               Temperature </label>
           </div>
         </div>
@@ -109,53 +111,47 @@
   </div>
 </form>
 
-<script type="text/javascript">
+<!--   <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/legacy.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/notifications/jgrowl.min.js"></script> -->
 
+
+<script type="text/javascript">
+  $(".form-check-input-styled").uniform();
+$('.edit_date_time_input').daterangepicker({
+    timePicker: true,
+    applyClass: 'bg-slate-600',
+    cancelClass: 'btn-light',
+    locale: {
+        format: 'MM/DD/YYYY h:mm a'
+    }
+});
 
   $("#update_vital_report_form").on("submit", function(e){
     //e.preventDefault();
     var formData = new FormData($(this)[0]);
     $.ajax({
-    url: '<?php echo site_url("agency/scheduling/update_vital_reports"); ?>',
-    type: 'POST',
-    data: formData,
-    cache: false,
-    contentType: false,
-    processData: false,
-    success: function(e){
-      // alert(e);
-      // return false;
-      $("#vital_reports_list_view").html(e);
-      var form = document.getElementById("update_vital_report_form");
-      form.reset();
-      $("#edit_vital_reports_modal").modal("hide");
-      //loader.unblock();
-    }
-      
-  });
-
-    // e.preventDefault();
-    // var formData = new FormData($(this)[0]);
-    // console.log(formData);
-    // return false;
-    // $.ajax({
-    //   url: '<?php echo site_url("agency/scheduling/update_vital_reports"); ?>'
-    //   type: 'POST',
-    //   data: formData,
-    //   chache: false,
-    //   contentType: false,
-    //   processData: false,
-    //   success: function(e){
-    //     alert(e);
-    //     return false;
-    //     $("#vital_reports_list_view").html(e);
-    //     var form = document.getElementById("update_vital_report_form");
-    //     form.reset();
-    //     $("#edit_medication_modal").modal("hide");
-    //     //loader.unblock(); 
-    //   }
-
-    // });
+      url: '<?php echo site_url("agency/scheduling/update_vital_reports"); ?>',
+      type: 'POST',
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(e){
+        // alert(e);
+        // return false;
+        $("#vital_reports_list_view").html(e);
+        var form = document.getElementById("update_vital_report_form");
+        form.reset();
+        $("#edit_vital_reports_modal").modal("hide");
+        //loader.unblock();
+      }
+    });
   });
 
 </script>

@@ -1,5 +1,6 @@
+<?php //print_array($client);?>
 <div class="datatable-scroll">
-	<table class="table" id="report-datatable">
+	<table class="table" id="main-datatable_1">
       <thead>
         <tr>
           <th><i style="margin-right: 8px;" class="icon-man"></i>Blood Pressure</th>
@@ -18,7 +19,7 @@
           <td><span class="text-muted"><?php echo $value->breathing_from." - ".$value->breathing_to; ?></span></td>
           <td><span class="text-muted"><?php echo $value->pulse_from." - ".$value->pulse_to; ?></span></td>
           <td><span class="text-muted"><?php echo $value->temperature; ?></span></td>
-          <td><span class="text-muted"><?php echo $value->to_date; ?></span></td>
+          <td><span class="text-muted"><?php echo $value->from_date." - ".$value->to_date; ?></span></td>
           <td class="text-center"><div class="list-icons">
               <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
                 <!-- <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php
@@ -27,29 +28,31 @@
               <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a> <a href="javascript:;" onclick="delete_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a> <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a> </div>
             </div></td>
         </tr>
-      </tbody>
-      <?php }
+        <?php }
       } ?>
+      </tbody>
     </table>
 </div>
 
+ <script src="<?php echo base_url(); ?>assets/js/plugins/tables/datatables/datatables.min.js"></script> 
+
 <script type="text/javascript">
 
-	$("#report-datatable").DataTable({
-		autoWidth: false,
-		columnDefs: [{ 
-	    orderable: false,
-	    width: 100,
-	    targets: [ 5 ]
+$("#main-datatable_1").DataTable({
+	autoWidth: false,
+	columnDefs: [{ 
+		orderable: false,
+		width: 100,
+		targets: [ 5 ]
 	}],
-	 dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
-	 language: {
-	    search: '<span>Filter:</span> _INPUT_',
-	    searchPlaceholder: 'Type to filter...',
-	    lengthMenu: '<span>Show:</span> _MENU_',
-	    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
-	  }
-	});
+	dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
+	language: {
+		search: '<span>Filter:</span> _INPUT_',
+		searchPlaceholder: 'Type to filter...',
+		lengthMenu: '<span>Show:</span> _MENU_',
+		paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+	}
+});
 
 
 </script>
