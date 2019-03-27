@@ -226,11 +226,13 @@ class Scheduling extends CI_Controller {
 
 	public function add_new_shopping(){
 		$post = $this->input->post();
+		//print_array($post);
 		$data = array();
 		$data['agency_id'] = $this->agency_id;
 		$data['created_by'] = $this->agency_id;
 		$data['created_at'] = date('Y-m-d H:i:s');
 		$data['client_id'] = $post['client_id'];
+		$data['status'] = $post['status'];
 		$data['list_detail'] = "";
 		if(isset($post['list_detail'])){
 			$data['list_detail'] = json_encode($post['list_detail']);
@@ -255,7 +257,10 @@ class Scheduling extends CI_Controller {
 	}
 	public function edit_shopping(){
 		$shopping_id = $this->input->post('id');
-		$data['result'] = $this->common_model->listingRow('id',$shopping_id,"client_shopping_list");
+		$result = $this->common_model->listingRow('id',$shopping_id,"client_shopping_list");
+		$data["result"] = $result;
+		$client_id = $result->client_id;
+		$data['client'] = $this->common_model->listingRow('id',$client_id,'client');
 		$this->load->view("agency/scheduling/inc/shopping_list/edit_shopping",$data);	
 	}
 	public function update_shopping(){
@@ -265,20 +270,36 @@ class Scheduling extends CI_Controller {
 		unset($data['shopping_id']);
 		$data['updated_by'] = $this->agency_id;
 		$data['updated_at'] = date('Y-m-d H:i:s');
-		$data['list_detail'] = "";
+		$data['status'] = $post['status'];
+ 		$data['list_detail'] = "";
 		if (isset($post['list_detail'])) {
 			$data['list_detail'] = json_encode($post['list_detail']);
 		}
  		$shopping_list_id = $this->common_model->updateQuery("client_shopping_list", 'id',$post['shopping_id'] , $data);
- 		$shopping_detail = $this->common_model->listingRow("id",$post['shopping_id'],"client_shopping_list");
- 		$detail['shopping_list_detail'] = $this->common_model->listingResultWhere('client_id',$shopping_detail->client_id,"client_shopping_list");
-		$detail['client_id'] = $shopping_detail->client_id;
-		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
-
+ 		$shopping_list_detail = $this->common_model->listingRow("id",$post['shopping_id'],"client_shopping_list");
+ 		$detail['shopping_list_detail'] = $this->common_model->listingResultWhere('client_id',$shopping_list_detail->client_id,"client_shopping_list");
+		$client_id = $shopping_list_detail->client_id;
+		
+		if (!empty($_FILES['file']['name'])) {
+			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+			$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
+		}
  		// if (!empty($_FILES['file']['name'])) {
  		// 	$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
-			// 	$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
+ 		// 	if ($shopping_list_detail->list_detail !=0) {
+			// 	if (!empty($client_shopping_file)) {
+			// 		$previous_detail = $this->common_model->listingRow("id", $shopping_list_detail->list_detail, "media");
+			// 		if (file_exists(DOC_PATH.$previous_detail->full_path)) {
+			// 			unlink(DOC_PATH.$previous_detail->full_path);
+			// 		}
+			// 		$tihs->common_model->updateMultipleWhereQuery("media", array("id"=>$shopping_list_detail->list_detail), $client_shopping_file);
+			// 	}else{
+			// 		$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
+			// 		$tihs->common_model->updateMultipleWhereQuery("client_shopping_list", array("id"=>$client_id), array("list_detail"=>$list_file));
+			// 	}
+			// }
  		// }
+ 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
 
 }

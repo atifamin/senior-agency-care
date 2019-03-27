@@ -1,19 +1,25 @@
-<?php //print_array($result->list_detail); ?>
+<?php //print_array($client); ?>
 
 
 <form id="update_client_shopping_form" method="post" >
 	<input type="hidden" name="shopping_id" value="<?php echo $result->id; ?>">
   <div class="modal-header">
+  	<div class="col-md-3">
+        <select name="status" class="form-control form-control-select2" data-fouc>
+            <option value="Pending">Pending</option>
+            <option value="Complete">Complete</option> 
+        </select>
+      </div>
     <h5 class="modal-title" style="margin: 0 auto;">Update Shopping List</h5>
     <div>
     	<li class="media">
 			<div class="mr-3" style="margin-right: .55rem!important;">
 				<a href="#">
-					<img src="<?php echo base_url(); ?>assets/images/userimg/face20.jpg" class="rounded-circle" width="40" height="40" alt="">
+					<img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt="">
 				</a>
 			</div>
 			<div class="media-body">
-				<div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
+				<div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $client->first_name." ".$client->last_name; ?></div>
 				<span class="text-muted" style="font-size: 12px;">Total Care</span>
 			</div>
 		</li>
@@ -26,7 +32,7 @@
     		<div class="form-group row">
 			    <label class="col-md-12"><i class="icon-attachment2" style="margin-right: 10px;"></i>Attach Reciept</label>
 			    <div class="col-lg-10">
-				   <input type="file" class="form-input-styled" id="file_input" name="file" data-fouc>
+				   <input type="file" class="form-input-styled" id="file_input" name="file" value="" data-fouc>
 			    </div>
 	      </div>
     	</div>
@@ -38,7 +44,7 @@
 					<div class="col-lg-10">
 						<div class="input-group">
 							<input type="text" class="form-control border-right-0" id="list_detail_edit" placeholder="Add to my shopping list">
-              				<input type="hidden" name="count" value="1">
+              				<input type="hidden" name="counter" value="1">
 							<span class="input-group-append">
 								<button class="btn bg-blue" onclick="update_list()" type="button">Add<i style="margin-left: 5px;" class="icon-arrow-right14"></i></button>
 							</span>
@@ -63,10 +69,9 @@
 	        <div class="mr-3" style="margin-bottom: 7px;"><a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-cross3"></i>Remove</a>
 	        </div>
 	    </div> -->
-
-	    <div style="margin-top: 8px;">
-	    	<?php echo $value; ?>
-	    	<a href="#" style="float:right" class="text-default font-weight-semibold letter-icon-title">
+	    <div style="margin-top: 8px;" id="list_row_<?php echo $key; ?>">
+	    	<input type="hidden" name="list_detail[]" value="<?php echo $value; ?>"><?php echo $value; ?>
+	    	<a href="javascript:;" onclick="remove(<?php echo $key; ?>)"; style="float:right" class="text-default font-weight-semibold letter-icon-title">
 	    		<i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a>
 	    </div>
 
@@ -84,11 +89,11 @@
 
 <script type="text/javascript">
 	function update_list(){
-		var count = $("input[name=count]").val();
+		var counter = $("input[name=counter]").val();
 	    var value = $("#list_detail_edit").val();
-	    $("#list_detail_edit_div").append('<div id="list_row_'+count+'" style="margin-top: 8px;"><input type="hidden" name="list_detail[]" value="'+value+'" >'+value+'<a style="float:right" href="javascript:;" onclick="remove('+count+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
-	    count = parseInt(count)+1;
-	    $("input[name=count]").val(count);
+	    $("#list_detail_edit_div").append('<div id="list_row_'+counter+'" style="margin-top: 8px;"><input type="hidden" name="list_detail[]" value="'+value+'" >'+value+'<a style="float:right" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
+	    counter = parseInt(counter)+1;
+	    $("input[name=counter]").val(counter);
 	}
 	
 	function remove(id){
@@ -115,5 +120,7 @@
 		});
 	});
 
+$('.form-input-styled').uniform();
+$('.form-control-select2').select();
 
 </script>
