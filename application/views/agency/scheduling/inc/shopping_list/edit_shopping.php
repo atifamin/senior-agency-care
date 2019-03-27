@@ -48,7 +48,8 @@
       </div>
       <div class="col-md-8 offset-md-1" id="list_detail_edit_div">
       	<?php $detail_list = json_decode($result->list_detail); ?>
-	    <?php foreach ($detail_list as $key=>$value) { ?>
+      	<?php if (isset($detail_list)) {
+	    	foreach ($detail_list as $key=>$value) { ?>
 	    <!-- <div class="d-flex align-items-center">
 	        <div class="mr-3">
 	          <div class="form-group pt-2">
@@ -70,6 +71,7 @@
 	    </div>
 
 		<?php	}
+		}
 	    ?>
       </div>
     </div>
