@@ -192,6 +192,38 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $post['client_id'];
 		$this->load->view("agency/scheduling/inc/vital_reports",$data);
 	}
+
+	public function edit_vital_reports(){
+		$vitalReportId = $this->input->post("id");
+		$data['result'] = $this->common_model->listingRow("id",$vitalReportId,"client_vital_reports");
+		//print_array($data);
+		$this->load->view("agency/scheduling/inc/vital_reports/edit_vital_reports", $data);
+	}
+
+	public function update_vital_reports(){
+		$post = $this->input->post();
+		//print_array($post);
+		$reportData = $post;
+		unset($reportData['report_id']);
+		$this->common_model->updateQuery("client_vital_reports", "id", $post['report_id'], $reportData);
+		$reportData = $post;
+		unset($reportData['report_id']);
+		$reportData['updated_by'] = $this->agency_id;
+		$reportData['updated_at'] = date("Y-m-d H:i:s");
+		$this->common_model->updateQuery("client_vital_reports", "id", $post['report_id'], $reportData);
+		$vital_report_details = $this->common_model->listingRow("id", $post['report_id'], "client_vital_reports");
+		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id', $vital_report_details->client_id, "client_vital_reports");
+        $data['client_id'] = $vital_report_details->client_id;
+	    $this->load->view("agency/scheduling/inc/vital_reports/list_view",$data);
+
+	}
+
+
+	public function delete_vital_reports(){
+		$id = $this->input->post('id');
+		$data['result'] = $this->common_model->delete("client_vital_reports",array('id'=>$id));
+	}
+
 	public function add_new_shopping(){
 		$post = $this->input->post();
 		$data = array();
