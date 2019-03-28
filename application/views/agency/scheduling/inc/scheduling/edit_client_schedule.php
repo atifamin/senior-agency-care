@@ -1,4 +1,4 @@
-<form id="update_appointment">
+<form id="update_client_appointement_form">
 <input type="hidden" name="caregiver_id" value="<?php echo $result->caregiver_id; ?>" />
 <input type="hidden" name="appointment_id" value="<?php echo $result->id; ?>" />
   <div class="modal-header">
@@ -113,12 +113,12 @@ $("#edit_caregiver_id3").on("change", function(e){
 });
 
 
-$("#update_appointment").on("submit", function(e){
+$("#update_client_appointement_form").on("submit", function(e){
 	e.preventDefault();
 	loader = CardLoader($("#editschedulediv"));
 	var formData = new FormData($(this)[0]);
 	$.ajax({
-		url: '<?php echo site_url("agency/scheduling/update_appointment"); ?>',
+		url: '<?php echo site_url("agency/scheduling/update_client_appointement_form"); ?>',
 		type: 'POST',
 		data: formData,
 		cache: false,

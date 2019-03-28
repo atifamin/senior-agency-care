@@ -95,7 +95,6 @@ class Scheduling extends CI_Controller {
 		$dates = explode(",", $post["dates"]);
 		$message['type'] = 'success';
 		$message['error_detail'] = array();
-		
 		foreach($dates as $date){
 			unset($post['dates']);
 			$client_detail = $this->common_model->listingRow("id",$post['client_id'],"client");
@@ -104,7 +103,7 @@ class Scheduling extends CI_Controller {
 			$post['date'] = date("Y-m-d", strtotime($date));
 			$post['in_time'] = date("H:i:s", strtotime($post['in_time']));
 			$post['out_time'] = date("H:i:s", strtotime($post['out_time']));
-			$post['color'] = randomString($length = 6);
+			//$post['color'] = randomString($length = 6);
 			$post['created_by'] = $this->agency_id;
 			$post['created_at'] = date("Y-m-d H:i:s");
 			$post['updated_by'] = $this->agency_id;
@@ -178,7 +177,7 @@ class Scheduling extends CI_Controller {
 		$this->load->view("agency/scheduling/inc/scheduling/edit_client_schedule", $data);
 	}
 	
-	public function update_client_appointement_form(){
+	/*public function update_client_appointement_form(){
 		$post = $this->input->post();
 		$data['caregiver_id'] = $post['caregiver_id'];
 		$data['date'] = date("Y-m-d", strtotime($post['date']));
@@ -191,7 +190,7 @@ class Scheduling extends CI_Controller {
 		$data['updated_by'] = $this->agency_id;
 		$data['updated_at'] = date("Y-m-d H:s:i");
 		$this->common_model->updateQuery("client_appointements", "id", $post['appointement_id'], $data);
-	}
+	}*/
 	
 	public function change_is_recurring_status(){
 		$post = $this->input->post();
@@ -237,7 +236,7 @@ class Scheduling extends CI_Controller {
 		$this->common_model->delete("client_appointements", array("id"=>$post["appointement_id"]));
 	}
 	
-	public function update_appointment(){
+	public function update_client_appointement_form(){
 		$post = $this->input->post();
 		if(isset($post['switch_caregiver'])){
 			$post['replace_with_id'] = $post['switch_caregiver'];
