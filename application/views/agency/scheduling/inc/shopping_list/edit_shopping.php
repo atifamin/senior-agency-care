@@ -5,7 +5,7 @@
 	<input type="hidden" name="shopping_id" value="<?php echo $result->id; ?>">
   <div class="modal-header">
   	<div class="col-md-3">
-        <select name="status" class="form-control form-control-select2" data-fouc>
+        <select name="status" class="form-control form-control-select2 edit_form_status" data-fouc>
             <option value="Pending">Pending</option>
             <option value="Complete">Complete</option> 
         </select>
@@ -56,19 +56,6 @@
       	<?php $detail_list = json_decode($result->list_detail); ?>
       	<?php if (isset($detail_list)) {
 	    	foreach ($detail_list as $key=>$value) { ?>
-	    <!-- <div class="d-flex align-items-center">
-	        <div class="mr-3">
-	          <div class="form-group pt-2">
-	            <div class="form-check">
-	              <label class="form-check-label">
-	                <input type="checkbox" class="form-check-input-styled" data-fouc><?php echo $value; ?>
-	              </label>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="mr-3" style="margin-bottom: 7px;"><a href="#" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-cross3"></i>Remove</a>
-	        </div>
-	    </div> -->
 	    <div style="margin-top: 8px;" id="list_row_<?php echo $key; ?>">
 	    	<input type="hidden" name="list_detail[]" value="<?php echo $value; ?>"><?php echo $value; ?>
 	    	<a href="javascript:;" onclick="remove(<?php echo $key; ?>)"; style="float:right" class="text-default font-weight-semibold letter-icon-title">
@@ -115,12 +102,13 @@
 			success:function(data){
 				$("#shopping_list_view").html(data);
 				$("#edit_modal_shopping_list").modal("hide");
+				swal('Shopping List','Updated Succfully');
 				loader.unblock();
 			}
 		});
 	});
 
 $('.form-input-styled').uniform();
-$('.form-control-select2').select();
+$('.edit_form_status').uniform();
 
 </script>
