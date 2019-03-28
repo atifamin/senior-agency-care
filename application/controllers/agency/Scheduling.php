@@ -25,6 +25,7 @@ class Scheduling extends CI_Controller {
 	}
 
 	public function view($client_id){
+		//$this->Client_model->check_availability(2, '2019-03-27 03:00:00', '2019-03-27 07:00:00');
 		$data["breadcrumb"] = "Scheduling";
 		$data["heading"] = "Scheduling";
 		$data["url_segment"] = "scheduling";
@@ -37,6 +38,7 @@ class Scheduling extends CI_Controller {
 		//$data['events'] = $this->Client_model->load_client_appointement_events($client_id);
 		//print_array($data['events']);
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_medication_list");
+		$data['client_bio'] = $this->common_model->listingRow("client_id",$client_id,"client_bio");
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
@@ -88,9 +90,13 @@ class Scheduling extends CI_Controller {
 	public function add_client_appointement(){
 		$post = $this->input->post();
 		$dates = explode(",", $post["dates"]);
+		$message['type'] = 'success';
+		$message['error_detail'] = array();
+		
 		foreach($dates as $date){
 			unset($post['dates']);
 			$client_detail = $this->common_model->listingRow("id",$post['client_id'],"client");
+			$post['parent_id'] = 0;
 			$post['title'] = $client_detail->first_name." ".$client_detail->last_name." Appointement";
 			$post['date'] = date("Y-m-d", strtotime($date));
 			$post['in_time'] = date("H:i:s", strtotime($post['in_time']));
@@ -99,8 +105,61 @@ class Scheduling extends CI_Controller {
 			$post['created_at'] = date("Y-m-d H:i:s");
 			$post['updated_by'] = $this->agency_id;
 			$post['updated_at'] = date("Y-m-d H:i:s");
-			$this->common_model->insertQuery("client_appointements", $post);
+			
+			$from = date("Y-m-d H:i:s ", strtotime($date." ".$post['in_time']));
+			$to = date("Y-m-d H:i:s ", strtotime($date." ".$post['out_time']));
+			$checkIfCargiverIsAvailable = $this->Client_model->check_availability($post['caregiver_id'], $from, $to);
+			$parent_id = 0;
+			if($checkIfCargiverIsAvailable){
+				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $post);
+			}else{
+				$message['type'] = 'error';
+				$message['error_detail'][] = (object)array("from"=>date("M, d Y h:i A", strtotime($from)), "to"=>date("M, d Y h:i A", strtotime($to)));
+			}
+			if(isset($post['is_recurring']) && $post['is_recurring']==1){
+				$post['parent_id'] = $parent_id;
+				if($post['is_recurring']==0){
+					$post['recurring_months'] = 0;
+				}
+				$message = $this->add_recurring_appointments($post, $date, $message);
+			}
 		}
+		
+		echo json_encode($message);
+	}
+	
+	public function add_recurring_appointments($post, $date, $message){
+		$appStartDate = date("Y-m-d", strtotime($date));
+		$appEndDate = date('Y-m-d', strtotime('+'.$post['recurring_months'].' month', strtotime($date)));
+		$datesArray = $this->common_model->getDatesFromRange($appStartDate, $appEndDate, "Y-m-d");
+		$appDatesArray = array();
+		foreach($datesArray as $key=>$val){
+			if(date("N", strtotime($val))==date("N", strtotime($date))){
+				if($val!=date("Y-m-d", strtotime($date))){
+					$appDatesArray[] = $val;
+				}
+			}
+		}
+		$parent_id = 0;
+		foreach($appDatesArray as $key=>$val){
+			if($post['parent_id']==0){
+				if($key==0){
+					$post['parent_id'] = $parent_id;
+				}
+			}
+			$post['date'] = $val;
+			$post['recurring_months'] = 0;
+			$from = date("Y-m-d H:i:s ", strtotime($val." ".$post['in_time']));
+			$to = date("Y-m-d H:i:s ", strtotime($val." ".$post['out_time']));
+			$checkIfCargiverIsAvailable = $this->Client_model->check_availability($post['caregiver_id'], $from, $to);
+			if($checkIfCargiverIsAvailable){
+				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $post);
+			}else{
+				$message['type'] = 'error';
+				$message['error_detail'][] = (object)array("from"=>date("M, d Y h:i A", strtotime($from)), "to"=>date("M, d Y h:i A", strtotime($to)));
+			}
+		}
+		return $message;
 	}
 	
 	public function edit_client_schedule(){
@@ -132,7 +191,41 @@ class Scheduling extends CI_Controller {
 	
 	public function change_is_recurring_status(){
 		$post = $this->input->post();
-		$this->common_model->updateQuery("client_appointements", "id", $post['appointement_id'], array("is_recurring"=>$post['is_recurring']));
+		$appointment_id = $post['appointement_id'];
+		$message['type'] = 'success';
+		$message['error_detail'] = array();
+		$result = $this->common_model->listingRow("id",$post['appointement_id'],"client_appointements");
+		
+		if($result->parent_id!=0){
+			$appointment_id = $result->parent_id;
+			$result = $this->common_model->listingRow("id",$result->parent_id,"client_appointements");
+		}
+		if($post['is_recurring']==1){
+			
+			$this->common_model->updateQuery("client_appointements", "id", $appointment_id, array(
+				"is_recurring"=>1,
+				"recurring_months"=>$post['months']
+			));
+			$data = (array)$result;
+			$data['parent_id'] = $result->id;
+			$data['is_recurring'] = 1;
+			$data['recurring_months'] = $post['months'];
+			$data['created_by'] = $this->agency_id;
+			$data['created_at'] = date("Y-m-d H:i:s");
+			$data['updated_by'] = $this->agency_id;
+			$data['updated_at'] = date("Y-m-d H:i:s");
+			unset($data['id']);
+			$message = $this->add_recurring_appointments($data, $data['date'], $message);
+		}else{
+			$this->common_model->delete("client_appointements", array("parent_id"=>$appointment_id));
+			$this->common_model->updateQuery("client_appointements", "id", $appointment_id, array(
+				"is_recurring"		=> $post['is_recurring'],
+				"recurring_months"	=> $post['months'],
+				"updated_by"		=> $this->agency_id,
+				"updated_at"		=> date("Y-m-d H:i:s"),
+			));
+		}
+		echo json_encode($message);
 	}
 	
 	public function delete_appointement(){
@@ -196,5 +289,21 @@ class Scheduling extends CI_Controller {
 			$this->common_model->updateQuery("client_shopping_list", "id", $shopping_list_id,array('list_file'=>$list_file));
 		}
 
+	}
+	
+	public function client_bio_form(){
+		$post = $this->input->post();
+		$bioData = $post;
+		$id = $post['client_bio_id'];
+		unset($bioData['client_bio_id']);
+		if($post['client_bio_id']!=0){
+			$this->common_model->updateQuery("client_bio", "id", $post['client_bio_id'],$bioData);
+		}else{
+			$id = $this->common_model->insertGetIDQuery("client_bio", $bioData);
+		}
+		$data['client_bio'] = $this->common_model->listingRow("client_id",$post['client_id'],"client_bio");
+		$data['client_id'] = $post['client_id'];
+		$data['client'] = $this->Client_model->getById($post['client_id']);
+		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
 	}
 }
