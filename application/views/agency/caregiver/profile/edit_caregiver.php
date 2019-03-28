@@ -16,19 +16,19 @@
       <div class="row" style="padding: 12px;">
         <div class="col-md-6">
           <div class="row" style="text-align: center;">
-            <div class="col-md-5"> <a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Edit Caregiver</a> </div>
+            <div class="col-md-5"> <a href="<?php echo site_url("agency/caregiver/add_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i style="margin-right: 10px;" class="icon-users4"></i>Add Caregiver</a> </div>
             <span style="margin: 10px auto; font-size: 10px;">OR</span>
             <div class="col-md-5"> <a href="<?php echo site_url("agency/caregiver/send_invite_to_caregiver"); ?>" class="btn btn-light legitRipple" style="font-size: 11px;"><i class="icon-make-group mr-2"></i>Invite your caregivers</a> </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="row">
-            <div class="col-md-4 offset-md-4" style="margin-top: 9px;">
+            <!-- <div class="col-md-4 offset-md-4" style="margin-top: 9px;">
               <h6 style="font-size: 12px; color: #4caf50;">Added<span style="margin-left: 6px;" class="badge badge-success badge-pill"><?php echo $total_added_profiles; ?></span></h6>
             </div>
             <div class="col-md-4" style="margin-top: 9px;">
               <h6 style="font-size: 12px; color: #ff7043;">Pending<span style="margin-left: 6px;" class="badge badge-warning badge-pill"><?php echo $total_pending_profiles; ?></span></h6>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
