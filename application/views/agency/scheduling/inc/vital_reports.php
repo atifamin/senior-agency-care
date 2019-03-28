@@ -1,3 +1,4 @@
+<?php //print_array($vital_report_details); ?>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
 <div class="row">
   <div class="col-md-12">
@@ -7,33 +8,8 @@
         </a> </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <table class="table datatable-basic" id="client_vital_datatable">
-          <thead>
-            <tr>
-              <th><i style="margin-right: 8px;" class="icon-man"></i>Blood Pressure</th>
-              <th><i style="margin-right: 8px; color: red;" class="icon-heart6"></i>Heart Rate</th>
-              <!-- <th><i style="margin-right: 8px; color: red;" class="icon-pulse2"></i>Pulse</th> -->
-              <th><i style="margin-right: 8px; color: green;" class="icon-stats-growth2"></i>Temperature</th>
-              <th><i style="margin-right: 8px;" class="icon-calendar22"></i>Date Taken</th>
-              <th class="text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="text-muted">Blood Pressure</span></td>
-              <td><span class="text-muted">Heart Rate</span></td>
-              <!-- <td><span class="text-muted">Pulse</span></td> -->
-              <td><span class="text-muted">Temperature</span></td>
-              <td><span class="text-muted">Date taken</span></td>
-              <td class="text-center"><div class="list-icons">
-                  <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
-                    <div class="dropdown-menu dropdown-menu-right"> <a href="#" class="dropdown-item"><i class="icon-square-right"></i> Edit Vitals</a> <a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Vitals</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Vitals</a> </div>
-                  </div>
-                </div></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-md-12" id="vital_reports_list_view">
+        <?php include(APPPATH."views/agency/scheduling/inc/vital_reports/list_view.php"); ?>
       </div>
     </div>
   </div>
@@ -41,15 +17,16 @@
 <div id="modal_clients_vital" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="add_client_medication_form">
+      <form id="add_vital_report_form" method="post">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto;">Add Client Vitals</h5>
           <div>
             <li class="media">
-              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo base_url(); ?>assets/images/userimg/face5.jpg" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
+              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40"> </a> 
+              </div>
               <div class="media-body">
-                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
-                <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
+                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $client->first_name." ".$client->last_name; ?></div>
+                <span class="text-muted" style="font-size: 12px;">Client</span> </div>
             </li>
           </div>
         </div>
@@ -59,7 +36,7 @@
               <div class="form-group">
                 <label>Add date and time vitals were taken: </label>
                 <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                  <input type="text" class="form-control daterange-time" value="" placeholder="Enter date and time vitals were taken">
+                  <input type="text" name="from_date" class="form-control daterange-time" value="" placeholder="Enter date and time vitals were taken" required="">
                 </div>
               </div>
             </div>
@@ -69,19 +46,19 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" name="is_bloodpressure" value="1" class="form-check-input-styled" data-fouc>
                     Blood Pressure </label>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
-              <input class="form-control" type="number" name="number" style="position: relative; bottom: 16px;">
+              <input class="form-control" name="bloodpressure_from" type="number" style="position: relative; bottom: 16px;">
             </div>
             <div class="col-md-2" style="text-align: center;">
               <label style="position: relative; top: 9px;">Over</label>
             </div>
             <div class="col-md-3">
-              <input class="form-control" type="number" name="number" style="position: relative; bottom: 16px;">
+              <input class="form-control" name="bloodpressure_to" type="number" style="position: relative; bottom: 16px;">
             </div>
           </div>
           <div class="row">
@@ -89,19 +66,19 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" name="is_breathing" value="1" class="form-check-input-styled" data-fouc>
                     Breathing </label>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
-              <input class="form-control" type="number" name="number" style="position: relative; bottom: 16px;">
+              <input class="form-control" type="number" name="breathing_from" style="position: relative; bottom: 16px;">
             </div>
             <div class="col-md-2" style="text-align: center;">
               <label style="position: relative; top: 9px;">To</label>
             </div>
             <div class="col-md-3">
-              <input class="form-control" type="number" name="number" style="position: relative; bottom: 16px;">
+              <input class="form-control" type="number" name="breathing_to" style="position: relative; bottom: 16px;">
             </div>
           </div>
           <div class="row">
@@ -109,19 +86,19 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" name="is_pulse" value="1" class="form-check-input-styled" data-fouc>
                     Pulse </label>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
-              <input class="form-control" type="number" name="number" style="position: relative; bottom: 16px;">
+              <input class="form-control" type="number" name="pulse_from" style="position: relative; bottom: 16px;">
             </div>
             <div class="col-md-2" style="text-align: center;">
               <label style="position: relative; top: 9px;">To</label>
             </div>
             <div class="col-md-3">
-              <input class="form-control" type="number" name="number" style="position: relative; bottom: 16px;">
+              <input class="form-control" type="number" name="pulse_to" style="position: relative; bottom: 16px;">
             </div>
           </div>
           <div class="row">
@@ -129,13 +106,13 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" class="form-check-input-styled" name="is_temprature" value="1" data-fouc>
                     Temperature </label>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
-              <input class="form-control" type="number" name="number" style="position: relative; bottom: 16px;">
+              <input class="form-control" type="number" name="temperature" style="position: relative; bottom: 16px;">
             </div>
             <div class="col-md-2">
               <label style="position: relative; top: 9px;">Farenheight</label>
@@ -150,3 +127,59 @@
     </div>
   </div>
 </div>
+
+<div id="edit_vital_reports_modal" class="modal fade" tabindex="-2">
+  <div class="modal-dialog">
+    <div class="modal-content" id="edit_vital_reports_div">
+      
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  $("#add_vital_report_form").on("submit", function(e){
+    //loader = CardLoader($("#modal_add_medication"));
+    e.preventDefault();
+    var formData = new FormData($(this)[0]);
+    formData.append("client_id", <?php echo $client_id; ?>);
+    $.ajax({
+      url: '<?php echo site_url("agency/scheduling/add_vital_report"); ?>',
+      type: 'POST',
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(e){
+        //loader.unblock();
+        // console.log(e);
+        // return false;
+        $("#vital_reports_list_view").html(e);
+        var form = document.getElementById("add_vital_report_form");
+        form.reset();
+        $("#modal_clients_vital").modal("hide");
+        //setTimeout(function(){loader.unblock();}, 5000);
+      }
+        
+    });
+  });
+
+  function edit_vital_reports(id){
+    // alert(id);
+    // return false;
+    $.post("<?php echo site_url("agency/scheduling/edit_vital_reports"); ?>", {id:id}).done(function(data){
+      $("#edit_vital_reports_div").html(data);
+      $("#edit_vital_reports_modal").modal("show");
+    });
+  }
+
+  function delete_vital_reports(id){
+    // alert(id);
+    // return false;
+    $.post("<?php echo site_url("agency/scheduling/delete_vital_reports"); ?>", {id:id}).done(function(data){
+      swal("Client Vital Reports","Reports deleted successfully!");
+      $('#table_row_'+id+'').remove();
+    });
+  }
+
+</script>
