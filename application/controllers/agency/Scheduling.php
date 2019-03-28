@@ -448,11 +448,17 @@ class Scheduling extends CI_Controller {
 	public function update_appointment(){
 		$post = $this->input->post();
 		//print_array($post);
-		//unset($post['appointement_id']);
-		$post['agency_id'] = $this->agency_id;
-		$post['ubdated_by'] = $this->agency_id;
-		$this->common_model->updateQuery("client_appointment_calender", "id",$post['appointement_id'], $post);
+		$appData = $post;
+		unset($post['appointment_id']);
+		$appData['agency_id'] = $this->agency_id;
+		$appData['ubdated_by'] = $this->agency_id;
+		$input_date = $this->input->post('from_date');
+		$date = explode("-", $input_date);
+		$appData['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
+		$appData['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
+		//print_array($appData);
+		$this->common_model->updateQuery("client_appointment_calender", "id",$post['appointment_id'], $appData);
 		print_array();
-		$appointment_detail = $this->common_model->listingRow("id",$post['appointement_id'],"client_appointment_calender");
+		$appointment_detail = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointment_calender");
 	}
 }
