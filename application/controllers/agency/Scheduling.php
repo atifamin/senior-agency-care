@@ -298,8 +298,6 @@ class Scheduling extends CI_Controller {
 			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
 			$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
 		}
- 		// if (!empty($_FILES['file']['name'])) {
- 		// 	$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
  		// 	if ($shopping_list_detail->list_detail !=0) {
 			// 	if (!empty($client_shopping_file)) {
 			// 		$previous_detail = $this->common_model->listingRow("id", $shopping_list_detail->list_detail, "media");
@@ -315,5 +313,6 @@ class Scheduling extends CI_Controller {
  		// }
  		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
+	
 
 }
