@@ -23,7 +23,7 @@
       <div class="col-md-8 offset-md-2">
         <div class="form-group">
           <label>Add appointment type</label>
-          <select class="form-control select-icons edit_select_icons" name="appointment_type" id="therapy_type_edit" onchange="setTherapyType()" data-placeholder="Select the type of appointment" data-fouc>
+          <select class="form-control select-icons edit_select_icons" name="appointment_type" id="therapy_type_edit" data-placeholder="Select the type of appointment" data-fouc>
             <option></option>
             <option <?php if (isset($result->appointment_type)) {if ($result->appointment_type == "Doctor's Appointment") {echo "selected='selected'";}} ?> value="Doctor's Appointment">Doctor's Appointment</option>
             <option <?php if (isset($result->appointment_type)) {if ($result->appointment_type == "Therapy Appointment") {echo "selected = 'selected'";}} ?> value="Therapy Appointment">Therapy Appointment</option>
