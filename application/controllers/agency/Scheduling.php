@@ -235,6 +235,49 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$this->common_model->delete("client_appointements", array("id"=>$post["appointement_id"]));
 	}
+	
+	public function update_appointment(){
+		$post = $this->input->post();
+		if(isset($post['switch_caregiver'])){
+			$post['replace_with_id'] = $post['switch_caregiver'];
+			$this->switch_appointment($post);
+		}
+		if(isset($post['assign_caregiver'])){
+			$post['replace_with_id'] = $post['assign_caregiver'];
+			$this->assign_other_caregiver($post);
+		}
+		if(isset($post['assign_any_caregiver'])){
+			$post['replace_with_id'] = $post['assign_any_caregiver'];
+			$this->assign_other_caregiver($post);
+		}
+	}
+	
+	public function switch_appointment($post){
+		
+	}
+	
+	public function assign_other_caregiver($post){
+		$message['type'] = "success";
+		$message['text'] = "";
+		$result = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
+		$from = date("Y-m-d H:i:s ", strtotime($result->date." ".$result->in_time));
+		$to = date("Y-m-d H:i:s ", strtotime($result->date." ".$result->out_time));
+		$checkAvailability = $this->Client_model->check_availability($post['replace_with_id'], $from, $to);
+		if($checkAvailability){
+			$this->common_model->updateQuery("client_appointements", "id", $post['appointment_id'], array(
+				"caregiver_id"		=> $post['replace_with_id'],
+				"is_recurring"		=> 0,
+				"recurring_months"	=> 0,
+				"parent_id"			=> 0,
+				"updated_by"		=> $this->agency_id,
+				"updated_at"		=> date("Y-m-d H:i:s"),
+			));
+		}else{
+			$message['type'] = "error";
+			$message['text'] = "This caregiver is already assigned somewhere else on this datetime.";
+		}
+		echo json_encode($message);
+	}
 
 	public function edit_medication(){
 		$medicationId = $this->input->post("id");
