@@ -53,7 +53,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Position at company:</label>
-                <select name="position" data-placeholder="Choose a Position..." class="form-control form-control-select2" data-fouc>
+                <select name="position" data-placeholder="Choose a Position..." id="form-control-select1" class="form-control form-control-select2" data-fouc>
                   <option></option>
                   <?php foreach(CON_CAREGIVER_POSITIONS as $positionKey=>$positionVal): ?>
                   <option value="<?php echo $positionKey; ?>" <?php if($caregiver->position==$positionKey){echo 'selected="selected"';} ?>><?php echo $positionVal; ?></option>
@@ -469,5 +469,8 @@ function update_caregiver(){
 		type: 'success'
 	});*/
 }
+
+$('.form-control-select2').select2();
+
 </script>
 <?php include(APPPATH."views/caregiver/inc/footer.php"); ?>
