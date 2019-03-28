@@ -41,6 +41,7 @@ class Scheduling extends CI_Controller {
 		$data['client_bio'] = $this->common_model->listingRow("client_id",$client_id,"client_bio");
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_vital_reports");
 		$data['shopping_list_detail'] =$this->common_model->listingResultWhere('client_id',$client_id,"client_shopping_list");
+		$data['appointment_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_appointment_calender");
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
@@ -429,8 +430,6 @@ class Scheduling extends CI_Controller {
 			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
 			$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
 		}
- 		// if (!empty($_FILES['file']['name'])) {
- 		// 	$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
  		// 	if ($shopping_list_detail->list_detail !=0) {
 			// 	if (!empty($client_shopping_file)) {
 			// 		$previous_detail = $this->common_model->listingRow("id", $shopping_list_detail->list_detail, "media");
@@ -446,6 +445,7 @@ class Scheduling extends CI_Controller {
  		// }
  		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
+	
 
 	public function client_bio_form(){
 		$post = $this->input->post();
@@ -461,5 +461,47 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $post['client_id'];
 		$data['client'] = $this->Client_model->getById($post['client_id']);
 		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
+	}
+	public function add_appointment(){
+		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
+		$post['created_by'] = $this->agency_id;
+		$post['created_at'] = date('Y-m-d H:i:s');
+ 		$input_date = $this->input->post('from_date');
+		$date = explode("-", $input_date);
+		$post['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
+		$post['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
+		$this->common_model->insertGetIDQuery("client_appointment_calender", $post);
+		$data['appointment_detail'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_appointment_calender");
+		$data['client_id'] = $post['client_id'];
+		$this->load->view('agency/scheduling/inc/appointment_calender/list_view_appointment',$data);
+	}
+	public function edit_appointment(){
+		$appointment_id = $this->input->post('id');
+		$result = $this->common_model->listingRow("id",$appointment_id,"client_appointment_calender");
+		$data['result'] = $result;
+		$client_id = $result->client_id;
+		$data['client'] =$this->common_model->listingRow('id',$client_id,'client');
+		$this->load->view('agency/scheduling/inc/appointment_calender/edit_appointment',$data);
+	}
+	public function delete_appointment(){
+		$id = $this->input->post('id');
+		$this->common_model->delete("client_appointment_calender", array('id'=>$id));
+	}
+	public function update_appointment(){
+		$post = $this->input->post();
+		//print_array($post);
+		$appData = $post;
+		unset($post['appointment_id']);
+		$appData['agency_id'] = $this->agency_id;
+		$appData['ubdated_by'] = $this->agency_id;
+		$input_date = $this->input->post('from_date');
+		$date = explode("-", $input_date);
+		$appData['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
+		$appData['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
+		//print_array($appData);
+		$this->common_model->updateQuery("client_appointment_calender", "id",$post['appointment_id'], $appData);
+		print_array();
+		$appointment_detail = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointment_calender");
 	}
 }

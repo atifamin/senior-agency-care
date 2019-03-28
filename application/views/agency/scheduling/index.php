@@ -20,13 +20,6 @@
       </div>
     </div>
     <div class="card"> 
-      <!--<div class="row">
-        <div class="col-md-12">
-          <div class="bg-light font-weight-semibold py-2" align="center">
-            <h6 style="font-size: 12px; color: #ff7043;margin: 0px;" class="">Clients not scheduled<span style="margin-left: 6px;" class="badge badge-warning badge-pill"><?php echo count($notScheduledClients); ?></span></h6>
-          </div>
-        </div>
-      </div>-->
       <div class="card-header bg-white header-elements-sm-inline" style="background-color: #fafafa!important; padding: 6px 6px 6px 6px;">
         <h6 style="font-size: 12px; color: #FEA024; margin: 0 auto; text-align: center;">Clients not scheduled<span style="margin-left: 6px;" class="badge badge-warning badge-pill"><?php echo count($notScheduledClients); ?></span></h6>
         <div class="header-elements">
