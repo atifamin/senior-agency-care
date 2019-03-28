@@ -41,6 +41,7 @@ class Scheduling extends CI_Controller {
 		$data['client_bio'] = $this->common_model->listingRow("client_id",$client_id,"client_bio");
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_vital_reports");
 		$data['shopping_list_detail'] =$this->common_model->listingResultWhere('client_id',$client_id,"client_shopping_list");
+		$data['appointment_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_appointment_calender");
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
@@ -417,5 +418,41 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $post['client_id'];
 		$data['client'] = $this->Client_model->getById($post['client_id']);
 		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
+	}
+	public function add_appointment(){
+		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
+		$post['created_by'] = $this->agency_id;
+		$post['created_at'] = date('Y-m-d H:i:s');
+ 		$input_date = $this->input->post('from_date');
+		$date = explode("-", $input_date);
+		$post['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
+		$post['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
+		$this->common_model->insertGetIDQuery("client_appointment_calender", $post);
+		$data['appointment_detail'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_appointment_calender");
+		$data['client_id'] = $post['client_id'];
+		$this->load->view('agency/scheduling/inc/appointment_calender/list_view_appointment',$data);
+	}
+	public function edit_appointment(){
+		$appointment_id = $this->input->post('id');
+		$result = $this->common_model->listingRow("id",$appointment_id,"client_appointment_calender");
+		$data['result'] = $result;
+		$client_id = $result->client_id;
+		$data['client'] =$this->common_model->listingRow('id',$client_id,'client');
+		$this->load->view('agency/scheduling/inc/appointment_calender/edit_appointment',$data);
+	}
+	public function delete_appointment(){
+		$id = $this->input->post('id');
+		$this->common_model->delete("client_appointment_calender", array('id'=>$id));
+	}
+	public function update_appointment(){
+		$post = $this->input->post();
+		//print_array($post);
+		//unset($post['appointement_id']);
+		$post['agency_id'] = $this->agency_id;
+		$post['ubdated_by'] = $this->agency_id;
+		$this->common_model->updateQuery("client_appointment_calender", "id",$post['appointement_id'], $post);
+		print_array();
+		$appointment_detail = $this->common_model->listingRow("id",$post['appointement_id'],"client_appointment_calender");
 	}
 }
