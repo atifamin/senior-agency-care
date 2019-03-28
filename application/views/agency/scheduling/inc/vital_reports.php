@@ -106,7 +106,7 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input-styled" value="1" data-fouc>
+                    <input type="checkbox" class="form-check-input-styled" name="is_temprature" value="1" data-fouc>
                     Temperature </label>
                 </div>
               </div>

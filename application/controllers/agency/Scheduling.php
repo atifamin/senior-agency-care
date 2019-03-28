@@ -176,6 +176,7 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $medication_detail->client_id;
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}
+
 	public function add_client_dietry_needs(){
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
@@ -183,22 +184,15 @@ class Scheduling extends CI_Controller {
 		$post['created_at'] = date('Y-m-d H:i:s');
  		$this->common_model->insertGetIDQuery("client_dietry_needs", $post);
 	}
+
 	public function add_vital_report(){
 		$post = $this->input->post();
 		$input_date = $this->input->post('from_date');
-		//print_array($post);
-		
 		$date = explode(" - ", $input_date);
-
 		$post['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
 		$post['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
-		
-		//$data = array();
 		$post['agency_id'] = $this->agency_id;
-		//$post['from_date'] = $i;
-		
 		$ddd = $this->common_model->insertGetIDQuery("client_vital_reports", $post);
-		//print_array($ddd);
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_vital_reports");
 		$data['client_id'] = $post['client_id'];
 		$this->load->view("agency/scheduling/inc/vital_reports/list_view",$data);
@@ -217,19 +211,20 @@ class Scheduling extends CI_Controller {
 
 	public function update_vital_reports(){
 		$post = $this->input->post();
-		//print_array($post);
 		$reportData = $post;
 		unset($reportData['report_id']);
-		$this->common_model->updateQuery("client_vital_reports", "id", $post['report_id'], $reportData);
-		$reportData = $post;
-		unset($reportData['report_id']);
+		//print_array($reportData);
+		$input_date = $this->input->post('from_date');
+		$date = explode('-', $input_date);
+		$reportData['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
+		$reportData['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
 		$reportData['updated_by'] = $this->agency_id;
 		$reportData['updated_at'] = date("Y-m-d H:i:s");
 		$this->common_model->updateQuery("client_vital_reports", "id", $post['report_id'], $reportData);
 		$vital_report_details = $this->common_model->listingRow("id", $post['report_id'], "client_vital_reports");
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id', $vital_report_details->client_id, "client_vital_reports");
         $data['client_id'] = $vital_report_details->client_id;
-	    $this->load->view("agency/scheduling/inc/vital_reports/list_view",$data);
+	    $this->load->view("agency/scheduling/inc/vital_reports/list_view", $data);
 
 	}
 
