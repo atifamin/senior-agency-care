@@ -38,7 +38,7 @@
         <div class="align-self-center ml-3"> <a href="#" class="text-default" data-toggle="collapse" data-target="#james3"> <i class="icon-menu7"></i> </a> </div>
       </div>
       <div class="collapse show" id="james3">
-        <div class="pb-1">
+        <div class="pb-1" style="padding-bottom: 0px !important;">
           <div class="tab-content">
             <div class="tab-pane fade show active" id="james1">
               <div class="navbar navbar-expand-xl navbar-light navbar-component rounded-top mb-0">
@@ -60,7 +60,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="card card-body border-top-0 rounded-0 rounded-bottom tab-content" >
+              <div class="card card-body border-top-0 rounded-0 rounded-bottom tab-content" style="margin-bottom:0px !important;">
                 <div class="tab-pane fade active show" id="schedule">
                   <?php include(APPPATH."views/agency/scheduling/inc/scheduling.php"); ?>
                 </div>

@@ -1,4 +1,4 @@
-<?php //print_array($client);?>
+<?php //print_array($result);?>
 <script src="http://localhost/senior-agency-care/assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
@@ -22,7 +22,7 @@
         <div class="form-group">
           <label>Add date and time vitals were taken: </label>
           <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-            <input type="text" name="" id="date_picker" class="form-control edit_date_time_input" value="<?php echo date("m/d/Y h:i a", strtotime($result->from_date))." - ".date("m/d/Y h:i a", strtotime($result->to_date)); ?>" placeholder="Enter date and time vitals were taken">
+            <input type="text" name="from_date" id="date_picker" class="form-control edit_date_time_input" value="<?php echo date("m/d/Y h:i a", strtotime($result->from_date))." - ".date("m/d/Y h:i a", strtotime($result->to_date)); ?>" placeholder="Enter date and time vitals were taken">
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_bloodpressure" value="1" class="form-check-input-styled" data-fouc>
+              <input type="checkbox" name="is_bloodpressure" <?php if(isset($result->is_bloodpressure) && !empty($result->is_bloodpressure)){echo 'checked';} ?> class="form-check-input-styled" data-fouc>
               Blood Pressure </label>
           </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_breathing" class="form-check-input-styled" data-fouc>
+              <input type="checkbox" name="is_breathing" <?php if(isset($result->is_breathing) && !empty($result->is_breathing)){echo 'checked';} ?> class="form-check-input-styled" data-fouc>
               Breathing </label>
           </div>
         </div>
@@ -72,7 +72,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_pulse" <?php //if(condition){echo 'checked="checked"';} ?> class="form-check-input-styled" data-fouc>
+              <input type="checkbox" name="is_pulse" <?php if(isset($result->is_pulse) && !empty($result->is_pulse)){echo 'checked';} ?> class="form-check-input-styled" data-fouc>
               Pulse </label>
           </div>
         </div>
@@ -92,7 +92,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input-styled edit_form_checkbox" data-fouc>
+              <input type="checkbox" name="is_temprature" <?php if(isset($result->is_temprature) && !empty($result->is_temprature)){echo 'checked';} ?> class="form-check-input-styled edit_form_checkbox" data-fouc>
               Temperature </label>
           </div>
         </div>
@@ -122,34 +122,38 @@
 
 
 <script type="text/javascript">
-  $(".form-check-input-styled").uniform();
-$('.edit_date_time_input').daterangepicker({
-    timePicker: true,
-    applyClass: 'bg-slate-600',
-    cancelClass: 'btn-light',
-    locale: {
-        format: 'MM/DD/YYYY h:mm a'
-    }
-});
 
-  $("#update_vital_report_form").on("submit", function(e){
-    //e.preventDefault();
+  $(".form-check-input-styled").uniform();
+
+  $('.edit_date_time_input').daterangepicker({
+      timePicker: true,
+      applyClass: 'bg-slate-600',
+      cancelClass: 'btn-light',
+      locale: {
+          format: 'MM/DD/YYYY h:mm a'
+      }
+  });
+
+
+  $('#update_vital_report_form').on("submit",function(e){
+    e.preventDefault();
+    loader = CardLoader($("#update_vital_report_form"));
     var formData = new FormData($(this)[0]);
     $.ajax({
-      url: '<?php echo site_url("agency/scheduling/update_vital_reports"); ?>',
-      type: 'POST',
-      data: formData,
+      url:'<?php echo site_url('agency/scheduling/update_vital_reports'); ?>',
+      type:'post',
+      data:formData,
       cache: false,
       contentType: false,
       processData: false,
-      success: function(e){
-        // alert(e);
-        // return false;
+      success:function(e){
+          // console.log(e);
+          // return false;
         $("#vital_reports_list_view").html(e);
         var form = document.getElementById("update_vital_report_form");
         form.reset();
         $("#edit_vital_reports_modal").modal("hide");
-        //loader.unblock();
+        loader.unblock();
       }
     });
   });

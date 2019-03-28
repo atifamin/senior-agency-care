@@ -37,7 +37,7 @@
       <div class="col-md-4" id="assign_caregivers_div"> <a href="javascript:;" onclick="load_assign_caregiver(<?php echo $client_id; ?>)">
         <button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>
         Assign Caregiver to client case</a>
-        <div id="caregivers_images_div">
+        <div id="caregivers_images_div" style="margin: 3% 0 0 2%;">
           <?php include(APPPATH."views/agency/scheduling/inc/scheduling/view_assigned_caregivers.php"); ?>
         </div>
       </div>
@@ -74,9 +74,8 @@
                   <option>Please Select</option>
                   <?php if(count($assignedCargivers)>0){ ?>
                   <?php 
-						foreach($assignedCargivers as $cg){
-							$assignedCG = $this->common_model->listingRow("id",$cg->caregiver_id,"caregiver");
-					  
+				  foreach($assignedCargivers as $cg){
+					  $assignedCG = $this->common_model->listingRow("id",$cg->caregiver_id,"caregiver");
 				  ?>
                   <option value="<?php echo $assignedCG->id ?>"><?php echo $assignedCG->first_name." ".$assignedCG->last_name; ?></option>
                   <?php }} ?>
@@ -118,6 +117,16 @@
                     <input type="checkbox" name="is_recurring" class="form-check-input-switchery" data-fouc id="is_recurring" value="1">
                     <strong>Set this schedule as recurring</strong> </label>
                 </div>
+              </div>
+            </div>
+            <div class="col-md-8 offset-md-2" style="display:none;" id="recurring_month_div">
+              <div class="form-group">
+                <label><strong>Please define recurring months</strong></label>
+                <select class="form-control select" data-fouc name="recurring_months">
+                  <?php for($i=1; $i<=24; $i++): ?>
+                  <option value="<?php echo $i; ?>"><?php echo $i; ?><?php if($i==1){echo " Month";}else{echo " Months";} ?></option>
+                  <?php endfor; ?>
+                </select>
               </div>
             </div>
           </div>
@@ -167,7 +176,15 @@ $('#appointment_picker').datepicker({
 	clearBtn:true,
 });
 new Switchery(document.querySelector('#is_recurring'));
-$("#caregivers, #caregiver_id").select2();
+$("#is_recurring").on("change", function(){
+	if($(this).is(":checked")==false)
+		$("#recurring_month_div").hide();
+	
+	if($(this).is(":checked")==true)
+		$("#recurring_month_div").show();
+});
+
+$("#caregivers, #caregiver_id, select[name=recurring_months]").select2();
 
 function load_assign_caregiver(client_id){
 	loader = CardLoader($("#assign_caregivers_div"));
@@ -195,6 +212,7 @@ $("#assign_caregiver_form").on("submit", function(e){
 			loader.unblock();
 			$("#caregivers_images_div").html(e);
 			$("#assign_caregiver_modal").modal("hide");
+			location.reload();
 		},
 		xhr: function () {
 			var xhr = new window.XMLHttpRequest();
@@ -224,6 +242,13 @@ function delete_assigned_caregiver(id){
 
 $("#add_client_appointement_form").on("submit", function(e){
 	loader = CardLoader($(this));
+	if($("input[name=in_time]").val()==$("input[name=out_time]").val()){
+		swal({
+			type: 'error',
+			html: 'In time and Out date cannot be same',
+		});
+		return false;
+	}
 	e.preventDefault();
 	formData = new FormData($("#add_client_appointement_form")[0]);
 	formData.append("agency_id", <?php echo $agency_id; ?>);
@@ -237,12 +262,26 @@ $("#add_client_appointement_form").on("submit", function(e){
 		processData: false,
 		success: function(e){
 			loader.unblock();
-			$("#caregivers_images_div").html(e);
+			var data = JSON.parse(e);
+			if(data.type=="error"){
+				var title = 'Followings are datetime where this caregiver is already assinged some other appointment.<br><ul>';
+				var message = '<ul class="media-list">';
+				$.each(data.error_detail, function(k, v){
+					message += '<li class="media"><div class="row" style="width:100% !important;"><div class="col-md-6"><strong>From: </strong>'+v.from+'</div><div class="col-md-6"><strong>To: </strong>'+v.to+'</div></div></li>';
+				});
+				message += '</ul>';
+				swal({
+					type: 'error',
+					title: title,
+					html: message
+				});
+			}else{
+				swal({
+					type: 'success',
+					html: 'You have added an appointement successfully',
+				});
+			}
 			$("#newschedule").modal("hide");
-			swal({
-				type: 'success',
-				html: 'You have added an appointement successfully',
-			});
 			load_calendar(<?php echo $client_id; ?>);
 		},
 		xhr: function () {
@@ -251,14 +290,7 @@ $("#add_client_appointement_form").on("submit", function(e){
 				if (evt.lengthComputable) {
 					var percentComplete = evt.loaded / evt.total;
 					percentComplete = parseInt(percentComplete * 100);
-					if(percentComplete==100){
-						loader.unblock();
-						$("#newschedule").modal("hide");
-						swal({
-							type: 'success',
-							html: 'You have added an appointement successfully',
-						});
-					}
+					if(percentComplete==100){}
 				}
 			}, false);
 			return xhr;
@@ -332,71 +364,90 @@ function update_client_appointement_form(){
 	});
 };
 
-function change_is_recurring_status(appointement_id, is_recurring){
-	is_recurring_text = "Appointement is set as recurring successfully.";
+
+function recurring_months(id, is_recurring){
 	if(is_recurring==0){
-		is_recurring_text = "Appointement is set as regular successfully.";
-	}
-	loader = CardLoader($("#full_calendar_view"));
-	$.post("<?php echo site_url("agency/scheduling/change_is_recurring_status"); ?>",{client_id:<?php echo $client_id; ?>, appointement_id:appointement_id, is_recurring:is_recurring}).done(function(data){
-		//load_calendar(<?php echo $client_id; ?>);
-		//loader.unblock();
-		location.reload();
-		/*setTimeout(function(){
-			load_calendar(<?php echo $client_id; ?>);
-			loader.unblock();
-			swal(
-				'Appointement Success!',
-				is_recurring_text,
-				'success'
-			);
-		}, 2000);*/
-		
-	});
-	/*mySwitch = new Switchery($('#'+appointement_id+'')[0]);
-	is_recurring_text = "Do you want set this appointement as recurring?";
-	if(is_recurring==0){
-		is_recurring_text = "Do you want set this appointement as regular?";
+		change_is_recurring_status(id, is_recurring, 0);
+		return false;
 	}
 	swal({
-		title: 'Are you sure?',
-		text: is_recurring_text,
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonText: 'Yes, do it!',
-		cancelButtonText: 'No, cancel!',
-		confirmButtonClass: 'btn btn-success',
-		cancelButtonClass: 'btn btn-danger',
-		buttonsStyling: false
-	}).then(function (Confirm) {
-		if(Confirm.value){
-			loader = CardLoader($("#full_calendar_view"));
-			$.post("<?php echo site_url("agency/scheduling/change_is_recurring_status"); ?>",{client_id:<?php echo $client_id; ?>, appointement_id:appointement_id, is_recurring:is_recurring}).done(function(data){
-				load_calendar(<?php echo $client_id; ?>);
-				loader.unblock();
-				swal(
-					'Deleted!',
-					'Appointement has successfully converted.',
-					'success'
-				);
-				
+		title: 'Select Recurring Months',
+		input: 'select',
+		inputOptions: {
+			'': '',
+			'1': '1 Month',
+			'2': '2 Months',
+			'3': '3 Months',
+			'4': '4 Months',
+			'5': '5 Months',
+			'6': '6 Months',
+			'7': '7 Months',
+			'8': '8 Months',
+			'9': '9 Months',
+			'10': '10 Months',
+			'11': '11 Months',
+			'12': '12 Months',
+			'13': '13 Months',
+			'14': '14 Months',
+			'15': '15 Months',
+			'16': '16 Months',
+			'17': '17 Months',
+			'18': '18 Months',
+			'19': '19 Months',
+			'20': '20 Months',
+			'21': '21 Months',
+			'22': '22 Months',
+			'23': '23 Months',
+			'24': '24 Months'
+		},
+		inputClass: 'form-control select-single',
+		showCancelButton: false,
+		allowOutsideClick: false,
+		inputValidator: function (value) {
+			return new Promise(function (resolve) {
+				resolve();
 			});
-			setSwitchery(mySwitch, true);
-		}else{
-			setSwitchery(mySwitch, false);
-			swal(
-				'Cancelled',
-				'Appointement is safe :)',
-				'error'
-			);
+		},
+		inputAttributes: {
+			'data-placeholder': 'Select Recurring Months'
+		},
+		onOpen: function() {
+
+			// Initialize Select2
+			$('.swal2-select.select-single').select2({
+				minimumResultsForSearch: Infinity
+			});
 		}
-	});*/
+	}).then(function (result) {
+		if (result.value) {
+			change_is_recurring_status(id, is_recurring, result.value);
+		}
+	});
 }
 
-function delete_appointement(appointement_id){
+function change_is_recurring_status(appointement_id, is_recurring, months){
+	loader = CardLoader($("#full_calendar_view"));
+	$.post("<?php echo site_url("agency/scheduling/change_is_recurring_status"); ?>",{client_id:<?php echo $client_id; ?>, appointement_id:appointement_id, is_recurring:is_recurring,months:months}).done(function(data){
+		location.reload();
+		
+	});
+}
+
+function delete_appointement(appointement_id, parent_id, is_recurring){
+	if(parent_id==0){
+		swal({
+			type: 'error',
+			html: 'You cannot delete the main recurring appointment.',
+		});
+		return false;
+	}
+	var warning_text = "You won't be able to revert this!";
+	if(is_recurring==1){
+		warning_text = "This appointment is recurring appointment, You won't be able to revert this!";
+	}
 	swal({
 		title: 'Are you sure?',
-		text: "You won't be able to revert this!",
+		text: warning_text,
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonText: 'Yes, delete it!',
@@ -425,5 +476,16 @@ function delete_appointement(appointement_id){
 		}
 	});
 }
+
+
+function setSwitchery(switchElement, checkedBool) {
+	if (checkedBool && !switchElement.checked) { // switch on if not on
+		$(switchElement).trigger('click').attr("checked", "checked");
+	} else if (!checkedBool && switchElement.checked) { // switch off if not off
+		$(switchElement).trigger('click').removeAttr("checked");
+	}
+}
+
+
 
 </script> 
