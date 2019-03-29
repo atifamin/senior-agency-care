@@ -1,4 +1,4 @@
-<?php// print_array($client);?>
+<?php //print_array($client);?>
 
 <form id="update_medication_list" action="" method="post">
   <input type="hidden" name="medication_id" value="<?php echo $result->id; ?>" />
