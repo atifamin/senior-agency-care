@@ -5,7 +5,7 @@
 <form id="update_vital_report_form" method="post">
   <input type="hidden" name="report_id" value="<?php echo $result->id; ?>">
   <div class="modal-header">
-    <h5 class="modal-title" style="margin: 0 auto;">Add Client Vitals</h5>
+    <h5 class="modal-title" style="margin: 0 auto;">Edit Client Vitals</h5>
     <div>
       <li class="media">
         <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40"> </a> 
@@ -32,7 +32,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_bloodpressure" <?php if(isset($result->is_bloodpressure) && !empty($result->is_bloodpressure)){echo 'checked';} ?> class="form-check-input-styled" data-fouc>
+              <input type="checkbox" name="is_bloodpressure" value="<?php echo $result->is_bloodpressure; ?>" <?php if(!empty($result->is_bloodpressure) && $result->is_bloodpressure == 1){echo 'checked="checked"';} ?> class="form-check-input-styled" data-fouc>
               Blood Pressure </label>
           </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_breathing" <?php if(isset($result->is_breathing) && !empty($result->is_breathing)){echo 'checked';} ?> class="form-check-input-styled" data-fouc>
+              <input type="checkbox" name="is_breathing" value="<?php echo $result->is_breathing; ?>" <?php if(!empty($result->is_breathing) && $result->is_breathing == 1){echo 'checked="checked"';} ?> class="form-check-input-styled" data-fouc>
               Breathing </label>
           </div>
         </div>
@@ -72,7 +72,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_pulse" <?php if(isset($result->is_pulse) && !empty($result->is_pulse)){echo 'checked';} ?> class="form-check-input-styled" data-fouc>
+              <input type="checkbox" name="is_pulse" value="<?php echo $result->is_pulse; ?>" <?php if(!empty($result->is_pulse) && $result->is_pulse == 1){echo 'checked="checked"';} ?> class="form-check-input-styled" data-fouc>
               Pulse </label>
           </div>
         </div>
@@ -92,7 +92,7 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" name="is_temprature" <?php if(isset($result->is_temprature) && !empty($result->is_temprature)){echo 'checked';} ?> class="form-check-input-styled edit_form_checkbox" data-fouc>
+              <input type="checkbox" name="is_temprature" <?php if(!empty($result->is_temprature) && $result->is_temprature == 1){echo 'checked="checked"';} ?> class="form-check-input-styled edit_form_checkbox" data-fouc>
               Temperature </label>
           </div>
         </div>
@@ -137,7 +137,7 @@
 
   $('#update_vital_report_form').on("submit",function(e){
     e.preventDefault();
-    loader = CardLoader($("#update_vital_report_form"));
+    //loader = CardLoader($("#update_vital_report_form"));
     var formData = new FormData($(this)[0]);
     $.ajax({
       url:'<?php echo site_url('agency/scheduling/update_vital_reports'); ?>',

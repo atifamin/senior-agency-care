@@ -92,4 +92,6 @@ define("CON_CAREGIVER_POSITIONS", array('caregiver'=>'Caregiver','manager'=>'Man
 define("CON_CAREGIVER_CERTIFICATIONS", array('CNA_certified_nurse_assistant'=>'C.N.A Certified Nurse Assistant','home_health_aid'=>'Home Health Aid', 'registered_nurse'=>'Registered Nurse'));
 define("CON_CLIENT_MOBILITY_NEEDS", array('Walking cane','Weelchair'));
 define("CON_CLIENT_BILLIBG_CYCLE",array('Weekly','Bi-Weekly','Monthly'));
-//define("CON_CLIENT_MEDICAL_HISTORY",array('Diabetic','Alone most of the time','Needs Assistance for most ADL','SOB on Exertion','Paralysis','Confusion/Forgetfull','History of falls','Unirary Catheter','Bed Bpound','Has wounds','Prone to bone fractures','Amputation','Poor vision','Partial weight bearing','Hearing Deficit','History of Seizures','At risk of bleeding','Speach/Communication of Deficit','Has dentures','partial','lower','upper','Other'));
+
+define("CON_CLIENT_FLUID_REQUIREMENT",array('thin_liquids'=>'Thin liquids','honey_thick_liquids'=>'Honey thick liquids','nector_thick_liquids'=>'Nector thick liquids'));
+define("CON_CLIENT_DIETRY_REQUIREMENT",array('regular_diet'=>'Regular diet','mechanical_diet'=>'Mechanical diet','puree_diet'=>'Puree diet'));
