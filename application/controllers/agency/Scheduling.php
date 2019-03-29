@@ -458,7 +458,7 @@ class Scheduling extends CI_Controller {
 		$appData['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
 		//print_array($appData);
 		$this->common_model->updateQuery("client_appointment_calender", "id",$post['appointment_id'], $appData);
-		print_array();
+		//print_array();
 		$appointment_detail = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointment_calender");
 	}
 }
