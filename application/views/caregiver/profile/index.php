@@ -4,13 +4,13 @@
 <div class="d-md-flex align-items-md-start"> 
   
   <!-- Left sidebar component -->
-  <div class="sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-0 sidebar-expand-md"> 
+  <!-- <div class="sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-0 sidebar-expand-md"> --> 
     
     <!-- Sidebar content -->
-    <div class="sidebar-content"> 
+    <!-- <div class="sidebar-content"> --> 
       
       <!-- Navigation -->
-      <div class="card">
+      <!-- <div class="card">
         <div class="card-body bg-success-400 text-center card-img-top" style="background-image: url(); background-size: contain;">
           <div class="card-img-actions d-inline-block mb-3"> <img class="img-fluid rounded-circle" src="<?php echo $profile_image; ?>" width="170" height="170" alt="">
             <div class="card-img-actions-overlay rounded-circle"> <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"> <i class="icon-plus3"></i> </a> <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"> <i class="icon-link"></i> </a> </div>
@@ -20,10 +20,10 @@
           <div class="list-icons list-icons-extended mt-3"> <a href="<?php echo site_url("caregiver/profile/wizard/".$this->caregiver_id.""); ?>" class="list-icons-item text-white" data-popup="tooltip" title="" data-container="body" data-original-title="Edit My Profile"><i class="icon-google-drive"></i>&nbsp;&nbsp;Edit Profile</a> </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- /sidebar content --> 
     
-  </div>
+  <!-- </div> -->
   <!-- /left sidebar component --> 
   
   <!-- Right content -->
@@ -38,6 +38,7 @@
                 <ul class="nav nav-tabs nav-tabs-bottom">
                   <li class="nav-item" style="padding-right: 130px;"><a href="#profileinfo" class="nav-link active" data-toggle="tab">Profile & Certification</a></li>
                   <li class="nav-item" style="padding-right: 130px;"><a href="#licenses" class="nav-link" data-toggle="tab">Valid State License</a></li>
+                  <li class="nav-item" style="right: 3% !important; position: absolute;"><a href="<?php echo site_url("caregiver/profile/wizard/".$this->caregiver_id.""); ?>"><button class="btn btn-light" style="background-color: #fff;"><i class="icon-google-drive mr-2"></i> Edit Profile</button></a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="profileinfo">

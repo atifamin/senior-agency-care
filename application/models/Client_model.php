@@ -417,7 +417,7 @@ class Client_model extends CI_Model{
 		if($query_row->inTimeExists==0 && $query_row->outTimeExists==0){
 			return true;
 		}else{
-			return false;
+			return 0;
 		}
 	}
 }

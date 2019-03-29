@@ -319,7 +319,7 @@ function edit_client_schedule(id){
 	});
 }
 
-function update_client_appointement_form(){
+/*function update_client_appointement_form(){
 	loader = CardLoader($("#update_client_appointement_form"));
 	formData = new FormData($("#update_client_appointement_form")[0]);
 	formData.append("agency_id", <?php echo $agency_id; ?>);
@@ -362,7 +362,7 @@ function update_client_appointement_form(){
 			return xhr;
 		},
 	});
-};
+};*/
 
 
 function recurring_months(id, is_recurring){
