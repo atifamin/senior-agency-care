@@ -67,9 +67,9 @@
                 <br>
                 <span class="text-muted">Select morning, evening or night</span> 
                 <select class="form-control select-icons" id="day_period_time" name="day_period_time" data-fouc>
-                  <option value="morning">Morning</option>
-                  <option value="evening">Evening</option>
-                  <option value="night">Night</option>
+                  <option value="Morning">Morning</option>
+                  <option value="Evening">Evening</option>
+                  <option value="Night">Night</option>
                 </select>
               </div>
             </div>

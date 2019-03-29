@@ -42,6 +42,7 @@ class Scheduling extends CI_Controller {
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_vital_reports");
 		$data['shopping_list_detail'] =$this->common_model->listingResultWhere('client_id',$client_id,"client_shopping_list");
 		$data['appointment_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_appointment_calender");
+		$data['dietry_needs_detail'] =$this->common_model->listingRow("client_id",$client_id,"client_dietry_needs");;
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
@@ -281,7 +282,10 @@ class Scheduling extends CI_Controller {
 
 	public function edit_medication(){
 		$medicationId = $this->input->post("id");
-		$data['result'] = $this->common_model->listingRow("id",$medicationId,"client_medication_list");
+		$result = $this->common_model->listingRow("id",$medicationId,"client_medication_list");
+		$data['result'] = $result;
+		$client_id = $result->client_id;
+		$data['client'] = $this->common_model->listingRow("id",$client_id,"client");
 		$this->load->view("agency/scheduling/inc/medication_list/edit_medication", $data);
 	}
 
@@ -290,16 +294,16 @@ class Scheduling extends CI_Controller {
 		$id = $this->input->post('id');
 		$data['result'] = $this->common_model->delete("client_medication_list",array('id'=>$id));
 	}
-	
 	public function add_new_medication(){
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
+		$post['created_by'] = $this->agency_id;
+		$post['created_at'] = date('Y-m-d H:i:s');
 		$this->common_model->insertGetIDQuery("client_medication_list", $post);
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_medication_list");
 		$data['client_id'] = $post['client_id'];
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}
-	
 	public function update_medication_list(){
 		$post = $this->input->post();
 		$mediData = $post;
@@ -312,13 +316,22 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $medication_detail->client_id;
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}
-
 	public function add_client_dietry_needs(){
 		$post = $this->input->post();
-		$post['agency_id'] = $this->agency_id;
-		$post['created_by'] = $this->agency_id;
-		$post['created_at'] = date('Y-m-d H:i:s');
- 		$this->common_model->insertGetIDQuery("client_dietry_needs", $post);
+		$dietry_needs = $post;
+		$id = $this->input->post('dietry_needs_id');
+		unset($dietry_needs['dietry_needs_id']);
+		$dietry_needs['agency_id'] = $this->agency_id;
+		$dietry_needs['created_by'] = $this->agency_id;
+		$dietry_needs['created_at'] = date('Y-m-d H:i:s');
+		if ($post['dietry_needs_id'] !=0) {
+			$this->common_model->updateQuery("client_dietry_needs", "id", $post['dietry_needs_id'],$dietry_needs);
+		}else{
+			$this->common_model->insertGetIDQuery("client_dietry_needs", $dietry_needs);
+		}
+ 		$data['dietry_needs_detail'] = $this->common_model->listingRow("client_id",$post['client_id'],"client_dietry_needs");
+		$data['client_id'] = $post['client_id'];
+		$this->load->view("agency/scheduling/inc/dietry_needs",$data);
 	}
 
 	public function add_vital_report(){
@@ -333,7 +346,6 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $post['client_id'];
 		$this->load->view("agency/scheduling/inc/vital_reports/list_view",$data);
 	}
-
 	public function edit_vital_reports(){
 		$vitalReportId = $this->input->post("id");
 		$result = $this->common_model->listingRow("id",$vitalReportId,"client_vital_reports");
@@ -344,11 +356,33 @@ class Scheduling extends CI_Controller {
 		//print_array($data);
 		$this->load->view("agency/scheduling/inc/vital_reports/edit_vital_reports", $data);
 	}
-
 	public function update_vital_reports(){
 		$post = $this->input->post();
+		
 		$reportData = $post;
 		unset($reportData['report_id']);
+
+		if (isset($reportData['is_bloodpressure'])) {
+			$reportData['is_bloodpressure'] = 1;
+		}else{
+			$reportData['is_bloodpressure'] = 0;
+		}
+		if (isset($reportData['is_breathing'])) {
+			$reportData['is_breathing'] = 1;
+		}else{
+			$reportData['is_breathing'] = 0;
+		}
+		if (isset($reportData['is_pulse'])) {
+			$reportData['is_pulse'] = 1;
+		}else{
+			$reportData['is_pulse'] = 0;
+		}
+		if (isset($reportData['is_temprature'])) {
+			$reportData['is_temprature'] = 1;
+		}else{
+			$reportData['is_temprature'] = 0;
+		}
+		//print_array($post);
 		//print_array($reportData);
 		$input_date = $this->input->post('from_date');
 		$date = explode('-', $input_date);
@@ -363,12 +397,10 @@ class Scheduling extends CI_Controller {
 	    $this->load->view("agency/scheduling/inc/vital_reports/list_view", $data);
 
 	}
-
 	public function delete_vital_reports(){
 		$id = $this->input->post('id');
 		$data['result'] = $this->common_model->delete("client_vital_reports",array('id'=>$id));
 	}
-
 	public function add_new_shopping(){
 		$post = $this->input->post();
 		//print_array($post);
@@ -395,7 +427,6 @@ class Scheduling extends CI_Controller {
 		$detail['client_id'] = $post['client_id'];
 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
-
 	public function delete_shopping(){
 		$id = $this->input->post('id');
 		$this->common_model->delete('client_shopping_list', array('id'=>$id));
@@ -444,8 +475,6 @@ class Scheduling extends CI_Controller {
  		// }
  		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
-	
-
 	public function client_bio_form(){
 		$post = $this->input->post();
 		$bioData = $post;
