@@ -110,13 +110,13 @@
 
 <script type="text/javascript">
 
-
   function add_list(){
     var counter = $("input[name=counter]").val();
     var val = $("#list_detail").val();
-    $("#list_detail_div").append('<div id="list_row_'+counter+'" style="margin-top: 8px;"><input type="hidden" name="list_detail[]" value="'+val+'" >'+val+'<a style="float:right" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
+    $("#list_detail_div").append('<div class="row" id="list_row_'+counter+'"><div class="col-md-6"  style="margin-top: 3px;"><input type="hidden" name="list_detail[]" value="'+val+'"><div class="form-group pt-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" name="is_pulse" checked class="form-check-input-styled" disabled data-fouc>'+val+'</label></div></div> </div><div class="col-md-6"><a style="float:right; margin-top: 11px;" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
     counter = parseInt(counter)+1;
     $("input[name=counter]").val(counter);
+    $('.form-check-input-styled').uniform();
   }
   function remove(id){
     $("#list_row_"+id+"").remove();
@@ -157,5 +157,7 @@
         $("#shopping_list_row_"+id+"").remove();
     });
   }
+
+
 
 </script>

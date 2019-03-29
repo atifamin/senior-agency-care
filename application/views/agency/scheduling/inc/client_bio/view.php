@@ -1,3 +1,4 @@
+<?php //echo print_array($client_bio->id); ?>
 <div class="col-md-12">
   <div class="row">
     <?php if(count($client_bio)>0){ ?>
@@ -50,9 +51,10 @@
     <?php } ?>
     <div class="col-md-12" style="text-align: right; margin-top: 20px;"> <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
       <?php if(count($client_bio)>0){ ?>
-      <a href="javascript:;" onclick="deleteClientBio()"><i style="color: #555;" class="icon-bin"></i></a>
+      <a href="javascript:;" onclick="deleteClientBio(<?php echo $client_bio->id?>)"><i style="color: #555;" class="icon-bin"></i></a>
       <?php } ?>
     </div>
+  </div>
   </div>
 </div>
 <div id="modal_clients_bio" class="modal fade" tabindex="-1">
@@ -148,14 +150,22 @@
 </div>
 
 <script type="text/javascript">
-function deleteClientBio(){
-swal({
-      title: 'Are you sure?',
-      text: 'You will not be able to recover clients bio data!',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!'
+function deleteClientBio(id){
+  $.post("<?php echo site_url("agency/scheduling/delete_client_bio");?>", {id:id,client_id:<?php echo $client_id; ?>}).done(function(data){
+    $("#client_bio_area").html(data);
+    swal({
+        type: 'error',
+        html: 'You have deleted client bio successfully',
+      });
+    // $('#client_bio_row'+id+'').remove();
   });
+// swal({
+//       title: 'Are you sure?',
+//       text: 'You will not be able to recover clients bio data!',
+//       type: 'warning',
+//       showCancelButton: true,
+//       confirmButtonText: 'Yes, delete it!'
+//   });
 }
 
 $("#client_bio_form").on("submit", function(e){

@@ -56,10 +56,25 @@
       	<?php $detail_list = json_decode($result->list_detail); ?>
       	<?php if (isset($detail_list)) {
 	    	foreach ($detail_list as $key=>$value) { ?>
-	    <div style="margin-top: 8px;" id="list_row_<?php echo $key; ?>">
-	    	<input type="hidden" name="list_detail[]" value="<?php echo $value; ?>"><?php echo $value; ?>
+	    <div class="row" style="margin-top: 8px;" id="list_row_<?php echo $key; ?>">
+	    	<!-- <input type="hidden" name="list_detail[]" value="<?php echo $value; ?>">
+	    	<input type="checkbox" class="form-check-input-styled-check" checked disabled>&nbsp;&nbsp;<?php echo $value; ?>
 	    	<a href="javascript:;" onclick="remove(<?php echo $key; ?>)"; style="float:right" class="text-default font-weight-semibold letter-icon-title">
+	    		<i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a> -->
+	    		<!-- <div class="row"> -->
+	    			<div class="col-md-6">
+	    				<input type="hidden" name="list_detail[]" value="<?php echo $value; ?>">
+	    				<div class="form-group pt-2">
+	    					<div class="form-check">
+	    						<label class="form-check-label">
+	    							<input type="checkbox" class="form-check-input-styled-check" checked disabled>&nbsp;&nbsp;<?php echo $value; ?></label>
+	    						</div>
+	    					</div> 
+	    				</div>
+	    				<div class="col-md-6">
+	    					<a href="javascript:;" onclick="remove(<?php echo $key; ?>)"; style="float:right; margin-top: 11px;" class="text-default font-weight-semibold letter-icon-title">
 	    		<i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a>
+	    				</div>
 	    </div>
 
 		<?php	}
@@ -78,9 +93,10 @@
 	function update_list(){
 		var counter = $("input[name=counter]").val();
 	    var value = $("#list_detail_edit").val();
-	    $("#list_detail_edit_div").append('<div id="list_row_'+counter+'" style="margin-top: 8px;"><input type="hidden" name="list_detail[]" value="'+value+'" >'+value+'<a style="float:right" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
+	    $("#list_detail_edit_div").append('<div class="row" id="list_row_'+counter+'"><div class="col-md-6"  style="margin-top: 3px;"><input type="hidden" name="list_detail[]" value="'+value+'"><div class="form-group pt-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" name="is_pulse" checked class="form-check-input-styled" disabled data-fouc>'+value+'</label></div></div> </div><div class="col-md-6"><a style="float:right; margin-top: 11px;" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
 	    counter = parseInt(counter)+1;
 	    $("input[name=counter]").val(counter);
+	    $('.form-check-input-styled').uniform();
 	}
 	
 	function remove(id){
@@ -110,5 +126,6 @@
 
 $('.form-input-styled').uniform();
 $('.edit_form_status').uniform();
+$(".form-check-input-styled-check").uniform();
 
 </script>

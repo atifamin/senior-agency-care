@@ -451,6 +451,7 @@ class Scheduling extends CI_Controller {
 		$bioData = $post;
 		$id = $post['client_bio_id'];
 		unset($bioData['client_bio_id']);
+		$bioData['agency_id'] = $this->agency_id;
 		if($post['client_bio_id']!=0){
 			$this->common_model->updateQuery("client_bio", "id", $post['client_bio_id'],$bioData);
 		}else{
@@ -461,6 +462,17 @@ class Scheduling extends CI_Controller {
 		$data['client'] = $this->Client_model->getById($post['client_id']);
 		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
 	}
+
+	public function delete_client_bio(){
+		$id = $this->input->post('id');
+		$client_id = $this->input->post("client_id");
+		$this->common_model->delete("client_bio", array('id'=>$id));
+		$data['client_bio'] = $this->common_model->listingRow("id",$id,"client_bio");
+		$data['client_id'] = $client_id;
+		$data['client'] = $this->Client_model->getById($client_id);
+		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
+	}
+
 	public function add_appointment(){
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
