@@ -3,7 +3,7 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> 
 <script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
-<?php //print_array($caregiver); ?>
+<?php //print_array($states); ?>
 <div class="row">
   <div class="col-md-12">
     <div class="card card-body border-top-1 border-top-primary">
@@ -143,7 +143,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Caregiver email address: <span class="text-danger">*</span></label>
-                <input type="email" name="email" class="form-control" placeholder="company@email.com">
+                <input type="email" name="email" class="form-control" value="">
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Address: <span class="text-danger">*</span></label>
-                <input type="text" name="address" class="form-control" placeholder="Enter your address">
+                <input type="text" name="address" class="form-control" value="<?php echo $caregiver->address; ?>">
               </div>
             </div>
             <div class="col-md-6">
