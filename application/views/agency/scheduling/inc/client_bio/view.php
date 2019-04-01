@@ -193,7 +193,7 @@ $("#client_bio_form").on("submit", function(e){
         html: 'You have updated client bio successfully',
         allowOutsideClick: false,
       }).then(function() {
-        window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        location.reload();
       });
 			$(".modal-backdrop").remove();
 		}

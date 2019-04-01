@@ -186,7 +186,7 @@ $('#add_client_appointment_form').on('submit',function(e){
           html: 'You have added appointment calender successfully',
           allowOutsideClick: false,
         }).then(function() {
-          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+          location.reload();
         });
       }
     });
@@ -209,7 +209,7 @@ function delete_appointment(id){
         html: 'You have deleted appointment calender successfully',
         allowOutsideClick: false,
       }).then(function() {
-        window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        location.reload();
       });
   });
 }

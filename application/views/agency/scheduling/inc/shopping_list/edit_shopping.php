@@ -124,7 +124,7 @@
 		          html: 'You have updated shopping list successfully',
 		          allowOutsideClick: false,
 		        }).then(function() {
-		          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+		          location.reload();
 		        });
 				loader.unblock();
 			}
