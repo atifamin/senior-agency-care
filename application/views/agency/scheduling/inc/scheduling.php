@@ -212,7 +212,17 @@ $("#assign_caregiver_form").on("submit", function(e){
 			loader.unblock();
 			$("#caregivers_images_div").html(e);
 			$("#assign_caregiver_modal").modal("hide");
-			location.reload();
+			swal({
+				title: 'Success',
+				text: "You have added caregiver successfully!",
+				type: 'success',
+				confirmButtonClass: 'btn btn-success',
+				allowOutsideClick: false,
+			}).then(function (Confirm) {
+				if(Confirm.value){
+					location.reload();
+				}
+			});
 		},
 		xhr: function () {
 			var xhr = new window.XMLHttpRequest();
@@ -232,11 +242,43 @@ $("#assign_caregiver_form").on("submit", function(e){
 });
 
 function delete_assigned_caregiver(id){
-	loader = CardLoader($("#assign_caregivers_div"));
-	$.post("<?php echo site_url("agency/scheduling/delete_assigned_caregiver"); ?>", {id:id}).done(function(data){
-		$("#assigned_caregiver_row_id_"+id+"").remove();
-		loader.unblock();
+	swal({
+		title: 'Are you sure?',
+		text: 'Removing caregiver from case means their schedules will be permanently removed',
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Yes, delete it!',
+		cancelButtonText: 'No, cancel!',
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false
+	}).then(function (Confirm) {
+		if(Confirm.value){
+			loader = CardLoader($("#assign_caregivers_div"));
+			$.post("<?php echo site_url("agency/scheduling/delete_assigned_caregiver"); ?>", {id:id, client_id:<?php echo $client_id; ?>}).done(function(data){
+				//$("#assigned_caregiver_row_id_"+id+"").remove();
+				loader.unblock();
+				swal({
+					title: 'Success',
+					text: "You have deleted caregiver successfully!",
+					type: 'success',
+					confirmButtonClass: 'btn btn-success',
+					allowOutsideClick: false,
+				}).then(function (Confirm) {
+					if(Confirm.value){
+						location.reload();
+					}
+				});
+			});
+		}else{
+			swal(
+				'Cancelled',
+				'Caregiver is safe :)',
+				'error'
+			);
+		}
 	});
+	
 }
 
 
@@ -273,16 +315,19 @@ $("#add_client_appointement_form").on("submit", function(e){
 				swal({
 					type: 'error',
 					title: title,
-					html: message
-				});
+					html: message,
+					allowOutsideClick: false,
+				}).then(function() {
+					location.reload();
+		        });
 			}else{
 				swal({
 		          title: "Good job!",
 		          type: 'success',
-		          html: 'You have added new schedule successfully',
+		          html: data.error_detail,
 		          allowOutsideClick: false,
 		        }).then(function() {
-		          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+					location.reload();
 		        });
 			}
 			$("#newschedule").modal("hide");
@@ -438,16 +483,13 @@ function change_is_recurring_status(appointement_id, is_recurring, months){
 }
 
 function delete_appointement(appointement_id, parent_id, is_recurring){
-	if(parent_id==0){
-		swal({
-			type: 'error',
-			html: 'You cannot delete the main recurring appointment.',
-		});
-		return false;
-	}
+	
 	var warning_text = "You won't be able to revert this!";
 	if(is_recurring==1){
 		warning_text = "This appointment is recurring appointment, You won't be able to revert this!";
+	}
+	if(parent_id==0){
+		warning_text = "This is main recurring appointment, it'll delete all linked appointment, You won't be able to revert this!";
 	}
 	swal({
 		title: 'Are you sure?',
@@ -465,11 +507,27 @@ function delete_appointement(appointement_id, parent_id, is_recurring){
 			$.post("<?php echo site_url("agency/scheduling/delete_appointement"); ?>",{appointement_id:appointement_id}).done(function(data){
 				load_calendar(<?php echo $client_id; ?>);
 				loader.unblock();
-				swal(
+				swal({
+					title: 'Success',
+					text: "You have deleted an appointment successfully!",
+					type: 'success',
+					showCancelButton: false,
+					confirmButtonText: 'OK',
+					cancelButtonText: 'No, cancel!',
+					confirmButtonClass: 'btn btn-success',
+					cancelButtonClass: 'btn btn-danger',
+					allowOutsideClick: false,
+					buttonsStyling: false
+				}).then(function (Confirm) {
+					if(Confirm.value){
+						location.reload();
+					}
+				});
+				/*swal(
 					'Deleted!',
 					'Appointement has been deleted.',
 					'success'
-				);
+				);*/
 			});
 		}else{
 			swal(

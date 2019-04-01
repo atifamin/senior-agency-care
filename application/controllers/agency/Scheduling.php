@@ -88,6 +88,12 @@ class Scheduling extends CI_Controller {
 	public function delete_assigned_caregiver(){
 		$post = $this->input->post();
 		$id = $post["id"];
+		$relationship = $this->common_model->listingRow("id",$id,"client_caregiver_relationship");
+		$whereArray = array(
+			"client_id"=>$relationship->client_id,
+			"caregiver_id"=>$relationship->caregiver_id,
+		);
+		$this->common_model->delete("client_appointements", $whereArray);
 		$this->common_model->delete("client_caregiver_relationship", array("id"=>$id));
 	}
 	
@@ -96,6 +102,7 @@ class Scheduling extends CI_Controller {
 		$dates = explode(",", $post["dates"]);
 		$message['type'] = 'success';
 		$message['error_detail'] = array();
+		$addedIds = array();
 		foreach($dates as $date){
 			unset($post['dates']);
 			$client_detail = $this->common_model->listingRow("id",$post['client_id'],"client");
@@ -116,6 +123,7 @@ class Scheduling extends CI_Controller {
 			$parent_id = 0;
 			if($checkIfCargiverIsAvailable){
 				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $post);
+				$addedIds[] = $parent_id;
 			}else{
 				$message['type'] = 'error';
 				$message['error_detail'][] = (object)array("from"=>date("M, d Y h:i A", strtotime($from)), "to"=>date("M, d Y h:i A", strtotime($to)));
@@ -126,6 +134,28 @@ class Scheduling extends CI_Controller {
 					$post['recurring_months'] = 0;
 				}
 				$message = $this->add_recurring_appointments($post, $date, $message);
+			}
+		}
+		
+		if($message['type'] == 'success'){
+			$m = '';
+			if(count($addedIds)>0){
+				$lastAddedClient = $this->common_model->listingRow("id",$post['client_id'],"client");
+				
+				$m .= '<p>Here is the summary of '.$lastAddedClient->first_name.' '.$lastAddedClient->last_name.'\'s created schedule.</p>';
+				foreach($addedIds as $addedId){
+					$lastAddedAppointment = $this->common_model->listingRow("id",$addedId,"client_appointements");
+					
+					$lastAddedCaregiver = $this->common_model->listingRow("id",$lastAddedAppointment->caregiver_id,"caregiver");
+					$m .= '
+					<br>
+					<table class="table">
+					<thead><tr><td colspan="3">'.date("l d, Y", strtotime($lastAddedAppointment->date)).'</td></tr></thead>
+					<tbody><tr><td>'.date("h:i A", strtotime($lastAddedAppointment->in_time)).' - '.date("h:i A", strtotime($lastAddedAppointment->out_time)).'</td><td><span class="fc-event-dot" style="background-color:#546E7A"></span></td><td><img src="'.caregiver_image($lastAddedCaregiver->id).'" class="rounded-circle" width="40" height="40" alt=""> '.$lastAddedCaregiver->first_name.' '.$lastAddedCaregiver->last_name.'</td></tr></tbody>
+					</table>
+					';
+				}
+				$message['error_detail'] = $m;
 			}
 		}
 		
@@ -234,6 +264,10 @@ class Scheduling extends CI_Controller {
 	
 	public function delete_appointement(){
 		$post = $this->input->post();
+		$result = $this->common_model->listingRow("id",$post["appointement_id"],"client_appointements");
+		if($result->parent_id==0){
+			$this->common_model->delete("client_appointements", array("parent_id"=>$post["appointement_id"]));
+		}
 		$this->common_model->delete("client_appointements", array("id"=>$post["appointement_id"]));
 	}
 	
