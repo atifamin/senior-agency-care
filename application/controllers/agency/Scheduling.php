@@ -512,13 +512,16 @@ class Scheduling extends CI_Controller {
 
 	public function add_appointment_calender(){
 		$post = $this->input->post();
+		//print_array($post);
 		$post['agency_id'] = $this->agency_id;
 		$post['created_by'] = $this->agency_id;
 		$post['created_at'] = date('Y-m-d H:i:s');
- 		$input_date = $this->input->post('from_date');
-		$date = explode("-", $input_date);
-		$post['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
-		$post['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
+		$post['appointment_date'] = date('Y-m-d H:i:s');
+		//print_array($post);
+ 	// 	$input_date = $this->input->post('from_date');
+		// $date = explode("-", $input_date);
+		// $post['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
+		// $post['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
 		$this->common_model->insertGetIDQuery("client_appointment_calender", $post);
 		$data['appointment_detail'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_appointment_calender");
 		$data['client_id'] = $post['client_id'];

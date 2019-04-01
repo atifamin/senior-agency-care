@@ -61,9 +61,17 @@
             <div class="col-md-8 offset-md-2">
               <div class="form-group">
                 <label>Enter appointment date and time: </label>
-                <div class="input-group"> <span class="input-group-prepend"><span class="input-group-text"><i class="icon-alarm"></i></span></span>
-                  <input type="text" name="from_date" class="form-control daterange-time" value="">
+                <div class="input-group"> <span class="input-group-prepend">
+                  <span class="input-group-text"><i class="icon-alarm"></i></span></span>
+                  <input type="text" name="appointment_date" class="form-control" id="anytime-both" value="">
                 </div>
+                <!-- <div class="input-group">
+                    <span class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-calendar3"></i></span>
+                    </span>
+                    <input type="text" class="form-control" id="anytime-both" value="June 4th 08:47">
+                  </div> -->
+
               </div>
             </div>
           </div>
