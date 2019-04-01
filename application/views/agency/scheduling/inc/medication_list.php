@@ -157,7 +157,7 @@ $("#add_client_medication_form").on("submit", function(e){
           html: 'You have added medication list successfully',
           allowOutsideClick: false,
         }).then(function() {
-          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+          location.reload();
         });
 			//setTimeout(function(){loader.unblock();}, 5000);
 		}
@@ -179,7 +179,7 @@ function delete_medication(id){
       html: 'You have deleted medication list successfully',
       allowOutsideClick: false,
     }).then(function() {
-      window.location = "<?php site_url('agency/scheduling/view'); ?>";
+      location.reload();
     });
     $('#table_row_'+id+'').remove();
   });

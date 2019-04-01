@@ -1,6 +1,9 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
 <script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_edit_wizard.js"></script>
-<?php// print_array($caregiver); ?>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> 
+<script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+<?php //print_array($states); ?>
 <div class="row">
   <div class="col-md-12">
     <div class="card card-body border-top-1 border-top-primary">
@@ -140,7 +143,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Caregiver email address: <span class="text-danger">*</span></label>
-                <input type="email" name="email" class="form-control" placeholder="company@email.com">
+                <input type="email" name="email" class="form-control" value="">
               </div>
             </div>
           </div>
@@ -148,7 +151,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Address: <span class="text-danger">*</span></label>
-                <input type="text" name="address" class="form-control" placeholder="Enter your address">
+                <input type="text" name="address" class="form-control" value="<?php echo $caregiver->address; ?>">
               </div>
             </div>
             <div class="col-md-6">
@@ -208,17 +211,17 @@
             <div class="col-md-6"> 
               <!-- Within a group with checkbox -->
               <div class="form-group">
-                <div class="input-group"> <span class="input-group-prepend">
-                  <div class="input-group-text">
-                    <input type="checkbox" class="form-control-styled" checked data-fouc>
-                  </div>
-                  </span>
-                  <select class="form-control multiselect" multiple="multiple" data-fouc>
-                    <?php foreach(CON_CAREGIVER_CERTIFICATIONS as $cgCertificationsKey=>$cgCertificationsVal): ?>
-                    <option value="<?php echo $cgCertificationsKey; ?>"><?php echo $cgCertificationsVal; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </div>
+                <label>Multiple select</label>
+                <select multiple="multiple" class="form-control select" data-fouc name="caregiver_certifications[]">
+                  <?php
+                    $caregiver_certifications = "";
+                    if(count(json_decode($detail->caregiver_certifications))>0)
+                      $caregiver_certifications = json_decode($detail->caregiver_certifications); 
+                  ?>
+                  <?php foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
+                    <option value="<?php echo $key; ?>"  <?php if(!empty($caregiver_certifications) && in_array($key, $caregiver_certifications)){echo 'selected="selected"';} ?>><?php echo $value; ?></option>
+                  <?php } ?>
+                </select>
               </div>
               <!-- /within a group with checkbox --> 
             </div>

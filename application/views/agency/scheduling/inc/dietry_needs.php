@@ -79,7 +79,7 @@
           html: 'You have updated dietry needs successfully',
           allowOutsideClick: false,
         }).then(function() {
-          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+          location.reload();
         });
       }
     });
