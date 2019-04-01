@@ -53,7 +53,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Position at company:</label>
-                <select name="position" data-placeholder="Choose a Position..." id="form-control-select1" class="form-control form-control-select2" data-fouc>
+                <select name="position" data-placeholder="Choose a Position..." id="form_control_select1" class="form-control form-control-select2" data-fouc>
                   <option></option>
                   <?php foreach(CON_CAREGIVER_POSITIONS as $positionKey=>$positionVal): ?>
                   <option value="<?php echo $positionKey; ?>" <?php if($caregiver->position==$positionKey){echo 'selected="selected"';} ?>><?php echo $positionVal; ?></option>
@@ -334,8 +334,16 @@
     </div>
   </div>
 </div>
+
+<script src="<?php echo base_url(); ?>/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+
+
 <!-- <script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_edit_wizard.js"></script> -->
 <script type="text/javascript">
+
+$('.form-control-select2').select2();
+
 function addNewLicense(){
 	$(".add_new_license").css("display","block");
 	$(".license_view").css("display","none");
@@ -470,7 +478,6 @@ function update_caregiver(){
 	});*/
 }
 
-$('.form-control-select2').select2();
 
 </script>
 <?php include(APPPATH."views/caregiver/inc/footer.php"); ?>
