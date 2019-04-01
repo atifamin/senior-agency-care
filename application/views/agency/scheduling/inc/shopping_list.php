@@ -138,7 +138,14 @@
         // console.log(e);
         // return false;
         loader.unblock();
-        swal('Shopping List',"added successfuly");
+        swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have added shopping list successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        });
         $('#shopping_list_view').html(e);
         $('#add_modal_shopping_list').modal('hide');
       }
@@ -155,6 +162,14 @@
     //alert(id);
     $.post("<?php echo site_url('agency/scheduling/delete_shopping'); ?>", {id:id}).done(function(data){
         $("#shopping_list_row_"+id+"").remove();
+        swal({
+          title: "Good job!",
+          type: 'error',
+          html: 'You have deleted shopping list successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        });
     });
   }
 

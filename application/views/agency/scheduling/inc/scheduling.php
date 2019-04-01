@@ -277,9 +277,13 @@ $("#add_client_appointement_form").on("submit", function(e){
 				});
 			}else{
 				swal({
-					type: 'success',
-					html: 'You have added an appointement successfully',
-				});
+		          title: "Good job!",
+		          type: 'success',
+		          html: 'You have added new schedule successfully',
+		          allowOutsideClick: false,
+		        }).then(function() {
+		          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+		        });
 			}
 			$("#newschedule").modal("hide");
 			load_calendar(<?php echo $client_id; ?>);

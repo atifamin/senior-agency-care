@@ -154,9 +154,13 @@ function deleteClientBio(id){
   $.post("<?php echo site_url("agency/scheduling/delete_client_bio");?>", {id:id,client_id:<?php echo $client_id; ?>}).done(function(data){
     $("#client_bio_area").html(data);
     swal({
-        type: 'error',
-        html: 'You have deleted client bio successfully',
-      });
+      title: "Good job!",
+      type: 'error',
+      html: 'You have deleted client bio successfully',
+      allowOutsideClick: false,
+    }).then(function() {
+      window.location = "<?php site_url('agency/scheduling/view'); ?>";
+    });
     // $('#client_bio_row'+id+'').remove();
   });
 // swal({
@@ -184,9 +188,13 @@ $("#client_bio_form").on("submit", function(e){
 			loader.unblock();
 			$("#client_bio_area").html(e);
 			swal({
-				type: 'success',
-				html: 'You have updated client bio successfully',
-			});
+        title: "Good job!",
+        type: 'success',
+        html: 'You have updated client bio successfully',
+        allowOutsideClick: false,
+      }).then(function() {
+        window.location = "<?php site_url('agency/scheduling/view'); ?>";
+      });
 			$(".modal-backdrop").remove();
 		}
 	});

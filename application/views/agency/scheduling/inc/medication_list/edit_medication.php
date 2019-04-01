@@ -49,10 +49,12 @@
           <label>When is the medication taken</label>
           <br>
           <span class="text-muted">Select morning, evening or night</span>
-          <select class="form-control select-icons" id="day_period_time_1" name="day_period_time" data-fouc>
-            <option <?php if (isset($result->day_period_time) && $result->day_period_time == 'morning') {echo "selected='selected'";} ?> value="Morning">Morning</option>
-            <option <?php if (isset($result->day_period_time) && $result->day_period_time == 'evening') {echo "selected='selected'";} ?> value="Evening">Evening</option>
-            <option <?php if (isset($result->day_period_time) && $result->day_period_time == 'night') {echo "selected='selected'";} ?> value="Night">Night</option>
+          <select class="form-control multiselect edit_multiselect"  multiple="multiple" name="day_period_time[]" data-fouc>
+            <?php $day_period_time = json_decode($result->day_period_time); ?>
+            <?php foreach (CON_CLIENT_DAY_SHIFTS as $daykey => $dayvalue) { ?>
+              <option value="<?php echo $dayvalue; ?>" <?Php if(in_array($dayvalue, $day_period_time)){ echo "selected='selected'";} ?> ><?php echo $dayvalue; ?></option>
+            <?php } ?>
+           
           </select>
         </div>
       </div>
@@ -113,11 +115,18 @@ $("#update_medication_list").on("submit", function(e){
 		processData: false,
 		success: function(e){
       // alert(e);
-      // return false;
 			$("#medication_list_view").html(e);
 			var form = document.getElementById("update_medication_list");
 			form.reset();
 			$("#edit_medication_modal").modal("hide");
+      swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have updated medication list successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        });
 			loader.unblock();
 		}
 			
@@ -133,7 +142,7 @@ $('#medication_reminder_checkbox_1').click(function(){
   }
 });
 
-$('#day_period_time_1').select2();
+$('.edit_multiselect').multiselect();
 $('.form-check-input-styled').uniform();
 $('.edit_time').pickatime();
 $('.edit_touchspin').TouchSpin();

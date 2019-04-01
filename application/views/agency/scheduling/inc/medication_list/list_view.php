@@ -19,7 +19,15 @@
         <td><span class="text-muted"><?php echo $value->medication_name; ?></span></td>
         <td><span class="text-muted"><?php echo $value->medication_dosage; ?></span></td>
         <td><span class="text-muted"><?php echo $value->how_many_times_day; ?></span></td>
-        <td><span class="text-muted"><?php echo $value->day_period_time ; ?></span></td>
+        <?php $day_period_time = json_decode($value->day_period_time); ?>
+        <td>
+          <?php if(is_array($day_period_time)){foreach ($day_period_time as $dpt) { ?>
+            <span class="text-muted">
+              <?php echo $dpt; ?>
+            </span>
+          <?php } }?>
+          
+        </td>
         <td><span class="text-muted"><?php echo $value->day_time; ?></span></td>
         <td><span class="text-muted"><?php echo $value->is_caregiver_reminder; ?></span></td>
         <td class="text-center"><div class="list-icons">
