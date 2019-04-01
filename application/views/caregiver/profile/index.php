@@ -1,6 +1,8 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
 <?php $months = CON_MONTHS; ?>
 
+<?php //print_array($profile_detail); ?>
+
 <div class="d-md-flex align-items-md-start"> 
   
   <!-- Left sidebar component -->
@@ -104,7 +106,13 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-                        <p><span class="bg-dark py-1 px-2 rounded"><span class="text-white">C.N.A Certified Nurse Assistant</span></span>&nbsp;&nbsp;&nbsp;<span class="bg-dark py-1 px-2 rounded"><span class="text-white">Home Health Aid</span></span></p>
+                        <?php $caregiver_certifications = json_decode($profile_detail->caregiver_certifications);
+                          //print_array($caregiver_certifications);
+                          foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
+                            <?php if(count($caregiver_certifications)>0 && in_array($key, $caregiver_certifications)){?>
+                            <span class="bg-dark py-1 px-2 rounded"><?php echo $value;  ?></span>
+                            <?php } ?>
+                            <?php } ?>
                       </div>
                     </div>
                   </div>

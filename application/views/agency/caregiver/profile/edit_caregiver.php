@@ -75,7 +75,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Position at company:</label>
-                <select name="position" data-placeholder="Choose a Position..." class="form-control select-search-basic" data-fouc>
+                <select name="position" data-placeholder="Choose a Position..." id="form-control-select1selectt" class="form-control select-search-basic" data-fouc>
                   <option></option>
                   <?php foreach(CON_CAREGIVER_POSITIONS as $positionKey=>$positionVal): ?>
                   <option value="<?php echo $positionKey; ?>"<?php if($detail->position == $positionKey){echo 'selected="selected"';}?>><?php echo $positionVal; ?></option>
