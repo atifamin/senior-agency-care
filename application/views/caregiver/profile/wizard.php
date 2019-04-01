@@ -345,8 +345,6 @@
 <!-- <script src="<?php echo base_url(); ?>/assets/js/demo_pages/caregiver_form_edit_wizard.js"></script> -->
 <script type="text/javascript">
 
-$('.form-control-select2').select2();
-
 function addNewLicense(){
 	$(".add_new_license").css("display","block");
 	$(".license_view").css("display","none");

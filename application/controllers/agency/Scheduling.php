@@ -296,20 +296,28 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_new_medication(){
 		$post = $this->input->post();
-		$post['agency_id'] = $this->agency_id;
-		$post['created_by'] = $this->agency_id;
-		$post['created_at'] = date('Y-m-d H:i:s');
-		$this->common_model->insertGetIDQuery("client_medication_list", $post);
+		$result = $post;
+		$result['agency_id'] = $this->agency_id;
+		$result['created_by'] = $this->agency_id;
+		$result['created_at'] = date('Y-m-d H:i:s');
+		if (isset($post['day_period_time'])) {
+			$result['day_period_time'] = json_encode($post['day_period_time']);
+		}
+		$this->common_model->insertGetIDQuery("client_medication_list", $result);
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_medication_list");
 		$data['client_id'] = $post['client_id'];
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}
 	public function update_medication_list(){
 		$post = $this->input->post();
+		//print_array($post);
 		$mediData = $post;
 		unset($mediData['medication_id']);
 		$mediData['updated_by'] = $this->agency_id;
 		$mediData['updated_at'] = date("Y-m-d H:i:s");
+		if ($post['day_period_time']) {
+			$mediData['day_period_time'] = json_encode($post['day_period_time']);
+		}
 		$this->common_model->updateQuery("client_medication_list", "id", $post['medication_id'], $mediData);
 		$medication_detail = $this->common_model->listingRow("id",$post['medication_id'],"client_medication_list");
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$medication_detail->client_id,"client_medication_list");
@@ -502,7 +510,7 @@ class Scheduling extends CI_Controller {
 		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
 	}
 
-	public function add_appointment(){
+	public function add_appointment_calender(){
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
 		$post['created_by'] = $this->agency_id;
@@ -516,7 +524,7 @@ class Scheduling extends CI_Controller {
 		$data['client_id'] = $post['client_id'];
 		$this->load->view('agency/scheduling/inc/appointment_calender/list_view_appointment',$data);
 	}
-	public function edit_appointment(){
+	public function edit_appointment_calender(){
 		$appointment_id = $this->input->post('id');
 		$result = $this->common_model->listingRow("id",$appointment_id,"client_appointment_calender");
 		$data['result'] = $result;
@@ -524,11 +532,11 @@ class Scheduling extends CI_Controller {
 		$data['client'] =$this->common_model->listingRow('id',$client_id,'client');
 		$this->load->view('agency/scheduling/inc/appointment_calender/edit_appointment',$data);
 	}
-	public function delete_appointment(){
+	public function delete_appointment_calender(){
 		$id = $this->input->post('id');
 		$this->common_model->delete("client_appointment_calender", array('id'=>$id));
 	}
-	public function update_appointment(){
+	public function update_appointment_calender(){
 		$post = $this->input->post();
 		//print_array($post);
 		$appData = $post;

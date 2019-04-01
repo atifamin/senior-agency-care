@@ -66,13 +66,13 @@
         <div class="form-group pt-2">
           <div class="form-check">
             <label class="form-check-label">
-              <input type="checkbox" id="appointment_reminder_checkbox_edit" class="form-check-input-styled edit_form_check" data-fouc>
+              <input type="checkbox" id="appointment_reminder_checkbox_edit" class="form-check-input-styled edit_form_check" checked="" data-fouc>
               Set reminder for caregiver </label>
           </div>
         </div>
       </div>
     </div>
-    <div class="row" id="appointment_set_reminder_edit" style="display: none;">
+    <div class="row" id="appointment_set_reminder_edit">
       <div class="col-md-12">
         
         <?php if (isset($result->appointment_type) && $result->appointment_type == "Doctor's Appointment") { ?>
@@ -81,9 +81,11 @@
             <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
               <select class="form-control multiselect" name="doctor_reminder" data-fouc>
                 <option value="">Select reminder</option>
-                <option value="2.0 Hrs before appointment">2.0 Hrs before appointment</option>
-                <option value="2.5 Hrs before appointment">2.5 Hrs before appointment</option>
-                <option value="3.0 Hrs before appointment">3.0 Hrs before appointment</option>
+                <?php foreach (CON_DOCTOR_APPOINTMENT_REMINDER as $dockey => $docvalue) { ?>
+
+                <option value="<?php echo $dockey; ?>" <?php if($dockey == $result->doctor_reminder){echo "selected='selected'";} ?>><?php echo $docvalue; ?></option>
+
+                <?php } ?>
               </select>
             </div>
           </div>
@@ -96,11 +98,11 @@
             <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
               <select class="form-control multiselect" name="theropy_reminder" data-fouc>
                 <option value="">Select reminder</option>
-                <option value="30 Minutes before appointment">30 Minutes before appointment</option>
-                <option value="1.0 Hrs before appointment">1.0 Hrs before appointment</option>
-                <option value="1.5 Hrs before appointment">1.5 Hrs before appointment</option>
-                <option value="2.0 Hrs before appointment">2.0 Hrs before appointment</option>
-                <option value="3.0 Hrs before appointment">3.0 Hrs before appointment</option>
+                <?php foreach (CON_THEROPY_APPOINTMENT_REMINDER as $theropykey => $theropyvalue) { ?>
+
+                <option value="<?php echo $theropykey; ?>" <?php if($theropykey == $result->theropy_reminder){echo "selected='selected'";} ?>><?php echo $theropyvalue; ?></option>
+
+                <?php } ?>
               </select>
             </div>
           </div>
@@ -133,7 +135,7 @@
     var formData = new FormData($(this)[0]);
     formData.append('client_id',<?php echo $client->id; ?>);
     $.ajax({
-      url:'<?php echo site_url('agency/scheduling/update_appointment'); ?>',
+      url:'<?php echo site_url('agency/scheduling/update_appointment_calender'); ?>',
       type:'post',
       data:formData,
       cache: false,
@@ -148,6 +150,6 @@
   $('.edit_daterange').daterangepicker();
   $('.edit_select_icons').select2();
   $('.form-check-input-styled').uniform();
-  $('.multiselect').uniform();
+  $('.multiselect').multiselect();
 
 </script>

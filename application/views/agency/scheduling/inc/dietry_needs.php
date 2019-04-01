@@ -74,9 +74,13 @@
         // return false;
         //$('#deitry_needs_row_').html(data);
         swal({
-        type: 'success',
-        html: 'You have updated client bio successfully',
-      });
+          title: "Good job!",
+          type: 'success',
+          html: 'You have updated dietry needs successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        });
       }
     });
   }

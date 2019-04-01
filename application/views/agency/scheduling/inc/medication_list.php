@@ -66,10 +66,13 @@
                 <label>When is the medication taken</label>
                 <br>
                 <span class="text-muted">Select morning, evening or night</span> 
-                <select class="form-control select-icons" id="day_period_time" name="day_period_time" data-fouc>
-                  <option value="Morning">Morning</option>
-                  <option value="Evening">Evening</option>
-                  <option value="Night">Night</option>
+                <select class="form-control multiselect" multiple="multiple" name="day_period_time[]" data-fouc>
+                  <?php foreach (CON_CLIENT_DAY_SHIFTS as $daykey => $dayvalue) { ?>
+                  <option value="<?php echo $dayvalue; ?>"><?php echo $dayvalue; ?></option>
+
+                  <?php } ?>
+                  <!-- <option value="Evening">Evening</option>
+                  <option value="Night">Night</option> -->
                 </select>
               </div>
             </div>
@@ -148,6 +151,14 @@ $("#add_client_medication_form").on("submit", function(e){
 			var form = document.getElementById("add_client_medication_form");
 			form.reset();
 			$("#modal_add_medication").modal("hide");
+      swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have added medication list successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        });
 			//setTimeout(function(){loader.unblock();}, 5000);
 		}
 			
@@ -162,12 +173,19 @@ function edit_medication(id){
 }
 function delete_medication(id){
   $.post("<?php echo site_url("agency/scheduling/delete_medication"); ?>", {id:id}).done(function(data){
-    swal("Client Medication","Medication deleted successfully!");
+    swal({
+      title: "Good job!",
+      type: 'error',
+      html: 'You have deleted medication list successfully',
+      allowOutsideClick: false,
+    }).then(function() {
+      window.location = "<?php site_url('agency/scheduling/view'); ?>";
+    });
     $('#table_row_'+id+'').remove();
   });
 }
 
-$('#day_period_time').select2();
+//$('#day_period_time').select2();
 
 $('#medication_reminder_checkbox').click(function(){
   if ($(this).prop('checked') == true) {

@@ -93,5 +93,11 @@ define("CON_CAREGIVER_CERTIFICATIONS", array('CNA_certified_nurse_assistant'=>'C
 define("CON_CLIENT_MOBILITY_NEEDS", array('Walking cane','Weelchair'));
 define("CON_CLIENT_BILLIBG_CYCLE",array('Weekly','Bi-Weekly','Monthly'));
 
+define("CON_CLIENT_DAY_SHIFTS",array('morning'=>'Morning','evening'=>'Evening','night'=>'Night'));
+
+
 define("CON_CLIENT_FLUID_REQUIREMENT",array('thin_liquids'=>'Thin liquids','honey_thick_liquids'=>'Honey thick liquids','nector_thick_liquids'=>'Nector thick liquids'));
 define("CON_CLIENT_DIETRY_REQUIREMENT",array('regular_diet'=>'Regular diet','mechanical_diet'=>'Mechanical diet','puree_diet'=>'Puree diet'));
+
+define("CON_DOCTOR_APPOINTMENT_REMINDER",array('doc_2.0_hrs_before_appointment'=>'2.0 Hrs before appointment','2.5_hrs_before_appointment'=>'2.5 Hrs before appointment','doc_3.0_hrs_before_appointment'=>'3.0 Hrs before appointment'));
+define("CON_THEROPY_APPOINTMENT_REMINDER",array('30_minutes_before_appointment'=>'30 Minutes before appointment','1.0_hrs_before_appointment'=>'1.0 Hrs before appointment','1.5_hrs_before_appointment'=>'1.5 Hrs before appointment','theropy_2.0_hrs_before_appointment'=>'2.0 Hrs before appointment','theropy_3.0_hrs_before_appointment'=>'3.0 Hrs before appointment'));

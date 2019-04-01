@@ -72,7 +72,7 @@
 	    					</div> 
 	    				</div>
 	    				<div class="col-md-6">
-	    					<a href="javascript:;" onclick="remove(<?php echo $key; ?>)"; style="float:right; margin-top: 11px;" class="text-default font-weight-semibold letter-icon-title">
+	    					<a href="javascript:;" onclick="remove(<?php echo $key; ?>)"; style="float:right; margin-top: 10px;" class="text-default font-weight-semibold letter-icon-title">
 	    		<i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a>
 	    				</div>
 	    </div>
@@ -93,7 +93,7 @@
 	function update_list(){
 		var counter = $("input[name=counter]").val();
 	    var value = $("#list_detail_edit").val();
-	    $("#list_detail_edit_div").append('<div class="row" id="list_row_'+counter+'"><div class="col-md-6"  style="margin-top: 3px;"><input type="hidden" name="list_detail[]" value="'+value+'"><div class="form-group pt-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" name="is_pulse" checked class="form-check-input-styled" disabled data-fouc>'+value+'</label></div></div> </div><div class="col-md-6"><a style="float:right; margin-top: 11px;" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
+	    $("#list_detail_edit_div").append('<div class="row" id="list_row_'+counter+'"><div class="col-md-6"  style="margin-top: 3px;"><input type="hidden" name="list_detail[]" value="'+value+'"><div class="form-group pt-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" name="is_pulse" checked class="form-check-input-styled" disabled data-fouc>'+value+'</label></div></div> </div><div class="col-md-6"><a style="float:right; margin-top: 10px;" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
 	    counter = parseInt(counter)+1;
 	    $("input[name=counter]").val(counter);
 	    $('.form-check-input-styled').uniform();
@@ -118,7 +118,14 @@
 			success:function(data){
 				$("#shopping_list_view").html(data);
 				$("#edit_modal_shopping_list").modal("hide");
-				swal('Shopping List','Updated Succfully');
+				swal({
+		          title: "Good job!",
+		          type: 'success',
+		          html: 'You have updated shopping list successfully',
+		          allowOutsideClick: false,
+		        }).then(function() {
+		          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+		        });
 				loader.unblock();
 			}
 		});

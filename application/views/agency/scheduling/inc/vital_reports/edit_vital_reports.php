@@ -153,6 +153,14 @@
         var form = document.getElementById("update_vital_report_form");
         form.reset();
         $("#edit_vital_reports_modal").modal("hide");
+        swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have updated dietry needs successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        });
         loader.unblock();
       }
     });

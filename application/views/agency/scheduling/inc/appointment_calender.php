@@ -96,9 +96,11 @@
                   <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
                     <select class="form-control multiselect" name="doctor_reminder" data-fouc>
                       <option value="">Select reminder</option>
-                      <option value="2.0 Hrs before appointment">2.0 Hrs before appointment</option>
-                      <option value="2.5 Hrs before appointment">2.5 Hrs before appointment</option>
-                      <option value="3.0 Hrs before appointment">3.0 Hrs before appointment</option>
+                      <?php foreach (CON_DOCTOR_APPOINTMENT_REMINDER as $dockey => $docvalue) { ?>
+                      
+                      <option value="<?php echo $docvalue; ?>"><?php echo $docvalue; ?></option>
+                      
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -108,11 +110,11 @@
                   <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
                     <select class="form-control multiselect" name="theropy_reminder" data-fouc>
                       <option value="">Select reminder</option>
-                      <option value="30 Minutes before appointment">30 Minutes before appointment</option>
-                      <option value="1.0 Hrs before appointment">1.0 Hrs before appointment</option>
-                      <option value="1.5 Hrs before appointment">1.5 Hrs before appointment</option>
-                      <option value="2.0 Hrs before appointment">2.0 Hrs before appointment</option>
-                      <option value="3.0 Hrs before appointment">3.0 Hrs before appointment</option>
+                      <?php foreach (CON_THEROPY_APPOINTMENT_REMINDER as $theropykey => $theropyvalue) { ?>
+                      
+                      <option value="<?php echo $theropyvalue; ?>"><?php echo $theropyvalue; ?></option>
+
+                    <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -166,7 +168,7 @@ $('#add_client_appointment_form').on('submit',function(e){
   var formData = new FormData($(this)[0]);
   formData.append('client_id',<?php echo $client->id; ?>);
   $.ajax({
-      url:'<?php echo site_url("agency/scheduling/add_appointment"); ?>',
+      url:'<?php echo site_url("agency/scheduling/add_appointment_calender"); ?>',
       type:'post',
       data:formData,
       cache: false,
@@ -176,22 +178,39 @@ $('#add_client_appointment_form').on('submit',function(e){
         loader.unblock();
         $('#appointment_view').html(e);
         $('#modal_add_new_appointment').modal('hide');
+        var form = document.getElementById("add_client_appointment_form");
+        form.reset();
+        swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have added appointment calender successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        });
       }
     });
 });
 
 function edit_appointment(id){
-  $.post("<?php echo site_url('agency/scheduling/edit_appointment'); ?>",{id:id}).done(function(e){
+  $.post("<?php echo site_url('agency/scheduling/edit_appointment_calender'); ?>",{id:id}).done(function(e){
     $('#edit_appointment_div').html(e);
     $('#modal_edit_appointment').modal('show');
   });
 }
 
 function delete_appointment(id){
-  $.post("<?php echo site_url("agency/scheduling/delete_appointment"); ?>",{id:id}).done(
+  $.post("<?php echo site_url("agency/scheduling/delete_appointment_calender"); ?>",{id:id}).done(
     function(e){
       $('#appointment_row_'+id+'').remove();
-      swal("Appointment","Deleted Successfully");
+      swal({
+        title: "Good job!",
+        type: 'error',
+        html: 'You have deleted appointment calender successfully',
+        allowOutsideClick: false,
+      }).then(function() {
+        window.location = "<?php site_url('agency/scheduling/view'); ?>";
+      });
   });
 }
 </script>

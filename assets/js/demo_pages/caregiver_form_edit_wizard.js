@@ -231,10 +231,9 @@ var FormWizard = function() {
 
     // Select2 select
     var _componentSelect2 = function() {
-        if (!$('.form-control-select2').select2) {
-            console.warn('Warning - select2.min.js is not loaded.');
-            return;
-        }
+        
+		
+		$('.form-control-select2').select2();
 
         $('.select-search').select2();
         $('.select-search-basic').select2();

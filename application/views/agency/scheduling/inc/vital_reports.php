@@ -158,6 +158,14 @@
         var form = document.getElementById("add_vital_report_form");
         form.reset();
         $("#modal_clients_vital").modal("hide");
+        swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have added vital reports successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+        });
         //setTimeout(function(){loader.unblock();}, 5000);
       }
         
@@ -177,7 +185,14 @@
     // alert(id);
     // return false;
     $.post("<?php echo site_url("agency/scheduling/delete_vital_reports"); ?>", {id:id}).done(function(data){
-      swal("Client Vital Reports","Reports deleted successfully!");
+      swal({
+        title: "Good job!",
+        type: 'error',
+        html: 'You have deleted vital reports successfully',
+        allowOutsideClick: false,
+      }).then(function() {
+        window.location = "<?php site_url('agency/scheduling/view'); ?>";
+      });
       $('#table_row_'+id+'').remove();
     });
   }

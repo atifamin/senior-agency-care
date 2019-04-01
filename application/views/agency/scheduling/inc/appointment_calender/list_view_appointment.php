@@ -1,7 +1,7 @@
 
 <?php //print_array($appointment_detail); ?>
 
-<table class="table datatable-basic" id="appointment_datatable_1">
+<table class="table datatable-basic" id="appointment-datatable-1">
   <thead>
     <tr>
       <th>Therapy Type</th>
@@ -47,21 +47,21 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/tables/datatables/datatables.min.js"></script> 
 <script>
   
-// $("#appointment_datatable_1").DataTable({
-//   autoWidth: false,
-//   columnDefs: [{ 
-//     orderable: false,
-//     width: 100,
-//     targets: [ 5 ]
-//   }],
-//   dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
-//   language: {
-//     search: '<span>Filter:</span> _INPUT_',
-//     searchPlaceholder: 'Type to filter...',
-//     lengthMenu: '<span>Show:</span> _MENU_',
-//     paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
-//   }
-// });
+$("#appointment-datatable-1").DataTable({
+  autoWidth: false,
+  columnDefs: [{ 
+    orderable: false,
+    width: 100,
+    targets: [ 5 ]
+  }],
+  dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
+  language: {
+    search: '<span>Filter:</span> _INPUT_',
+    searchPlaceholder: 'Type to filter...',
+    lengthMenu: '<span>Show:</span> _MENU_',
+    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+  }
+});
 
 
 </script>
