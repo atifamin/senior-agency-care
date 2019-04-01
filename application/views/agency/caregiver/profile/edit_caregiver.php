@@ -6,7 +6,7 @@
 </style>
 <?php $months = CON_MONTHS; ?>
 
-<?php //print_array($detail->license[11]->id);
+<?php //print_array($detail);
 //print_array($result); ?>
 
 
@@ -242,18 +242,18 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                  <label>Multiple select</label>
-                  <select multiple="multiple" class="form-control select" data-fouc name="caregiver_certifications[]">
-                    <?php
-                      $caregiver_certifications = "";
-                      if(count(json_decode($detail->caregiver_certifications))>0)
-                        $caregiver_certifications = json_decode($detail->caregiver_certifications); 
-                    ?>
-                    <?php foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
-                      <option value="<?php echo $key; ?>"  <?php if(!empty($caregiver_certifications) && in_array($key, $caregiver_certifications)){echo 'selected="selected"';} ?>><?php echo $value; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
+                <label>Multiple select</label>
+                <select multiple="multiple" class="form-control select" data-fouc name="caregiver_certifications[]">
+                  <?php
+                    $caregiver_certifications = "";
+                    if(count(json_decode($detail->caregiver_certifications))>0)
+                      $caregiver_certifications = json_decode($detail->caregiver_certifications); 
+                  ?>
+                  <?php foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
+                    <option value="<?php echo $key; ?>"  <?php if(!empty($caregiver_certifications) && in_array($key, $caregiver_certifications)){echo 'selected="selected"';} ?>><?php echo $value; ?></option>
+                  <?php } ?>
+                </select>
+              </div>
               <!-- Within a group with checkbox -->
               <!-- <div class="form-group">
                  <div class="input-group"> <span class="input-group-prepend">
