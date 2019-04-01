@@ -125,7 +125,7 @@ $("#update_medication_list").on("submit", function(e){
           html: 'You have updated medication list successfully',
           allowOutsideClick: false,
         }).then(function() {
-          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+          location.reload();
         });
 			loader.unblock();
 		}

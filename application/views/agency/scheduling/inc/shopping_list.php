@@ -144,7 +144,7 @@
           html: 'You have added shopping list successfully',
           allowOutsideClick: false,
         }).then(function() {
-          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+          location.reload();
         });
         $('#shopping_list_view').html(e);
         $('#add_modal_shopping_list').modal('hide');
@@ -168,7 +168,7 @@
           html: 'You have deleted shopping list successfully',
           allowOutsideClick: false,
         }).then(function() {
-          window.location = "<?php site_url('agency/scheduling/view'); ?>";
+          location.reload();
         });
     });
   }

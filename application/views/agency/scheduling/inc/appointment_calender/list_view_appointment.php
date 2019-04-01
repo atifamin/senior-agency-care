@@ -19,7 +19,7 @@
     <tr id="appointment_row_<?php echo $detail->id; ?>">
       <td><?php echo $detail->appointment_type; ?><br>
         <span class="text-muted"><?php echo $detail->doctor_name; ?></span></td>
-      <td><span class="text-muted"><?php echo date("d-M-Y",strtotime($detail->from_date))." to ".date("d-M-Y",strtotime($detail->to_date));  ?></span></td>
+      <td><span class="text-muted"><?php echo date("d-M-Y",strtotime($detail->appointment_date));  ?></span></td>
       <td><span class="text-muted"><?php echo $detail->location; ?></span></td>
       
       <?php if (isset($detail->doctor_reminder) && !empty($detail->doctor_reminder)) { ?>
