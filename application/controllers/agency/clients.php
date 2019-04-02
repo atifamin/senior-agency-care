@@ -19,7 +19,7 @@ class Clients extends CI_Controller {
 		$data["breadcrumb"] = "Clients";
 		$data["heading"] = "Our Clients";
 		$data["url_segment"] = "clients";
-		$data["clients"] = $this->Client_model->getAllClients();
+		$data["clients"] = $this->Client_model->getAllClients($this->agency_id);
 		$this->load->view("agency/clients/index",$data);
 	}
 

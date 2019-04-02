@@ -230,13 +230,16 @@ class Client_model extends CI_Model{
         } 
     }
 
-    public function getAllClients(){
+    public function getAllClients($agency_id){
 		$data = $this->db->select("c.*")
 						->from("client c")
 						->join("client_relationship AS cr", "cr.linked_id = c.id", "LEFT")
 						->where("cr.linked_id IS NULL")
+						->where("agency_id", $agency_id)
 						->order_by("c.id", "ASC")
+						->group_by("c.id")
 						->get()->result();
+		
         $data = $this->linkClientsTable($data);
         return $data;
     }
@@ -274,11 +277,24 @@ class Client_model extends CI_Model{
 						->join("client_appointements AS ca", "ca.client_id = c.id", "LEFT")
 						->where("cr.linked_id IS NULL")
 						->where("c.agency_id", $agency_id)
-						->where("ca.title IS NULL")
-                        ->where('ca.date <',  ''.date('Y-m-d').'')
 						->order_by("c.id", "ASC")
 						->group_by("c.id")
 						->get()->result();
+		
+		$scheduleClientsArray = array();
+		if(count($this->scheduledClients($agency_id))>0){
+			foreach($this->scheduledClients($agency_id) as $row){
+				$scheduleClientsArray[] = $row->id;
+			}
+		}
+		
+		if(count($data)>0){
+			foreach($data as $key1=>$row1){
+				if(in_array($row1->id, $scheduleClientsArray)){
+					unset($data[$key1]);
+				}
+			}
+		}
         $data = $this->linkClientsTable($data);
         return $data;
     }
