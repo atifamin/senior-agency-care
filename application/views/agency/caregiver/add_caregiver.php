@@ -104,7 +104,7 @@
                     <select name="from_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
-                      <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                      <option value="<?php echo $i?>"><?php echo $i; ?></option>
                       <?php } ?>
                     </select>
                   </div>
