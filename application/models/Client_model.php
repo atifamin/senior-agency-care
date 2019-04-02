@@ -260,6 +260,7 @@ class Client_model extends CI_Model{
 						->where("cr.linked_id IS NULL")
 						->where("c.agency_id", $agency_id)
 						->where("ca.title <>", '')
+                        ->where('ca.date >=',  ''.date('Y-m-d').'')
 						->order_by("c.id", "ASC")
 						->group_by("c.id")
 						->get()->result();
@@ -274,6 +275,7 @@ class Client_model extends CI_Model{
 						->where("cr.linked_id IS NULL")
 						->where("c.agency_id", $agency_id)
 						->where("ca.title IS NULL")
+                        ->where('ca.date <',  ''.date('Y-m-d').'')
 						->order_by("c.id", "ASC")
 						->group_by("c.id")
 						->get()->result();

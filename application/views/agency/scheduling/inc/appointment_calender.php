@@ -63,7 +63,7 @@
                 <label>Enter appointment date and time: </label>
                 <div class="input-group"> <span class="input-group-prepend">
                   <span class="input-group-text"><i class="icon-alarm"></i></span></span>
-                  <input type="text" name="appointment_date" class="form-control" id="anytime-both" value="">
+                  <input type="text" name="appointment_date" class="form-control" id="anytime-both" placeholder="April 2nd 10:00">
                 </div>
                 <!-- <div class="input-group">
                     <span class="input-group-prepend">
@@ -106,7 +106,7 @@
                       <option value="">Select reminder</option>
                       <?php foreach (CON_DOCTOR_APPOINTMENT_REMINDER as $dockey => $docvalue) { ?>
                       
-                      <option value="<?php echo $docvalue; ?>"><?php echo $docvalue; ?></option>
+                      <option value="<?php echo $dockey; ?>"><?php echo $docvalue; ?></option>
                       
                       <?php } ?>
                     </select>
@@ -120,7 +120,7 @@
                       <option value="">Select reminder</option>
                       <?php foreach (CON_THEROPY_APPOINTMENT_REMINDER as $theropykey => $theropyvalue) { ?>
                       
-                      <option value="<?php echo $theropyvalue; ?>"><?php echo $theropyvalue; ?></option>
+                      <option value="<?php echo $theropykey; ?>"><?php echo $theropyvalue; ?></option>
 
                     <?php } ?>
                     </select>

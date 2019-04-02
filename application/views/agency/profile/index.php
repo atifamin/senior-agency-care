@@ -249,66 +249,77 @@
                   </div>
                   <div class="tab-pane fade" id="companylicense">
                     <div class="row">
-                      <div class="col-md-12">
-                        <div class="card">
-                          <div class="card-header card-header bg-warning text-white header-elements-inline">
-                            <h6 class="card-title">Custom light color</h6>
-                            <div class="header-elements">
-                              <div class="list-icons">
-                                <a class="list-icons-item" data-action="collapse"></a>
-                                <a class="list-icons-item" data-action="reload"></a>
-                                <a class="list-icons-item" data-action="remove"></a>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="card-body">
-                            Card header with custom light colors - add <code>.alpha-*</code> class to card header container
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <?php if(isset($profile_detail->license) && count($profile_detail->license)>0){ ?>
+                      <?php if(isset($profile_detail->license) && count($profile_detail->license)>0){ ?>
                       <?php foreach($profile_detail->license as $licenseKey=>$licenseVal){ ?>
-                        <div class="card" style="margin-bottom:5%">
-                          <div class="card-header alpha-success text-success-800 header-elements-inline">
+                      <?php $fromDate = date("Y-m-d");
+                            $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d");
+                            $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate); 
+                      ?>
+                      <?php if ($difference['days'] < 0) { ?>
+                        <div class="col-md-12">
+                          <div class="card" style="margin-bottom:5%">
+                            <div class="card-header alpha-warning text-warning-800 header-elements-inline">
                             <?php //print_array($licenseVal->media_license_document_detail->full_path); ?>
-                            <h4 class="card-title"><strong><?php echo $licenseVal->state_license; ?></strong></h4>
-                            <div class="header-elements">
-                              <div class="list-icons">
-                                <a class="list-icons-item" data-action="collapse"></a>
-                                <a class="list-icons-item" data-action="reload"></a>
-                                <a class="list-icons-item" data-action="remove"></a>
+                              <h4 class="card-title"><strong><?php echo $licenseVal->state_license; ?></strong></h4>
+                              <div class="header-elements">
+                                <div class="list-icons">
+                                  <a class="list-icons-item" data-action="collapse"></a>
+                                  <a class="list-icons-item" data-action="reload"></a>
+                                  <a class="list-icons-item" data-action="remove"></a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-8">
+                                  <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                  <strong style="font-size: 24px; position: relative; top: 2px;">
+                                <?php
+                                  echo $difference['days'];
+                                ?>
+                                  </strong>&nbsp;Days to expire</span>
+                                </div>
                               </div>
                             </div>
                           </div>
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-8">
-                                <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
-                              </div>
-                              <div class="col-md-4 text-center">
-                                <strong style="font-size: 24px; position: relative; top: 2px;">
-                              <?php
-                              $fromDate = date("Y-m-d");
-                              $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d");
-                              $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
-                                echo $difference['days'];
-                              ?>
-                                </strong>&nbsp;Days to expire</span>
+                          <hr />
+                        </div>  
+                      <?php }elseif ($difference['days'] > 0) { ?>
+                        <div class="col-md-12">
+                          <div class="card" style="margin-bottom:5%">
+                            <div class="card-header alpha-success text-success-800 header-elements-inline">
+                            <?php //print_array($licenseVal->media_license_document_detail->full_path); ?>
+                              <h4 class="card-title"><strong><?php echo $licenseVal->state_license; ?></strong></h4>
+                              <div class="header-elements">
+                                <div class="list-icons">
+                                  <a class="list-icons-item" data-action="collapse"></a>
+                                  <a class="list-icons-item" data-action="reload"></a>
+                                  <a class="list-icons-item" data-action="remove"></a>
+                                </div>
                               </div>
                             </div>
-
-                          <!-- <?php //if(isset($licenseVal->media_license_document_detail) && count($licenseVal->media_license_document_detail)>0){ ?>
-                          <p><strong>Documents</strong></p>
-                          
-                          <a href="<?php //echo base_url.$licenseVal->media_license_document_detail->full_path; ?>" download><?php //echo $licenseVal->media_license_document_detail->name; ?></a> -->
-                          <?php //} ?>
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-8">
+                                  <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                  <strong style="font-size: 24px; position: relative; top: 2px;">
+                                <?php
+                                  echo $difference['days'];
+                                ?>
+                                  </strong>&nbsp;Days to expire</span>
+                                </div>
+                              </div>
+                            </div>
                           </div>
+                          <hr />
                         </div>
-                        <hr />
-                        <?php }} ?>
-                      </div>
+                      <?php } ?>
+                      
+                      <?php }} ?>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="companylogo">

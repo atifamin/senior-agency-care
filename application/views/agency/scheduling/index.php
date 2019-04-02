@@ -1,4 +1,5 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
+<?Php  //print_array($scheduledClients); ?>
 <style>
 .datatable-header, .dataTables_info, thead {
 	display: none;
