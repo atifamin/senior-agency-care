@@ -103,7 +103,6 @@
                   <div class="form-group">
                     <select name="from_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option></option>
-                      <option value="present">Present</option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i?>"><?php echo $i; ?></option>
                       <?php } ?>
@@ -129,6 +128,7 @@
                   <div class="form-group">
                     <select name="to_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option></option>
+                      <option value="present">Present</option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                       <?php } ?>
