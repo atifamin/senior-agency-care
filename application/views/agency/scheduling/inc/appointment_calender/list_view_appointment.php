@@ -23,15 +23,15 @@
       <td><span class="text-muted"><?php echo $detail->location; ?></span></td>
       
       <?php if (isset($detail->doctor_reminder) && !empty($detail->doctor_reminder)) { ?>
-        <td><span class="text-muted"><?php echo $detail->doctor_reminder; ?></span></td>
+        <td><span class="text-muted"><?php foreach (CON_DOCTOR_APPOINTMENT_REMINDER as $dockey => $docvalue) {if($dockey == $detail->doctor_reminder){echo $docvalue;}} ?></span></td>
       <?php } ?>
       <?php if (isset($detail->theropy_reminder) && !empty($detail->theropy_reminder)) { ?>
-        <td><span class="text-muted"><?php echo $detail->theropy_reminder; ?></span></td>
+        <td><span class="text-muted"><?php foreach (CON_THEROPY_APPOINTMENT_REMINDER as $thkey => $thvalue) {if($thkey == $detail->theropy_reminder){echo $thvalue;}} ?></span></td>
       <?php } ?>
       <?php if (empty($detail->doctor_reminder) && empty($detail->theropy_reminder)) { ?>
         <td><span class="text-muted"></span></td>
       <?php  } ?>
-      <td><input type="checkbox" data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small"></td>
+      <td><input type="checkbox" data-on-text="On" data-off-text="Off" class="form-check-input-switch input_switch_edit" checked="" data-size="small"></td>
       <td class="text-center"><div class="list-icons">
           <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
             <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" onclick="edit_appointment(<?php echo $detail->id; ?>)"><i class="icon-square-right"></i> Edit Appointment</a> <a href="javascript:;" class="dropdown-item" onclick="delete_appointment(<?php echo $detail->id; ?>)"><i class="icon-bin2"></i> Delete Appointment</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Appointment</a> </div>
@@ -46,7 +46,8 @@
 
 <script src="<?php echo base_url(); ?>assets/js/plugins/tables/datatables/datatables.min.js"></script> 
 <script>
-  
+    $('.input_switch_edit').uniform();
+
 $("#appointment-datatable-1").DataTable({
   autoWidth: false,
   columnDefs: [{ 

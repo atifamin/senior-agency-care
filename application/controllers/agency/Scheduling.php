@@ -550,7 +550,8 @@ class Scheduling extends CI_Controller {
 		$post['agency_id'] = $this->agency_id;
 		$post['created_by'] = $this->agency_id;
 		$post['created_at'] = date('Y-m-d H:i:s');
-		$post['appointment_date'] = date('Y-m-d H:i:s');
+		$date = $this->input->post('appointment_date');
+		$post['appointment_date'] = date('Y-m-d H:i:s',strtotime($date));
 		//print_array($post);
  	// 	$input_date = $this->input->post('from_date');
 		// $date = explode("-", $input_date);
@@ -577,16 +578,19 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		//print_array($post);
 		$appData = $post;
-		unset($post['appointment_id']);
+		unset($appData['appointment_id']);
 		$appData['agency_id'] = $this->agency_id;
-		$appData['ubdated_by'] = $this->agency_id;
-		$input_date = $this->input->post('from_date');
-		$date = explode("-", $input_date);
-		$appData['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
-		$appData['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
-		//print_array($appData);
+		$appData['updated_by'] = $this->agency_id;
+		$date = $this->input->post('appointment_date');
+		$appData['appointment_date'] = date('Y-m-d H:i:s',strtotime($date));
+		// $input_date = $this->input->post('from_date');
+		// $date = explode("-", $input_date);
+		// $appData['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
+		// $appData['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
 		$this->common_model->updateQuery("client_appointment_calender", "id",$post['appointment_id'], $appData);
-		//print_array();
 		$appointment_detail = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointment_calender");
+		$data['appointment_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],'client_appointment_calender');
+		$data['client_id'] = $appointment_detail->client_id;
+		$this->load->view('agency/scheduling/inc/appointment_calender/list_view_appointment',$data);
 	}
 }

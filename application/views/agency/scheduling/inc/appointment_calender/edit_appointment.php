@@ -23,7 +23,7 @@
       <div class="col-md-8 offset-md-2">
         <div class="form-group">
           <label>Add appointment type</label>
-          <select class="form-control select-icons edit_select_icons" name="appointment_type" id="therapy_type_edit" data-placeholder="Select the type of appointment" data-fouc>
+          <select class="form-control select-icons edit_select_icons" onchange="set_therapy_type()" name="appointment_type" id="therapy_type_edit" data-placeholder="Select the type of appointment" data-fouc>
             <option></option>
             <option <?php if (isset($result->appointment_type)) {if ($result->appointment_type == "Doctor's Appointment") {echo "selected='selected'";}} ?> value="Doctor's Appointment">Doctor's Appointment</option>
             <option <?php if (isset($result->appointment_type)) {if ($result->appointment_type == "Therapy Appointment") {echo "selected = 'selected'";}} ?> value="Therapy Appointment">Therapy Appointment</option>
@@ -35,7 +35,7 @@
     <div class="row" >
       <div class="col-md-8 offset-md-2">
         <div class="form-group">
-          <input type="text" class="form-control" value="<?php echo $result->doctor_name; ?>" name="doctor_name" placeholder="Enter doctor's name">
+          <input type="text" id="therapy_doc_name_edit" class="form-control" value="<?php echo $result->doctor_name; ?>" name="doctor_name" placeholder="Enter doctor's name">
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
         <div class="form-group">
           <label>Enter appointment date and time: </label>
           <div class="input-group"> <span class="input-group-prepend"><span class="input-group-text"><i class="icon-alarm"></i></span></span>
-            <input type="text" name="from_date" value="<?php echo date("m/d/Y",strtotime($result->from_date))." - ".date("m/d/Y",strtotime($result->to_date)); ?>" class="form-control daterange-time edit_daterange" value="">
+            <input type="text" name="appointment_date" id="anytime_change" value="<?php echo date("F jS H:s",strtotime($result->appointment_date)); ?>" class="form-control" >
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
       <div class="col-md-12">
         
         <?php if (isset($result->appointment_type) && $result->appointment_type == "Doctor's Appointment") { ?>
-        <div class="row">
+        <div class="row" id="appointment_set_reminder_doctor_edit">
           <div class="col-md-8 offset-md-2">
             <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
               <select class="form-control multiselect" name="doctor_reminder" data-fouc>
@@ -93,14 +93,14 @@
         <?php } ?>
         
         <?php if (isset($result->appointment_type) && $result->appointment_type == "Therapy Appointment") { ?>
-        <div class="row" >
+        <div class="row" id="appointment_set_reminder_therapy_edit">
           <div class="col-md-8 offset-md-2">
             <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
               <select class="form-control multiselect" name="theropy_reminder" data-fouc>
                 <option value="">Select reminder</option>
                 <?php foreach (CON_THEROPY_APPOINTMENT_REMINDER as $theropykey => $theropyvalue) { ?>
 
-                <option value="<?php echo $theropykey; ?>" <?php if($theropykey == $result->theropy_reminder){echo "selected='selected'";} ?>><?php echo $theropyvalue; ?></option>
+                <option value="<?php echo $theropykey; ?>" <?php if($theropykey == $result->theropy_reminder){echo "selected='selected'";} ?> ><?php echo $theropyvalue; ?></option>
 
                 <?php } ?>
               </select>
@@ -119,6 +119,10 @@
 </form>
 
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
 <script type="text/javascript">
 
   $('#appointment_reminder_checkbox_edit').click(function(){
@@ -129,9 +133,22 @@
         $("#appointment_set_reminder_edit").css("display","none");
     }
 });
+  function set_therapy_type(){
+    var type = $("#therapy_type_edit").val();
+    if(type == "Doctor's Appointment"){
+      $("#therapy_doc_name_edit").css("display","block");
+      $("#appointment_set_reminder_doctor_edit").css("display","block");
+      $("#appointment_set_reminder_therapy_edit").css("display","none");
+    }else if (type == "Therapy Appointment"){
+      $("#therapy_doc_name_edit").css("display","none");
+      $("#appointment_set_reminder_therapy_edit").css("display","block");
+      $("#appointment_set_reminder_doctor_edit").css("display","none");
+    }
+  }
 
   $('#update_client_appointment_form').on('submit',function(e){
     e.preventDefault();
+    loader = CardLoader($("#update_client_appointment_form"));
     var formData = new FormData($(this)[0]);
     formData.append('client_id',<?php echo $client->id; ?>);
     $.ajax({
@@ -142,14 +159,28 @@
       contentType: false,
       processData: false,
       success: function(data){
-        console.log(data);
+        $("#edit_appointment_div").html(data);
+        $("#modal_edit_appointment").modal("hide");
+        swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have updated appointment calender successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          location.reload();
+        });
+        loader.unblock();        
       }
     });
   });
 
-  $('.edit_daterange').daterangepicker();
+  
   $('.edit_select_icons').select2();
   $('.form-check-input-styled').uniform();
   $('.multiselect').multiselect();
+  // $('.anytime').picker();
+  $('#anytime_change').AnyTime_picker({
+            format: '%M %D %H:%i',
+        });
 
 </script>

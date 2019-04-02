@@ -260,6 +260,7 @@ class Client_model extends CI_Model{
 						->where("cr.linked_id IS NULL")
 						->where("c.agency_id", $agency_id)
 						->where("ca.title <>", '')
+                        ->where('ca.date >=',  ''.date('Y-m-d').'')
 						->order_by("c.id", "ASC")
 						->group_by("c.id")
 						->get()->result();
@@ -274,6 +275,7 @@ class Client_model extends CI_Model{
 						->where("cr.linked_id IS NULL")
 						->where("c.agency_id", $agency_id)
 						->where("ca.title IS NULL")
+                        ->where('ca.date <',  ''.date('Y-m-d').'')
 						->order_by("c.id", "ASC")
 						->group_by("c.id")
 						->get()->result();
@@ -406,19 +408,27 @@ class Client_model extends CI_Model{
 	}
 	
 	public function check_availability($caregiverId, $from, $to){
-		$QUERY = "SELECT
-				SUM( IF( '".$from."'  - INTERVAL 1 SECOND BETWEEN CONCAT(ca.`date`, ' ', ca.in_time) AND CONCAT(ca.`date`, ' ', ca.out_time), 1, 0 ) ) AS inTimeExists,
-       			SUM( IF( '".$to."'  - INTERVAL 1 SECOND BETWEEN CONCAT(ca.`date`, ' ', ca.in_time) AND CONCAT(ca.`date`, ' ', ca.out_time), 1, 0 ) ) AS outTimeExists
-				FROM client_appointements AS ca
-				WHERE DATE(ca.`date`) >= DATE(NOW())
-				AND ca.caregiver_id = ".$caregiverId."";
-		$query_run = $this->db->query($QUERY);
-		$query_row = $query_run->row();
-		if($query_row->inTimeExists==0 && $query_row->outTimeExists==0){
-			return true;
-		}else{
-			return 0;
+		$to = date('Y-m-d H:i:s', strtotime("-5 minute", strtotime($to)));
+		$from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
+		$dates = array();
+		while($from <= $to) {
+			$dates[] = $from;
+			$from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
 		}
+		foreach($dates as $date){
+			$QUERY = "SELECT
+					SUM( IF( '".$date."'  - INTERVAL 1 SECOND BETWEEN CONCAT(ca.`date`, ' ', ca.in_time) AND CONCAT(ca.`date`, ' ', ca.out_time), 1, 0 ) ) AS inTimeExists,
+					SUM( IF( '".$to."'  - INTERVAL 1 SECOND BETWEEN CONCAT(ca.`date`, ' ', ca.in_time) AND CONCAT(ca.`date`, ' ', ca.out_time), 1, 0 ) ) AS outTimeExists
+					FROM client_appointements AS ca
+					WHERE DATE(ca.`date`) >= DATE(NOW())
+					AND ca.caregiver_id = ".$caregiverId."";
+			$query_run = $this->db->query($QUERY);
+			$query_row = $query_run->row();
+			if($query_row->inTimeExists==1 || $query_row->outTimeExists==1){
+				return 0;
+			}
+		}
+		return true;
 	}
 }
 

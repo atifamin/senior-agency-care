@@ -103,14 +103,10 @@
                   <div class="form-group">
                     <select name="from_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option></option>
-                      <?php $p=present; ?>
-                      <option value="present"><?php echo $p; ?></option>
-
-                      
+                      <option value="present">Present</option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
-                      <option value="<?php echo $i."".$p; ?>"><?php echo $i; ?></option>
+                      <option value="<?php echo $i?>"><?php echo $i; ?></option>
                       <?php } ?>
-
                     </select>
                   </div>
                 </div>
