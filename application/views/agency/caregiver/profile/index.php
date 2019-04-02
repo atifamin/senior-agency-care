@@ -312,7 +312,7 @@
 								// <span class="bg-dark py-1 px-2 rounded"><span class="text-white">C.N.A Certified Nurse Assistant</span></span>
 									?>
 								</div>
-								<div class="tab-pane fade" id="valid_state_license">
+								<!-- <div class="tab-pane fade" id="valid_state_license">
 								    <strong>Valid State Liscence:</strong>
 								    <?php if(isset($detail->license) && count($detail->license)>0){ ?>
 									<?php foreach($detail->license as $licenseKey=>$licenseVal){ ?>
@@ -329,7 +329,73 @@
 			                          	<?php } ?>
 			                          	</div>
                         			</div><?php }?><?php }?>
-								</div>
+								</div> -->
+								<div class="tab-pane fade" id="valid_state_license">
+									<?php if(isset($detail->license) && count($detail->license)>0){ ?>
+				                    <?php foreach($detail->license as $licenseKey=>$licenseVal){ ?>
+				                    	<?php
+			                              	$current = date('Y-m-d H:i:s');
+			                              	$fromDate = date("Y-m-d");
+			                              	$toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d");
+			                              	$difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate);
+			                                if ($difference['days'] >= 0) { ?> 
+			                                	<div class="col-md-12">
+							                        <div class="card" style="margin-bottom:5%">
+							                          <div class="card-header alpha-success text-success-800 header-elements-inline">
+							                          	<h4 class="card-title"><strong><?php echo $licenseVal->state_license; ?></strong></h4>
+							                            <div class="header-elements">
+							                              <div class="list-icons">
+							                                <a class="list-icons-item" data-action="collapse"></a>
+							                                <a class="list-icons-item" data-action="reload"></a>
+							                                <a class="list-icons-item" data-action="remove"></a>
+							                              </div>
+							                            </div>
+							                          </div>
+							                          <div class="card-body">
+							                            <div class="row">
+							                              <div class="col-md-8">
+							                                <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
+							                              </div>
+							                              <div class="col-md-4 text-center">
+							                                <strong style="font-size: 24px; position: relative; top: 2px;">
+							                              	<?php echo $difference['days']; ?>
+							                                </strong>&nbsp;Days to expire</span>
+							                              </div>
+							                            </div>
+							                          </div>
+							                        </div>
+						                      	</div>
+			                                <?php }elseif ($difference['days'] < 0){ ?>
+			                                	<div class="col-md-12">
+							                        <div class="card" style="margin-bottom:5%">
+							                          	<div class="card-header alpha-warning text-warning header-elements-inline">
+							                            	<h4 class="card-title"><strong><?php echo $licenseVal->state_license; ?></strong></h4>
+							                            	<div class="header-elements">
+							                             	 	<div class="list-icons">
+							                                		<a class="list-icons-item" data-action="collapse"></a>
+							                                		<a class="list-icons-item" data-action="reload"></a>
+							                                		<a class="list-icons-item" data-action="remove"></a>
+							                             	 	</div>
+							                            	</div>
+							                          	</div>
+							                         	<div class="card-body">
+							                            	<div class="row">
+							                              <div class="col-md-8">
+							                                <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
+							                              </div>
+							                              <div class="col-md-4 text-center">
+							                                <strong style="font-size: 24px; position: relative; top: 2px;">
+							                              	<?php echo $difference['days']; ?>
+							                                </strong>&nbsp;Days to expire</span>
+							                              </div>
+							                            </div>
+							                          	</div>
+							                        </div>
+							                    </div>
+			                                <?php }
+			                              	?>
+			                      <?php }} ?>
+		                      	</div>
 							</div>
 						</div>
 					</div>

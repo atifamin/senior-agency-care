@@ -55,9 +55,9 @@
     <div class="modal-content">
       <form id="add_client_appointement_form">
         <div class="modal-header">
-          <h3 class="modal-title" style="margin: 0 auto;padding:4% 0"><strong>Create A New Appointment</strong></h3>
+          <h3 class="modal-title" style="margin: 0 auto; padding-bottom: 25px;"><strong>Create A New Appointment</strong></h3>
           <div>
-            <li class="media">
+            <li class="media" style="padding: unset; border: none;">
               <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo base_url("assets/images/placeholders/avatar.png"); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
               <div class="media-body">
                 <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></div>

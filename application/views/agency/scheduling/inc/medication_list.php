@@ -21,7 +21,7 @@
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto;">Add client medication</h5>
           <div>
-            <li class="media">
+            <li class="media" style="padding: unset; border: none;">
               <input type="hidden" name="client_id" id="client_id" value="<?php echo $client_id; ?>">
               <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"><img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40"></a> </div>
               <div class="media-body">
