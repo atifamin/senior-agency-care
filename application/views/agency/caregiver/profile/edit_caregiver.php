@@ -137,6 +137,7 @@
                   <div class="form-group">
                     <select name="to_year" data-placeholder="Year" class="form-control select-search-basic" data-fouc>
                       <option></option>
+                      <option value="present">Present</option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
                       <option value="<?php echo $i; ?>"<?php if($detail->to_year == $i){echo 'selected="selected"';}?>><?php echo $i; ?></option>
                       <?php } ?>

@@ -13,7 +13,7 @@
 <div class="row">
   <div class="col-md-12">
     <form id="client_dietry_needs">
-        <input type="hidden" name="dietry_needs_id" value="<?php echo $dietry_needs_detail->id; ?>">
+        <input type="hidden" name="dietry_needs_id" value="<?php if(count($dietry_needs_detail)){echo $dietry_needs_detail->id;} ?>">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group pt-2">
