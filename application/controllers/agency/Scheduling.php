@@ -51,8 +51,7 @@ class Scheduling extends CI_Controller {
 	
 	public function load_calendar(){
 		$post = $this->input->post();
-		$data['events'] = $this->Client_model->load_client_appointement_events($post['client_id']);
-		$data['client_id'] = $post['client_id'];
+		$data = $this->Schedule_model->load_calendar($post);
 		$this->load->view("agency/scheduling/inc/scheduling/load_calendar",$data);
 	}
 	
@@ -64,18 +63,7 @@ class Scheduling extends CI_Controller {
 	
 	public function assign_caregiver(){
 		$post = $this->input->post();
-		$caregivers = explode(",", $post["caregivers_id"]);
-		$client_id = $post['client_id'];
-		foreach($caregivers as $caregiver_id){
-			$checkIfCaregiverAssigned = $this->common_model->listingMultipleWhereRow("client_caregiver_relationship", array("client_id"=>$client_id, "caregiver_id"=>$caregiver_id));
-			if(count($checkIfCaregiverAssigned)<=0){
-				$this->common_model->insertQuery("client_caregiver_relationship", array(
-					"client_id"	=>	$client_id,
-					"caregiver_id"	=>	$caregiver_id
-				));
-			}
-		}
-		$data['assignedCargivers'] = $this->common_model->listingResultWhere("client_id",$client_id,"client_caregiver_relationship");
+		$data = $this->Schedule_model->assign_caregiver($post);
 		$this->load->view("agency/scheduling/inc/scheduling/view_assigned_caregivers", $data);
 	}
 	
@@ -86,7 +74,65 @@ class Scheduling extends CI_Controller {
 	
 	public function add_client_appointement(){
 		$post = $this->input->post();
-		$message = $this->Schedule_model->add_client_appointement($post);
+		$dates = explode(",", $post["dates"]);
+		$message['type'] = 'success';
+		$message['error_detail'] = array();
+		$addedIds = array();
+		foreach($dates as $date){
+			unset($post['dates']);
+			$client_detail = $this->common_model->listingRow("id",$post['client_id'],"client");
+			$post['parent_id'] = 0;
+			$post['title'] = $client_detail->first_name." ".$client_detail->last_name." Appointement";
+			$post['date'] = date("Y-m-d", strtotime($date));
+			$post['in_time'] = date("H:i:s", strtotime($post['in_time']));
+			$post['out_time'] = date("H:i:s", strtotime($post['out_time']));
+			//$post['color'] = randomString($length = 6);
+			$post['created_by'] = $this->agency_id;
+			$post['created_at'] = date("Y-m-d H:i:s");
+			$post['updated_by'] = $this->agency_id;
+			$post['updated_at'] = date("Y-m-d H:i:s");
+			
+			$from = date("Y-m-d H:i:s ", strtotime($date." ".$post['in_time']));
+			$to = date("Y-m-d H:i:s ", strtotime($date." ".$post['out_time']));
+			$checkIfCargiverIsAvailable = $this->Client_model->check_availability($post['caregiver_id'], $from, $to);
+			$parent_id = 0;
+			if($checkIfCargiverIsAvailable){
+				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $post);
+				$addedIds[] = $parent_id;
+			}else{
+				$message['type'] = 'error';
+				$message['error_detail'][] = (object)array("from"=>date("M, d Y h:i A", strtotime($from)), "to"=>date("M, d Y h:i A", strtotime($to)));
+			}
+			if(isset($post['is_recurring']) && $post['is_recurring']==1){
+				$post['parent_id'] = $parent_id;
+				if($post['is_recurring']==0){
+					$post['recurring_months'] = 0;
+				}
+				$message = $this->add_recurring_appointments($post, $date, $message);
+			}
+		}
+		
+		if($message['type'] == 'success'){
+			$m = '';
+			if(count($addedIds)>0){
+				$lastAddedClient = $this->common_model->listingRow("id",$post['client_id'],"client");
+				
+				$m .= '<p>Here is the summary of '.$lastAddedClient->first_name.' '.$lastAddedClient->last_name.'\'s created schedule.</p>';
+				foreach($addedIds as $addedId){
+					$lastAddedAppointment = $this->common_model->listingRow("id",$addedId,"client_appointements");
+					
+					$lastAddedCaregiver = $this->common_model->listingRow("id",$lastAddedAppointment->caregiver_id,"caregiver");
+					$m .= '
+					<br>
+					<table class="table">
+					<thead><tr><td colspan="3">'.date("l d, Y", strtotime($lastAddedAppointment->date)).'</td></tr></thead>
+					<tbody><tr><td>'.date("h:i A", strtotime($lastAddedAppointment->in_time)).' - '.date("h:i A", strtotime($lastAddedAppointment->out_time)).'</td><td><span class="fc-event-dot" style="background-color:#546E7A"></span></td><td><img src="'.caregiver_image($lastAddedCaregiver->id).'" class="rounded-circle" width="40" height="40" alt=""> '.$lastAddedCaregiver->first_name.' '.$lastAddedCaregiver->last_name.'</td></tr></tbody>
+					</table>
+					';
+				}
+				$message['error_detail'] = $m;
+			}
+		}
 		echo json_encode($message);
 	}
 	
