@@ -356,11 +356,12 @@
 							                              <div class="col-md-8">
 							                                <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
 							                                <p><?php if(isset($licenseVal->license_document->name)) {echo $licenseVal->license_document->name;} ?></p>
+							                                <?php if(isset($licenseVal->license_document->file_size)) {echo "Size:"." ".$licenseVal->license_document->file_size;}?>
 							                              </div>
 							                              <div class="col-md-4 text-center">
 							                                <strong style="font-size: 24px; position: relative; top: 2px;">
-							                              	<?php echo $difference['days']; ?>
-							                                </strong>&nbsp;Days to expire</span>
+							                              	<?php echo $difference['days']; ?> Days
+							                                </strong><br>To expire</span>
 							                              </div>
 							                            </div>
 							                          </div>
@@ -375,7 +376,7 @@
 							                             	 	<div class="list-icons">
 							                                		<a class="list-icons-item" data-action="collapse"></a>
 							                                		<a class="list-icons-item" data-action="reload"></a>
-							                                		<a class="list-icons-item" data-action="remove"></a>
+							                                		<a href="javascript:;" onclick="delete_licence('<?php echo $licenseVal->id;?>');" class="list-icons-item" data-action="remove"></a>
 							                             	 	</div>
 							                            	</div>
 							                          	</div>
@@ -384,11 +385,12 @@
 							                              <div class="col-md-8">
 							                                <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
 							                                <p><?php if(isset($licenseVal->license_document->name)) {echo $licenseVal->license_document->name;} ?></p>
+							                                <?php if(isset($licenseVal->license_document->file_size)) {echo "Size:"." ".$licenseVal->license_document->file_size;}?>
 							                              </div>
 							                              <div class="col-md-4 text-center">
 							                                <strong style="font-size: 24px; position: relative; top: 2px;">
-							                              	<?php echo $difference['days']; ?>
-							                                </strong>&nbsp;Days to expire</span>
+							                              	<?php echo abs($difference['days']); ?> Days
+							                                </strong><br><p style="color:#ff7043;">Expired</p></span>
 							                              </div>
 							                            </div>
 							                          	</div>
@@ -409,4 +411,24 @@
 </div>
 
 <script src="<?php echo base_url();?>assets/js/demo_pages/components_progress.js"></script>
+
+<script type="text/javascript">
+
+	function delete_licence(id){
+		alert(id);
+		$.ajax({
+			type:'post',
+			url:'<?php ?>',
+			data:{id:id},
+			datatype: 'html',
+			success: function(data){
+				$("#"+id+"").remove();
+			}
+		});
+	}
+
+</script>
+
+
+
 <?php include(APPPATH."views/agency/inc/footer.php");?>
