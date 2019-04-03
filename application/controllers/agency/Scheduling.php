@@ -12,7 +12,7 @@ class Scheduling extends CI_Controller {
     	//LoggedIn User ID
 		$userSession = $this->session->userdata("isAgencyLoggedIn");
 		$this->agency_id = $userSession['user_id'];
-		$this->load->model(array("Client_model", "Caregiver_model"));
+		$this->load->model(array("Client_model", "Caregiver_model", "Schedule_model"));
 	}
 
 	public function index(){
@@ -45,7 +45,7 @@ class Scheduling extends CI_Controller {
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_vital_reports");
 		$data['shopping_list_detail'] =$this->common_model->listingResultWhere('client_id',$client_id,"client_shopping_list");
 		$data['appointment_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_appointment_calender");
-		$data['dietry_needs_detail'] =$this->common_model->listingRow("client_id",$client_id,"client_dietry_needs");;
+		$data['dietry_needs_detail'] =$this->common_model->listingRow("client_id",$client_id,"client_dietry_needs");
 		$this->load->view("agency/scheduling/scheduling",$data);
 	}
 	
@@ -333,18 +333,10 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_new_medication(){
 		$post = $this->input->post();
-		$result = $post;
-		$result['agency_id'] = $this->agency_id;
-		$result['created_by'] = $this->agency_id;
-		$result['created_at'] = date('Y-m-d H:i:s');
-		if (isset($post['day_period_time'])) {
-			$result['day_period_time'] = json_encode($post['day_period_time']);
-		}
-		$this->common_model->insertGetIDQuery("client_medication_list", $result);
-		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_medication_list");
-		$data['client_id'] = $post['client_id'];
-		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
+		$data = $this->Schedule_model->add_new_medication($post);
+		$this->load->view("agency/scheduling/inc/medication_list/list_view", $data);
 	}
+	
 	public function update_medication_list(){
 		$post = $this->input->post();
 		//print_array($post);
