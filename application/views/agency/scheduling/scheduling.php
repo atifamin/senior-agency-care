@@ -1,4 +1,10 @@
 <?php include(APPPATH."views/agency/inc/header.php");?>
+<?php
+	$sess = "";
+if($this->session->userdata("redirect")){
+	$sess = $this->session->userdata("redirect");
+}
+?>
 <?php //print_array($relationshipDetails); ?>
 <style>
 .navbar-light .active>.navbar-nav-link, .navbar-light .navbar-nav-link.active, .navbar-light .navbar-nav-link.show, .navbar-light .show>.navbar-nav-link {
@@ -49,40 +55,40 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-demo-light">
                   <ul class="nav navbar-nav">
-                    <li class="nav-item dropdown"> <a href="#schedule" class="sub_car_pane navbar-nav-link active" data-toggle="tab"> <i class="icon-calendar3 mr-2"></i> Schedule </a> </li>
-                    <li class="nav-item dropdown"> <a href="#medication_list" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-gear mr-2"></i> Medication List </a> </li>
-                    <li class="nav-item dropdown"> <a href="#dietry_needs" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-collaboration mr-2"></i> Dietry Needs </a> </li>
-                    <li class="nav-item dropdown"> <a href="#appointment_calender" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-users4 mr-2"></i> Appointment Calender </a> </li>
-                    <li class="nav-item dropdown"> <a href="#vital_reports" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-collaboration mr-2"></i> Vital Reports </a> </li>
-                    <li class="nav-item dropdown"> <a href="#notice_board" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-collaboration mr-2"></i> Notice Board </a> </li>
-                    <li class="nav-item dropdown"> <a href="#shopping_list" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-vcard mr-2"></i> Shopping List </a> </li>
-                    <li class="nav-item dropdown"> <a href="#client_bio" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-users4 mr-2"></i> Client Bio </a> </li>
+                    <li class="nav-item dropdown"> <a href="#schedule" class="sub_car_pane navbar-nav-link <?php if($sess=='schedule' || $sess==''){echo 'active show';} ?>" data-toggle="tab" onclick="set_redirection('schedule')"> <i class="icon-calendar3 mr-2"></i> Schedule </a> </li>
+                    <li class="nav-item dropdown"> <a href="#medication_list" class="sub_car_pane navbar-nav-link <?php if($sess=='medication_list'){echo 'active show';} ?>" data-toggle="tab" onclick="set_redirection('medication_list')"> <i class="icon-gear mr-2"></i> Medication List </a> </li>
+                    <li class="nav-item dropdown"> <a href="#dietry_needs" class="sub_car_pane navbar-nav-link <?php if($sess=='dietry_needs'){echo 'active show';} ?>" data-toggle="tab" onclick="set_redirection('dietry_needs')"> <i class="icon-collaboration mr-2"></i> Dietry Needs </a> </li>
+                    <li class="nav-item dropdown"> <a href="#appointment_calender" class="sub_car_pane navbar-nav-link <?php if($sess=='appointment_calender'){echo 'active show';} ?>" data-toggle="tab" onclick="set_redirection('appointment_calender')"> <i class="icon-users4 mr-2"></i> Appointment Calender </a> </li>
+                    <li class="nav-item dropdown"> <a href="#vital_reports" class="sub_car_pane navbar-nav-link <?php if($sess=='vital_reports'){echo 'active show';} ?>" data-toggle="tab" onclick="set_redirection('vital_reports')"> <i class="icon-collaboration mr-2"></i> Vital Reports </a> </li>
+                    <li class="nav-item dropdown"> <a href="#notice_board" class="sub_car_pane navbar-nav-link <?php if($sess=='notice_board'){echo 'active show';} ?>" data-toggle="tab" onclick="set_redirection('notice_board')"> <i class="icon-collaboration mr-2"></i> Notice Board </a> </li>
+                    <li class="nav-item dropdown"> <a href="#shopping_list" class="sub_car_pane navbar-nav-link <?php if($sess=='shopping_list'){echo 'active show';} ?>" data-toggle="tab" onclick="set_redirection('shopping_list')"> <i class="icon-vcard mr-2"></i> Shopping List </a> </li>
+                    <li class="nav-item dropdown"> <a href="#client_bio" class="sub_car_pane navbar-nav-link <?php if($sess=='client_bio'){echo 'active show';} ?>" data-toggle="tab" onclick="set_redirection('client_bio')"> <i class="icon-users4 mr-2"></i> Client Bio </a> </li>
                   </ul>
                 </div>
               </div>
               <div class="card card-body border-top-0 rounded-0 rounded-bottom tab-content" style="margin-bottom:0px !important;">
-                <div class="tab-pane fade active show" id="schedule">
+                <div class="tab-pane fade <?php if($sess=='schedule' || $sess==''){echo 'active show';} ?>" id="schedule">
                   <?php include(APPPATH."views/agency/scheduling/inc/scheduling.php"); ?>
                 </div>
-                <div class="tab-pane fade" id="medication_list">
+                <div class="tab-pane fade <?php if($sess=='medication_list'){echo 'active show';} ?>" id="medication_list">
                   <?php include(APPPATH."views/agency/scheduling/inc/medication_list.php"); ?>
                 </div>
-                <div class="tab-pane fade" id="dietry_needs">
+                <div class="tab-pane fade <?php if($sess=='dietry_needs'){echo 'active show';} ?>" id="dietry_needs">
                   <?php include(APPPATH."views/agency/scheduling/inc/dietry_needs.php"); ?>
                 </div>
-                <div class="tab-pane fade" id="appointment_calender">
+                <div class="tab-pane fade <?php if($sess=='appointment_calender'){echo 'active show';} ?>" id="appointment_calender">
                   <?php include(APPPATH."views/agency/scheduling/inc/appointment_calender.php"); ?>
                 </div>
-                <div class="tab-pane fade" id="vital_reports">
+                <div class="tab-pane fade <?php if($sess=='vital_reports'){echo 'active show';} ?>" id="vital_reports">
                   <?php include(APPPATH."views/agency/scheduling/inc/vital_reports.php"); ?>
                 </div>
-                <div class="tab-pane fade" id="notice_board">
+                <div class="tab-pane fade <?php if($sess=='notice_board'){echo 'active show';} ?>" id="notice_board">
                   <?php include(APPPATH."views/agency/scheduling/inc/notice_board.php"); ?>
                 </div>
-                <div class="tab-pane fade" id="shopping_list">
+                <div class="tab-pane fade <?php if($sess=='shopping_list'){echo 'active show';} ?>" id="shopping_list">
                   <?php include(APPPATH."views/agency/scheduling/inc/shopping_list.php"); ?>
                 </div>
-                <div class="tab-pane fade" id="client_bio">
+                <div class="tab-pane fade <?php if($sess=='client_bio'){echo 'active show';} ?>" id="client_bio">
                   <?php include(APPPATH."views/agency/scheduling/inc/client_bio.php"); ?>
                 </div>
               </div>
@@ -93,7 +99,12 @@
     </li>
   </ul>
 </div>
+
 <script>
+function set_redirection(val){
+	$.post("<?php echo site_url("agency/scheduling/set_redirection"); ?>", {val:val}).done(function(){});
+}
+
 $(".sub_car_pane").on("click", function(){
 	$("#navbar-demo-light").removeClass("show");
 });
