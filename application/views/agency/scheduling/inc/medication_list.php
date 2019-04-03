@@ -134,7 +134,7 @@
 <script>
 
 $("#add_client_medication_form").on("submit", function(e){
-	loader = CardLoader($("#modal_add_medication"));
+	loader = CardLoader($("#add_client_medication_form"));
 	e.preventDefault();
 	var formData = new FormData($(this)[0]);
 	formData.append("client_id", <?php echo $client_id; ?>);
