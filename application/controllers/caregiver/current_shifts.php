@@ -12,18 +12,16 @@ class Current_shifts extends CI_Controller {
 		//LoggedIn Caregiver ID
 		$sessionData = $this->session->userdata("isCaregiverLoggedIn");
 		$this->caregiver_id = $sessionData['user_id'];
+		$this->load->model('Caregiver_model');
 	}
 	
 	public function index(){
 		$data["breadcrumb"] = "Notice Board";
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";
+		//$data['caregiver_id'] = $this->caregiver_id;
+		$data['shift_detail'] = $this->Caregiver_model->shift_detail($this->caregiver_id);
 		$this->load->view('caregiver/currentshifts/index',$data);
 	}
-	/*public function design(){
-		$data["breadcrumb"] = "Notice Board";
-		$data["heading"] = "Notice Board";
-		$data["url_segment"] = "notice board";
-		$this->load->view('caregiver/currentshifts/index',$data);
-	}*/
+	
 }
