@@ -356,7 +356,7 @@
 							                              <div class="col-md-8">
 							                                <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
 							                                <p><?php if(isset($licenseVal->license_document->name)) {echo $licenseVal->license_document->name;} ?></p>
-							                                <?php if(isset($licenseVal->license_document->file_size)) {echo "Size:"." ".$licenseVal->license_document->file_size;}?>
+							                                <?php if(isset($licenseVal->license_document->file_size)) {echo "Size:"." ".$licenseVal->license_document->file_size." "."Mb";}?>
 							                              </div>
 							                              <div class="col-md-4 text-center">
 							                                <strong style="font-size: 24px; position: relative; top: 2px;">
@@ -381,11 +381,11 @@
 							                            	</div>
 							                          	</div>
 							                         	<div class="card-body">
-							                            	<div class="row">
+							                            	<div class="row" id="licence_row">
 							                              <div class="col-md-8">
 							                                <p><strong>From:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_from_month].", ".$licenseVal->valid_from_year; ?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>To:</strong>&nbsp;&nbsp;<?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
 							                                <p><?php if(isset($licenseVal->license_document->name)) {echo $licenseVal->license_document->name;} ?></p>
-							                                <?php if(isset($licenseVal->license_document->file_size)) {echo "Size:"." ".$licenseVal->license_document->file_size;}?>
+							                                <?php if(isset($licenseVal->license_document->file_size)) {echo "Size:"." ".$licenseVal->license_document->file_size." "."Mb";}?>
 							                              </div>
 							                              <div class="col-md-4 text-center">
 							                                <strong style="font-size: 24px; position: relative; top: 2px;">
@@ -415,14 +415,20 @@
 <script type="text/javascript">
 
 	function delete_licence(id){
-		alert(id);
+		//alert(id);
 		$.ajax({
 			type:'post',
-			url:'<?php ?>',
+			url:'<?php echo site_url("agency/caregiver/delete_license"); ?>',
 			data:{id:id},
 			datatype: 'html',
 			success: function(data){
-				$("#"+id+"").remove();
+				$("#licence_row"+id+"").remove();
+				swal({
+					title: 'Deleted',
+					text: 'You have successfully deleted a State License!',
+					confirmButtonText: 'Ok',
+					type: 'error'
+				});
 			}
 		});
 	}
