@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-
+<?php //print_array($shift_detail); ?>
 <div class="card">
   <div class="card-header header-elements-inline" style="padding-bottom: 0px;">
     <div style="margin: 0 auto;">
@@ -33,6 +33,8 @@
         <h5 style="font-weight: 500; margin-bottom: 0;">Current Shifts</h5>
       </div>
     </div>
+    <?php if (count($shift_detail) >0 ) {
+      foreach ($shift_detail as $detail) { ?>
     <div class="row">
       <div class="col-md-12">
         <ul class="media-list media-list-linked">
@@ -130,6 +132,9 @@
         </ul>
       </div>
     </div>
+    <?php } }?>
+     
+
   </div>
 </div>
 
