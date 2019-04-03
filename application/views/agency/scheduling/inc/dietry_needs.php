@@ -55,6 +55,20 @@
     </form>
   </div>
 </div>
+<!-- <div class="row">
+  <div class="col-md-12" style="margin: 15px 0px 0px 10px;">
+    <label class="d-block font-weight-semibold">Client's dietry requirements</label>
+    <p><?php foreach (CON_CLIENT_DIETRY_REQUIREMENT as $dietkey => $dietvalue){if($dietkey == $dietry_needs_detail->dietry_requirements) {echo $dietvalue;}}  ?></p>
+  </div>
+  <div class="col-md-12" style="margin: 15px 0px 0px 10px;">
+    <label class="d-block font-weight-semibold">Client's fluid requirements</label>
+    <p><?php foreach (CON_CLIENT_FLUID_REQUIREMENT as $flukey => $fluvalue){if($flukey == $dietry_needs_detail->fluid_requirements) {echo $fluvalue;}}  ?></p>
+  </div>
+  <div class="col-md-12" style="margin: 15px 0px 0px 10px;">
+    <label class="d-block font-weight-semibold">List client's known food and medication allergies</label>
+    <p><?php if(count($dietry_needs_detail)>0){echo $dietry_needs_detail->allergies_list;} ?></p>
+  </div>
+</div> -->
  
 
 <script type="text/javascript">
