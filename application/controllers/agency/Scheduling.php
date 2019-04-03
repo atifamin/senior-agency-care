@@ -23,9 +23,12 @@ class Scheduling extends CI_Controller {
 		$data["notScheduledClients"] = $this->Client_model->notScheduledClients($this->agency_id);
 		$this->load->view("agency/scheduling/index",$data);
 	}
+	
+	public function set_redirection(){
+		$this->session->set_userdata("redirect", $this->input->post("val"));
+	}
 
 	public function view($client_id){
-		//$this->Client_model->check_availability(2, '2019-03-27 03:00:00', '2019-03-27 07:00:00');
 		$data["breadcrumb"] = "Scheduling";
 		$data["heading"] = "Scheduling";
 		$data["url_segment"] = "scheduling";
