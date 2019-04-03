@@ -137,11 +137,6 @@ class Caregiver_model extends CI_Model{
 		return count($QUERY);
 	}
 	public function shift_detail($caregiver_id){
-		//print_array($caregiver_id);
-		//$caregiver_id = $this->common_model->listingRow("id",$caregiver_id,"caregiver");
-		 //$caregiver_id = $this->common_model->listingResultWhere("id",$caregiver_id,'caregiver');
-		//$data = $this->db->query('SELECT * FROM client_appointements WHERE caregiver_id = '.$caregiver_id.' AND date >= '.date('Y-m-d').'')->result();
-		//print_array($data);
 		$data = $this->db->select('*')
 						->from("client_appointements AS ca")
 						->where("ca.caregiver_id", $caregiver_id)
