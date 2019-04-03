@@ -19,9 +19,9 @@
     <div class="row">
       <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
     </div>
-    <div class="row" style="margin-top: 35px;">
-      <div class="col-md-4 offset-md-4" > <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a> <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple pull-right">CLOCK OUT</a> </div>
-      <div class="col-md-2 offset-md-4" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;">You have not clocked in yet.Please clock in now</span> </div>
+    <div class="row" style="margin-top: 35px; text-align:center;">
+      <div class="col-md-12" > <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a> <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple pull-right">CLOCK OUT</a> </div>
+      <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;">You have not clocked in yet.Please clock in now</span> </div>
     </div>
     <div id="clock_in_time" style="display: none;">
       <div class="row">
