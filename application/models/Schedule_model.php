@@ -173,6 +173,152 @@ class Schedule_model extends CI_Model{
 		return $data;
 	}
 
+	public function add_vital_report($post){
+		$data=$post;
+		$input_date = $this->input->post('from_date');
+		$date = explode(" - ", $input_date);
+		$post['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
+		$post['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
+		$post['agency_id'] = $this->agency_id;
+		$ddd = $this->common_model->insertGetIDQuery("client_vital_reports", $post);
+		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_vital_reports");
+		$data['client_id'] = $post['client_id'];
+		return $data;
+	}
+
+	public function edit_vital_reports($vitalReportId){
+		$result = $this->common_model->listingRow("id",$vitalReportId,"client_vital_reports");
+		$data['result'] = $result;
+		$client_id = $result->client_id;
+		$data['client'] = $this->common_model->listingRow('id',$client_id,'client');
+		return $data;
+	}
+
+	public function update_vital_reports($post){
+		$reportData = $post;
+		unset($reportData['report_id']);
+
+		if (isset($reportData['is_bloodpressure'])) {
+			$reportData['is_bloodpressure'] = 1;
+		}else{
+			$reportData['is_bloodpressure'] = 0;
+		}
+		if (isset($reportData['is_breathing'])) {
+			$reportData['is_breathing'] = 1;
+		}else{
+			$reportData['is_breathing'] = 0;
+		}
+		if (isset($reportData['is_pulse'])) {
+			$reportData['is_pulse'] = 1;
+		}else{
+			$reportData['is_pulse'] = 0;
+		}
+		if (isset($reportData['is_temprature'])) {
+			$reportData['is_temprature'] = 1;
+		}else{
+			$reportData['is_temprature'] = 0;
+		}
+		$input_date = $this->input->post('from_date');
+		$date = explode('-', $input_date);
+		$reportData['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
+		$reportData['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
+		$reportData['updated_by'] = $this->agency_id;
+		$reportData['updated_at'] = date("Y-m-d H:i:s");
+		$this->common_model->updateQuery("client_vital_reports", "id", $post['report_id'], $reportData);
+		$vital_report_details = $this->common_model->listingRow("id", $post['report_id'], "client_vital_reports");
+		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id', $vital_report_details->client_id, "client_vital_reports");
+        $data['client_id'] = $vital_report_details->client_id;
+        return $data;
+	}
+
+	public function delete_vital_reports($vitalReportId){
+		$data['result'] = $this->common_model->delete("client_vital_reports",array('id'=>$vitalReportId));
+	}
+
+	public function add_new_shopping($post){
+		$data = array();
+		$data['agency_id'] = $this->agency_id;
+		$data['created_by'] = $this->agency_id;
+		$data['created_at'] = date('Y-m-d H:i:s');
+		$data['client_id'] = $post['client_id'];
+		$data['status'] = $post['status'];
+		$data['list_detail'] = "";
+		if(isset($post['list_detail'])){
+			$data['list_detail'] = json_encode($post['list_detail']);
+			//$data['list_detail'] = implode(",", $post['list_detail']);
+		}
+		$shopping_list_id = $this->common_model->insertGetIDQuery("client_shopping_list", $data);
+		if (!empty($_FILES['file']['name'])) {
+			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+			$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
+		}
+		if (!empty($list_file)) {
+			$this->common_model->updateQuery("client_shopping_list", "id", $shopping_list_id,array('list_file'=>$list_file));
+		}
+		$detail['shopping_list_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_shopping_list");
+		$detail['client_id'] = $post['client_id'];
+		return $detail;
+	}
+
+	public function edit_shopping($shopping_id){
+		$result = $this->common_model->listingRow('id',$shopping_id,"client_shopping_list");
+		$data["result"] = $result;
+		$client_id = $result->client_id;
+		$data['client'] = $this->common_model->listingRow('id',$client_id,'client');
+		return $data;
+	}
+
+	public function update_shopping($post){
+		$data = array();
+		unset($data['shopping_id']);
+		$data['updated_by'] = $this->agency_id;
+		$data['updated_at'] = date('Y-m-d H:i:s');
+		$data['status'] = $post['status'];
+ 		$data['list_detail'] = "";
+		if (isset($post['list_detail'])) {
+			$data['list_detail'] = json_encode($post['list_detail']);
+		}
+ 		$shopping_list_id = $this->common_model->updateQuery("client_shopping_list", 'id',$post['shopping_id'] , $data);
+ 		$shopping_list_detail = $this->common_model->listingRow("id",$post['shopping_id'],"client_shopping_list");
+ 		$detail['shopping_list_detail'] = $this->common_model->listingResultWhere('client_id',$shopping_list_detail->client_id,"client_shopping_list");
+		$client_id = $shopping_list_detail->client_id;
+		
+		if (!empty($_FILES['file']['name'])) {
+			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+			$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
+		}
+		return $data;
+	}
+
+	public function delete_shopping($shopping_id){
+		$this->common_model->delete('client_shopping_list', array('id'=>$shopping_id));
+	}
+
+	public function client_bio_form($post){
+		$bioData = $post;
+		$id = $post['client_bio_id'];
+		unset($bioData['client_bio_id']);
+		$bioData['agency_id'] = $this->agency_id;
+		if($post['client_bio_id']!=0){
+			$this->common_model->updateQuery("client_bio", "id", $post['client_bio_id'],$bioData);
+		}else{
+			$id = $this->common_model->insertGetIDQuery("client_bio", $bioData);
+		}
+		$data['client_bio'] = $this->common_model->listingRow("client_id",$post['client_id'],"client_bio");
+		$data['client_id'] = $post['client_id'];
+		$data['client'] = $this->Client_model->getById($post['client_id']);
+		return $data;
+	}
+
+	public function delete_client_bio($id){
+		$client_id = $this->input->post("client_id");
+		$this->common_model->delete("client_bio", array('id'=>$id));
+		$data['client_bio'] = $this->common_model->listingRow("id",$id,"client_bio");
+		$data['client_id'] = $client_id;
+		$data['client'] = $this->Client_model->getById($client_id);
+		return $data;
+	}
+
 }
 
 ?>
