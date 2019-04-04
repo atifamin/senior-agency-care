@@ -23,8 +23,8 @@ class Schedule_model extends CI_Model{
 
 	public function add_new_medication($post){
 		$result = $post;
-		$result['agency_id'] = $this->agency_id;
-		$result['created_by'] = $this->agency_id;
+		$result['agency_id'] = $post['agency_id'];
+		$result['created_by'] = $post['agency_id'];
 		$result['created_at'] = date('Y-m-d H:i:s');
 		if (isset($post['day_period_time'])) {
 			$result['day_period_time'] = json_encode($post['day_period_time']);
