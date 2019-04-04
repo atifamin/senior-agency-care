@@ -179,7 +179,7 @@ class Schedule_model extends CI_Model{
 		$date = explode(" - ", $input_date);
 		$post['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
 		$post['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
-		$post['agency_id'] = $this->agency_id;
+		//$post['agency_id'] = $post['agency_id'];
 		$ddd = $this->common_model->insertGetIDQuery("client_vital_reports", $post);
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_vital_reports");
 		$data['client_id'] = $post['client_id'];

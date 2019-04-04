@@ -293,6 +293,7 @@ class Scheduling extends CI_Controller {
 
 	public function add_vital_report(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->add_vital_report($post);
 		$this->load->view("agency/scheduling/inc/vital_reports/list_view",$data);
 	}
