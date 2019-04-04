@@ -298,7 +298,7 @@ class Schedule_model extends CI_Model{
 		$bioData = $post;
 		$id = $post['client_bio_id'];
 		unset($bioData['client_bio_id']);
-		$bioData['agency_id'] = $this->agency_id;
+		$bioData['agency_id'] = $post['agency_id'];
 		if($post['client_bio_id']!=0){
 			$this->common_model->updateQuery("client_bio", "id", $post['client_bio_id'],$bioData);
 		}else{

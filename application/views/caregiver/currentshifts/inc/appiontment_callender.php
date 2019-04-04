@@ -122,13 +122,13 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" id="appointment_reminder_checkbox" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" id="appointment_calender_checkbox" class="form-check-input-styled" data-fouc>
                     Set reminder for caregiver </label>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row" id="appointment_set_reminder" style="display: none;">
+          <div class="row" id="appointment_reminder_set" style="display: none;">
             <div class="col-md-12">
               <div class="row" id="appointment_set_reminder_doctor" style="display: none;">
                 <div class="col-md-8 offset-md-2">
@@ -199,13 +199,24 @@ $('#appointment_datatable, #shopping_list_datatable, #client_vital_datatable').D
         }
     }
 });
-
-$('#appointment_reminder_checkbox').click(function(){
+function setTherapyType(){
+    var type = $("#therapy_type").val();
+    if(type == "doctor_appointment"){
+        $("#therapy_doc_name").css("display","block");
+        $('#appointment_set_reminder_doctor').css('display','block');
+        $('#appointment_set_reminder_therapy').css('display','none');
+    }else if (type == "therapy_appointment"){
+        $("#therapy_doc_name").css("display","none");
+        $('#appointment_set_reminder_doctor').css('display','none');
+        $('#appointment_set_reminder_therapy').css('display','block');
+    }
+} 
+$('#appointment_calender_checkbox').click(function(){
   if($(this).prop("checked") == true){
-      $("#appointment_set_reminder").css("display","block");
+      $("#appointment_reminder_set").css("display","block");
   }
   else if($(this).prop("checked") == false){
-      $("#appointment_set_reminder").css("display","none");
+      $("#appointment_reminder_set").css("display","none");
   }
 });
 </script>

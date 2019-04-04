@@ -332,6 +332,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function client_bio_form(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->client_bio_form($post);
 		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
 	}
