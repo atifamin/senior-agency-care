@@ -37,5 +37,12 @@ class Current_shifts extends CI_Controller {
 		$this->load->view("agency/scheduling/inc/medication_list/edit_medication", $data);
 	}
 
+	public function add_vital_report(){
+		$post = $this->input->post();
+		//print_array($post);
+		$data = $this->Schedule_model->add_vital_report($post);
+		$this->load->view("caregiver/currentshifts/inc/client_vitals",$data);
+	}
+
 	
 }
