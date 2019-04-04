@@ -136,7 +136,7 @@ class Caregiver_model extends CI_Model{
 		$QUERY = $this->common_model->listingMultipleWhereResult("caregiver", array("agency_id"=>$agency_id, "status"=>$status));
 		return count($QUERY);
 	}
-	public function shift_detail($caregiver_id){
+	public function caregiver_shift_detail($caregiver_id){
 		$data = $this->db->select('*')
 						->from("client_appointements AS ca")
 						->where("ca.caregiver_id", $caregiver_id)
