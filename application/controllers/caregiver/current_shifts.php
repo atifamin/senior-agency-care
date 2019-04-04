@@ -20,24 +20,22 @@ class Current_shifts extends CI_Controller {
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";
 		$data['shift_detail'] = $this->Caregiver_model->caregiver_shift_detail($this->caregiver_id);
-		// $client_appointements = $this->common_model->listingRow("id",$this->caregiver_id,"client_appointements");
-		// $client_id = $client_appointements->client_id;
-		// $agency_id = $client_appointements->agency_id;
-		// //print_array($agency_id);
-		// $data['client'] = $this->common_model->listingRow("id",$client_id,"client");
- 	// 	$data['client_bio'] = $this->common_model->listingRow("client_id",$client_id,"client_bio");
 		$this->load->view('caregiver/currentshifts/index',$data);
 	}
-	// public function client_bio_form(){
-	// 	$post = $this->input->post();
-	// 	$data = $this->Schedule_model->client_bio_form($post);
-	// 	$this->load->view("/caregiver/currentshifts/inc/client_bio/view",$data);
-	// }
-	// public function delete_client_bio(){
-	// 	$id = $this->input->post('id');
-	// 	print_array($id);
-	// 	$data = $this->Schedule_model->client_bio_form($id);
-	// 	$this->load->view("/caregiver/currentshifts/inc/client_bio/view",$data);
-	// }
+	public function add_new_medication(){
+		$post = $this->input->post();
+		$data = $this->Schedule_model->add_new_medication($post);
+		redirect('caregiver/current_shifts/index');
+	}
+	public function delete_medication(){
+		$medicationId = $this->input->post('id');
+		$this->Schedule_model->delete_medication($medicationId);
+	}
+	public function edit_medication(){
+		$medicationId = $this->input->post("id");
+		$data = $this->Schedule_model->edit_medication($medicationId);
+		$this->load->view("agency/scheduling/inc/medication_list/edit_medication", $data);
+	}
+
 	
 }
