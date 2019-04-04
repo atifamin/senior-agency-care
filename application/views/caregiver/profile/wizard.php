@@ -4,6 +4,7 @@
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_select2.js"></script> 
 <script src="<?php echo base_url();?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 <?php //print_array($states); ?>
+<?php $months = CON_MONTHS; ?>
 <div class="row">
   <div class="col-md-12">
     <div class="card card-body border-top-1 border-top-primary">
@@ -87,7 +88,7 @@
                     <select name="from_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key1=>$val1): ?>
-                      <option value="<?php echo $key1; ?>"><?php echo $val1; ?></option>
+                      <option value="<?php echo $key1; ?>"<?php if($caregiver->from_month == $key1){echo 'selected="selected"';}?>><?php echo $val1; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -97,7 +98,7 @@
                     <select name="from_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
-                      <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                      <option value="<?php echo $i; ?>"<?php if($caregiver->from_year == $i){echo 'selected="selected"';}?>><?php echo $i; ?></option>
                       <?php } ?>
                     </select>
                   </div>
@@ -112,7 +113,7 @@
                     <select name="to_month" data-placeholder="Month" class="form-control form-control-select2" data-fouc>
                       <option></option>
                       <?php foreach(CON_MONTHS as $key2=>$val2): ?>
-                      <option value="<?php echo $key2; ?>"><?php echo $val2; ?></option>
+                      <option value="<?php echo $key2; ?>"<?php if($caregiver->to_month == $key2){echo'selected="selected"';}?>><?php echo $val2; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -122,7 +123,7 @@
                     <select name="to_year" data-placeholder="Year" class="form-control form-control-select2" data-fouc>
                       <option></option>
                       <?php for($i=2019; $i>=1960; $i--){ ?>
-                      <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                      <option value="<?php echo $i; ?>"<?php if($caregiver->to_year == $i){echo'selected="selected"';}?>><?php echo $i; ?></option>
                       <?php } ?>
                     </select>
                   </div>
@@ -137,13 +138,13 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Phone #:</label>
-                <input type="text" name="phone_number" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+                <input type="text" name="phone_number" class="form-control" value="<?php echo $caregiver->phone_number?>">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label>Caregiver email address: <span class="text-danger">*</span></label>
-                <input type="email" name="email" class="form-control" value="">
+                <input type="email" name="email" class="form-control" value="<?php echo $caregiver->email;?>">
               </div>
             </div>
           </div>
@@ -160,7 +161,7 @@
                 <select name="country_id" data-placeholder="Choose a State..." class="form-control form-control-select2" data-fouc onChange="load_states($(this).val())">
                   <option></option>
                   <?php foreach($countries as $count): ?>
-                  <option value="<?php echo $count->id; ?>"><?php echo $count->name; ?></option>
+                  <option <?php if($caregiver->country_id == $count->id) {echo 'selected="selected"';}?> value="<?php echo $count->id; ?>"><?php echo $count->name; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -186,13 +187,13 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Zip:</label>
-                <input type="text" name="zipcode" class="form-control" placeholder="Add your zip">
+                <input type="text" name="zipcode" class="form-control" value="<?php echo $caregiver->zipcode;?>">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label>Caregive emergency contact name:</label>
-                <input type="text" name="emergency_contact_name" class="form-control" placeholder="Enter emergency contact name">
+                <label>Caregiver emergency contact name:</label>
+                <input type="text" name="emergency_contact_name" class="form-control" value="<?php echo $caregiver->emergency_contact_name;?>">
               </div>
             </div>
           </div>
@@ -200,7 +201,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Emergency contact phone #:</label>
-                <input type="text" name="emergency_contact_number" class="form-control" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999">
+                <input type="text" name="emergency_contact_number" class="form-control" value="<?php echo $caregiver->emergency_contact_number;?>">
               </div>
             </div>
           </div>
@@ -214,12 +215,12 @@
                 <label>Multiple select</label>
                 <select multiple="multiple" class="form-control select" data-fouc name="caregiver_certifications[]">
                   <?php
-                    $caregiver_certifications = "";
-                    if(count(json_decode($detail->caregiver_certifications))>0)
-                      $caregiver_certifications = json_decode($detail->caregiver_certifications); 
+                    // $caregiver_certifications = "";
+                    // if(count(json_decode($caregiver->caregiver_certifications))>0)
+                      $caregiver_certifications = json_decode($caregiver->caregiver_certifications); 
                   ?>
-                  <?php foreach (CON_CAREGIVER_CERTIFICATIONS as $key =>$value) { ?>
-                    <option value="<?php echo $key; ?>"  <?php if(!empty($caregiver_certifications) && in_array($key, $caregiver_certifications)){echo 'selected="selected"';} ?>><?php echo $value; ?></option>
+                  <?php foreach (CON_CAREGIVER_CERTIFICATIONS as $key => $value) { ?>
+                    <option value="<?php echo $key; ?>" <?php if (in_array($key,$caregiver_certifications)) {echo "selected='selected'";} ?>><?php echo $value; ?></option>
                   <?php } ?>
                 </select>
               </div>
@@ -236,7 +237,34 @@
                 <button type="button" class="btn btn-outline bg-indigo-400 text-indigo-400 border-indigo-400" data-toggle="modal" data-target="#modal_form_license"><i class="icon-plus3"></i> ADD A NEW STATE LICENSE</button>
               </div>
             </div>
-            <div id="license_area"></div>
+            <div id="license_area">
+              <div class="offset-2 col-md-8" id="license_row">
+                <?php if(isset($caregiver->license) && count($caregiver->license)>0){
+                  foreach($caregiver->license as $licenseKey=>$licenseVal){ ?>
+                   <div class="row" id="row_<?php echo $licenseVal->id; ?>" style="margin-top: 50px;">
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-md-6 text-center">
+                          <p style="margin-bottom: 0; color: #00bcd4;"><?php echo $licenseVal->state_license; ?>
+                          <p style="position: relative; font-size: 12px; color: #B4B8BA;">Valid until <?php echo $months[$licenseVal->valid_to_month].", ".$licenseVal->valid_to_year; ?></p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                          <span style="position: relative; color: #00bcd4"><strong style="font-size: 24px; position: relative; top: 2px;">
+                            <?php $fromDate = date("Y-m-d"); $toDate = date("".$licenseVal->valid_to_year."-".$licenseVal->valid_to_month."-d"); $difference = $this->common_model->dateDifferanceTwoDates($fromDate, $toDate); echo $difference['days'];?>
+                          </strong>&nbsp;Days to expire</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                      <div class="btn-group ml-1">
+                        <button type="button" class="btn bg-transparent text-slate-600 border-slate dropdown-toggle" data-toggle="dropdown">Edit</button>
+                        <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" class="dropdown-item" data-toggle="modal" data-target="modal_edit_license" onclick="edit_license('<?php echo $licenseVal->id; ?>')"><i class="icon-database-edit2"></i> Edit</a> <a href="javascript:;" class="dropdown-item" onclick="delete_license('<?php echo $licenseVal->id; ?>')"><i class="icon-bin2"></i> Delete</a> </div>
+                      </div>
+                    </div>
+                  </div>
+                <?php }} ?>
+              </div>
+            </div>
           </div>
         </fieldset>
       </form>
