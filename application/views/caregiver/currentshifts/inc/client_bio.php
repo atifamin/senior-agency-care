@@ -1,3 +1,9 @@
+<?php
+//echo "<pre>"; print_r($detail);
+?>
+<form>
+    <input type="text" name="client_id" value="<?php echo $detail->client_id; ?>">
+</form>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
@@ -84,7 +90,7 @@
                     scrambled it to make a type specimen book.</p>
             </div>
             <div class="col-md-12" style="text-align: right; margin-top: 20px;">
-                <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
+                <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio_<?php echo $detail->id; ?>" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
                 <a href="javascript:;" onclick="deleteClientBio()"><i style="color: #555;" class="icon-bin"></i></a>
             </div>
         </div>
@@ -92,10 +98,11 @@
 </div>
 
 <!-- ==========Client Bio Modal============= -->
-<div id="modal_clients_bio" class="modal fade" tabindex="-1">
+<div id="modal_clients_bio_<?php echo $detail->id; ?>" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="client_bio_form">
+                <input type="hidden" name="client_id" value="<?php echo $detail->client_id; ?>">
                 <div class="modal-header">
                      <h5 class="modal-title" style="margin: 0 auto;">Edit Client Bio</h5>
                     <li class="media">

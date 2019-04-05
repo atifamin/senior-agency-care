@@ -2,117 +2,15 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-12" style="text-align: center;">
-                <a href="javascript:;" onclick="addMedication()"
-                   data-toggle="modal"
-                   data-target="#modal_add_medication">Add a new medication
+                <a href="javascript:;" data-toggle="modal"  data-target="#modal_add_medication_<?php echo $detail->id; ?>">Add a new medication
                     <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"> <i style="color: #555;" class="icon-plus3"></i>
                     </button>
                 </a>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <table class="table datatable-basic">
-                    <thead>
-                    <tr>
-                        <th>Medication</th>
-                        <th><i style="margin-right: 8px;" class="icon-aid-kit"></i>Qty of Medication
-                        </th>
-                        <th><i style="margin-right: 8px;" class="icon-menu7"></i>Times taken a day
-                        </th>
-                        <th><i style="margin-right: 8px;" class="icon-alarm"></i>When to take medication
-                        </th>
-                        <th><i style="margin-right: 8px;" class="icon-calendar3"></i>Time of day
-                        </th>
-                        <th><i style="margin-right: 8px;" class="icon-alarm"></i>Reminder
-                        </th>
-                        <th class="text-center">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><span class="text-muted">Add Med</span></td>
-                        <td><span class="text-muted">Add Qty</span></td>
-                        <td><span class="text-muted">Add Time</span>
-                        </td>
-                        <td><span class="text-muted">Add when to take medicine</span>
-                        </td>
-                        <td>
-                            <span class="text-muted">Add time of day</span>
-                        </td>
-                        <td><span class="text-muted">Set reminder</span>
-                        </td>
-                        <td class="text-center">
-                            <div class="list-icons">
-                                <div class="dropdown">
-                                    <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i>Export to .pdf</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="text-muted">Add Med</span></td>
-                        <td><span class="text-muted">Add Qty</span></td>
-                        <td><span class="text-muted">Add Time</span>
-                        </td>
-                        <td><span class="text-muted">Add when to take medicine</span>
-                        </td>
-                        <td>
-                            <span class="text-muted">Add time of day</span>
-                        </td>
-                        <td><span class="text-muted">Set reminder</span>
-                        </td>
-                        <td class="text-center">
-                            <div class="list-icons">
-                                <div class="dropdown">
-                                    <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i>Export to .pdf</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="text-muted">Add Med</span></td>
-                        <td><span class="text-muted">Add Qty</span></td>
-                        <td><span class="text-muted">Add Time</span>
-                        </td>
-                        <td><span class="text-muted">Add when to take medicine</span>
-                        </td>
-                        <td>
-                            <span class="text-muted">Add time of day</span>
-                        </td>
-                        <td><span class="text-muted">Set reminder</span>
-                        </td>
-                        <td class="text-center">
-                            <div class="list-icons">
-                                <div class="dropdown">
-                                    <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Medication</a>
-                                        <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i>Export to .pdf</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="col-md-12" id="medication_list_view_<?php echo $detail->id; ?>">
+                <?php include(APPPATH."views/caregiver/currentshifts/inc/medication_list/list_view.php"); ?>
             </div>
         </div>
     </div>
@@ -120,10 +18,12 @@
 
 
 <!-- ==========Add Medication Modal============= -->
-<div id="modal_add_medication" class="modal fade" tabindex="-1">
+<div id="modal_add_medication_<?php echo $detail->id; ?>" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="add_client_medication_form">
+      <form id="add_client_medication_form_<?php echo $detail->id; ?>" method="post">
+        <input type="hidden" name="client_id" value="<?php echo $detail->client_id; ?>">
+        <input type="hidden" name="agency_id" value="<?php echo $detail->agency_id; ?>">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto;">Add client medication</h5>
           <div>
@@ -150,7 +50,7 @@
                 <label>Medication dosage in Mg: </label>
                 <br>
                 <span class="text-muted">Add the required medication dosage</span>
-                <input type="text" value="" class="form-control touchspin-empty" placeholder="Mg">
+                <input type="text" value="" name="medication_dosage" class="form-control touchspin-empty" placeholder="Mg">
               </div>
             </div>
           </div>
@@ -160,7 +60,7 @@
                 <label>How many times a day is medication taken: </label>
                 <br>
                 <span class="text-muted">Add the frequency per day of dosage</span>
-                <input type="text" value="" class="form-control touchspin-empty">
+                <input type="text" value="" name="how_many_times_day" class="form-control touchspin-empty">
               </div>
             </div>
           </div>
@@ -170,11 +70,13 @@
                 <label>When is the medication taken</label>
                 <br>
                 <span class="text-muted">Select morning, evening or night</span>
-                <select class="form-control select-icons" data-fouc>
-                  <option></option>
-                  <option value="morning">Morning</option>
-                  <option value="evening">Evening</option>
-                  <option value="night">Night</option>
+                <select class="form-control multiselect" multiple="multiple" name="day_period_time[]" data-fouc>
+                  <?php foreach (CON_CLIENT_DAY_SHIFTS as $daykey => $dayvalue) { ?>
+                  <option value="<?php echo $dayvalue; ?>"><?php echo $dayvalue; ?></option>
+
+                  <?php } ?>
+                  <!-- <option value="Evening">Evening</option>
+                  <option value="Night">Night</option> -->
                 </select>
               </div>
             </div>
@@ -185,7 +87,7 @@
               <br>
               <span class="text-muted">Select what time is medication taken</span>
               <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                <input type="text" class="form-control pickatime" placeholder="select time">
+                <input type="text" name="day_time" class="form-control pickatime" placeholder="select time">
               </div>
             </div>
           </div>
@@ -194,7 +96,7 @@
               <div class="form-group pt-2">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="checkbox" id="medication_reminder_checkbox" class="form-check-input-styled" data-fouc>
+                    <input type="checkbox" name="is_caregiver_reminder" id="medication_reminder_checkbox" class="form-check-input-styled" data-fouc>
                     Set reminder for caregiver </label>
                 </div>
               </div>
@@ -203,7 +105,7 @@
           <div class="row" id="medication_set_reminder" style="display: none;">
             <div class="col-md-8 offset-md-2"> <span class="text-muted">Create a reminder for caregiver to give medication</span>
               <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                <input type="text" class="form-control pickatime" placeholder="select time">
+                <input type="text" name="is_caregiver_reminder" class="form-control pickatime" placeholder="select time">
               </div>
             </div>
           </div>
@@ -217,13 +119,83 @@
   </div>
 </div>
 
+<div id="edit_medication_modal_<?php echo $detail->id; ?>" class="modal fade" tabindex="-2">
+  <div class="modal-dialog">
+    <div class="modal-content" id="edit_medication_div_<?php echo $detail->id; ?>">
+      
+    </div>
+  </div>
+</div>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
 <script type="text/javascript">
     $('#medication_reminder_checkbox').click(function(){
-            if($(this).prop("checked") == true){
-                $("#medication_set_reminder").css("display","block");
-            }
-            else if($(this).prop("checked") == false){
-                $("#medication_set_reminder").css("display","none");
-            }
+      if($(this).prop("checked") == true){
+          $("#medication_set_reminder").css("display","block");
+      }
+      else if($(this).prop("checked") == false){
+          $("#medication_set_reminder").css("display","none");
+      }
+    });
+
+    $('#add_client_medication_form_<?php echo $detail->id; ?>').on('submit',function(e){
+      e.preventDefault();
+      loader = CardLoader($("#add_client_medication_form_<?php echo $detail->id; ?>"));
+      var formData = new FormData($(this)[0]);
+      $.ajax({
+        url: '<?php echo site_url("caregiver/current_shifts/add_new_medication"); ?>',
+        type: 'POST',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(e){
+          // console.log(e);
+          // return false;
+          loader.unblock();
+          //$("#medication_list_view_<?php echo $detail->id; ?>").html(e);
+          // var form = document.getElementById("add_client_medication_form_<?php echo $detail->id; ?>");
+          // form.reset();
+          $("#modal_add_medication_<?php echo $detail->id; ?>").modal("hide");
+          swal({
+              title: "Good job!",
+              type: 'success',
+              html: 'You have added medication list successfully',
+              allowOutsideClick: false,
+            }).then(function() {
+              location.reload();
+            });
+          //setTimeout(function(){loader.unblock();}, 5000);
+        }
+          
+      });
+
+    });
+
+    
+    
+    function delete_medication(id){
+      $.post("<?php echo site_url("caregiver/current_shifts/delete_medication"); ?>", {id:id}).done(function(data){
+        swal({
+          title: "Good job!",
+          type: 'error',
+          html: 'You have deleted medication list successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          //location.reload();
         });
+        $('#table_row_'+id+'').remove();
+      });
+    }
+    function edit_medication(id){
+      $.post("<?php echo site_url("caregiver/current_shifts/edit_medication"); ?>", {id:id}).done(function(data){
+        $("#edit_medication_div_<?php echo $detail->id; ?>").html(data);
+        $("#edit_medication_modal_<?php echo $detail->id; ?>").modal("show");
+      });
+    }
 </script>
