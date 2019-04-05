@@ -69,7 +69,7 @@ class Current_shifts extends CI_Controller {
 		$post = $this->input->post();
 		print_array($post);
 		$data = $this->Schedule_model->add_vital_report($post);
-		//$this->load->view("caregiver/currentshifts/inc/client_vitals",$data);
+		redirect('caregiver/current_shifts/index');
 	}
 
 	
