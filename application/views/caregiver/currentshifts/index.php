@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<?php //print_array($client); ?>
+<?php //print_array($result); ?>
 <div class="card">
   <div class="card-header header-elements-inline" style="padding-bottom: 0px;">
     <div style="margin: 0 auto;">
@@ -178,6 +178,17 @@
     </div>
   </div>
 </div>
+
+
+<div id="update_modal" class="modal fade" tabindex="-2">
+  <div class="modal-dialog">
+    <div class="modal-content" id="update_modal_content">
+      
+    </div>
+  </div>
+</div>
+
+
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_basic.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/tables/datatables/datatables.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tokenfield.min.js"></script> 

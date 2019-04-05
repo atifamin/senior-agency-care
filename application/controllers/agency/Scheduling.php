@@ -282,7 +282,7 @@ class Scheduling extends CI_Controller {
 	
 	public function update_medication_list(){
 		$post = $this->input->post();
-		//print_array($post);
+		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->update_medication_list($post);
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}

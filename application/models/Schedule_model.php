@@ -97,7 +97,7 @@ class Schedule_model extends CI_Model{
 	public function update_medication_list($post){
 		$mediData = $post;
 		unset($mediData['medication_id']);
-		$mediData['updated_by'] = $this->agency_id;
+		$mediData['updated_by'] = $post['agency_id'];
 		$mediData['updated_at'] = date("Y-m-d H:i:s");
 		if ($post['day_period_time']) {
 			$mediData['day_period_time'] = json_encode($post['day_period_time']);
@@ -130,7 +130,7 @@ class Schedule_model extends CI_Model{
 		$result = $this->common_model->listingRow("id",$appointment_id,"client_appointment_calender");
 		$data['result'] = $result;
 		$client_id = $result->client_id;
-		$data['client'] =$this->common_model->listingRow('id',$client_id,'client');
+		$data['client'] = $this->common_model->listingRow('id',$client_id,'client');
 		return $data;
 	}
 
