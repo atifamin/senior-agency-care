@@ -121,13 +121,7 @@
   </div>
 </div>
 
-<div id="edit_medication_modal_<?php echo $detail->id; ?>" class="modal fade" tabindex="-2">
-  <div class="modal-dialog">
-    <div class="modal-content" id="edit_medication_div_<?php echo $detail->id; ?>">
-      
-    </div>
-  </div>
-</div>
+
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
@@ -196,8 +190,8 @@
     }
     function edit_medication(id){
       $.post("<?php echo site_url("caregiver/current_shifts/edit_medication"); ?>", {id:id}).done(function(data){
-        $("#edit_medication_div_<?php echo $detail->id; ?>").html(data);
-        $("#edit_medication_modal_<?php echo $detail->id; ?>").modal("show");
+        $("#update_modal_content").html(data);
+        $("#update_modal").modal("show");
       });
     }
 </script>

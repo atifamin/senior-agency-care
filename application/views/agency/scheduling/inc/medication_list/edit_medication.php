@@ -114,7 +114,6 @@ $("#update_medication_list").on("submit", function(e){
 		contentType: false,
 		processData: false,
 		success: function(e){
-      // alert(e);
 			$("#medication_list_view").html(e);
 			var form = document.getElementById("update_medication_list");
 			form.reset();
