@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" id="medication_list_view_<?php echo $detail->id; ?>">
+            <div class="col-md-12" id="medication_list_view">
                 <?php include(APPPATH."views/caregiver/currentshifts/inc/medication_list/list_view.php"); ?>
             </div>
         </div>

@@ -102,35 +102,37 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
 
 <script>
-// $("#update_medication_list").on("submit", function(e){
-//  	loader = CardLoader($("#update_medication_list_<?php echo $result->id; ?>"));
-//   e.preventDefault();
-//  	var formData = new FormData($(this)[0]);
-// 	$.ajax({
-// 		url: '<?php echo site_url("caregiver/current_shifts/update_medication_list"); ?>',
-// 		type: 'POST',
-// 		data: formData,
-// 		cache: false,
-// 		contentType: false,
-// 		processData: false,
-// 		success: function(e){
-// 			$("#medication_list_view_<?php echo $result->id; ?>").html(e);
-// 			var form = document.getElementById("update_medication_list_<?php echo $result->id; ?>");
-// 			form.reset();
-// 			$("#edit_medication_modal_<?php echo $result->id; ?>").modal("hide");
-//       swal({
-//           title: "Good job!",
-//           type: 'success',
-//           html: 'You have updated medication list successfully',
-//           allowOutsideClick: false,
-//         }).then(function() {
-//           //location.reload();
-//         });
-// 			loader.unblock();
-// 		}
+$("#update_medication_list").on("submit", function(e){
+ 	loader = CardLoader($("#update_medication_list"));
+  e.preventDefault();
+ 	var formData = new FormData($(this)[0]);
+	$.ajax({
+		url: '<?php echo site_url("caregiver/current_shifts/update_medication_list"); ?>',
+		type: 'POST',
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(e){
+      // console.log(e);
+      // return false;
+			$("#medication_list_view").html(e);
+			var form = document.getElementById("update_medication_list");
+			form.reset();
+			$("#update_modal").modal("hide");
+      swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have updated medication list successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          //location.reload();
+        });
+			loader.unblock();
+		}
 			
-// 	});
-// });
+	});
+});
 
 $('#medication_reminder_checkbox_1').click(function(){
   if ($(this).prop('checked') == true) {
