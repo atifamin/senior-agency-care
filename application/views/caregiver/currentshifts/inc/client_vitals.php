@@ -1,67 +1,29 @@
-<?php //print_array($); ?>
+<?php //print_array($detail); ?>
 <div class="row">
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-12" style="text-align: center;">
-        <a href="javascript:;" data-toggle="modal"data-target="#modal_clients_vital">Add new client vitals
+        <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_vital_<?php echo $detail->id; ?>">Add new client vitals
             <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i>
             </button>
         </a>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <table class="table datatable-basic" id="client_vital_datatable">
-          <thead>
-            <tr>
-                <th><i style="margin-right: 8px;" class="icon-man"></i>Blood Pressure
-                </th>
-                <th><i style="margin-right: 8px; color: red;"class="icon-heart6"></i>Heart Rate
-                </th>
-                <th><i style="margin-right: 8px; color: green;" class="icon-stats-growth2"></i>Temperature
-                </th>
-                <th><i style="margin-right: 8px;" class="icon-calendar22"></i>Date Taken
-                </th>
-                <th class="text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                  <span class="text-muted">Blood Pressure</span>
-              </td>
-              <td><span class="text-muted">Heart Rate</span>
-              </td>
-              <td><span class="text-muted">Temperature</span>
-              </td>
-              <td><span class="text-muted">Date taken</span>
-              </td>
-              <td class="text-center">
-                <div class="list-icons">
-                  <div class="dropdown">
-                    <a href="#" class="list-icons-item"data-toggle="dropdown"><i class="icon-menu9"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#"class="dropdown-item"><i class="icon-square-right"></i>Edit Vitals</a>
-                        <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Vitals</a>
-                        <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Vitals</a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-md-12" id="vital_reports_view_<?php echo $detail->id; ?>">
+        <?php include (APPPATH."views/caregiver/currentshifts/inc/client_vitals/list_view.php"); ?>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ==========Add Vitals Modal============= -->
-<div id="modal_clients_vital" class="modal fade" tabindex="-1">
+<div id="modal_clients_vital_<?php echo $detail->id; ?>" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <form id="add_vital_reports_form<?php echo $detail->id; ?>" method="post">
+        <input type="hidden" name="client_id" value="<?php echo $detail->client_id; ?>">
+        <input type="hidden" name="agency_id" value="<?php echo $detail->agency_id; ?>">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto;">Add Client Vitals</h5>
           <div>
@@ -191,10 +153,10 @@
         // console.log(e);
         // return false;
         loader.unblock();
-        //$("#medication_list_view_<?php echo $detail->id; ?>").html(e);
+        //$("#vital_reports_view_<?php echo $detail->id; ?>").html(e);
         // var form = document.getElementById("add_client_medication_form_<?php echo $detail->id; ?>");
         // form.reset();
-        $("#modal_add_medication_<?php echo $detail->id; ?>").modal("hide");
+        $("#modal_clients_vital_<?php echo $detail->id; ?>").modal("hide");
         swal({
             title: "Good job!",
             type: 'success',
