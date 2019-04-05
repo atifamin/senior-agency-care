@@ -2,9 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-12" style="text-align: center;">
-                <a href="javascript:;" onclick="addMedication()"
-                   data-toggle="modal"
-                   data-target="#modal_add_medication_<?php echo $detail->id; ?>">Add a new medication
+                <a href="javascript:;" data-toggle="modal"  data-target="#modal_add_medication_<?php echo $detail->id; ?>">Add a new medication
                     <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"> <i style="color: #555;" class="icon-plus3"></i>
                     </button>
                 </a>

@@ -41,10 +41,33 @@ class Current_shifts extends CI_Controller {
 		$data = $this->Schedule_model->update_medication_list($post);
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}
-
+	public function add_appointment_calender(){
+		$post = $this->input->post();
+		$data = $this->Schedule_model->add_appointment_calender($post);
+		redirect('caregiver/current_shifts/index');
+	}
+	public function delete_appointment_calender(){
+		$appointment_id = $this->input->post('id');
+		$this->Schedule_model->delete_appointment_calender($appointment_id);
+	}
+	public function edit_appointment_calender(){
+		$appointment_id = $this->input->post('id');
+		$data = $this->Schedule_model->edit_appointment_calender($appointment_id);
+		$this->load->view('caregiver/currentshifts/inc/appointment_calender/edit_appointment',$data);
+	}
+	public function update_appointment_calender(){
+		$post = $this->input->post();
+		$data = $this->Schedule_model->update_appointment_calender($post);
+		$this->load->view('caregiver/currentshifts/inc/appointment_calender/list_view_appointment',$data);
+	}
+	public function add_client_dietry_needs(){
+		$post = $this->input->post();
+		$data = $this->Schedule_model->add_client_dietry_needs($post);
+		$this->load->view("agency/scheduling/inc/dietry_needs",$data);
+	}
 	public function add_vital_report(){
 		$post = $this->input->post();
-		//print_array($post);
+		print_array($post);
 		$data = $this->Schedule_model->add_vital_report($post);
 		redirect('caregiver/current_shifts/index');
 	}

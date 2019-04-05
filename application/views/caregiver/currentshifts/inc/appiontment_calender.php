@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-12" style="text-align: center;">
         <a href="javascript:;" data-toggle="modal"
-           data-target="#modal_new_appointment">Create new appointment
+           data-target="#modal_add_new_appointment_<?php echo $detail->id; ?>">Create new appointment
             <button style="background-color: #f5f5f5; margin-left: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple">
                 <i style="color: #555;" class="icon-plus3"></i>
             </button>
@@ -13,47 +13,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <table class="table datatable-basic" id="appointment_datatable">
-          <thead>
-            <tr>
-                <th>Appointment Type</th>
-                <th>Appointment Date</th>
-                <th>Time</th>
-                <th>Location</th>
-                <th>Reminder</th>
-                <th class="text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Doctor's appointment<br><span class="text-muted">Dr. Marvin Cobler</span>
-              </td>
-              <td>
-                  <span class="text-muted">Appointment date</span>
-              </td>
-              <td><span class="text-muted">Time</span></td>
-              <td><span class="text-muted"><i class="icon-location3"></i> Johar Town Lahore,Pakistan </span>
-              </td>
-              <td>
-                  <span class="text-muted">1 hr to Appointment</span>
-              </td>
-              <td class="text-center">
-                <div class="list-icons">
-                  <div class="dropdown">
-                      <a href="#" class="list-icons-item" data-toggle="dropdown"><i class="icon-menu9"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#" class="dropdown-item"><i class="icon-square-right"></i>Edit Appointment</a>
-                          <a href="#" class="dropdown-item"><i class="icon-bin2"></i>Delete Appointment</a>
-                          <a href="#" class="dropdown-item"><i class="icon-square-down"></i>End Appointment</a>
-                      </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-md-12" id="appointment_list_view">
+        <?php include(APPPATH."views/caregiver/currentshifts/inc/appointment_calender/list_view_appointment.php"); ?>
       </div>
     </div> 
   </div>
@@ -61,10 +22,12 @@
 
 
 <!-- ==========Add Appointment Modal============= -->
-<div id="modal_new_appointment" class="modal fade" tabindex="-1">
+<div id="modal_add_new_appointment_<?php echo $detail->id; ?>" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="add_client_medication_form">
+      <form id="add_client_appointment_form_<?php echo $detail->id; ?>">
+        <input type="hidden" name="agency_id" value="<?php echo $detail->agency_id; ?>">
+        <input type="hidden" name="client_id" value="<?php echo $detail->client_id; ?>">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto;">Create a new appointment</h5>
           <div>
@@ -81,10 +44,10 @@
             <div class="col-md-8 offset-md-2">
               <div class="form-group">
                 <label>Add appointment type</label>
-                <select class="form-control select-icons" id="therapy_type" onchange="setTherapyType()" data-placeholder="Select the type of appointment" data-fouc>
+                <select class="form-control select-icons" name="appointment_type" id="therapy_type" onchange="setTherapyType()" data-placeholder="Select the type of appointment" data-fouc>
                   <option></option>
-                  <option value="doctor_appointment">Doctor's Appointment</option>
-                  <option value="therapy_appointment">Therapy Appointment</option>
+                  <option value="Doctor's Appointment">Doctor's Appointment</option>
+                  <option value="Therapy Appointment">Therapy Appointment</option>
                 </select>
               </div>
             </div>
@@ -92,7 +55,7 @@
           <div class="row" id="therapy_doc_name" style="display: none;">
             <div class="col-md-8 offset-md-2">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter doctor's name">
+                <input type="text" class="form-control" name="doctor_name" placeholder="Enter doctor's name">
               </div>
             </div>
           </div>
@@ -101,7 +64,7 @@
               <div class="form-group">
                 <label>Enter appointment date and time: </label>
                 <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                  <input type="text" class="form-control daterange-time" value="">
+                  <input type="text" name="appointment_date" class="form-control" id="anytime-both" placeholder="April 2nd 10:00">
                 </div>
               </div>
             </div>
@@ -111,7 +74,7 @@
               <div class="form-group">
                 <label>Enter appointment location: </label>
                 <div class="form-group form-group-feedback form-group-feedback-left">
-                  <input type="text" class="form-control form-control-sm" placeholder="Add appointment location">
+                  <input type="text" name="location" class="form-control form-control-sm" placeholder="Add appointment location">
                   <div class="form-control-feedback form-control-feedback-sm"> <i class="icon-pin-alt"></i> </div>
                 </div>
               </div>
@@ -133,10 +96,13 @@
               <div class="row" id="appointment_set_reminder_doctor" style="display: none;">
                 <div class="col-md-8 offset-md-2">
                   <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                    <select class="form-control multiselect" data-fouc>
-                      <option value="dr_2.0">2.0 Hrs before appointment</option>
-                      <option value="dr_2.5">2.5 Hrs before appointment</option>
-                      <option value="dr_3.0">3.0 Hrs before appointment</option>
+                    <select class="form-control multiselect" name="doctor_reminder" data-fouc>
+                      <option value="">Select reminder</option>
+                      <?php foreach (CON_DOCTOR_APPOINTMENT_REMINDER as $dockey => $docvalue) { ?>
+                      
+                      <option value="<?php echo $dockey; ?>"><?php echo $docvalue; ?></option>
+                      
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -144,32 +110,20 @@
               <div class="row" id="appointment_set_reminder_therapy" style="display: none;">
                 <div class="col-md-8 offset-md-2">
                   <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                    <select class="form-control multiselect" data-fouc>
-                      <option value="th_30">30 Minutes before appointment</option>
-                      <option value="th_1.0">1.0 Hrs before appointment</option>
-                      <option value="th_1.5">1.5 Hrs before appointment</option>
-                      <option value="th_2.0">2.0 Hrs before appointment</option>
-                      <option value="th_3.0">3.0 Hrs before appointment</option>
+                    <select class="form-control multiselect" name="theropy_reminder" data-fouc>
+                      <option value="">Select reminder</option>
+                      <?php foreach (CON_THEROPY_APPOINTMENT_REMINDER as $theropykey => $theropyvalue) { ?>
+                      
+                      <option value="<?php echo $theropykey; ?>"><?php echo $theropyvalue; ?></option>
+
+                    <?php } ?>
                     </select>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- <div class="row" id="appointment_set_reminder" style="display: none;">
-                <div class="col-md-8 offset-md-2">
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-alarm"></i></span>
-                        </span>
-                        <select class="form-control multiselect" data-fouc>
-                            <option value="dr_2.0">2.0 Hrs before appointment</option>
-                            <option value="dr_2.5">2.5 Hrs before appointment</option>
-                            <option value="dr_3.0">3.0 Hrs before appointment</option>
-                        </select>
-                    </div>
-                </div>
-            </div> --> 
+           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
@@ -181,31 +135,14 @@
 </div>
 
 <script type="text/javascript">
-$('#appointment_datatable, #shopping_list_datatable, #client_vital_datatable').DataTable({
-    columnDefs: [{
-        orderable: true,
-        targets: [3]
-    }],
-    dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
-    language: {
-        search: '<span>Filter:</span> _INPUT_',
-        searchPlaceholder: 'Type to filter...',
-        lengthMenu: '<span>Show:</span> _MENU_',
-        paginate: {
-            'first': 'First',
-            'last': 'Last',
-            'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;',
-            'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;'
-        }
-    }
-});
+
 function setTherapyType(){
     var type = $("#therapy_type").val();
-    if(type == "doctor_appointment"){
+    if(type == "Doctor's Appointment"){
         $("#therapy_doc_name").css("display","block");
         $('#appointment_set_reminder_doctor').css('display','block');
         $('#appointment_set_reminder_therapy').css('display','none');
-    }else if (type == "therapy_appointment"){
+    }else if (type == "Therapy Appointment"){
         $("#therapy_doc_name").css("display","none");
         $('#appointment_set_reminder_doctor').css('display','none');
         $('#appointment_set_reminder_therapy').css('display','block');
@@ -219,4 +156,55 @@ $('#appointment_calender_checkbox').click(function(){
       $("#appointment_reminder_set").css("display","none");
   }
 });
+
+$('#add_client_appointment_form_<?php echo $detail->id; ?>').on('submit',function(e){
+  e.preventDefault();
+
+  loader = CardLoader($("#add_client_appointment_form_<?php echo $detail->id; ?>"));
+  var formData = new FormData($(this)[0]);
+  
+  $.ajax({
+      url:'<?php echo site_url("caregiver/current_shifts/add_appointment_calender"); ?>',
+      type:'post',
+      data:formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(e){
+        loader.unblock();
+        //$('#appointment_view_<?php echo $detail->id; ?>').html(e);
+        $('#modal_add_new_appointment_<?php echo $detail->id; ?>').modal('hide');
+        // var form = document.getElementById("add_client_appointment_form_<?php echo $detail->id; ?>");
+        // form.reset();
+        swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have added appointment calender successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          //location.reload();
+        });
+      }
+    });
+});
+function delete_appointment(id){
+  $.post("<?php echo site_url("caregiver/current_shifts/delete_appointment_calender"); ?>",{id:id}).done(
+    function(e){
+      $('#appointment_row_'+id+'').remove();
+      swal({
+        title: "Good job!",
+        type: 'error',
+        html: 'You have deleted appointment calender successfully',
+        allowOutsideClick: false,
+      }).then(function() {
+        //location.reload();
+      });
+  });
+}
+function edit_appointment(id){
+  $.post("<?php echo site_url('caregiver/current_shifts/edit_appointment_calender'); ?>",{id:id}).done(function(e){
+    $('#update_modal_content').html(e);
+    $('#update_modal').modal('show');
+  });
+}
 </script>

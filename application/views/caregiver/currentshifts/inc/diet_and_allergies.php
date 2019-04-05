@@ -1,3 +1,9 @@
+
+<?php //print_array($detail); ?>
+ 
+<?php $dietry_needs = $this->common_model->listingResultWhere('id',$detail->client_id,"client_dietry_needs"); ?>
+<?php //print_array($dietry_needs); ?>
+
 <div class="row">
     <div class="col-md-12">
         <form>
