@@ -117,8 +117,8 @@ $("#update_medication_list").on("submit", function(e){
       // console.log(e);
       // return false;
 			$("#medication_list_view").html(e);
-			var form = document.getElementById("update_medication_list");
-			form.reset();
+			// var form = document.getElementById("update_medication_list");
+			// form.reset();
 			$("#update_modal").modal("hide");
       swal({
           title: "Good job!",

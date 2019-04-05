@@ -110,8 +110,8 @@ class Schedule_model extends CI_Model{
 	}
 
 	public function add_appointment_calender($post){
-		$post['agency_id'] = $this->agency_id;
-		$post['created_by'] = $this->agency_id;
+		$post['agency_id'] = $post['agency_id'];
+		$post['created_by'] = $post['agency_id'];
 		$post['created_at'] = date('Y-m-d H:i:s');
 		$date = $this->input->post('appointment_date');
 		$post['appointment_date'] = date('Y-m-d H:i:s',strtotime($date));
@@ -141,8 +141,8 @@ class Schedule_model extends CI_Model{
 	public function update_appointment_calender($post){
 		$appData = $post;
 		unset($appData['appointment_id']);
-		$appData['agency_id'] = $this->agency_id;
-		$appData['updated_by'] = $this->agency_id;
+		$appData['agency_id'] = $post['agency_id'];
+		$appData['updated_by'] = $post['agency_id'];
 		$date = $this->input->post('appointment_date');
 		$appData['appointment_date'] = date('Y-m-d H:i:s',strtotime($date));
 		// $input_date = $this->input->post('from_date');
@@ -160,8 +160,8 @@ class Schedule_model extends CI_Model{
 		$dietry_needs = $post;
 		$id = $this->input->post('dietry_needs_id');
 		unset($dietry_needs['dietry_needs_id']);
-		$dietry_needs['agency_id'] = $this->agency_id;
-		$dietry_needs['created_by'] = $this->agency_id;
+		$dietry_needs['agency_id'] = $post['agency_id'];
+		$dietry_needs['created_by'] = $post['agency_id'];
 		$dietry_needs['created_at'] = date('Y-m-d H:i:s');
 		if ($post['dietry_needs_id'] !=0) {
 			$this->common_model->updateQuery("client_dietry_needs", "id", $post['dietry_needs_id'],$dietry_needs);

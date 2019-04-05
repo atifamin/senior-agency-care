@@ -102,7 +102,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="client_bio_form">
-                <input type="text" name="client_id" value="<?php echo $detail->client_id; ?>">
+                <input type="hidden" name="client_id" value="<?php echo $detail->client_id; ?>">
                 <div class="modal-header">
                      <h5 class="modal-title" style="margin: 0 auto;">Edit Client Bio</h5>
                     <li class="media">

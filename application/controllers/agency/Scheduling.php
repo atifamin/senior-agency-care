@@ -288,6 +288,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_client_dietry_needs(){
 		$post = $this->input->post();
+		$post = $this->agency_id;
 		$data = $this->Schedule_model->add_client_dietry_needs($post);
 		$this->load->view("agency/scheduling/inc/dietry_needs",$data);
 	}
@@ -347,6 +348,7 @@ class Scheduling extends CI_Controller {
 
 	public function add_appointment_calender(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
 		//print_array($post);
 		$data = $this->Schedule_model->add_appointment_calender($post);
 		$this->load->view('agency/scheduling/inc/appointment_calender/list_view_appointment',$data);
@@ -362,6 +364,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function update_appointment_calender(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->update_appointment_calender($post);
 		$this->load->view('agency/scheduling/inc/appointment_calender/list_view_appointment',$data);
 	}

@@ -94,7 +94,7 @@
                       <li class="nav-item dropdown"> <a href="#client_bio_<?php echo $detail->id; ?>" class="sub_car_pane navbar-nav-link active" data-toggle="tab"> <i class="icon-calendar3 mr-2"></i> Client Bio </a> </li>
                       <li class="nav-item dropdown"> <a href="#medication_list_<?php echo $detail->id; ?>" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-gear mr-2"></i> Medication List </a> </li>
                       <li class="nav-item dropdown"> <a href="#diet_and_allergies_<?php echo $detail->id; ?>" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-collaboration mr-2"></i> Dietry and Allergies </a> </li>
-                      <li class="nav-item dropdown"> <a href="#appiontment_callender_<?php echo $detail->id; ?>" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-users4 mr-2"></i> Appointment Calender </a> </li>
+                      <li class="nav-item dropdown"> <a href="#appiontment_calender_<?php echo $detail->id; ?>" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-users4 mr-2"></i> Appointment Calender </a> </li>
                       <li class="nav-item dropdown"> <a href="#client_vitals_<?php echo $detail->id; ?>" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-collaboration mr-2"></i> Client Vitals </a> </li>
                       <li class="nav-item dropdown"> <a href="#notice_board_<?php echo $detail->id; ?>" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-collaboration mr-2"></i> Notice Board </a> </li>
                       <li class="nav-item dropdown"> <a href="#shopping_list_<?php echo $detail->id; ?>" class="sub_car_pane navbar-nav-link" data-toggle="tab"> <i class="icon-vcard mr-2"></i> Shopping List </a> </li>
@@ -112,8 +112,8 @@
                   <div class="tab-pane fade" id="diet_and_allergies_<?php echo $detail->id; ?>">
                     <?php include(APPPATH."views/caregiver/currentshifts/inc/diet_and_allergies.php"); ?>
                   </div>
-                  <div class="tab-pane fade" id="appiontment_callender_<?php echo $detail->id; ?>">
-                    <?php include(APPPATH."views/caregiver/currentshifts/inc/appiontment_callender.php"); ?>
+                  <div class="tab-pane fade" id="appiontment_calender_<?php echo $detail->id; ?>">
+                    <?php include(APPPATH."views/caregiver/currentshifts/inc/appiontment_calender.php"); ?>
                   </div>
                   <div class="tab-pane fade" id="client_vitals_<?php echo $detail->id; ?>">
                     <?php include(APPPATH."views/caregiver/currentshifts/inc/client_vitals.php"); ?>
@@ -147,7 +147,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div style="margin: 0 auto;">
-          <h1 class="card-title" style="font-size: 44px; font-weight: 400; color: #555;"> <i style="font-size: 29px;" class="icon-alarm mr-3 icon-2x"></i> 09:54:29 </h1>
+          <h1 class="card-title" style="font-size: 44px; font-weight: 400; color: #555;"> <i style="font-size: 29px;" class="icon-alarm mr-3 icon-2x"></i> <?php echo date('H:i:s'); ?> </h1>
           <p style="margin-left: 65px; font-size: 13px;"><span style="padding-right: 15px;">hours</span><span
                     style="padding-right: 15px;">minutes</span><span>seconds</span></p>
         </div>
@@ -172,7 +172,7 @@
         </div>
       </div>
       <div class="modal-footer" style="margin-top: 20px; ">
-        <button type="submit" id="btn_clock_in" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress" data-dismiss="modal" data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">CLOCK IN</span></button>
+        <button type="submit" id="btn_clock_in" onclick="clock_in()" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress" data-dismiss="modal" data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">CLOCK IN</span></button>
         <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Cancel</button>
       </div>
     </div>
@@ -215,15 +215,17 @@ $(".sub_car_pane").on("click", function(){
 	$("#navbar-demo-light").removeClass("show");
 });     
 
-        
 $('#btn_clock_in').click(function(){
     if ($('#clock_in_time').css("display","none")) {
         $('#clock_out_time').css("display","none");
-        $("#clock_out_btn").css({ 'background-color' : '#4CAF50', 'color' : '#fff'});
+        $("#clock_out_btn").css({'background-color' : '#4CAF50', 'color' : '#fff'});
         $('#clock_in_time').css("display","block");
         $('#clock_in_modal').removeAttr('data-target');
     }
 });
+  function clock_in(){
+
+  }
 
     </script>
 <?php include(APPPATH."views/caregiver/inc/footer.php"); ?>
