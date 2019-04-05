@@ -24,7 +24,7 @@ $report_detail = $this->common_model->listingResultWhere('client_id',$detail->cl
           <td><span class="text-muted"><?php echo $value->breathing_from." - ".$value->breathing_to; ?></span></td>
           <td><span class="text-muted"><?php echo $value->pulse_from." - ".$value->pulse_to; ?></span></td>
           <td><span class="text-muted"><?php echo $value->temperature; ?></span></td>
-          <td><span class="text-muted"><?php echo $value->from_date." - ".$value->to_date; ?></span></td>
+          <td><span class="text-muted"><?php echo date('h:i a,F d,Y',strtotime($value->from_date))." - ".date('h:i a,F d,Y',strtotime($value->to_date)); ?></span></td>
           <td class="text-center"><div class="list-icons">
               <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
                 <!-- <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php

@@ -172,4 +172,25 @@
 
   });
 
+  function edit_vital_reports(id){
+    $.post("<?php echo site_url("caregiver/current_shifts/edit_vital_reports"); ?>", {id:id}).done(function(data){
+      $("#update_modal_content").html(data);
+      $("#update_modal").modal("show");
+    });
+  }
+
+  function delete_vital_reports(id){
+    $.post("<?php echo site_url("caregiver/current_shifts/delete_vital_reports"); ?>", {id:id}).done(function(data){
+      swal({
+        title: "Good job!",
+        type: 'error',
+        html: 'You have deleted medication list successfully',
+        allowOutsideClick: false,
+      }).then(function() {
+        //location.reload();
+      });
+      $('#table_row_'+id+'').remove();
+    });
+  }
+
 </script>
