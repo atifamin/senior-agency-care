@@ -72,5 +72,29 @@ class Current_shifts extends CI_Controller {
 		redirect('caregiver/current_shifts/index');
 	}
 
+	public function edit_vital_reports(){
+		$vitalReportId = $this->input->post("id");
+		$data = $this->Schedule_model->edit_vital_reports($vitalReportId);
+		$this->load->view("caregiver/currentshifts/inc/client_vitals/edit_vital_reports", $data);
+	}
+
+	public function delete_vital_reports(){
+		$vitalReportId = $this->input->post('id');
+		$this->Schedule_model->delete_vital_reports($vitalReportId);
+	}
+
+	public function update_vital_reports(){
+		$post = $this->input->post();
+		$data = $this->Schedule_model->update_vital_reports($post);
+	    $this->load->view("caregiver/currentshifts/inc/client_vitals/list_view", $data);
+	}
+
+	public function add_new_shopping(){
+		$post = $this->input->post();
+		//print_array($post);
+		$detail = $this->Schedule_model->add_new_shopping($post);
+		redirect('caregiver/current_shifts/index');
+	}
+
 	
 }
