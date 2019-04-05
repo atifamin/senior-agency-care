@@ -20,7 +20,7 @@
       <div class="col-md-10 offset-md-1">
         <div class="form-group">
           <label><strong>Switch with a caregiver on this case</strong> </label>
-          <select class="form-control select" data-fouc name="switch_caregiver" id="edit_caregiver_id1" disabled="disabled">
+          <select class="form-control select" data-fouc name="switch_caregiver" id="edit_caregiver_id1">
             <option>Please Select</option>
             <?php if(count($assignedCargivers)>0){ ?>
             <?php 
@@ -98,17 +98,17 @@ $("#edit_caregiver_id1").on("change", function(e){
 
 $("#edit_caregiver_id2").on("change", function(e){
 	if($(this).val()=="Please Select"){
-		$("#edit_caregiver_id3").removeAttr("disabled");
+		$("#edit_caregiver_id1, #edit_caregiver_id3").removeAttr("disabled");
 	}else{
-		$("#edit_caregiver_id3").attr("disabled", "disabled");
+		$("#edit_caregiver_id1, #edit_caregiver_id3").attr("disabled", "disabled");
 	}
 });
 
 $("#edit_caregiver_id3").on("change", function(e){
 	if($(this).val()=="Please Select"){
-		$("#edit_caregiver_id2").removeAttr("disabled");
+		$("#edit_caregiver_id1, #edit_caregiver_id2").removeAttr("disabled");
 	}else{
-		$("#edit_caregiver_id2").attr("disabled", "disabled");
+		$("#edit_caregiver_id1, #edit_caregiver_id2").attr("disabled", "disabled");
 	}
 });
 

@@ -1,10 +1,23 @@
 <style>
-.fc-list-item-time{display:none;}
+.fc-list-item-time {
+	display: none;
+}
+.pdfCalendarView{
+	padding-top:3%;
+}
 </style>
+<button type="button" class="fc-button fc-state-default" onclick="get_dates('previous')">Previous</button>
+<button type="button" class="fc-button fc-state-default" onclick="get_dates('next')">Next</button>
 <div class="fullcalendar-formats"></div>
+
+<div>
+<div id="pdf_view" style="display:none">
+  
+</div>
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/scripts/schedulingCalendar.js"></script> 
 <script>
 
 var events = [
@@ -24,7 +37,7 @@ $('.fullcalendar-formats').fullCalendar({
 	},*/
 	header: {
 		left: 'prev,next today',
-		center: 'title,month,listMonth',
+		center: 'title,month,listMonth,pdfView',
 		right: 'month,basicWeek,basicDay'
 	},
 	views: {
@@ -39,6 +52,15 @@ $('.fullcalendar-formats').fullCalendar({
 		day: {
 			titleFormat: 'dddd',
 			columnFormat: 'dddd'
+		}
+	},
+	customButtons: {
+		pdfView: {
+			text: 'PDF View',
+			click: function() {
+				$(".fc-view-container").hide();
+				$("#pdf_view").show();
+			}
 		}
 	},
 	/*buttonText: {
@@ -75,9 +97,11 @@ elems.forEach(function(html) {
 		is_recurring_change($(this))
 	});
 });
-var buttonsArray = ["fc-listWeek-button","fc-listMonth-button","fc-listDay-button","fc-today-button","fc-next-button","fc-prev-button"];
+var buttonsArray = ["fc-listWeek-button","fc-listMonth-button","fc-listDay-button","fc-today-button","fc-next-button","fc-prev-button", "fc-month-button", "fc-basicWeek-button", "fc-basicDay-button"];
 $.each(buttonsArray, function(bk, bv){
 	$('.'+bv+'').click(function(){
+		$("#pdf_view").hide();
+		$(".fc-view-container").show();
 		var elems = Array.prototype.slice.call(document.querySelectorAll('.is_recurring_checkbox'));
 		elems.forEach(function(html) {
 			new Switchery(html);
@@ -97,4 +121,16 @@ function is_recurring_change(element){
 		is_recurring = 1;
 	recurring_months(element.attr("appointment-id"), is_recurring);
 }
+
+
+//Loading Calendar Pdf View
+var SchCal = new SchedulingCalendar();
+SchCal.appointments = <?php echo $data['appointments']; ?>;
+SchCal.caregivers = <?php echo $data['caregivers']; ?>;
+get_dates(null);
+function get_dates(action){
+	SchCal.creatPdfView(action);
+	$("#pdf_view").html(SchCal.pdfHtml);
+}
+
 </script>

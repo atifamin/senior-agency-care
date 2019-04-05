@@ -446,6 +446,25 @@ class Client_model extends CI_Model{
 		}
 		return true;
 	}
+	
+	public function gettingAssignedCaregivers($client_id){
+		$query = $this->db->select("c.*")
+						->from("client_caregiver_relationship AS ccr")
+						->join("caregiver AS c","c.id = ccr.caregiver_id")
+						->where("ccr.client_id", $client_id)
+						->get()->result();
+		return $query;
+	}
+	
+	public function getAppointmentsForPdfView($client_id){
+		$query = $this->common_model->listingResultWhere('client_id',$client_id,"client_appointements");
+		if(count($query)>0){
+			foreach($query as $key=>$val){
+				$query[$key]->format_date = date("h:i A", strtotime($val->date." ".$val->in_time))." - ".date("h:i A", strtotime($val->date." ".$val->out_time));
+			}
+		}
+		return $query;
+	}
 }
 
 ?>

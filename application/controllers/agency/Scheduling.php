@@ -53,6 +53,12 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$data['events'] = $this->Client_model->load_client_appointement_events($post['client_id']);
 		$data['client_id'] = $post['client_id'];
+		$caregivers = $this->Client_model->gettingAssignedCaregivers($post['client_id']);
+		$appointments = $this->Client_model->getAppointmentsForPdfView($post['client_id']);
+		$data['data'] = array(
+			"caregivers"=>json_encode($caregivers),
+			"appointments"=>json_encode($appointments)
+		);
 		$this->load->view("agency/scheduling/inc/scheduling/load_calendar",$data);
 	}
 	
@@ -291,7 +297,19 @@ class Scheduling extends CI_Controller {
 	}
 	
 	public function switch_appointment($post){
+		$appointment = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
 		
+		//$todaysAppointments = $this->Client_model->check_appointments_by_date($post['switch_caregiver'], $appointment->date);
+		$switcherAppointments = $this->common_model->listingMultipleWhereResult("client_appointements", array("date"=>$appointment->date, "caregiver_id"=>$post['switch_caregiver']));
+		//print_array($switcherAppointments);
+		//foreach($switcherAppointments as $key=>$val){
+			$from = date("Y-m-d H:i:s ", strtotime($appointment->date." ".$appointment->in_time));
+			$to = date("Y-m-d H:i:s ", strtotime($appointment->date." ".$appointment->out_time));
+			$checkAvailability = $this->Client_model->check_availability($post['switch_caregiver'], $from, $to);
+			print_r($checkAvailability);
+		//}
+		
+		//print_array($switcherAppointments);
 	}
 	
 	public function assign_other_caregiver($post){
