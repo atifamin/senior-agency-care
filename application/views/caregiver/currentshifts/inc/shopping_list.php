@@ -30,7 +30,7 @@
 <div id="shopping_list_modal_<?php echo $detail->id; ?>" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="add_client_shopping_form_<?php echo $detail->id; ?>" method="postsssss>
+      <form id="add_client_shopping_form_<?php echo $detail->id; ?>" method="post">
         <input type="hidden" name="client_id" value="<?php echo $detail->client_id; ?>">
         <input type="hidden" name="agency_id" value="<?php echo $detail->agency_id; ?>">
       <div class="modal-header">
@@ -121,53 +121,72 @@
 
 <script type="text/javascript">
     $('.form-control-select2').select2();
-    $('.fileinput').fileinput();
-// 
-function add_list(){
-    var counter = $("input[name=counter]").val();
-    var val = $("#list_detail").val();
-    $("#list_detail_div").append('<div class="row" id="list_row_'+counter+'"><div class="col-md-6"  style="margin-top: 3px;"><input type="hidden" name="list_detail[]" value="'+val+'"><div class="form-group pt-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" name="is_pulse" checked class="form-check-input-styled" disabled data-fouc>'+val+'</label></div></div> </div><div class="col-md-6"><a style="float:right; margin-top: 11px;" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
-    counter = parseInt(counter)+1;
-    $("input[name=counter]").val(counter);
-    $('.form-check-input-styled').uniform();
-  }
-  
-  function remove(id){
-    $("#list_row_"+id+"").remove();
-  }
+    $('.fileinput').fileinput(); 
 
-  $('#add_client_shopping_form_<?php echo $detail->id; ?>').on('submit',function(e){
-      e.preventDefault();
-      loader = CardLoader($("#add_client_shopping_form_<?php echo $detail->id; ?>"));
-      var formData = new FormData($(this)[0]);
-      $.ajax({
-        url: '<?php echo site_url("caregiver/current_shifts/add_new_shopping"); ?>',
-        type: 'POST',
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function(e){
-          console.log(e);
-          // return false;
-          // loader.unblock();
-          //$("#medication_list_view_<?php echo $detail->id; ?>").html(e);
-          // var form = document.getElementById("add_client_medication_form_<?php echo $detail->id; ?>");
-          // form.reset();
-          $("#shopping_list_modal_<?php echo $detail->id; ?>").modal("hide");
-          swal({
-              title: "Good job!",
-              type: 'success',
-              html: 'You have added medication list successfully',
-              allowOutsideClick: false,
-            }).then(function() {
-              location.reload();
-            });
-          //setTimeout(function(){loader.unblock();}, 5000);
-        }
-          
-      });
+    function add_list(){
+        var counter = $("input[name=counter]").val();
+        var val = $("#list_detail").val();
+        $("#list_detail_div").append('<div class="row" id="list_row_'+counter+'"><div class="col-md-6"  style="margin-top: 3px;"><input type="hidden" name="list_detail[]" value="'+val+'"><div class="form-group pt-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" name="is_pulse" checked class="form-check-input-styled" disabled data-fouc>'+val+'</label></div></div> </div><div class="col-md-6"><a style="float:right; margin-top: 11px;" href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div> ');
+        counter = parseInt(counter)+1;
+        $("input[name=counter]").val(counter);
+        $('.form-check-input-styled').uniform();
+      }
+  
+      function remove(id){
+        $("#list_row_"+id+"").remove();
+      }
+
+    $('#add_client_shopping_form_<?php echo $detail->id; ?>').on('submit',function(e){
+        e.preventDefault();
+        loader = CardLoader($("#add_client_shopping_form_<?php echo $detail->id; ?>"));
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: '<?php echo site_url("caregiver/current_shifts/add_new_shopping"); ?>',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(e){
+                console.log(e);
+                // form.reset();
+                $("#shopping_list_modal_<?php echo $detail->id; ?>").modal("hide");
+                swal({
+                    title: "Good job!",
+                    type: 'success',
+                    html: 'You have added medication list successfully',
+                    allowOutsideClick: false,
+                }).then(function() {
+                    location.reload();
+                });
+                //setTimeout(function(){loader.unblock();}, 5000);
+            }
+              
+        });
 
     });
+
+    function delete_shopping(id){
+        $.post("<?php echo site_url("caregiver/current_shifts/delete_shopping"); ?>", {id:id}).done(function(data){
+        swal({
+            title: "Good job!",
+            type: 'error',
+            html: 'You have deleted medication list successfully',
+            allowOutsideClick: false,
+        }).then(function() {
+          //location.reload();
+        });
+        $('#shopping_list_row_'+id+'').remove();
+      });
+    }
+
+    function edit_shopping(id){
+        // alert(id);
+        // return false;
+        $.post("<?php echo site_url("caregiver/current_shifts/edit_shopping"); ?>", {id:id}).done(function(data){
+          $("#update_modal_content").html(data);
+          $("#update_modal").modal("show");
+        });
+      }
 
 </script>

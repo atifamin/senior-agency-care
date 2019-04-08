@@ -237,8 +237,8 @@ class Schedule_model extends CI_Model{
 
 	public function add_new_shopping($post){
 		$data = array();
-		$data['agency_id'] = $this->agency_id;
-		$data['created_by'] = $this->agency_id;
+		$data['agency_id'] = $post['agency_id'];
+		$data['created_by'] = $post['agency_id'];
 		$data['created_at'] = date('Y-m-d H:i:s');
 		$data['client_id'] = $post['client_id'];
 		$data['status'] = $post['status'];
@@ -271,7 +271,7 @@ class Schedule_model extends CI_Model{
 	public function update_shopping($post){
 		$data = array();
 		unset($data['shopping_id']);
-		$data['updated_by'] = $this->agency_id;
+		$data['updated_by'] = $post['agency_id'];
 		$data['updated_at'] = date('Y-m-d H:i:s');
 		$data['status'] = $post['status'];
  		$data['list_detail'] = "";
@@ -280,7 +280,7 @@ class Schedule_model extends CI_Model{
 		}
  		$shopping_list_id = $this->common_model->updateQuery("client_shopping_list", 'id',$post['shopping_id'] , $data);
  		$shopping_list_detail = $this->common_model->listingRow("id",$post['shopping_id'],"client_shopping_list");
- 		$detail['shopping_list_detail'] = $this->common_model->listingResultWhere('client_id',$shopping_list_detail->client_id,"client_shopping_list");
+ 		$data['shopping_list_detail'] = $this->common_model->listingResultWhere('client_id',$shopping_list_detail->client_id,"client_shopping_list");
 		$client_id = $shopping_list_detail->client_id;
 		
 		if (!empty($_FILES['file']['name'])) {
