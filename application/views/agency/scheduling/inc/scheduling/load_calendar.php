@@ -6,8 +6,6 @@
 	padding-top:3%;
 }
 </style>
-<button type="button" class="fc-button fc-state-default" onclick="get_dates('previous')">Previous</button>
-<button type="button" class="fc-button fc-state-default" onclick="get_dates('next')">Next</button>
 <div class="fullcalendar-formats"></div>
 
 <div>
