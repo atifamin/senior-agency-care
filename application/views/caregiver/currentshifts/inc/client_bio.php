@@ -1,7 +1,8 @@
-<?php
-//echo "<pre>"; print_r($detail);
-?>
-<form>
+<div class="row" id="client_bio_area_<?php echo $detail->id; ?>">
+  <?php include(APPPATH."views/caregiver/currentshifts/inc/client_bio/view.php"); ?>
+</div>
+
+<!-- <form>
     <input type="text" name="client_id" value="<?php echo $detail->client_id; ?>">
 </form>
 <div class="row">
@@ -97,7 +98,7 @@
     </div>
 </div>
 
-<!-- ==========Client Bio Modal============= -->
+
 <div id="modal_clients_bio_<?php echo $detail->id; ?>" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -197,4 +198,4 @@
             confirmButtonText: 'Yes, delete it!'
         });
     }
-</script>
+</script> -->

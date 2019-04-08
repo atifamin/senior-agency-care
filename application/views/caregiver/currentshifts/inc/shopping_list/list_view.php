@@ -1,6 +1,6 @@
-<?php
+<?php //print_array($detail);
 $shopping_list_detail = $this->common_model->listingResultWhere('client_id',$detail->client_id,"client_shopping_list");?>
-
+<?php //print_array($shopping_list_detail); ?>
 <table class="table datatable-basic" id="shopping-list-datatable-current-shift_<?php echo $detail->id; ?>">
   <thead>
     <tr>
@@ -21,7 +21,7 @@ $shopping_list_detail = $this->common_model->listingResultWhere('client_id',$det
       <td><a href="#"><i style="font-size: 20px;" class="icon-file-word"></i></a></td>
       <td class="text-center"><div class="list-icons">
           <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
-            <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_shopping(<?php echo $detail->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit shopping list</a> <a href="javascript:;" onclick="delete_shopping(<?php echo $detail->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete shopping list</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End shopping list</a> </div>
+            <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_shopping(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit shopping list</a> <a href="javascript:;" onclick="delete_shopping(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete shopping list</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End shopping list</a> </div>
           </div>
         </div></td>
     </tr>

@@ -30,7 +30,7 @@ $report_detail = $this->common_model->listingResultWhere('client_id',$detail->cl
                 <!-- <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php
                 $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Vitals Report</a> <a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Vital Report</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Vital Report</a> </div>
               </div> -->
-              <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a> <a href="javascript:;" onclick="delete_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a> <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a> </div>
+              <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Client Vitals</a> <a href="javascript:;" onclick="delete_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete Client Vitals</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Client Vitals</a> <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a> </div>
             </div></td>
         </tr>
         <?php }

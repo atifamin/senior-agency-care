@@ -12,7 +12,7 @@ class Current_shifts extends CI_Controller {
 		//LoggedIn Caregiver ID
 		$sessionData = $this->session->userdata("isCaregiverLoggedIn");
 		$this->caregiver_id = $sessionData['user_id'];
-		$this->load->model(array('Caregiver_model',"Schedule_model"));
+		$this->load->model(array('Caregiver_model',"Schedule_model","Client_model"));
 	}
 	
 	public function index(){
@@ -62,12 +62,25 @@ class Current_shifts extends CI_Controller {
 	}
 	public function add_client_dietry_needs(){
 		$post = $this->input->post();
+		//print_array($post);
 		$data = $this->Schedule_model->add_client_dietry_needs($post);
-		$this->load->view("agency/scheduling/inc/dietry_needs",$data);
+		redirect('caregiver/current_shifts/index');
+	}
+	public function client_bio_form(){
+		$post = $this->input->post();
+		//print_array($post);
+		$data = $this->Schedule_model->client_bio_form($post);
+		redirect('caregiver/current_shifts/index');
+		//$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
+	}
+	public function delete_client_bio(){
+		$id = $this->input->post('id');
+		//print_array($id);
+		$data = $this->Schedule_model->delete_client_bio($id);
+		$this->load->view("/caregiver/currentshifts/inc/client_bio/view",$data);
 	}
 	public function add_vital_report(){
 		$post = $this->input->post();
-		print_array($post);
 		$data = $this->Schedule_model->add_vital_report($post);
 		redirect('caregiver/current_shifts/index');
 	}
@@ -94,6 +107,25 @@ class Current_shifts extends CI_Controller {
 		//print_array($post);
 		$detail = $this->Schedule_model->add_new_shopping($post);
 		redirect('caregiver/current_shifts/index');
+	}
+
+	public function delete_shopping(){
+		$shopping_id = $this->input->post('id');
+		$detail = $this->Schedule_model->delete_shopping($shopping_id);
+	}
+
+	public function edit_shopping(){
+		$shopping_id = $this->input->post('id');
+		$data = $this->Schedule_model->edit_shopping($shopping_id);
+		//print_array($data);
+		$this->load->view("caregiver/currentshifts/inc/shopping_list/edit_shopping",$data);	
+	}
+
+	public function update_shopping(){
+		$post = $this->input->post();
+		//print_array($post);
+		$data = $this->Schedule_model->update_shopping($post);
+ 		$this->load->view("caregiver/currentshifts/inc/shopping_list/list_view",$data);
 	}
 
 	

@@ -308,7 +308,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_client_dietry_needs(){
 		$post = $this->input->post();
-		$post = $this->agency_id;
+		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->add_client_dietry_needs($post);
 		$this->load->view("agency/scheduling/inc/dietry_needs",$data);
 	}
@@ -336,6 +336,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_new_shopping(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
 		$detail = $this->Schedule_model->add_new_shopping($post);
 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
@@ -350,6 +351,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function update_shopping(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->update_shopping($post);
  		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
@@ -362,7 +364,7 @@ class Scheduling extends CI_Controller {
 
 	public function delete_client_bio(){
 		$id = $this->input->post('id');
-		$data = $this->Schedule_model->client_bio_form($id);
+		$data = $this->Schedule_model->delete_client_bio($id);
 		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
 	}
 
