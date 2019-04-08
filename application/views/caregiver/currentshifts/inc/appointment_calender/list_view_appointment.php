@@ -3,7 +3,7 @@ $appointment_detail = $this->common_model->listingResultWhere('client_id',$detai
 //print_array($appointment_detail);
 ?>
 
-<table class="table datatable-basic" id="appointment-datatable_caregiver_<?php echo $detail->id; ?>">
+<table class="table" id="appointment-datatable_caregiver_<?php echo $detail->id; ?>">
   <thead>
     <tr>
         <th>Appointment Type</th>
