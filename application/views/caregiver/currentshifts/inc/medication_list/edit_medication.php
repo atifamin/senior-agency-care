@@ -2,7 +2,7 @@
 
 <form id="update_medication_list" method="post">
   <input type="hidden" name="medication_id" value="<?php echo $result->id; ?>" />
-  <input type="text" name="agency_id" value="<?php echo $result->agency_id; ?>" />
+  <input type="hidden" name="agency_id" value="<?php echo $result->agency_id; ?>" />
   <div class="modal-header">
     <h5 class="modal-title" style="margin: 0 auto;">Edit Client's Medication</h5>
     <div>
