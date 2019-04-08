@@ -109,5 +109,24 @@ class Current_shifts extends CI_Controller {
 		redirect('caregiver/current_shifts/index');
 	}
 
+	public function delete_shopping(){
+		$shopping_id = $this->input->post('id');
+		$detail = $this->Schedule_model->delete_shopping($shopping_id);
+	}
+
+	public function edit_shopping(){
+		$shopping_id = $this->input->post('id');
+		$data = $this->Schedule_model->edit_shopping($shopping_id);
+		//print_array($data);
+		$this->load->view("caregiver/currentshifts/inc/shopping_list/edit_shopping",$data);	
+	}
+
+	public function update_shopping(){
+		$post = $this->input->post();
+		//print_array($post);
+		$data = $this->Schedule_model->update_shopping($post);
+ 		$this->load->view("caregiver/currentshifts/inc/shopping_list/list_view",$data);
+	}
+
 	
 }

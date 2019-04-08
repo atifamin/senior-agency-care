@@ -336,6 +336,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_new_shopping(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
 		$detail = $this->Schedule_model->add_new_shopping($post);
 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
@@ -350,6 +351,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function update_shopping(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->update_shopping($post);
  		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
