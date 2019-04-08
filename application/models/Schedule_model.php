@@ -299,7 +299,9 @@ class Schedule_model extends CI_Model{
 		$id = $post['client_bio_id'];
 		unset($bioData['client_bio_id']);
 		$bioData['agency_id'] = $post['agency_id'];
-		if($post['client_bio_id']!=0){
+		$bioData['created_by'] = $post['agency_id'];
+		$bioData['created_at'] = $post['agency_id'];
+ 		if($post['client_bio_id']!=0){
 			$this->common_model->updateQuery("client_bio", "id", $post['client_bio_id'],$bioData);
 		}else{
 			$id = $this->common_model->insertGetIDQuery("client_bio", $bioData);

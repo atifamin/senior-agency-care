@@ -1,4 +1,10 @@
-<?php //echo print_array($client_bio->id); ?>
+<?php //print_array($detail); ?>
+<?php $client_bio = $this->common_model->listingRow('client_id',$detail->client_id,'client_bio'); 
+  $client = $this->common_model->listingRow('agency_id',$detail->agency_id,'client');
+?>
+
+<?php //print_array($client); ?>
+
 <div class="col-md-12">
   <div class="row">
     <?php if(count($client_bio)>0){ ?>
@@ -49,25 +55,25 @@
       <h3>No Client Bio Added Yet.</h3>
     </div>
     <?php } ?>
-    <div class="col-md-12" style="text-align: right; margin-top: 20px;"> <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
+    <div class="col-md-12" style="text-align: right; margin-top: 20px;"> <a href="javascript:;" data-toggle="modal" data-target="#modal_clients_bio_<?php echo $detail->id; ?>" style="margin-right: 10px;"><i style="color: #555;" class="icon-pencil5"></i></a>
       <?php if(count($client_bio)>0){ ?>
-      <a href="javascript:;" onclick="deleteClientBio(<?php echo $client_bio->id?>)"><i style="color: #555;" class="icon-bin"></i></a>
+      <a href="javascript:;" onclick="deleteClientBio(<?php echo $client_bio->id; ?>)"><i style="color: #555;" class="icon-bin"></i></a>
       <?php } ?>
     </div>
   </div>
-  </div>
 </div>
-<div id="modal_clients_bio" class="modal fade" tabindex="-1">
+<div id="modal_clients_bio_<?php echo $detail->id; ?>" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="client_bio_form">
-        <input type="hidden" name="client_id" value="<?php echo $client_id; ?>" />
+      <form id="client_bio_form_<?php echo $detail->id; ?>">
+        <input type="hidden" name="client_id" value="<?php echo $detail->client_id; ?>" >
+        <input type="hidden" name="agency_id" value="<?php echo $detail->agency_id; ?>" >
         <input type="hidden" name="client_bio_id" value="<?php if(count($client_bio)>0){ echo $client_bio->id; } ?>" />
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto;">Edit Client Bio</h5>
           <div>
             <li class="media" style="padding: unset; border: none;">
-              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client_id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
+              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
               <div class="media-body">
                 <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $client->first_name." ".$client->last_name; ?></div>
                 <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
@@ -94,7 +100,7 @@
               <div class="form-group">
                 <label>Profession Details:</label>
                 <textarea name="details" rows="3" cols="4" placeholder="Add brief detail about client Profession" class="form-control"><?php if(count($client_bio)>0){ echo $client_bio->details; } ?>
-</textarea>
+                </textarea>
               </div>
             </div>
           </div>
@@ -103,14 +109,14 @@
               <div class="form-group">
                 <label>Client's daily routine:</label>
                 <textarea name="daily_routines" rows="3" cols="4" placeholder="Add brief detail about client routine" class="form-control"><?php if(count($client_bio)>0){ echo $client_bio->daily_routines; } ?>
-</textarea>
+                </textarea>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label>Client's likes:</label>
                 <textarea name="likes" rows="3" cols="4" placeholder="Add brief detail about client likes" class="form-control"><?php if(count($client_bio)>0){ echo $client_bio->likes; } ?>
-</textarea>
+                </textarea>
               </div>
             </div>
           </div>
@@ -119,14 +125,14 @@
               <div class="form-group">
                 <label>Client's dislikes:</label>
                 <textarea name="dislikes" rows="3" cols="4" placeholder="Add brief detail about client dislikes" class="form-control"><?php if(count($client_bio)>0){ echo $client_bio->dislikes; } ?>
-</textarea>
+                </textarea>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label>Client's hobbies:</label>
                 <textarea name="hobbies" rows="3" cols="4" placeholder="Add brief detail about client hobbies" class="form-control"><?php if(count($client_bio)>0){ echo $client_bio->hobbies; } ?>
-</textarea>
+                </textarea>
               </div>
             </div>
           </div>
@@ -135,7 +141,7 @@
               <div class="form-group">
                 <label>Client's Favourite Music:</label>
                 <textarea name="music" rows="3" cols="4" placeholder="Add brief detail about client favourite music" class="form-control"><?php if(count($client_bio)>0){ echo $client_bio->music; } ?>
-</textarea>
+                </textarea>
               </div>
             </div>
           </div>
@@ -151,15 +157,15 @@
 
 <script type="text/javascript">
 function deleteClientBio(id){
-  $.post("<?php echo site_url("agency/scheduling/delete_client_bio");?>", {id:id,client_id:<?php echo $client_id; ?>}).done(function(data){
-    $("#client_bio_area").html(data);
+  $.post("<?php echo site_url("caregiver/current_shifts/delete_client_bio");?>", {id:id}).done(function(data){
+    //$("#client_bio_area").html(data);
     swal({
       title: "Good job!",
       type: 'error',
       html: 'You have deleted client bio successfully',
       allowOutsideClick: false,
     }).then(function() {
-      window.location = "<?php site_url('agency/scheduling/view'); ?>";
+      location.reload();
     });
     // $('#client_bio_row'+id+'').remove();
   });
@@ -172,13 +178,13 @@ function deleteClientBio(id){
 //   });
 }
 
-$("#client_bio_form").on("submit", function(e){
-	$("#modal_clients_bio").modal("hide");
-	loader = CardLoader($("#client_bio_area"));
+$("#client_bio_form_<?php echo $detail->id; ?>").on("submit", function(e){
+	$("#modal_clients_bio_<?php echo $detail->id; ?>").modal("hide");
+	loader = CardLoader($("#client_bio_form_<?php echo $detail->id; ?>"));
 	e.preventDefault();
 	var formData = new FormData($(this)[0]);
 	$.ajax({
-		url: '<?php echo site_url("agency/scheduling/client_bio_form"); ?>',
+		url: '<?php echo site_url("caregiver/current_shifts/client_bio_form"); ?>',
 		type: 'POST',
 		data: formData,
 		cache: false,
@@ -186,7 +192,7 @@ $("#client_bio_form").on("submit", function(e){
 		processData: false,
 		success: function(e){
 			loader.unblock();
-			$("#client_bio_area").html(e);
+			//$("#client_bio_area_<?php echo $detail->id; ?>").html(e);
 			swal({
         title: "Good job!",
         type: 'success',
@@ -195,7 +201,7 @@ $("#client_bio_form").on("submit", function(e){
       }).then(function() {
         location.reload();
       });
-			$(".modal-backdrop").remove();
+			//$(".modal-backdrop").remove();
 		}
 	});
 });

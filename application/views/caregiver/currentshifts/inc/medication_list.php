@@ -1,3 +1,5 @@
+<?php $client = $this->common_model->listingRow('id',$detail->client_id,'client'); ?>
+<?php //print_array($client); ?>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
@@ -27,10 +29,10 @@
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto;">Add client medication</h5>
           <div>
-            <li class="media">
-              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
+            <li class="media" style="padding: unset; border: none;">
+              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
               <div class="media-body">
-                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller</div>
+                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $client->first_name." ".$client->last_name; ?></div>
                 <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
             </li>
           </div>
@@ -119,13 +121,13 @@
   </div>
 </div>
 
-<div id="edit_medication_modal_<?php echo $detail->id; ?>" class="modal fade" tabindex="-2">
+<!-- <div id="edit_medication_modal_<?php echo $detail->id; ?>" class="modal fade" tabindex="-2">
   <div class="modal-dialog">
     <div class="modal-content" id="edit_medication_div_<?php echo $detail->id; ?>">
       
     </div>
   </div>
-</div>
+</div> -->
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/touchspin.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_input_groups.js"></script>
@@ -194,8 +196,8 @@
     }
     function edit_medication(id){
       $.post("<?php echo site_url("caregiver/current_shifts/edit_medication"); ?>", {id:id}).done(function(data){
-        $("#edit_medication_div_<?php echo $detail->id; ?>").html(data);
-        $("#edit_medication_modal_<?php echo $detail->id; ?>").modal("show");
+        $('#update_modal_content').html(data);
+        $('#update_modal').modal('show');
       });
     }
 </script>
