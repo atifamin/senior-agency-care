@@ -8,7 +8,7 @@
 	<input type="hidden" name="client_id" value="<?php echo $result->client_id; ?>">
   <div class="modal-header">
   	<div class="col-md-3">
-        <select name="status" class="form-control form-control-select2 edit_form_status" data-fouc>
+        <select name="status" class="form-control form-control-select2 " data-fouc>
             <option value="Pending">Pending</option>
             <option value="Complete">Complete</option> 
         </select>
@@ -137,6 +137,7 @@
 $('.form-input-styled').uniform();
 $('.edit_form_status').uniform();
 $(".form-check-input-styled-check").uniform();
+$('.form-control-select2').select2();
 
 </script>
 
