@@ -38,8 +38,8 @@
               <?php foreach (CON_CLIENT_DIETRY_REQUIREMENT as $deitry_key => $dietry_value) { 
                   ?>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" name="dietry_requirements" value="<?php echo $deitry_key; ?>" id="deitry_<?php echo $deitry_key; ?>" <?php if(count($dietry_needs)>0 && $deitry_key == $dietry_needs->dietry_requirements){echo 'checked';} ?> >
-                <label class="custom-control-label" for="deitry_<?php echo $deitry_key; ?>"><?php echo $dietry_value; ?></label>
+                <input type="radio" class="custom-control-input" name="dietry_requirements" value="<?php echo $deitry_key; ?>" id="deitry_<?php echo $deitry_key.$detail->id; ?>" <?php if(count($dietry_needs)>0 && $deitry_key == $dietry_needs->dietry_requirements){echo 'checked';} ?> >
+                <label class="custom-control-label" for="deitry_<?php echo $deitry_key.$detail->id; ?>"><?php echo $dietry_value; ?></label>
               </div>
                <?php  } ?>
 
@@ -50,8 +50,8 @@
               <label class="d-block font-weight-semibold">Select client's fluid requirements</label>
               <?php foreach (CON_CLIENT_FLUID_REQUIREMENT as $fluid_key => $fluid_value) { ?>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" name="fluid_requirements"  value="<?php echo $fluid_key; ?>" id="fluid_<?php echo $fluid_key; ?>" <?php if(count($dietry_needs)>0 && $fluid_key == $dietry_needs->fluid_requirements){echo 'checked';} ?>>
-                <label class="custom-control-label" for="fluid_<?php echo $fluid_key; ?>"><?php echo $fluid_value; ?></label>
+                <input type="radio" class="custom-control-input" name="fluid_requirements"  value="<?php echo $fluid_key; ?>" id="fluid_<?php echo $fluid_key.$detail->id; ?>" <?php if(count($dietry_needs)>0 && $fluid_key == $dietry_needs->fluid_requirements){echo 'checked';} ?>>
+                <label class="custom-control-label" for="fluid_<?php echo $fluid_key.$detail->id; ?>"><?php echo $fluid_value; ?></label>
               </div>
               <?php } ?>
             </div>
