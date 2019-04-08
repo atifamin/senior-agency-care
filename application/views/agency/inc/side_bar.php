@@ -215,7 +215,7 @@
 				</div>
                 
 			</div>
-            <div class="progress mb-3" style="height: 0.375rem;">
+            <div class="progress mb-3" style="height: 0.375rem;display:none">
 								<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 72%">
 									<span class="sr-only">72% Complete</span>
 								</div>
