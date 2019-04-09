@@ -22,7 +22,7 @@
         <div class="form-group">
           <label>Add date and time vitals were taken: </label>
           <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-            <input type="text" name="from_date" id="date_picker" class="form-control edit_date_time_input" value="<?php echo date("m/d/Y h:i a", strtotime($result->from_date))." - ".date("m/d/Y h:i a", strtotime($result->to_date)); ?>" placeholder="Enter date and time vitals were taken">
+            <input type="text" name="from_date" id="anytime_change_edit_<?php echo $result->id; ?>" value="<?php echo date("F jS H:s", strtotime($result->from_date));?>" class="form-control" placeholder="Enter date and time">
           </div>
         </div>
       </div>
@@ -111,28 +111,27 @@
   </div>
 </form>
 
-<!--   <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/legacy.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/plugins/notifications/jgrowl.min.js"></script> -->
+  <script src="<?php echo base_url(); ?>assets/js/plugins/notifications/jgrowl.min.js"></script>
 
 
 <script type="text/javascript">
 
   $(".form-check-input-styled").uniform();
 
-  $('.edit_date_time_input').daterangepicker({
-      timePicker: true,
-      applyClass: 'bg-slate-600',
-      cancelClass: 'btn-light',
-      locale: {
-          format: 'MM/DD/YYYY h:mm a'
-      }
-  });
+  // $('.edit_date_time_input').daterangepicker({
+  //     timePicker: true,
+  //     applyClass: 'bg-slate-600',
+  //     cancelClass: 'btn-light',
+  //     locale: {
+  //         format: 'MM/DD/YYYY h:mm a'
+  //     }
+  // });
 
 
   $('#update_vital_report_form').on("submit",function(e){
@@ -165,5 +164,17 @@
       }
     });
   });
+$('#anytime_change_edit_<?php echo $result->id; ?>').AnyTime_picker({
+    format: '%M %D %H:%i',
+});
+
+  // $.each($('.anytime_change_from_date_edit'), function(k, v){
+  //   $(this).AnyTime_picker({
+  //     format: '%M %D %H:%i',
+  //   });
+  // });
+  // $('.anytime_change_from_date_edit').AnyTime_picker({
+  //   format: '%M %D %H:%i',
+  // });
 
 </script>

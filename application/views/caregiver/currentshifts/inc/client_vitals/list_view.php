@@ -24,13 +24,13 @@ $report_detail = $this->common_model->listingResultWhere('client_id',$detail->cl
           <td><span class="text-muted"><?php echo $value->breathing_from." - ".$value->breathing_to; ?></span></td>
           <td><span class="text-muted"><?php echo $value->pulse_from." - ".$value->pulse_to; ?></span></td>
           <td><span class="text-muted"><?php echo $value->temperature; ?></span></td>
-          <td><span class="text-muted"><?php echo date('h:i a,F d,Y',strtotime($value->from_date))." - ".date('h:i a,F d,Y',strtotime($value->to_date)); ?></span></td>
+          <td><span class="text-muted"><?php echo date("d-M-Y",strtotime($value->from_date));  ?></span></td>
           <td class="text-center"><div class="list-icons">
               <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
                 <!-- <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php
                 $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Vitals Report</a> <a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Vital Report</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Vital Report</a> </div>
               </div> -->
-              <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Client Vitals</a> <a href="javascript:;" onclick="delete_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete Client Vitals</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Client Vitals</a> <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a> </div>
+              <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit vitals</a> <a href="javascript:;" onclick="delete_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete vitals records</a><a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to pdf</a> </div>
             </div></td>
         </tr>
         <?php }

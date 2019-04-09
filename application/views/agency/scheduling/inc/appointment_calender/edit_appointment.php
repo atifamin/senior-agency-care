@@ -45,7 +45,7 @@
         <div class="form-group">
           <label>Enter appointment date and time: </label>
           <div class="input-group"> <span class="input-group-prepend"><span class="input-group-text"><i class="icon-alarm"></i></span></span>
-            <input type="text" name="appointment_date" id="anytime_change" value="<?php echo date("F jS H:s",strtotime($result->appointment_date)); ?>" class="form-control" >
+            <input type="text" name="appointment_date" id="anytime_change_<?php echo $result->id; ?>" value="<?php echo date("F jS H:s",strtotime($result->appointment_date)); ?>" class="form-control" >
           </div>
         </div>
       </div>
@@ -179,7 +179,7 @@
   $('.form-check-input-styled').uniform();
   $('.multiselect').multiselect();
   // $('.anytime').picker();
-  $('#anytime_change').AnyTime_picker({
+  $('#anytime_change_<?php echo $result->id; ?>').AnyTime_picker({
             format: '%M %D %H:%i',
         });
 

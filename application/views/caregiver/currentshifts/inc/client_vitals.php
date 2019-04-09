@@ -41,7 +41,7 @@
               <div class="form-group">
                 <label>Add date and time vitals were taken: </label>
                 <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                  <input type="text"  name="from_date" class="form-control daterange-time" value="" placeholder="Enter date and time vitals were taken">
+                  <input type="text" name="from_date" id="anytime_change_from_date_caregiver" value="" class="form-control" placeholder="Enter date and time">
                 </div>
               </div>
             </div>
@@ -133,8 +133,21 @@
   </div>
 </div>
 
+<!--   <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/notifications/jgrowl.min.js"></script> -->
+
 
 <script type="text/javascript">
+
+  $('#anytime_change_from_date_caregiver').AnyTime_picker({
+    format: '%M %D %H:%i',
+  });
+
 
   $('#add_vital_reports_form<?php echo $detail->id; ?>').on('submit',function(e){
     // alert(e);
