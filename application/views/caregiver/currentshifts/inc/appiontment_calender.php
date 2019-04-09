@@ -159,6 +159,7 @@ $('#appointment_calender_checkbox').click(function(){
   }
 });
 
+
 $('#add_client_appointment_form_<?php echo $detail->id; ?>').on('submit',function(e){
   e.preventDefault();
 

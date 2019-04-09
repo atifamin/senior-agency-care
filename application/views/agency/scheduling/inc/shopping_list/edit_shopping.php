@@ -68,13 +68,13 @@
 	    					<div class="form-check">
 	    						<label class="form-check-label">
 	    							<input type="checkbox" class="form-check-input-styled-check" checked disabled>&nbsp;&nbsp;<?php echo $value; ?></label>
-	    						</div>
-	    					</div> 
-	    				</div>
-	    				<div class="col-md-6">
-	    					<a href="javascript:;" onclick="remove(<?php echo $key; ?>)"; style="float:right; margin-top: 10px;" class="text-default font-weight-semibold letter-icon-title">
-	    		<i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a>
-	    				</div>
+	    					</div>
+	    				</div> 
+	    			</div>
+	    			<div class="col-md-6">
+	    				<a href="javascript:;" onclick="remove(<?php echo $key; ?>)"; style="float:right; margin-top: 10px;" class="text-default font-weight-semibold letter-icon-title">
+	    				<i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a>
+	    			</div>
 	    </div>
 
 		<?php	}

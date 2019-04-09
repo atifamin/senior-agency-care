@@ -336,9 +336,21 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_new_shopping(){
 		$post = $this->input->post();
+		//print_array($post);
 		$post['agency_id'] = $this->agency_id;
 		$detail = $this->Schedule_model->add_new_shopping($post);
 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
+	}
+	public function add_recipt(){
+		$id = $this->input->post();	
+		if (!empty($_FILES['file']['name'])) {
+			$recipt_file = upload_file($_FILES['file'], "client_shopping_list", $id,$FILE_DIRECTORY="./uploads/agency/clients/");
+			$list_file = $this->common_model->insertGetIDQuery('media',$recipt_file);
+		}
+		//$data = $this->common_model->updateQuery('media', $whereColumn, $whereColumnValue, $post);
+		print_array($list_file);
+		$this->load->view("agency/scheduling/inc/shopping_list/shopping_recipt",$data);	
+		//print_array($post);
 	}
 	public function delete_shopping(){
 		$shopping_id = $this->input->post('id');
