@@ -68,7 +68,21 @@ class Client_model extends CI_Model{
         $client["prefered_hospital"] = $post["prefered_hospital"];
         $client["special_instructions"] = $post["special_instructions"];
         $client["linked_profile"] = $post["linked_profile"];
-        //print_array($post);
+        $hex = '#';
+        foreach(array('r', 'g', 'b') as $color){
+            $val = mt_rand(0, 255);
+            //Convert the random number into a Hex value.
+            $dechex = dechex($val);
+            //Pad with a 0 if length is less than 2.
+            if(strlen($dechex) < 2){
+                $dechex = "0" . $dechex;
+            }
+            //Concatenate
+            $hex .= $dechex;
+        }
+        $client['color'] = $hex;
+        $client['created_by'] = $post['agency_id'];
+        $client['created_at'] = date('Y-m-d H:i:s');
         $client_id = $this->common_model->insertGetIDQuery("client", $client);
 
         if(isset($_FILES["croppedImage"])){
@@ -381,6 +395,7 @@ class Client_model extends CI_Model{
 	
 	public function load_client_appointement_events($client_id){
 		$client_appoitements = $this->load_client_appointments($client_id);
+        $client = $this->common_model->listingRow('id',$client_id,'client');
 		$eventsArray = array();
 		if(count($client_appoitements)>0){
 			foreach($client_appoitements as $CPK=>$CPV){
@@ -391,7 +406,7 @@ class Client_model extends CI_Model{
 				$is_recurring_html = "";
 				$obj->start = date("c", strtotime($CPV->date." ".$CPV->in_time));
 				$obj->end = date("c", strtotime($CPV->date." ".$CPV->out_time));
-				$obj->color = "#546E7A";
+				$obj->color = $client->color;
 				if($CPV->is_recurring==1){
 					$is_recurring_html = "checked";
 					$obj->color = "#4caf50";

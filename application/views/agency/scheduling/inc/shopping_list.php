@@ -108,6 +108,7 @@
   </div>
 </div>
 
+
 <script type="text/javascript">
 
   function add_list(){
@@ -173,6 +174,40 @@
     });
   }
 
+  // function edit_recipt(id){
+  //    $.post("<?php echo site_url('agency/scheduling/edit_recipt'); ?>", {id:id}).done(function(data){
+  //     // console.log(data);
+  //     // return false;
+  //     $('#shopping_recipt_div').html(data);
+  //     $("#recipt_modal").modal('show');
+  //   });
+    // //$('#add_recipt_modal').modal('show');
+    // //var formData = new FormData($('#add_shopping_recipt')[0]);
+    // formData.append('id',id);
+    // $.ajax({
+    //   url:'<?php echo site_url("agency/scheduling/add_recipt"); ?>',
+    //   type:'post',
+    //   data:formData,
+    //   cache: false,
+    //   contentType: false,
+    //   processData: false,
+    //   success: function(e){
+    //     console.log(e);
+    //     return false;
+    //     loader.unblock();
+    //     swal({
+    //       title: "Good job!",
+    //       type: 'success',
+    //       html: 'You have added shopping list successfully',
+    //       allowOutsideClick: false,
+    //     }).then(function() {
+    //       location.reload();
+    //     });
+    //     $('#shopping_list_view').html(e);
+    //     $('#add_modal_shopping_list').modal('hide');
+    //   }
+    // });
+  }
 
 
 </script>
