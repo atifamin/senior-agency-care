@@ -264,6 +264,7 @@ class Schedule_model extends CI_Model{
 
 	public function edit_shopping($shopping_id){
 		$result = $this->common_model->listingRow('id',$shopping_id,"client_shopping_list");
+		$data['image'] = $this->common_model->listingRow('id',$result->list_file,"media");
 		$data["result"] = $result;
 		$client_id = $result->client_id;
 		$data['client'] = $this->common_model->listingRow('id',$client_id,'client');

@@ -439,13 +439,18 @@ class Client_model extends CI_Model{
 	}
 	
 	public function check_availability($caregiverId, $from, $to){
-		$to = date('Y-m-d H:i:s', strtotime("-5 minute", strtotime($to)));
+        $diff = $this->common_model->dateDifferanceTwoDates($from, $to);
+        if($diff['hours']<0){
+            $to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
+        }
+        $to = date('Y-m-d H:i:s', strtotime("-5 minute", strtotime($to)));
 		$from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
 		$dates = array();
-		while($from <= $to) {
-			$dates[] = $from;
-			$from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
-		}
+        while($from <= $to) {
+            $dates[] = $from;
+            $from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
+        }
+        $compareDatesArray = array($from, $to);
 		foreach($dates as $date){
 			$QUERY = "SELECT
 					SUM( IF( '".$date."'  - INTERVAL 1 SECOND BETWEEN CONCAT(ca.`date`, ' ', ca.in_time) AND CONCAT(ca.`date`, ' ', ca.out_time), 1, 0 ) ) AS inTimeExists,
@@ -454,6 +459,7 @@ class Client_model extends CI_Model{
 					WHERE DATE(ca.`date`) >= DATE(NOW())
 					AND ca.caregiver_id = ".$caregiverId."";
 			$query_run = $this->db->query($QUERY);
+            print_array($this->db->last_query());
 			$query_row = $query_run->row();
 			if($query_row->inTimeExists==1 || $query_row->outTimeExists==1){
 				return 0;
@@ -461,6 +467,24 @@ class Client_model extends CI_Model{
 		}
 		return true;
 	}
+
+    public function create_time_range($start, $end, $interval = '30 mins', $format = '12') {
+        $startTime = strtotime($start); 
+        $endTime   = strtotime($end);
+        $returnTimeFormat = ($format == '12')?'g:i:s A':'G:i:s';
+
+        $current   = time(); 
+        $addTime   = strtotime('+'.$interval, $current); 
+        $diff      = $addTime - $current;
+
+        $times = array(); 
+        while ($startTime < $endTime) { 
+            $times[] = date($returnTimeFormat, $startTime); 
+            $startTime += $diff; 
+        } 
+        $times[] = date($returnTimeFormat, $startTime); 
+        return $times; 
+    }
 	
 	public function gettingAssignedCaregivers($client_id){
 		$query = $this->db->select("c.*")
