@@ -33,6 +33,7 @@ $('.fullcalendar-formats').fullCalendar({
 		center: 'title,month,listMonth',
 		right: 'basicDay,listDay,basicWeek,listWeek'
 	},*/
+	
 	header: {
 		left: 'prev,next today',
 		center: 'title,month,listMonth,pdfView',
@@ -76,6 +77,7 @@ $('.fullcalendar-formats').fullCalendar({
 	defaultView: 'listMonth',
 	timeFormat: 'h:mm A',
 	defaultDate: '<?php echo date("Y-m-d"); ?>',
+	draggable: false,
 	editable: true,
 	events: <?php echo $events; ?>,
 	isRTL: $('html').attr('dir') == 'rtl' ? true : false,
@@ -87,6 +89,20 @@ $('.fullcalendar-formats').fullCalendar({
 			element.append(info.is_recurring);
 		}
 	},
+	eventClick: function(info, element, view){
+		if(view.type=="month"){
+			swal({
+				title: '<i>HTML</i> <u>example</u>',
+				html: 'You can use <strong>bold text</strong>, ' + '<a href="http://demo.interface.club">links</a> ' + 'and other <span class="text-warning">HTML tags</span>'
+			});
+		}
+		/*alert('Event: ' + info.event.title);
+    	alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+    	alert('View: ' + info.view.type);*/
+		
+    	//change the border color just for fun
+    	//info.el.style.borderColor = 'red';
+	}
 });
 var elems = Array.prototype.slice.call(document.querySelectorAll('.is_recurring_checkbox'));
 elems.forEach(function(html) {
