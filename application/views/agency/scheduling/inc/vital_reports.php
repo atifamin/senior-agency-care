@@ -1,5 +1,22 @@
 <?php //print_array($vital_report_details); ?>
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script> -->
+<!-- <script src="<?php echo base_url(); ?>assets/js/demo_pages/picker_date.js"></script> -->
+<!-- <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script> -->
+
+  <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/pickadate/legacy.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/plugins/notifications/jgrowl.min.js"></script>
+
+
 <div class="row">
   <div class="col-md-12">
     <div class="row">
@@ -36,7 +53,7 @@
               <div class="form-group">
                 <label>Add date and time vitals were taken: </label>
                 <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                  <input type="text" name="from_date" class="form-control daterange-time" value="" placeholder="Enter date and time vitals were taken" required="">
+                  <input type="text" name="from_date" class="form-control" id="anytime_change_from_date" placeholder="April 2nd 10:00">
                 </div>
               </div>
             </div>
@@ -136,7 +153,14 @@
   </div>
 </div>
 
+
+
+
 <script type="text/javascript">
+
+  $('#anytime_change_from_date').AnyTime_picker({
+    format: '%M %D %H:%i',
+  });
 
   $("#add_vital_report_form").on("submit", function(e){
     //loader = CardLoader($("#modal_add_medication"));

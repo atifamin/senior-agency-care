@@ -68,7 +68,21 @@ class Client_model extends CI_Model{
         $client["prefered_hospital"] = $post["prefered_hospital"];
         $client["special_instructions"] = $post["special_instructions"];
         $client["linked_profile"] = $post["linked_profile"];
-        //print_array($post);
+        $hex = '#';
+        foreach(array('r', 'g', 'b') as $color){
+            $val = mt_rand(0, 255);
+            //Convert the random number into a Hex value.
+            $dechex = dechex($val);
+            //Pad with a 0 if length is less than 2.
+            if(strlen($dechex) < 2){
+                $dechex = "0" . $dechex;
+            }
+            //Concatenate
+            $hex .= $dechex;
+        }
+        $client['color'] = $hex;
+        $client['created_by'] = $post['agency_id'];
+        $client['created_at'] = date('Y-m-d H:i:s');
         $client_id = $this->common_model->insertGetIDQuery("client", $client);
 
         if(isset($_FILES["croppedImage"])){
@@ -381,6 +395,7 @@ class Client_model extends CI_Model{
 	
 	public function load_client_appointement_events($client_id){
 		$client_appoitements = $this->load_client_appointments($client_id);
+        $client = $this->common_model->listingRow('id',$client_id,'client');
 		$eventsArray = array();
 		if(count($client_appoitements)>0){
 			foreach($client_appoitements as $CPK=>$CPV){
@@ -391,7 +406,7 @@ class Client_model extends CI_Model{
 				$is_recurring_html = "";
 				$obj->start = date("c", strtotime($CPV->date." ".$CPV->in_time));
 				$obj->end = date("c", strtotime($CPV->date." ".$CPV->out_time));
-				$obj->color = "#546E7A";
+				$obj->color = $client->color;
 				if($CPV->is_recurring==1){
 					$is_recurring_html = "checked";
 					$obj->color = "#4caf50";
@@ -424,13 +439,18 @@ class Client_model extends CI_Model{
 	}
 	
 	public function check_availability($caregiverId, $from, $to){
-		$to = date('Y-m-d H:i:s', strtotime("-5 minute", strtotime($to)));
+        $diff = $this->common_model->dateDifferanceTwoDates($from, $to);
+        if($diff['hours']<0){
+            $to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
+        }
+        $to = date('Y-m-d H:i:s', strtotime("-5 minute", strtotime($to)));
 		$from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
 		$dates = array();
-		while($from <= $to) {
-			$dates[] = $from;
-			$from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
-		}
+        while($from <= $to) {
+            $dates[] = $from;
+            $from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
+        }
+        $compareDatesArray = array($from, $to);
 		foreach($dates as $date){
 			$QUERY = "SELECT
 					SUM( IF( '".$date."'  - INTERVAL 1 SECOND BETWEEN CONCAT(ca.`date`, ' ', ca.in_time) AND CONCAT(ca.`date`, ' ', ca.out_time), 1, 0 ) ) AS inTimeExists,
@@ -439,6 +459,7 @@ class Client_model extends CI_Model{
 					WHERE DATE(ca.`date`) >= DATE(NOW())
 					AND ca.caregiver_id = ".$caregiverId."";
 			$query_run = $this->db->query($QUERY);
+            print_array($this->db->last_query());
 			$query_row = $query_run->row();
 			if($query_row->inTimeExists==1 || $query_row->outTimeExists==1){
 				return 0;
@@ -446,6 +467,24 @@ class Client_model extends CI_Model{
 		}
 		return true;
 	}
+
+    public function create_time_range($start, $end, $interval = '30 mins', $format = '12') {
+        $startTime = strtotime($start); 
+        $endTime   = strtotime($end);
+        $returnTimeFormat = ($format == '12')?'g:i:s A':'G:i:s';
+
+        $current   = time(); 
+        $addTime   = strtotime('+'.$interval, $current); 
+        $diff      = $addTime - $current;
+
+        $times = array(); 
+        while ($startTime < $endTime) { 
+            $times[] = date($returnTimeFormat, $startTime); 
+            $startTime += $diff; 
+        } 
+        $times[] = date($returnTimeFormat, $startTime); 
+        return $times; 
+    }
 	
 	public function gettingAssignedCaregivers($client_id){
 		$query = $this->db->select("c.*")

@@ -336,6 +336,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_new_shopping(){
 		$post = $this->input->post();
+		//print_array($post);
 		$post['agency_id'] = $this->agency_id;
 		$detail = $this->Schedule_model->add_new_shopping($post);
 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
@@ -353,7 +354,30 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->update_shopping($post);
- 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
+ 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$data);
+	}
+	public function add_recipt(){
+		$post = $this->input->post();
+		if (!empty($_FILES['file']['name'])) {
+			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list",$post['module_id'], $FILE_DIRECTORY="./uploads/agency/clients/");
+			$this->common_model->insertGetIDQuery('media',$client_shopping_file);
+		}
+	}
+	public function edit_recipt(){
+		$id = $this->input->post('id');
+		$val = "client_shopping_list";
+		$result = $this->common_model->listingRow("id",$id,"client_shopping_list");	
+		$data['result'] = $result;
+		$data['file_data'] = $this->db->query("SELECT * FROM media WHERE module = '".$val."' AND module_id ='".$result->id."' ")->result(); 
+		$data['client'] = $this->common_model->listingRow("id",$result->client_id,"client");	
+
+		$this->load->view("agency/scheduling/inc/shopping_list/shopping_recipt",$data);	
+		//print_array($id);
+	}
+	public function delete_recipt(){
+		$id = $this->input->post('id');
+		//print_array($id);
+		$this->common_model->delete('media', array('id'=>$id));
 	}
 	public function client_bio_form(){
 		$post = $this->input->post();

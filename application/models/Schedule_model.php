@@ -176,9 +176,10 @@ class Schedule_model extends CI_Model{
 	public function add_vital_report($post){
 		$data=$post;
 		$input_date = $this->input->post('from_date');
-		$date = explode(" - ", $input_date);
-		$post['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
-		$post['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
+		$post['from_date'] = date('Y-m-d H:i:s',strtotime($input_date));
+		// $date = explode(" - ", $input_date);
+		// $post['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
+		// $post['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
 		//$post['agency_id'] = $post['agency_id'];
 		$ddd = $this->common_model->insertGetIDQuery("client_vital_reports", $post);
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_vital_reports");
@@ -219,9 +220,10 @@ class Schedule_model extends CI_Model{
 			$reportData['is_temprature'] = 0;
 		}
 		$input_date = $this->input->post('from_date');
-		$date = explode('-', $input_date);
-		$reportData['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
-		$reportData['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
+		$reportData['from_date'] = date('Y-m-d H:i:s', strtotime($input_date));
+		// $date = explode('-', $input_date);
+		// $reportData['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
+		// $reportData['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
 		$reportData['updated_by'] = $this->agency_id;
 		$reportData['updated_at'] = date("Y-m-d H:i:s");
 		$this->common_model->updateQuery("client_vital_reports", "id", $post['report_id'], $reportData);
@@ -262,6 +264,7 @@ class Schedule_model extends CI_Model{
 
 	public function edit_shopping($shopping_id){
 		$result = $this->common_model->listingRow('id',$shopping_id,"client_shopping_list");
+		$data['image'] = $this->common_model->listingRow('id',$result->list_file,"media");
 		$data["result"] = $result;
 		$client_id = $result->client_id;
 		$data['client'] = $this->common_model->listingRow('id',$client_id,'client');

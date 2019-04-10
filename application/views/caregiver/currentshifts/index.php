@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<?php //print_array($result); ?>
+<?php //print_array($shift_detail); ?>
 <div class="card">
   <div class="card-header header-elements-inline" style="padding-bottom: 0px;">
     <div style="margin: 0 auto;">
@@ -60,7 +60,7 @@
               </div>
             </div>
           </li>
-          <?php if (count($shift_detail) >0 ) {
+          <?php if (count($shift_detail) > 0 ) {
           foreach ($shift_detail as $detail) { ?> 
           <li>
             <div class="media">

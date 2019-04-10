@@ -100,9 +100,18 @@
     </div>
   </div>
 </div>
+
 <div id="edit_modal_shopping_list" class="modal fade" tabindex="-2">
   <div class="modal-dialog">
     <div class="modal-content" id="edit_shopping_div">
+      
+    </div>
+  </div>
+</div>
+
+<div id="edit_shopping_recipt_modal" class="modal fade" tabindex="-3">
+  <div class="modal-dialog">
+    <div class="modal-content" id="shopping_recipt_div">
       
     </div>
   </div>
@@ -151,6 +160,14 @@
       }
     });
   });
+
+  function edit_recipt(id){
+    $.post("<?php echo site_url('agency/scheduling/edit_recipt'); ?>", {id:id}).done(function(e){
+      $('#shopping_recipt_div').html(e);
+      $("#edit_shopping_recipt_modal").modal('show');
+    });
+  }
+
   function edit_shopping(id){
     //alert(id);
     $.post("<?php echo site_url('agency/scheduling/edit_shopping'); ?>", {id:id}).done(function(data){
@@ -158,6 +175,7 @@
       $("#edit_modal_shopping_list").modal('show');
     });
   }
+
   function delete_shopping(id){
     //alert(id);
     $.post("<?php echo site_url('agency/scheduling/delete_shopping'); ?>", {id:id}).done(function(data){
@@ -173,6 +191,7 @@
     });
   }
 
+  
 
 
 </script>
