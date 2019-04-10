@@ -32,7 +32,7 @@
         <td><span class="text-muted"><?php echo $value->is_caregiver_reminder; ?></span></td>
         <td class="text-center"><div class="list-icons">
             <div class="dropdown"> <a href="#" class="list-icons-item" data-toggle="dropdown"> <i class="icon-menu9"></i> </a>
-              <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_medication(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a> <a href="javascript:;" onclick="delete_medication(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a> <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a> </div>
+              <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_medication(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Medication</a> <a href="javascript:;" onclick="delete_medication(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete Medication</a> <a href="javascript:;" class="dropdown-item"><i class="icon-square-down"></i> End Medication</a> <a href="<?php echo site_url("pdf/MedicationPdf/export_medication_to_pdf/".$value->id.""); ?>" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a> </div>
             </div>
           </div></td>
       </tr>
@@ -60,5 +60,8 @@ $("#main-datatable").DataTable({
 	}
 });
 
+/*function export_medication_to_pdf(id){
+	$.post("<?php echo site_url("Health_care_pdf/export_medication_to_pdf"); ?>", {id:id}).done(function(){});
+}*/
 
 </script>

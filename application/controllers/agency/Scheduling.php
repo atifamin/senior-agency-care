@@ -91,21 +91,27 @@ class Scheduling extends CI_Controller {
 			$client_detail = $this->common_model->listingRow("id",$post['client_id'],"client");
 			$post['parent_id'] = 0;
 			$post['title'] = $client_detail->first_name." ".$client_detail->last_name." Appointement";
-			$post['date'] = date("Y-m-d", strtotime($date));
-			$post['in_time'] = date("H:i:s", strtotime($post['in_time']));
-			$post['out_time'] = date("H:i:s", strtotime($post['out_time']));
+			$from = date("Y-m-d H:i:s ", strtotime($date." ".$post['in_time']));
+			$to = date("Y-m-d H:i:s ", strtotime($date." ".$post['out_time']));
+			$diff = $this->common_model->dateDifferanceTwoDates($from, $to);
+			if($diff['hours']<0){
+				$to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
+			}
+			$post['from'] = $from;
+			$post['to'] = $to;
 			//$post['color'] = randomString($length = 6);
 			$post['created_by'] = $this->agency_id;
 			$post['created_at'] = date("Y-m-d H:i:s");
 			$post['updated_by'] = $this->agency_id;
 			$post['updated_at'] = date("Y-m-d H:i:s");
-			
-			$from = date("Y-m-d H:i:s ", strtotime($date." ".$post['in_time']));
-			$to = date("Y-m-d H:i:s ", strtotime($date." ".$post['out_time']));
 			$checkIfCargiverIsAvailable = $this->Client_model->check_availability($post['caregiver_id'], $from, $to);
 			$parent_id = 0;
 			if($checkIfCargiverIsAvailable){
-				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $post);
+				$ca = $post;
+				unset($ca['date']);
+				unset($ca['in_time']);
+				unset($ca['out_time']);
+				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $ca);
 				$addedIds[] = $parent_id;
 			}else{
 				$message['type'] = 'error';
@@ -133,8 +139,8 @@ class Scheduling extends CI_Controller {
 					$m .= '
 					<br>
 					<table class="table">
-					<thead><tr><td colspan="3">'.date("l d, Y", strtotime($lastAddedAppointment->date)).'</td></tr></thead>
-					<tbody><tr><td>'.date("h:i A", strtotime($lastAddedAppointment->in_time)).' - '.date("h:i A", strtotime($lastAddedAppointment->out_time)).'</td><td><span class="fc-event-dot" style="background-color:#546E7A"></span></td><td><img src="'.caregiver_image($lastAddedCaregiver->id).'" class="rounded-circle" width="40" height="40" alt=""> '.$lastAddedCaregiver->first_name.' '.$lastAddedCaregiver->last_name.'</td></tr></tbody>
+					<thead><tr><td colspan="3">'.date("l d, Y", strtotime($lastAddedAppointment->from)).'</td></tr></thead>
+					<tbody><tr><td>'.date("h:i A", strtotime($lastAddedAppointment->from)).' - '.date("h:i A", strtotime($lastAddedAppointment->to)).'</td><td><span class="fc-event-dot" style="background-color:#546E7A"></span></td><td><img src="'.caregiver_image($lastAddedCaregiver->id).'" class="rounded-circle" width="40" height="40" alt=""> '.$lastAddedCaregiver->first_name.' '.$lastAddedCaregiver->last_name.'</td></tr></tbody>
 					</table>
 					';
 				}
@@ -163,13 +169,23 @@ class Scheduling extends CI_Controller {
 					$post['parent_id'] = $parent_id;
 				}
 			}
-			$post['date'] = $val;
+			//$post['date'] = $val;
 			$post['recurring_months'] = 0;
 			$from = date("Y-m-d H:i:s ", strtotime($val." ".$post['in_time']));
 			$to = date("Y-m-d H:i:s ", strtotime($val." ".$post['out_time']));
+			$diff = $this->common_model->dateDifferanceTwoDates($from, $to);
+			if($diff['hours']<0){
+				$to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
+			}
+			$post['from'] = $from;
+			$post['to'] = $to;
 			$checkIfCargiverIsAvailable = $this->Client_model->check_availability($post['caregiver_id'], $from, $to);
 			if($checkIfCargiverIsAvailable){
-				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $post);
+				$ca = $post;
+				unset($ca['date']);
+				unset($ca['in_time']);
+				unset($ca['out_time']);
+				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $ca);
 			}else{
 				$message['type'] = 'error';
 				$message['error_detail'][] = (object)array("from"=>date("M, d Y h:i A", strtotime($from)), "to"=>date("M, d Y h:i A", strtotime($to)));

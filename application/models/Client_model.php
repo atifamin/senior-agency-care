@@ -277,7 +277,7 @@ class Client_model extends CI_Model{
 						->where("cr.linked_id IS NULL")
 						->where("c.agency_id", $agency_id)
 						->where("ca.title <>", '')
-                        ->where('ca.date >=',  ''.date('Y-m-d').'')
+                        ->where('ca.to >=',  ''.date('Y-m-d H:i:s').'')
 						->order_by("c.id", "ASC")
 						->group_by("c.id")
 						->get()->result();
@@ -401,36 +401,24 @@ class Client_model extends CI_Model{
 			foreach($client_appoitements as $CPK=>$CPV){
 				$obj = new stdClass();
 				$obj->title = $CPV->title;
-				$fromDateTime = $CPV->date.' '.$CPV->in_time;
-				$toDateTime = $CPV->date.' '.$CPV->out_time;
+				$fromDateTime = $CPV->from;
+				$toDateTime = $CPV->to;
 				$is_recurring_html = "";
-				$obj->start = date("c", strtotime($CPV->date." ".$CPV->in_time));
-				$obj->end = date("c", strtotime($CPV->date." ".$CPV->out_time));
+				$obj->start = date("c", strtotime($CPV->from));
+				$obj->end = date("c", strtotime($CPV->to));
+				$obj->color = "#4caf50";
+				if($client->color!=""){
+					$obj->color = $client->color;
+				}
 				$obj->color = $client->color;
 				if($CPV->is_recurring==1){
 					$is_recurring_html = "checked";
-					$obj->color = "#4caf50";
 				}
-				/*if($CPV->is_recurring==1){
-					$is_recurring_html = "checked";
-					$obj->start = ''.$CPV->in_time.'';
-					$obj->end = ''.$CPV->out_time.'';
-					$diff = $this->common_model->dateDifferanceTwoDates($fromDateTime, $toDateTime);
-					if($diff['days']<0){
-						$obj->end = '';
-					}
-					$obj->dow = array(date("w", strtotime($CPV->date." ".$CPV->in_time)));
-					$obj->color = "#4caf50";
-				}else{
-					$obj->start = date("c", strtotime($CPV->date." ".$CPV->in_time));
-					$obj->end = date("c", strtotime($CPV->date." ".$CPV->out_time));
-					$obj->color = "#546E7A";
-				}*/
 				$obj->date_data = '<td class="fc-list-item-marker">'.date("h:i A", strtotime($fromDateTime)).' - '.date("h:i A", strtotime($toDateTime)).'</td>';
 				$obj->client_data = '<div class="media" style="padding:0px;"><div class="mr-3"><img src="'.caregiver_image($CPV->caregiver_detail->id).'" class="rounded-circle" width="30" height="30" alt=""></div><div class="media-body"><div class="media-title" style="padding:1% 0;">'.$CPV->caregiver_detail->first_name." ".$CPV->caregiver_detail->last_name.' &nbsp;&nbsp;&nbsp;<div class="list-icons"><div class="list-icons-item dropdown"><a href="javascript:;" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-pencil5"></i></a><div class="dropdown-menu dropdown-menu-right"><a href="javascript:;" class="dropdown-item"><i class="icon-file-upload"></i> Switch Schedule</a><a href="javascript:;" onclick="edit_client_schedule('.$CPV->id.')" class="dropdown-item"><i class="icon-file-plus"></i> Edit</a><a href="javascript:;" class="dropdown-item" onclick="delete_appointement('.$CPV->id.', '.$CPV->parent_id.', '.$CPV->is_recurring.')"><i class="icon-cross2"></i> Remove</a></div></div></div></div></div></div>';
 				
 				$obj->is_recurring = '<td class="fc-list-item-tim" style="border-bottom:1px solid #ddd;" width="20"><div class="form-check form-check-switchery">Recurring&nbsp;&nbsp;<label class="form-check-label"><input type="checkbox" class="form-check-input-switchery is_recurring_checkbox" id="is_recurring_'.$CPV->id.'" '.$is_recurring_html.' data-fouc appointment-id="'.$CPV->id.'"></label></div> </td>';
-				$obj->description = $CPV->title.": Start: ".date("Y-m-d h:i A", strtotime($CPV->date." ".$CPV->in_time)).", End: ".date("Y-m-d h:i A", strtotime($CPV->date." ".$CPV->out_time))."";
+				$obj->description = $CPV->title.": Start: ".date("Y-m-d h:i A", strtotime($CPV->from)).", End: ".date("Y-m-d h:i A", strtotime($CPV->to))."";
 				
 				$eventsArray[] = $obj;
 			}
@@ -439,12 +427,12 @@ class Client_model extends CI_Model{
 	}
 	
 	public function check_availability($caregiverId, $from, $to){
-        $diff = $this->common_model->dateDifferanceTwoDates($from, $to);
+        /*$diff = $this->common_model->dateDifferanceTwoDates($from, $to);
         if($diff['hours']<0){
             $to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
         }
         $to = date('Y-m-d H:i:s', strtotime("-5 minute", strtotime($to)));
-		$from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
+		$from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));*/
 		$dates = array();
         while($from <= $to) {
             $dates[] = $from;
@@ -453,13 +441,12 @@ class Client_model extends CI_Model{
         $compareDatesArray = array($from, $to);
 		foreach($dates as $date){
 			$QUERY = "SELECT
-					SUM( IF( '".$date."'  - INTERVAL 1 SECOND BETWEEN CONCAT(ca.`date`, ' ', ca.in_time) AND CONCAT(ca.`date`, ' ', ca.out_time), 1, 0 ) ) AS inTimeExists,
-					SUM( IF( '".$to."'  - INTERVAL 1 SECOND BETWEEN CONCAT(ca.`date`, ' ', ca.in_time) AND CONCAT(ca.`date`, ' ', ca.out_time), 1, 0 ) ) AS outTimeExists
+					SUM( IF( '".$from."'  - INTERVAL 1 SECOND BETWEEN `from` AND `to`, 1, 0 ) ) AS inTimeExists,
+					SUM( IF( '".$to."'  - INTERVAL 1 SECOND BETWEEN `from` AND `to`, 1, 0 ) ) AS outTimeExists
 					FROM client_appointements AS ca
-					WHERE DATE(ca.`date`) >= DATE(NOW())
+					WHERE DATE(ca.`from`) >= DATE(NOW())
 					AND ca.caregiver_id = ".$caregiverId."";
 			$query_run = $this->db->query($QUERY);
-            print_array($this->db->last_query());
 			$query_row = $query_run->row();
 			if($query_row->inTimeExists==1 || $query_row->outTimeExists==1){
 				return 0;
@@ -499,7 +486,7 @@ class Client_model extends CI_Model{
 		$query = $this->common_model->listingResultWhere('client_id',$client_id,"client_appointements");
 		if(count($query)>0){
 			foreach($query as $key=>$val){
-				$query[$key]->format_date = date("h:i A", strtotime($val->date." ".$val->in_time))." - ".date("h:i A", strtotime($val->date." ".$val->out_time));
+				$query[$key]->format_date = date("h:i A", strtotime($val->from))." - ".date("h:i A", strtotime($val->to));
 			}
 		}
 		return $query;

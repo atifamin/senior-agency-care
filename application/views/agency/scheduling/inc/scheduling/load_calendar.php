@@ -1,3 +1,4 @@
+<?php //print_array(json_decode($data['appointments'])); ?>
 <style>
 .fc-list-item-time {
 	display: none;
