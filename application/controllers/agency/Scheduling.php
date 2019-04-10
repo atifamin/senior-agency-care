@@ -122,6 +122,14 @@ class Scheduling extends CI_Controller {
 				if($post['is_recurring']==0){
 					$post['recurring_months'] = 0;
 				}
+				$from = $post['from'];
+				$to = $post['to'];
+				$diff = $this->common_model->dateDifferanceTwoDates($from, $to);
+				if($diff['hours']<0){
+					$to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
+				}
+				$post['from'] = date("Y-m-d H:i:s ", strtotime($from." ".$post['in_time']));
+				$post['to'] = date("Y-m-d H:i:s ", strtotime($to." ".$post['out_time']));
 				$message = $this->add_recurring_appointments($post, $date, $message);
 			}
 		}
@@ -171,20 +179,22 @@ class Scheduling extends CI_Controller {
 			}
 			//$post['date'] = $val;
 			$post['recurring_months'] = 0;
-			$from = date("Y-m-d H:i:s ", strtotime($val." ".$post['in_time']));
-			$to = date("Y-m-d H:i:s ", strtotime($val." ".$post['out_time']));
+			$from = date("".$val." H:i:s", strtotime(date("H:i:s", strtotime($post['from']))));
+			$to = date("".$val." H:i:s", strtotime(date("H:i:s", strtotime($post['to']))));
+			
+			//$to = $post['to'];
 			$diff = $this->common_model->dateDifferanceTwoDates($from, $to);
 			if($diff['hours']<0){
 				$to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
 			}
-			$post['from'] = $from;
-			$post['to'] = $to;
 			$checkIfCargiverIsAvailable = $this->Client_model->check_availability($post['caregiver_id'], $from, $to);
 			if($checkIfCargiverIsAvailable){
 				$ca = $post;
 				unset($ca['date']);
 				unset($ca['in_time']);
 				unset($ca['out_time']);
+				$ca['from'] = $from;
+				$ca['to'] = $to;
 				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $ca);
 			}else{
 				$message['type'] = 'error';
@@ -212,7 +222,6 @@ class Scheduling extends CI_Controller {
 			$result = $this->common_model->listingRow("id",$result->parent_id,"client_appointements");
 		}
 		if($post['is_recurring']==1){
-			
 			$this->common_model->updateQuery("client_appointements", "id", $appointment_id, array(
 				"is_recurring"=>1,
 				"recurring_months"=>$post['months']
@@ -226,7 +235,7 @@ class Scheduling extends CI_Controller {
 			$data['updated_by'] = $this->agency_id;
 			$data['updated_at'] = date("Y-m-d H:i:s");
 			unset($data['id']);
-			$message = $this->add_recurring_appointments($data, $data['date'], $message);
+			$message = $this->add_recurring_appointments($data, date("Y-m-d", strtotime($data['from'])), $message);
 		}else{
 			$this->common_model->delete("client_appointements", array("parent_id"=>$appointment_id));
 			$this->common_model->updateQuery("client_appointements", "id", $appointment_id, array(

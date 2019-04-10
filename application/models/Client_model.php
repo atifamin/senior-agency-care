@@ -410,11 +410,10 @@ class Client_model extends CI_Model{
 				if($client->color!=""){
 					$obj->color = $client->color;
 				}
-				$obj->color = $client->color;
 				if($CPV->is_recurring==1){
 					$is_recurring_html = "checked";
 				}
-				$obj->date_data = '<td class="fc-list-item-marker">'.date("h:i A", strtotime($fromDateTime)).' - '.date("h:i A", strtotime($toDateTime)).'</td>';
+				$obj->date_data = '<td class="fc-list-item-marker">'.date("D, h:i A", strtotime($fromDateTime)).' - '.date("D, h:i A", strtotime($toDateTime)).'</td>';
 				$obj->client_data = '<div class="media" style="padding:0px;"><div class="mr-3"><img src="'.caregiver_image($CPV->caregiver_detail->id).'" class="rounded-circle" width="30" height="30" alt=""></div><div class="media-body"><div class="media-title" style="padding:1% 0;">'.$CPV->caregiver_detail->first_name." ".$CPV->caregiver_detail->last_name.' &nbsp;&nbsp;&nbsp;<div class="list-icons"><div class="list-icons-item dropdown"><a href="javascript:;" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-pencil5"></i></a><div class="dropdown-menu dropdown-menu-right"><a href="javascript:;" class="dropdown-item"><i class="icon-file-upload"></i> Switch Schedule</a><a href="javascript:;" onclick="edit_client_schedule('.$CPV->id.')" class="dropdown-item"><i class="icon-file-plus"></i> Edit</a><a href="javascript:;" class="dropdown-item" onclick="delete_appointement('.$CPV->id.', '.$CPV->parent_id.', '.$CPV->is_recurring.')"><i class="icon-cross2"></i> Remove</a></div></div></div></div></div></div>';
 				
 				$obj->is_recurring = '<td class="fc-list-item-tim" style="border-bottom:1px solid #ddd;" width="20"><div class="form-check form-check-switchery">Recurring&nbsp;&nbsp;<label class="form-check-label"><input type="checkbox" class="form-check-input-switchery is_recurring_checkbox" id="is_recurring_'.$CPV->id.'" '.$is_recurring_html.' data-fouc appointment-id="'.$CPV->id.'"></label></div> </td>';
@@ -438,10 +437,11 @@ class Client_model extends CI_Model{
             $dates[] = $from;
             $from = date('Y-m-d H:i:s', strtotime("+5 minute", strtotime($from)));
         }
+		
         $compareDatesArray = array($from, $to);
 		foreach($dates as $date){
 			$QUERY = "SELECT
-					SUM( IF( '".$from."'  - INTERVAL 1 SECOND BETWEEN `from` AND `to`, 1, 0 ) ) AS inTimeExists,
+					SUM( IF( '".$date."'  - INTERVAL 1 SECOND BETWEEN `from` AND `to`, 1, 0 ) ) AS inTimeExists,
 					SUM( IF( '".$to."'  - INTERVAL 1 SECOND BETWEEN `from` AND `to`, 1, 0 ) ) AS outTimeExists
 					FROM client_appointements AS ca
 					WHERE DATE(ca.`from`) >= DATE(NOW())
