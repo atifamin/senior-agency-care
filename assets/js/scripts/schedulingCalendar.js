@@ -56,6 +56,7 @@ SchedulingCalendar.prototype.creatPdfView = function (action) {
 	var from = this.monthsArray[fromDate.getMonth()]+" "+fromDate.getDate()+", "+fromDate.getFullYear();
 	var to = this.monthsArray[toDate.getMonth()]+" "+toDate.getDate()+", "+toDate.getFullYear();
 	
+	
 	dateBtnspan.innerHTML = ''+from+' &nbsp; - &nbsp; '+to+'';
 	dateBtn.appendChild(dateBtni);
 	dateBtn.appendChild(dateBtnspan);
@@ -94,6 +95,7 @@ SchedulingCalendar.prototype.creatPdfView = function (action) {
 			
 			var cdate = this.totalWeekDays[i].getFullYear()+"-"+(this.totalWeekDays[i].getMonth()+1)+"-"+this.totalWeekDays[i].getDate();
 			var v = this.getAppointmentsByDateAndCaregiver(cdate, this.caregivers[tc].id);
+			
 			var dateHtml = '';
 			$.each(v, function(kk, vv){
 				dateHtml += '<p>'+vv.format_date+'</p>';
@@ -149,7 +151,7 @@ SchedulingCalendar.prototype.getAppointmentsByDateAndCaregiver = function (date,
 	var app = this.appointments;
 	var careApp = [];
 	$.each(app, function(k, v){
-		var db_date = new Date(v.date).getFullYear()+"-"+(new Date(v.date).getMonth()+1)+"-"+new Date(v.date).getDate();
+		var db_date = new Date(v.from).getFullYear()+"-"+(new Date(v.from).getMonth()+1)+"-"+new Date(v.from).getDate();
 		var comp_date = new Date(date).getFullYear()+"-"+(new Date(date).getMonth()+1)+"-"+new Date(date).getDate();
 		if(db_date==comp_date && app[k].caregiver_id==caregiver_id)
 			careApp.push(app[k]);
