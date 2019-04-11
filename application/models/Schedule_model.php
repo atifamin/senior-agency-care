@@ -287,7 +287,7 @@ class Schedule_model extends CI_Model{
 		$client_id = $shopping_list_detail->client_id;
 		
 		if (!empty($_FILES['file']['name'])) {
-			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $shopping_list_id, $FILE_DIRECTORY="./uploads/agency/clients/");
+			$client_shopping_file = upload_file($_FILES['file'], "client_shopping_list", $post['module_id'], $FILE_DIRECTORY="./uploads/agency/clients/");
 			$list_file = $this->common_model->insertGetIDQuery('media',$client_shopping_file);
 		}
 		return $data;

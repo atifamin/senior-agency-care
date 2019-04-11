@@ -1,4 +1,3 @@
-
 function SchedulingCalendar() {
 	this.offsetWeekDays = 0;
 	this.wkStart;
@@ -17,6 +16,7 @@ SchedulingCalendar.prototype.pdfViewInit = function (appointments) {
 }
 
 SchedulingCalendar.prototype.creatPdfView = function (action) {
+	console.log("sdf");
 	this.totalWeekDays = this.weekdays(action);
 	
 	var	div			= document.createElement("div"),

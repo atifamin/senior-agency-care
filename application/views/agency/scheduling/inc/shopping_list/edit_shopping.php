@@ -3,6 +3,7 @@
 
 <form id="update_client_shopping_form" method="post" >
 	<input type="hidden" name="shopping_id" value="<?php echo $result->id; ?>">
+	<input type="hidden" name="module_id" value="<?php echo $result->id; ?>">
   <div class="modal-header">
   	<div class="col-md-3">
         <select name="status" class="form-control form-control-select2 edit_form_status" data-fouc>
@@ -106,7 +107,7 @@
 
 	$('#update_client_shopping_form').on("submit",function(e){
 		e.preventDefault();
-		loader = CardLoader($("#edit_modal_shopping_list"));
+		loader = CardLoader($("#update_client_shopping_form"));
 		var formData = new FormData($(this)[0]);
 		$.ajax({
 			url:'<?php echo site_url('agency/scheduling/update_shopping'); ?>',

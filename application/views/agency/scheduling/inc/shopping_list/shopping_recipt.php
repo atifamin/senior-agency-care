@@ -1,4 +1,4 @@
-<?php //print_array($result); ?>
+<?php //print_array($file_data); ?>
   
 <form id="add_shopping_recipt" method="post">
   <input type="hidden" name="module_id" value="<?php echo $result->id; ?>">
@@ -40,6 +40,7 @@
               <div class="form-check">
                 <label class="form-check-label">
                   <i style="font-size: 20px;" class="icon-file-word icon-2x"></i>
+                  &nbsp;<?php echo $file_detail->name; ?>
                 </label>
               </div>
             </div>
