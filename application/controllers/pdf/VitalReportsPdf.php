@@ -1,16 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MedicationPdf extends CI_Controller {
+class VitalReportsPdf extends CI_Controller {
 	
 	public function __construct(){
 		parent::__construct();
-		$this->load->model("pdf/MedicationPdf_model", "pdf");
+		$this->load->model("pdf/VitalReportsPdf_model", "pdf");
 	}
 
-	public function export_medication_to_pdf($id){
-		print_array($id);
-		$file_path = $this->pdf->export_medication_to_pdf($id);
+	public function export_vital_reports_to_pdf($id){
+		//print_array($id);
+		$file_path = $this->pdf->export_vital_reports_to_pdf($id);
 		if($this->send_email($file_path))
 			unlink($file_path);
 	}

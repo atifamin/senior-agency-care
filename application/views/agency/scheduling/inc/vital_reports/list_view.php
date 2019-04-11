@@ -25,7 +25,7 @@
                 <!-- <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php
                 $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit Vitals Report</a> <a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Vital Report</a> <a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Vital Report</a> </div>
               </div> -->
-              <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit vitals</a> <a href="javascript:;" onclick="delete_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete vital records</a><a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to pdf</a> </div>
+              <div class="dropdown-menu dropdown-menu-right"> <a href="javascript:;" onclick="edit_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Edit vitals</a> <a href="javascript:;" onclick="delete_vital_reports(<?php echo $value->id; ?>)" class="dropdown-item"><i class="icon-bin2"></i> Delete vital records</a><a href="<?php echo site_url("pdf/VitalReportsPdf/export_vital_reports_to_pdf/".$value->id.""); ?>" class="dropdown-item"><i class="icon-file-pdf"></i> Export to pdf</a> </div>
             </div></td>
         </tr>
         <?php }
