@@ -16,7 +16,7 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/scripts/schedulingCalendar.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/scripts/schedulingCalendar.js?rand=<?php echo rand(); ?>"></script> 
 <script>
 
 var events = [
