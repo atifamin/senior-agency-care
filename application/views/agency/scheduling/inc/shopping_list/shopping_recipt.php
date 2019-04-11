@@ -39,7 +39,7 @@
             <div class="form-group pt-2">
               <div class="form-check">
                 <label class="form-check-label">
-                  <i style="font-size: 20px;" class="icon-file-word icon-2x"></i>
+                  <i style="color: #2196f3;" class="icon-file-word icon-2x"></i>
                   &nbsp;<?php echo $file_detail->name; ?>
                 </label>
               </div>
