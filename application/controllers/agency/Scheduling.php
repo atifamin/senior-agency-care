@@ -273,19 +273,14 @@ class Scheduling extends CI_Controller {
 		$message['type'] = "success";
 		$message['text'] = "";
 		$appointment = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
-		$switcherAppointments = $this->common_model->listingMultipleWhereResult("client_appointements", array("from"=>$appointment->from, "caregiver_id"=>$post['caregiver_id']));
+		$switcherAppointments = $this->common_model->listingMultipleWhereResult("client_appointements", array("from"=>$appointment->from, "caregiver_id"=>$post['switch_caregiver']));
 		$from = date("Y-m-d H:i:s ", strtotime($appointment->from));
 		$to = date("Y-m-d H:i:s ", strtotime($appointment->to));
 		$checkAvailability = $this->Client_model->check_availability($post['switch_caregiver'], $from, $to);
+		//print_array($checkAvailability);
+
 		if ($checkAvailability){
-			$this->common_model->updateQuery("client_appointements", "id", $post['appointment_id'], array(
-				"caregiver_id"		=> $post['replace_with_id'],
-				"is_recurring"		=> 0,
-				"recurring_months"	=> 0,
-				"parent_id"			=> 0,
-				"updated_by"		=> $this->agency_id,
-				"updated_at"		=> date("Y-m-d H:i:s"),
-			));
+			
 		}
 		else{
 			$message['type'] = "error";

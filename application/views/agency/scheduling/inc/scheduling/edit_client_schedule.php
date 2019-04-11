@@ -84,6 +84,40 @@
     <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Done</span> </button>
   </div>
 </form>
+
+<div id="switch_caregiver_modal" class="modal fade" tabindex="-5">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="add_client_appointement_form">
+        <div class="modal-header">
+          <h5 class="modal-title" style="margin: 0 auto; padding-bottom: 25px;"><strong>Switch Caregiver</strong></h5>
+          <div>
+            <li class="media" style="padding: unset; border: none;">
+              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
+              <div class="media-body">
+                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></div>
+                <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
+            </li>
+          </div>
+        </div>
+        <div class="modal-body" style="padding:0 10%;">
+          
+          
+          <div class="row" style="text-align: center; padding-bottom: 5px;">
+            <div class="col-md-12"> <strong>Modal Content</strong> </div>
+          </div>
+         
+        </div>
+        <div class="row" style="text-align: center; margin-bottom: 20px;">
+          <div class="col-md-12">
+            <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Switch</span> </button>
+            <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <script>
 $("#edit_caregiver_id1, #edit_caregiver_id2, #edit_caregiver_id3").select2();
 $("#remove_caregiver_checkbox").uniform();
@@ -130,6 +164,10 @@ $("#update_client_appointement_form").on("submit", function(e){
       // return false;
 			var data = JSON.parse(e);
 			if(data.type=="success"){
+
+        $('#switch_caregiver_modal').modal('show');
+        console.log(e);
+        return false;
 				location.reload();
 			}else{
 				$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
