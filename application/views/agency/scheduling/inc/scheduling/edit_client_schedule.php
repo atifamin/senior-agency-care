@@ -126,6 +126,8 @@ $("#update_client_appointement_form").on("submit", function(e){
 		processData: false,
 		success: function(e){
 			loader.unblock();
+      // console.log(e);
+      // return false;
 			var data = JSON.parse(e);
 			if(data.type=="success"){
 				location.reload();

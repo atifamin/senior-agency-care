@@ -270,27 +270,36 @@ class Scheduling extends CI_Controller {
 	}
 	
 	public function switch_appointment($post){
+		$message['type'] = "success";
+		$message['text'] = "";
 		$appointment = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
-		
-		//$todaysAppointments = $this->Client_model->check_appointments_by_date($post['switch_caregiver'], $appointment->date);
-		$switcherAppointments = $this->common_model->listingMultipleWhereResult("client_appointements", array("date"=>$appointment->date, "caregiver_id"=>$post['switch_caregiver']));
-		//print_array($switcherAppointments);
-		//foreach($switcherAppointments as $key=>$val){
-			$from = date("Y-m-d H:i:s ", strtotime($appointment->date." ".$appointment->in_time));
-			$to = date("Y-m-d H:i:s ", strtotime($appointment->date." ".$appointment->out_time));
-			$checkAvailability = $this->Client_model->check_availability($post['switch_caregiver'], $from, $to);
-			print_r($checkAvailability);
-		//}
-		
-		//print_array($switcherAppointments);
+		$switcherAppointments = $this->common_model->listingMultipleWhereResult("client_appointements", array("from"=>$appointment->from, "caregiver_id"=>$post['caregiver_id']));
+		$from = date("Y-m-d H:i:s ", strtotime($appointment->from));
+		$to = date("Y-m-d H:i:s ", strtotime($appointment->to));
+		$checkAvailability = $this->Client_model->check_availability($post['switch_caregiver'], $from, $to);
+		if ($checkAvailability){
+			$this->common_model->updateQuery("client_appointements", "id", $post['appointment_id'], array(
+				"caregiver_id"		=> $post['replace_with_id'],
+				"is_recurring"		=> 0,
+				"recurring_months"	=> 0,
+				"parent_id"			=> 0,
+				"updated_by"		=> $this->agency_id,
+				"updated_at"		=> date("Y-m-d H:i:s"),
+			));
+		}
+		else{
+			$message['type'] = "error";
+			$message['text'] = "you can't switched caregiver on same datetime.";
+		}
+		echo json_encode($message);
 	}
 	
 	public function assign_other_caregiver($post){
 		$message['type'] = "success";
 		$message['text'] = "";
 		$result = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
-		$from = date("Y-m-d H:i:s ", strtotime($result->date." ".$result->in_time));
-		$to = date("Y-m-d H:i:s ", strtotime($result->date." ".$result->out_time));
+		$from = date("Y-m-d H:i:s ", strtotime($result->from));
+		$to = date("Y-m-d H:i:s ", strtotime($result->to));
 		$checkAvailability = $this->Client_model->check_availability($post['replace_with_id'], $from, $to);
 		if($checkAvailability){
 			$this->common_model->updateQuery("client_appointements", "id", $post['appointment_id'], array(

@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3" style="margin-top: 8px;">
+      <div class="col-md-3" style="margin-top: 12px;">
         <div class="d-flex align-items-center">
           <div class="mr-3"><a href="javascript:;" onclick="remove(<?php echo $file_detail->id; ?>)" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 10px;" class="icon-cross3"></i>Remove</a>
           </div>
@@ -64,7 +64,9 @@
 </form>
 
 <script type="text/javascript">
-  $('.edit_recipt').uniform();
+  $('.edit_recipt').uniform({
+    fileButtonClass: 'action btn bg-blue'
+});
 
   function remove(id){
     $.post("<?php echo site_url('agency/scheduling/delete_recipt'); ?>",{id:id}).done(function(e){

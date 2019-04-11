@@ -132,7 +132,10 @@
 		});
 	});
 
-$('.form-input-styled').uniform();
+// $('.form-input-styled').steps();
+$('.form-input-styled').uniform({
+    fileButtonClass: 'action btn bg-blue'
+});
 $('.edit_form_status').uniform();
 $(".form-check-input-styled-check").uniform();
 
