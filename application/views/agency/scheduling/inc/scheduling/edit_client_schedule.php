@@ -84,11 +84,11 @@
     <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Done</span> </button>
   </div>
 </form>
-
-<div id="switch_caregiver_modal" class="modal fade" tabindex="-5">
+    
+<div id="switch_caregiver_modal_open" class="modal fade" tabindex="-2">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="add_client_appointement_form">
+      <form id="switch_caregiver_form">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto; padding-bottom: 25px;"><strong>Switch Caregiver</strong></h5>
           <div>
@@ -101,12 +101,39 @@
           </div>
         </div>
         <div class="modal-body" style="padding:0 10%;">
-          
-          
-          <div class="row" style="text-align: center; padding-bottom: 5px;">
-            <div class="col-md-12"> <strong>Modal Content</strong> </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="form-group">
+      
+                <?php $current_caregiver_detail = $this->common_model->listingResultWhere('caregiver_id',$result->caregiver_id,'client_appointements'); ?>
+                <label><strong>Current Caregiver</strong></label>
+                <select class="form-control multiselect" multiple="multiple" data-fouc>
+                  <?php //print_array($current_caregiver_detail); ?>
+                  <?php if (count($current_caregiver_detail)>0) {
+                      foreach ($current_caregiver_detail as $current) { ?>
+                  
+                  <option value="tomatoes"><?php echo date('D, h:i a',strtotime($current->from))." - ".date('D, h:i a',strtotime($current->to)); ?></option>
+
+                  <?php  }
+                  } ?>
+                </select>
+              </div>
+            </div>
           </div>
-         
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="form-group">
+                <?php  ?>
+                <label><strong>Switch Caregiver</strong></label>
+                <select class="form-control multiselect" multiple="multiple" data-fouc>
+                  <option value="cheese">Fri, 12:30 am - Fri, 1:30 am</option>
+                  <option value="tomatoes">Tomatoes</option>
+                  <option value="mozarella">Mozzarella</option>
+                  <option value="mushrooms">Mushrooms</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="row" style="text-align: center; margin-bottom: 20px;">
           <div class="col-md-12">
@@ -114,11 +141,14 @@
             <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>
           </div>
         </div>
-      </form>
+      </form> 
     </div>
   </div>
 </div>
 <script>
+
+  $('.multiselect').multiselect(); 
+
 $("#edit_caregiver_id1, #edit_caregiver_id2, #edit_caregiver_id3").select2();
 $("#remove_caregiver_checkbox").uniform();
 
@@ -160,14 +190,10 @@ $("#update_client_appointement_form").on("submit", function(e){
 		processData: false,
 		success: function(e){
 			loader.unblock();
-      // console.log(e);
-      // return false;
 			var data = JSON.parse(e);
 			if(data.type=="success"){
-
-        $('#switch_caregiver_modal').modal('show');
-        console.log(e);
-        return false;
+        // $('#editschedule').modal('hide');
+        // $('#switch_caregiver_modal_open').modal('show');
 				location.reload();
 			}else{
 				$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');

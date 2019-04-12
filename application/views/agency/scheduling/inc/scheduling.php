@@ -9,6 +9,14 @@
 <link href="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" />
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switchery.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAPQXi7ZBZ73SPXi7JfHycSCi30thvQGCg&amp;libraries=places"></script>
+
+	<script src="<?php echo base_url(); ?>assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/typeahead_addresspicker.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/autocomplete_addresspicker.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/location.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
 <div class="row">
   <div class="col-md-12">
     <form action="#">
@@ -22,7 +30,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <button style="width: 50%;" type="submit" class="btn btn-light legitRipple">Add</button>
+          <button style="width: 50%;" onclick="pick_location()" class="btn btn-light legitRipple">Add</button>
         </div>
         <div class="col-md-4" style="text-align: right;">
           <button type="button" class="btn btn-primary legitRipple">Publish Schedule</button>
@@ -143,6 +151,13 @@
     </div>
   </div>
 </div>
+<div id="location_modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" id="location_div">
+    	<div class="map-container locationpicker-default"></div>
+    </div>
+  </div>
+</div>
 <div id="editschedule" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content" id="editschedulediv">
@@ -166,6 +181,14 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script> 
 <script>
+	$('.locationpicker-default').locationpicker({
+            radius: 150,
+            scrollwheel: true,
+            zoom: 10
+        });
+	function pick_location(){
+		$('#location_modal').modal('show');
+	}
 function setSwitchery(switchElement, checkedBool) {
     if((checkedBool && !switchElement.isChecked()) || (!checkedBool && switchElement.isChecked())) {
         switchElement.setPosition(true);
