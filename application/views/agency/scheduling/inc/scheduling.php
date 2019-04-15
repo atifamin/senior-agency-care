@@ -172,6 +172,13 @@
     </form>
   </div>
 </div>
+<div id="switch_caregiver_modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    	<div class="modal-content" id="switch_caregiver_div">
+    		
+    	</div>
+    </div>
+</div>
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/anytime.min.js"></script> 
