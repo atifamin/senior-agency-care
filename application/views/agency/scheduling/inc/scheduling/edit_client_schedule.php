@@ -85,10 +85,10 @@
   </div>
 </form>
     
-<div id="switch_caregiver_modal" class="modal fade" tabindex="-1">
+<!-- <div id="switch_caregiver_modal" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content" id="switch_caregiver_div">
-      <!-- <form id="switch_caregiver_form">
+      <form id="switch_caregiver_form">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto; padding-bottom: 25px;"><strong>Switch Caregiver</strong></h5>
           <div>
@@ -141,10 +141,10 @@
             <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>
           </div>
         </div>
-      </form> --> 
+      </form> 
     </div>
   </div>
-</div> 
+</div>  -->
 <script>
 
   //$('.multiselect').multiselect(); 
@@ -188,20 +188,14 @@ $("#update_client_appointement_form").on("submit", function(e){
 		cache: false,
 		contentType: false,
 		processData: false,
-		success: function(e){
+		success: function(data){
 			loader.unblock();
       $('#switch_caregiver_modal').modal('show');
-      //$('#switch_caregiver_div').html(e);
+      $('#switch_caregiver_div').html(data);
 
       $('#editschedule').modal('hide');
-      console.log(e);
-        return false;
 			var data = JSON.parse(e);
 			if(data.type=="success"){
-        
-        
-        console.log(e);
-        return false;
 				location.reload();
 			}else{
 				$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');

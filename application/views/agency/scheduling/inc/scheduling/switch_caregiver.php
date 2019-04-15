@@ -1,53 +1,78 @@
-<?php print_array($switch_caregiver_detail); ?>
+<?php //print_array($client); ?>
 
-<!-- 
-<form id="switch_caregiver_form">
+
+<form id="switch_appointment_form">
   <div class="modal-header">
     <h5 class="modal-title" style="margin: 0 auto; padding-bottom: 25px;"><strong>Switch Caregiver</strong></h5>
     <div>
       <li class="media" style="padding: unset; border: none;">
-        <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php //echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
+        <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
         <div class="media-body">
-          <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php //echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></div>
+          <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $client->first_name." ".$client->last_name; ?></div>
           <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
       </li>
     </div>
   </div>
   <div class="modal-body" style="padding:0 10%;">
     <div class="row">
-      <div class="col-md-10 offset-md-1">
-        <div class="form-group">
-          <label><strong>Current Caregiver</strong></label>
-          <select class="form-control multiselect" multiple="multiple" data-fouc>
-            <option value="cheese">Fri, 12:30 am - Fri, 1:30 am</option>
-            <option value="tomatoes">Tomatoes</option>
-            <option value="mozarella">Mozzarella</option>
-          </select>
-        </div>
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <td colspan="3" style="text-align: center;"><?php echo date('l d,Y',strtotime($current_appointment_detail->from)); ?></td>
+            </tr>
+          </thead>
+          <?php //print_array($current_appointment_detail); ?>
+          <tbody>
+            <tr>
+              <td><?php echo date('D, h:i a',strtotime($current_appointment_detail->from))." - ".date('D, h:i a',strtotime($current_appointment_detail->to));  ?></td>
+              <td><span class="fc-event-dot" style="background-color:#546E7A"></span></td><td><img src="<?php echo caregiver_image($current_appointment_detail->caregiver_id); ?>" class="rounded-circle" width="40" height="40" alt=""> <?php echo $caregiver_current->first_name." ".$caregiver_current->last_name; ?> </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-10 offset-md-1">
-        <div class="form-group">
-          <label><strong>Switch Caregiver</strong></label>
-          <select class="form-control multiselect" multiple="multiple" data-fouc>
-            <option value="cheese">Fri, 12:30 am - Fri, 1:30 am</option>
-            <option value="tomatoes">Tomatoes</option>
-            <option value="mozarella">Mozzarella</option>
-            <option value="mushrooms">Mushrooms</option>
-          </select>
-        </div>
-      </div>
-    </div>
+          
+    
+      <div class="row" style="margin-top: 5px">
+        <table class="table">
+          <tbody>
+            <?php if(count($switch_appointment_detail) > 0){
+              foreach ($switch_appointment_detail as $switch_appointment) { ?>
+            <tr>
+              <td><img src="<?php echo caregiver_image($switch_appointment->caregiver_id); ?>" class="rounded-circle" width="40" height="40" alt=""> <?php echo $caregiver_switch->first_name; ?></td>
+              <td><?php echo date('D, h:i a',strtotime($switch_appointment->from))." - ".date('D, h:i a',strtotime($switch_appointment->to));  ?></td>
+              <td><a href="javascript:;" onclick="switch_appointment(<?php echo $switch_appointment->id; ?>)" class="btn btn-primary legitRipple">Switch</a>
+              </td>
+            </tr>
+            <?php  }
+              } ?>
+          </tbody>
+        </table>
+      </div>  
   </div>
   <div class="row" style="text-align: center; margin-bottom: 20px;">
     <div class="col-md-12">
-      <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Switch</span> </button>
+      <!-- <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Switch</span> </button> -->
       <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>
     </div>
   </div>
 </form>
 
 <script type="text/javascript">
-  $('.multiselect').multiselect(); 
-</script> -->
+  $('.multiselect').multiselect();
+
+  function switch_appointment(id){
+    $.post("<?php echo site_url('agency/scheduling/switch_appointment_shift'); ?>",{from:<?php echo $current_appointment_detail->id; ?>,to:id}).done(function(e){
+      $('#switch_caregiver_modal').modal('hide');
+      swal({
+          title: "Good job!",
+          type: 'success',
+          html: 'You have Switched appointment successfully',
+          allowOutsideClick: false,
+        }).then(function() {
+          location.reload();
+        });
+    });
+  }
+</script> 

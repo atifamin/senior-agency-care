@@ -9,7 +9,7 @@ class MedicationPdf extends CI_Controller {
 	}
 
 	public function export_medication_to_pdf($id){
-		print_array($id);
+		//	print_array($id);
 		$file_path = $this->pdf->export_medication_to_pdf($id);
 		if($this->send_email($file_path))
 			unlink($file_path);
