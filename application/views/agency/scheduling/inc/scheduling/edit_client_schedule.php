@@ -85,15 +85,15 @@
   </div>
 </form>
     
-<div id="switch_caregiver_modal_open" class="modal fade" tabindex="-2">
+<div id="switch_caregiver_modal" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="switch_caregiver_form">
+    <div class="modal-content" id="switch_caregiver_div">
+      <!-- <form id="switch_caregiver_form">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto; padding-bottom: 25px;"><strong>Switch Caregiver</strong></h5>
           <div>
             <li class="media" style="padding: unset; border: none;">
-              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
+              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php //echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
               <div class="media-body">
                 <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></div>
                 <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
@@ -105,17 +105,17 @@
             <div class="col-md-10 offset-md-1">
               <div class="form-group">
       
-                <?php $current_caregiver_detail = $this->common_model->listingResultWhere('caregiver_id',$result->caregiver_id,'client_appointements'); ?>
+                <?php //$current_caregiver_detail = $this->common_model->listingResultWhere('caregiver_id',$result->caregiver_id,'client_appointements'); ?>
                 <label><strong>Current Caregiver</strong></label>
                 <select class="form-control multiselect" multiple="multiple" data-fouc>
                   <?php //print_array($current_caregiver_detail); ?>
-                  <?php if (count($current_caregiver_detail)>0) {
-                      foreach ($current_caregiver_detail as $current) { ?>
+                  <?php //if (count($current_caregiver_detail)>0) {
+                      //foreach ($current_caregiver_detail as $current) { ?>
                   
-                  <option value="tomatoes"><?php echo date('D, h:i a',strtotime($current->from))." - ".date('D, h:i a',strtotime($current->to)); ?></option>
+                  <option value="tomatoes"><?php //echo date('D, h:i a',strtotime($current->from))." - ".date('D, h:i a',strtotime($current->to)); ?></option>
 
-                  <?php  }
-                  } ?>
+                  <?php  //}
+                  //} ?>
                 </select>
               </div>
             </div>
@@ -141,13 +141,13 @@
             <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>
           </div>
         </div>
-      </form> 
+      </form> --> 
     </div>
   </div>
-</div>
+</div> 
 <script>
 
-  $('.multiselect').multiselect(); 
+  //$('.multiselect').multiselect(); 
 
 $("#edit_caregiver_id1, #edit_caregiver_id2, #edit_caregiver_id3").select2();
 $("#remove_caregiver_checkbox").uniform();
@@ -190,10 +190,18 @@ $("#update_client_appointement_form").on("submit", function(e){
 		processData: false,
 		success: function(e){
 			loader.unblock();
+      $('#switch_caregiver_modal').modal('show');
+      //$('#switch_caregiver_div').html(e);
+
+      $('#editschedule').modal('hide');
+      console.log(e);
+        return false;
 			var data = JSON.parse(e);
 			if(data.type=="success"){
-        // $('#editschedule').modal('hide');
-        // $('#switch_caregiver_modal_open').modal('show');
+        
+        
+        console.log(e);
+        return false;
 				location.reload();
 			}else{
 				$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');

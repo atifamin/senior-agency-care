@@ -1,4 +1,4 @@
-<?php //print_array($current_caregiver_detail,$switch_caregiver_detail); ?>
+<?php print_array($switch_caregiver_detail); ?>
 
 <!-- 
 <form id="switch_caregiver_form">

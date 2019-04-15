@@ -269,26 +269,21 @@ class Scheduling extends CI_Controller {
 		}
 	}
 	
-	// public function switch_appointment($post){
-	// 	$message['type'] = "success";
-	// 	$message['text'] = "";
-	// 	$appointment = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
-	// 	$switcherAppointments = $this->common_model->listingMultipleWhereResult("client_appointements", array("from"=>$appointment->from, "caregiver_id"=>$post['switch_caregiver']));
-	// 	$from = date("Y-m-d H:i:s ", strtotime($appointment->from));
-	// 	$to = date("Y-m-d H:i:s ", strtotime($appointment->to));
-	// 	$checkAvailability = $this->Client_model->check_availability($post['switch_caregiver'], $from, $to);
-	// 	if ($checkAvailability){
-	// 		$data['current_caregiver_detail'] = $this->common_model->listingResultWhere('caregiver_id',$post['caregiver_id'],'client_appointements');
-	// 		$data['switch_caregiver_detail'] = $this->common_model->listingResultWhere('caregiver_id',$post['switch_caregiver'],'client_appointements');
-	// 		print_array($data['switch_caregiver_detail']);
-	// 		//$this->load->view('agency/scheduling/inc/scheduling/switch_caregiver',$data);
-	// 	}
-	// 	else{
-	// 		$message['type'] = "error";
-	// 		$message['text'] = "you can't switched caregiver on same datetime.";
-	// 	}
-	// 	//echo json_encode($message);
-	// }
+	public function switch_appointment($post){
+		$message['type'] = "success";
+		$message['text'] = "";
+		$appointment = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
+		$switcherAppointments = $this->common_model->listingMultipleWhereResult("client_appointements", array("from"=>$appointment->from, "caregiver_id"=>$post['switch_caregiver']));
+		$from = date("Y-m-d H:i:s ", strtotime($appointment->from));
+		$to = date("Y-m-d H:i:s ", strtotime($appointment->to));
+		$checkAvailability = $this->Client_model->check_availability($post['switch_caregiver'], $from, $to);
+		if ($checkAvailability){
+			$data['current_caregiver_detail'] = $this->common_model->listingResultWhere('caregiver_id',$post['caregiver_id'],'client_appointements');
+			$data['switch_caregiver_detail'] = $this->common_model->listingResultWhere('caregiver_id',$post['switch_caregiver'],'client_appointements');
+			//print_array($data['switch_caregiver_detail']);
+			$this->load->view('agency/scheduling/inc/scheduling/switch_caregiver',$data);
+		}
+	}
 	
 	public function assign_other_caregiver($post){
 		$message['type'] = "success";
