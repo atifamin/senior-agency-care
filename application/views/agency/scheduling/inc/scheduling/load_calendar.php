@@ -1,4 +1,7 @@
-<?php //print_array(json_decode($data['appointments'])); ?>
+<?php //$caregiver = json_decode($data['caregivers']);
+//print_array($client_id);
+// foreach($caregiver as $care){   
+// echo "<pre>".$care->id; } ?>
 <style>
 .fc-list-item-time {
 	display: none;
@@ -10,9 +13,17 @@
 <div class="fullcalendar-formats"></div>
 
 <div>
-<div id="pdf_view" style="display:none">
-  
+<div id="pdf_view_main" style="display:none">
+	<div id="pdf_view">
+		
+	</div>
+	<div style="text-align: center;">
+		<a href="<?php echo site_url("pdf/Calender_viewPdf/calender_view_pdf/".$client_id.""); ?>" class="btn btn-light legitRipple" style="background-color:#eeeeee;"><i class="icon-printer mr-2"></i> Download</a>
+		<button type="button" class="btn btn-light legitRipple" style="background-color:#eeeeee;"><i class="icon-file-check mr-2"></i> Email</button>
+		<button type="button" class="btn btn-light legitRipple" style="background-color:#eeeeee;"><i class="icon-file-check mr-2"></i> Print</button>
+	</div>
 </div>
+
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script> 
@@ -59,7 +70,7 @@ $('.fullcalendar-formats').fullCalendar({
 			text: 'PDF View',
 			click: function() {
 				$(".fc-view-container").hide();
-				$("#pdf_view").show();
+				$("#pdf_view_main").show();
 			}
 		}
 	},
@@ -115,7 +126,7 @@ elems.forEach(function(html) {
 var buttonsArray = ["fc-listWeek-button","fc-listMonth-button","fc-listDay-button","fc-today-button","fc-next-button","fc-prev-button", "fc-month-button", "fc-basicWeek-button", "fc-basicDay-button"];
 $.each(buttonsArray, function(bk, bv){
 	$('.'+bv+'').click(function(){
-		$("#pdf_view").hide();
+		$("#pdf_view_main").hide();
 		$(".fc-view-container").show();
 		var elems = Array.prototype.slice.call(document.querySelectorAll('.is_recurring_checkbox'));
 		elems.forEach(function(html) {
