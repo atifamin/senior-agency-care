@@ -145,6 +145,8 @@ class Caregiver_model extends CI_Model{
 						->get()->result();
 		return $data;
 	}
+
+	
 	
 }
 

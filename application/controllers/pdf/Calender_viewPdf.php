@@ -9,18 +9,36 @@ class Calender_viewPdf extends CI_Controller{
 		$this->load->model("pdf/CalenderPdf_View_model", "pdf");
 	}
 
-	public function calender_view_pdf($client_id){
+	public function calender_view_pdf(){
+		$post = $this->input->post();
+		if($post["calendar_pdf_view"]=="download")
+			$this->download_pdf_view($post);
+
+		if($post["calendar_pdf_view"]=="email")
+			$this->email_pdf_view($post);
+
+		if($post["calendar_pdf_view"]=="print")
+			$this->print_pdf_view($post);
+
+
+
+		//print_array($post);
 		//$as ="dsadasda";
 		//print_array($client_id);
 		//echo "string"; exit;
-		$file_path = $this->pdf->calender_view_pdf($client_id);
-		if($this->send_email($file_path))
-			unlink($file_path);
+		// $file_path = $this->pdf->calender_view_pdf($client_id);
+		// if($this->send_email($file_path))
+		// 	unlink($file_path);
 	}
-	
-	public function send_email($file_path){
-		return true;
+
+	public function calendar_pdf_view(){
+		$post = $this->input->post();
+		$this->pdf->calendar_pdf_view($post);
 	}
+
+	// public function send_email($file_path){
+	// 	return true;
+	// }
 	
 
 }

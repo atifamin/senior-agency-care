@@ -324,6 +324,12 @@ class Schedule_model extends CI_Model{
 		return $data;
 	}
 
+	public function client_app_by_daterange($from, $to, $client_id){
+		return $this->db->where("cp.`from` BETWEEN '".$from."' AND '".$to."'")
+			->where("cp.client_id", $client_id)
+			->get("client_appointements AS cp")->result();
+	}
+
 }
 
 ?>
