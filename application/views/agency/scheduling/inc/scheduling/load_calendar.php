@@ -106,12 +106,13 @@ $('.fullcalendar-formats').fullCalendar({
 		}
 	},
 	eventClick: function(info, element, view){
+		
 		if(view.type=="month"){
 			swal({
-				title: '<i>HTML</i> <u>example</u>',
-				html: 'You can use <strong>bold text</strong>, ' + '<a href="http://demo.interface.club">links</a> ' + 'and other <span class="text-warning">HTML tags</span>'
+				html: '<div class="row"><span class="font-weight-semibold" style="padding-left: 15px;">Wednesday, November 12</span></div><div style="margin-top:12px;"><tr><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end" style="background-color:#4caf50;border-color:#4caf50"><div class="fc-content"><span class="fc-title" style="float:left;">Mary  Forester Appointement</span><span class="fc-time">12:00 AM - 12:00 PM</span> </div></a></td><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end" style="background-color:#4caf50;border-color:#4caf50"><div class="fc-content"><span class="fc-title" style="float:left;">Doctor Appointement</span><span class="fc-time">12:00 AM</span> </div></a></td></tr></div>'
 			});
 		}
+
 		/*alert('Event: ' + info.event.title);
     	alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
     	alert('View: ' + info.view.type);*/
