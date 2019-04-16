@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta>
-<title>Untitled Document</title>
+<title></title>
 <style>
 div{
 	text-align: center;
@@ -30,33 +30,24 @@ tr:nth-child(even) {
 <body>
 
 <div class="header" style="text-align: center; padding-top: 40px; padding-bottom: 40px;">
-	<h1 class="modal-title" style="margin: 0 auto;">Client's Medication</h1>
+	<h1 class="modal-title" style="margin: 0 auto;">Calender PDF View</h1>
 </div>
 
 <div>
 	<table>
 	  <tr>
-	    <td>Medication Name</td
-	    <td><?php echo $result->medication_name; ?></td>
+	    <td>Caregiver</td>
+	    <td>Monday</td>
+	    <td>Tuesday</td>
+	    <td>Wednesday</td>
+	    <td>Thursday</td>
+	    <td>Friday</td>
+	    <td>Saturday</td>
+	    <td>Sunday</td>
 	  </tr>
 	  <tr>
-	    <td>Medication Dosage</td>
-	    <td><?php echo $result->medication_dosage; ?>&nbsp;Mg</td>
-	  </tr>
-	  <tr>
-	    <td>How many times medication taken in a day</td>
-	    <td><?php echo $result->how_many_times_day; ?></td>
-	  </tr>
-	  <tr>
-	    <td>Time of medication taken</td>
-	    <td><?php echo $result->day_time; ?></td>  </tr>
-	  <tr>
-	    <td>Caregiver reminder</td>
-	    <td><?php echo $result->is_caregiver_reminder; ?></td>
-	  </tr>
-	  <tr>
-	    <td>Medication Time</td>
-	    <td>Morning, Evening, Night</td>
+	    <td>Caregiver1</td>
+	    <td><?php //echo $result->medication_dosage; ?></td>
 	  </tr>
 	</table>
 </div>
