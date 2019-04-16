@@ -16,7 +16,6 @@ SchedulingCalendar.prototype.pdfViewInit = function (appointments) {
 }
 
 SchedulingCalendar.prototype.creatPdfView = function (action) {
-	console.log("sdf");
 	this.totalWeekDays = this.weekdays(action);
 	
 	var	div			= document.createElement("div"),
@@ -117,6 +116,10 @@ SchedulingCalendar.prototype.creatPdfView = function (action) {
 	
 	nextBtn.onclick = function(){ get_dates("next") };
 	prevBtn.onclick = function(){ get_dates("previous") };
+
+	var calendar_view_week_start_date = this.wkStart.getFullYear()+"-"+(this.wkStart.getMonth()+1)+"-"+this.wkStart.getDate();
+	$("#calendar_view_week_start_date").val(calendar_view_week_start_date);
+
 	return div;
 }
 

@@ -17,11 +17,15 @@
 	<div id="pdf_view">
 		
 	</div>
-	<div style="text-align: center;">
-		<a href="<?php echo site_url("pdf/Calender_viewPdf/calender_view_pdf/".$client_id.""); ?>" class="btn btn-light legitRipple" style="background-color:#eeeeee;"><i class="icon-printer mr-2"></i> Download</a>
-		<button type="button" class="btn btn-light legitRipple" style="background-color:#eeeeee;"><i class="icon-file-check mr-2"></i> Email</button>
-		<button type="button" class="btn btn-light legitRipple" style="background-color:#eeeeee;"><i class="icon-file-check mr-2"></i> Print</button>
-	</div>
+	<form action="<?php echo site_url("pdf/Calender_viewPdf/calendar_pdf_view"); ?>" method="POST" target="_blank">
+		<input type="hidden" name="client_id" value="<?php echo $client_id; ?>">
+		<input type="hidden" name="date" value="" id="calendar_view_week_start_date">
+		<div style="text-align: center;">
+			<button type="submit" class="btn btn-light legitRipple" name="calendar_pdf_view" value="download"><i class="icon-printer mr-2"></i> Download</button>
+			<button type="submit" class="btn btn-light legitRipple" name="calendar_pdf_view" value="email"><i class="icon-file-check mr-2"></i> Email</button>
+			<button type="submit" class="btn btn-light legitRipple" name="calendar_pdf_view" value="print"><i class="icon-file-check mr-2"></i> Print</button>
+		</div>
+	</form>
 </div>
 
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
