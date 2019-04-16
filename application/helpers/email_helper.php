@@ -50,6 +50,7 @@ function sendEmail($to,$subject,$message,$cc=null,$bcc=null,$attachment=null,$re
 	$email_obj->email->message($message);
 
 	if(is_array($attachment)){
+		
 		foreach($attachment as $atach){
 			$email_obj->email->attach($atach);
 		}

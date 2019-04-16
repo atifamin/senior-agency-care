@@ -46,6 +46,7 @@ class Email_model extends CI_Model{
 	}
 
 	public function send_calendar_view_pdf($post, $data, $file_path){
+		
 		$emailArray = array();
 		if(count($data["caregivers"])>0){
 			foreach($data["caregivers"] as $caregiver){
@@ -54,8 +55,7 @@ class Email_model extends CI_Model{
 		}
 		$emailArray[] = $data["client_detail"]->email_address;
 		$emailArray = array_filter($emailArray);
-
-		if(count()>0){
+		if(count($emailArray)>0){
 			foreach($emailArray as $email){
 				$this->load->model("Settings_model");
 				$template = $this->Settings_model->getEmailTemplateByName("Client - Appointments");
@@ -63,12 +63,9 @@ class Email_model extends CI_Model{
 				$message = $template->setting_value;
 				$subject = str_replace("[@RecipientName]","Adeel Ahmad",$subject);
 				$message = str_replace("[@CaregiverName]","Caregiver Name Here",$message);
-				sendEmail($email,$subject,$message,$cc=null,$bcc=null,$file_path);
+				sendEmail("addi.ahmad9@gmail.com",$subject,$message,$cc=null,$bcc=null,$file_path);
 			}
 		}
-
-
-		
 	}
     
 }

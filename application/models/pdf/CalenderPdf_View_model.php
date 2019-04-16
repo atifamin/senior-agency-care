@@ -40,17 +40,17 @@ class CalenderPdf_View_model extends CI_Model
 		$mpdf->SetHTMLFooter('
 		<hr/>');
 		
-		$mpdf->WriteHTML($html);
-		$file_name = $data["client_detail"]->first_name." ".$data["client_detail"]->first_name."'s Appointments - (".$firstDateOfWeek." to ".$lastDateOfWeek.").pdf";
+		
+		$file_name = "Appointments.pdf";
 		$file_path = DOC_PATH."/uploads/pdf/".$file_name."";
-
-
+		$mpdf->WriteHTML($html);
+		
 		if($post["calendar_pdf_view"]=="download"){
 			fopen($file_path, "w");
 			$mpdf->Output($file_path, \Mpdf\Output\Destination::FILE);
 			$mpdf->Output($file_name, 'D');
 		}
-
+		
 		if($post["calendar_pdf_view"]=="email"){
 			$this->Email_model->send_calendar_view_pdf($post, $data, $file_path);
 			echo "<script>window.close();</script>";
@@ -58,9 +58,9 @@ class CalenderPdf_View_model extends CI_Model
 
 		if($post["calendar_pdf_view"]=="print"){
 			$mpdf->SetJS('this.print();');
-			$mpdf->WriteHTML($html);
 			$mpdf->Output();
 		}
+		
 		return $file_path;
 	}
 

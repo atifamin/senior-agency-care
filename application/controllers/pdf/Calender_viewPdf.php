@@ -33,7 +33,7 @@ class Calender_viewPdf extends CI_Controller{
 
 	public function calendar_pdf_view(){
 		$post = $this->input->post();
-		$this->pdf->calendar_pdf_view($post);
+		$file_path = $this->pdf->calendar_pdf_view($post);
 	}
 
 	// public function send_email($file_path){
