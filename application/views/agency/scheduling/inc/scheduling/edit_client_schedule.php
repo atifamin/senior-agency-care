@@ -188,18 +188,32 @@ $("#update_client_appointement_form").on("submit", function(e){
 		cache: false,
 		contentType: false,
 		processData: false,
-		success: function(data){
-			loader.unblock();
-      $('#switch_caregiver_modal').modal('show');
-      $('#switch_caregiver_div').html(data);
+		success: function(e){
+      loader.unblock();
+      var data = JSON.parse(e);
+      if(data.type="success"){
+        if(data.action=="switch"){
+          $('#switch_caregiver_modal').modal('show');
+          $('#switch_caregiver_div').html(JSON.parse(data.text));
+          $('#editschedule').modal('hide');
+        }else if(data.action=="assign"){
+          location.reload();
+        }
+      }else{
+        $("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
+      }
 
-      $('#editschedule').modal('hide');
-			var data = JSON.parse(e);
-			if(data.type=="success"){
-				location.reload();
-			}else{
-				$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
-			}
+      // $('#switch_caregiver_modal').modal('show');
+      // $('#switch_caregiver_div').html(e);
+      // $('#editschedule').modal('hide');
+
+      //return false;
+			// var data = JSON.parse(e);
+   //    if(data.type=="success"){
+			// 	location.reload();
+			// }else{
+			// 	$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
+			// }
 		}
 	});	
 });

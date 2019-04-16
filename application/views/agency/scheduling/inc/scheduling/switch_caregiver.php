@@ -22,7 +22,6 @@
               <td colspan="3" style="text-align: center;"><?php echo date('l d,Y',strtotime($current_appointment_detail->from)); ?></td>
             </tr>
           </thead>
-          <?php //print_array($current_appointment_detail); ?>
           <tbody>
             <tr>
               <td><?php echo date('D, h:i a',strtotime($current_appointment_detail->from))." - ".date('D, h:i a',strtotime($current_appointment_detail->to));  ?></td>
