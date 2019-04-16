@@ -36,18 +36,11 @@ class CalenderPdf_View_model extends CI_Model
 		$mpdf->SetHTMLHeader('
 		<div style="text-align: right;margin:15px;">
 			<hr style="padding:0px;margin:0px;"/>
-			<p style="text-align: right;padding:0px;margin:0px;">Reproduced on:&nbsp;&nbsp;&nbsp;&nbsp;'.date("F d, Y H:i").' hrs GMT</p>
 		</div>');
 		$mpdf->SetHTMLFooter('
-		<hr/>
-		<table width="100%">
-			<tr>
-				<td width="33%">{DATE F d, Y H:i}</td>
-				<td width="33%" align="center">Page {PAGENO}/{nbpg}</td>
-				<td width="33%" style="text-align: right;">Project Meeting Agenda- </td>
-			</tr>
-		</table>');
-
+		<hr/>');
+		
+		$mpdf->WriteHTML($html);
 		$file_name = $data["client_detail"]->first_name." ".$data["client_detail"]->first_name."'s Appointments - (".$firstDateOfWeek." to ".$lastDateOfWeek.").pdf";
 		$file_path = DOC_PATH."/uploads/pdf/".$file_name."";
 
