@@ -69,14 +69,8 @@ class Scheduling extends CI_Controller {
 	}
 	public function calender_shift_view(){
 		$post = $this->input->post();
-		print_array($post);
-		$client_id = $post['client_id'];
-		//print_array($post['date']);
-		$date = date("Y-m-d H:i:s",strtotime($post['date']));
-		print_array($date);
-		//print_array($client_id);
-		$data = $this->common_model->listingResultWhere('client_id',$client_id,"client_appointements"); 
-		print_array($data);
+		$data = $this->Schedule_model->calender_shift_view($post);
+		$this->load->view('agency/scheduling/inc/scheduling/calendar_shift_detail',$data);
 	}
 	
 	public function load_assign_caregiver(){

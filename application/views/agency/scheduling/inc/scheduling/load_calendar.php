@@ -1,5 +1,5 @@
 <?php //$caregiver = json_decode($data['caregivers']);
-// print_array($client_id);
+ // print_array($appointment_calender_detail);
 // foreach($caregiver as $care){   
 // echo "<pre>".$care->id; } ?>
 <style>
@@ -106,12 +106,14 @@ $('.fullcalendar-formats').fullCalendar({
 		}
 	},
 	eventClick: function(info, element, view){
-		var date = new Date(info.start._i);
-		console.log(date);
+		var date = info.start._i.split("T");
 		if(view.type == "month"){
-			$.post("<?php echo site_url('agency/scheduling/calender_shift_view'); ?>",{client_id:<?php echo $client_id; ?>,date:date}).done(function(e){
-				console.log(e);
-				return false; 
+			$.post("<?php echo site_url('agency/scheduling/calender_shift_view'); ?>",{client_id:<?php echo $client_id; ?>,date:date[0]}).done(function(e){
+				
+				swal({
+					html:e
+				});
+				return false;
 			});
 		
 			// swal({
