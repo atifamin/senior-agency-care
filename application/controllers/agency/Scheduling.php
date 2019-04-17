@@ -119,25 +119,26 @@ class Scheduling extends CI_Controller {
 				unset($ca['out_time']);
 				$parent_id = $this->common_model->insertGetIDQuery("client_appointements", $ca);
 				$addedIds[] = $parent_id;
+				if(isset($post['is_recurring']) && $post['is_recurring']==1){
+					$post['parent_id'] = $parent_id;
+					if($post['is_recurring']==0){
+						$post['recurring_months'] = 0;
+					}
+					$from = $post['from'];
+					$to = $post['to'];
+					$diff = $this->common_model->dateDifferanceTwoDates($from, $to);
+					if($diff['hours']<0){
+						$to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
+					}
+					$post['from'] = date("Y-m-d H:i:s ", strtotime(date("Y-m-d", strtotime($from))." ".date("H:i:s", strtotime($post['in_time']))));
+					$post['to'] = date("Y-m-d H:i:s ", strtotime(date("Y-m-d", strtotime($to))." ".date("H:i:s", strtotime($post['out_time']))));
+					$message = $this->add_recurring_appointments($post, $date, $message);
+				}
 			}else{
 				$message['type'] = 'error';
 				$message['error_detail'][] = (object)array("from"=>date("M, d Y h:i A", strtotime($from)), "to"=>date("M, d Y h:i A", strtotime($to)));
 			}
-			if(isset($post['is_recurring']) && $post['is_recurring']==1){
-				$post['parent_id'] = $parent_id;
-				if($post['is_recurring']==0){
-					$post['recurring_months'] = 0;
-				}
-				$from = $post['from'];
-				$to = $post['to'];
-				$diff = $this->common_model->dateDifferanceTwoDates($from, $to);
-				if($diff['hours']<0){
-					$to = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($to)));
-				}
-				$post['from'] = date("Y-m-d H:i:s ", strtotime($from." ".$post['in_time']));
-				$post['to'] = date("Y-m-d H:i:s ", strtotime($to." ".$post['out_time']));
-				$message = $this->add_recurring_appointments($post, $date, $message);
-			}
+			
 		}
 		
 		if($message['type'] == 'success'){
