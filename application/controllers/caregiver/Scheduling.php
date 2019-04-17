@@ -6,7 +6,7 @@ class Scheduling extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		if(!$this->session->userdata("isCaregiverLoggedIn")){
-			redirect("caregiver/login");
+			redirect("caregiver");
 		}
 
     	//LoggedIn User ID

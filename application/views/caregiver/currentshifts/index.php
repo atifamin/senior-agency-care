@@ -1,31 +1,29 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<?php //print_array($shift_detail); ?>
+
 <div class="card">
-  <div class="card-header header-elements-inline" style="padding-bottom: 0px;">
-    <div style="margin: 0 auto;">
-      <h1 class="card-title" style="font-size: 44px; font-weight: 400; color: #555;"> <i style="font-size: 29px;" class="icon-alarm mr-3 icon-2x"></i> <?php echo date('H:i:s'); ?> </h1>
-      <p style="margin-left: 65px; font-size: 13px;"><span style="padding-right: 15px;">hours</span><span style="padding-right: 15px;">minutes</span><span>seconds</span></p>
-    </div>
+  <div class="card-header header-elements-inline">
     <div class="header-elements">
-      <div class="list-icons"> <a class="list-icons-item" data-action="collapse"></a> <a class="list-icons-item" data-action="reload"></a> </div>
+      <div class="list-icons float-right"> <a class="list-icons-item" data-action="collapse"></a> <a class="list-icons-item" data-action="reload"></a> </div>
     </div>
   </div>
   <div class="card-body">
-    <div class="row">
-      <div class="col-md-12" style="text-align: center;">
-        <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Wednesday</span>November 12, 2014 </h4>
+    <div class="row" align="center">
+      <div class="col-md-12">
+        <h1 class="card-title" style="margin-bottom:0px;"> <i class="icon-alarm mr-3 icon-2x"></i> <span class="currentTime" style="font-size:42px;"></span> </h1>
       </div>
-    </div>
-    <div class="row">
+      <div class="col-md-12" style="float:right">
+        <p><span class="ml-1">Hours</span><span class="ml-1">Minutes</span><span class="ml-1">Seconds</span><span class="ml-1">AM/PM</span></p>
+      </div>
+      <div class="col-md-12" style="text-align: center;">
+        <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
+      </div>
       <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
-    </div>
-    <div class="row" style="margin-top: 35px; text-align:center;">
-      <div class="col-md-12" > <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a> <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple">CLOCK OUT</a> </div>
+      <div class="col-md-12 mt-4"> <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a> <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple">CLOCK OUT</a> </div>
       <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;">You have not clocked in yet.Please clock in now</span> </div>
-    </div>
-    <div id="clock_in_time" style="display: none;">
-      <div class="row">
-        <div class="col-md-4 offset-md-4"> <span style="margin-left: 10px;">@ 10:50am</span> <span class="pull-right" style="margin-right: 20px;">@ 12:30pm</span> </div>
+      <div id="clock_in_time" style="display: none;">
+        <div class="row">
+          <div class="col-md-4 offset-md-4"> <span style="margin-left: 10px;">@ 10:50am</span> <span class="pull-right" style="margin-right: 20px;">@ 12:30pm</span> </div>
+        </div>
       </div>
     </div>
     <div class="row" style="margin-top: 40px;">
@@ -33,10 +31,8 @@
         <h5 style="font-weight: 500; margin-bottom: 0;">Current Shifts</h5>
       </div>
     </div>
-    
     <div class="row">
       <div class="col-md-12">
-         
         <ul class="media-list media-list-linked">
           <li style="list-style: none;">
             <div class="media"> 
@@ -61,10 +57,10 @@
             </div>
           </li>
           <?php if (count($shift_detail) > 0 ) {
-          foreach ($shift_detail as $detail) { ?> 
+          foreach ($shift_detail as $detail) { ?>
           <li>
             <div class="media">
-              <div class="media-body"> <span class="text-muted"><?php echo date("H:ia",strtotime($detail->in_time))." - ".date('H:ia',strtotime($detail->out_time)); ?></span> 
+              <div class="media-body"> <span class="text-muted"><?php echo date("H:ia",strtotime($detail->from))." - ".date('H:ia',strtotime($detail->to)); ?></span> 
                 <!-- <i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i> --> 
               </div>
               <div class="media-body"> 
@@ -133,34 +129,28 @@
           </li>
           <?php } }?>
         </ul>
-        
       </div>
     </div>
-    
-    
   </div>
 </div>
-
-
 <div id="clock_modal" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <div style="margin: 0 auto;">
-          <h1 class="card-title" style="font-size: 44px; font-weight: 400; color: #555;"> <i style="font-size: 29px;" class="icon-alarm mr-3 icon-2x"></i> <?php echo date('H:i:s'); ?> </h1>
-          <p style="margin-left: 65px; font-size: 13px;"><span style="padding-right: 15px;">hours</span><span
-                    style="padding-right: 15px;">minutes</span><span>seconds</span></p>
-        </div>
+      <div class="modal-header"> 
+      <div class="row" align="center">
+      <div class="col-md-12">
+        <h1 class="card-title" style="margin-bottom:0px;"> <i class="icon-alarm mr-3 icon-2x"></i> <span class="currentTime" style="font-size:42px;"></span> </h1>
+      </div>
+      <div class="col-md-12" style="float:right">
+        <p><span class="ml-1">Hours</span><span class="ml-1">Minutes</span><span class="ml-1">Seconds</span><span class="ml-1">AM/PM</span></p>
+      </div>
+      <div class="col-md-12" style="text-align: center;">
+        <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
+      </div>
+      <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
+    </div>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col-md-12" style="text-align: center;">
-            <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Wednesday</span> November 12, 2014 </h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
-        </div>
         <div class="row">
           <div class="col-md-10 offset-md-1">
             <li class="media" style="position: relative;top: 30px; width: 90%;margin: 35px auto;">
@@ -178,17 +168,11 @@
     </div>
   </div>
 </div>
-
-
 <div id="update_modal" class="modal fade" tabindex="-2">
   <div class="modal-dialog">
-    <div class="modal-content" id="update_modal_content">
-      
-    </div>
+    <div class="modal-content" id="update_modal_content"> </div>
   </div>
 </div>
-
-
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_basic.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/tables/datatables/datatables.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/tags/tokenfield.min.js"></script> 
@@ -223,9 +207,13 @@ $('#btn_clock_in').click(function(){
         $('#clock_in_modal').removeAttr('data-target');
     }
 });
-  function clock_in(){
+function clock_in(){
 
-  }
+}
 
-    </script>
+setInterval(function(){
+	$(".currentTime").html(moment().format('LTS'));
+}, 1000);
+
+</script>
 <?php include(APPPATH."views/caregiver/inc/footer.php"); ?>
