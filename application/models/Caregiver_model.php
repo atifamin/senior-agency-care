@@ -140,7 +140,7 @@ class Caregiver_model extends CI_Model{
 		$data = $this->db->select('*')
 						->from("client_appointements AS ca")
 						->where("ca.caregiver_id", $caregiver_id)
-						->where('ca.date =', ''.date('Y-m-d').'')
+						->where('ca.from =', ''.date('Y-m-d').'')
 						->order_by("ca.id", "ASC")
 						->get()->result();
 		return $data;
