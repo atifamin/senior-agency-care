@@ -315,7 +315,7 @@ function delete_assigned_caregiver(id){
 
 
 $("#add_client_appointement_form").on("submit", function(e){
-	//loader = CardLoader($(this));
+	loader = CardLoader($(this));
 	if($("input[name=in_time]").val()==$("input[name=out_time]").val()){
 		swal({
 			type: 'error',
@@ -335,7 +335,7 @@ $("#add_client_appointement_form").on("submit", function(e){
 		contentType: false,
 		processData: false,
 		success: function(e){
-			/*loader.unblock();
+			loader.unblock();
 			var data = JSON.parse(e);
 			if(data.type=="error"){
 				var title = 'Followings are datetime where this caregiver is already assinged some other appointment.<br><ul>';
@@ -363,7 +363,7 @@ $("#add_client_appointement_form").on("submit", function(e){
 		        });
 			}
 			$("#newschedule").modal("hide");
-			load_calendar(<?php echo $client_id; ?>);*/
+			load_calendar(<?php echo $client_id; ?>);
 		},
 		xhr: function () {
 			var xhr = new window.XMLHttpRequest();

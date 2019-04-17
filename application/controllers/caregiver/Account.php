@@ -6,7 +6,7 @@ class Account extends CI_controller {
 	public function __construct(){
 		parent::__construct();
 		if(!$this->session->userdata("isCaregiverLoggedIn")){
-			redirect("login");
+			redirect("caregiver");
 		}
 
 		//LoggedIn Caregiver ID

@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		if(!$this->session->userdata("isCaregiverLoggedIn")){
-			redirect("login");
+			redirect("caregiver");
 		}
 		//LoggedIn Caregiver ID
 		$sessionData = $this->session->userdata("isCaregiverLoggedIn");
