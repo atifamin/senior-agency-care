@@ -1,4 +1,4 @@
-<?php //print_array($appointment_detail[0]->from); ?>
+<?php // print_array($appointment_detail[0]->from); ?>
 
 
 <div class="row">
