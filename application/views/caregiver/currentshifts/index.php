@@ -64,7 +64,7 @@
           foreach ($shift_detail as $detail) { ?> 
           <li>
             <div class="media">
-              <div class="media-body"> <span class="text-muted"><?php echo date("H:ia",strtotime($detail->in_time))." - ".date('H:ia',strtotime($detail->out_time)); ?></span> 
+              <div class="media-body"> <span class="text-muted"><?php echo date("H:ia",strtotime($detail->from))." - ".date('H:ia',strtotime($detail->to)); ?></span> 
                 <!-- <i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i> --> 
               </div>
               <div class="media-body"> 
