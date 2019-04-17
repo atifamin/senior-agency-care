@@ -128,5 +128,21 @@ class Current_shifts extends CI_Controller {
  		$this->load->view("caregiver/currentshifts/inc/shopping_list/list_view",$data);
 	}
 
+	public function clock_in(){
+		//print_array($id);
+		$post = $this->input->post();
+		$post['created_by'] = $post['caregiver_id'];
+		//print_array($post);
+		$post = $this->common_model->insertGetIDQuery("caregiver_time_sheets", $post);
+		// $data['clock_in'] = $this->common_model->listingRow('id',$post['id'],"caregiver_time_sheets");
+		//print_array($post);
+		//$post = $this->load->view("caregiver/currentshifts/index", $post);
+		redirect('caregiver/current_shifts/index');
+	}
+
+	public function clock_out(){
+
+	}
+
 	
 }

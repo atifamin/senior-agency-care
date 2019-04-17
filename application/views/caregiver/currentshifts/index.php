@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-
+<?php // print_array($post); ?>
 <div class="card">
   <div class="card-header header-elements-inline">
     <div class="header-elements">
@@ -136,35 +136,45 @@
 <div id="clock_modal" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header"> 
-      <div class="row" align="center">
-      <div class="col-md-12">
-        <h1 class="card-title" style="margin-bottom:0px;"> <i class="icon-alarm mr-3 icon-2x"></i> <span class="currentTime" style="font-size:42px;"></span> </h1>
-      </div>
-      <div class="col-md-12" style="float:right">
-        <p><span class="ml-1">Hours</span><span class="ml-1">Minutes</span><span class="ml-1">Seconds</span><span class="ml-1">AM/PM</span></p>
-      </div>
-      <div class="col-md-12" style="text-align: center;">
-        <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
-      </div>
-      <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
-    </div>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-10 offset-md-1">
-            <li class="media" style="position: relative;top: 30px; width: 90%;margin: 35px auto;">
-              <div class="mr-3" style="margin-top: 10px;"> <span><b>Shift time</b></span> <span style="margin: auto 10px;">10:30am - 12:30pm</span> </div>
-              <div class="media-body" style="text-align: center; margin-top: 10px;"> <span><i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size:18px;"></i></span> </div>
-              <div> <span><a href="#"><img src="http://localhost/senior-agency-care/assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt=""></a></span><span style="margin: auto 10px;">James Alexander</span> </div>
-            </li>
+      <form action="<?php echo site_url("caregiver/current_shifts/clock_in"); ?>" method="POST">
+        <input type="hidden" name="agency_id" value="<?php echo $shift_detail[0]->agency_id; ?>">
+        <input type="hidden" name="client_id" value="<?php echo $shift_detail[0]->client_id; ?>">
+        <input type="hidden" name="caregiver_id" value="<?php echo $shift_detail[0]->caregiver_id; ?>">
+        <input type="hidden" name="appointment_id" value="<?php echo $shift_detail[0]->id; ?>">
+        <div class="modal-header"> 
+          <div class="row" align="center">
+            <div class="col-md-12">
+              <h1 class="card-title" style="margin-bottom:0px;"> <i class="icon-alarm mr-3 icon-2x"></i> <span class="currentTime" style="font-size:42px;"></span> </h1>
+            </div>
+            <div class="col-md-12" style="float:right">
+              <p><span class="ml-1">Hours</span><span class="ml-1">Minutes</span><span class="ml-1">Seconds</span><span class="ml-1">AM/PM</span></p>
+            </div>
+            <div class="col-md-12" style="text-align: center;">
+              <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
+            </div>
+            <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> 
+            </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer" style="margin-top: 20px; ">
-        <button type="submit" id="btn_clock_in" onclick="clock_in()" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress" data-dismiss="modal" data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">CLOCK IN</span></button>
-        <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Cancel</button>
-      </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <li class="media" style="position: relative;top: 30px; width: 90%;margin: 35px auto;">
+                <div class="mr-3" style="margin-top: 10px;"> <span><b>Shift time:&nbsp;</b></span> <span class="text-muted"><?php echo date("H:ia",strtotime($shift_detail[0]->from))." - ".date('H:ia',strtotime($shift_detail[0]->to)); ?></span> 
+                </div>
+                <div class="media-body" style="text-align: center; margin-top: 10px;"> <span><i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size:18px;"></i></span> </div>
+                <div> <span><a href="#"><img src="<?php echo client_image($shift_detail[0]->client_id); ?>" class="rounded-circle" width="40" height="40" alt=""></a></span><span style="margin: auto 10px;">Adeel Ahmad</span> 
+                </div>
+              </li>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="margin-top: 20px; ">
+          <button type="submit" id="btn_clock_in" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress"><span class="ladda-label">CLOCK IN</span></button>
+          <!-- <a href="javascript:;" type="submit" id="btn_clock_in" onclick="clock_in(<?php echo $shift_detail[0]->id;?>)" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress"  data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">CLOCK IN</span></a> -->
+          <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -207,9 +217,15 @@ $('#btn_clock_in').click(function(){
         $('#clock_in_modal').removeAttr('data-target');
     }
 });
-function clock_in(){
-
-}
+// function clock_in(id){
+//    //alert(id);
+//   // exit;
+//   $.post("<?php echo site_url("caregiver/current_shifts/clock_in"); ?>", {id:id}).done(function(data){
+//     console.log(data);
+//     return false;
+    
+//   });
+// }
 
 setInterval(function(){
 	$(".currentTime").html(moment().format('LTS'));
