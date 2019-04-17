@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<?php // print_array($post); ?>
+<?php //$time_sheet_clockin = json_decode($data['timein']); ?>
 <div class="card">
   <div class="card-header header-elements-inline">
     <div class="header-elements">
@@ -20,11 +20,17 @@
       <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
       <div class="col-md-12 mt-4"> <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a> <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple">CLOCK OUT</a> </div>
       <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;">You have not clocked in yet.Please clock in now</span> </div>
-      <div id="clock_in_time" style="display: none;">
+      <!-- <div id="" style="">
         <div class="row">
-          <div class="col-md-4 offset-md-4"> <span style="margin-left: 10px;">@ 10:50am</span> <span class="pull-right" style="margin-right: 20px;">@ 12:30pm</span> </div>
+          <div class="col-md-12"> <span style="margin-left: 10px;">10:50am</span> <span class="pull-right" style="margin-right: 20px;">12:30pm</span> </div>
         </div>
-      </div>
+      </div> -->
+    </div>
+    <!-- <div class="row" style="text-align: center; word-spacing: 50px;">
+      <div class="col-md-12"> 
+        <span class="pull-right" style="">10:50am</span> 
+        <span class="pull-right" style="">12:30pm</span> 
+      </div> -->
     </div>
     <div class="row" style="margin-top: 40px;">
       <div class="col-md-12" style="text-align: center;">
