@@ -40,6 +40,25 @@ class Schedule_model extends CI_Model{
 		$data['client_id'] = $post['client_id'];
 		return $data;
 	}
+	public function calender_shift_view($post){
+		$client_id = $post['client_id'];
+		$date = $post['date'];
+		$data['appointment_detail'] = $this->db->select('ca.*, CONCAT(c.first_name," ",c.last_name) AS caregiver_name')
+							->from("client_appointements AS ca")
+							->join("caregiver AS c","c.id = ca.caregiver_id")
+							->where("ca.client_id", $client_id)
+							->where("ca.`from` BETWEEN '".$date." 00:00:01' AND '".$date." 23:59:59'")
+							->order_by("ca.id", "ASC")
+							->get()->result();
+
+		$data['appointment_calender_detail'] = $this->db->select('*')
+								->from('client_appointment_calender AS cac')
+								->where('cac.client_id',$client_id)
+								->where("cac.appointment_date BETWEEN '".$date." 00:00:01' AND '".$date." 23:59:59'")
+								->order_by("cac.id","ASC")
+								->get()->result();
+		return $data;
+	}
 
 	public function assign_caregiver($post){
 		$caregivers = explode(",", $post["caregivers_id"]);

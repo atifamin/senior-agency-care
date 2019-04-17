@@ -57,7 +57,7 @@
 	<script src="<?php echo base_url(); ?>assets/js/plugins/notifications/sweet_alert.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/app-script.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/plugins/loaders/progressbar.min.js"></script>
-
+<script src="<?php echo base_url(); ?>assets/js/plugins/moment/moment.min.js"></script>
     
     
 

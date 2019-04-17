@@ -1,5 +1,5 @@
 <?php //$caregiver = json_decode($data['caregivers']);
-//print_array($client_id);
+ // print_array($appointment_calender_detail);
 // foreach($caregiver as $care){   
 // echo "<pre>".$care->id; } ?>
 <style>
@@ -106,19 +106,20 @@ $('.fullcalendar-formats').fullCalendar({
 		}
 	},
 	eventClick: function(info, element, view){
-		
-		if(view.type=="month"){
-			swal({
-				html: '<div class="row"><span class="font-weight-semibold" style="padding-left: 15px;">Wednesday, November 12</span></div><div style="margin-top:12px;"><tr><?php foreach($client_appointement as $appointment){ ?><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end" style="background-color:#4caf50;border-color:#4caf50"><div class="fc-content"><span class="fc-title" style="float:left;">Mary  Forester Appointement</span><span class="fc-time"><?php echo date('H:i a',strtotime($appointment->from))." - ".date('H:i a',strtotime($appointment->to));?></span> </div></a></td><?php } ?><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end" style="background-color:#4caf50;border-color:#4caf50"><div class="fc-content"><span class="fc-title" style="float:left;">Doctor Appointement</span><span class="fc-time">12:00 AM</span> </div></a></td></tr></div>'
+		var date = info.start._i.split("T");
+		if(view.type == "month"){
+			$.post("<?php echo site_url('agency/scheduling/calender_shift_view'); ?>",{client_id:<?php echo $client_id; ?>,date:date[0]}).done(function(e){
+				
+				swal({
+					html:e
+				});
+				return false;
 			});
-		}
-
-		/*alert('Event: ' + info.event.title);
-    	alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-    	alert('View: ' + info.view.type);*/
 		
-    	//change the border color just for fun
-    	//info.el.style.borderColor = 'red';
+			// swal({
+			// 	html: '<div class="row"><span class="font-weight-semibold" style="padding-left: 15px;">Wednesday, November 12</span></div><div style="margin-top:12px;"><tr><?php //foreach($client_appointement as $appointment){ ?><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end" style="background-color:#4caf50;border-color:#4caf50"><div class="fc-content"><span class="fc-title" style="float:left;">Mary  Forester Appointement</span><span class="fc-time"><?php //echo date('H:i a',strtotime($appointment->from))." - ".date('H:i a',strtotime($appointment->to));?></span> </div></a></td><?php //} ?><td class="fc-event-container"><a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end" style="background-color:#4caf50;border-color:#4caf50"><div class="fc-content"><span class="fc-title" style="float:left;">Doctor Appointement</span><span class="fc-time">12:00 AM</span> </div></a></td></tr></div>'
+			// });
+		}
 	}
 });
 var elems = Array.prototype.slice.call(document.querySelectorAll('.is_recurring_checkbox'));

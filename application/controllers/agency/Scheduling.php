@@ -65,8 +65,12 @@ class Scheduling extends CI_Controller {
 			"caregivers"=>json_encode($caregivers),
 			"appointments"=>json_encode($appointments)
 		);
-		$data['client_appointement'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],'client_appointements');
 		$this->load->view("agency/scheduling/inc/scheduling/load_calendar",$data);
+	}
+	public function calender_shift_view(){
+		$post = $this->input->post();
+		$data = $this->Schedule_model->calender_shift_view($post);
+		$this->load->view('agency/scheduling/inc/scheduling/calendar_shift_detail',$data);
 	}
 	
 	public function load_assign_caregiver(){

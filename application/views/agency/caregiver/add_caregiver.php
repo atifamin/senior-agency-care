@@ -32,7 +32,7 @@
       <div class="card-header" style="text-align: center;">
         <h6>Add a new caregiver</h6>
       </div>
-      <form class="wizard-form steps-validation" action="#" data-fouc id="caregiver_form">
+      <form class="steps-validation" action="#" data-fouc id="caregiver_form">
         <h6><strong>Profile</strong></h6>
         <fieldset>
           <div class="row">
@@ -45,7 +45,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Last Name: <span class="text-danger">*</span></label>
-                <input type="text" name="last_name" class="form-control" placeholder="Add last name">
+                <input type="text" required="" name="last_name" class="form-control" placeholder="Add last name">
               </div>
             </div>
             <div class="col-md-4">

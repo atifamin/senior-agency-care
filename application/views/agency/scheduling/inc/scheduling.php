@@ -17,6 +17,8 @@
 	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/autocomplete_addresspicker.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/location.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/validation/validate.min.js"></script>
+
 <div class="row">
   <div class="col-md-12">
     <form action="#">
@@ -63,7 +65,7 @@
 <div id="newschedule" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="add_client_appointement_form">
+      <form class="form_validate" id="add_client_appointement_form">
         <div class="modal-header">
           <h5 class="modal-title" style="margin: 0 auto; padding-bottom: 25px;"><strong>Create A New Appointment</strong></h5>
           <div>
@@ -80,7 +82,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label><strong>Assign caregiver to client schedule</strong></label>
-                <select class="form-control select" data-fouc id="caregiver_id" name="caregiver_id">
+                <select class="form-control select" required="" data-fouc id="caregiver_id" name="caregiver_id">
                   <option>Please Select</option>
                   <?php if(count($assignedCargivers)>0){ ?>
                   <?php 
@@ -110,12 +112,12 @@
           <div class="row">
             <div class="col-md-6">
               <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                <input type="text" class="form-control pickatime" placeholder="Caregiver clock in" name="in_time">
+                <input type="text" class="form-control pickatime" placeholder="Caregiver clock in" name="in_time" required="">
               </div>
             </div>
             <div class="col-md-6">
               <div class="input-group"> <span class="input-group-prepend"> <span class="input-group-text"><i class="icon-alarm"></i></span> </span>
-                <input type="text" class="form-control pickatime" placeholder="Caregiver clock out" name="out_time">
+                <input type="text" class="form-control pickatime" placeholder="Caregiver clock out" name="out_time" required="">
               </div>
             </div>
           </div>
@@ -188,6 +190,38 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/pickers/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script> 
 <script>
+		$('.form_validate').validate({
+            errorClass: 'validation-invalid-label',
+            successClass: 'validation-valid-label',
+            //validClass: 'validation-valid-label',
+            highlight: function(element, errorClass) {
+                $(element).removeClass(errorClass);
+            },
+            unhighlight: function(element, errorClass) {
+                $(element).removeClass(errorClass);
+            },
+            success: function(label) {
+                label.addClass('validation-valid-label').text('Success.'); 
+            },
+
+            errorPlacement: function(error, element) {
+                if (element.parents().hasClass('form-check')) {
+                    error.appendTo( element.parents('.form-check').parent() );
+                }
+
+                else if (element.parents().hasClass('form-group-feedback') || element.hasClass('select2-hidden-accessible')) {
+                    error.appendTo( element.parent() );
+                }
+
+                else if (element.parent().is('.uniform-uploader, .uniform-select') || element.parents().hasClass('input-group')) {
+                    error.appendTo( element.parent().parent() );
+                }
+
+                else {
+                    error.insertAfter(element);
+                }
+            }
+        });
 	$('.locationpicker-default').locationpicker({
             radius: 150,
             scrollwheel: true,
@@ -319,14 +353,16 @@ $("#add_client_appointement_form").on("submit", function(e){
 	if($("input[name=in_time]").val()==$("input[name=out_time]").val()){
 		swal({
 			type: 'error',
-			html: 'In time and Out date cannot be same',
+			html: 'In time and Out time cannot be same',
 		});
+		loader.unblock();
 		return false;
 	}
 	e.preventDefault();
 	formData = new FormData($("#add_client_appointement_form")[0]);
 	formData.append("agency_id", <?php echo $agency_id; ?>);
 	formData.append("client_id", <?php echo $client_id; ?>);
+	loader.unblock();
 	$.ajax({
 		url: '<?php echo site_url("agency/scheduling/add_client_appointement"); ?>',
 		type: 'POST',
