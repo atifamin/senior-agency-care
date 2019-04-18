@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<?php //$time_sheet_clockin = json_decode($data['timein']); ?>
+<?php //print_array($shift_detail); ?>
 <div class="card">
   <div class="card-header header-elements-inline">
     <div class="header-elements">
@@ -18,19 +18,21 @@
         <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
       </div>
       <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
-      <div class="col-md-12 mt-4"> <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a> <a href="javascript:;" id="clock_out_btn" class="btn btn-light legitRipple">CLOCK OUT</a> </div>
-      <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;">You have not clocked in yet.Please clock in now</span> </div>
-      <!-- <div id="" style="">
+      <div class="col-md-12 mt-4"> <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a> <a href="javascript:;" id="clock_out_btn" onclick="clock_out(<?php echo $shift_detail[0]->id;?>)" class="btn btn-light legitRipple">CLOCK OUT</a> </div>
+      <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;"></span> </div>
+      <!-- <div id="clock_in_time" style="">
         <div class="row">
           <div class="col-md-12"> <span style="margin-left: 10px;">10:50am</span> <span class="pull-right" style="margin-right: 20px;">12:30pm</span> </div>
         </div>
       </div> -->
     </div>
-    <!-- <div class="row" style="text-align: center; word-spacing: 50px;">
-      <div class="col-md-12"> 
-        <span class="pull-right" style="">10:50am</span> 
-        <span class="pull-right" style="">12:30pm</span> 
-      </div> -->
+    <div class="row" style="margin-top: 5px;">
+      <div class="col-md-6" style="text-align: right;"> 
+        <span class="pull-right" style=""><?php if (isset($result->from)) {
+            echo $result->from = date("h:i:s A", strtotime($result->from));
+          } ?></span> 
+        <span class="pull-right" style=""></span> 
+      </div>
     </div>
     <div class="row" style="margin-top: 40px;">
       <div class="col-md-12" style="text-align: center;">
@@ -176,7 +178,7 @@
           </div>
         </div>
         <div class="modal-footer" style="margin-top: 20px; ">
-          <button type="submit" id="btn_clock_in" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress"><span class="ladda-label">CLOCK IN</span></button>
+          <button type="submit" id="btn_clock_in" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress"  <?php if(isset($detail->from)){ ?>  <?php } ?>><span class="ladda-label">CLOCK IN</span></button>
           <!-- <a href="javascript:;" type="submit" id="btn_clock_in" onclick="clock_in(<?php echo $shift_detail[0]->id;?>)" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress"  data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">CLOCK IN</span></a> -->
           <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Cancel</button>
         </div>
@@ -215,23 +217,26 @@ $(".sub_car_pane").on("click", function(){
 	$("#navbar-demo-light").removeClass("show");
 });     
 
+$("#btnSubmit").attr("disabled", true);
+
 $('#btn_clock_in').click(function(){
     if ($('#clock_in_time').css("display","none")) {
         $('#clock_out_time').css("display","none");
         $("#clock_out_btn").css({'background-color' : '#4CAF50', 'color' : '#fff'});
         $('#clock_in_time').css("display","block");
         $('#clock_in_modal').removeAttr('data-target');
+        $("#clock_in_modal").attr("disabled", true);
     }
 });
-// function clock_in(id){
-//    //alert(id);
-//   // exit;
-//   $.post("<?php echo site_url("caregiver/current_shifts/clock_in"); ?>", {id:id}).done(function(data){
-//     console.log(data);
-//     return false;
+function clock_out(id){
+   //alert(id);
+  //exit;
+  $.post("<?php echo site_url("caregiver/current_shifts/clock_out"); ?>", {id:id}).done(function(data){
+    console.log(data);
+    return false;
     
-//   });
-// }
+  });
+}
 
 setInterval(function(){
 	$(".currentTime").html(moment().format('LTS'));

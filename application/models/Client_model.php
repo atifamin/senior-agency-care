@@ -491,6 +491,10 @@ class Client_model extends CI_Model{
 		}
 		return $query;
 	}
+
+    public function clockinTimesheets($client_id){
+        $query = $this->common_model->listingResultWhere('client_id',$client_id,"caregiver_time_sheets");
+    }
 }
 
 ?>
