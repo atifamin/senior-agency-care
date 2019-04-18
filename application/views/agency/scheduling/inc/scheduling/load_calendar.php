@@ -107,7 +107,8 @@ $('.fullcalendar-formats').fullCalendar({
 	},
 	eventClick: function(info, element, view){
 		var date = info.start._i.split("T");
-		if(view.type == "month"){
+		console.log(view.type);
+		if(view.type == "month" || view.type == "basicWeek" || view.type == "basicDay"){
 			$.post("<?php echo site_url('agency/scheduling/calender_shift_view'); ?>",{client_id:<?php echo $client_id; ?>,date:date[0]}).done(function(e){
 				
 				swal({

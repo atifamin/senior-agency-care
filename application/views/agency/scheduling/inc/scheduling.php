@@ -18,7 +18,6 @@
 	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/location.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/validation/validate.min.js"></script>
-
 <div class="row">
   <div class="col-md-12">
     <form action="#">
@@ -32,7 +31,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <button style="width: 50%;" onclick="pick_location()" class="btn btn-light legitRipple">Add</button>
+          <button style="width: 50%;" class="btn btn-light legitRipple">Add</button>
         </div>
         <div class="col-md-4" style="text-align: right;">
           <button type="button" class="btn btn-primary legitRipple">Publish Schedule</button>
@@ -153,13 +152,6 @@
     </div>
   </div>
 </div>
-<div id="location_modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content" id="location_div">
-    	<div class="map-container locationpicker-default"></div>
-    </div>
-  </div>
-</div>
 <div id="editschedule" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content" id="editschedulediv">
@@ -191,45 +183,37 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/selects/select2.min.js"></script> 
 <script>
 		$('.form_validate').validate({
-            errorClass: 'validation-invalid-label',
-            successClass: 'validation-valid-label',
-            //validClass: 'validation-valid-label',
-            highlight: function(element, errorClass) {
-                $(element).removeClass(errorClass);
-            },
-            unhighlight: function(element, errorClass) {
-                $(element).removeClass(errorClass);
-            },
-            success: function(label) {
-                label.addClass('validation-valid-label').text('Success.'); 
-            },
+      errorClass: 'validation-invalid-label',
+      successClass: 'validation-valid-label',
+      //validClass: 'validation-valid-label',
+      highlight: function(element, errorClass) {
+          $(element).removeClass(errorClass);
+      },
+      unhighlight: function(element, errorClass) {
+          $(element).removeClass(errorClass);
+      },
+      success: function(label) {
+          label.addClass('validation-valid-label').text('Success.'); 
+      },
 
-            errorPlacement: function(error, element) {
-                if (element.parents().hasClass('form-check')) {
-                    error.appendTo( element.parents('.form-check').parent() );
-                }
+      errorPlacement: function(error, element) {
+          if (element.parents().hasClass('form-check')) {
+              error.appendTo( element.parents('.form-check').parent() );
+          }
 
-                else if (element.parents().hasClass('form-group-feedback') || element.hasClass('select2-hidden-accessible')) {
-                    error.appendTo( element.parent() );
-                }
+          else if (element.parents().hasClass('form-group-feedback') || element.hasClass('select2-hidden-accessible')) {
+              error.appendTo( element.parent() );
+          }
 
-                else if (element.parent().is('.uniform-uploader, .uniform-select') || element.parents().hasClass('input-group')) {
-                    error.appendTo( element.parent().parent() );
-                }
+          else if (element.parent().is('.uniform-uploader, .uniform-select') || element.parents().hasClass('input-group')) {
+              error.appendTo( element.parent().parent() );
+          }
 
-                else {
-                    error.insertAfter(element);
-                }
-            }
-        });
-	$('.locationpicker-default').locationpicker({
-            radius: 150,
-            scrollwheel: true,
-            zoom: 10
-        });
-	function pick_location(){
-		$('#location_modal').modal('show');
-	}
+          else {
+              error.insertAfter(element);
+          }
+      }
+  });
 function setSwitchery(switchElement, checkedBool) {
     if((checkedBool && !switchElement.isChecked()) || (!checkedBool && switchElement.isChecked())) {
         switchElement.setPosition(true);
