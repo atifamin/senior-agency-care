@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<?php //print_array($shift_detail); ?>
+<?php //print_array($shift_detail); ?>nai aa rahas
 <div class="card">
   <div class="card-header header-elements-inline">
     <div class="header-elements">
@@ -18,7 +18,7 @@
         <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
       </div>
       <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
-      <div class="col-md-12 mt-4"> <a href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</a> <a href="javascript:;" id="clock_out_btn" onclick="clock_out(<?php echo $shift_detail[0]->id;?>)" class="btn btn-light legitRipple">CLOCK OUT</a> </div>
+      <div class="col-md-12 mt-4"> <button href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</button> <a href="javascript:;" id="clock_out_btn" onclick="clock_out(<?php echo $shift_detail[0]->id;?>)" class="btn btn-light legitRipple">CLOCK OUT</a> </div>
       <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;"></span> </div>
       <!-- <div id="clock_in_time" style="">
         <div class="row">
@@ -149,6 +149,7 @@
         <input type="hidden" name="client_id" value="<?php echo $shift_detail[0]->client_id; ?>">
         <input type="hidden" name="caregiver_id" value="<?php echo $shift_detail[0]->caregiver_id; ?>">
         <input type="hidden" name="appointment_id" value="<?php echo $shift_detail[0]->id; ?>">
+        <input type="hidden" name="modal_status" id="modal_status" value="<?php echo $shift_detail[0]->modal_status; ?>">
         <div class="modal-header"> 
           <div class="row" align="center">
             <div class="col-md-12">
@@ -217,17 +218,32 @@ $(".sub_car_pane").on("click", function(){
 	$("#navbar-demo-light").removeClass("show");
 });     
 
-$("#btnSubmit").attr("disabled", true);
+//$("#btnSubmit").attr("disabled", true);
 
-$('#btn_clock_in').click(function(){
-    if ($('#clock_in_time').css("display","none")) {
-        $('#clock_out_time').css("display","none");
-        $("#clock_out_btn").css({'background-color' : '#4CAF50', 'color' : '#fff'});
-        $('#clock_in_time').css("display","block");
-        $('#clock_in_modal').removeAttr('data-target');
-        $("#clock_in_modal").attr("disabled", true);
-    }
+  $('#btn_clock_in').click(function(){
+    //$('#modal_status').val();
+    modal_status = $("#modal_status").val();
+    id = <?php echo $shift_detail[0]->modal_status; ?>;
+    alert();
+    $.post("<?php echo site_url("caregiver/current_shifts/modal_status"); ?>", {id:id,modal_status:modal_status}).done(function(data){
+    console.log(data);
+    return false;
+    
+  });
+  // $("#clock_in_modal").attr("disabled", true);
+  // $("#clock_in_modal").prop("disabled", true);
+  //   if ($('#clock_in_time').css("display","none")) {
+  //       $('#clock_out_time').css("display","none");
+  //       $("#clock_out_btn").css({'background-color' : '#4CAF50', 'color' : '#fff'});
+  //       $('#clock_in_time').css("display","block");
+  //       $('#clock_in_modal').removeAttr('data-target');
+  //       $("#clock_in_modal").attr("disabled", true);
+  //   }
 });
+
+
+
+
 function clock_out(id){
    //alert(id);
   //exit;

@@ -160,5 +160,10 @@ class Current_shifts extends CI_Controller {
 		//$clock_out = $this->common_model->updateQuery("caregiver_time_sheets", 'to', $$post['to'], $post);
 	}
 
+	// public function modal_status(){
+	// 	$post = $this->input->post();
+	// 	print_array($post);
+	// }
+
 	
 }
