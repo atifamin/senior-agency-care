@@ -140,6 +140,7 @@ class Current_shifts extends CI_Controller {
 		$shift_clock_in = $this->common_model->insertGetIDQuery("caregiver_time_sheets", $post);
 		//print_array($time_sheet_id);
 		$shift_clock_in['result'] = $this->common_model->listingRow("id",$shift_clock_in,"caregiver_time_sheets");
+		//$data['result'] = $this->common_model->listingRow("id",$time_sheet_id,"caregiver_time_sheets");
 		// $data['data'] = array(
 		// 	"timein"=>json_encode($time_sheet_id),
 		// 	"appointments"=>json_encode($appointments)
