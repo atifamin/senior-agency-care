@@ -135,7 +135,7 @@ class Current_shifts extends CI_Controller {
 		//print_array($post);
 		$time_sheet_id = $this->common_model->insertGetIDQuery("caregiver_time_sheets", $post);
 		//print_array($time_sheet_id);
-		$data['result'] = $this->common_model->listingRow("id",$time_sheet_id,"caregiver_time_sheets");
+		//$data['result'] = $this->common_model->listingRow("id",$time_sheet_id,"caregiver_time_sheets");
 		// $data['data'] = array(
 		// 	"timein"=>json_encode($time_sheet_id),
 		// 	"appointments"=>json_encode($appointments)
@@ -144,7 +144,7 @@ class Current_shifts extends CI_Controller {
 		// $data['clock_in'] = $this->common_model->listingRow('id',$post['id'],"caregiver_time_sheets");
 		//print_array($post);
 		//$post = $this->load->view("", $post);
-		redirect('caregiver/current_shifts/index');
+		redirect('caregiver/current_shifts');
 	}
 
 	public function clock_out(){
