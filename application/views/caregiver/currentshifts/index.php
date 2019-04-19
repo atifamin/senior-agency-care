@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<?php //print_array($shift_detail); ?>nai aa rahas
+<?php //print_array($shift_detail); ?>
 <div class="card">
   <div class="card-header header-elements-inline">
     <div class="header-elements">
@@ -149,7 +149,6 @@
         <input type="hidden" name="client_id" value="<?php echo $shift_detail[0]->client_id; ?>">
         <input type="hidden" name="caregiver_id" value="<?php echo $shift_detail[0]->caregiver_id; ?>">
         <input type="hidden" name="appointment_id" value="<?php echo $shift_detail[0]->id; ?>">
-        <input type="hidden" name="modal_status" id="modal_status" value="<?php echo $shift_detail[0]->modal_status; ?>">
         <div class="modal-header"> 
           <div class="row" align="center">
             <div class="col-md-12">
@@ -214,6 +213,8 @@
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/uploader_bootstrap.js"></script>
 <?php include(APPPATH . "views/caregiver/inc/footer.php"); ?>
 <script type="text/javascript">
+
+
 $(".sub_car_pane").on("click", function(){
 	$("#navbar-demo-light").removeClass("show");
 });     
@@ -221,28 +222,16 @@ $(".sub_car_pane").on("click", function(){
 //$("#btnSubmit").attr("disabled", true);
 
   $('#btn_clock_in').click(function(){
-    //$('#modal_status').val();
-    modal_status = $("#modal_status").val();
-    id = <?php echo $shift_detail[0]->modal_status; ?>;
-    alert();
-    $.post("<?php echo site_url("caregiver/current_shifts/modal_status"); ?>", {id:id,modal_status:modal_status}).done(function(data){
-    console.log(data);
-    return false;
-    
+    $("#clock_in_modal").attr("disabled", true);
+    $("#clock_in_modal").prop("disabled", true);
+    if ($('#clock_in_time').css("display","none")) {
+        $('#clock_out_time').css("display","none");
+        $("#clock_out_btn").css({'background-color' : '#4CAF50', 'color' : '#fff'});
+        $('#clock_in_time').css("display","block");
+        $('#clock_in_modal').removeAttr('data-target');
+        $("#clock_in_modal").attr("disabled", true);
+    }
   });
-  // $("#clock_in_modal").attr("disabled", true);
-  // $("#clock_in_modal").prop("disabled", true);
-  //   if ($('#clock_in_time').css("display","none")) {
-  //       $('#clock_out_time').css("display","none");
-  //       $("#clock_out_btn").css({'background-color' : '#4CAF50', 'color' : '#fff'});
-  //       $('#clock_in_time').css("display","block");
-  //       $('#clock_in_modal').removeAttr('data-target');
-  //       $("#clock_in_modal").attr("disabled", true);
-  //   }
-});
-
-
-
 
 function clock_out(id){
    //alert(id);
