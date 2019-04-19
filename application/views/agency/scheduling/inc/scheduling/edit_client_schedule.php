@@ -197,8 +197,7 @@ $("#update_client_appointement_form").on("submit", function(e){
           $('#switch_caregiver_div').html(JSON.parse(data.text));
           $('#editschedule').modal('hide');
         }else if(data.action=="assign"){
-          console.log(e);
-          //return false;
+          
           location.reload();
         }
       }else{
