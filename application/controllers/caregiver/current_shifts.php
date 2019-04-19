@@ -20,6 +20,8 @@ class Current_shifts extends CI_Controller {
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";
 		$data['shift_detail'] = $this->Caregiver_model->caregiver_shift_detail($this->caregiver_id);
+		$data['client'] = $this->Client_model->getById($data['shift_detail'][0]->client_id);
+		//print_array($data['client']);
 		if(count($data['shift_detail'])>0){
 			$current_appointment = $data['shift_detail'][0];
 			$data['result'] = $this->common_model->listingRow("appointment_id", $current_appointment->id,"caregiver_time_sheets");
@@ -136,10 +138,9 @@ class Current_shifts extends CI_Controller {
 	public function clock_in(){
 		//print_array($id);
 		$post = $this->input->post();
+		$post['from'] = date("Y-m-d H:i:s", strtotime($this->input->post("from")));
 		$post['created_by'] = $post['caregiver_id'];
-		//print_array($post);
 		$shift_clock_in = $this->common_model->insertGetIDQuery("caregiver_time_sheets", $post);
-		//print_array($time_sheet_id);
 		$shift_clock_in['result'] = $this->common_model->listingRow("id",$shift_clock_in,"caregiver_time_sheets");
 		//$data['result'] = $this->common_model->listingRow("id",$time_sheet_id,"caregiver_time_sheets");
 		// $data['data'] = array(
@@ -161,6 +162,10 @@ class Current_shifts extends CI_Controller {
 			"to"	=>	$to,
 		));
 		return redirect("caregiver/current_shifts");
+	}
+
+	public function update_clock_out(){
+
 	}
 
 	

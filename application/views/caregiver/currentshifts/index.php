@@ -1,12 +1,10 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
-<?php //print_array($shift_detail); ?>
+<?php //print_array($client); ?>
 <?php
 $clockInDisable = false;
 if(count($shift_detail)<=0 || (count($result)>0 && $result->from!='0000-00-00 00:00:00')){
 	$clockInDisable = true;
 }
-
-
 
 $clockOutDisable = false;
 if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:00:00')){
@@ -24,30 +22,30 @@ if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:0
       <div class="col-md-12">
         <h1 class="card-title" style="margin-bottom:0px;"> <i class="icon-alarm mr-3 icon-2x"></i> <span class="currentTime" style="font-size:42px;"></span> </h1>
       </div>
-      <div class="col-md-12" style="float:right">
+      <div class="col-md-12" style="padding-left: 50px;">
         <p><span class="ml-1">Hours</span><span class="ml-1">Minutes</span><span class="ml-1">Seconds</span><span class="ml-1">AM/PM</span></p>
       </div>
       <div class="col-md-12" style="text-align: center;">
         <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
       </div>
       <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
-      <div class="col-md-12 mt-4"> <button href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal" <?php if($clockInDisable){echo 'disabled="disabled"';} ?>>CLOCK IN</button> <button type="button" id="clock_out_btn" onclick="clock_out(<?php if(count($shift_detail)>0){echo $shift_detail[0]->id;} ?>)" class="btn btn-light legitRipple" <?php if($clockOutDisable){echo 'disabled="disabled"';} ?>>CLOCK OUT</button> </div>
+      <div class="col-md-12 mt-4"> <button href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal" <?php if($clockInDisable){echo 'disabled="disabled"';} ?>>CLOCK IN</button> <button type="button" id="clock_out_btn" onclick="clock_out(<?php if(count($shift_detail)>0){echo $shift_detail[0]->id;} ?>);" class="btn btn-light legitRipple" <?php if($clockOutDisable){echo 'disabled="disabled"';} ?>>CLOCK OUT</button> </div>
       <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;"></span> </div>
-      <!-- <div id="clock_in_time" style="">
-        <div class="row">
-          <div class="col-md-12"> <span style="margin-left: 10px;">10:50am</span> <span class="pull-right" style="margin-right: 20px;">12:30pm</span> </div>
-        </div>
-      </div> -->
     </div>
     <div class="row" style="margin-top: 5px;">
-      <div class="col-md-6" style="text-align: right;"> 
+      <div class="col-md-12" style="text-align: center;"> 
         <span class="pull-right" style=""><?php if (isset($result->from)) {
             echo $result->from = date("h:i:s A", strtotime($result->from));
-          } ?></span> 
+          } ?></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span class="pull-right" style=""><?php if (isset($result->to)) {
             echo $result->from = date("h:i:s A", strtotime($result->to));
           } ?></span> 
       </div>
+      <!-- <div class="col-md-6">
+        <span class="pull-right" style=""><?php if (isset($result->to)) {
+            echo $result->from = date("h:i:s A", strtotime($result->to));
+          } ?></span>
+      </div> -->
     </div>
     <div class="row" style="margin-top: 40px;">
       <div class="col-md-12" style="text-align: center;">
@@ -164,6 +162,7 @@ if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:0
         <input type="hidden" name="client_id" value="<?php if(count($shift_detail)>0){echo $shift_detail[0]->client_id;} ?>">
         <input type="hidden" name="caregiver_id" value="<?php if(count($shift_detail)>0){echo $shift_detail[0]->caregiver_id;} ?>">
         <input type="hidden" name="appointment_id" value="<?php if(count($shift_detail)>0){echo $shift_detail[0]->id;} ?>">
+        <input type="hidden" name="from" class="currentTime" id="clock_in_time" value="">
         <div class="modal-header"> 
           <div class="row" align="center">
             <div class="col-md-12">
@@ -186,7 +185,7 @@ if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:0
                 <div class="mr-3" style="margin-top: 10px;"> <span><b>Shift time:&nbsp;</b></span> <span class="text-muted"><?php echo date("H:ia",strtotime($shift_detail[0]->from))." - ".date('H:ia',strtotime($shift_detail[0]->to)); ?></span> 
                 </div>
                 <div class="media-body" style="text-align: center; margin-top: 10px;"> <span><i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size:18px;"></i></span> </div>
-                <div> <span><a href="#"><img src="<?php echo client_image($shift_detail[0]->client_id); ?>" class="rounded-circle" width="40" height="40" alt=""></a></span><span style="margin: auto 10px;">Adeel Ahmad</span> 
+                <div> <span><a href="#"><img src="<?php echo client_image($shift_detail[0]->client_id); ?>" class="rounded-circle" width="40" height="40" alt=""></a></span><span style="margin: auto 10px;"><?php echo $client->first_name." ".$client->last_name;?></span> 
                 </div>
               </li>
             </div>
@@ -194,7 +193,6 @@ if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:0
         </div>
         <div class="modal-footer" style="margin-top: 20px; ">
           <button type="submit" id="btn_clock_in" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress"  <?php if(isset($detail->from)){ ?>  <?php } ?>><span class="ladda-label">CLOCK IN</span></button>
-          <!-- <a href="javascript:;" type="submit" id="btn_clock_in" onclick="clock_in(<?php echo $shift_detail[0]->id;?>)" style="background-color: #4CAF50;color: #ffffff;" class="btn btn-ladda btn-ladda-progress"  data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">CLOCK IN</span></a> -->
           <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Cancel</button>
         </div>
       </form>
@@ -232,9 +230,7 @@ if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:0
 
 $(".sub_car_pane").on("click", function(){
 	$("#navbar-demo-light").removeClass("show");
-});     
-
-//$("#btnSubmit").attr("disabled", true);
+});
 
   $('#btn_clock_in').click(function(){
     $("#clock_in_modal").attr("disabled", true);
@@ -248,7 +244,16 @@ $(".sub_car_pane").on("click", function(){
     }
   });
 
+// function update_clock_out(){
+//   alert()
+//   var updateOutTime = moment.().format('LTS');
+//   $.post("<?php echo site_url("caregiver/current_shifts/update_clock_out"); ?>", {id:id, outTime:outTime}).done(function(data){
+//     location.reload();
+//   });
+// }
+
 function clock_out(id){
+  //alert(id);
 	var outTime = moment().format('LTS');
 	$.post("<?php echo site_url("caregiver/current_shifts/clock_out"); ?>", {id:id, outTime:outTime}).done(function(data){
 		location.reload();
@@ -256,7 +261,8 @@ function clock_out(id){
 }
 
 setInterval(function(){
-	$(".currentTime").html(moment().format('LTS'));
+	var time = $(".currentTime").html(moment().format('LTS'));
+  $(".currentTime").val((moment().format('LTS')));
 }, 1000);
 
 </script>
