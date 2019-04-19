@@ -1,5 +1,4 @@
 <?php //print_array($client); ?>
-
 <style>
 #select_caregiver > .select2-container {
 	border-bottom: 1px solid #d8d5d5 !important;
@@ -10,29 +9,17 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switchery.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAPQXi7ZBZ73SPXi7JfHycSCi30thvQGCg&amp;libraries=places"></script>
-
-	<script src="<?php echo base_url(); ?>assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/typeahead_addresspicker.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/autocomplete_addresspicker.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/location.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/plugins/forms/validation/validate.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/typeahead_addresspicker.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/autocomplete_addresspicker.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/pickers/location/location.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/ui/prism.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/plugins/forms/validation/validate.min.js"></script>
 <div class="row">
   <div class="col-md-12">
-    <form action="#">
       <div class="row" style="margin-top: 35px;">
-        <div class="col-md-4">
-          <div class="form-group">
-            <div class="form-group form-group-feedback form-group-feedback-left">
-              <input type="text" class="form-control form-control-sm" placeholder="Add client current location">
-              <div class="form-control-feedback form-control-feedback-sm"> <i class="icon-pin-alt"></i> </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <button style="width: 50%;" class="btn btn-light legitRipple">Add</button>
-        </div>
+        <div class="col-md-8"> <?php include(APPPATH."views/agency/scheduling/inc/scheduling/map/schedule_map.php"); ?> </div>
         <div class="col-md-4" style="text-align: right;">
           <button type="button" class="btn btn-primary legitRipple">Publish Schedule</button>
           <div class="btn-group ml-1">
@@ -43,7 +30,6 @@
           </div>
         </div>
       </div>
-    </form>
     <div class="row" style="margin-top: 40px;">
       <div class="col-md-4" id="assign_caregivers_div"> <a href="javascript:;" onclick="load_assign_caregiver(<?php echo $client_id; ?>)">
         <button style="background-color: #f5f5f5; margin-right: 15px;" type="button" class="btn alpha-primary text-primary-800 btn-icon rounded-round ml-2 legitRipple"><i style="color: #555;" class="icon-plus3"></i></button>
@@ -135,7 +121,9 @@
                 <label><strong>Please define recurring months</strong></label>
                 <select class="form-control select" data-fouc name="recurring_months">
                   <?php for($i=1; $i<=24; $i++): ?>
-                  <option value="<?php echo $i; ?>"><?php echo $i; ?><?php if($i==1){echo " Month";}else{echo " Months";} ?></option>
+                  <option value="<?php echo $i; ?>"><?php echo $i; ?>
+                  <?php if($i==1){echo " Month";}else{echo " Months";} ?>
+                  </option>
                   <?php endfor; ?>
                 </select>
               </div>
@@ -154,9 +142,7 @@
 </div>
 <div id="editschedule" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
-    <div class="modal-content" id="editschedulediv">
-      
-    </div>
+    <div class="modal-content" id="editschedulediv"> </div>
   </div>
 </div>
 <div id="assign_caregiver_modal" class="modal fade" tabindex="-1" data-backdrop="true">
@@ -168,10 +154,8 @@
 </div>
 <div id="switch_caregiver_modal" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
-    	<div class="modal-content" id="switch_caregiver_div">
-    		
-    	</div>
-    </div>
+    <div class="modal-content" id="switch_caregiver_div"> </div>
+  </div>
 </div>
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script> 

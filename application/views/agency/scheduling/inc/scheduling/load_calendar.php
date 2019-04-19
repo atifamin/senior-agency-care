@@ -31,7 +31,7 @@
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/moment/moment.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script> 
 <script src="<?php echo base_url(); ?>assets/js/plugins/forms/styling/switch.min.js"></script> 
-<script src="<?php echo base_url(); ?>assets/js/scripts/schedulingCalendar.js?rand=<?php echo rand(); ?>"></script> 
+<script src="<?php echo base_url(); ?>assets/js/scripts/schedulingCalendar.js?rand=<?php echo strtotime(); ?>"></script> 
 <script>
 
 var events = [
@@ -107,10 +107,8 @@ $('.fullcalendar-formats').fullCalendar({
 	},
 	eventClick: function(info, element, view){
 		var date = info.start._i.split("T");
-		console.log(view.type);
 		if(view.type == "month" || view.type == "basicWeek" || view.type == "basicDay"){
 			$.post("<?php echo site_url('agency/scheduling/calender_shift_view'); ?>",{client_id:<?php echo $client_id; ?>,date:date[0]}).done(function(e){
-				
 				swal({
 					html:e
 				});
@@ -155,9 +153,11 @@ function is_recurring_change(element){
 	recurring_months(element.attr("appointment-id"), is_recurring);
 }
 
-
+SchCal = '';
+console.log(SchCal);
 //Loading Calendar Pdf View
 var SchCal = new SchedulingCalendar();
+SchCal.pdfViewInit();
 SchCal.appointments = <?php echo $data['appointments']; ?>;
 SchCal.caregivers = <?php echo $data['caregivers']; ?>;
 get_dates(null);

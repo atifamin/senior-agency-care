@@ -12,7 +12,8 @@ function SchedulingCalendar() {
 
 
 SchedulingCalendar.prototype.pdfViewInit = function (appointments) {
-	this.creatPdfView;
+	this.appointments = '';
+	this.caregivers = '';
 }
 
 SchedulingCalendar.prototype.creatPdfView = function (action) {

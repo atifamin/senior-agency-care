@@ -50,8 +50,27 @@ class Scheduling extends CI_Controller {
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_vital_reports");
 		$data['shopping_list_detail'] =$this->common_model->listingResultWhere('client_id',$client_id,"client_shopping_list");
 		$data['appointment_detail'] = $this->common_model->listingResultWhere('client_id',$client_id,"client_appointment_calender");
-		$data['dietry_needs_detail'] =$this->common_model->listingRow("client_id",$client_id,"client_dietry_needs");
+		$data['dietry_needs_detail'] = $this->common_model->listingRow("client_id",$client_id,"client_dietry_needs");
+		$data['client_address'] = $this->common_model->listingRow("client_id",$client_id,"client_address");
 		$this->load->view("agency/scheduling/scheduling",$data);
+	}
+	
+	public function add_client_address(){
+		$post = $this->input->post();
+		$detail = (array)json_decode($post["client_address_detail"]);
+		$detail['agency_id'] = $this->agency_id;
+		$detail['client_id'] = $post['client_id'];
+		$detail['created_by'] = $this->agency_id;
+		//check if exists
+		$checkIfExists = $this->common_model->listingRow("client_id",$post['client_id'],"client_address");
+		if(!empty($post["client_address_detail"])){
+			if(count($checkIfExists)>0){
+				$this->common_model->updateQuery("client_address", "id", $checkIfExists->id, $detail);
+			}else{
+				$this->common_model->insertQuery("client_address", $detail);
+			}
+		}
+		return redirect($_SERVER["HTTP_REFERER"]);
 	}
 	
 	public function load_calendar(){
