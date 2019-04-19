@@ -495,6 +495,30 @@ class Client_model extends CI_Model{
     public function clockinTimesheets($client_id){
         $query = $this->common_model->listingResultWhere('client_id',$client_id,"caregiver_time_sheets");
     }
+    public function client_current_shifts($agency_id){
+        $data = $this->db->select('ca.*, CONCAT(c.first_name," ",c.last_name) AS client_name,CONCAT(cg.first_name," ",cg.last_name) AS caregiver_name')
+                            ->join("client AS c","c.id = ca.client_id","LEFT")
+                            ->join("caregiver AS cg","cg.id = ca.caregiver_id","LEFT")
+                            ->from("client_appointements AS ca")
+                            ->where("ca.agency_id", $agency_id)
+                            ->where("NOW() BETWEEN ca.`from` and ca.`to`")
+                            ->order_by("ca.id", "ASC")
+                            ->get()->result();
+        return $data;
+    }
+    public function client_upcomming_shifts($agency_id){
+        $data = $this->db->select('ca.*,CONCAT(c.first_name," ",c.last_name) AS client_name,CONCAT(cg.first_name," ",cg.last_name) AS caregiver_name')
+                                ->from('client_appointements AS ca')
+                                ->join("caregiver AS cg","cg.id = ca.caregiver_id")
+                                ->join("client AS c","c.id = ca.client_id")
+                                ->where("ca.agency_id",$agency_id)
+                                //->where("NOW() BETWEEN ca.`from` and ca.`to`")
+                                ->where("ca.`from` > NOW()")
+                                ->where("from_unixtime(UNIX_TIMESTAMP(ca.`from`),'%Y-%m-%d') = '".date("Y-m-d")."'")
+                                ->order_by("ca.id","ASC")
+                                ->get()->result();
+        return $data;
+    }
 }
 
 ?>
