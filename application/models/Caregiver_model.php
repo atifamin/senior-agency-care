@@ -140,7 +140,7 @@ class Caregiver_model extends CI_Model{
 		$data = $this->db->select('*')
 						->from("client_appointements AS ca")
 						->where("ca.caregiver_id", $caregiver_id)
-						->where("ca.`from` > NOW()")
+						->where("NOW() BETWEEN ca.`from` AND ca.`to`")
 						->order_by("ca.id", "ASC")
 						->get()->result();
 		return $data;

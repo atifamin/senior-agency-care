@@ -1,5 +1,18 @@
 <?php include(APPPATH."views/caregiver/inc/header.php"); ?>
 <?php //print_array($shift_detail); ?>
+<?php
+$clockInDisable = false;
+if(count($shift_detail)<=0 || (count($result)>0 && $result->from!='0000-00-00 00:00:00')){
+	$clockInDisable = true;
+}
+
+
+
+$clockOutDisable = false;
+if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:00:00')){
+	$clockOutDisable = true;
+}
+?>
 <div class="card">
   <div class="card-header header-elements-inline">
     <div class="header-elements">
@@ -18,7 +31,7 @@
         <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
       </div>
       <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
-      <div class="col-md-12 mt-4"> <button href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal">CLOCK IN</button> <a href="javascript:;" id="clock_out_btn" onclick="clock_out(<?php echo $shift_detail[0]->id;?>)" class="btn btn-light legitRipple">CLOCK OUT</a> </div>
+      <div class="col-md-12 mt-4"> <button href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal" <?php if($clockInDisable){echo 'disabled="disabled"';} ?>>CLOCK IN</button> <button type="button" id="clock_out_btn" onclick="clock_out(<?php if(count($shift_detail)>0){echo $shift_detail[0]->id;} ?>)" class="btn btn-light legitRipple" <?php if($clockOutDisable){echo 'disabled="disabled"';} ?>>CLOCK OUT</button> </div>
       <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;"></span> </div>
       <!-- <div id="clock_in_time" style="">
         <div class="row">
@@ -31,7 +44,9 @@
         <span class="pull-right" style=""><?php if (isset($result->from)) {
             echo $result->from = date("h:i:s A", strtotime($result->from));
           } ?></span> 
-        <span class="pull-right" style=""></span> 
+        <span class="pull-right" style=""><?php if (isset($result->to)) {
+            echo $result->from = date("h:i:s A", strtotime($result->to));
+          } ?></span> 
       </div>
     </div>
     <div class="row" style="margin-top: 40px;">
@@ -145,10 +160,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <form action="<?php echo site_url("caregiver/current_shifts/clock_in"); ?>" method="POST">
-        <input type="hidden" name="agency_id" value="<?php echo $shift_detail[0]->agency_id; ?>">
-        <input type="hidden" name="client_id" value="<?php echo $shift_detail[0]->client_id; ?>">
-        <input type="hidden" name="caregiver_id" value="<?php echo $shift_detail[0]->caregiver_id; ?>">
-        <input type="hidden" name="appointment_id" value="<?php echo $shift_detail[0]->id; ?>">
+        <input type="hidden" name="agency_id" value="<?php if(count($shift_detail)>0){echo $shift_detail[0]->agency_id;} ?>">
+        <input type="hidden" name="client_id" value="<?php if(count($shift_detail)>0){echo $shift_detail[0]->client_id;} ?>">
+        <input type="hidden" name="caregiver_id" value="<?php if(count($shift_detail)>0){echo $shift_detail[0]->caregiver_id;} ?>">
+        <input type="hidden" name="appointment_id" value="<?php if(count($shift_detail)>0){echo $shift_detail[0]->id;} ?>">
         <div class="modal-header"> 
           <div class="row" align="center">
             <div class="col-md-12">
@@ -234,13 +249,10 @@ $(".sub_car_pane").on("click", function(){
   });
 
 function clock_out(id){
-   //alert(id);
-  //exit;
-  $.post("<?php echo site_url("caregiver/current_shifts/clock_out"); ?>", {id:id}).done(function(data){
-    console.log(data);
-    return false;
-    
-  });
+	var outTime = moment().format('LTS');
+	$.post("<?php echo site_url("caregiver/current_shifts/clock_out"); ?>", {id:id, outTime:outTime}).done(function(data){
+		location.reload();
+	});
 }
 
 setInterval(function(){

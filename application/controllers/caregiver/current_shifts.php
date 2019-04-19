@@ -20,9 +20,10 @@ class Current_shifts extends CI_Controller {
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";
 		$data['shift_detail'] = $this->Caregiver_model->caregiver_shift_detail($this->caregiver_id);
-		$current_appointment = $data['shift_detail'][0];
-		//print_array($current_appointment);
-		$data['result'] = $this->common_model->listingRow("appointment_id", $current_appointment->id,"caregiver_time_sheets");
+		if(count($data['shift_detail'])>0){
+			$current_appointment = $data['shift_detail'][0];
+			$data['result'] = $this->common_model->listingRow("appointment_id", $current_appointment->id,"caregiver_time_sheets");
+		}
 		//$data["clock_in"] = $this->Client_model->clockinTimesheets($client_id);
 		$this->load->view('caregiver/currentshifts/index',$data);
 	}
@@ -153,17 +154,14 @@ class Current_shifts extends CI_Controller {
 	}
 
 	public function clock_out(){
-		$post = $this->input->post('id');
-		$clock_out = $this->input->post('to');
-		$post['to'] = date('Y-m-d H:i:s',strtotime($clock_out));
-		print_array($post);
-		//$clock_out = $this->common_model->updateQuery("caregiver_time_sheets", 'to', $$post['to'], $post);
+		$appointment_id = $this->input->post("id");
+		$to = date("Y-m-d H:i:s", strtotime($this->input->post("outTime")));
+		$detail = $this->common_model->listingRow("appointment_id",$appointment_id,"caregiver_time_sheets");
+		$this->common_model->updateQuery("caregiver_time_sheets", 'id', $detail->id, array(
+			"to"	=>	$to,
+		));
+		return redirect("caregiver/current_shifts");
 	}
-
-	// public function modal_status(){
-	// 	$post = $this->input->post();
-	// 	print_array($post);
-	// }
 
 	
 }
