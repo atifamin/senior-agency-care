@@ -12,14 +12,16 @@ class Current_shifts extends CI_Controller {
     	//LoggedIn User ID
 		$userSession = $this->session->userdata("isAgencyLoggedIn");
 		$this->agency_id = $userSession['user_id'];
+		$this->load->model('Client_model');
 	}
 
-	public function index($client_id) {
+	public function index() {
 		$data["breadcrumb"] = "Current Shifts";
 		$data["heading"] = "Current Shifts";
-		 
 		//$data["url_segment"] = "current shifts";
-
+		$data['client_current_shifts'] = $this->Client_model->client_current_shifts($this->agency_id);
+		$data['client_upcomming_shifts'] = $this->Client_model->client_upcomming_shifts($this->agency_id);
+		//print_array($data);
 		$this->load->view('agency/currentshifts/index',$data);
 	}
 
