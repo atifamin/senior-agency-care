@@ -1,3 +1,4 @@
+<?php //print_array($detail); ?>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
@@ -202,49 +203,79 @@
 <div id="modal_photo" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="margin: 0 auto;">Upload a Photo</h5>
-                <div>
-                    <ul><li class="media">
-                        <div class="mr-3" style="margin-right: .55rem !important;">
-                            <a href="#">
-                                <img src="<?php echo base_url(); ?>assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt="">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller
+            <form id="add_client_image_form" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="client_id" value="<?php echo $detail->client_id; ?>">
+                <input type="hidden" name="agency_id" value="<?php echo $detail->agency_id; ?>">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="margin: 0 auto;">Upload a Photo</h5>
+                    <div>
+                        <ul><li class="media">
+                            <div class="mr-3" style="margin-right: .55rem !important;">
+                                <a href="#">
+                                    <img src="<?php echo base_url(); ?>assets/images/userimg/face8.jpg" class="rounded-circle" width="40" height="40" alt="">
+                                </a>
                             </div>
-                            <span class="text-muted" style="font-size: 12px;">Total Care</span>
-                        </div>
-                    </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <input type="text" name="photo_title" class="form-control" placeholder="Add title to Photo">
-                        </div>
-                    </div>
-                        
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <input type="file" class="file-input" data-show-remove="true" data-fouc>
+                            <div class="media-body">
+                                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;">Bastin Miller
+                                </div>
+                                <span class="text-muted" style="font-size: 12px;">Total Care</span>
+                            </div>
+                        </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">Done</span>
-                </button>
-            </div>            
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" name="photo_title" class="form-control" placeholder="Add title to Photo">
+                            </div>
+                        </div>
+                            
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="file" class="file-input" data-show-remove="true" data-fouc>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button  class="btn btn-link" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"><span class="ladda-label">Done</span>
+                    </button>
+                </div>
+            </form>          
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
+    
+    // $('#add_client_image_form').on('submit',function(e){
+    //     var formData = new FormData($('#add_client_image_form')[0]);
+    //     console.log(formData);
+    //     return false;
+    // });
+    // $('#add_client_image_form').on('submit',function(e){
+    //     // alert();
+    //     // exit;
+    //     var formData = new FormData($(this)[0]);
+    //     console.log(formData);
+    //     return false;
+    //     $.ajax({
+    //         url: '<?php site_url("caregiver/current_shifts/add_photos"); ?>',
+    //         type: 'POST',
+    //         data: formData,
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function(e){
+    //             console.log(e);
+    //             return false;
+    //         }
+    //     });
+    // });
+
     $('#upload_music_file').click(function(){
             if($("#file_link").css("display","block")){
                 $("#file_link").css("display","none");
