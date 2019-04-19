@@ -23,12 +23,13 @@ class CalenderPdf_View_model extends CI_Model
 		$date = date("Y-m-d", strtotime($post["date"]));
 		$firstDateOfWeek = date("Y-m-d", strtotime('monday this week', strtotime($date)));
 		$lastDateOfWeek = date("Y-m-d", strtotime('sunday this week', strtotime($date)));
-
+		$data['client'] = $this->Client_model->getById($post['client_id']);
 		$data["client_appointements"] = $this->Schedule_model->client_app_by_daterange($firstDateOfWeek, $lastDateOfWeek, $post['client_id']);
 		$data["rawDates"] = $this->common_model->getDatesFromRange($firstDateOfWeek, $lastDateOfWeek);
 		$data["caregivers"] = $this->Client_model->gettingAssignedCaregivers($post['client_id']);
 		$data["client_detail"] = $this->common_model->listingRow("id", $post["client_id"], "client");
-		
+		$data['first_date'] = $firstDateOfWeek;
+		$data['last_date'] = $lastDateOfWeek;
 		$mpdf = $this->mpdf;
 		$mpdf->setBasePath(site_url());
 		$html = $this->load->view("pdf/download_pdf_view.php", $data, true);
@@ -46,6 +47,8 @@ class CalenderPdf_View_model extends CI_Model
 		$mpdf->WriteHTML($html);
 		
 		if($post["calendar_pdf_view"]=="download"){
+			$mpdf->Output();
+			exit;
 			fopen($file_path, "w");
 			$mpdf->Output($file_path, \Mpdf\Output\Destination::FILE);
 			$mpdf->Output($file_name, 'D');
