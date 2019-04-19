@@ -20,8 +20,8 @@ class Current_shifts extends CI_Controller {
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";
 		$data['shift_detail'] = $this->Caregiver_model->caregiver_shift_detail($this->caregiver_id);
-		$data['client'] = $this->Client_model->getById($data['shift_detail'][0]->client_id);
-		//print_array($data['client']);
+		//$data['client'] = $this->Client_model->getById($data['shift_detail'][0]->client_id);
+		// print_array($data['client']);
 		if(count($data['shift_detail'])>0){
 			$current_appointment = $data['shift_detail'][0];
 			$data['result'] = $this->common_model->listingRow("appointment_id", $current_appointment->id,"caregiver_time_sheets");
