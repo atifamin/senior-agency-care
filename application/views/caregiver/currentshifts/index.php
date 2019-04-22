@@ -4,7 +4,7 @@
 $clockInDisable = false;
 if(count($shift_detail)<=0 || (count($result)>0 && $result->from!='0000-00-00 00:00:00')){
 	$clockInDisable = true;
-}
+  }
 
 $clockOutDisable = false;
 if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:00:00')){
@@ -29,7 +29,7 @@ if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:0
         <h4> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;"><?php echo date("l"); ?></span><?php echo date("F d, Y"); ?> </h4>
       </div>
       <div class="col-md-12" style="text-align: center;"> <span style="font-size: 13px; font-weight: 500; margin-right: 15px;">Location</span><span class="text-muted">Johar Town Lahore,Pakistan <i class="icon-location3"></i></span> </div>
-      <div class="col-md-12 mt-4"> <button href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal" <?php if($clockInDisable){echo 'disabled="disabled"';} ?>>CLOCK IN</button> <button type="button" id="clock_out_btn" onclick="clock_out(<?php if(count($shift_detail)>0){echo $shift_detail[0]->id;} ?>);" class="btn btn-light legitRipple" <?php if($clockOutDisable){echo 'disabled="disabled"';} ?>>CLOCK OUT</button> </div>
+      <div class="col-md-12 mt-4"> <button href="javascript:;" class="btn btn-light legitRipple" id="clock_in_modal" data-toggle="modal" data-target="#clock_modal" <?php if($clockInDisable){echo 'disabled="disabled"';} ?>>CLOCK IN</button> <button type="button" id="clock_out_btn" onclick="clock_out(<?php if(count($shift_detail)>0){echo $shift_detail[0]->id;} ?>);" class="btn btn-light legitRipple">CLOCK OUT</button> </div>
       <div class="col-md-12" id="clock_out_time" style="width: 50%;"> <span style="color: #FF7043;"></span> </div>
     </div>
     <div class="row" style="margin-top: 5px;">
@@ -57,9 +57,6 @@ if(count($shift_detail)<=0 || (count($result)>0 && $result->to!='0000-00-00 00:0
         <ul class="media-list media-list-linked">
           <li style="list-style: none;">
             <div class="media"> 
-              <!--  <div class="mr-3">
-                                        <div class="media-title font-weight-semibold">Shift Time</div>
-                                    </div> -->
               <div class="media-body">
                 <div class="media-title font-weight-semibold">Shift Time</div>
               </div>

@@ -197,11 +197,15 @@ $("#update_client_appointement_form").on("submit", function(e){
           $('#switch_caregiver_div').html(JSON.parse(data.text));
           $('#editschedule').modal('hide');
         }else if(data.action=="assign"){
-          
           location.reload();
         }
-      }else{
-        $("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
+      }
+      if (data.type="error"){
+        if (data.action="assign_error") {
+          $("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
+        }else if(data.action="switch_error"){
+          $("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
+        }
       }
 
       // $('#switch_caregiver_modal').modal('show');

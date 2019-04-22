@@ -144,8 +144,6 @@
       contentType: false,
       processData: false,
       success: function(e){
-        // console.log(e);
-        // return false;
         loader.unblock();
         swal({
           title: "Good job!",
