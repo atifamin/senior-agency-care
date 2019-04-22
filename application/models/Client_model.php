@@ -519,6 +519,15 @@ class Client_model extends CI_Model{
                                 ->get()->result();
         return $data;
     }
+    public function client_timesheet_detail($agency_id){
+        $data = $this->common_model->listingResultWhere("agency_id",$agency_id,"client");
+        if (count($data) > 0) {
+            foreach ($data as $key => $value) {
+                $data[$key]->caregivers = $this->gettingAssignedCaregivers($value->id);
+            }
+        }
+        return $data;
+    }
 }
 
 ?>

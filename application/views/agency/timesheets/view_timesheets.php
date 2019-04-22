@@ -44,8 +44,10 @@ include(APPPATH."views/agency/inc/header.php");?>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td><span><strong style="font-weight: 400;">Roland R</strong></span>
+					<?php if (count($clients) > 0) {
+						foreach ($clients as $client_data) { ?>
+							<tr>
+						<td><span><strong style="font-weight: 400;"><?php echo $client_data->first_name." ".$client_data->last_name; ?></strong></span>
 						</td>
 						<td></span>
 						</td>
@@ -54,9 +56,14 @@ include(APPPATH."views/agency/inc/header.php");?>
 						<td><span><strong style="font-weight: 400;">500</strong></span>
 						</td>
 						<td><span><strong style="font-weight: 400;">
-							<a href="#">
-							<img src="<?php echo base_url(); ?>assets/images/userimg/face1.jpg" class="rounded-circle" width="40" height="40" alt="">
-							</a></strong></span>
+							<?php if (count($client_data->caregivers)) {
+								foreach ($client_data->caregivers as $caregiver_data) { ?>
+								<a href="#">
+									<img src="<?php echo caregiver_image($caregiver_data->id); ?>" class="rounded-circle" width="40" height="40" alt="">
+								</a>
+							<?php	}
+							} ?>
+							</strong></span>
 						</td>
 						<td class="text-center">
 							<div class="list-icons">
@@ -73,19 +80,24 @@ include(APPPATH."views/agency/inc/header.php");?>
 							</div>
 						</td>
 					</tr>
+					<?php 	//}
+					//} ?>
+					
 				</tbody>
 			</table>
+			<?php if (count($client_data->caregivers)) {
+					foreach ($client_data->caregivers as $caregiver_data) { ?>
 			<li style="list-style: none; margin-top: 20px;">
 				<div style="list-style: none; background-color: #eee"class="media">
 					<div class="align-self-center ml-3">
-						<a href="#" class="text-default" data-toggle="collapse" data-target="#james1" aria-expanded="true"><i class="icon-menu7"></i> <strong> Assigned Caregiver </strong>
+						<a href="#" class="text-default" data-toggle="collapse" data-target="#row_<?php echo $caregiver_data->id; ?>" aria-expanded="true"><i class="icon-menu7"></i> <strong> Assigned Caregiver </strong>
 						</a>
 					</div>
 					<div class="media-body" style="padding-left: 34px; padding-bottom: 10px; padding-top: 10px;">
 						<div class="media-title font-weight-semibold">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/images/userimg/face2.jpg" class="rounded-circle" width="40" height="40" alt="">
-							</a>James James
+								<img src="<?php echo caregiver_image($caregiver_data->id); ?>" class="rounded-circle" width="40" height="40" alt="">
+							</a> <?php echo $caregiver_data->first_name." ".$caregiver_data->last_name; ?>
 						</div>
 					</div>
 				</div>
@@ -137,7 +149,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 					</table>
 				</div>
 			</div>
-			<div class="collapse show" id="james1" style="">
+			<div class="collapse show" id="row_<?php echo $caregiver_data->id; ?>" style="">
 				<div class="table-responsive"  style="padding: 2%; ">
 					<table style="background-color: #fff;" class="table table-bordered">
 						<thead>
@@ -304,7 +316,12 @@ include(APPPATH."views/agency/inc/header.php");?>
 					</div>
 				</div>
 			</div>
-			<li style="list-style: none; margin-top: 20px;">
+			<?php } } ?>
+			
+			<?php 	}
+					} ?>
+
+			<!-- <li style="list-style: none; margin-top: 20px;">
 				<div style="list-style: none; background-color: #eee"class="media">
 					<div class="align-self-center ml-3">
 						<a href="#" class="text-default" data-toggle="collapse" data-target="#james2" aria-expanded="true"><i class="icon-menu7"></i> <strong> Assigned Caregiver </strong>
@@ -769,7 +786,7 @@ include(APPPATH."views/agency/inc/header.php");?>
 					<div style="float: right; margin-top: 10px;"><button type="button" class="btn btn-primary legitRipple" style="background-color: #8ceaff; border-color: #31c6ff; color: #0829a2;">Save Timesheet</button>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<h5 style="text-align: center;padding:20px; background-color: #80808014;">Time Sheets Total</h5>
 			<div class="row">
 				<div class="col-md-5">

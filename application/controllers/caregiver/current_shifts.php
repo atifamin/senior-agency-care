@@ -156,10 +156,13 @@ class Current_shifts extends CI_Controller {
 
 	public function clock_out(){
 		$appointment_id = $this->input->post("id");
+
 		$to = date("Y-m-d H:i:s", strtotime($this->input->post("outTime")));
 		$detail = $this->common_model->listingRow("appointment_id",$appointment_id,"caregiver_time_sheets");
+		$difference = $this->common_model->dateDifferanceTwoDates($detail->from, $detail->to);
+		//print_array($difference);
 		$this->common_model->updateQuery("caregiver_time_sheets", 'id', $detail->id, array(
-			"to"	=>	$to,
+			"to" => $to,"total_hours" => json_encode($difference)
 		));
 		return redirect("caregiver/current_shifts");
 	}
