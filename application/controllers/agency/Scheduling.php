@@ -319,6 +319,7 @@ class Scheduling extends CI_Controller {
 		}
 		else{
 			$message['type'] = "error";
+			$message['action'] = "switch_error";
 			$message['text'] = "You Can't switch this caregiver on this datetime."; 
 		}
 		echo json_encode($message);
@@ -358,6 +359,7 @@ class Scheduling extends CI_Controller {
 			));
 		}else{
 			$message['type'] = "error";
+			$message['action'] = "assign_error";
 			$message['text'] = "This caregiver is already assigned somewhere else on this datetime.";
 		}
 		echo json_encode($message);

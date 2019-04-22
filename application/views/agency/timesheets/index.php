@@ -30,10 +30,15 @@ include(APPPATH."views/agency/inc/header.php");?>
 							</tr>
 						</thead>
 						<tbody>
+							<?php if (count($clients) > 0) {
+								foreach ($clients as $client_detail) {  ?>
 							<tr>
-								<td><span><strong style="font-weight: 400;">Maxewell M</strong></span>
+								<td><span><strong style="font-weight: 400;"><?php echo $client_detail->first_name." ".$client_detail->last_name; ?></strong></span>
 								</td>
-								<td><span><strong style="font-weight: 400;">Monthly</strong></span>
+								<td><span><strong style="font-weight: 400;"><?php foreach (CON_CLIENT_BILLIBG_CYCLE as $key => $value) {
+									if ($key == $client_detail->billing_cycle) {
+										echo $value;
+									} } ?></strong></span>
 								</td>
 								<td><span><strong style="font-weight: 400;">40</strong></span>
 								</td>
@@ -42,12 +47,12 @@ include(APPPATH."views/agency/inc/header.php");?>
 								<td>
 									<li class="media" style="list-style: none;">
 										<div class="mr-3">
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face13.jpg" class="rounded-circle" width="40" height="40" alt="">
+											<?php if (count($client_detail->caregivers) > 0) {
+												foreach ($client_detail->caregivers as $caregiver) { ?>
+												<a href="#">
+												<img src="<?php echo caregiver_image($caregiver->id); ?>" class="rounded-circle" width="40" height="40" alt="">
 											</a>
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face3.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
+											<?php } } ?>
 										</div>
 									</li>
 								</td>
@@ -58,14 +63,17 @@ include(APPPATH."views/agency/inc/header.php");?>
 					                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="true"><i class="icon-menu9"></i></a>
 
 					                    		<div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-158px, -116px, 0px);">
-							                    	<a href="<?php echo site_url("agency/time_sheets/view_timesheets"); ?>" class="dropdown-item"><i class="icon-menu7"></i>View Timesheets</a>
+							                    	<a href="<?php echo site_url("agency/time_sheets/view_timesheets/".$client_detail->id.""); ?>" class="dropdown-item"><i class="icon-menu7"></i>View Timesheets</a>
 					                    		</div>
 					                    	</div>
 				                    	</div>
 									</div>
 								</td>
-							</tr>
-							<tr>
+							</tr>		
+							<?php }
+								}  ?>
+							
+							<!-- <tr>
 								<td><span><strong style="font-weight: 400;">Maxewell M</strong></span>
 								</td>
 								<td><span><strong style="font-weight: 400;">Monthly</strong></span>
@@ -99,147 +107,8 @@ include(APPPATH."views/agency/inc/header.php");?>
 				                    	</div>
 									</div>
 								</td>
-							</tr>
-							<tr>
-								<td><span><strong style="font-weight: 400;">Maxewell M</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">Monthly</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">40</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">500</strong></span>
-								</td>
-								<td>
-									<li class="media" style="list-style: none;">
-										<div class="mr-3">
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face19.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face20.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
-										</div>
-									</li>
-								</td>
-								<td class="text-center">
-									<div class="align-self-center ml-3">
-										<div class="list-icons">
-					                    	<div class="list-icons-item dropdown">
-					                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="true"><i class="icon-menu9"></i></a>
-
-					                    		<div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-158px, -116px, 0px);">
-							                    	<a href="<?php echo site_url("agency/time_sheets/view_timesheets"); ?>" class="dropdown-item"><i class="icon-menu7"></i>View Timesheets</a>
-					                    		</div>
-					                    	</div>
-				                    	</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><span><strong style="font-weight: 400;">Maxewell M</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">Monthly</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">40</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">500</strong></span>
-								</td>
-								<td>
-									<li class="media" style="list-style: none;">
-										<div class="mr-3">
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face22.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face24.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
-										</div>
-									</li>
-								</td>
-								<td class="text-center">
-									<div class="align-self-center ml-3">
-										<div class="list-icons">
-					                    	<div class="list-icons-item dropdown">
-					                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="true"><i class="icon-menu9"></i></a>
-
-					                    		<div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-158px, -116px, 0px);">
-							                    	<a href="<?php echo site_url("agency/time_sheets/view_timesheets"); ?>" class="dropdown-item"><i class="icon-menu7"></i>View Timesheets</a>
-					                    		</div>
-					                    	</div>
-				                    	</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><span><strong style="font-weight: 400;">Maxewell M</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">Monthly</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">40</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">500</strong></span>
-								</td>
-								<td>
-									<li class="media" style="list-style: none;">
-										<div class="mr-3">
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face25.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face23.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
-										</div>
-									</li>
-								</td>
-								<td class="text-center">
-									<div class="align-self-center ml-3">
-										<div class="list-icons">
-					                    	<div class="list-icons-item dropdown">
-					                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="true"><i class="icon-menu9"></i></a>
-
-					                    		<div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-158px, -116px, 0px);">
-							                    	<a href="<?php echo site_url("agency/time_sheets/view_timesheets"); ?>" class="dropdown-item"><i class="icon-menu7"></i>View Timesheets</a>
-					                    		</div>
-					                    	</div>
-				                    	</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><span><strong style="font-weight: 400;">Maxewell M</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">Monthly</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">40</strong></span>
-								</td>
-								<td><span><strong style="font-weight: 400;">500</strong></span>
-								</td>
-								<td>
-									<li class="media" style="list-style: none;">
-										<div class="mr-3">
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face14.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
-											<a href="#">
-												<img src="<?php echo base_url(); ?>assets/images/userimg/face13.jpg" class="rounded-circle" width="40" height="40" alt="">
-											</a>
-										</div>
-									</li>
-								</td>
-								<td class="text-center">
-									<div class="align-self-center ml-3">
-										<div class="list-icons">
-					                    	<div class="list-icons-item dropdown">
-					                    		<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown" aria-expanded="true"><i class="icon-menu9"></i></a>
-
-					                    		<div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-158px, -116px, 0px);">
-							                    	<a href="<?php echo site_url("agency/time_sheets/view_timesheets"); ?>" class="dropdown-item"><i class="icon-menu7"></i>View Timesheets</a>
-					                    		</div>
-					                    	</div>
-				                    	</div>
-									</div>
-								</td>
-							</tr>
+							</tr> -->
+							
 						</tbody>
 					</table>
 				</div>
