@@ -168,5 +168,10 @@ class Current_shifts extends CI_Controller {
 
 	}
 
+	public function add_photos(){
+		$post = $this->input->post();
+		print_array($post);
+	}
+
 	
 }
