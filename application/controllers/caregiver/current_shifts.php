@@ -20,6 +20,9 @@ class Current_shifts extends CI_Controller {
 		$data["heading"] = "Notice Board";
 		$data["url_segment"] = "notice board";
 		$data['shift_detail'] = $this->Caregiver_model->caregiver_shift_detail($this->caregiver_id);
+		$data['client'] = $this->Client_model->getById($data['shift_detail'][0]->client_id);
+		//print_array($data);
+
 		//$data['client'] = $this->Client_model->getById($data['shift_detail'][0]->client_id);
 		// print_array($data['client']);
 		if(count($data['shift_detail'])>0){
@@ -164,14 +167,47 @@ class Current_shifts extends CI_Controller {
 		return redirect("caregiver/current_shifts");
 	}
 
-	public function update_clock_out(){
-
-	}
-
 	public function add_photos(){
 		$post = $this->input->post();
-		print_array($post);
+		$data = array();
+		$data['client_id'] = $post['client_id'];
+		$data['agency_id'] = $post['agency_id'];
+		$data['title'] = $post["photo_title"];
+		$data['created_by'] = $post['agency_id'];
+		$data['created_at'] = date('Y-m-d H:i:s');
+		$photo_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data);
+		if(!empty($_FILES['file']['name'])){
+			$client_photo = upload_file($_FILES['file'], "client_photo_music", $photo_id, $FILE_DIRECTORY="./uploads/clients/");
+			$image_file = $this->common_model->insertGetIDQuery("media", $client_photo);
+		}
+		if (!empty($image_file)) {
+			$this->common_model->updateQuery("client_favorite_media", "id", $photo_id,array('list_file'=>$image_file));
+		}
+		$data['client_photo'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_favorite_media");
+		redirect('caregiver/current_shifts/index');
+
 	}
 
-	
+	public function add_music(){
+		$post = $this->input->post();
+		$data = array();
+		//print_array($post);
+		$data['client_id'] = $post['client_id'];
+		$data['agency_id'] = $post['agency_id'];
+		$data['created_by'] = $post['agency_id'];
+		$data['created_at'] = date('Y-m-d H:i:s');
+		//print_array($data);
+		$music_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data);
+		if(!empty($_FILES['file']['name'])){
+			$client_music = upload_file($_FILES['file'], "client_photo_music", $music_id, $FILE_DIRECTORY="./uploads/clients/");
+			$music_file = $this->common_model->insertGetIDQuery("media", $client_music);
+		}
+		if (!empty($music_file)) {
+			$this->common_model->updateQuery("client_favorite_media", "id", $music_id,array('list_file'=>$music_file));
+		}
+		$data['client_music'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_favorite_media");
+		redirect('caregiver/current_shifts/index');
+
+	}
+
 }
