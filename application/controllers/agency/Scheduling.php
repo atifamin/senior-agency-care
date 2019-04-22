@@ -29,11 +29,6 @@ class Scheduling extends CI_Controller {
 	}
 
 	public function view($client_id){
-		// $date = date("2019-04-10");
-		// echo date("Y-m-d", strtotime('monday this week', strtotime($date))), "\n";   
-		// echo date("Y-m-d", strtotime('sunday this week', strtotime($date))), "\n";
-		// exit;
-
 		$data["breadcrumb"] = "Scheduling";
 		$data["heading"] = "Scheduling";
 		$data["url_segment"] = "scheduling";
