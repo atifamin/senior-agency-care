@@ -140,11 +140,11 @@ $("#update_client_appointement_form").on("submit", function(e){
         }
       }
       if (data.type="error"){
-        if (data.action="assign_error") {
+        //if (data.action="assign_error") {
           $("#error_message").html('<div class="alert" style="box-shadow: none;padding: 0;" align="center"><div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>'+data.text+'</div>');
-        }else if(data.action="switch_error"){
-          $("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
-        }
+        //}else if(data.action="switch_error"){
+          //$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
+       // }
       }
       // <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
 		}
