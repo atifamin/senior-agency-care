@@ -210,7 +210,10 @@ class Current_shifts extends CI_Controller {
 		}
 		$data['client_music'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_favorite_media");
 		redirect('caregiver/current_shifts/index');
-
+	}
+	public function delete_shift(){
+		$post = $this->input->post();
+		print_array($post);
 	}
 
 }

@@ -13,8 +13,7 @@
       </li>
     </div>
   </div>
-  <div class="modal-body" style="padding:0 10%;">
-    <div class="row">
+  <div class="row" style="padding: 20px;">
       <div class="col-md-12">
         <table class="table">
           <thead>
@@ -31,16 +30,20 @@
         </table>
       </div>
     </div>
-          
-    
+  <div class="modal-body" style="padding:0 10%; max-height: 300px; overflow-y: scroll;">
       <div class="row" style="margin-top: 5px">
         <table class="table">
           <tbody>
             <?php if(count($switch_appointment_detail) > 0){
               foreach ($switch_appointment_detail as $switch_appointment) { ?>
+                <?php // print_array($switch_appointment); ?>
             <tr>
               <td><img src="<?php echo caregiver_image($switch_appointment->caregiver_id); ?>" class="rounded-circle" width="40" height="40" alt=""> <?php echo $caregiver_switch->first_name; ?></td>
-              <td><?php echo date('D, h:i a',strtotime($switch_appointment->from))." - ".date('D, h:i a',strtotime($switch_appointment->to));  ?></td>
+              <td>
+                <p><?php echo date('l d,Y',strtotime($switch_appointment->from)); ?></p>
+                <p><?php echo date('D, h:i a',strtotime($switch_appointment->from))." - ".date('D, h:i a',strtotime($switch_appointment->to)); ?></p>
+                <p><strong>Client </strong>&nbsp;&nbsp;<?php echo $client->first_name." ".$client->last_name; ?></p>
+                </td>
               <td><a href="javascript:;" onclick="switch_appointment(<?php echo $switch_appointment->id; ?>)" class="btn btn-primary legitRipple">Switch</a>
               </td>
             </tr>
@@ -50,7 +53,7 @@
         </table>
       </div>  
   </div>
-  <div class="row" style="text-align: center; margin-bottom: 20px;">
+  <div class="row" style="text-align: center; margin: 15px 0;">
     <div class="col-md-12">
       <!-- <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Switch</span> </button> -->
       <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>

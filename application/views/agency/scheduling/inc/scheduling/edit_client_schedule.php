@@ -84,67 +84,6 @@
     <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Done</span> </button>
   </div>
 </form>
-    
-<!-- <div id="switch_caregiver_modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content" id="switch_caregiver_div">
-      <form id="switch_caregiver_form">
-        <div class="modal-header">
-          <h5 class="modal-title" style="margin: 0 auto; padding-bottom: 25px;"><strong>Switch Caregiver</strong></h5>
-          <div>
-            <li class="media" style="padding: unset; border: none;">
-              <div class="mr-3" style="margin-right: .55rem!important;"> <a href="#"> <img src="<?php //echo client_image($client->id); ?>" class="rounded-circle" width="40" height="40" alt=""> </a> </div>
-              <div class="media-body">
-                <div class="media-title font-weight-semibold" style="font-size: 12px; margin-bottom: 0px !important;"><?php echo $relationshipDetails->first_name." ".$relationshipDetails->last_name; ?></div>
-                <span class="text-muted" style="font-size: 12px;">Total Care</span> </div>
-            </li>
-          </div>
-        </div>
-        <div class="modal-body" style="padding:0 10%;">
-          <div class="row">
-            <div class="col-md-10 offset-md-1">
-              <div class="form-group">
-      
-                <?php //$current_caregiver_detail = $this->common_model->listingResultWhere('caregiver_id',$result->caregiver_id,'client_appointements'); ?>
-                <label><strong>Current Caregiver</strong></label>
-                <select class="form-control multiselect" multiple="multiple" data-fouc>
-                  <?php //print_array($current_caregiver_detail); ?>
-                  <?php //if (count($current_caregiver_detail)>0) {
-                      //foreach ($current_caregiver_detail as $current) { ?>
-                  
-                  <option value="tomatoes"><?php //echo date('D, h:i a',strtotime($current->from))." - ".date('D, h:i a',strtotime($current->to)); ?></option>
-
-                  <?php  //}
-                  //} ?>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-10 offset-md-1">
-              <div class="form-group">
-                <?php  ?>
-                <label><strong>Switch Caregiver</strong></label>
-                <select class="form-control multiselect" multiple="multiple" data-fouc>
-                  <option value="cheese">Fri, 12:30 am - Fri, 1:30 am</option>
-                  <option value="tomatoes">Tomatoes</option>
-                  <option value="mozarella">Mozzarella</option>
-                  <option value="mushrooms">Mushrooms</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row" style="text-align: center; margin-bottom: 20px;">
-          <div class="col-md-12">
-            <button type="submit" class="btn bg-primary btn-ladda btn-ladda-progress" data-style="zoom-in" data-spinner-size="20"> <span class="ladda-label">Switch</span> </button>
-            <button type="button" class="btn btn-light legitRipple" data-dismiss="modal">Cancal</button>
-          </div>
-        </div>
-      </form> 
-    </div>
-  </div>
-</div>  -->
 <script>
 
   //$('.multiselect').multiselect(); 
@@ -202,23 +141,12 @@ $("#update_client_appointement_form").on("submit", function(e){
       }
       if (data.type="error"){
         if (data.action="assign_error") {
-          $("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
+          $("#error_message").html('<div class="alert" style="box-shadow: none;padding: 0;" align="center"><div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>'+data.text+'</div>');
         }else if(data.action="switch_error"){
           $("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
         }
       }
-
-      // $('#switch_caregiver_modal').modal('show');
-      // $('#switch_caregiver_div').html(e);
-      // $('#editschedule').modal('hide');
-
-      //return false;
-			// var data = JSON.parse(e);
-   //    if(data.type=="success"){
-			// 	location.reload();
-			// }else{
-			// 	$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
-			// }
+      // <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
 		}
 	});	
 });

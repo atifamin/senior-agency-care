@@ -25,6 +25,10 @@ class Current_shifts extends CI_Controller {
 		//print_array($data);
 		$this->load->view('agency/currentshifts/index',$data);
 	}
+	public function delete_shift(){
+		$post = $this->input->post();
+		$this->common_model->delete("client_appointements", array("id"=>$post["id"]));
+	}
 
 }
 ?>

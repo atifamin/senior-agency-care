@@ -4,6 +4,9 @@
 	.dataTables_length{
 		display: none;
 	}
+	.datatable-scroll-wrap{
+		min-height: 200px;
+	}
 </style>
 <div class="row">
 	<div class="col-md-12">
@@ -39,7 +42,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<table class="table datatable-basic" id="client_view_sheets_datatable">
+						<table class="table datatable-basic"  id="client_view_sheets_datatable">
 							<thead>
 								<tr>
 									<th>Shift Time</th>
@@ -79,7 +82,7 @@
 												<div class="media-title font-weight-semibold"><?php echo $current_shifts->caregiver_name; ?></div>
 											</div>
 										</li>
-									</td>
+									</td>												
 									<td class="text-center">
 										<div class="list-icons">
 											<div class="dropdown">
@@ -88,17 +91,16 @@
 												</a>
 
 												<div class="dropdown-menu dropdown-menu-right">
-													<a href="#" class="dropdown-item"><i class="icon-square-right"></i> View Current Shift</a>
-													<!-- <a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Current Shift</a>
-													<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Current Shift</a> -->
+													<a href="javascript:;" onclick="swicth_schedule(<?php echo $current_shifts->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Switch Schedule</a>
+													<a href="javascript:;" onclick="edit_shift(<?php echo $current_shifts->id; ?>)" class="dropdown-item"><i class="icon-square-down"></i> Edit</a>
+													<a href="javascript:;" onclick="delete_shift(<?php echo $current_shifts->id; ?>)" class="dropdown-item"><i class=" icon-bin2"></i> Remove</a>
 												</div>
 											</div>
 										</div>
-									</td>
+									</td> 
 								</tr>
 								<?php }
 								} ?>
-								
 							</tbody>
 						</table>
 					</div>
@@ -222,4 +224,59 @@
 	setInterval(function(){
 	$(".currentTime").html(moment().format('LTS'));
 	}, 1000);
+
+	function delete_shift(id){
+		var warning_text = "You won't be able to revert this!";
+		swal({
+			title: 'Are you sure?',
+			text: warning_text,
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Yes, delete it!',
+			cancelButtonText: 'No, cancel!',
+			confirmButtonClass: 'btn btn-success',
+			cancelButtonClass: 'btn btn-danger',
+			buttonsStyling: false
+		}).then(function (Confirm) {
+			if(Confirm.value){
+				//loader = CardLoader($("#full_calendar_view"));
+				$.post("<?php echo site_url("agency/current_shifts/delete_shift"); ?>",{id:id}).done(function(data){
+					//loader.unblock();
+					swal({
+						title: 'Success',
+						text: "You have deleted View Shift successfully!",
+						type: 'success',
+						showCancelButton: false,
+						confirmButtonText: 'OK',
+						cancelButtonText: 'No, cancel!',
+						confirmButtonClass: 'btn btn-success',
+						cancelButtonClass: 'btn btn-danger',
+						allowOutsideClick: false,
+						buttonsStyling: false
+					}).then(function (Confirm) {
+						if(Confirm.value){
+							location.reload();
+						}
+					});
+					/*swal(
+						'Deleted!',
+						'Appointement has been deleted.',
+						'success'
+					);*/
+				});
+			}else{
+				swal(
+					'Cancelled',
+					'Shift is safe :)',
+					'error'
+				);
+			}
+		});
+	}
+	function swicth_schedule(id){
+		alert(id);
+	}
+	function edit_shift(id){
+		alert(id);
+	}
 </script>

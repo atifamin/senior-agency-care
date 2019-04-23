@@ -325,7 +325,7 @@ class Scheduling extends CI_Controller {
 		else{
 			$message['type'] = "error";
 			$message['action'] = "switch_error";
-			$message['text'] = "You Can't switch this caregiver on this datetime."; 
+			$message['text'] = "This caregiver has already been assigned to another schedule at that time slot.Please select alternative times to successfully schedule."; 
 		}
 		echo json_encode($message);
 	}
