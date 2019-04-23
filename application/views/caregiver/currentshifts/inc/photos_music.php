@@ -1,4 +1,6 @@
-<?php //print_array($client_photo); ?>
+<?php //print_array($client_media_data);?>
+<?php //$data = json_decode(json_encode($client_media_data),true);?>
+<?php //print_array($data);?>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
@@ -29,104 +31,57 @@
                     <li class="nav-item"><a href="#myphoto" class="nav-link active" data-toggle="tab">My Photos</a></li>
                     <li class="nav-item"><a href="#mymusic" class="nav-link" data-toggle="tab">Favorite Music</a></li>
                 </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="myphoto">
-                        <div class="row">
-                            <div class="col-xl-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-img-actions">
-                                        <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img4.png" alt="">
-                                        <div class="card-img-actions-overlay card-img-top">
-                                            <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
-                                                <i class="icon-plus3"></i>
-                                            </a>
-                                            <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2">
-                                                <i class="icon-link"></i>
-                                            </a>
-                                        </div>
-                                    </div>
+                
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="myphoto">
+                            
+                            <div class="row">
+                                <?php //$data = json_decode(json_encode($client_media_data),true);?>
+                                <?php if (count($client_media_data) > 0) {
+                                    foreach ($client_media_data as $media_data) { 
+                                     if($media_data->type =="photo"){ ?>
 
-                                    <div class="card-body text-center">
-                                        <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="row">
-                                        <div class="col-sm-8">
-                                             <p>updated: may 25th</p>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="card">
+                                        <div class="card-img-actions">
+                                            <img class="card-img-top img-fluid" src="<?php if(isset($media_data->image_detail)){echo base_url().$media_data->image_detail->full_path;} ?>" alt="">
+                                            <div class="card-img-actions-overlay card-img-top">
+                                                <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
+                                                    <i class="icon-plus3"></i>
+                                                </a>
+                                                <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2">
+                                                    <i class="icon-link"></i>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-2">
-                                            <a href="" class="pull-right">Edit</a>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <a href="" class="pull-right"> Delete</a>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-img-actions">
-                                        <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img1.png" alt="">
-                                        <div class="card-img-actions-overlay card-img-top">
-                                            <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"><i class="icon-plus3"></i>
-                                            </a>
-                                            <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"><i class="icon-link"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been theindustry's standard dummy text ever since the 1500s, </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="row">
-                                        <div class="col-sm-8">
-                                             <p>updated: may 25th</p>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <a href="" class="pull-right">Edit</a>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <a href="" class="pull-right"> Delete</a>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-img-actions">
-                                        <img class="card-img-top img-fluid" src="<?php echo base_url(); ?>assets/images/userimg/img3.png" alt="">
-                                        <div class="card-img-actions-overlay card-img-top">
-                                            <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"><i class="icon-plus3"></i>
-                                            </a>
-                                            <a href="user_pages_profile.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2"><i class="icon-link"></i></a>
-                                        </div>
-                                    </div>
 
-                                    <div class="card-body text-center">
-                                        <p class="d-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="row">
-                                        <div class="col-sm-8">
-                                            <span>updated: may 25th</span>
+                                        <div class="card-body text-center">
+                                            <p class="d-block"><?php echo $media_data->title;?></p>
                                         </div>
-                                        <div class="col-sm-2">
-                                            <a href="" class="pull-right">Edit</a>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <a href="" class="pull-right"> Delete</a>
-                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row">
+                                            <div class="col-sm-7">
+                                                 <p>updated: <?php echo date("M d",strtotime($media_data->created_at));?></p>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <a href="" class="pull-right">Edit</a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="" class="pull-right"> Delete</a>
+                                            </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            <?php } } } ?>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="mymusic">
+                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="mymusic">
-                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
-                    </div>
-                </div>
+                
+                
             </div>
         </div> 
     </div>
@@ -188,7 +143,7 @@
                     </div>
                     <div class="row" id="music_upload" style="margin: 50px 0 40px 0; display: none;">
                         <div class="col-md-9 offset-md-1">     
-                            <input type="file" class="file-input" data-fouc>
+                            <input type="file" name="file" class="file-input" data-fouc>
                             <span class="form-text text-muted">MP3 file format only max 5MB</span>
                         </div>
                     </div>
@@ -269,7 +224,8 @@
             contentType: false,
             processData: false,
             success: function(e){
-                //alert(e);
+                //console.log(e);
+                //return false;
                 $('#modal_photo').modal('hide');
                 location.reload();
                 //return false;
@@ -289,6 +245,8 @@
             contentType: false,
             processData: false,
             success: function(e){
+                console.log(e);
+                alert(e);
                 $('#modal_music').modal("hide");
                 location.reload();  
             }
