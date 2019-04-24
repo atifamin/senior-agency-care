@@ -97,6 +97,7 @@
 
                                     <div class="card-body text-center">
                                         <p class="d-block"><?php echo $media_data->image_detail->file_name;?></p>
+                                        <iframe width="320" height="315" src="<?php echo $media_data->music_file_link;?>" frameborder="0" allowfullscreen></iframe>
                                         <button><i class="icon-play4 mr-3 icon-2x"></i></button>
                                     </div>
                                     <div class="card-footer">
@@ -161,13 +162,17 @@
                             <div class="form-group">
                                 <div class="col-lg-10">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Paste the shared link from youtube hare">
+                                        <input type="text" name="music_file_link" id="list_detail" class="form-control" placeholder="Paste the shared link from youtube hare">
+                                        <input type="hidden" name="count" value="1">
                                         <span class="input-group-append">
-                                            <button class="btn btn-primary" type="button">Add</button>
+                                            <button class="btn btn-primary" onclick="add_list();" type="button">Add</button>
                                         </span>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-8 offset-md-1" id="ETNH">    
+                                          
                         </div>
                         <div class="col-md-11 offset-md-1" style="margin-top: 40px; ">
                             <p>How to get Shared link from youtube and paste here</p>
@@ -246,6 +251,20 @@
 
 <script type="text/javascript">
 
+    function add_list(){
+        var count1 = $("input[name=count]").val();
+        var value1 = $("input[name=music_file_link]").val();
+
+        $("#ETNH").append('<div class="row" id="list_url_'+count1+'"><div class="col-md-6"  style="margin-top: 3px;"><input type="hidden" name="list_url[]" value="'+value1+'"><div class="form-group pt-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" name="url" checked class="form-check-input-style checkebox_url" disabled data-fouc>'+value1+'</label></div></div> </div><div class="col-md-6"><a style="float:right; margin-top: 11px;" href="javascript:;" onclick="remove('+count1+')" class="text-default font-weight-semibold letter-icon-title"><i style="margin-right: 7px;" class="icon-cross3"></i>Remove</a></div></div>');
+       
+        count1 = parseInt(count1)+1;
+        $("input[name=count]").val(count1);
+        $('.checkebox_url').uniform();
+    }
+    function remove(id){
+        $('#list_url_'+id+'').remove();
+    }
+
     $('#add_client_image_form_<?php $detail->id; ?>').on('submit',function(e){
         e.preventDefault();
         var formData = new FormData($(this)[0]);
@@ -281,8 +300,8 @@
             contentType: false,
             processData: false,
             success: function(e){
-                console.log(e);
-                //alert(e);
+                // console.log(e);
+                // return false;       
                 $('#modal_music').modal("hide");
                 location.reload();  
             }
