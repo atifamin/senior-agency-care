@@ -208,6 +208,7 @@ class Current_shifts extends CI_Controller {
 
 	public function add_music(){
 		$post = $this->input->post();
+		//print_array($post);
 		$data = array();
 		//print_array($post);
 		$data['client_id'] = $post['client_id'];
@@ -215,11 +216,18 @@ class Current_shifts extends CI_Controller {
 		$data['created_by'] = $post['agency_id'];
 		$data['created_at'] = date('Y-m-d H:i:s');
 		$data['type'] = 'audio';
-		//print_array($data);
-		$music_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data);
+		//$data['music_file_link'] = $post['list_url'];
+
+		foreach ($post['list_url'] as $music_file_url) {
+			//print_array($music_file_url);
+			$data['music_file_link'] = str_replace("watch?v=", "embed/", $music_file_url);
+			//$data['music_file_link'] = $music_file_url;
+		//print_array($data['music_file_link']);
+			$music_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data);
+		}
 		if(!empty($_FILES['file']['name'])){
-			$client_music = upload_file($_FILES['file'], "client_favorite_media", $music_id, $FILE_DIRECTORY="./uploads/clients/");
-			$music_file = $this->common_model->insertGetIDQuery("media", $client_music);
+				$client_music = upload_file($_FILES['file'], "client_favorite_media", $music_id, $FILE_DIRECTORY="./uploads/clients/");
+				$music_file = $this->common_model->insertGetIDQuery("media", $client_music);
 		}
 		if (!empty($music_file)) {
 			$this->common_model->updateQuery("client_favorite_media", "id", $music_id,array('module_id'=>$music_file));
