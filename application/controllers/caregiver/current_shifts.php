@@ -28,11 +28,12 @@ class Current_shifts extends CI_Controller {
 			$current_appointment = $data['shift_detail'][0];
 			$data['result'] = $this->common_model->listingRow("appointment_id", $current_appointment->id,"caregiver_time_sheets");
 		}
-		$data['client_media_data'] = $this->common_model->listingResultWhere("client_id",$data['shift_detail'][0]->client_id,"client_favorite_media");
-		//print_array($data['client_media_data']);
-		if (count($data['client_media_data']) > 0) {
-			foreach ($data['client_media_data'] as $key => $value) {
-				$data['client_media_data'][$key]->image_detail = $this->common_model->listingRow("id",$value->module_id,"media");
+		if(count($data['shift_detail'])>0){
+			$data['client_media_data'] = $this->common_model->listingResultWhere("client_id",$data['shift_detail'][0]->client_id,"client_favorite_media");
+			if (count($data['client_media_data']) > 0) {
+				foreach ($data['client_media_data'] as $key => $value) {
+					$data['client_media_data'][$key]->image_detail = $this->common_model->listingRow("id",$value->module_id,"media");
+				}
 			}
 		}
 		// $data['client_music'] = $this->common_model->listingResultWhere("client_id",$data['shift_detail'][0]->client_id,"client_favorite_media");
