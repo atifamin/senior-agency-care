@@ -295,9 +295,9 @@ class Scheduling extends CI_Controller {
 	}
 	
 	public function switch_appointment($post){
-		 $message['type'] = "success";
-		 $message["action"] = "switch";
-		 $message['text'] = "";
+		$message['type'] = "success";
+		$message["action"] = "switch";
+		$message['text'] = "";
 		$appointment = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
 
 		$switcherAppointments = $this->common_model->listingMultipleWhereResult("client_appointements", array("from"=>$appointment->from, "caregiver_id"=>$post['switch_caregiver']));

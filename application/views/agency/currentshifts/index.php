@@ -56,7 +56,7 @@
 								foreach ($client_current_shifts as $current_shifts) { ?>
 								<tr>
 									<td><span class="text-muted"><?php echo date("h:i a",strtotime($current_shifts->from))." - ".date("h:i a",strtotime($current_shifts->to)); ?></span>
-										<i class="icon-primitive-dot mr-3 icon-2x" style="color: #00BCD4; font-size: 18px; float: right;"></i>
+										<i class="icon-primitive-dot mr-3 icon-2x" style="color: #546E7A; font-size: 18px; float: right;"></i>
 									</td>
 									<td>
 										<li class="media">
@@ -91,8 +91,8 @@
 												</a>
 
 												<div class="dropdown-menu dropdown-menu-right">
-													<a href="javascript:;" onclick="swicth_schedule(<?php echo $current_shifts->id; ?>)" class="dropdown-item"><i class="icon-square-right"></i> Switch Schedule</a>
-													<a href="javascript:;" onclick="edit_shift(<?php echo $current_shifts->id; ?>)" class="dropdown-item"><i class="icon-square-down"></i> Edit</a>
+													<a href="javascript:;" onclick="edit_shift(<?php echo $current_shifts->id; ?>,1)" class="dropdown-item"><i class="icon-square-right"></i> Switch Schedule</a>
+													<a href="javascript:;" onclick="edit_shift(<?php echo $current_shifts->id; ?>,0)" class="dropdown-item"><i class="icon-square-down"></i> Edit</a>
 													<a href="javascript:;" onclick="delete_shift(<?php echo $current_shifts->id; ?>)" class="dropdown-item"><i class=" icon-bin2"></i> Remove</a>
 												</div>
 											</div>
@@ -164,8 +164,6 @@
 													</a>
 													<div class="dropdown-menu dropdown-menu-right">
 														<a href="#" class="dropdown-item"><i class="icon-square-right"></i> View Current Shift</a>
-														<!-- <a href="#" class="dropdown-item"><i class="icon-bin2"></i> Delete Current Shift</a>
-														<a href="#" class="dropdown-item"><i class="icon-square-down"></i> End Current Shift</a> -->
 													</div>
 												</div>
 											</div>
@@ -182,6 +180,20 @@
 		</div>
 	</div>
 </div>
+<div id="edit_switch_modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" id="edit_switch_div"> 
+
+    </div>
+  </div>
+</div>
+<div id="switch_caregiver_modal" class="modal fade" tabindex="-2">
+  <div class="modal-dialog">
+    <div class="modal-content" id="switch_caregiver_div"> 
+
+    </div>
+  </div>
+</div>
 
 
 	<script src="<?php echo base_url(); ?>assets/js/demo_pages/datatables_basic.js"></script>
@@ -192,91 +204,94 @@
 
 <script type="text/javascript">
 	
+$('#client_view_sheets_datatable').DataTable({
+	autoWidth: false,
+    responsive: true,
+    columnDefs: [{ 
+        orderable: false
+    }],
+    dom: '<"datatable-header"fl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
+    language: {
+        search: '<span>Filter:</span> _INPUT_',
+        searchPlaceholder: 'Type to filter...',
+        lengthMenu: '<span>Show:</span> _MENU_',
+        paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+    }
+});
 
-	$('#client_view_sheets_datatable').DataTable({
-		autoWidth: false,
-	    responsive: true,
-	    columnDefs: [{ 
-	        orderable: false
-	    }],
-	    dom: '<"datatable-header"fl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
-	    language: {
-	        search: '<span>Filter:</span> _INPUT_',
-	        searchPlaceholder: 'Type to filter...',
-	        lengthMenu: '<span>Show:</span> _MENU_',
-	        paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
-	    }
-	});
-	$('#client_upcomming_shifts_datatable').DataTable({
-		autoWidth: false,
-	    responsive: true,
-	    columnDefs: [{ 
-	        orderable: false
-	    }],
-	    dom: '<"datatable-header"fl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
-	    language: {
-	        search: '<span>Filter:</span> _INPUT_',
-	        searchPlaceholder: 'Type to filter...',
-	        lengthMenu: '<span>Show:</span> _MENU_',
-	        paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
-	    }
-	});
-	setInterval(function(){
-	$(".currentTime").html(moment().format('LTS'));
-	}, 1000);
+$('#client_upcomming_shifts_datatable').DataTable({
+	autoWidth: false,
+    responsive: true,
+    columnDefs: [{ 
+        orderable: false
+    }],
+    dom: '<"datatable-header"fl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
+    language: {
+        search: '<span>Filter:</span> _INPUT_',
+        searchPlaceholder: 'Type to filter...',
+        lengthMenu: '<span>Show:</span> _MENU_',
+        paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+    }
+});
 
-	function delete_shift(id){
-		var warning_text = "You won't be able to revert this!";
-		swal({
-			title: 'Are you sure?',
-			text: warning_text,
-			type: 'warning',
-			showCancelButton: true,
-			confirmButtonText: 'Yes, delete it!',
-			cancelButtonText: 'No, cancel!',
-			confirmButtonClass: 'btn btn-success',
-			cancelButtonClass: 'btn btn-danger',
-			buttonsStyling: false
-		}).then(function (Confirm) {
-			if(Confirm.value){
-				//loader = CardLoader($("#full_calendar_view"));
-				$.post("<?php echo site_url("agency/current_shifts/delete_shift"); ?>",{id:id}).done(function(data){
-					//loader.unblock();
-					swal({
-						title: 'Success',
-						text: "You have deleted View Shift successfully!",
-						type: 'success',
-						showCancelButton: false,
-						confirmButtonText: 'OK',
-						cancelButtonText: 'No, cancel!',
-						confirmButtonClass: 'btn btn-success',
-						cancelButtonClass: 'btn btn-danger',
-						allowOutsideClick: false,
-						buttonsStyling: false
-					}).then(function (Confirm) {
-						if(Confirm.value){
-							location.reload();
-						}
-					});
-					/*swal(
-						'Deleted!',
-						'Appointement has been deleted.',
-						'success'
-					);*/
+setInterval(function(){
+$(".currentTime").html(moment().format('LTS'));
+}, 1000);
+
+function delete_shift(id){
+	var warning_text = "You won't be able to revert this!";
+	swal({
+		title: 'Are you sure?',
+		text: warning_text,
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Yes, delete it!',
+		cancelButtonText: 'No, cancel!',
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false
+	}).then(function (Confirm) {
+		if(Confirm.value){
+			//loader = CardLoader($("#full_calendar_view"));
+			$.post("<?php echo site_url("agency/current_shifts/delete_shift"); ?>",{id:id}).done(function(data){
+				//loader.unblock();
+				swal({
+					title: 'Success',
+					text: "You have deleted View Shift successfully!",
+					type: 'success',
+					showCancelButton: false,
+					confirmButtonText: 'OK',
+					cancelButtonText: 'No, cancel!',
+					confirmButtonClass: 'btn btn-success',
+					cancelButtonClass: 'btn btn-danger',
+					allowOutsideClick: false,
+					buttonsStyling: false
+				}).then(function (Confirm) {
+					if(Confirm.value){
+						location.reload();
+					}
 				});
-			}else{
-				swal(
-					'Cancelled',
-					'Shift is safe :)',
-					'error'
-				);
-			}
-		});
+				/*swal(
+					'Deleted!',
+					'Appointement has been deleted.',
+					'success'
+				);*/
+			});
+		}else{
+			swal(
+				'Cancelled',
+				'Shift is safe :)',
+				'error'
+			);
+		}
+	});
 	}
-	function swicth_schedule(id){
-		alert(id);
+
+function edit_shift(id,is_switch){
+	$.post('<?php echo site_url('agency/current_shifts/swicth_schedule'); ?>',{id:id,is_switch}).done(function(e){
+		$('#edit_switch_modal').modal('show');
+		$('#edit_switch_div').html(e);
+	});
 	}
-	function edit_shift(id){
-		alert(id);
-	}
+
 </script>
