@@ -23,16 +23,18 @@ class Current_shifts extends CI_Controller {
 		if(count($data['shift_detail'])>0){
 		$data['client'] = $this->Client_model->getById($data['shift_detail'][0]->client_id);
 		}
-		//print_array($data['client']);
+		//print_array($data['shift_detail']);
 		if(count($data['shift_detail'])>0){
 			$current_appointment = $data['shift_detail'][0];
 			$data['result'] = $this->common_model->listingRow("appointment_id", $current_appointment->id,"caregiver_time_sheets");
 		}
 		if(count($data['shift_detail'])>0){
 			$data['client_media_data'] = $this->common_model->listingResultWhere("client_id",$data['shift_detail'][0]->client_id,"client_favorite_media");
+			//print_array($data['client_media_data']);
 			if (count($data['client_media_data']) > 0) {
 				foreach ($data['client_media_data'] as $key => $value) {
 					$data['client_media_data'][$key]->image_detail = $this->common_model->listingRow("id",$value->module_id,"media");
+					//print_array($value);
 				}
 			}
 		}
@@ -209,29 +211,73 @@ class Current_shifts extends CI_Controller {
 	public function add_music(){
 		$post = $this->input->post();
 		//print_array($post);
-		$data = array();
+		//$data = array();
 		//print_array($post);
 		$data['client_id'] = $post['client_id'];
 		$data['agency_id'] = $post['agency_id'];
 		$data['created_by'] = $post['agency_id'];
 		$data['created_at'] = date('Y-m-d H:i:s');
 		$data['type'] = 'audio';
-		//$data['music_file_link'] = $post['list_url'];
+		$data1['client_id'] = $post['client_id'];
+		$data1['agency_id'] = $post['agency_id'];
+		$data1['created_by'] = $post['agency_id'];
+		$data1['created_at'] = date('Y-m-d H:i:s');
+		$data1['type'] = 'audio';
 
-		foreach ($post['list_url'] as $music_file_url) {
-			//print_array($music_file_url);
-			$data['music_file_link'] = str_replace("watch?v=", "embed/", $music_file_url);
-			//$data['music_file_link'] = $music_file_url;
-		//print_array($data['music_file_link']);
-			$music_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data);
-		}
-		if(!empty($_FILES['file']['name'])){
-				$client_music = upload_file($_FILES['file'], "client_favorite_media", $music_id, $FILE_DIRECTORY="./uploads/clients/");
-				$music_file = $this->common_model->insertGetIDQuery("media", $client_music);
-		}
-		if (!empty($music_file)) {
-			$this->common_model->updateQuery("client_favorite_media", "id", $music_id,array('module_id'=>$music_file));
-		}
+		//$data['music_file_link'] = $post['list_url'];
+		
+		//print_array($music_id);
+		if(count($post['list_url']) > 0){
+			foreach ($post['list_url'] as $music_file_url) {
+				$data1['music_file_link'] = str_replace("watch?v=", "embed/", $music_file_url);
+				$update_music_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data1);
+				}
+			}else {
+				$music_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data);
+			if(!empty($_FILES['file']['name'])){
+					$client_music = upload_file($_FILES['file'], "client_favorite_media", $music_id, $FILE_DIRECTORY="./uploads/clients/");
+					$music_file = $this->common_model->insertGetIDQuery("media", $client_music);
+				}
+				if (!empty($music_file)) {
+					$this->common_model->updateQuery("client_favorite_media", "id", $music_id,array('module_id'=>$music_file));
+				}
+			}
+		//}
+		
+		// } else {
+		// 	// $post['list_url'];
+		// 	// $data['music_file_link'] = $post['list_url'];
+		// 	//print_array($data);
+		// 	$music_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data);
+		// 	//print_array($music_id);
+		// 	if(!empty($_FILES['file']['name'])){
+		// 		$client_music = upload_file($_FILES['file'], "client_favorite_media", $music_id, $FILE_DIRECTORY="./uploads/clients/");
+		// 		$music_file = $this->common_model->insertGetIDQuery("media", $client_music);
+		// 	}
+		// 	if (!empty($music_file)) {
+		// 		$this->common_model->updateQuery("client_favorite_media", "id", $music_id,array('module_id'=>$music_file));
+		// 	}
+		// 	//print_array($music_file);
+		// }
+		// foreach ($post['list_url'] as $music_file_url) {
+		// 	//print_array($music_file_url);
+		// 	$data['music_file_link'] = str_replace("watch?v=", "embed/", $music_file_url);
+		// 	//$data['music_file_link'] = $music_file_url;
+		// 	//print_array($data['music_file_link']);
+		// 	//print_array($data['music_file_link']);
+		// 	$music_id = $this->common_model->insertGetIDQuery("client_favorite_media", $data);
+		
+		// }
+		// if(!empty($_FILES['file']['name'])){
+		// 	$client_music = upload_file($_FILES['file'], "client_favorite_media", $music_id, $FILE_DIRECTORY="./uploads/clients/");
+		// 	$music_file = $this->common_model->insertGetIDQuery("media", $client_music);
+		// 	//print_array($music_file);
+		// }
+		// //print_array($music_id);
+		
+		// if (!empty($music_file)) {
+		// 	$this->common_model->updateQuery("client_favorite_media", "id", $music_id,array('module_id'=>$music_file));
+		// }
 		//$data['client_music'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_favorite_media");
 		//print_array($data['client_music']);
 		redirect('caregiver/current_shifts/index');

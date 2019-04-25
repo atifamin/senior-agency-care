@@ -96,9 +96,9 @@
                                     </div>
 
                                     <div class="card-body text-center">
-                                        <p class="d-block"><?php echo $media_data->image_detail->file_name;?></p>
-                                        <iframe width="320" height="315" src="<?php echo $media_data->music_file_link;?>" frameborder="0" allowfullscreen></iframe>
-                                        <button><i class="icon-play4 mr-3 icon-2x"></i></button>
+                                        <p class="d-block"><?php if (isset($media_data->image_detail)) {echo $media_data->image_detail->file_name;}?></p>
+                                        <iframe width="270" height="315" src="<?php echo $media_data->music_file_link;?>" frameborder="0" allowfullscreen></iframe>
+                                        <!-- <button><i class="icon-play4 mr-3 icon-2x"></i></button> -->
                                     </div>
                                     <div class="card-footer">
                                         <div class="row">
@@ -300,7 +300,7 @@
             contentType: false,
             processData: false,
             success: function(e){
-                // console.log(e);
+                console.log(e);
                 // return false;       
                 $('#modal_music').modal("hide");
                 location.reload();  
