@@ -66,6 +66,8 @@
 
   function switch_appointment(id){
     $.post("<?php echo site_url('agency/scheduling/switch_appointment_shift'); ?>",{from:<?php echo $current_appointment_detail->id; ?>,to:id}).done(function(e){
+      // console.log(e);
+      // return false;
       $('#switch_caregiver_modal').modal('hide');
       swal({
           title: "Good job!",

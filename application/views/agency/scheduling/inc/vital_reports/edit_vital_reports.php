@@ -4,6 +4,7 @@
 <script src="<?php echo base_url(); ?>assets/js/demo_pages/form_checkboxes_radios.js"></script>
 <form id="update_vital_report_form" method="post">
   <input type="hidden" name="report_id" value="<?php echo $result->id; ?>">
+  <input type="hidden" name="client_id" value="<?php echo $client->id; ?>">
   <div class="modal-header">
     <h5 class="modal-title" style="margin: 0 auto;">Edit Client Vitals</h5>
     <div>

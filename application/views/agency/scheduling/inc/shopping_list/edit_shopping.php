@@ -4,6 +4,7 @@
 <form id="update_client_shopping_form" method="post" >
 	<input type="hidden" name="shopping_id" value="<?php echo $result->id; ?>">
 	<input type="hidden" name="module_id" value="<?php echo $result->id; ?>">
+	<input type="hidden" name="client_id" value="<?php echo $client->id; ?>">
   <div class="modal-header">
   	<div class="col-md-3">
         <select name="status" class="form-control form-control-select2 edit_form_status" data-fouc>
