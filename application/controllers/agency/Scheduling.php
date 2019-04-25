@@ -12,7 +12,7 @@ class Scheduling extends CI_Controller {
     	//LoggedIn User ID
 		$userSession = $this->session->userdata("isAgencyLoggedIn");
 		$this->agency_id = $userSession['user_id'];
-		$this->load->model(array("Client_model", "Caregiver_model", "Schedule_model"));
+		$this->load->model(array("Client_model", "Caregiver_model", "Schedule_model","Notification_model"));
 	}
 
 	public function index(){
@@ -180,6 +180,7 @@ class Scheduling extends CI_Controller {
 				$message['error_detail'] = $m;
 			}
 		}
+		$this->Notification_model->add_client_appointement($post);
 		echo json_encode($message);
 	}
 	
@@ -326,7 +327,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function switch_appointment_shift(){
 		$post = $this->input->post();
-
+		// print_array($post);
 		$current_appointment = $this->common_model->listingRow('id',$post['from'],'client_appointements');
 		$switch_appointment = $this->common_model->listingRow('id',$post['to'],'client_appointements');
 		//print_array($switch_appointment);
@@ -372,19 +373,25 @@ class Scheduling extends CI_Controller {
 	}
 
 	public function delete_medication(){
-		$medicationId = $this->input->post('id');
-		$this->Schedule_model->delete_medication($medicationId);
+		$medication_id = $this->input->post('id');
+		$this->Schedule_model->delete_medication($medication_id);
+		//$this->Notification_model->delete_medication($medication_id);
 	}
 	public function add_new_medication(){
 		$post = $this->input->post();
+
 		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->add_new_medication($post);
+		$post['medication_id'] = $data['medication_id'];
+		//print_array($data['medication_id']);
+		$data = $this->Notification_model->add_new_medication($post);
 		$this->load->view("agency/scheduling/inc/medication_list/list_view", $data);
 	}
 	
 	public function update_medication_list(){
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
+		$data = $this->Notification_model->update_medication_list($post);
 		$data = $this->Schedule_model->update_medication_list($post);
 		$this->load->view("agency/scheduling/inc/medication_list/list_view",$data);
 	}
@@ -392,6 +399,9 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->add_client_dietry_needs($post);
+		// $post['dietry_needs_id'] = $data['dietry_needs_id'];
+		// $data = $this->Notification_model->add_client_dietry_needs($post);
+
 		$this->load->view("agency/scheduling/inc/dietry_needs",$data);
 	}
 
@@ -399,6 +409,8 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->add_vital_report($post);
+		$post['vital_report_id'] = $data['vital_report_id'];
+		$data = $this->Notification_model->add_vital_report($post);
 		$this->load->view("agency/scheduling/inc/vital_reports/list_view",$data);
 	}
 	public function edit_vital_reports(){
@@ -408,6 +420,8 @@ class Scheduling extends CI_Controller {
 	}
 	public function update_vital_reports(){
 		$post = $this->input->post();
+		$post['agency_id'] = $this->agency_id;
+		$data = $this->Notification_model->update_vital_reports($post);
 		$data = $this->Schedule_model->update_vital_reports($post);
 	    $this->load->view("agency/scheduling/inc/vital_reports/list_view", $data);
 
@@ -418,14 +432,16 @@ class Scheduling extends CI_Controller {
 	}
 	public function add_new_shopping(){
 		$post = $this->input->post();
-		//print_array($post);
 		$post['agency_id'] = $this->agency_id;
 		$detail = $this->Schedule_model->add_new_shopping($post);
+		$post['shopping_list_id'] = $detail['shopping_list_id'];
+		$detail = $this->Notification_model->add_new_shopping($post);
 		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$detail);
 	}
 	public function delete_shopping(){
 		$shopping_id = $this->input->post('id');
 		$detail = $this->Schedule_model->delete_shopping($shopping_id);
+		//$detail = $this->Notification_model->delete_shopping($shopping_id);
 	}
 	public function edit_shopping(){
 		$shopping_id = $this->input->post('id');
@@ -435,6 +451,7 @@ class Scheduling extends CI_Controller {
 	public function update_shopping(){
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
+		$data = $this->Notification_model->update_shopping($post);
 		$data = $this->Schedule_model->update_shopping($post);
  		$this->load->view("agency/scheduling/inc/shopping_list/list_view_shopping",$data);
 	}
@@ -465,6 +482,8 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->client_bio_form($post);
+		// $post['client_bio_id'] = $data['client_bio_id'];
+		// $data = $this->Notification_model->client_bio_form($post);
 		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
 	}
 
@@ -477,8 +496,9 @@ class Scheduling extends CI_Controller {
 	public function add_appointment_calender(){
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
-		//print_array($post);
 		$data = $this->Schedule_model->add_appointment_calender($post);
+		$post['appointment_calender_id'] = $data['appointment_calender_id'];
+		$data = $this->Notification_model->add_appointment_calender($post);
 		$this->load->view('agency/scheduling/inc/appointment_calender/list_view_appointment',$data);
 	}
 	public function edit_appointment_calender(){
@@ -493,6 +513,7 @@ class Scheduling extends CI_Controller {
 	public function update_appointment_calender(){
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
+		$data = $this->Notification_model->update_appointment_calender($post);
 		$data = $this->Schedule_model->update_appointment_calender($post);
 		$this->load->view('agency/scheduling/inc/appointment_calender/list_view_appointment',$data);
 	}

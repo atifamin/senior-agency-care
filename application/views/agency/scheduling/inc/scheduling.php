@@ -340,6 +340,8 @@ $("#add_client_appointement_form").on("submit", function(e){
 		processData: false,
 		success: function(e){
 			loader.unblock();
+      // console.log(e);
+      // return false;
 			var data = JSON.parse(e);
 			if(data.type=="error"){
 				var title = 'Followings are datetime where this caregiver is already assinged some other appointment.<br><ul>';

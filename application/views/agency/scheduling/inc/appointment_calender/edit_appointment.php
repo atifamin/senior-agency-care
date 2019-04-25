@@ -3,6 +3,7 @@
 <form id="update_client_appointment_form">
   <div class="modal-header">
     <input type="hidden" name="appointment_id" value="<?php echo $result->id; ?>">
+    <input type="hidden" name="client_id" value="<?php echo $client->id; ?>">
     <h5 class="modal-title" style="margin: 5px auto;">Edit a new appointment</h5>
     <div>
       <li class="media" style="padding: unset; border: none;">

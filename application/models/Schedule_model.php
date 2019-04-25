@@ -29,9 +29,10 @@ class Schedule_model extends CI_Model{
 		if (isset($post['day_period_time'])) {
 			$result['day_period_time'] = json_encode($post['day_period_time']);
 		}
-		$this->common_model->insertGetIDQuery("client_medication_list", $result);
+		$data['medication_id'] = $this->common_model->insertGetIDQuery("client_medication_list", $result);
 		$data['medication_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_medication_list");
 		$data['client_id'] = $post['client_id'];
+		//return $medication_id;
 		return $data;
 	}
 
@@ -101,8 +102,8 @@ class Schedule_model extends CI_Model{
 		$this->common_model->delete("client_caregiver_relationship", array("id"=>$id));
 	}
 
-	public function delete_medication($medicationId){
-		$data['result'] = $this->common_model->delete("client_medication_list",array('id'=>$medicationId));
+	public function delete_medication($medication_id){
+		$data['result'] = $this->common_model->delete("client_medication_list",array('id'=>$medication_id));
 	}
 
 	public function edit_medication($medicationId){
@@ -139,7 +140,7 @@ class Schedule_model extends CI_Model{
 		// $date = explode("-", $input_date);
 		// $post['from_date'] = date("Y-m-d H:i:s",strtotime($date[0]));
 		// $post['to_date'] = date("Y-m-d H:i:s",strtotime($date[1]));
-		$this->common_model->insertGetIDQuery("client_appointment_calender", $post);
+		$data['appointment_calender_id'] = $this->common_model->insertGetIDQuery("client_appointment_calender", $post);
 		$data['appointment_detail'] = $this->common_model->listingResultWhere("client_id",$post['client_id'],"client_appointment_calender");
 		$data['client_id'] = $post['client_id'];
 		return $data;
@@ -185,10 +186,11 @@ class Schedule_model extends CI_Model{
 		if ($post['dietry_needs_id'] !=0) {
 			$this->common_model->updateQuery("client_dietry_needs", "id", $post['dietry_needs_id'],$dietry_needs);
 		}else{
-			$this->common_model->insertGetIDQuery("client_dietry_needs", $dietry_needs);
+			$dietry_needs_id = $this->common_model->insertGetIDQuery("client_dietry_needs", $dietry_needs);
 		}
  		$data['dietry_needs_detail'] = $this->common_model->listingRow("client_id",$post['client_id'],"client_dietry_needs");
 		$data['client_id'] = $post['client_id'];
+		$data['dietry_needs_id'] = $dietry_needs_id;
 		return $data;
 	}
 
@@ -196,13 +198,10 @@ class Schedule_model extends CI_Model{
 		$data=$post;
 		$input_date = $this->input->post('from_date');
 		$post['from_date'] = date('Y-m-d H:i:s',strtotime($input_date));
-		// $date = explode(" - ", $input_date);
-		// $post['from_date'] = date("Y-m-d H:i:s", strtotime($date[0]));
-		// $post['to_date'] = date("Y-m-d H:i:s", strtotime($date[1]));
-		//$post['agency_id'] = $post['agency_id'];
-		$ddd = $this->common_model->insertGetIDQuery("client_vital_reports", $post);
+		$vital_report_id = $this->common_model->insertGetIDQuery("client_vital_reports", $post);
 		$data['vital_report_details'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_vital_reports");
 		$data['client_id'] = $post['client_id'];
+		$data['vital_report_id'] = $vital_report_id;
 		return $data;
 	}
 
@@ -278,6 +277,7 @@ class Schedule_model extends CI_Model{
 		}
 		$detail['shopping_list_detail'] = $this->common_model->listingResultWhere('client_id',$post['client_id'],"client_shopping_list");
 		$detail['client_id'] = $post['client_id'];
+		$detail['shopping_list_id'] = $shopping_list_id;
 		return $detail;
 	}
 
@@ -326,11 +326,12 @@ class Schedule_model extends CI_Model{
  		if($post['client_bio_id']!=0){
 			$this->common_model->updateQuery("client_bio", "id", $post['client_bio_id'],$bioData);
 		}else{
-			$id = $this->common_model->insertGetIDQuery("client_bio", $bioData);
+			$client_bio_id = $this->common_model->insertGetIDQuery("client_bio", $bioData);
 		}
 		$data['client_bio'] = $this->common_model->listingRow("client_id",$post['client_id'],"client_bio");
 		$data['client_id'] = $post['client_id'];
 		$data['client'] = $this->Client_model->getById($post['client_id']);
+		$data['client_bio_id'] = $client_bio_id;
 		return $data;
 	}
 
