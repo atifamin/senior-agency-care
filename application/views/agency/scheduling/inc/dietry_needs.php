@@ -14,12 +14,12 @@
   <div class="col-md-12" style="margin: 15px 0px 0px 10px;">
     <a href="javascript:;" class="btn btn-light" id="edit_client_dietry" style="background-color: #fff; float: right;margin-right: 15px;"><i class="icon-google-drive mr-2"></i> Edit</a>
     <label class="d-block font-weight-semibold">Client's dietry requirements</label>
-    <p><?php foreach (CON_CLIENT_DIETRY_REQUIREMENT as $dietkey => $dietvalue){if($dietkey == $dietry_needs_detail->dietry_requirements) {echo $dietvalue;}}  ?></p>
+    <p><?php if(isset($dietry_needs_detail->dietry_requirements)){foreach (CON_CLIENT_DIETRY_REQUIREMENT as $dietkey => $dietvalue){if($dietkey == $dietry_needs_detail->dietry_requirements) {echo $dietvalue;}}}  ?></p>
 
   </div>
   <div class="col-md-12" style="margin: 15px 0px 0px 10px;">
     <label class="d-block font-weight-semibold">Client's fluid requirements</label>
-    <p><?php foreach (CON_CLIENT_FLUID_REQUIREMENT as $flukey => $fluvalue){if($flukey == $dietry_needs_detail->fluid_requirements) {echo $fluvalue;}}  ?></p>
+    <p><?php if(isset($dietry_needs_detail->fluid_requirements)){foreach (CON_CLIENT_FLUID_REQUIREMENT as $flukey => $fluvalue){if($flukey == $dietry_needs_detail->fluid_requirements) {echo $fluvalue;}}}  ?></p>
   </div>
   <div class="col-md-12" style="margin: 15px 0px 30px 10px;">
     <label class="d-block font-weight-semibold">List client's known food and medication allergies</label>

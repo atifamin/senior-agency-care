@@ -327,7 +327,7 @@ class Scheduling extends CI_Controller {
 	}
 	public function switch_appointment_shift(){
 		$post = $this->input->post();
-		// print_array($post);
+		//print_array($post);
 		$current_appointment = $this->common_model->listingRow('id',$post['from'],'client_appointements');
 		$switch_appointment = $this->common_model->listingRow('id',$post['to'],'client_appointements');
 		//print_array($switch_appointment);
@@ -339,12 +339,14 @@ class Scheduling extends CI_Controller {
 
 		$this->common_model->updateQuery("client_appointements", "id", $current_appointment->id, $update_current);
 		$this->common_model->updateQuery("client_appointements", "id", $switch_appointment->id, $update_switch);
+		$this->Notification_model->switch_appointment_shift($post);
 	}
 
 	public function assign_other_caregiver($post){
 		$message['type'] = "success";
 		$message["action"] = "assign";
 		$message['text'] = "";
+		//print_array($post);
 		$result = $this->common_model->listingRow("id",$post['appointment_id'],"client_appointements");
 		$from = date("Y-m-d H:i:s ", strtotime($result->from));
 		$to = date("Y-m-d H:i:s ", strtotime($result->to));
@@ -358,6 +360,7 @@ class Scheduling extends CI_Controller {
 				"updated_by"		=> $this->agency_id,
 				"updated_at"		=> date("Y-m-d H:i:s"),
 			));
+			$this->Notification_model->assign_other_caregiver($post);
 		}else{
 			$message['type'] = "error";
 			$message['action'] = "assign_error";
@@ -399,8 +402,9 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->add_client_dietry_needs($post);
-		// $post['dietry_needs_id'] = $data['dietry_needs_id'];
-		// $data = $this->Notification_model->add_client_dietry_needs($post);
+		$post['dietry_needs_id'] = $data['dietry_needs_id'];
+		$post['update_dietry_id'] = $data['update_dietry_id'];
+		$data = $this->Notification_model->add_client_dietry_needs($post);
 
 		$this->load->view("agency/scheduling/inc/dietry_needs",$data);
 	}
@@ -482,8 +486,9 @@ class Scheduling extends CI_Controller {
 		$post = $this->input->post();
 		$post['agency_id'] = $this->agency_id;
 		$data = $this->Schedule_model->client_bio_form($post);
-		// $post['client_bio_id'] = $data['client_bio_id'];
-		// $data = $this->Notification_model->client_bio_form($post);
+		$post['client_bio_id'] = $data['client_bio_id'];
+		$post['update_client_bio_id'] = $data['update_client_bio_id'];
+		$data = $this->Notification_model->client_bio_form($post);
 		$this->load->view("/agency/scheduling/inc/client_bio/view",$data);
 	}
 

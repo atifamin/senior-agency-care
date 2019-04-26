@@ -1,7 +1,8 @@
-
+<?php // print_array($result); ?>
 <form id="update_client_appointement_form">
   <input type="hidden" name="caregiver_id" value="<?php echo $result->caregiver_id; ?>" />
   <input type="hidden" name="appointment_id" value="<?php echo $result->id; ?>" />
+  <input type="hidden" name="agency_id" value="<?php echo $result->agency_id; ?>" />
     <div class="modal-header">
       <h5 class="modal-title" style="margin: 0 auto;"><?php echo date("h:i A", strtotime($result->from))." - ".date("h:i A", strtotime($result->to)); ?></h5>
       <div>
@@ -130,6 +131,8 @@ $("#update_client_appointement_form").on("submit", function(e){
 		processData: false,
 		success: function(e){
       loader.unblock();
+      // console.log();
+      // return false;
       var data = JSON.parse(e);
       if(data.type="success"){
         if(data.action=="switch"){
@@ -141,13 +144,8 @@ $("#update_client_appointement_form").on("submit", function(e){
         }
       }
       if (data.type="error"){
-        //if (data.action="assign_error") {
           $("#error_message").html('<div class="alert" style="box-shadow: none;padding: 0;" align="center"><div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>'+data.text+'</div>');
-        //}else if(data.action="switch_error"){
-          //$("#error_message").html('<div class="alert alert-danger border-0 alert-dismissible" align="center">'+data.text+'</div>');
-       // }
       }
-      // <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
 		}
 	});	
 });

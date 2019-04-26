@@ -184,13 +184,15 @@ class Schedule_model extends CI_Model{
 		$dietry_needs['created_by'] = $post['agency_id'];
 		$dietry_needs['created_at'] = date('Y-m-d H:i:s');
 		if ($post['dietry_needs_id'] !=0) {
-			$this->common_model->updateQuery("client_dietry_needs", "id", $post['dietry_needs_id'],$dietry_needs);
+			$update_dietry_id= $this->common_model->updateQuery("client_dietry_needs", "id", $post['dietry_needs_id'],$dietry_needs);
+			// print_array($update_dietry_needs);
 		}else{
 			$dietry_needs_id = $this->common_model->insertGetIDQuery("client_dietry_needs", $dietry_needs);
 		}
  		$data['dietry_needs_detail'] = $this->common_model->listingRow("client_id",$post['client_id'],"client_dietry_needs");
 		$data['client_id'] = $post['client_id'];
 		$data['dietry_needs_id'] = $dietry_needs_id;
+		$data['update_dietry_id'] = $update_dietry_id;
 		return $data;
 	}
 
@@ -324,7 +326,7 @@ class Schedule_model extends CI_Model{
 		$bioData['created_by'] = $post['agency_id'];
 		$bioData['created_at'] = $post['agency_id'];
  		if($post['client_bio_id']!=0){
-			$this->common_model->updateQuery("client_bio", "id", $post['client_bio_id'],$bioData);
+			$update_client_bio_id = $this->common_model->updateQuery("client_bio", "id", $post['client_bio_id'],$bioData);
 		}else{
 			$client_bio_id = $this->common_model->insertGetIDQuery("client_bio", $bioData);
 		}
@@ -332,6 +334,7 @@ class Schedule_model extends CI_Model{
 		$data['client_id'] = $post['client_id'];
 		$data['client'] = $this->Client_model->getById($post['client_id']);
 		$data['client_bio_id'] = $client_bio_id;
+		$data['update_client_bio_id'] = $update_client_bio_id;
 		return $data;
 	}
 

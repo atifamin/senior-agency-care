@@ -1,4 +1,4 @@
-<?php //print_array($client); ?>
+<?php //print_array($current_appointment_detail); ?>
 
 
 <form id="switch_appointment_form">
