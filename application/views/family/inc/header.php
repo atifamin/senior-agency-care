@@ -1,3 +1,11 @@
+<?php
+	$profile_image = family_image($this->family_id);
+	$profile_detail = family_Detail($this->family_id);
+	$urlSeg2 = $this->uri->segment(2);
+	$urlSeg3 = $this->uri->segment(3);
+	//print_array($profile_image);
+	//print_array($profile_detail);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

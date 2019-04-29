@@ -1,5 +1,5 @@
 <?php include(APPPATH."views/family/inc/header.php");?>
-
+<?PHP //print_array($profile_detail); ?>
 <style type="text/css">
 	.datatable-scroll-wrap{
 		margin-bottom: 40px;
