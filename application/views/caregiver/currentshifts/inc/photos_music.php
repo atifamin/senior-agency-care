@@ -79,8 +79,8 @@
                             <?php //$data = json_decode(json_encode($client_media_data),true);?>
                             <?php if (count($client_media_data) > 0) {
                                 foreach ($client_media_data as $media_data) { 
-                                 if($media_data->type =="audio"){ ?>
-
+                                 if($media_data->type =="audio" || $media_data->type == "video"){ ?>
+                                    <?php // print_array($client_media_data); ?>
                             <div class="col-xl-4 col-sm-6">
                                 <div class="card">
                                     <div class="card-img-actions">
@@ -96,8 +96,24 @@
                                     </div>
 
                                     <div class="card-body text-center">
-                                        <p class="d-block"><?php if (isset($media_data->image_detail)) {echo $media_data->image_detail->file_name;}?></p>
+                                        
+                                        
+                                        <?php if ($media_data->type == "audio") { ?>
+                                            <audio controls style="width:100%;">
+                                            <source src="<?php echo base_url().$media_data->image_detail->full_path;; ?>" type="audio/mpeg">
+                                            </source>
+                                        </audio>  
+                                        <?php  } ?>
+                                        <?php if ($media_data->type == "video") { ?> 
+                                            <iframe width="270" height="315" src="<?php echo $media_data->music_file_link;?>" frameborder="0" allowfullscreen></iframe>
+                                        <?php } ?>
+                                        <?php if ($media_data->type == "audio_video") { ?>
+                                        <audio controls style="width:100%;">
+                                            <source src="<?php echo base_url().$media_data->image_detail->full_path;; ?>" type="audio/mpeg">
+                                            </source>
+                                        </audio> 
                                         <iframe width="270" height="315" src="<?php echo $media_data->music_file_link;?>" frameborder="0" allowfullscreen></iframe>
+                                        <?php } ?>
                                         <!-- <button><i class="icon-play4 mr-3 icon-2x"></i></button> -->
                                     </div>
                                     <div class="card-footer">
@@ -115,7 +131,8 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php } } } ?>
+                        <?php } 
+                    } } ?>
                         </div>
                     </div>
                 </div>
@@ -301,7 +318,7 @@
             processData: false,
             success: function(e){
                 console.log(e);
-                // return false;       
+                // =return false;       
                 $('#modal_music').modal("hide");
                 location.reload();  
             }
