@@ -117,7 +117,7 @@ class Client_model extends CI_Model{
                 $familyArray["created_at"] = date("Y-m-d H:i:s");
                 $client_family_id = $this->common_model->insertGetIDQuery("client_family", $familyArray);
                 $this->load->model("Email_model");
-                //$this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
+                $this->Email_model->send_invite_to_client($post['agency_id'], $client_family_id);
             }
         }
         
